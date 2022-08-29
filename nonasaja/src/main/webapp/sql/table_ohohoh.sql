@@ -8,7 +8,7 @@ create table member(
 	constraint id_unique unique (id)
 );
 --회원 상세
-create table member_detail(
+create table member_detail(  
 	mem_num number not null,
 	name varchar2(15) not null,
 	passwd varchar2(15) not null,
