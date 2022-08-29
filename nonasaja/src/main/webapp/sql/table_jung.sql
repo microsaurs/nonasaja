@@ -4,7 +4,7 @@ create table norder(
   mem_num number not null,
   product_name varchar2(300) not null,
   order_total number (8) not null,
-  status number(1) not null,
+  status number(1) not null, --1:배송대기,2:배송준비,3:배송중,4:배송완료,5:주문취소
   receive_name varchar2(15) not null,
   receive_post varchar2(5) not null,
   receive_address1 varchar2(100) not null,
@@ -57,6 +57,7 @@ create table sale_reply(
   constraint sale_reply_fk2 foreign key (mem_num) references member (mem_num) 
 );
 
+
 --관심목록 테이블
 create table FAV(
   fav_num number not null,
@@ -65,7 +66,13 @@ create table FAV(
   club_num number,
   commu_num number,
   mem_num number not null,
-  fav_code number not null,
+  fav_code number not null, --1:공동구매,2:중고거래,3:동호회,4:커뮤니티
   constraint FAV_pk primary key (fav_num),
   constraint FAV_fk foreign key (mem_num) references member (mem_num)
 );
+
+create sequence norder_seq;
+create sequence norder_detail_seq;
+create sequence sale_board_seq;
+create sequence sale_reply_seq;
+create sequence FAV_seq;
