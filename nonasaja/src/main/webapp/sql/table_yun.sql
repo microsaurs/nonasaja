@@ -1,3 +1,4 @@
+-- 장바구니
 CREATE TABLE cart
 (
     cart_num NUMBER NOT NULL,
@@ -10,6 +11,7 @@ CREATE TABLE cart
     CONSTRAINT cart_fk2 FOREIGN KEY (product_num) REFERENCES product (product_num)
 );
 
+-- 지역 정보
 CREATE TABLE region
 (
     region_num NUMBER NOT NULL,
@@ -20,7 +22,7 @@ CREATE TABLE region
     CONSTRAINT region_pk PRIMARY KEY(region_num)
 );
 
-
+-- 커뮤니티
 CREATE TABLE community_board
 (
     commu_num NUMBER NOT NULL,
@@ -29,7 +31,7 @@ CREATE TABLE community_board
     commu_content CLOB NOT NULL,
     commu_date DATE NOT NULL,
     commu_modify_date DATE,
-    commu_code NUMBER(1) NOT NULL,
+    commu_code NUMBER(1) NOT NULL, -- 1 : 레시피공유 / 2 : 유머 / 3 : 자취정보
     commu_video VARCHAR2(150),
     commu_url VARCHAR2(150),
     commu_recommend NUMBER(6) DEFAULT 0 NOT NULL,
@@ -40,6 +42,7 @@ CREATE TABLE community_board
     CONSTRAINT community_fk2 FOREIGN KEY (region_num) REFERENCES region (region_num)
 );
 
+-- 커뮤니티 댓글
 CREATE TABLE community_reply
 (
     reply_num NUMBER NOT NULL,
