@@ -7,8 +7,7 @@ create table lionpoint (
     order_num number,
     reg_date date not null,
     constraint point_pk primary key (point_num),
-	constraint point_fk1 foreign key (mem_num) references member(mem_num),
-    constraint point_fk2 foreign key (order_num) references norder(order_num)
+	constraint point_fk1 foreign key (mem_num) references member(mem_num)
 );
 
 create sequence lionpoint_seq;
