@@ -21,7 +21,6 @@ create table norder(
 create table norder_detail(
   detail_num number not null,
   product_num number not null,
-  product_name varchar2(300) not null, --수정
   product_price number(6) not null,
   product_total number(8) not null,
   order_quantity number(5) not null,
