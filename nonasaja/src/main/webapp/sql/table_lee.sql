@@ -10,7 +10,7 @@ create table used_board(
  trade varchar2(30),
  reg_date date not null,
  modify_date date,
- hit number(6) not null,
+ hit number(6) default 0 not null,
  constraint used_board_pk primary key (used_num),
  constraint used_board_fk1 foreign key (used_num) references member(mem_num),
  constraint used_board_fk2 foreign key (used_num) references region(region_num)
