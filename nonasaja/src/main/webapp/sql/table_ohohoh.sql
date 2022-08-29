@@ -8,7 +8,7 @@ create table member(
 	constraint id_unique unique (id)
 );
 --회원 상세
-create table member_detail(  
+create table member_detail(
 	mem_num number not null,
 	name varchar2(15) not null,
 	passwd varchar2(15) not null,
@@ -35,7 +35,7 @@ create table report(
 	report_code number(1) not null,--1:중고거래/2:동호회/3:커뮤니티
 	report_content varchar2(900) not null,--신고 내용
 	reg_date date default sysdate not null,--신고일
-	used_num number,
+	used_num number,  
 	club_num number,
 	commu_num number,
 	constraint report_pk primary key (report_num),
