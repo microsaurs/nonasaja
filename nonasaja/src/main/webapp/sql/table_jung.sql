@@ -21,13 +21,13 @@ create table norder(
 create table norder_detail(
   detail_num number not null,
   product_num number not null,
-  product_name varchar2 not null,
+  product_name varchar2(300) not null,
   product_price number(6) not null,
   product_total number(8) not null,
   order_quantity number(5) not null,
   order_num number not null,
   constraint norder_detail_pk primary key (detail_num),
-  constraint norder_detail_fk foreign key (detail_num) references norder (order_num)
+  constraint norder_detail_fk foreign key (order_num) references norder (order_num)
 );
 
 --세일정보 게시판 테이블
