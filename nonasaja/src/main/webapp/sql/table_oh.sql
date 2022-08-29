@@ -1,20 +1,18 @@
-//포인트
-create table point (
+create table lionpoint (
     point_num number not null,
     mem_num number not null, 
-    point number(8) not null,
+    lionpoint number(8) not null,
     cash number(8) not null,
     remain number(8) not null,
     order_num number,
     reg_date date not null,
     constraint point_pk primary key (point_num),
 	constraint point_fk1 foreign key (mem_num) references member(mem_num),
-    constraint point_fk2 foreign key (order_num) references order(order_num)
+    constraint point_fk2 foreign key (order_num) references norder(order_num)
 );
 
-create sequence point_seq;
+create sequence lionpoint_seq;
 
-//동호회
 create table club_board (
     club_num number not null,
     club_title varchar2(50) not null,
@@ -33,14 +31,13 @@ create table club_board (
 
 create sequence club_board_seq;
 
-//동호회 채팅
 create table club_chat(
     club_chat_num number not null,
     club_chat_leader number not null,
     club_chat_participant number(3) not null,
     club_chat_title varchar(30) not null,
     constraint club_chat_pk primary key (club_chat_num),
-	constraint club_chat_fk1 foreign key (club_leader) references member(mem_num)
+	constraint club_chat_fk1 foreign key (club_chat_leader) references member(mem_num)
 );
 
-create sequence club_chat_board_seq;
+create sequence club_chat_seq;
