@@ -57,6 +57,7 @@ create table sale_reply(
   constraint sale_reply_fk2 foreign key (mem_num) references member (mem_num) 
 );
 
+
 --관심목록 테이블
 create table FAV(
   fav_num number not null,
@@ -69,3 +70,9 @@ create table FAV(
   constraint FAV_pk primary key (fav_num),
   constraint FAV_fk foreign key (mem_num) references member (mem_num)
 );
+
+create sequence norder_seq;
+create sequence norder_detail_seq;
+create sequence sale_board_seq;
+create sequence sale_reply_seq;
+create sequence FAV_seq;
