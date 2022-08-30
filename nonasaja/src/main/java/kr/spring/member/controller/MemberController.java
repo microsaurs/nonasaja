@@ -15,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.spring.member.service.MemberService;
 import kr.spring.member.vo.MemberVO;
@@ -108,4 +109,11 @@ public class MemberController {
 		}
 		
 	}
+	//로그아웃
+	@RequestMapping("/member/logout.do")
+	public String processLogout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/main/main.do";
+	}
+	
 }
