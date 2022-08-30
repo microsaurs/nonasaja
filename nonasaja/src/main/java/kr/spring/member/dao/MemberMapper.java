@@ -3,6 +3,7 @@ package kr.spring.member.dao;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import kr.spring.member.vo.MemberVO;
 
@@ -16,8 +17,11 @@ public interface MemberMapper {
 	public void insertMember_detail(MemberVO member);//회원가입
 	@Select("SELECT m.mem_num,m.id,m.auth,m.nickname,d.passwd,d.name,d.photo FROM member m LEFT OUTER JOIN member_detail d ON m.mem_num=d.mem_num WHERE m.id=#{id}")
 	public MemberVO selectCheckMember(String id);//아이디 중복 체크
+	@Select("SELECT * FROM member JOIN member_detail USING(mem_num) WHERE mem_num=#{mem_num}")
 	public MemberVO selectMember(Integer mem_num);//하나의 회원 조회
-	public void updateMember(MemberVO member);//회원정보 수정
+	@Update("UPDATE member SET nickname=#{nickname} WHERE mem_num=#{mem_num}")
+	public void updateMember(MemberVO member);//회원정보 수정 !interest 추가하기
+	@Update("UPDATE member_detail SET name=#{name},email=#{email},phone=#{phone},zipcode=#{zipcode},addr1=#{addr1},addr2=#{addr2} WHERE mem_num=#{mem_num}")
 	public void updateMember_detail(MemberVO member);//회원정보 수정
 	public void updatePassword(MemberVO member);//비밀번호 수정
 	public void deleteMember(Integer mem_num);//회원 삭제
