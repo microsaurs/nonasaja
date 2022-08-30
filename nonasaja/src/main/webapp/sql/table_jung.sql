@@ -2,7 +2,7 @@
 create table norder(
   order_num number not null,
   mem_num number not null,
-  product_name varchar2(300) not null,
+  total_name varchar2(300) not null,
   order_total number (8) not null,
   status number(1) not null, --1:배송대기,2:배송준비,3:배송중,4:배송완료,5:주문취소
   receive_name varchar2(15) not null,
@@ -21,7 +21,7 @@ create table norder(
 create table norder_detail(
   detail_num number not null,
   product_num number not null,
-  product_name varchar2(300) not null, --수정
+  product_name varchar2(300) not null,
   product_price number(6) not null,
   product_total number(8) not null,
   order_quantity number(5) not null,
