@@ -42,6 +42,7 @@ public class MemberVO {
 	private String interest;
 	private int cash;
 	
+	//private String passwd_check;
 	//비밀번호 변경시 현재 비밀번호를 저장하는 용도
 	//@Pattern(regexp="^[A-Za-z0-9]{4,15}$")
 	private String now_passwd;
