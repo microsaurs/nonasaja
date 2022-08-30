@@ -3,7 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!-- 내용 시작 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/confirmId.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/confirmIdPw.js"></script>
 <div class="page-main">
 	<h2>회원가입</h2>
 	<form:form id="register_form" action="registerUser.do" modelAttribute="memberVO">
