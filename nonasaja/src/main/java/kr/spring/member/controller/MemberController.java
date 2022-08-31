@@ -3,6 +3,7 @@ package kr.spring.member.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -16,10 +17,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.member.service.MemberService;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.util.AuthCheckException;
+import kr.spring.util.FileUtil;
 
 @Controller
 public class MemberController {
@@ -169,5 +173,52 @@ public class MemberController {
 			logger.debug("<인증실패>");
 			return "memberModify";
 		}
+	}
+	
+	//프로필 사진 출력(로그인 전용)
+	@RequestMapping("/member/photoView.do")
+	public ModelAndView getProfile(HttpSession session, HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		if(user==null) {
+			//로그인 안된 경우
+			byte[] readbyte = FileUtil.getBytes(request.getServletContext().getRealPath("/image_bundle/face.png"));
+			mav.addObject("imageFile", readbyte);
+			mav.addObject("filename", "face.png");
+			mav.setViewName("imageView");
+		}else {
+			//로그인 된 경우
+			MemberVO memberVO = memberService.selectMember(user.getMem_num());
+			viewProfile(memberVO,request,mav);
+		}
+		
+		return mav;
+	}
+	//프로필 사진 출력(회원번호 지정)
+	@RequestMapping("/member/viewProfile.do")
+	public ModelAndView getProfileByMem_num(@RequestParam int mem_num, HttpSession session, HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		
+		MemberVO memberVO = memberService.selectMember(mem_num);
+		
+		viewProfile(memberVO,request,mav);
+		
+		return mav;
+	}
+	//프로필 사진 처리를 위한 공통 코드
+	public void viewProfile(MemberVO memberVO, HttpServletRequest request, ModelAndView mav) {
+		if(memberVO.getPhoto_name()==null) {
+			//업로드한 프로필 사진이 없는 경우										/webapp -절대경로
+			byte[] readbyte = FileUtil.getBytes(request.getServletContext().getRealPath("/image_bundle/face.png"));
+			mav.addObject("imageFile", readbyte);
+			mav.addObject("filename", "face.png");
+		}else {
+			//업로드한 프로필 사진이 있는 경우
+			mav.addObject("imageFile", memberVO.getPhoto());
+			mav.addObject("filename", memberVO.getPhoto_name());
+		}
+		//뷰 이름 지정
+		mav.setViewName("imageView");
 	}
 }

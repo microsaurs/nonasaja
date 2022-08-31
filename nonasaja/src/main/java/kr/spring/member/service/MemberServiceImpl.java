@@ -55,4 +55,9 @@ public class MemberServiceImpl implements MemberService {
 
 	}
 
+	@Override
+	public void updateProfile(MemberVO member) {
+		memberMapper.updateProfile(member);
+	}
+
 }

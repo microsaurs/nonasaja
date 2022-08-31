@@ -57,7 +57,7 @@
 				<form:errors path="addr2" cssClass="error-color"/>                      
 			</li>
 			<li>
-				<label for="interest">관심사</label>
+				<label for="f_interest">관심사</label>
 				<form:checkbox path="f_interest" value="운동"/>운동
 				<form:checkbox path="f_interest" value="오락"/>오락
 				<form:checkbox path="f_interest" value="맛집"/>맛집

@@ -26,4 +26,7 @@ public interface MemberMapper {
 	public void updatePassword(MemberVO member);//비밀번호 수정
 	public void deleteMember(Integer mem_num);//회원 삭제
 	public void deleteMember_detail(Integer mem_num);//회원 삭제
+	
+	@Update("UPDATE member_detail SET photo=#{photo},photo_name=#{photo_name} WHERE mem_num=#{mem_num}")
+	public void updateProfile(MemberVO member);//프로필 이미지 업데이트
 }
