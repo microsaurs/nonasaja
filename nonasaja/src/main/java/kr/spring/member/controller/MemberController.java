@@ -62,6 +62,11 @@ public class MemberController {
 		return "common/notice";
 	}
 	
+	
+	//네이버 로그인
+	
+	
+	
 	//로그인 - 폼
 	@GetMapping("/member/login.do")
 	public String formLogin() {
