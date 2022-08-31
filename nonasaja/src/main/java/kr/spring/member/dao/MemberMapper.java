@@ -21,7 +21,7 @@ public interface MemberMapper {
 	public MemberVO selectMember(Integer mem_num);//하나의 회원 조회
 	@Update("UPDATE member SET nickname=#{nickname} WHERE mem_num=#{mem_num}")
 	public void updateMember(MemberVO member);//회원정보 수정 !interest 추가하기
-	@Update("UPDATE member_detail SET name=#{name},email=#{email},phone=#{phone},zipcode=#{zipcode},addr1=#{addr1},addr2=#{addr2} WHERE mem_num=#{mem_num}")
+	@Update("UPDATE member_detail SET name=#{name},email=#{email},phone=#{phone},zipcode=#{zipcode},addr1=#{addr1},addr2=#{addr2},interest=#{interest} WHERE mem_num=#{mem_num}")
 	public void updateMember_detail(MemberVO member);//회원정보 수정
 	public void updatePassword(MemberVO member);//비밀번호 수정
 	public void deleteMember(Integer mem_num);//회원 삭제

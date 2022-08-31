@@ -56,15 +56,15 @@
 				<form:input path="addr2"/>
 				<form:errors path="addr2" cssClass="error-color"/>                      
 			</li>
-			<%--<li>
+			<li>
 				<label for="interest">관심사</label>
-				<form:checkbox path="interest" value="운동" <c:if test="${fn:contains(member.interest,'운동')}">checked="checked"</c:if>/>운동
-				<form:checkbox path="interest" value="오락" <c:if test="${fn:contains(member.interest,'오락')}">checked="checked"</c:if>/>오락
-				<form:checkbox path="interest" value="맛집" <c:if test="${fn:contains(member.interest,'맛집')}">checked="checked"</c:if>/>맛집
-				<form:checkbox path="interest" value="노래" <c:if test="${fn:contains(member.interest,'노래')}">checked="checked"</c:if>/>노래
-				<form:checkbox path="interest" value="여행" <c:if test="${fn:contains(member.interest,'여행')}">checked="checked"</c:if>/>여행
-				<form:checkbox path="interest" value="스터디" <c:if test="${fn:contains(member.interest,'스터디')}">checked="checked"</c:if>/>스터디
-			</li> --%>
+				<form:checkbox path="f_interest" value="운동"/>운동
+				<form:checkbox path="f_interest" value="오락"/>오락
+				<form:checkbox path="f_interest" value="맛집"/>맛집
+				<form:checkbox path="f_interest" value="노래"/>노래
+				<form:checkbox path="f_interest" value="여행"/>여행
+				<form:checkbox path="f_interest" value="스터디"/>스터디
+			</li>
 		</ul> 
 		<div class="align-center">
 			<form:button>전송</form:button>

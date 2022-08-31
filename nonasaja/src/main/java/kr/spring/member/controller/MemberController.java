@@ -136,10 +136,6 @@ public class MemberController {
 		model.addAttribute("memberVO", memberVO);
 		logger.debug("<회원정보수정 접속> : " + memberVO);
 		
-//		String inter = memberVO.getInterest();
-//		String[] arr = inter.split(",");
-//		model.addAttribute("arr", arr);
-		
 		return "memberModify";
 	}
 	//회원정보 수정 - 데이터 처리

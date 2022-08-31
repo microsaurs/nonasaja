@@ -62,6 +62,25 @@ public class MemberVO {
 		setPhoto_name(upload.getOriginalFilename());
 	}
 
+	//===================checkbox===========================//
+	   //form:checkbox에서 사용할 수 있도록 String -> String[]로 변환 
+	   public String[] getF_interest() {
+	      String[] f_interest = null;
+	      if(interest!=null) f_interest = interest.split(",");
+	      return f_interest;
+	   }
+	   //String[] -> String
+	   public void setF_interest(String[] f_interest) {
+	      if(f_interest!=null) {
+	         this.interest = "";
+	         for(int i=0;i<f_interest.length;i++) {
+	            if(i>0) this.interest += ",";
+	            this.interest += f_interest[i];
+	         }
+	      }
+	   }
+	 //===================checkbox===========================//
+
 	public int getMem_num() {
 		return mem_num;
 	}

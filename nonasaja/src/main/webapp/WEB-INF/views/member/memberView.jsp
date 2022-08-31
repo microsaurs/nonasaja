@@ -46,6 +46,7 @@
 			<li>우편번호 : ${member.zipcode}</li>
 			<li>주소 : ${member.addr1}</li>
 			<li>상세주소 : ${member.addr2}</li>
+			<li>관심사 : ${member.interest}</li>
 			<li>가입날짜 : ${member.reg_date}</li>
 			<c:if test="${!empty member.modify_date}">
 			<li>정보 수정일 : ${member.modify_date}</li>
