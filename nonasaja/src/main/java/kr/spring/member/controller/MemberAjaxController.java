@@ -55,21 +55,21 @@ public class MemberAjaxController {
 	}
 	
 	//프로필 사진 수정
-//	@RequestMapping("/member/updateMyPhoto.do")
-//	@ResponseBody
-//	public Map<String,String> processProfile(MemberVO memberVO, HttpSession session){
-//		Map<String,String> mapAjax = new HashMap<String,String>();
-//		
-//		MemberVO user = (MemberVO)session.getAttribute("user");
-//		if(user==null) {
-//			mapAjax.put("result", "logout");
-//		}else {
-//			memberVO.setMem_num(user.getMem_num());
-//			memberService.updateProfile(memberVO);
-//			
-//			mapAjax.put("result", "success");
-//		}
-//		
-//		return mapAjax;
-//	}
+	@RequestMapping("/member/updateMyPhoto.do")
+	@ResponseBody
+	public Map<String,String> processProfile(MemberVO memberVO, HttpSession session){
+		Map<String,String> mapAjax = new HashMap<String,String>();
+		
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		if(user==null) {
+			mapAjax.put("result", "logout");
+		}else {
+			memberVO.setMem_num(user.getMem_num());
+			memberService.updateProfile(memberVO);
+			
+			mapAjax.put("result", "success");
+		}
+		
+		return mapAjax;
+	}
 }
