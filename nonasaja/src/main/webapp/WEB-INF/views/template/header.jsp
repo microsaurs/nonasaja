@@ -10,7 +10,7 @@
 	<a href="${pageContext.request.contextPath}/board/list.do">중고거래</a>
 	<a href="${pageContext.request.contextPath}/clubboard/list.do">동호회</a>
 	<a href="${pageContext.request.contextPath}/commuboard/list.do">커뮤니티</a>
-	<c:if test="${!empty user && !empty user.photo}">
+	<c:if test="${!empty user && !empty user.photo}"> 
 		<img src="${pageContext.request.contextPath}/member/photoView.do" width="25" height="25" class="my-photo">
 	</c:if>
 	<c:if test="${!empty user && empty user.photo}">
