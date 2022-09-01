@@ -73,7 +73,7 @@ private static final Logger logger = LoggerFactory.getLogger(CommuBoardControlle
 		model.addAttribute("url", request.getContextPath()+"/commuboard/list.do"); //스크립트가 보여지고 이동할 곳 지정
 				
 		
-		return "common/resultView"; //타일스 설정안하면 jsp직접호출
+		return "common/resultView"; //타일스 설정안하면 jsp직접호출 
 	}
 	
 	//===========유머 게시판 글 목록==========//
