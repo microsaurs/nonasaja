@@ -16,7 +16,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/uploadAdapter.js"></script>
 <div class="page-main">
 	<h2>글쓰기</h2>
-	<form:form action="humorwrite.do" modelAttribute="CommunityVO"
+	<form:form action="humorwrite.do" modelAttribute="communityVO"
 	        id="register_form"
 	        enctype="multipart/form-data">
 	    <form:errors element="div" cssClass="error-color"/>    
