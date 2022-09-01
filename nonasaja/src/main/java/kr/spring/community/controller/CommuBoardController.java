@@ -38,7 +38,8 @@ private static final Logger logger = LoggerFactory.getLogger(CommuBoardControlle
 	private CommuBoardService boardService;
 	
 	//자바빈(VO) 초기화
-	@ModelAttribute
+	
+	@ModelAttribute 
 	public CommunityVO initCommad() {
 		return new CommunityVO();
 	}
@@ -69,7 +70,7 @@ private static final Logger logger = LoggerFactory.getLogger(CommuBoardControlle
 		
 		//View에 표시할 메시지 
 		model.addAttribute("message", "글 등록이 완료되었습니다.");
-		model.addAttribute("url", request.getContextPath()+"/board/list.do"); //스크립트가 보여지고 이동할 곳 지정
+		model.addAttribute("url", request.getContextPath()+"/commuboard/list.do"); //스크립트가 보여지고 이동할 곳 지정
 				
 		
 		return "common/resultView"; //타일스 설정안하면 jsp직접호출
