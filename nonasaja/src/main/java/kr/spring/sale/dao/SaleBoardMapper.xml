@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.spring.sale.dao.SaleBoardMapper">  
+  	<select id="selectRowCount" parameterType="map"
+  	                    resultType="integer">
+		SELECT
+		  COUNT(*)
+		FROM sale_board b JOIN member m
+		ON b.mem_num = m.mem_num
+		<where>
+			<if test="keyword != null and keyword != ''">
+				<if test="keyfield == 1">
+					b.title LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyfield == 2">
+					m.id LIKE '%' || #{keyword} || '%' OR
+					m.nick_name LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyfield == 3">
+					b.content LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyfield == 4">
+					b.title LIKE '%' || #{keyword} || '%' OR
+					b.content LIKE '%' || #{keyword} || '%'
+				</if>
+			</if>
+		</where>  	
+  	</select>
+  	<select id="selectList" parameterType="map"
+  	                         resultType="saleVO">
+  		SELECT
+  		   *
+  		FROM (SELECT
+  		        a.*, rownum rnum
+  		      FROM (SELECT
+  		              b.board_num,
+  		              <![CDATA[
+  		              REPLACE(REPLACE(b.title,'<','&lt;'),'>','&gt;') title,
+  		              ]]>
+  		              b.hit,
+  		              b.reg_date,
+  		              b.mem_num,
+  		              m.id,
+  		              m.nick_name
+  		            FROM sale_board b JOIN member m
+  		            ON b.mem_num = m.mem_num
+  		            <where>
+						<if test="keyword != null and keyword != ''">
+							<if test="keyfield == 1">
+								b.title LIKE '%' || #{keyword} || '%'
+							</if>
+							<if test="keyfield == 2">
+								m.id LIKE '%' || #{keyword} || '%' OR
+								m.nick_name LIKE '%' || #{keyword} || '%'
+							</if>
+							<if test="keyfield == 3">
+								b.content LIKE '%' || #{keyword} || '%'
+							</if>
+							<if test="keyfield == 4">
+								b.title LIKE '%' || #{keyword} || '%' OR
+								b.content LIKE '%' || #{keyword} || '%'
+							</if>
+						</if>
+					</where> 
+  		            ORDER BY b.board_num DESC)a)
+  		<![CDATA[
+  		WHERE rnum >= #{start} AND rnum <= #{end}
+  		]]>
+  	</select>
+  	
+  	
+</mapper>
+
+
+
+
+
+
+
