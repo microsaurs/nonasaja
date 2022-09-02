@@ -36,7 +36,7 @@ create table product_review(
 );
 
 create sequence product_seq;
-
+create sequence product_review_seq;
 
 
 
