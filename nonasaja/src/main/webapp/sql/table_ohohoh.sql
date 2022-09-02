@@ -1,7 +1,7 @@
 --회원
 create table member(
 	mem_num number not null,
-	id varchar2(20) not null,
+	id varchar2(255) not null,
 	auth number(1) default 2 not null,
 	nickname varchar2(30) not null,
 	constraint member_pk primary key (mem_num),
@@ -11,7 +11,7 @@ create table member(
 create table member_detail(
 	mem_num number not null,
 	name varchar2(15) not null,
-	passwd varchar2(15) not null,
+	passwd varchar2(15),
 	phone varchar2(15) not null,
 	email varchar2(50) not null,
 	zipcode varchar2(5) not null,

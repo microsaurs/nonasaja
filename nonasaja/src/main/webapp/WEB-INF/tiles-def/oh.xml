@@ -5,11 +5,18 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-    <definition name="test2" extends="main">
-    	<put-attribute name="title" value="회원가입"/>
+	 <definition name="productList" extends="main">
+    	<put-attribute name="title" value="상품목록"/>
     	<put-attribute name="body"
-    	  value="/WEB-INF/views/member/memberRegister.jsp"/>                   
+    	  value="/WEB-INF/views/product/productList.jsp"/>                   
     </definition>
+
+    <definition name="productRegister" extends="main">
+    	<put-attribute name="title" value="상품등록"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/product/productRegister.jsp"/>                   
+    </definition>
+
 </tiles-definitions>
 
 
