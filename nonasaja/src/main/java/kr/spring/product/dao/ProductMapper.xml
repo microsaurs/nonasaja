@@ -15,25 +15,18 @@
 			 photo3,photo3_name,
 			 </if>
 			 company, origin, status, deadline,reg_date
-			 <if test="modify_date != null">
-			 ,modify_date
-			 </if>
 			 )
 		 values
 		 (product_seq.nextval,#{name},#{kind},#{sub_category},#{title},
 		 	#{price1},#{price2},#{quantity},#{req_quantity},#{photo1},#{photo1_name},
 		 	<if test="photo2 != null">
 			 #{photo2},#{photo2_name},
-			 photo2,photo2_name,
 			 </if>
 			 <if test="photo3 != null">
 			 #{photo3},#{photo3_name},
 			 </if>
-			 #{company},#{origin},#{status},#{deadline},#{reg_date}
-			 <if test="modify_date != null">
-			 ,#{modify_date}
-			 </if>
-		 	)
+			 #{company},#{origin},#{status},#{deadline},sysdate
+			 )
 	</insert>
 
 	

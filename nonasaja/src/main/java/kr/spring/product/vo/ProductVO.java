@@ -3,38 +3,40 @@ package kr.spring.product.vo;
 import java.io.IOException;
 import java.sql.Date;
 
+import javax.validation.constraints.Future;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.web.multipart.MultipartFile;
 
 public class ProductVO {
-	@NotEmpty
 	private int product_num;
 	@NotEmpty
 	private String name;
-	@NotEmpty
+	//식품0, 생활용품1
 	private int kind;
 	@NotEmpty
 	private String sub_category;
 	@NotEmpty
 	private String title;
 	//원가
-	@NotEmpty
+	@Min(0)
 	private int price1; 
 	//판매가
-	@NotEmpty
+	@Min(0)
 	private int price2;
-	@NotEmpty
+	@Min(0)
 	private int quantity;
 	//구매요구수량
-	@NotEmpty
+	@Min(0)
 	private int req_quantity;
 	//대표이미지 (나머지 둘은 슬라이드)
-	@NotEmpty
 	private byte[] photo1;
 	private byte[] photo2;
 	private byte[] photo3;
-	@NotEmpty
+	//파일 이름
 	private String photo1_name;
 	private String photo2_name;
 	private String photo3_name;
@@ -43,11 +45,9 @@ public class ProductVO {
 	@NotEmpty
 	private String origin;
 	//0:판매중 1:마감
-	@NotEmpty
 	private int status;
 	@NotEmpty
-	private Date deadline;
-	@NotEmpty
+	private String deadline;
 	private Date reg_date;
 	private Date modify_date;
 	
@@ -68,7 +68,6 @@ public class ProductVO {
 		setPhoto3(upload.getBytes());
 		setPhoto3_name(upload.getOriginalFilename());
 	}
-	
 	public int getProduct_num() {
 		return product_num;
 	}
@@ -177,10 +176,10 @@ public class ProductVO {
 	public void setStatus(int status) {
 		this.status = status;
 	}
-	public Date getDeadline() {
+	public String getDeadline() {
 		return deadline;
 	}
-	public void setDeadline(Date deadline) {
+	public void setDeadline(String deadline) {
 		this.deadline = deadline;
 	}
 	public Date getReg_date() {
@@ -204,5 +203,7 @@ public class ProductVO {
 				+ ", status=" + status + ", deadline=" + deadline + ", reg_date=" + reg_date + ", modify_date="
 				+ modify_date + "]";
 	}
+	
+	
 	
 }

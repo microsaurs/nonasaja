@@ -53,7 +53,11 @@ public class ProductController {
 	public String submit(@Valid ProductVO productVO, BindingResult result, 
 						HttpServletRequest request, HttpSession session, Model model) {
 		
+		if(result.hasErrors()) {
+			return form();
+		}
 		
+		productService.insertProduct(productVO);
 		
 		model.addAttribute("message", "상품 등록이 완료되었습니다.");
 		model.addAttribute("url", request.getContextPath()+"/product/list.do");
