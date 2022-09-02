@@ -5,7 +5,7 @@
 <h2 class="align-center">SpringPage</h2>
 <div class="align-right"> 
 	<a href="${pageContext.request.contextPath}/board/list.do">홈</a>
-	<a href="${pageContext.request.contextPath}/board/list.do">공동구매</a>
+	<a href="${pageContext.request.contextPath}/product/list.do">공동구매</a>
 	<a href="${pageContext.request.contextPath}/board/list.do">세일정보</a>
 	<a href="${pageContext.request.contextPath}/board/list.do">중고거래</a>
 	<a href="${pageContext.request.contextPath}/clubboard/list.do">동호회</a>

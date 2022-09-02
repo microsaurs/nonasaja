@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<!-- 어노테이션과 병행할경우 namespace를 dao(mapper.java)인터페이스 명칭과 맞춰야 함 -->
+<mapper namespace="kr.spring.product.dao.ProductMapper">  
+	<insert id="insertProduct" parameterType="productVO">
+		insert into product
+			(product_num, name, kind, sub_category, title, 
+			 price1, price2, quantity, req_quantity, photo1,photo1_name,
+			 <if test="photo2 != null">
+			 photo2,photo2_name,
+			 </if>
+			 <if test="photo3 != null">
+			 photo3,photo3_name,
+			 </if>
+			 company, origin, status, deadline,reg_date
+			 <if test="modify_date != null">
+			 ,modify_date
+			 </if>
+			 )
+		 values
+		 (product_seq.nextval,#{name},#{kind},#{sub_category},#{title},
+		 	#{price1},#{price2},#{quantity},#{req_quantity},#{photo1},#{photo1_name},
+		 	<if test="photo2 != null">
+			 #{photo2},#{photo2_name},
+			 photo2,photo2_name,
+			 </if>
+			 <if test="photo3 != null">
+			 #{photo3},#{photo3_name},
+			 </if>
+			 #{company},#{origin},#{status},#{deadline},#{reg_date}
+			 <if test="modify_date != null">
+			 ,#{modify_date}
+			 </if>
+		 	)
+	</insert>
+
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

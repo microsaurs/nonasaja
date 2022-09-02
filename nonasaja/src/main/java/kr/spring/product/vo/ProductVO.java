@@ -52,7 +52,7 @@ public class ProductVO {
 	private Date modify_date;
 	
 	//이미지 blob 처리
-	//주의! 사진 업로드 폼에서 파일 업로드 파라미터네임은 반드시 upload라고 지정해야 함
+	//주의! 사진 업로드 폼에서 파일 업로드 파라미터네임은 반드시 upload1,2,3이라고 지정해야 함
 	public void setUpload1(MultipartFile upload) throws IOException{
 		//MultipartFile -> byte[]로 형변환
 		setPhoto1(upload.getBytes());
