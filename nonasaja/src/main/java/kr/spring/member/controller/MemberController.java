@@ -39,7 +39,7 @@ public class MemberController {
 		return new MemberVO();
 	}
 	
-	//회원가입
+	//===========회원가입=============//
 	//회원가입 - 폼
 	@GetMapping("/member/registerUser.do")
 	public String form() {
@@ -62,10 +62,47 @@ public class MemberController {
 		return "common/notice";
 	}
 	
-	
-	//네이버 로그인
-	
-	
+	//=============네이버===============//
+	@GetMapping("/member/naverCheck.do")
+	public String naverCheck() {
+		
+		
+		return "member/naverCheck";
+	}
+	//네이버 로그인 or 최초 가입시 추가 정보 기입
+	@GetMapping("/member/naverLogin.do")
+	public String naverConfirm(String id, HttpSession session) {
+		logger.debug("<네이버 로그인 진입>");
+		//DB에 저장된 id값 있는지 확인
+		//MemberVO user = (MemberVO)session.getAttribute("user");
+		MemberVO db_member = memberService.selectCheckMember(id);
+		if(db_member!=null) {
+			//로그인
+			session.setAttribute("user", db_member);
+			return "redirect:/main/main.do";
+		}
+		return "memberNaverLogin";
+	}
+	//네이버 최초 회원가입 - 추가 정보 저장
+	@PostMapping("/member/naverLogin.do")
+	public String submitNaver(@Valid MemberVO memberVO, BindingResult result, HttpSession session) {
+		
+		logger.debug("<네이버 회원 최초 가입>");
+		logger.debug("<회원 값 세팅> : " + memberVO);
+		//유효성 체크
+		//네이버 연동으로 id,name,nickname,email,phone 정보는 세팅되어있어서
+		//우편번호,주소,상세주소만 유효성 체크
+		if(result.hasFieldErrors("zipcode") || result.hasFieldErrors("addr1") || result.hasFieldErrors("addr2")) {
+			return "memberNaverLogin";
+		}
+		
+		//DB에 값 저장 (회원가입 처리)
+		memberService.insertNaverMember(memberVO);
+		
+		//로그인
+		session.setAttribute("user", memberVO);
+		return "redirect:/main/main.do";
+	}
 	
 	//로그인 - 폼
 	@GetMapping("/member/login.do")

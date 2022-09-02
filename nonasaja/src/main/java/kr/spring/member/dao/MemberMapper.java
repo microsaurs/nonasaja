@@ -15,6 +15,12 @@ public interface MemberMapper {
 	public void insertMember(MemberVO member);//회원가입
 	@Insert("INSERT INTO member_detail (mem_num,name,passwd,phone,email,zipcode,addr1,addr2,interest) VALUES (#{mem_num},#{name},#{passwd},#{phone},#{email},#{zipcode},#{addr1},#{addr2},#{interest})")
 	public void insertMember_detail(MemberVO member);//회원가입
+	
+	//네이버 회원 상세 정보 저장 시작
+	@Insert("INSERT INTO member_detail (mem_num,name,phone,email,zipcode,addr1,addr2) VALUES (#{mem_num},#{name},REPLACE(#{phone},'-',''),#{email},#{zipcode},#{addr1},#{addr2})")
+	public void insertNaverMember_detail(MemberVO member);
+	//네이버 회원 상세 정보 저장 끝
+	
 	@Select("SELECT m.mem_num,m.id,m.auth,m.nickname,d.passwd,d.name,d.photo FROM member m LEFT OUTER JOIN member_detail d ON m.mem_num=d.mem_num WHERE m.id=#{id}")
 	public MemberVO selectCheckMember(String id);//아이디 중복 체크
 	@Select("SELECT * FROM member JOIN member_detail USING(mem_num) WHERE mem_num=#{mem_num}")

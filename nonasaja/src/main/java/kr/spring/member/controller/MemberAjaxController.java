@@ -4,12 +4,17 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,6 +28,39 @@ public class MemberAjaxController {
 	
 	@Autowired
 	private MemberService memberService;
+	
+	@ModelAttribute
+	public MemberVO initCommand() {
+		return new MemberVO();
+	}
+	
+	//네이버 로그인 처리
+	@RequestMapping("/member/useLoginapi.do")
+	@ResponseBody
+	public Map<String,String> confirmUser(String id, String email, String name, 
+			String nickname, String mobile){
+		//네이버 회원 프로필에 전화번호 010-xxxx-xxxx 형식을 010xxxxxxxxx 형식으로 변환
+		String phone = "";
+		String[] arr = mobile.split("-");
+		for(String num : arr) {
+			phone += num;
+		}
+		//MemberVO memberVO = memberService.selectCheckMember(id);
+		
+		//세션에 저장
+		//session.setAttribute("user", session);
+		
+		Map<String,String> mapAjax = new HashMap<String,String>();
+		
+		//mapAjax.put("accessToken", accessToken);
+		mapAjax.put("id", id);
+		mapAjax.put("name", name);
+		mapAjax.put("nickname", nickname);
+		mapAjax.put("phone", phone);
+		mapAjax.put("email", email);
+
+		return mapAjax;
+	}
 	
 	@RequestMapping("/member/confirmId.do")
 	@ResponseBody //List, Map, VO인 경우만 키-값 형태로 json 문자화
