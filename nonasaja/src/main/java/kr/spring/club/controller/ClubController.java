@@ -122,7 +122,7 @@ public class ClubController {
 		mav.addObject("list", list);
 		mav.addObject("page", page.getPage());
 		
-		
+		 
 		return mav;
 	}
 }	

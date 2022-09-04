@@ -10,7 +10,7 @@
 <div class="page-main">
 	<h2>${board.title}</h2>
 	<ul class="detail-info">
-		<li>
+		<li> 
 			<c:if test="${!empty board.photo_name}">
 			<img src="imageView.do?board_num=${board.board_num}&board_type=1" width="40" height="40" class="my-photo">
 			</c:if>
