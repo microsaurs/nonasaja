@@ -38,7 +38,6 @@ private static final Logger logger = LoggerFactory.getLogger(CommuBoardControlle
 	private CommuBoardService boardService;
 	
 	//자바빈(VO) 초기화
-	
 	@ModelAttribute 
 	public CommunityVO initCommad() {
 		return new CommunityVO();
@@ -104,7 +103,7 @@ private static final Logger logger = LoggerFactory.getLogger(CommuBoardControlle
 		}
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("boardList"); //tiles ,board.xml에 설정 , 응답할 view 이름을 설정
+		mav.setViewName("commuBoardList"); //tiles ,board.xml에 설정 , 응답할 view 이름을 설정
 		mav.addObject("count", count); //addObject : view에 전달할 값을 설정
 		mav.addObject("list", list);
 		mav.addObject("page", page.getPage());
@@ -114,33 +113,66 @@ private static final Logger logger = LoggerFactory.getLogger(CommuBoardControlle
 	
 	//========유머게시판 글 상세=========//
 	@RequestMapping("/commuboard/detail.do")
-	public ModelAndView detail(@RequestParam int board_num) {
+	public ModelAndView detail(@RequestParam int commu_num) {
 		
-		logger.debug("<<board_num>> : " + board_num);
+		logger.debug("<<board_num>> : " + commu_num);
 		
 		//해당 글의 조회수 증가
-		boardService.updateHit(board_num);
+		boardService.updateHit(commu_num);
 		
-		CommunityVO board = boardService.selectBoard(board_num); //한 건의 레코드 읽음
+		CommunityVO board = boardService.selectBoard(commu_num); //한 건의 레코드 읽음
 		
 		//제목에 태그를 허용하지 않음
 		board.setCommu_title(StringUtil.useNoHtml(board.getCommu_title()));
 		
-		return new ModelAndView("commuboardView","board",board);//뷰이름(tiles),속성명,속성값
-		
-		
-		
-		
-		
+		return new ModelAndView("commuBoardView","board",board);//뷰이름(tiles),속성명,속성값
 		
 	}
 	
+	//============게시판 글수정============//
+	//수정품
+	@GetMapping("/commuboard/update.do")
+	public String formUpdate(@RequestParam int commu_num, Model model) { 
+		
+		CommunityVO boardVO = boardService.selectBoard(commu_num);
+		
+		model.addAttribute("boardVO", boardVO); 
+		
+		return "commuBoardModify";
+	}
 	
-	
-	
-}
+	//수정 폼에서 전송된 데이터 처리
+		@PostMapping("/commuboard/update.do")
+		public String submitUpdate(@Valid CommunityVO boardVO,
+				            BindingResult result,
+				            HttpServletRequest request,
+				            Model model) {
+			logger.debug("<<글수정>> : " + boardVO);
+			
+			//유효성 체크 결과 오류가 있으면 폼 호출
+			if(result.hasErrors()) {
+				//title 또는 content가 입력되지 않아 유효성 체크에
+				//걸리면 파일 정보를 잃어버리기 때문에 품을
+				//호출할 때 다시 셋팅해주어야 함.
+				CommunityVO vo = boardService.selectBoard(
+						            boardVO.getCommu_num());
+				return "commuBoardModify";
+			}
+			//글수정
+			boardService.updateBoard(boardVO); //유효성체크 안걸리면
+			
+			//View에 표시할 메시지
+			model.addAttribute("message", "글수정 완료!!");
+			model.addAttribute("url", 
+					request.getContextPath()+"/board/detail.do?commu_num="+boardVO.getCommu_num());	
 
+			return "common/resultView";
+		}
+		
+		
+}		
 
+	
 
 
 

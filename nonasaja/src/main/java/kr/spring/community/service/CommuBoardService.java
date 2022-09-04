@@ -11,8 +11,8 @@ public interface CommuBoardService {
 	public List<CommunityVO> selectList(Map<String,Object> map);
 	public int selectRowCount(Map<String,Object> map);
 	public void insertBoard(CommunityVO board);
-	public CommunityVO selectBoard(Integer board_num);
-	public void updateHit(Integer board_num);
+	public CommunityVO selectBoard(Integer commu_num);
+	public void updateHit(Integer commu_num);
 	public void updateBoard(CommunityVO board);
-	public void deleteBoard(Integer board_num);
+	public void deleteBoard(Integer commu_num);
 }

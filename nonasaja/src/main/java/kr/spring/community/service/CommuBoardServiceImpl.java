@@ -19,14 +19,12 @@ public class CommuBoardServiceImpl implements CommuBoardService{
 	
 	@Override
 	public List<CommunityVO> selectList(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
+		return boardMapper.selectList(map);
 	}
 
 	@Override
 	public int selectRowCount(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return 0;
+		return boardMapper.selectRowCount(map);
 	}
 
 	@Override
@@ -35,25 +33,22 @@ public class CommuBoardServiceImpl implements CommuBoardService{
 	}
 
 	@Override
-	public CommunityVO selectBoard(Integer board_num) {
-		// TODO Auto-generated method stub
-		return null;
+	public CommunityVO selectBoard(Integer commu_num) {
+		return boardMapper.selectBoard(commu_num);
 	}
 
 	@Override
-	public void updateHit(Integer board_num) {
-		// TODO Auto-generated method stub
-		
+	public void updateHit(Integer commu_num) {
+		boardMapper.updateHit(commu_num);
 	}
 
 	@Override
 	public void updateBoard(CommunityVO board) {
-		// TODO Auto-generated method stub
-		
+		boardMapper.updateBoard(board);
 	}
 
 	@Override
-	public void deleteBoard(Integer board_num) {
+	public void deleteBoard(Integer commu_num) {
 		// TODO Auto-generated method stub
 		
 	}
