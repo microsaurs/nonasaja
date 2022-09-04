@@ -29,7 +29,8 @@
 	</form:form>
 	<!-- 네이버 로그인 버튼 노출 영역 -->
 	<div id="naverIdLogin"></div>
-	<!-- 네이버 로그인 버튼 노출 영역 -->
+	<!-- 카카오 로그인 버튼 노출 영역 -->
+	<a href="https://kauth.kakao.com/oauth/authorize?client_id=a8abdc39c132bcec49dcef03bb7a10d1&redirect_uri=http://localhost:8080/auth/kakao/callback&response_type=code"><img alt="" src="${pageContext.request.contextPath}/images/kakao_login_small.png"></a>
 	<!-- 네아로 초기화 Script -->
 	<script type="text/javascript">
 	  	var naverLogin = new naver.LoginWithNaverId({
