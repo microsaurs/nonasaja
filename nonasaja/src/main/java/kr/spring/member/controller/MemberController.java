@@ -1,7 +1,6 @@
 package kr.spring.member.controller;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -10,18 +9,33 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import kr.spring.member.service.MemberService;
+import kr.spring.member.vo.KakaoProfile;
 import kr.spring.member.vo.MemberVO;
+import kr.spring.member.vo.OAuthToken;
 import kr.spring.util.AuthCheckException;
 import kr.spring.util.FileUtil;
 
@@ -65,8 +79,6 @@ public class MemberController {
 	//=============네이버===============//
 	@GetMapping("/member/naverCheck.do")
 	public String naverCheck() {
-		
-		
 		return "member/naverCheck";
 	}
 	//네이버 로그인 or 최초 가입시 추가 정보 기입
@@ -103,7 +115,118 @@ public class MemberController {
 		session.setAttribute("user", memberVO);
 		return "redirect:/main/main.do";
 	}
-	
+	@Value("${secret.key}")
+	private String key;
+	//=======카카오=======//
+	@GetMapping("/auth/kakao/callback")
+	//@ResponseBody = Data를 리턴해주는 컨트롤러 함수
+	public @ResponseBody String kakaoCallback(String code) {
+		//code값을 받으면 인증 완료! code값을 이용해 accessToken을 받는다.
+		//accessToken : 현재 로그인한 사람의 개인정보에 접근하기 위한 토큰
+		
+		//POST방식으로 key=value 데이터를 요청 (카카오쪽으로)
+		//HttpsURLConnection url = new HttpsConnection()과 같음
+		//Retrofit2(안드로이드), OKHttp, RestTemplate
+		
+		RestTemplate rt = new RestTemplate();
+		
+		//HttpHeader 오브젝트 생성
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
+		
+		//HttpBody 오브젝트 생성
+		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+		params.add("grant_type", "authorization_code");
+		params.add("client_id", "a8abdc39c132bcec49dcef03bb7a10d1");
+		params.add("redirect_uri", "http://localhost:8080/auth/kakao/callback");
+		params.add("code", code);
+		
+		//HttpHeader와 HttpBody를 하나의 오브젝트에 담기
+		HttpEntity<MultiValueMap<String,String>> kakaoTokenRequest = new HttpEntity<>(params,headers); 
+		
+		//Http 요청하기 - Post방식으로 - 그리고 response 변수의 응답 받음.
+		ResponseEntity<String> response = rt.exchange("https://kauth.kakao.com/oauth/token",
+														HttpMethod.POST,
+														kakaoTokenRequest,
+														String.class
+														);
+		//Gson, Json Simple, ObjectMapper 라이브러리 중 택일 사용
+		ObjectMapper objectMapper = new ObjectMapper();
+		OAuthToken oauthToken = null;
+		
+		try {
+			oauthToken = objectMapper.readValue(response.getBody(), OAuthToken.class);
+		} catch (JsonMappingException e){
+			e.printStackTrace();
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println("카카오 액세스 토큰 : "+oauthToken.getAccess_token());
+		
+		//사용자 정보 조회
+		RestTemplate rt2 = new RestTemplate();
+		
+		//HttpHeader 오브젝트 생성
+		HttpHeaders headers2 = new HttpHeaders();
+		headers2.add("Authorization", "Bearer "+ oauthToken.getAccess_token());
+		headers2.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
+		
+		//HttpHeader와 HttpBody를 하나의 오브젝트에 담기
+		HttpEntity<MultiValueMap<String,String>> kakaoProfileRequest = new HttpEntity<>(headers2); 
+		
+		//Http 요청하기 - Post방식으로 - 그리고 response 변수의 응답 받음.
+		ResponseEntity<String> response2 = rt2.exchange("https://kapi.kakao.com/v2/user/me",
+														HttpMethod.POST,
+														kakaoProfileRequest,
+														String.class
+														);
+		ObjectMapper objectMapper2 = new ObjectMapper();
+		KakaoProfile kakaoProfile = null;
+		
+		try {
+			kakaoProfile = objectMapper2.readValue(response2.getBody(), KakaoProfile.class);
+		} catch (JsonMappingException e){
+			e.printStackTrace();
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		//member 오브젝트 :id,passwd,nickname,name,phone,email,zipcode,addr1,2,interest
+		//카카오에서 가져올 수 있는 정보 : id,nickname,email
+		//가져올 수 없는 정보 : passwd,name,phone,zipcode,addr1,2,interest
+		System.out.println("카카오 아이디(번호):"+kakaoProfile.getId());
+		System.out.println("카카오 이메일:"+kakaoProfile.getKakao_account().getEmail());
+		
+		System.out.println("카카오 유저 아이디 :" + kakaoProfile.getId());
+		System.out.println("카카오 유저 닉네임 :" + kakaoProfile.getProperties().getNickname());
+		System.out.println("카카오 유저 이메일 :" + kakaoProfile.getKakao_account().getEmail());
+		//카카오,네이버 연동 계정 유저는 비밀번호를 설정할 수 없는데
+		//그 대안으로 yml 파일 맨 아래에 값을 지정해 연동회원인 경우 모두 같은 값을 넣는 방법을 썼다
+		//yml 맨 하단 참조 -> 현재 메서드 상단 @Value 참조
+		//member.setPasswd(key);
+		//실제 서비스시 key 값은 절대! 노출되면 안됨!!!!
+		//연동회원이 비밀번호변경 불가능하게 해야함
+		//연동 포털 구분 가능하게 컬럼 추가
+		
+		//UUID란 - 중복되지 않는 어떤 특정 값을 만들어내는 알고리즘
+		//비밀번호 분실시 임시 비밀번호로 활용 가능
+		//UUID garbagePassword = UUID.randomUUID();
+		//위 garbagePassword를 값으로 넣을때 .toString() 해준다
+		
+		//멤버에 값 대입하고 sql 실행
+		/*
+		 * MemberVO memberVO = new MemberVO();
+		 * memberVO.setId(kakaoProfile.getId().toString());
+		 * memberVO.setNickname(kakaoProfile.getProperties().getNickname());
+		 * memberVO.setEmail(kakaoProfile.getKakao_account().getEmail());
+		 * memberService.insertMember(memberVO);
+		 */
+		
+		//카카오 계정으로 이미 가입한 사람인지 첫 가입인지 분기
+		
+		
+		return response2.getBody();
+	}
 	//로그인 - 폼
 	@GetMapping("/member/login.do")
 	public String formLogin() {
