@@ -29,7 +29,7 @@ import kr.spring.util.StringUtil;
 
 @Controller
 public class ClubController {
-	private static final Logger logger =
+	private static final Logger Logger =
 	         LoggerFactory.getLogger(
 			          ClubController.class);
 	private int rowCount = 20;
@@ -47,27 +47,26 @@ public class ClubController {
 
 	//===========게시판 글 등록============//
 	//등록 폼
-	@GetMapping("/board/write.do")
+	@GetMapping("/clubboard/write.do")
 	public String form() {
-		return "boardWrite";
+		return "clubboardWrite";
 	}
 	//등록 폼에서 전송된 데이터 처리
-	@PostMapping("/board/write.do")
+	@PostMapping("/clubboard/write.do")
 	public String submit(@Valid ClubVO clubVO,
 			      BindingResult result,
 			      HttpServletRequest request,
 			      HttpSession session,
 			      Model model) {
 		
-		logger.debug("<<게시판 글 저장>> : " + clubVO);
+		Logger.debug("<<게시판 글 저장>> : " + clubVO);
 		
 		//유효성 검사 결과 오류가 있으면 폼 호출
 		if(result.hasErrors()) {
 			return form();
 		}
 		
-		MemberVO user = 
-				(MemberVO)session.getAttribute("user");
+		MemberVO user = (MemberVO)session.getAttribute("user");
 		//회원번호 셋팅
 		clubVO.setClub_leader(user.getMem_num());
 		
@@ -75,16 +74,14 @@ public class ClubController {
 		clubService.insertBoard(clubVO);
 		
 		//View에 표시할 메시지
-		model.addAttribute(
-				"message", "글 등록이 완료되었습니다.");
-		model.addAttribute(
-		 "url", request.getContextPath()+"/board/list.do");
+		model.addAttribute("message", "글 등록이 완료되었습니다.");
+		model.addAttribute("url", request.getContextPath()+"/clubboard/list.do");
 		
 		return "common/resultView";
 	}
 	
 	//===========게시판 글 목록============//
-	@RequestMapping("/board/list.do")
+	@RequestMapping("/clubboard/list.do")
 	public ModelAndView process(
 			@RequestParam(value="pageNum",defaultValue="1") 
 			int currentPage,
@@ -101,7 +98,7 @@ public class ClubController {
 		//글의 총개수(검색된 글의 개수)
 		int count = clubService.selectRowCount(map);
 		
-		logger.debug("<<count>> : " + count);
+		Logger.debug("<<count>> : " + count);
 		
 		//페이지 처리
 		PagingUtil page = 
@@ -119,19 +116,23 @@ public class ClubController {
 		}
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("boardList");
+		mav.setViewName("/clubboard/clubboardList");
+		
 		mav.addObject("count", count);
 		mav.addObject("list", list);
 		mav.addObject("page", page.getPage());
 		
+		
 		return mav;
 	}
+}	
+	/*
 	//========게시판 글상세===========//
-	@RequestMapping("/board/detail.do")
+	@RequestMapping("/clubboard/detail.do")
 	public ModelAndView detail(
 			          @RequestParam int club_num) {
 		
-		logger.debug("<<board_num>> : " + club_num);
+		Logger.debug("<<board_num>> : " + club_num);
 		
 		//해당 글의 조회수 증가
 		clubService.updateHit(club_num);
@@ -147,7 +148,7 @@ public class ClubController {
 		/*
 		board.setContent(
 		 StringUtil.useBrNoHtml(board.getContent()));
-		*/
+		
 		                          //뷰 이름    속성명   속성값
 		return new ModelAndView("clubView","club",club);
 	}
@@ -158,7 +159,7 @@ public class ClubController {
 	
 	//===========게시판 글수정===========//
 	//수정 폼
-	@GetMapping("/board/update.do")
+	@GetMapping("/clubboard/update.do")
 	public String formUpdate(
 			@RequestParam int club_num,
 			                         Model model) {
@@ -167,16 +168,16 @@ public class ClubController {
 		
 		model.addAttribute("ClubVO", clubVO);
 		
-		return "boardModify";
+		return "clubboardModify";
 	}
 	
 	//수정 폼에서 전송된 데이터 처리
-	@PostMapping("/board/update.do")
+	@PostMapping("/clubboard/update.do")
 	public String submitUpdate(@Valid ClubVO clubVO,
 			            BindingResult result,
 			            HttpServletRequest request,
 			            Model model) {
-		logger.debug("<<글수정>> : " + clubVO);
+		Logger.debug("<<글수정>> : " + clubVO);
 		
 		//유효성 체크 결과 오류가 있으면 폼 호출
 		if(result.hasErrors()) {
@@ -185,8 +186,8 @@ public class ClubController {
 			//호출할 때 다시 셋팅해주어야 함.
 			ClubVO vo = clubService.selectBoard(
 							clubVO.getClub_num());
-			/* boardVO.setFilename(vo.getFilename()); */
-			return "boardModify";
+			 boardVO.setFilename(vo.getFilename()); 
+			return "clubboardModify";
 		}
 		
 		//글수정
@@ -201,13 +202,13 @@ public class ClubController {
 	}
 	
 	//==========게시판 글삭제==========//
-		@RequestMapping("/board/delete.do")
+		@RequestMapping("/clubboard/delete.do")
 		public String submitDelete(
 				       @RequestParam int club_num,
 				       Model model,
 				       HttpServletRequest request) {
 			
-			logger.debug("<<글삭제>> : " + club_num);
+			Logger.debug("<<글삭제>> : " + club_num);
 			
 			//글삭제
 			clubService.deleteBoard(club_num);
@@ -220,3 +221,4 @@ public class ClubController {
 			return "common/resultView";
 		}
 }
+*/

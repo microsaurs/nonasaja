@@ -49,10 +49,10 @@
 		<c:forEach var="board" items="${list}">
 		<tr>
 			<td>${board.board_num}</td>
-			<td><a href="detail.do?board_num=${board.board_num}">${board.title}</a></td>
+			<td><a href="detail.do?board_num=${board.club_num}">${board.club_title}</a></td>
 			<td>
-				<c:if test="${empty board.nick_name}">${board.id}</c:if>
-				<c:if test="${!empty board.nick_name}">${board.nick_name}</c:if>
+				<c:if test="${empty board.club_leader}">${board.id}</c:if>
+				<c:if test="${!empty board.club_leader}">${board.club_leader}</c:if>
 			</td>
 			<td>${board.reg_date}</td>
 			<td>${board.hit}</td>

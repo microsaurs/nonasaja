@@ -9,12 +9,20 @@ import org.springframework.web.servlet.view.tiles3.TilesView;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
 import kr.spring.interceptor.LoginCheckInterceptor;
+//import kr.spring.interceptor.ClubWriterCheckInterceptor;
 
 //자바코드 기반 설정 클래스
 
 @Configuration
 public class AppConfig implements WebMvcConfigurer{
-
+	
+	/*
+	 * ClubWriterCheckInterceptor interceptor;
+	 * 
+	 * @Bean public ClubWriterCheckInterceptor interceptor() { interceptor = new
+	 * ClubWriterCheckInterceptor(); return interceptor; }
+	 */
+	
 	//인터셉터 지정
 	@Override
 	public void addInterceptors(
@@ -22,7 +30,12 @@ public class AppConfig implements WebMvcConfigurer{
 		registry.addInterceptor(
 				    new LoginCheckInterceptor())
 		        .addPathPatterns("/member/myPage.do");
-		
+		/*
+		 * registry.addInterceptor(interceptor) .addPathPatterns("/clubboard/write.do")
+		 * .addPathPatterns("/clubboard/update.do")
+		 * .addPathPatterns("/clubboard/delete.do");
+		 */
+			
 	}
 	
 	@Bean
