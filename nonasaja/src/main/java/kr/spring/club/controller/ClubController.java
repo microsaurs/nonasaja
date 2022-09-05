@@ -144,11 +144,23 @@ public class ClubController {
 		 StringUtil.useBrNoHtml(club.getClub_content()));
 		
 		                          //뷰 이름    속성명   속성값
-		return new ModelAndView("clubView","club",club);
+		return new ModelAndView("clubboardView","club", club);
 	}
 	
 	//===========파일다운로드===========//
-
+	/*
+	 * @RequestMapping("/board/file.do") public ModelAndView download(
+	 * 
+	 * @RequestParam int board_num) {
+	 * 
+	 * ClubVO club = clubService.selectBoard(club_num);
+	 * 
+	 * ModelAndView mav = new ModelAndView(); mav.setViewName("downloadView");
+	 * mav.addObject("downloadFile", club.getUploadfile());
+	 * mav.addObject("filename", club.getFilename());
+	 * 
+	 * return mav; }
+	 */
 	//=========이미지 출력=========//
 	
 	//===========게시판 글수정===========//
