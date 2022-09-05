@@ -22,7 +22,7 @@ public class SaleVO {
 	private int mem_num; //회원번호
 	
 	private String id; //회원아이디
-	private String nick_name;//회원별명
+	private String nickname;//회원별명
 	private byte[] photo;//프로필 사진
 	private String photo_name;//프로필 사진명
 	
@@ -63,7 +63,7 @@ public class SaleVO {
 	public void setModify_date(Date modify_date) {
 		this.modify_date = modify_date;
 	}
-	public Date getDeadline(Date deadline) {
+	public Date getDeadline() {
 		return deadline;
 	}
 	public void setDeadline(Date deadline) {
@@ -82,10 +82,10 @@ public class SaleVO {
 		this.id = id;
 	}
 	public String getNick_name() {
-		return nick_name;
+		return nickname;
 	}
 	public void setNick_name(String nick_name) {
-		this.nick_name = nick_name;
+		this.nickname = nick_name;
 	}
 	public byte[] getPhoto() {
 		return photo;
@@ -103,7 +103,7 @@ public class SaleVO {
 	public String toString() {
 		return "SaleVO [board_num=" + board_num + ", title=" + title + ", content=" + content + ", hit=" + hit
 				+ ", reg_date=" + reg_date + ", modify_date=" + modify_date + ", deadline=" + deadline
-				+ ", mem_num=" + mem_num + ", id=" + id + ", nick_name=" + nick_name + ", photo_name=" + photo_name
+				+ ", mem_num=" + mem_num + ", id=" + id + ", nickname=" + nickname + ", photo_name=" + photo_name
 				+ "]";
 	}
 }

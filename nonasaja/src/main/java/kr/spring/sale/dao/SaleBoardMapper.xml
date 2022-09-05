@@ -16,7 +16,7 @@
 				</if>
 				<if test="keyfield == 2">
 					m.id LIKE '%' || #{keyword} || '%' OR
-					m.nick_name LIKE '%' || #{keyword} || '%'
+					m.nickname LIKE '%' || #{keyword} || '%'
 				</if>
 				<if test="keyfield == 3">
 					b.content LIKE '%' || #{keyword} || '%'
@@ -28,8 +28,7 @@
 			</if>
 		</where>  	
   	</select>
-  	<select id="selectList" parameterType="map"
-  	                         resultType="saleVO">
+  	<select id="selectList" parameterType="map" resultType="saleVO">
   		SELECT
   		   *
   		FROM (SELECT
@@ -43,7 +42,7 @@
   		              b.reg_date,
   		              b.mem_num,
   		              m.id,
-  		              m.nick_name
+  		              m.nickname
   		            FROM sale_board b JOIN member m
   		            ON b.mem_num = m.mem_num
   		            <where>
@@ -53,7 +52,7 @@
 							</if>
 							<if test="keyfield == 2">
 								m.id LIKE '%' || #{keyword} || '%' OR
-								m.nick_name LIKE '%' || #{keyword} || '%'
+								m.nickname LIKE '%' || #{keyword} || '%'
 							</if>
 							<if test="keyfield == 3">
 								b.content LIKE '%' || #{keyword} || '%'
@@ -70,6 +69,42 @@
   		]]>
   	</select>
   	
+  	<!-- 글수정 -->
+  	<update id="updateBoard" parameterType="saleVO">
+  		UPDATE sale_board SET
+  			title=#{title},
+  			content=#{content},
+  		    deadline=#{deadline},
+  		    modify_date=SYSDATE
+  		WHERE board_num=#{board_num}
+  	</update>
+  	<!-- 댓글 목록 -->
+  	<select id="selectListReply" parameterType="map"
+  	                    resultType="saleReplyVO">
+  		SELECT
+  		   *
+  		FROM (SELECT
+  		        a.*,
+  		        rownum rnum
+  		      FROM (SELECT
+  		              reply_num,
+  		              <![CDATA[
+  		              REPLACE(REPLACE(reply_content,'<','&lt;'),'>','&gt;') reply_content,
+  		              ]]>
+  		              reply_date,
+  		              reply_mdate,
+  		              board_num,
+  		              mem_num,
+  		              id,
+  		              nickname
+  		            FROM sale_reply
+  		            JOIN member USING(mem_num)
+  		            WHERE board_num = #{board_num}
+  		            ORDER BY reply_num DESC)a)
+  		<![CDATA[
+  		WHERE rnum >= #{start} AND rnum <= #{end}
+  		]]>
+  	</select>
   	
 </mapper>
 

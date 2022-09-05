@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import kr.spring.sale.vo.SaleVO;
+import kr.spring.sale.vo.SaleReplyVO;
 
 public interface SaleBoardService {
 	//부모글
@@ -16,22 +17,13 @@ public interface SaleBoardService {
 	public void deleteBoard(Integer board_num);
 	public void deleteFile(Integer board_num);
 
-	/*
-	//부모글 좋아요
-	public BoardFavVO selectFav(BoardFavVO fav);
-	public int selectFavCount(Integer board_num);
-	public void insertFav(BoardFavVO boardFav);
-	public void deleteFav(Integer fav_num);
-
 	//댓글
-	public List<BoardReplyVO> selectListReply(
-			                 Map<String,Object> map);
-	public int selectRowCountReply(
-			                 Map<String,Object> map);
-	public BoardReplyVO selectReply(Integer re_num);
-	public void insertReply(BoardReplyVO boardReply);
-	public void updateReply(BoardReplyVO boardReply);
-	public void deleteReply(Integer re_num);
-	*/
+	public List<SaleReplyVO> selectListReply(Map<String,Object> map);
+	public int selectRowCountReply(Map<String,Object> map);
+	public SaleReplyVO selectReply(Integer reply_num);
+	public void insertReply(SaleReplyVO boardReply);
+	public void updateReply(SaleReplyVO boardReply);
+	public void deleteReply(Integer reply_num);
+
 
 }
