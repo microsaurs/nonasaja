@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.spring.used.dao.UsedMapper">  
+  	<select id="selectRowCount" parameterType="map"
+  	                    resultType="integer">
+		SELECT
+		  COUNT(*)
+		FROM used_board b JOIN member m
+		ON b.mem_num = m.mem_num
+		<where>
+			<if test="keyword != null and keyword != ''">
+				<if test="keyfield == 1">
+					b.title LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyfield == 2">
+					m.id LIKE '%' || #{keyword} || '%' OR
+					m.nickname LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyfield == 3">
+					b.content LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyfield == 4">
+					b.title LIKE '%' || #{keyword} || '%' OR
+					b.content LIKE '%' || #{keyword} || '%'
+				</if>
+			</if>
+		</where>  	
+  	</select>
+  	
+	<select id="selectList" parameterType="map" resultType="usedVO">
+	SELECT
+	  *
+	FROM (SELECT
+			a.*,
+			rownum rnum
+		  FROM (SELECT
+		  		   b.used_num,
+		  		   <![CDATA[
+		  		   REPLACE(REPLACE(b.title,'<','&lt;'),'>','&gt;') title,
+		  		   ]]>
+		  		   b.hit,
+		  		   b.reg_date,
+		  		   b.mem_num,
+		  		   m.id,
+		  		   m.nickname
+		  		FROM used_board b JOIN member m
+		  		ON b.mem_num = m.mem_num
+		  		 <where>
+				 	<if test="keyword != null and keyword != ''">
+				 		<if test="keyfield == 1">
+				 			b.title LIKE '%' || #{keyword} || '%'
+				 		</if>
+				 		<if test="keyfield == 2">
+				 			m.id LIKE '%' || #{keyword} || '%' OR
+				 			m.nickname LIKE '%' || #{keyword} || '%'
+				 		</if>
+				 		<if test="keyfield == 3">
+				 			b.content LIKE '%' || #{keyword} || '%'
+				 		</if>
+				 		<if test="keyfield == 4">
+				 			b.title LIKE '%' || #{keyword} || '%' OR
+				 			b.content LIKE '%' || #{keyword} || '%'
+				 		</if>
+				 	</if>
+	 			</where>
+		  		ORDER BY b.used_num DESC)a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+	</select>
+</mapper>

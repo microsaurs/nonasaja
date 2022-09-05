@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import kr.spring.community.dao.CommuBoardMapper;
+import kr.spring.community.vo.CommunityFavVO;
 import kr.spring.community.vo.CommunityVO;
 
 @Service
@@ -19,14 +20,12 @@ public class CommuBoardServiceImpl implements CommuBoardService{
 	
 	@Override
 	public List<CommunityVO> selectList(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
+		return boardMapper.selectList(map);
 	}
 
 	@Override
 	public int selectRowCount(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return 0;
+		return boardMapper.selectRowCount(map);
 	}
 
 	@Override
@@ -35,27 +34,52 @@ public class CommuBoardServiceImpl implements CommuBoardService{
 	}
 
 	@Override
-	public CommunityVO selectBoard(Integer board_num) {
-		// TODO Auto-generated method stub
-		return null;
+	public CommunityVO selectBoard(Integer commu_num) {
+		return boardMapper.selectBoard(commu_num);
 	}
 
 	@Override
-	public void updateHit(Integer board_num) {
-		// TODO Auto-generated method stub
-		
+	public void updateHit(Integer commu_num) {
+		boardMapper.updateHit(commu_num);
 	}
 
 	@Override
 	public void updateBoard(CommunityVO board) {
-		// TODO Auto-generated method stub
-		
+		boardMapper.updateBoard(board);
 	}
 
 	@Override
-	public void deleteBoard(Integer board_num) {
-		// TODO Auto-generated method stub
-		
+	public void deleteBoard(Integer commu_num) {
+		//부모글 삭제
+		boardMapper.deleteBoard(commu_num);
 	}
 
+	@Override
+	public CommunityFavVO selectFav(CommunityFavVO fav) {
+		return boardMapper.selectFav(fav);
+	}
+
+	@Override
+	public int selectFavCount(Integer commu_num) {
+		return boardMapper.selectFavCount(commu_num);
+	}
+
+	@Override
+	public void insertFav(CommunityFavVO boardFav) {
+		boardMapper.insertFav(boardFav);
+	}
+
+	@Override
+	public void deleteFav(Integer fav_num) {
+		boardMapper.deleteFav(fav_num);
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
 }
