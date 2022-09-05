@@ -116,7 +116,7 @@ public class ClubController {
 		}
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("/clubboard/clubboardList");
+		mav.setViewName("clubboardList");
 		
 		mav.addObject("count", count);
 		mav.addObject("list", list);
