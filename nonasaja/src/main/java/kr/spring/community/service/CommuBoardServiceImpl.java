@@ -49,8 +49,16 @@ public class CommuBoardServiceImpl implements CommuBoardService{
 
 	@Override
 	public void deleteBoard(Integer commu_num) {
-		// TODO Auto-generated method stub
-		
+		//부모글 삭제
+		boardMapper.deleteBoard(commu_num);
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
 }

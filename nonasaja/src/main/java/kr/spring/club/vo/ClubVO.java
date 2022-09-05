@@ -9,22 +9,14 @@ public class ClubVO {
 	private int club_num;
 	@NotEmpty
 	private String club_title;
-	@NotEmpty
 	private int club_leader;
 	@NotEmpty
 	private String club_content;
-	@NotEmpty
 	private Date club_date;
-	@NotEmpty
-	private byte[] club_img;
-	private String club_img_name;
-	@NotEmpty
+	private Date club_modify_date;
 	private int club_code;
-	@NotEmpty
 	private int club_limit;
-	@NotEmpty
 	private int club_pre;
-	@NotEmpty
 	private int club_hit;
 	
 	
@@ -58,17 +50,11 @@ public class ClubVO {
 	public void setClub_date(Date club_date) {
 		this.club_date = club_date;
 	}
-	public byte[] getClub_img() {
-		return club_img;
+	public Date getClub_modify_date() {
+		return club_modify_date;
 	}
-	public void setClub_img(byte[] club_img) {
-		this.club_img = club_img;
-	}
-	public String getClub_img_name() {
-		return club_img_name;
-	}
-	public void setClub_img_name(String club_img_name) {
-		this.club_img_name = club_img_name;
+	public void setClub_modify_date(Date club_modify_date) {
+		this.club_modify_date = club_modify_date;
 	}
 	public int getClub_code() {
 		return club_code;

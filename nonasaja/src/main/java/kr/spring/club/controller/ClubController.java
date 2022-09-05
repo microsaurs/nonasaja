@@ -29,9 +29,7 @@ import kr.spring.util.StringUtil;
 
 @Controller
 public class ClubController {
-	private static final Logger Logger =
-	         LoggerFactory.getLogger(
-			          ClubController.class);
+	private static final Logger Logger = LoggerFactory.getLogger(ClubController.class);
 	private int rowCount = 20;
 	private int pageCount = 10;
 	
@@ -44,7 +42,6 @@ public class ClubController {
 		return new ClubVO();
 	}
 	
-
 	//===========게시판 글 등록============//
 	//등록 폼
 	@GetMapping("/clubboard/write.do")
@@ -90,8 +87,7 @@ public class ClubController {
 			@RequestParam(value="keyword",defaultValue="")
 			String keyword) {
 		
-		Map<String,Object> map = 
-				    new HashMap<String,Object>();
+		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("keyfield", keyfield);
 		map.put("keyword", keyword);
 		
@@ -116,8 +112,7 @@ public class ClubController {
 		}
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("/clubboard/clubboardList");
-		
+		mav.setViewName("clubboardList");
 		mav.addObject("count", count);
 		mav.addObject("list", list);
 		mav.addObject("page", page.getPage());
@@ -125,8 +120,7 @@ public class ClubController {
 		 
 		return mav;
 	}
-}	
-	/*
+	
 	//========게시판 글상세===========//
 	@RequestMapping("/clubboard/detail.do")
 	public ModelAndView detail(
@@ -145,9 +139,9 @@ public class ClubController {
 			 StringUtil.useNoHtml(club.getClub_title()));
 		//내용에 줄바꿈 처리하면서 태그를 허용하지 않음
 		//ckeditor 사용시 아래 코드 주석 처리
-		/*
-		board.setContent(
-		 StringUtil.useBrNoHtml(board.getContent()));
+		
+		club.setClub_content(
+		 StringUtil.useBrNoHtml(club.getClub_content()));
 		
 		                          //뷰 이름    속성명   속성값
 		return new ModelAndView("clubView","club",club);
@@ -186,7 +180,7 @@ public class ClubController {
 			//호출할 때 다시 셋팅해주어야 함.
 			ClubVO vo = clubService.selectBoard(
 							clubVO.getClub_num());
-			 boardVO.setFilename(vo.getFilename()); 
+			//ClubVO.setFilename(vo.getFilename()); 
 			return "clubboardModify";
 		}
 		
@@ -221,4 +215,3 @@ public class ClubController {
 			return "common/resultView";
 		}
 }
-*/
