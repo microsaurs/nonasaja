@@ -12,18 +12,18 @@
 		<where>
 			<if test="keyword != null and keyword != ''">
 				<if test="keyfield == 1">
-					b.title LIKE '%' || #{keyword} || '%'
+					b.club_title LIKE '%' || #{keyword} || '%'
 				</if>
 				<if test="keyfield == 2">
 					m.id LIKE '%' || #{keyword} || '%' OR
-					m.nick_name LIKE '%' || #{keyword} || '%'
+					m.nickname LIKE '%' || #{keyword} || '%'
 				</if>
 				<if test="keyfield == 3">
-					b.content LIKE '%' || #{keyword} || '%'
+					b.club_content LIKE '%' || #{keyword} || '%'
 				</if>
 				<if test="keyfield == 4">
-					b.title LIKE '%' || #{keyword} || '%' OR
-					b.content LIKE '%' || #{keyword} || '%'
+					b.club_title LIKE '%' || #{keyword} || '%' OR
+					b.club_content LIKE '%' || #{keyword} || '%'
 				</if>
 			</if>
 		</where>  	
@@ -36,37 +36,39 @@
   		        a.*,
   		        rownum rnum
   		      FROM (SELECT
-  		              b.board_num,
+  		              b.club_num,
   		              <![CDATA[
-  		              REPLACE(REPLACE(b.title,'<','&lt;'),'>','&gt;') title,
+  		              REPLACE(REPLACE(b.club_title,'<','&lt;'),'>','&gt;') club_title,
   		              ]]>
-  		              b.hit,
-  		              b.filename,
-  		              b.reg_date,
-  		              b.mem_num,
+  		              b.club_leader,
+  		              b.club_date,
+  		              b.club_code,
+  		              b.club_limit,
+  		              b.club_pre,
+  		              b.club_hit,
   		              m.id,
-  		              m.nick_name
-  		            FFROM club_board b JOIN member m
+  		              m.nickname
+  		            FROM club_board b JOIN member m
   		            ON b.club_leader = m.mem_num
   		            <where>
 						<if test="keyword != null and keyword != ''">
 							<if test="keyfield == 1">
-								b.title LIKE '%' || #{keyword} || '%'
+								b.club_title LIKE '%' || #{keyword} || '%'
 							</if>
 							<if test="keyfield == 2">
 								m.id LIKE '%' || #{keyword} || '%' OR
-								m.nick_name LIKE '%' || #{keyword} || '%'
+								m.nickname LIKE '%' || #{keyword} || '%'
 							</if>
 							<if test="keyfield == 3">
-								b.content LIKE '%' || #{keyword} || '%'
+								b.club_content LIKE '%' || #{keyword} || '%'
 							</if>
 							<if test="keyfield == 4">
-								b.title LIKE '%' || #{keyword} || '%' OR
-								b.content LIKE '%' || #{keyword} || '%'
+								b.club_title LIKE '%' || #{keyword} || '%' OR
+								b.club_content LIKE '%' || #{keyword} || '%'
 							</if>
 						</if>
 					</where> 
-  		            ORDER BY b.board_num DESC)a)
+  		            ORDER BY b.club_num DESC)a)
   		<![CDATA[
   		WHERE rnum >= #{start} AND rnum <= #{end}
   		]]>

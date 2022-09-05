@@ -22,9 +22,27 @@
 	    <form:errors element="div" cssClass="error-color"/>    
 		<ul>
 			<li>
-				<label for="commu_title">제목</label>
-				<form:input path="commu_title"/>
-				<form:errors path="commu_title" 
+				<label for="club_title">제목</label>
+				<form:input path="club_title"/>
+				<form:errors path="club_title" 
+				             cssClass="error-color"/>
+			</li>
+				<li>
+				<label for="club_code">카테고리</label>
+				<form:input path="club_code"/>
+				<form:errors path="club_code" 
+				             cssClass="error-color"/>
+			</li>
+			<li>
+				<label for="club_limit">총 인원수</label>
+				<form:input path="club_limit"/>
+				<form:errors path="club_limit" 
+				             cssClass="error-color"/>
+			</li>
+			<li>
+				<label for="club_pre">현재 인원수</label>
+				<form:input path="club_pre"/>
+				<form:errors path="club_pre" 
 				             cssClass="error-color"/>
 			</li>
 			<li><b>내용</b></li>
@@ -40,7 +58,7 @@
 					}
 				 
 				 ClassicEditor
-		            .create( document.querySelector( '#commu_content' ),{
+		            .create( document.querySelector( '#club_content' ),{
 		            	extraPlugins: [MyCustomUploadAdapterPlugin]
 		            })
 		            .then( editor => {

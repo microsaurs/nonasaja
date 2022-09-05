@@ -29,9 +29,7 @@ import kr.spring.util.StringUtil;
 
 @Controller
 public class ClubController {
-	private static final Logger Logger =
-	         LoggerFactory.getLogger(
-			          ClubController.class);
+	private static final Logger Logger = LoggerFactory.getLogger(ClubController.class);
 	private int rowCount = 20;
 	private int pageCount = 10;
 	
@@ -44,7 +42,6 @@ public class ClubController {
 		return new ClubVO();
 	}
 	
-
 	//===========게시판 글 등록============//
 	//등록 폼
 	@GetMapping("/clubboard/write.do")
@@ -90,8 +87,7 @@ public class ClubController {
 			@RequestParam(value="keyword",defaultValue="")
 			String keyword) {
 		
-		Map<String,Object> map = 
-				    new HashMap<String,Object>();
+		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("keyfield", keyfield);
 		map.put("keyword", keyword);
 		
@@ -117,7 +113,6 @@ public class ClubController {
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("clubboardList");
-		
 		mav.addObject("count", count);
 		mav.addObject("list", list);
 		mav.addObject("page", page.getPage());
