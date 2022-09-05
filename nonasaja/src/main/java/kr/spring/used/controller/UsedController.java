@@ -43,7 +43,7 @@ public class UsedController {
 	
 	//========중고거래 글 등록=========//
 	//등록 폼
-	@GetMapping("/used/write.do")
+	@GetMapping("/usedboard/write.do")
 	public String form() {
 		return "usedWrite";
 	}
@@ -104,7 +104,7 @@ public class UsedController {
 		}
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("usedBoardList");
+		mav.setViewName("usedList");
 		mav.addObject("count",count);
 		mav.addObject("list", list);
 		mav.addObject("page",page.getPage());

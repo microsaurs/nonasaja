@@ -11,6 +11,7 @@ public class UsedVO {
 	private String title; //제목
 	@NotEmpty
 	private String content; //내용
+	@NotEmpty
 	private int kind; //거래 종류 1중고,2무나,3교환
 	@Min(0)
 	private int price; //가격
