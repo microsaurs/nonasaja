@@ -48,14 +48,14 @@
 		</tr>
 		<c:forEach var="board" items="${list}">
 		<tr>
-			<td>${board.board_num}</td>
-			<td><a href="detail.do?board_num=${board.club_num}">${board.club_title}</a></td>
+			<td>${board.club_num}</td>
+			<td><a href="detail.do?club_num=${board.club_num}">${board.club_title}</a></td>
 			<td>
-				<c:if test="${empty board.club_leader}">${board.id}</c:if>
-				<c:if test="${!empty board.club_leader}">${board.club_leader}</c:if>
+				<c:if test="${empty board.nickname}">${board.id}</c:if>
+				<c:if test="${!empty board.nickname}">${board.nickname}</c:if>
 			</td>
-			<td>${board.reg_date}</td>
-			<td>${board.hit}</td>
+			<td>${board.club_date}</td>
+			<td>${board.club_hit}</td>
 		</tr>
 		</c:forEach>
 	</table>

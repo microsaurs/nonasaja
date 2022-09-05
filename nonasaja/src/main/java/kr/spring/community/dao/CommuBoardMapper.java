@@ -23,5 +23,6 @@ public interface CommuBoardMapper {
 	@Update("UPDATE community_board SET commu_hit=commu_hit+1 WHERE commu_num=#{commu_num}")
 	public void updateHit(Integer commu_num);
 	public void updateBoard(CommunityVO board);
+	@Delete("DELETE FROM community_board WHERE commu_num=#{commu_num}")
 	public void deleteBoard(Integer commu_num);
 }

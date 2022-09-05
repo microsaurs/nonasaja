@@ -5,10 +5,10 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-    <definition name="cluboardList" extends="main">
+    <definition name="clubboardList" extends="main">
     	<put-attribute name="title" value="게시판목록"/>
     	<put-attribute name="body"
-    	  value="/WEB-INF/views/clubboard/cluboardList.jsp"/>                   
+    	  value="/WEB-INF/views/clubboard/clubboardList.jsp"/>                   
     </definition>
     <definition name="clubboardWrite" extends="main">
     	<put-attribute name="title" value="글쓰기"/>

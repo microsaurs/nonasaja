@@ -18,18 +18,17 @@ public interface ClubMapper {
 		public List<ClubVO> selectList(Map<String,Object> map);
 		public int selectRowCount(Map<String,Object> map);
 		@Insert("INSERT INTO club_board (club_num,club_title,"
-				+ "club_leader,club_content,club_date,club_img,club_img_name,"
+				+ "club_leader,club_content,"
 				+ "club_code,club_limit,club_pre,club_hit) "
 				+ "VALUES (club_board_seq.nextval,#{club_title},"
-				+ "#{club_leader},#{club_content},#{club_date},"
-				+ "#{club_img},#{club_img_name},#{club_code},#{club_limit},"
+				+ "#{club_leader},#{club_content},#{club_code},#{club_limit},"
 				+ "#{club_pre},#{club_hit})")
 		public void insertBoard(ClubVO club);
 		@Select("SELECT * FROM club_board c JOIN member m "
 				+ "USING(mem_num) JOIN member_detail d "
 				+ "USING(mem_num) WHERE c.club_num=#{club_num}")
 		public ClubVO selectBoard(Integer club_num);
-		@Update("UPDATE club_board SET hit=hit+1 WHERE club_num=#{club_num}")
+		@Update("UPDATE club_board SET club_hit=club_hit+1 WHERE club_num=#{club_num}")
 		public void updateHit(Integer club_num);
 		public void updateBoard(ClubVO club);
 		@Delete("DELETE FROM club_board WHERE club_num=#{club_num}")

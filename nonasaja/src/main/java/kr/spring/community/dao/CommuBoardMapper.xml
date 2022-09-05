@@ -3,17 +3,15 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 <mapper namespace="kr.spring.community.dao.CommuBoardMapper">  
-<!-- 태그 변환 작업을 해준다. -->
+
 	<select id="selectRowCount" parameterType="map" resultType="integer">
 		SELECT
 		  COUNT(*)
 		 FROM community_board b JOIN member m
 		 ON b.mem_num = m.mem_num
-		 <where> <!-- 조건에 만족하면 where절이 생기고 아니면 안생김 (동적sql특징) -->
-		 <!-- null아니고 비어있지않으면 검색한다 -->
+		 <where> 
 		 	<if test="keyword != null and keyword != ''">
-		 		<!-- keyfield가 1일경우 title에서 검색을한다. -->
-		 		<!-- 앞뒤로 %를 넣어줘야 포함되어져있는걸 구한다. -->
+
 		 		<if test="keyfield == 1">
 		 			b.commu_title LIKE '%' || #{keyword} || '%'
 		 		</if>
@@ -50,7 +48,6 @@
 			  		FROM community_board b JOIN member m
 			  		ON b.mem_num = m.mem_num
 			  		 <where>
-					 <!-- null아니고 비어있지않으면 검색한다 -->
 					 	<if test="keyword != null and keyword != ''">
 					 		<if test="keyfield == 1">
 					 			b.commu_title LIKE '%' || #{keyword} || '%'

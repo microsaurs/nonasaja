@@ -47,7 +47,7 @@ private static final Logger logger = LoggerFactory.getLogger(CommuBoardControlle
 	//등록 폼
 	@GetMapping("/commuboard/humorwrite.do")
 	public String form() {
-		return "commuHumorWrite"; 				//tiles, kim.xml에 설정
+		return "commuHumorWrite"; 			
 	}
 	
 	//등록 폼에서 전송된 데이터 처리
@@ -69,10 +69,10 @@ private static final Logger logger = LoggerFactory.getLogger(CommuBoardControlle
 		
 		//View에 표시할 메시지 
 		model.addAttribute("message", "글 등록이 완료되었습니다.");
-		model.addAttribute("url", request.getContextPath()+"/commuboard/list.do"); //스크립트가 보여지고 이동할 곳 지정
+		model.addAttribute("url", request.getContextPath()+"/commuboard/list.do"); 
 				
 		
-		return "common/resultView"; //타일스 설정안하면 jsp직접호출 
+		return "common/resultView"; 
 	}
 	
 	//===========유머 게시판 글 목록==========//
@@ -82,8 +82,7 @@ private static final Logger logger = LoggerFactory.getLogger(CommuBoardControlle
 			@RequestParam(value="keyfield",defaultValue="") String keyfield,
 			@RequestParam(value="keyword",defaultValue="") String keyword) {
 		
-		Map<String,Object> map = new HashMap<String,Object>(); //Map으로 묶어보냄
-		map.put("keyfield", keyfield);
+		Map<String,Object> map = new HashMap<String,Object>(); 
 		map.put("keyword", keyword);
 	
 		//글의 총 개수(검색된 글의 개수)
@@ -103,8 +102,8 @@ private static final Logger logger = LoggerFactory.getLogger(CommuBoardControlle
 		}
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("commuBoardList"); //tiles ,board.xml에 설정 , 응답할 view 이름을 설정
-		mav.addObject("count", count); //addObject : view에 전달할 값을 설정
+		mav.setViewName("commuBoardList"); 
+		mav.addObject("count", count); 
 		mav.addObject("list", list);
 		mav.addObject("page", page.getPage());
 		
@@ -120,12 +119,12 @@ private static final Logger logger = LoggerFactory.getLogger(CommuBoardControlle
 		//해당 글의 조회수 증가
 		boardService.updateHit(commu_num);
 		
-		CommunityVO board = boardService.selectBoard(commu_num); //한 건의 레코드 읽음
+		CommunityVO board = boardService.selectBoard(commu_num); 
 		
 		//제목에 태그를 허용하지 않음
 		board.setCommu_title(StringUtil.useNoHtml(board.getCommu_title()));
 		
-		return new ModelAndView("commuBoardView","board",board);//뷰이름(tiles),속성명,속성값
+		return new ModelAndView("commuBoardView","board",board);
 		
 	}
 	
@@ -151,9 +150,7 @@ private static final Logger logger = LoggerFactory.getLogger(CommuBoardControlle
 			
 			//유효성 체크 결과 오류가 있으면 폼 호출
 			if(result.hasErrors()) {
-				//title 또는 content가 입력되지 않아 유효성 체크에
-				//걸리면 파일 정보를 잃어버리기 때문에 품을
-				//호출할 때 다시 셋팅해주어야 함.
+
 				CommunityVO vo = boardService.selectBoard(
 						            boardVO.getCommu_num());
 				return "commuBoardModify";
@@ -164,11 +161,30 @@ private static final Logger logger = LoggerFactory.getLogger(CommuBoardControlle
 			//View에 표시할 메시지
 			model.addAttribute("message", "글수정 완료!!");
 			model.addAttribute("url", 
-					request.getContextPath()+"/board/detail.do?commu_num="+boardVO.getCommu_num());	
+					request.getContextPath()+"/commuboard/detail.do?commu_num="+boardVO.getCommu_num());	
 
 			return "common/resultView";
 		}
 		
+		//==========게시판 글삭제==========//
+		@RequestMapping("/commuboard/delete.do")
+		public String submitDelete(
+				       @RequestParam int commu_num,
+				       Model model,
+				       HttpServletRequest request) {
+			
+			logger.debug("<<글삭제>> : " + commu_num);
+			
+			//글삭제
+			boardService.deleteBoard(commu_num);
+			
+			//View에 표시할 메시지
+			model.addAttribute("message", "글삭제 완료!!");
+			model.addAttribute("url", 
+					request.getContextPath()+"/commuboard/list.do");
+			
+			return "common/resultView";
+		}
 		
 }		
 
