@@ -23,3 +23,4 @@ public interface UsedService {
 		public void insertFav(UsedFavVO usedFav);
 		public void deleteFav(Integer fav_num);
 }
+//커밋
