@@ -74,7 +74,7 @@ public class UsedController {
 	}
 	
 	//========중고거래 글 목록=========//
-	@RequestMapping("/board/list.do")
+	@RequestMapping("/usedboard/list.do")
 	public ModelAndView process(
 			@RequestParam(value="pageNum",defaultValue = "1")
 			int currentPage,

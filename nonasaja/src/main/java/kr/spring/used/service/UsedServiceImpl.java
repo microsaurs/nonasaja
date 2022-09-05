@@ -30,8 +30,7 @@ public class UsedServiceImpl implements UsedService {
 
 	@Override
 	public void insertUsed(UsedVO used) {
-		// TODO Auto-generated method stub
-		
+		usedMapper.insertUsed(used);
 	}
 
 	@Override
