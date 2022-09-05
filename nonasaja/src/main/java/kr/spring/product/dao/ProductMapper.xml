@@ -6,7 +6,7 @@
 <mapper namespace="kr.spring.product.dao.ProductMapper">  
 	<insert id="insertProduct" parameterType="productVO">
 		insert into product
-			(product_num, name, kind, sub_category, title, 
+			(product_num, name, kind, sub_category, title,detail, 
 			 price1, price2, quantity, req_quantity, photo1,photo1_name,
 			 <if test="photo2 != null">
 			 photo2,photo2_name,
@@ -14,10 +14,11 @@
 			 <if test="photo3 != null">
 			 photo3,photo3_name,
 			 </if>
-			 company, origin, status, deadline,reg_date
+			 company, origin, status, deadline,reg_date,quantity_detail,
+			 exp_date,storage,cus_phone
 			 )
 		 values
-		 (product_seq.nextval,#{name},#{kind},#{sub_category},#{title},
+		 (product_seq.nextval,#{name},#{kind},#{sub_category},#{title},#{detail},
 		 	#{price1},#{price2},#{quantity},#{req_quantity},#{photo1},#{photo1_name},
 		 	<if test="photo2 != null">
 			 #{photo2},#{photo2_name},
@@ -25,7 +26,8 @@
 			 <if test="photo3 != null">
 			 #{photo3},#{photo3_name},
 			 </if>
-			 #{company},#{origin},#{status},#{deadline},sysdate
+			 #{company},#{origin},#{status},#{deadline},sysdate,
+			 #{quantity_detail},#{exp_date},#{storage},#{cus_phone}
 			 )
 	</insert>
 

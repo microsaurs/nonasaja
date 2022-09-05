@@ -2,15 +2,15 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <div id="product_register">
+<!-- ckeditor js 넣기 -->
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/ckeditor.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/uploadAdapter.js"></script>
+
 <!-- !!!config 패키지의 AppConfig에서 인터셉터 설정하기!!! -->
+	<h2>구매 상품 등록</h2>
 	<form:form id="register_form" action="register.do" modelAttribute="productVO" enctype="multipart/form-data">
 		<form:errors element="div" cssClass="error-color"/>
 		<ul>
-			<li>
-				<label for="name">상품명</label>
-				<form:input path="name"/>
-				<form:errors path="name" cssClass="error-color"/>
-			</li>
 			<li>
 				<label for="kind">카테고리</label>
 				<form:radiobutton path="kind" value="0"/>식품
@@ -22,11 +22,36 @@
 				<form:input path="sub_category" placeholder="과일,정육,냉동,잡곡 등"/>
 				<form:errors path="sub_category" cssClass="error-color"/>
 			</li>
+			
 			<li>
-				<label for="title">판매제목</label>
-				<form:input path="title"/>
+				<form:input path="title" placeholder="제목 입력"/>
 				<form:errors path="title" cssClass="error-color"/>
 			</li>
+			
+			<li>
+				<label for="upload1">대표사진</label>
+				<input type="file" name="upload1" id="upload1">
+			</li>
+			<li>
+				<label for="upload2">사진2</label>
+				<input type="file" name="upload2" id="upload2">
+			</li>
+			<li>
+				<label for="upload3">사진3</label>
+				<input type="file" name="upload3" id="upload3">
+			</li>
+			
+			<li>
+				<label for="name">상품명</label>
+				<form:input path="name"/>
+				<form:errors path="name" cssClass="error-color"/>
+			</li>
+			<li>
+				<label for="origin">원산지</label>
+				<form:input path="origin"/>
+				<form:errors path="origin" cssClass="error-color"/>
+			</li>
+			
 			<li>
 				<label for="price1">원가</label>
 				<form:input path="price1"/>
@@ -47,28 +72,38 @@
 				<form:input path="req_quantity"/>
 				<form:errors path="req_quantity" cssClass="error-color"/>
 			</li>
+			
+			<!-- ckeditor 사용 -->
 			<li>
-				<label for="upload1">대표사진</label>
-				<input type="file" name="upload1" id="upload1">
+				<form:textarea path="detail" placeholder="상품 상세 설명"/>
+				<form:errors path="detail" cssClass="error-color"/>
+				<!-- ckeditor가 정보를 읽어오는 script -->
+				<script>
+					 function MyCustomUploadAdapterPlugin(editor) {
+						    editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+						        return new UploadAdapter(loader);
+						    }
+						}
+					 
+					 ClassicEditor
+			            .create( document.querySelector( '#content' ),{
+			            	extraPlugins: [MyCustomUploadAdapterPlugin]
+			            })
+			            .then( editor => {
+							window.editor = editor;
+						} )
+			            .catch( error => {
+			                console.error( error );
+			            } );
+			    </script>    <!-- end of script -->
 			</li>
-			<li>
-				<label for="upload2">사진2</label>
-				<input type="file" name="upload2" id="upload2">
-			</li>
-			<li>
-				<label for="upload3">사진3</label>
-				<input type="file" name="upload3" id="upload3">
-			</li>
+			
 			<li>
 				<label for="company">제조사</label>
 				<form:input path="company"/>
 				<form:errors path="company" cssClass="error-color"/>
 			</li>
-			<li>
-				<label for="origin">원산지</label>
-				<form:input path="origin"/>
-				<form:errors path="origin" cssClass="error-color"/>
-			</li>
+			
 			<li>
 				<label for="status">판매상태</label>
 				<form:radiobutton path="status" value="0"/>판매중

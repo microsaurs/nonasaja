@@ -29,6 +29,9 @@ public class ProductVO {
 	private int price2;
 	@Min(0)
 	private int quantity;
+	//상품상세설명
+	@NotEmpty
+	private String detail;
 	//구매요구수량
 	@Min(0)
 	private int req_quantity;
@@ -50,6 +53,14 @@ public class ProductVO {
 	private String deadline;
 	private Date reg_date;
 	private Date modify_date;
+	@NotEmpty
+	private String quantity_detail;
+	@NotEmpty
+	private String exp_date;
+	@NotEmpty
+	private String storage;
+	@NotEmpty
+	private String cus_phone;
 	
 	//이미지 blob 처리
 	//주의! 사진 업로드 폼에서 파일 업로드 파라미터네임은 반드시 upload1,2,3이라고 지정해야 함
@@ -194,6 +205,31 @@ public class ProductVO {
 	public void setModify_date(Date modify_date) {
 		this.modify_date = modify_date;
 	}
+	public String getQuantity_detail() {
+		return quantity_detail;
+	}
+	public void setQuantity_detail(String quantity_detail) {
+		this.quantity_detail = quantity_detail;
+	}
+	
+	public String getExp_date() {
+		return exp_date;
+	}
+	public void setExp_date(String exp_date) {
+		this.exp_date = exp_date;
+	}
+	public String getStorage() {
+		return storage;
+	}
+	public void setStorage(String storage) {
+		this.storage = storage;
+	}
+	public String getCus_phone() {
+		return cus_phone;
+	}
+	public void setCus_phone(String cus_phone) {
+		this.cus_phone = cus_phone;
+	}
 	@Override
 	public String toString() {
 		return "ProductVO [product_num=" + product_num + ", name=" + name + ", kind=" + kind + ", sub_category="
@@ -201,9 +237,7 @@ public class ProductVO {
 				+ quantity + ", req_quantity=" + req_quantity + ", photo1_name=" + photo1_name + ", photo2_name="
 				+ photo2_name + ", photo3_name=" + photo3_name + ", company=" + company + ", origin=" + origin
 				+ ", status=" + status + ", deadline=" + deadline + ", reg_date=" + reg_date + ", modify_date="
-				+ modify_date + "]";
+				+ modify_date + ", quantity_detail=" + quantity_detail + ", exp_date=" + exp_date + ", storage="
+				+ storage + ", cus_phone=" + cus_phone + "]";
 	}
-	
-	
-	
 }
