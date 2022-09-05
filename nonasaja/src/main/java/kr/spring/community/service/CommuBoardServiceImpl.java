@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import kr.spring.community.dao.CommuBoardMapper;
+import kr.spring.community.vo.CommunityFavVO;
 import kr.spring.community.vo.CommunityVO;
 
 @Service
@@ -51,6 +52,26 @@ public class CommuBoardServiceImpl implements CommuBoardService{
 	public void deleteBoard(Integer commu_num) {
 		//부모글 삭제
 		boardMapper.deleteBoard(commu_num);
+	}
+
+	@Override
+	public CommunityFavVO selectFav(CommunityFavVO fav) {
+		return boardMapper.selectFav(fav);
+	}
+
+	@Override
+	public int selectFavCount(Integer commu_num) {
+		return boardMapper.selectFavCount(commu_num);
+	}
+
+	@Override
+	public void insertFav(CommunityFavVO boardFav) {
+		boardMapper.insertFav(boardFav);
+	}
+
+	@Override
+	public void deleteFav(Integer fav_num) {
+		boardMapper.deleteFav(fav_num);
 	}
 
 	

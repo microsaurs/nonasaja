@@ -186,6 +186,9 @@ private static final Logger logger = LoggerFactory.getLogger(CommuBoardControlle
 			return "common/resultView";
 		}
 		
+		
+		
+		
 }		
 
 	
