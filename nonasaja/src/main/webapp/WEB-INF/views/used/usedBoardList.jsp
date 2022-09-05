@@ -6,7 +6,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/board.js"></script>
 
 <div class="page-main">
-	<h2>유머 게시판 목록</h2>
+	<h2>중고거래 상품 목록</h2>
 	<form action="list.do" id="search_form" method="get">
 		<ul class="search">
 			<li>
@@ -31,4 +31,5 @@
 		<input type="button" value="글쓰기" onclick="location.href='write.do'">
 	</div>
 	</c:if>
+</div>
 <!-- 내용 끝 -->
