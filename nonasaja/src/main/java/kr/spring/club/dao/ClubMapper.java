@@ -28,7 +28,7 @@ public interface ClubMapper {
 				+ "USING(mem_num) JOIN member_detail d "
 				+ "USING(mem_num) WHERE c.club_num=#{club_num}")
 		public ClubVO selectBoard(Integer club_num);
-		@Update("UPDATE club_board SET hit=hit+1 WHERE club_num=#{club_num}")
+		@Update("UPDATE club_board SET club_hit=club_hit+1 WHERE club_num=#{club_num}")
 		public void updateHit(Integer club_num);
 		public void updateBoard(ClubVO club);
 		@Delete("DELETE FROM club_board WHERE club_num=#{club_num}")

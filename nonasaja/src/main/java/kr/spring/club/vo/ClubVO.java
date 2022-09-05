@@ -13,6 +13,7 @@ public class ClubVO {
 	@NotEmpty
 	private String club_content;
 	private Date club_date;
+	private Date club_modify_date;
 	private int club_code;
 	private int club_limit;
 	private int club_pre;
@@ -49,7 +50,12 @@ public class ClubVO {
 	public void setClub_date(Date club_date) {
 		this.club_date = club_date;
 	}
-	
+	public Date getClub_modify_date() {
+		return club_modify_date;
+	}
+	public void setClub_modify_date(Date club_modify_date) {
+		this.club_modify_date = club_modify_date;
+	}
 	public int getClub_code() {
 		return club_code;
 	}
