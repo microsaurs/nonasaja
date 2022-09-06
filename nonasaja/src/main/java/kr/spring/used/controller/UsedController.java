@@ -43,12 +43,12 @@ public class UsedController {
 	
 	//========중고거래 글 등록=========//
 	//등록 폼
-	@GetMapping("/usedboard/write.do")
+	@GetMapping("/used/write.do")
 	public String form() {
 		return "usedWrite";
 	}
 	//등록 폼에서 전송된 데이터 처리
-	@PostMapping("/usedboard/write.do")
+	@PostMapping("/used/write.do")
 	public String submit(@Valid UsedVO usedVO, BindingResult result, 
 						HttpServletRequest request, HttpSession session, Model model) {
 		
@@ -74,7 +74,7 @@ public class UsedController {
 	}
 	
 	//========중고거래 글 목록=========//
-	@RequestMapping("/usedboard/list.do")
+	@RequestMapping("/used/list.do")
 	public ModelAndView process(
 			@RequestParam(value="pageNum",defaultValue = "1")
 			int currentPage,
