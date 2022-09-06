@@ -25,7 +25,7 @@ create table club_board (
     club_limit number(3) not null,
     club_pre number(3) default 1 not null,
     club_hit number(6) default 0 not null,
-    club_date date not null,
+    club_date varchar(10) not null,
     club_img blob,
     club_img_name varchar2(100),
     club_age number default 1 not null,
