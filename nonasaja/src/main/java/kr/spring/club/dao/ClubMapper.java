@@ -19,10 +19,11 @@ public interface ClubMapper {
 		public int selectRowCount(Map<String,Object> map);
 		@Insert("INSERT INTO club_board (club_num,club_title,"
 				+ "club_leader,club_content,"
-				+ "club_code,club_limit,club_pre,club_hit) "
+				+ "club_code,club_limit,club_pre,club_hit,"
+				+ "club_img,club_img_name,club_date,club_age,club_gender,club_recruit,region_num) "
 				+ "VALUES (club_board_seq.nextval,#{club_title},"
 				+ "#{club_leader},#{club_content},#{club_code},#{club_limit},"
-				+ "#{club_pre},#{club_hit})")
+				+ "#{club_pre},#{club_hit},#{club_img},#{club_img_name},#{club_date},#{club_age},#{club_gender},#{club_recruit},#{region_num})")
 		public void insertBoard(ClubVO club);
 		@Select("SELECT * FROM club_board c JOIN member m ON c.club_leader = m.mem_num JOIN member_detail d ON m.mem_num = d.mem_num WHERE c.club_num=#{club_num}")
 		public ClubVO selectBoard(Integer club_num);

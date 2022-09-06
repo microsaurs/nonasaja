@@ -42,7 +42,7 @@
 	</div>
 	<hr size="1" width="100%">
 	<div class="align-right">
-		<c:if test="${!empty user && user.mem_num == club.mem_num}">
+		<c:if test="${!empty user && user.mem_num == club.club_leader}">
 		<input type="button" value="수정" 
 		  onclick="location.href='update.do?club_num=${club.club_num}'">
 		<input type="button" value="삭제" id="delete_btn">

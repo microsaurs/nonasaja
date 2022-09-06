@@ -18,13 +18,19 @@ public class ClubVO {
 	private int club_limit;
 	private int club_pre;
 	private int club_hit;
+	private Date club_reg_date;
+	private byte[] club_img;
+	private String club_img_name;
+	private int club_age;
+	private int club_gender;
+	private int club_recruit;
+	private int region_num;
+	
 	
 	private String id; //회원 아이디
 	private String nickname; // 회원별명
 	private byte[] photo; //프로필 사진
 	private String photo_name; // 프로필 사진명
-	
-	private int mem_num;
 	
 	
 	public int getClub_num() {
@@ -110,6 +116,48 @@ public class ClubVO {
 	}
 	public void setPhoto_name(String photo_name) {
 		this.photo_name = photo_name;
+	}
+	public Date getClub_reg_date() {
+		return club_reg_date;
+	}
+	public void setClub_reg_date(Date club_reg_date) {
+		this.club_reg_date = club_reg_date;
+	}
+	public byte[] getClub_img() {
+		return club_img;
+	}
+	public void setClub_img(byte[] club_img) {
+		this.club_img = club_img;
+	}
+	public String getClub_img_name() {
+		return club_img_name;
+	}
+	public void setClub_img_name(String club_img_name) {
+		this.club_img_name = club_img_name;
+	}
+	public int getClub_age() {
+		return club_age;
+	}
+	public void setClub_age(int club_age) {
+		this.club_age = club_age;
+	}
+	public int getClub_gender() {
+		return club_gender;
+	}
+	public void setClub_gender(int club_gender) {
+		this.club_gender = club_gender;
+	}
+	public int getClub_recruit() {
+		return club_recruit;
+	}
+	public void setClub_recruit(int club_recruit) {
+		this.club_recruit = club_recruit;
+	}
+	public int getRegion_num() {
+		return region_num;
+	}
+	public void setRegion_num(int region_num) {
+		this.region_num = region_num;
 	}
 	
 	
