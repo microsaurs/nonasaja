@@ -53,6 +53,11 @@ public class ProductController {
 	public String submit(@Valid ProductVO productVO, BindingResult result, 
 						HttpServletRequest request, HttpSession session, Model model) {
 		
+		//상품 사진에 대한 유효성 체크(어노테이션으로 못함)
+		if(productVO.getUpload1()==null||productVO.getUpload1().isEmpty()) {
+			result.rejectValue("upload1", "required");
+		}
+		
 		if(result.hasErrors()) {
 			return form();
 		}

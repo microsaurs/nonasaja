@@ -39,18 +39,19 @@
 			
 			<li>
 				<label for="upload1">대표사진</label>
-				<img src="${pageContext.request.contextPath}/images/empty.jpg" width="200" height="200" class="product-img" id="img1">
+				<img src="${pageContext.request.contextPath}/images/empty.jpg" width="200" height="200" class="product-img" id="img1" name="img1">
 				<input type="file" name="upload1" id="upload1" accept="image/gif,image/png,image/jpeg">
+				<form:errors path="upload1" cssClass="error-color"/>
 			</li>
 			
 			<li>
 				<label for="upload2">사진2</label>
-				<img src="${pageContext.request.contextPath}/images/empty.jpg" width="200" height="200" class="product-img" id="img2">
+				<img src="${pageContext.request.contextPath}/images/empty.jpg" width="200" height="200" class="product-img" id="img2" name="img2">
 				<input type="file" name="upload2" id="upload2" accept="image/gif,image/png,image/jpeg">
 			</li>
 			<li>
 				<label for="upload3">사진3</label>
-				<img src="${pageContext.request.contextPath}/images/empty.jpg" width="200" height="200" class="product-img" id="img3">
+				<img src="${pageContext.request.contextPath}/images/empty.jpg" width="200" height="200" class="product-img" id="img3" name="img3">
 				<input type="file" name="upload3" id="upload3" accept="image/gif,image/png,image/jpeg">
 			</li>
 			

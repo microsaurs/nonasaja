@@ -35,6 +35,8 @@ public class ProductVO {
 	//구매요구수량
 	@Min(0)
 	private int req_quantity;
+	//유효성 체크를 위해서 만듦
+	private MultipartFile upload1;
 	//대표이미지 (나머지 둘은 슬라이드)
 	private byte[] photo1;
 	private byte[] photo2;
@@ -62,6 +64,11 @@ public class ProductVO {
 	@NotEmpty
 	private String cus_phone;
 	
+	//유효성 체크를 위한 getUpload1
+	public MultipartFile getUpload1() {
+		return upload1;
+	}
+	
 	//이미지 blob 처리
 	//주의! 사진 업로드 폼에서 파일 업로드 파라미터네임은 반드시 upload1,2,3이라고 지정해야 함
 	public void setUpload1(MultipartFile upload) throws IOException{
@@ -70,6 +77,7 @@ public class ProductVO {
 		//파일 이름 처리
 		setPhoto1_name(upload.getOriginalFilename());
 	}
+	
 	public void setUpload2(MultipartFile upload) throws IOException{
 		setPhoto2(upload.getBytes());
 		setPhoto2_name(upload.getOriginalFilename());
