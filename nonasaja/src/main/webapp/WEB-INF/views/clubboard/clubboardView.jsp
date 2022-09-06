@@ -11,12 +11,12 @@
 	<h2>${club.club_title}</h2>
 	<ul class="detail-info">
 		<li> 
-			<c:if test="${!empty club.photo_name}">
-			<img src="imageView.do?club_num=${club.club_num}&board_type=1" width="40" height="40" class="my-photo">
+		<%-- 	<c:if test="${!empty club.photo_name}">
+			<img src="imageView.do?club_num=${club.club_num}&club_type=1" width="40" height="40" class="my-photo">
 			</c:if>
 			<c:if test="${empty club.photo_name}">
 			<img src="${pageContext.request.contextPath}/images/face.png" width="40" height="40" class="my-photo">
-			</c:if>
+			</c:if> --%>
 		</li>
 		<li>
 			<c:if test="${empty club.nickname}">${club.id}</c:if>
