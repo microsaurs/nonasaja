@@ -54,6 +54,11 @@
 				<form:input path="trade"/>
 				<form:errors path="trade" cssClass="error-color"/>
 			</li>
+			<li>
+				<label for="region_num">판매지역</label>
+					<form:input path="region_num"/>
+					<form:errors path="region_num" cssClass="error-color"/>
+			</li>
 			<li><b>내용</b></li>
 			<li>
 				<form:textarea path="content"/>
