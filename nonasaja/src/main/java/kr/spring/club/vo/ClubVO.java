@@ -1,8 +1,11 @@
 package kr.spring.club.vo;
 
+import java.io.IOException;
 import java.sql.Date;
 
 import javax.validation.constraints.NotEmpty;
+
+import org.springframework.web.multipart.MultipartFile;
 
 
 public class ClubVO {
@@ -12,7 +15,7 @@ public class ClubVO {
 	private int club_leader;
 	@NotEmpty
 	private String club_content;
-	private Date club_date;
+	private String club_date;
 	private Date club_modify_date;
 	private int club_code;
 	private int club_limit;
@@ -26,13 +29,18 @@ public class ClubVO {
 	private int club_recruit;
 	private int region_num;
 	
-	
+	//파일 업로드 처리
+	public void setUpload(MultipartFile upload)
+			throws IOException{
+		//MultipartFile -> byte[] 변환
+		setClub_img(upload.getBytes());
+		//파일명 구하기
+		setClub_img_name(upload.getOriginalFilename());
+	}
+
 	private String id; //회원 아이디
 	private String nickname; // 회원별명
-	private byte[] photo; //프로필 사진
-	private String photo_name; // 프로필 사진명
-	
-	
+
 	public int getClub_num() {
 		return club_num;
 	}
@@ -57,10 +65,11 @@ public class ClubVO {
 	public void setClub_content(String club_content) {
 		this.club_content = club_content;
 	}
-	public Date getClub_date() {
+	
+	public String getClub_date() {
 		return club_date;
 	}
-	public void setClub_date(Date club_date) {
+	public void setClub_date(String club_date) {
 		this.club_date = club_date;
 	}
 	public Date getClub_modify_date() {
@@ -105,18 +114,7 @@ public class ClubVO {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
-	public byte[] getPhoto() {
-		return photo;
-	}
-	public void setPhoto(byte[] photo) {
-		this.photo = photo;
-	}
-	public String getPhoto_name() {
-		return photo_name;
-	}
-	public void setPhoto_name(String photo_name) {
-		this.photo_name = photo_name;
-	}
+
 	public Date getClub_reg_date() {
 		return club_reg_date;
 	}
@@ -159,6 +157,6 @@ public class ClubVO {
 	public void setRegion_num(int region_num) {
 		this.region_num = region_num;
 	}
-	
-	
+
+
 }

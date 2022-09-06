@@ -53,7 +53,7 @@ public class ProductController {
 	@PostMapping("/product/register.do")
 	public String submit(@Valid ProductVO productVO, BindingResult result, 
 						HttpServletRequest request, HttpSession session, Model model) {
-		
+		logger.debug("<<상품등록>> : " +productVO);
 		//상품 사진에 대한 유효성 체크(어노테이션으로 못함)
 		if(productVO.getUpload1()==null||productVO.getUpload1().isEmpty()) {
 			result.rejectValue("upload1", "required");

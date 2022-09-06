@@ -71,21 +71,22 @@ public class ProductVO {
 	
 	//이미지 blob 처리
 	//주의! 사진 업로드 폼에서 파일 업로드 파라미터네임은 반드시 upload1,2,3이라고 지정해야 함
-	public void setUpload1(MultipartFile upload) throws IOException{
+	public void setUpload1(MultipartFile upload1) throws IOException{
+		this.upload1 = upload1;
 		//MultipartFile -> byte[]로 형변환
-		setPhoto1(upload.getBytes());
+		setPhoto1(upload1.getBytes());
 		//파일 이름 처리
-		setPhoto1_name(upload.getOriginalFilename());
+		setPhoto1_name(upload1.getOriginalFilename());
 	}
 	
-	public void setUpload2(MultipartFile upload) throws IOException{
-		setPhoto2(upload.getBytes());
-		setPhoto2_name(upload.getOriginalFilename());
+	public void setUpload2(MultipartFile upload2) throws IOException{
+		setPhoto2(upload2.getBytes());
+		setPhoto2_name(upload2.getOriginalFilename());
 	}
 	
-	public void setUpload3(MultipartFile upload) throws IOException{
-		setPhoto3(upload.getBytes());
-		setPhoto3_name(upload.getOriginalFilename());
+	public void setUpload3(MultipartFile upload3) throws IOException{
+		setPhoto3(upload3.getBytes());
+		setPhoto3_name(upload3.getOriginalFilename());
 	}
 	public int getProduct_num() {
 		return product_num;

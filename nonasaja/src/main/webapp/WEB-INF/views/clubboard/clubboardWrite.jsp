@@ -6,7 +6,11 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
+<style>
+.ck-editor__editable_inline{
+	min-height:250px;
+}
+</style>
 <!-- include ckeditor js -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/ckeditor.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/uploadAdapter.js"></script>
@@ -105,8 +109,8 @@
 			</li>
 			<br>
 			<li>
-				<label for="club_img">대표사진</label>
-				<input type="file" name="club_img" id="club_img">
+				<label for="upload">대표사진</label>
+				<input type="file" name="upload" id="upload">
 			</li>
 			<br>	
 			<li>

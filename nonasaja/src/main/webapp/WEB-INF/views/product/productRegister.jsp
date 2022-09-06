@@ -51,7 +51,6 @@
 				<input type="file" name="upload2" id="upload2" accept="image/gif,image/png,image/jpeg">
 				<input type="file" name="upload3" id="upload3" accept="image/gif,image/png,image/jpeg">
 			</li>
-			<div class="clear"></div>
 			<li>
 				<label for="name"  class="clear">상품명</label>
 				<form:input path="name" class="input-box"/><br>
@@ -89,8 +88,8 @@
 				<form:errors path="deadline" cssClass="error-color"/>
 			</li>
 			<!-- ckeditor 사용 -->
-			<li>
-				<form:textarea path="detail" placeholder="상품 상세 설명" class="clear"/><br>
+			<li id="detail_li">
+				<form:textarea path="detail" placeholder="상품 상세 설명" class="clear" /><br>
 				<form:errors path="detail" cssClass="error-color"/>
 				<!-- ckeditor가 정보를 읽어오는 script -->
 				<script>
