@@ -78,8 +78,8 @@
 			</li>
 			<li>
 				<label for="status" class="clear" id="status_label">판매상태</label>
-				<form:radiobutton path="status" value="0"/>판매중&nbsp&nbsp
-				<form:radiobutton path="status" value="1"/>판매마감<br>
+				<form:radiobutton path="status" value="1"/>판매중&nbsp&nbsp
+				<form:radiobutton path="status" value="2"/>판매중지<br>
 				<form:errors path="status" cssClass="error-color"/>
 			</li>
 			<li>

@@ -1,5 +1,8 @@
 package kr.spring.product.service;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +20,16 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public void insertProduct(ProductVO productVO) {
 		productMapper.insertProduct(productVO);	
+	}
+
+	@Override
+	public int selectProductCount(Map<String, Object> map) {
+		return productMapper.selectProductCount(map);
+	}
+
+	@Override
+	public List<ProductVO> selectProductList(Map<String, Object> map) {
+		return productMapper.selectProductList(map);
 	}
 
 }

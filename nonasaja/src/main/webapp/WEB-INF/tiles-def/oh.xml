@@ -17,6 +17,12 @@
     	  value="/WEB-INF/views/product/productRegister.jsp"/>                   
     </definition>
 
+	<definition name="adminList" extends="main">
+    	<put-attribute name="title" value="상품목록(관리자)"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/product/admin_list.jsp"/>                   
+    </definition>
+
 </tiles-definitions>
 
 
