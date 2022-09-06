@@ -1,0 +1,56 @@
+/*========상품=========*/
+#product_register p{
+	font-size: 14pt;
+    font-weight: bold;
+    margin: 20px 0;
+}
+#product_register ul{
+	list-style: none;
+	padding: 0;
+}
+#product_register li{
+	margin: 7px 0 7px 0;
+}
+#product_register input{
+	border-radius: 5px;
+    border-color: #adadad;
+}
+#kind_label{
+	margin: 0 10px 0 0;
+}
+#sub_label{
+	margin: 0 10px 0 10px;
+}
+#title_label{
+	margin: 10px 0;
+}
+#status_label{
+	margin: 0 14% 0 0;
+}
+#title{
+	width: 90%;
+	margin: 10px 0;
+}
+.product-img{
+	width: 33%
+}
+#product_register input[type=file]{
+	float: left;
+}
+.clear{
+	clear: both;
+}
+.input-box{
+	width: 80%;
+	float: right;
+}
+#product_register input[type=file]::file-selector-button{
+	background: #ded597;
+	border: none;
+	height: 25px;
+	border-radius: 6px;
+}
+
+#product_register input[type=file]{
+	margin: 0 8.5% 0 0;
+}

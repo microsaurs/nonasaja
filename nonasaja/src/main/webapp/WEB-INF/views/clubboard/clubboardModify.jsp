@@ -17,23 +17,23 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/uploadAdapter.js"></script>
 <div class="page-main">
 	<h2>글수정</h2>
-	<form:form action="update.do" modelAttribute="boardVO"
+	<form:form action="update.do" modelAttribute="clubVO"
 	        id="update_form"
 	        enctype="multipart/form-data">
-	    <form:hidden path="board_num"/>    
+	    <form:hidden path="club_num"/>    
 	    <form:errors element="div" cssClass="error-color"/>    
 		<ul>
 			<li>
-				<label for="title">제목</label>
-				<form:input path="title"/>
-				<form:errors path="title" 
+				<label for="club_title">제목</label>
+				<form:input path="club_title"/>
+				<form:errors path="club_title" 
 				             cssClass="error-color"/>
 			</li>
 			<li><b>내용</b></li>
 			<li>
-				<form:textarea path="content"/>
-				<form:errors path="content" 
-				             cssClass="error-color"/>
+				<form:textarea path="club_content"/>
+				<form:errors path="club_content" 
+				             cssClass="club_error-color"/>
 				<script>
 				 function MyCustomUploadAdapterPlugin(editor) {
 					    editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
@@ -42,7 +42,7 @@
 					}
 				 
 				 ClassicEditor
-		            .create( document.querySelector( '#content' ),{
+		            .create( document.querySelector( '#club_content' ),{
 		            	extraPlugins: [MyCustomUploadAdapterPlugin]
 		            })
 		            .then( editor => {
@@ -53,12 +53,12 @@
 		            } );
 			    </script>              
 			</li>
-			<li>
+		<%-- 	<li>
 				<label for="upload">파일업로드</label>
 				<input type="file" name="upload" id="upload">
-				<c:if test="${!empty boardVO.filename}">
+				<c:if test="${!empty clubVO.filename}">
 				<div id="file_detail">
-					(${boardVO.filename})파일 등록
+					(${clubVO.filename})파일 등록
 					<input type="button" value="파일삭제"
 					                      id="file_del">
 				</div>
@@ -69,7 +69,7 @@
 							if(choice){
 								$.ajax({
 									url:'deleteFile.do',
-									data:{board_num:${boardVO.board_num}},
+									data:{club_num:${clubVO.club_num}},
 									type:'post',
 									dataType:'json',
 									cache:false,
@@ -92,7 +92,7 @@
 					});
 				</script>
 				</c:if>
-			</li>
+			</li> --%>
 		</ul>    
 		<div class="align-center">
 			<form:button>전송</form:button>
