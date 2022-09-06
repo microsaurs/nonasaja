@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.spring.member.dao.MemberMapper">
+	<!-- 자체 회원가입 -->
+	<insert id="insertMember_detail" parameterType="memberVO">
+	INSERT INTO member_detail 
+		(mem_num,name,phone,email,zipcode,addr1,addr2
+			<if test="interest!=null and interest!=''">,interest</if>) 
+	VALUES 
+		(#{mem_num},#{name},REPLACE(#{phone},'-',''),#{email},#{zipcode},#{addr1},#{addr2}
+		<if test="interest!=null and interest!=''">,#{interest}</if>)
+	</insert>
+	<!-- 카카오 회원가입 -->
+	<insert id="insertKakaoMember" parameterType="memberVO">
+	INSERT INTO member_detail 
+		(mem_num,name,phone,email,zipcode,addr1,addr2
+			<if test="interest!=null and interest!=''">,interest</if>) 
+	VALUES 
+		(#{mem_num},#{name},REPLACE(#{phone},'-',''),#{email},#{zipcode},#{addr1},#{addr2}
+		<if test="interest!=null and interest!=''">,#{interest}</if>)
+	</insert>
+	<!-- 네이버 회원가입 -->
+	<insert id="insertNaverMember" parameterType="memberVO">
+	INSERT INTO member_detail 
+		(mem_num,name,phone,email,zipcode,addr1,addr2
+			<if test="interest!=null and interest!=''">,interest</if>) 
+	VALUES 
+		(#{mem_num},#{name},REPLACE(#{phone},'-',''),#{email},#{zipcode},#{addr1},#{addr2}
+		<if test="interest!=null and interest!=''">,#{interest}</if>)
+	</insert>
+</mapper>

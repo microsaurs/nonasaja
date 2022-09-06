@@ -4,11 +4,12 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!-- 내용 시작 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/board.fav.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/commuboard.fav.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/board.reply.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/videoAdapter.js"></script>
 <div class="page-main">
 	<h2>${board.commu_title}</h2>
+	<input type="hidden" value="${board.commu_num}">
 	<ul class="detail-info">
 		<li>
 			<c:if test="${!empty board.photo_name}">

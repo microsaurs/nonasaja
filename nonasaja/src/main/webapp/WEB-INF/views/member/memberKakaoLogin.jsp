@@ -5,31 +5,31 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <div class="page-main">
 	<h2>회원가입</h2>
-	<form:form id="register_form" action="registerNaverUser.do" modelAttribute="memberVO">
+	<form:form id="register_form" action="registerKakaoUser.do" modelAttribute="memberVO">
 		<form:errors element="div" cssClass="error-color"/><%-- 필드에 의존하지 않는 예외 문구 출력 --%>
 		<ul>
 			<li>
 				<%-- <input type="hidden" name="id" id="id" value="${kakaoid}"/> --%>
-				<form:hidden path="id" value="${naverid}"/>
+				<form:hidden path="id" value="${kakaoid}"/>
 			</li>
 			<li>
 				<label for="nickname">별명</label>
-				<form:input path="nickname" value="${navernick}"/>
+				<form:input path="nickname" value="${kakaonick}"/>
 				<form:errors path="nickname" cssClass="error-color"/>
 			</li>
 			<li>
 				<label for="name">이름</label>
-				<form:input path="name" value="${navername}"/>
+				<form:input path="name"/>
 				<form:errors path="name" cssClass="error-color"/>
 			</li>
 			<li>
 				<label for="phone">전화번호</label>
-				<form:input path="phone" value="${naverphone}"/>
+				<form:input path="phone"/>
 				<form:errors path="phone" cssClass="error-color"/>
 			</li>
 			<li>
 				<label for="email">이메일</label>
-				<form:input path="email" value="${naveremail}"/>
+				<form:input path="email" value="${kakaoemail}"/>
 				<form:errors path="email" cssClass="error-color"/>
 			</li>
 			<li>

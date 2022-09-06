@@ -25,7 +25,14 @@ public class MemberServiceImpl implements MemberService {
 	public void insertNaverMember(MemberVO member) {
 		member.setMem_num(memberMapper.selectMem_num());
 		memberMapper.insertMember(member);
-		memberMapper.insertNaverMember_detail(member);
+		memberMapper.insertNaverMember(member);
+	}
+	
+	@Override
+	public void insertKakaoMember(MemberVO member) {
+		member.setMem_num(memberMapper.selectMem_num());
+		memberMapper.insertMember(member);
+		memberMapper.insertKakaoMember(member);
 	}
 	
 	@Override
