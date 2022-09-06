@@ -45,6 +45,7 @@ public class ProductController {
 	//등록 폼
 	@GetMapping("/product/register.do")
 	public String form() {
+		logger.debug("<<등록 폼 호출>>");
 		return "productRegister";
 	}
 		
