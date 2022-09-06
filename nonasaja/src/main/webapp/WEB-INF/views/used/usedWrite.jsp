@@ -44,10 +44,10 @@
 				<form:errors path="price" cssClass="error-color"/>
 			</li>
 			<li>
-				<label for="kind">거래상태</label>
-				<form:radiobutton path="kind" value="0"/>판매중
-				<form:radiobutton path="kind" value="1"/>판매완료
-				<form:errors path="kind" cssClass="error-color"/>
+				<label for="status">거래상태</label>
+				<form:radiobutton path="status" value="0"/>판매중
+				<form:radiobutton path="status" value="1"/>판매완료
+				<form:errors path="status" cssClass="error-color"/>
 			</li>
 			<li>
 				<label for="trade">교환물품</label>

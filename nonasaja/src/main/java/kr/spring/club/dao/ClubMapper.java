@@ -24,9 +24,7 @@ public interface ClubMapper {
 				+ "#{club_leader},#{club_content},#{club_code},#{club_limit},"
 				+ "#{club_pre},#{club_hit})")
 		public void insertBoard(ClubVO club);
-		@Select("SELECT * FROM club_board c JOIN member m "
-				+ "USING(mem_num) JOIN member_detail d "
-				+ "USING(mem_num) WHERE c.club_num=#{club_num}")
+		@Select("SELECT * FROM club_board c JOIN member m ON c.club_leader = m.mem_num JOIN member_detail d ON m.mem_num = d.mem_num WHERE c.club_num=#{club_num}")
 		public ClubVO selectBoard(Integer club_num);
 		@Update("UPDATE club_board SET club_hit=club_hit+1 WHERE club_num=#{club_num}")
 		public void updateHit(Integer club_num);

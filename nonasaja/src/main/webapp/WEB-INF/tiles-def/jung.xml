@@ -5,10 +5,13 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-    <definition name="usedBoardList" extends="main">
+	<definition name="usedWrite" extends="main"> 
+		<put-attribute name="title" value="글쓰기"/>
+		<put-attribute name="body" value="/WEB-INF/views/used/usedWrite.jsp"/>    
+    </definition>
+    <definition name="usedList" extends="main">
     	<put-attribute name="title" value="게시판목록"/>
-    	<put-attribute name="body"
-    	  value="/WEB-INF/views/used/usedBoardList.jsp"/>                   
+    	<put-attribute name="body" value="/WEB-INF/views/used/usedList.jsp"/>                   
     </definition>
 </tiles-definitions>
 

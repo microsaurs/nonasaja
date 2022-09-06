@@ -19,6 +19,13 @@ public class ClubVO {
 	private int club_pre;
 	private int club_hit;
 	
+	private String id; //회원 아이디
+	private String nickname; // 회원별명
+	private byte[] photo; //프로필 사진
+	private String photo_name; // 프로필 사진명
+	
+	private int mem_num;
+	
 	
 	public int getClub_num() {
 		return club_num;
@@ -79,6 +86,30 @@ public class ClubVO {
 	}
 	public void setClub_hit(int club_hit) {
 		this.club_hit = club_hit;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+	public byte[] getPhoto() {
+		return photo;
+	}
+	public void setPhoto(byte[] photo) {
+		this.photo = photo;
+	}
+	public String getPhoto_name() {
+		return photo_name;
+	}
+	public void setPhoto_name(String photo_name) {
+		this.photo_name = photo_name;
 	}
 	
 	
