@@ -41,7 +41,7 @@ private static final Logger logger = LoggerFactory.getLogger(CommuBoardControlle
 	@ModelAttribute 
 	public CommunityVO initCommad() {
 		return new CommunityVO();
-	}
+	} 
 	
 	//========유머 글 등록========//
 	//등록 폼
