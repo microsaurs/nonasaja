@@ -98,7 +98,7 @@
 				             cssClass="error-color"/>
 			</li>
 			<br>
-			<li>
+	 	    <li>
 				<label for="club_date">모집일정</label>
 				<input type="date" name="club_date" id="club_date">
 				<form:errors path="club_date" cssClass="error-color"/>
