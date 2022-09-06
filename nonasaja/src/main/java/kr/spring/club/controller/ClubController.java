@@ -163,7 +163,24 @@ public class ClubController {
 		return mav;
 	}
 	//=========이미지 출력=========//
-	
+	@RequestMapping("/clubboard/imageView.do")
+	public ModelAndView viewImage(
+			   @RequestParam int club_num,
+			   @RequestParam int club_type) {
+		
+		ClubVO club = 
+				clubService.selectBoard(club_num);
+		
+		ModelAndView mav = new ModelAndView();
+		//뷰 이름
+		mav.setViewName("imageView");
+		
+		if(club_type==1) {
+			mav.addObject("club_img", club.getClub_img());
+			mav.addObject("club_img_name", club.getClub_img_name());
+		}
+		return mav;
+	}
 	//===========게시판 글수정===========//
 	//수정 폼
 	@GetMapping("/clubboard/update.do")

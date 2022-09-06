@@ -7,7 +7,7 @@
 	<a href="${pageContext.request.contextPath}/board/list.do">홈</a>
 	<a href="${pageContext.request.contextPath}/product/list.do">공동구매</a>
 	<a href="${pageContext.request.contextPath}/sale/saleBoardList.do">세일정보</a>
-	<a href="${pageContext.request.contextPath}/usedboard/list.do">중고거래</a>
+	<a href="${pageContext.request.contextPath}/used/list.do">중고거래</a>
 	<a href="${pageContext.request.contextPath}/clubboard/list.do">동호회</a>
 	<a href="${pageContext.request.contextPath}/commuboard/list.do">커뮤니티</a>  
 	<c:if test="${!empty user && !empty user.photo}">
