@@ -15,9 +15,9 @@ public interface UsedMapper {
 	public List<UsedVO> selectList(Map<String,Object> map);
 	public int selectRowCount(Map<String, Object> map);
 	@Insert("INSERT INTO used_board (used_num,title,"
-			+ "content,kind,price,status,category,trade,reg_date,hit,region_num) "
+			+ "content,kind,price,status,category,trade,reg_date,hit,region_num,mem_num) "
 			+ "VALUES (used_board_seq.nextval,#{title},#{content},"
-			+ "#{kind},#{price},#{status},#{category},#{trade},SYSDATE,#{hit},#{region_num})")
+			+ "#{kind},#{price},#{status},#{category},#{trade},SYSDATE,#{hit},#{region_num},#{mem_num})")
 	public void insertUsed(UsedVO used);
 	public UsedVO selectUsed(Integer used_num);
 	public void updateHit(Integer used_num);
