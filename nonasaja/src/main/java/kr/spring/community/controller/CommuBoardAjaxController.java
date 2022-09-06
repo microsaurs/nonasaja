@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -16,6 +17,7 @@ import kr.spring.community.service.CommuBoardService;
 import kr.spring.community.vo.CommunityFavVO;
 import kr.spring.member.vo.MemberVO;
 
+@Controller
 public class CommuBoardAjaxController {
 	private static final Logger logger =
 			LoggerFactory.getLogger(CommuBoardAjaxController.class);

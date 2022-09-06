@@ -51,7 +51,18 @@
 		            } );
 			    </script>               
 			</li>
-
+			<li>
+				<label for="upload">파일업로드</label>
+				<input type="file" name="upload" id="upload">
+			</li>
+			<li>
+				<label for="upload2">파일업로드</label>
+				<input type="file" name="upload2" id="upload">
+			</li>
+			<li>
+				<label for="upload3">파일업로드</label>
+				<input type="file" name="upload3" id="upload">
+			</li>
 		</ul>    
 		<div class="align-center">
 			<form:button>전송</form:button>

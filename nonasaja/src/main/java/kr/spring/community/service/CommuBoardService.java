@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
 import kr.spring.community.vo.CommunityFavVO;
+import kr.spring.community.vo.CommunityReplyVO;
 import kr.spring.community.vo.CommunityVO;
 
 public interface CommuBoardService {
@@ -19,11 +20,30 @@ public interface CommuBoardService {
 	public void updateHit(Integer commu_num);
 	public void updateBoard(CommunityVO board);
 	public void deleteBoard(Integer commu_num);
+	public void deleteFile(Integer board_num);
 	
 	//부모글 좋아요
 	public CommunityFavVO selectFav(CommunityFavVO fav);
 	public int selectFavCount(Integer commu_num);
 	public void insertFav(CommunityFavVO boardFav);
 	public void deleteFav(Integer fav_num);
+	
+	//댓글
+	public List<CommunityReplyVO> selectListReply(Map<String,Object> map);
+	public int selectRowCountReply(Map<String,Object> map);
+	public CommunityReplyVO selectReply(Integer reply_num);
+	public void insertReply(CommunityReplyVO boardReply);
+	public void updateReply(CommunityReplyVO boardReply);
+	public void deleteReply(Integer reply_num);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

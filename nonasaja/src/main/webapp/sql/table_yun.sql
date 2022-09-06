@@ -36,7 +36,11 @@ CREATE TABLE community_board
     commu_url VARCHAR2(150),
     commu_recommend NUMBER(6) DEFAULT 0 NOT NULL,
     commu_hit NUMBER(6) DEFAULT 0 NOT NULL,
-
+	uploadfile BLOB,
+ 	filename VARCHAR2(100),
+	uploadfile2 BLOB,
+ 	filename2 VARCHAR2(100),
+    
     region_num NUMBER NOT NULL, --null?
     CONSTRAINT community_pk PRIMARY KEY(commu_num),
     CONSTRAINT community_fk1 FOREIGN KEY (mem_num) REFERENCES member (mem_num),
@@ -50,7 +54,7 @@ CREATE TABLE community_reply
     commu_num NUMBER NOT NULL,
     mem_num NUMBER NOT NULL,
     reply_content VARCHAR2(900) NOT NULL,
-    reply_date DATE NOT NULL,
+    reply_date DATE DEFAULT sysdate NOT NULL,
     parent_num NUMBER,
     CONSTRAINT commureply_pk PRIMARY KEY(reply_num),
     CONSTRAINT commureply_fk1 FOREIGN KEY (commu_num) REFERENCES community_board (commu_num),
