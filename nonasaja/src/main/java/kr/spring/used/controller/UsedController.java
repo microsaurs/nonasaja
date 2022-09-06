@@ -48,7 +48,7 @@ public class UsedController {
 		return "usedWrite";
 	}
 	//등록 폼에서 전송된 데이터 처리
-	@PostMapping("/used/write.do")
+	@PostMapping("/usedboard/write.do")
 	public String submit(@Valid UsedVO usedVO, BindingResult result, 
 						HttpServletRequest request, HttpSession session, Model model) {
 		

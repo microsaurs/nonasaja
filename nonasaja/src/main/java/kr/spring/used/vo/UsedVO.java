@@ -11,12 +11,10 @@ public class UsedVO {
 	private String title; //제목
 	@NotEmpty
 	private String content; //내용
-	@NotEmpty
 	private int kind; //거래 종류 1중고,2무나,3교환
 	@Min(0)
 	private int price; //가격
 	private int status; //거래 상태 1판매중,2판매완료
-	@NotEmpty
 	private String category; //상품 카테고리 
 	private String trade; //물물교환 상품
 	private Date reg_date; //작성일
