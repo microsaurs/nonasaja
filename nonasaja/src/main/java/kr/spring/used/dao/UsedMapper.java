@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 
 import kr.spring.used.vo.UsedFavVO;
 import kr.spring.used.vo.UsedVO;
@@ -19,6 +20,9 @@ public interface UsedMapper {
 			+ "VALUES (used_board_seq.nextval,#{title},#{content},"
 			+ "#{kind},#{price},#{status},#{category},#{trade},SYSDATE,#{hit},#{region_num},#{mem_num})")
 	public void insertUsed(UsedVO used);
+	@Select("SELECT * FROM used_board b JOIN member m "
+			+ "USING(mem_num) JOIN member_detail d "
+			+ "USING(mem_num) WHERE b.used_num=#{used_num}")
 	public UsedVO selectUsed(Integer used_num);
 	public void updateHit(Integer used_num);
 	public void updateUsed(UsedVO used);

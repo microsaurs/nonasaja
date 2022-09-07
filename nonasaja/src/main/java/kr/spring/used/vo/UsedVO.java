@@ -2,8 +2,9 @@ package kr.spring.used.vo;
 
 import java.sql.Date;
 
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
+
 
 public class UsedVO {
 	private int used_num; //게시글 번호
@@ -12,11 +13,14 @@ public class UsedVO {
 	@NotEmpty
 	private String content; //내용
 	private int kind; //거래 종류 1중고,2무나,3교환
-	@Min(0)
+	@Range(min=1,max=99999999)
 	private int price; //가격
 	private int status; //거래 상태 1판매중,2판매완료
 	private String category; //상품 카테고리 
 	private String trade; //물물교환 상품
+	private byte[] uploadfile;
+	private String filename;
+
 	private Date reg_date; //작성일
 	private Date modify_date; //수정일
 	private int hit; //조회수
@@ -29,6 +33,7 @@ public class UsedVO {
 	
 	private int mem_num; //작성자 번호
 	private int region_num; //지역 식별번호
+	
 	
 	
 	public String getId() {
@@ -132,6 +137,18 @@ public class UsedVO {
 	}
 	public void setRegion_num(int region_num) {
 		this.region_num = region_num;
+	}
+	public byte[] getUploadfile() {
+		return uploadfile;
+	}
+	public void setUploadfile(byte[] uploadfile) {
+		this.uploadfile = uploadfile;
+	}
+	public String getFilename() {
+		return filename;
+	}
+	public void setFilename(String filename) {
+		this.filename = filename;
 	}
 	
 	@Override
