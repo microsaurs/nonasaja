@@ -58,9 +58,10 @@ public class ClubController {
 		
 		Logger.debug("<<게시판 글 저장>> : " + clubVO);
 		
-		/*
-		 * //유효성 검사 결과 오류가 있으면 폼 호출 if(result.hasErrors()) { return form(); }
-		 */
+		
+		 //유효성 검사 결과 오류가 있으면 폼 호출 
+		if(result.hasErrors()) { return form(); }
+		 
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		//회원번호 셋팅
 		clubVO.setClub_leader(user.getMem_num());
@@ -240,7 +241,7 @@ public class ClubController {
 			//View에 표시할 메시지
 			model.addAttribute("message", "글삭제 완료!!");
 			model.addAttribute("url", 
-					request.getContextPath()+"/board/list.do");
+					request.getContextPath()+"/clubboard/list.do");
 			
 			return "common/resultView";
 		}

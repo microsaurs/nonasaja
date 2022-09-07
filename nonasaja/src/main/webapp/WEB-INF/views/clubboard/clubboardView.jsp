@@ -8,7 +8,6 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/board.reply.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/videoAdapter.js"></script>
 <div class="page-main">
-	<h2>${club.club_title}</h2>
 	<ul class="detail-info">
 		<li> 
 		<%-- 	<c:if test="${!empty club.photo_name}">
@@ -32,6 +31,36 @@
 		</li>
 	</ul>
 	
+		
+		<!-- 모집여부 -->
+			<c:if test="${club.club_recruit==0}">모집중</c:if>
+			<c:if test="${club.club_recruit==1}">모집완료</c:if>
+		<!-- 제목 -->
+			<h2>${club.club_title}</h2>
+		<ul>
+		<li>
+		동호회명 : ${club.club_name}
+		</li>	
+		<li>
+		성별 : 
+			<c:if test="${club.club_gender==0}">누구나 참여가능</c:if>
+			<c:if test="${club.club_gender==1}">남자만 참여가능</c:if>
+			<c:if test="${club.club_gender==2}">여자만 참여가능</c:if>
+		</li>	
+		<li>
+			모집일정 : ${club.club_date}
+		</li>
+		<li>
+		나이 : 
+		<c:if test="${club.club_age == '10대,20대,30대,40대,50대,60대'}">
+			누구나
+		</c:if>
+		<c:if test="${club.club_age != '10대,20대,30대,40대,50대,60대'}">
+			${club.club_age}
+		</c:if>
+		</li>
+	</ul>	
+			
 	<p>
 		${club.club_content}
 	</p>
