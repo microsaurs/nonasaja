@@ -31,24 +31,27 @@
 			조회 : ${used.hit}
 		</li>
 	</ul>
-	<ul>
-		<c:if test="${!empty used.filename}">
-		<li>
-			첨부파일 : <a href="file.do?used_num=${used.used_num}">${used.filename}</a>
-		</li>
-		</c:if>
-		<c:if test="${!empty used.filename2}">
-		<li>
-			첨부파일 : <a href="file.do?used_num=${used.used_num}">${used.filename2}</a>
-		</li>
-		</c:if>
-		<c:if test="${!empty used.filename3}">
-		<li>
-			첨부파일 : <a href="file.do?used_num=${used.used_num}">${used.filename3}</a>
-		</li>
-		</c:if>
-	</ul>
 	<hr size="1" width="100%">
+	<div>
+	<!-- 거래종류 -->
+	<c:if test="${used.kind==0}">중고</c:if>
+	<c:if test="${used.kind==1}">무료나눔</c:if>
+	<c:if test="${used.kind==2}">교환</c:if>
+	<!-- 거래상태 -->
+	<c:if test="${used.kind==0}">거래중</c:if>
+	<c:if test="${used.kind==1}">거래완료</c:if>
+	</div>
+	<ul>
+		<li>
+		상품종류 : ${used.category}
+		</li>
+		<li>
+		가격 : ${used.price}
+		</li>
+		<li>
+		판매지역 : ${used.region_num}
+		</li>
+	</ul>
 	<c:if test="${fn:endsWith(used.filename,'.jpg') ||
 	              fn:endsWith(used.filename,'.JPG') ||
 	              fn:endsWith(used.filename,'.jpeg') ||
