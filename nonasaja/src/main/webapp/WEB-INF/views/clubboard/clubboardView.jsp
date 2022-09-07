@@ -10,12 +10,12 @@
 <div class="page-main">
 	<ul class="detail-info">
 		<li> 
-		<%-- 	<c:if test="${!empty club.photo_name}">
-			<img src="imageView.do?club_num=${club.club_num}&club_type=1" width="40" height="40" class="my-photo">
+			<c:if test="${!empty user.photo_name}">
+			<img src="viewProfile.do?mem_num=${club.mem_num}" width="40" height="40" class="my-photo">
 			</c:if>
-			<c:if test="${empty club.photo_name}">
+			<c:if test="${empty user.photo_name}">
 			<img src="${pageContext.request.contextPath}/images/face.png" width="40" height="40" class="my-photo">
-			</c:if> --%>
+			</c:if> 
 		</li>
 		<li>
 			<c:if test="${empty club.nickname}">${club.id}</c:if>
@@ -63,7 +63,16 @@
 			
 	<p>
 		${club.club_content}
-	</p>
+	</p>	
+	<ul>
+		<li> 
+			<c:if test="${!empty club.club_img_name}">
+			<img src="imageView.do?club_num=${club.club_num}" width="100" height="100" class="my-photo">
+			</c:if>
+		</li>
+	</ul>
+
+	
 	<div>
 		<%-- 좋아요 --%>
 		<img id="output_fav" src="${pageContext.request.contextPath}/images/fav01.gif" width="40">

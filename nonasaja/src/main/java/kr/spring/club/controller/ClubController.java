@@ -167,7 +167,7 @@ public class ClubController {
 	@RequestMapping("/clubboard/imageView.do")
 	public ModelAndView viewImage(
 			   @RequestParam int club_num,
-			   @RequestParam int club_type) {
+			   HttpSession session) {
 		
 		ClubVO club = 
 				clubService.selectBoard(club_num);
@@ -176,10 +176,9 @@ public class ClubController {
 		//뷰 이름
 		mav.setViewName("imageView");
 		
-		if(club_type==1) {
-			mav.addObject("club_img", club.getClub_img());
-			mav.addObject("club_img_name", club.getClub_img_name());
-		}
+		mav.addObject("imageFile", club.getClub_img());
+		mav.addObject("filename", club.getClub_img_name()); 
+		 
 		return mav;
 	}
 	//===========게시판 글수정===========//
