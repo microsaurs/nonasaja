@@ -32,4 +32,14 @@ public class ProductServiceImpl implements ProductService{
 		return productMapper.selectProductList(map);
 	}
 
+	@Override
+	public ProductVO selectProduct(Integer product_num) {
+		return productMapper.selectProduct(product_num);
+	}
+
+	@Override
+	public void updateProduct(ProductVO productVO) {
+		productMapper.updateProduct(productVO);	
+	}
+
 }
