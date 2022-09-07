@@ -33,15 +33,19 @@
 				<form:errors path="club_code" 
 				             cssClass="error-color"/>
 			</li>
-			<br>
-			<li>
-				<label for="club_title">동호회 이름</label>
+			<li style="clear:both;">
+				<label for="club_title">제목</label>
 				<form:input path="club_title"/>
 				<form:errors path="club_title" 
 				             cssClass="error-color"/>
 			</li>
-			<br>
-			<li><b>상세 내용</b></li><br>
+			<li>
+				<label for="club_name">동호회명</label>
+				<form:input path="club_name"/>
+				<form:errors path="club_name" 
+				             cssClass="error-color"/>
+			</li>
+			<li><b>상세 내용</b></li>
 			<li>
 				<form:textarea path="club_content"/>
 				<form:errors path="club_content" 
@@ -65,55 +69,48 @@
 		            } );
 			    </script>               
 			</li>
-			<br>
 			<li>
 				<label for="club_limit">총 인원수</label>
 				<form:input path="club_limit"/>
 				<form:errors path="club_limit" 
 				             cssClass="error-color"/>
 			</li>
-			<br>
 			<li>
-				<label for="club_age">나이</label>
-				<form:checkbox path="club_code" value="1" checked="checked"/>누구나
-				<form:checkbox path="club_code" value="2"/>20대
-				<form:checkbox path="club_code" value="3"/>30대
-				<form:checkbox path="club_code" value="4"/>40대
-				<form:checkbox path="club_code" value="2"/>50대
-				<form:checkbox path="club_code" value="3"/>60대
-				<form:errors path="club_age" 
+				<label>나이</label>
+				<form:checkbox path="f_club_age" value="10대"/>10대
+				<form:checkbox path="f_club_age" value="20대"/>20대
+				<form:checkbox path="f_club_age" value="30대"/>30대
+				<form:checkbox path="f_club_age" value="40대"/>40대
+				<form:checkbox path="f_club_age" value="50대"/>50대
+				<form:checkbox path="f_club_age" value="60대"/>60대
+				<form:errors path="f_club_age" 
 				             cssClass="error-color"/>
 			</li>
-			<br>
-			<li>
+			<li style="clear:both;">
 				<label for="club_gender">성별</label>
-				<form:radiobutton path="club_gender" value="1" checked="checked"/>누구나
-				<form:radiobutton path="club_gender" value="2"/>남자만
-				<form:radiobutton path="club_gender" value="3"/>여자만
+				<form:radiobutton path="club_gender" value="0" checked="checked"/>누구나
+				<form:radiobutton path="club_gender" value="1"/>남자만
+				<form:radiobutton path="club_gender" value="2"/>여자만
 				<form:errors path="club_gender" 
 				             cssClass="error-color"/>
 			</li>
-			<br>
-			<li>
+			<li style="clear:both;">
 				<label for="club_recruit">모집여부</label>
-				<form:radiobutton path="club_recruit" value="1" checked="checked"/>모집중
-				<form:radiobutton path="club_recruit" value="2"/>모집완료
+				<form:radiobutton path="club_recruit" value="0" checked="checked"/>모집중
+				<form:radiobutton path="club_recruit" value="1"/>모집완료
 				<form:errors path="club_recruit" 
 				             cssClass="error-color"/>
 			</li>
-			<br>
-	 	    <li>
+	 	    <li style="clear:both;">
 				<label for="club_date">모집일정</label>
 				<input type="date" name="club_date" id="club_date">
 				<form:errors path="club_date" cssClass="error-color"/>
 			</li>
-			<br>
 			<li>
 				<label for="upload">대표사진</label>
 				<input type="file" name="upload" id="upload">
-			</li>
-			<br>	
-			<li>
+			</li>	
+			<li  style="clear:both;">
 			<label for="region_num">판매지역</label>
 				<form:input path="region_num"/>
 				<form:errors path="region_num" 

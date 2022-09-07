@@ -25,6 +25,7 @@ import kr.spring.member.vo.MemberVO;
 import kr.spring.used.service.UsedService;
 import kr.spring.used.vo.UsedVO;
 import kr.spring.util.PagingUtil;
+import kr.spring.util.StringUtil;
 
 @Controller
 public class UsedController {
@@ -110,5 +111,23 @@ public class UsedController {
 		mav.addObject("page",page.getPage());
 		
 		return mav;
+	}
+	
+	//========중고거래 글 상세=========//
+	@RequestMapping("/used/detail.do")
+	public ModelAndView detail(@RequestParam int used_num) {
+		
+		logger.debug("<<board_num>> : " + used_num);
+		
+		//해당 글의 조회수 증가
+		usedService.updateHit(used_num);
+		
+		UsedVO used = usedService.selectUsed(used_num);
+		
+		//제목에 태그를 허용하지 않음
+		used.setTitle(StringUtil.useNoHtml(used.getTitle()));
+		
+								//뷰 이름		속성명   속성값
+		return new ModelAndView("usedView","used",used);
 	}
 }

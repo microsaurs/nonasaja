@@ -17,11 +17,11 @@ public interface ClubMapper {
 	//부모글
 		public List<ClubVO> selectList(Map<String,Object> map);
 		public int selectRowCount(Map<String,Object> map);
-		@Insert("INSERT INTO club_board (club_num,club_title,"
+		@Insert("INSERT INTO club_board (club_num,club_title,club_name,"
 				+ "club_leader,club_content,"
 				+ "club_code,club_limit,club_pre,club_hit,"
 				+ "club_img,club_img_name,club_date,club_age,club_gender,club_recruit,region_num) "
-				+ "VALUES (club_board_seq.nextval,#{club_title},"
+				+ "VALUES (club_board_seq.nextval,#{club_title},#{club_name},"
 				+ "#{club_leader},#{club_content},#{club_code},#{club_limit},"
 				+ "#{club_pre},#{club_hit},#{club_img},#{club_img_name},#{club_date},#{club_age},#{club_gender},#{club_recruit},#{region_num})")
 		public void insertBoard(ClubVO club);

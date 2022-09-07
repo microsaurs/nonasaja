@@ -12,6 +12,8 @@ public class ClubVO {
 	private int club_num;
 	@NotEmpty
 	private String club_title;
+	@NotEmpty
+	private String club_name;
 	private int club_leader;
 	@NotEmpty
 	private String club_content;
@@ -24,11 +26,11 @@ public class ClubVO {
 	private Date club_reg_date;
 	private byte[] club_img;
 	private String club_img_name;
-	private int club_age;
+	private String club_age;
 	private int club_gender;
 	private int club_recruit;
 	private int region_num;
-	
+
 	//파일 업로드 처리
 	public void setUpload(MultipartFile upload)
 			throws IOException{
@@ -37,6 +39,25 @@ public class ClubVO {
 		//파일명 구하기
 		setClub_img_name(upload.getOriginalFilename());
 	}
+
+	//===================checkbox===========================//
+			//form:checkbox에서 사용할 수 있도록 String -> String[]로 변환 
+	public String[] getF_club_age() {
+		String[] f_club_age = null;
+		if(club_age!=null) f_club_age = club_age.split(",");
+		return f_club_age;
+	}
+	//String[] -> String
+	public void setF_club_age(String[] f_club_age) {
+		if(f_club_age!=null) {
+			this.club_age = "";
+			for(int i=0;i<f_club_age.length;i++) {
+				if(i>0) this.club_age += ",";
+				this.club_age += f_club_age[i];
+			}
+		}
+	}
+	//===================checkbox===========================//
 
 	private String id; //회원 아이디
 	private String nickname; // 회원별명
@@ -53,6 +74,13 @@ public class ClubVO {
 	public void setClub_title(String club_title) {
 		this.club_title = club_title;
 	}
+
+	public String getClub_name() {
+		return club_name;
+	}
+	public void setClub_name(String club_name) {
+		this.club_name = club_name;
+	}
 	public int getClub_leader() {
 		return club_leader;
 	}
@@ -65,7 +93,7 @@ public class ClubVO {
 	public void setClub_content(String club_content) {
 		this.club_content = club_content;
 	}
-	
+
 	public String getClub_date() {
 		return club_date;
 	}
@@ -133,10 +161,11 @@ public class ClubVO {
 	public void setClub_img_name(String club_img_name) {
 		this.club_img_name = club_img_name;
 	}
-	public int getClub_age() {
+
+	public String getClub_age() {
 		return club_age;
 	}
-	public void setClub_age(int club_age) {
+	public void setClub_age(String club_age) {
 		this.club_age = club_age;
 	}
 	public int getClub_gender() {
