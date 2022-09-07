@@ -86,38 +86,32 @@ public class CommuBoardServiceImpl implements CommuBoardService{
 
 	@Override
 	public List<CommunityReplyVO> selectListReply(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
+		return boardMapper.selectListReply(map);
 	}
 
 	@Override
 	public int selectRowCountReply(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return 0;
+		return boardMapper.selectRowCountReply(map);
 	}
 
 	@Override
 	public CommunityReplyVO selectReply(Integer reply_num) {
-		// TODO Auto-generated method stub
-		return null;
+		return boardMapper.selectReply(reply_num);
 	}
 
 	@Override
 	public void insertReply(CommunityReplyVO boardReply) {
-		// TODO Auto-generated method stub
-		
+		boardMapper.insertReply(boardReply);
 	}
 
 	@Override
 	public void updateReply(CommunityReplyVO boardReply) {
-		// TODO Auto-generated method stub
-		
+		boardMapper.updateReply(boardReply);
 	}
 
 	@Override
 	public void deleteReply(Integer reply_num) {
-		// TODO Auto-generated method stub
-		
+		boardMapper.deleteReply(reply_num);
 	}
 
 

@@ -5,7 +5,7 @@
 <!-- 내용 시작 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/commuboard.fav.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/board.reply.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/commuboard.reply.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/videoAdapter.js"></script>
 <div class="page-main">
 	<h2>${board.commu_title}</h2>
