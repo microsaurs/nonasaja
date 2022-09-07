@@ -109,8 +109,8 @@
 				<form:errors path="club_date" cssClass="error-color"/>
 			</li>
 			<li>
-				<label for="upload">대표사진</label>
-				<input type="file" name="upload" id="upload">
+				<label for="club_img">대표사진</label>
+				<input type="file" name="club_img" id="club_img">
 			</li>	
 			<li  style="clear:both;">
 			<label for="region_num">판매지역</label>
@@ -119,12 +119,12 @@
 				             cssClass="error-color"/>
 			</li>	
 		</ul>    
-		<%-- 	<li>
-				<label for="upload">파일업로드</label>
-				<input type="file" name="upload" id="upload">
-				<c:if test="${!empty clubVO.filename}">
+		<li>
+				<label for="club_img">파일업로드</label>
+				<input type="file" name="club_img" id="club_img">
+				<c:if test="${!empty clubVO.club_img_name}">
 				<div id="file_detail">
-					(${clubVO.filename})파일 등록
+					(${clubVO.club_img_name})파일 등록
 					<input type="button" value="파일삭제"
 					                      id="file_del">
 				</div>
@@ -158,7 +158,7 @@
 					});
 				</script>
 				</c:if>
-			</li> --%>
+			</li> 
 		</ul>    
 		<div class="align-center">
 			<form:button>전송</form:button>

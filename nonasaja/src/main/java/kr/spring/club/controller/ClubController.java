@@ -190,7 +190,7 @@ public class ClubController {
 		ClubVO clubVO = 
 				clubService.selectBoard(club_num);
 		
-		model.addAttribute("ClubVO", clubVO);
+		model.addAttribute("clubVO", clubVO);
 		
 		return "clubboardModify";
 	}
