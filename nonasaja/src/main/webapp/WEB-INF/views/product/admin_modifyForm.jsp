@@ -20,7 +20,8 @@
 
 <!-- !!!config 패키지의 AppConfig에서 인터셉터 설정하기!!! -->
 	<p>상품 등록</p>
-	<form:form id="register_form" action="register.do" modelAttribute="productVO" enctype="multipart/form-data">
+	<form:form id="modify_form" action="admin_modify.do" modelAttribute="productVO" enctype="multipart/form-data">
+		<form:hidden path="product_num"/>
 		<form:errors element="div" cssClass="error-color"/>
 		<ul>
 			<li>
@@ -84,7 +85,7 @@
 			</li>
 			<li>
 				<label for="deadline" class="clear">판매기한</label>
-				<input type="date" name="deadline" id="deadline" class="input-box"><br>
+				<input type="date" name="deadline" id="deadline" class="input-box" placeholder="${deadline }" value="${productVO.deadline}"><br>
 				<form:errors path="deadline" cssClass="error-color"/>
 			</li>
 			<!-- ckeditor 사용 -->
@@ -146,7 +147,7 @@
 				<form:errors path="cus_phone" cssClass="error-color"/>
 			</li>	
 		</ul>
-		<form:button>등록</form:button>
+		<form:button>수정</form:button>
 		<input type="button" value="목록" onclick="location.href='list.do'">
 	</form:form>
 </div>

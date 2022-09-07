@@ -23,13 +23,11 @@ public class AdminCheckInterceptor
 	public boolean preHandle(HttpServletRequest request, 
 						HttpServletResponse response, Object handler)throws Exception {
 		
-		logger.debug("<<로그인 회원번호와 작성자 회원번호 일치여부 체크>>");
+		logger.debug("<<관리자 확인>>");
 		
 		//로그인 회원번호 구하기 
 		HttpSession session = request.getSession();
 		MemberVO user = (MemberVO)session.getAttribute("user");
-		
-		logger.debug("<<로그인 회원 번호>> :" +user.getMem_num());
 		
 		//로그인 회원번호와 작성자 회원번호 일치 여부 확인
 		if(user == null || user.getAuth() != 3) {

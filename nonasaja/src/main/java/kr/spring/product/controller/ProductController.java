@@ -49,8 +49,8 @@ public class ProductController {
 	// ==========상품 목록(관리자용)==============
 	@RequestMapping("/product/admin_list.do")
 	public ModelAndView process(@RequestParam(value = "pageNum", defaultValue = "1") int currentPage,
-								@RequestParam(value = "keyfield", defaultValue = "") String keyfield,
-								@RequestParam(value = "keyword", defaultValue = "") String keyword) {
+			@RequestParam(value = "keyfield", defaultValue = "") String keyfield,
+			@RequestParam(value = "keyword", defaultValue = "") String keyword) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("keyfield", keyfield);
 		map.put("keyword", keyword);
@@ -112,4 +112,35 @@ public class ProductController {
 		return "common/resultView";
 	}
 
+	// ======================상품 수정==========================
+	// 수정 폼
+	@GetMapping("/product/admin_modify.do")
+	public String formUpdate(@RequestParam int product_num, Model model) {
+		ProductVO productVO = productService.selectProduct(product_num);
+
+		model.addAttribute("productVO", productVO);
+
+		return "productAdminModify";
+	}
+
+	// 폼에서 전송된 데이터 처리
+	@PostMapping("/product/admin_modify.do")
+	public String submitUpdate(@Valid ProductVO vo, 
+								BindingResult result, 
+								Model model, 
+								HttpServletRequest request) {
+		logger.debug("<<상품수정>> : " + vo);
+
+		// 유효성 체크
+		if (result.hasErrors()) {
+			return "productAdminModify";
+		}
+
+		productService.updateProduct(vo);
+		// View에 표시할 메시지
+		model.addAttribute("message", "상품 수정 완료");
+		model.addAttribute("url", request.getContextPath() + "/product/admin_modify.do?product_num=" + vo.getProduct_num());
+
+		return "common/resultView";
+	}
 }

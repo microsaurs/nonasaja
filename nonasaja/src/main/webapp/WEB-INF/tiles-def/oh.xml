@@ -22,6 +22,12 @@
     	<put-attribute name="body"
     	  value="/WEB-INF/views/product/admin_list.jsp"/>                   
     </definition>
+    
+    <definition name="productAdminModify" extends="main">
+    	<put-attribute name="title" value="상품수정(관리자용)"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/product/admin_modifyForm.jsp"/>                   
+    </definition>
 
 </tiles-definitions>
 
