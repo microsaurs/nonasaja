@@ -108,19 +108,16 @@
 				<input type="date" name="club_date" id="club_date">
 				<form:errors path="club_date" cssClass="error-color"/>
 			</li>
-			<li>
-				<label for="club_img">대표사진</label>
-				<input type="file" name="club_img" id="club_img">
-			</li>	
+			
 			<li  style="clear:both;">
 			<label for="region_num">판매지역</label>
 				<form:input path="region_num"/>
 				<form:errors path="region_num" 
 				             cssClass="error-color"/>
 			</li>	
-		</ul>    
-		<li>
-				<label for="club_img">파일업로드</label>
+		 
+				<li>
+				<label for="club_img">대표사진</label>
 				<input type="file" name="club_img" id="club_img">
 				<c:if test="${!empty clubVO.club_img_name}">
 				<div id="file_detail">
