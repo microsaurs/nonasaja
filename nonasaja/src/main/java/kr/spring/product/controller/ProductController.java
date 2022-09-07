@@ -66,7 +66,7 @@ public class ProductController {
 		return mav;
 	}
 
-	// 상품 리스트
+	// 상품 리스트 //
 	@GetMapping("/product/list.do")
 	public ModelAndView list(@RequestParam(value="pageNum", defaultValue="1") int currentPage,
 						@RequestParam(value="keyfield", defaultValue="") String keyfield,
