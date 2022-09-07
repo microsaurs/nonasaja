@@ -37,6 +37,16 @@
 			첨부파일 : <a href="file.do?used_num=${used.used_num}">${used.filename}</a>
 		</li>
 		</c:if>
+		<c:if test="${!empty used.filename2}">
+		<li>
+			첨부파일 : <a href="file.do?used_num=${used.used_num}">${used.filename2}</a>
+		</li>
+		</c:if>
+		<c:if test="${!empty used.filename3}">
+		<li>
+			첨부파일 : <a href="file.do?used_num=${used.used_num}">${used.filename3}</a>
+		</li>
+		</c:if>
 	</ul>
 	<hr size="1" width="100%">
 	<c:if test="${fn:endsWith(used.filename,'.jpg') ||
@@ -50,11 +60,17 @@
 	<div class="align-center">
 		<img src="imageView.do?used_num=${used.used_num}&board_type=2" style="max-width:500px;">
 	</div>
+	<div class="align-center">
+		<img src="imageView.do?used_num=${used.used_num}&board_type=3" style="max-width:500px;">
+	</div>
+	<div class="align-center">
+		<img src="imageView.do?used_num=${used.used_num}&board_type=4" style="max-width:500px;">
+	</div>
 	</c:if>
 	<p>
-			${used.content}
-		</p>
-		<div>
-			<%-- 좋아요 --%>
-		</div>
+		${used.content}
+	</p>
+	<div>
+		<%-- 좋아요 --%>
+	</div>
 </div>

@@ -130,4 +130,39 @@ public class UsedController {
 								//뷰 이름		속성명   속성값
 		return new ModelAndView("usedView","used",used);
 	}
+	
+	//========이미지 출력=========//
+	@RequestMapping("used/imageView.do")
+	public ModelAndView viewImage(@RequestParam int used_num,
+								  @RequestParam int board_type) {
+		
+		UsedVO used= usedService.selectUsed(used_num);
+		
+		ModelAndView mav = new ModelAndView();
+		//뷰 이름
+		mav.setViewName("imageView");
+		
+		if(board_type==1) {//프로필 사진
+			mav.addObject("imageFile", used.getPhoto());
+			mav.addObject("filename", used.getPhoto_name());
+		}else if(board_type==2) {//업로드된 이미지
+			mav.addObject("imageFile", used.getUploadfile());
+			mav.addObject("filename", used.getFilename());
+		}else if(board_type==3) {//업로드된 이미지
+			mav.addObject("imageFile", used.getUploadfile2());
+			mav.addObject("filename", used.getFilename2());
+		}else if(board_type==4) {//업로드된 이미지
+			mav.addObject("imageFile", used.getUploadfile3());
+			mav.addObject("filename", used.getFilename3());
+		}
+		
+		return mav;
+	}
+	
+	//========중고거래 글 수정=========//
+	//수정폼
+	
+	
+	
+	
 }
