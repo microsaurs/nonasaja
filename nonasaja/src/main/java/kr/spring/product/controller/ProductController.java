@@ -40,7 +40,7 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 
-	// =============이미지 뷰==================
+	//  =============이미지 뷰==================
 	@RequestMapping("/product/imageView.do")
 	public ModelAndView viewImage(@RequestParam int product_num,
 								@RequestParam int photo_type) {

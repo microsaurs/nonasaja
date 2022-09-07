@@ -17,8 +17,6 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/uploadAdapter.js"></script>
 
 <div id="product_register">
-
-<!-- !!!config 패키지의 AppConfig에서 인터셉터 설정하기!!! -->
 	<p>상품 등록</p>
 	<form:form id="modify_form" action="admin_modify.do" modelAttribute="productVO" enctype="multipart/form-data">
 		<form:hidden path="product_num"/>

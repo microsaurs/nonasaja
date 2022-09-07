@@ -12,7 +12,7 @@
 	min-height:250px;
 }	
 </style>
-<!-- ckeditor js 넣기  -->
+<!--  ckeditor js 넣기  -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/ckeditor.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/uploadAdapter.js"></script>
 
