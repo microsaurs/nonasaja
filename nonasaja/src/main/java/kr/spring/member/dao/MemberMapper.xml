@@ -6,10 +6,10 @@
 	<!-- 자체 회원가입 -->
 	<insert id="insertMember_detail" parameterType="memberVO">
 	INSERT INTO member_detail 
-		(mem_num,name,phone,email,zipcode,addr1,addr2
+		(mem_num,passwd,name,phone,email,zipcode,addr1,addr2
 			<if test="interest!=null and interest!=''">,interest</if>) 
 	VALUES 
-		(#{mem_num},#{name},REPLACE(#{phone},'-',''),#{email},#{zipcode},#{addr1},#{addr2}
+		(#{mem_num},#{passwd},#{name},REPLACE(#{phone},'-',''),#{email},#{zipcode},#{addr1},#{addr2}
 		<if test="interest!=null and interest!=''">,#{interest}</if>)
 	</insert>
 	<!-- 카카오 회원가입 -->
