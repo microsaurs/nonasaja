@@ -57,7 +57,7 @@
 			<li>
 				<label for="upload">파일업로드</label>
 				<input type="file" name="upload" id="upload">
-				<c:if test="${!empty communityVO.filename}">
+				<c:if test="${!empty boardVO.filename}">
 				<div id="file_detail">
 					(${boardVO.filename})파일 등록
 					<input type="button" value="파일삭제"
@@ -85,7 +85,7 @@
 										}
 									},
 									error:function(){
-										alert('네트워크 오류 발생');
+										alert('네트워크 오류 발생1');
 									}
 								});
 							}

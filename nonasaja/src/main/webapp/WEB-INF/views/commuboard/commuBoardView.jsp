@@ -57,15 +57,23 @@
 	              fn:endsWith(board.filename,'.GIF') ||
 	              fn:endsWith(board.filename,'.png') ||
 	              fn:endsWith(board.filename,'.PNG')}">
+	
+	<c:if test="${!empty board.filename}">
 	<div class="align-center">
 		<img src="imageView.do?commu_num=${board.commu_num}&board_type=2" style="max-width:500px;">
 	</div>
+	</c:if>
+	<c:if test="${!empty board.filename2}">
 	<div class="align-center">
 		<img src="imageView.do?commu_num=${board.commu_num}&board_type=3" style="max-width:500px;">
 	</div>
+	</c:if>
+	<c:if test="${!empty board.filename3}">
 	<div class="align-center">
 		<img src="imageView.do?commu_num=${board.commu_num}&board_type=4" style="max-width:500px;">
 	</div>
+	</c:if>
+
 	</c:if> 
 	<p>
 		${board.commu_content}

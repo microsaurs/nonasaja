@@ -37,7 +37,7 @@ public class CommuBoardAjaxController {
 	@RequestMapping("/commuboard/deleteFile.do")
 	@ResponseBody
 	public Map<String,String> processFile(
-			         @RequestParam int board_num,
+			         @RequestParam int commu_num,
 			                HttpSession session){
 		Map<String,String> mapJson = 
 				new HashMap<String,String>();
@@ -47,7 +47,7 @@ public class CommuBoardAjaxController {
 		if(user==null) {
 			mapJson.put("result", "logout");
 		}else {
-			boardService.deleteFile(board_num);
+			boardService.deleteFile(commu_num);
 			mapJson.put("result", "success");
 		}
 		
