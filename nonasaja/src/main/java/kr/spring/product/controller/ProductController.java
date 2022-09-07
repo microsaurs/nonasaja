@@ -40,10 +40,64 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 
+	// =============이미지 뷰==================
+	@RequestMapping("/product/imageView.do")
+	public ModelAndView viewImage(@RequestParam int product_num,
+								@RequestParam int photo_type) {
+		ProductVO productVO = productService.selectProduct(product_num);
+
+		ModelAndView mav = new ModelAndView();
+
+		// 이렇게 설정하면 1.tiles설정에서 찾고 없으면 2.bean 객체를 찾음
+		// kr.spring.view에 ImageView.jsp에 @Component를 달아놔서 객체로 등록 됐음
+		mav.setViewName("imageView");
+
+		if (photo_type == 1) {
+			mav.addObject("imageFile", productVO.getPhoto1());
+			mav.addObject("filename", productVO.getPhoto1_name());
+		} else if (photo_type == 2) {
+			mav.addObject("imageFile", productVO.getPhoto2());
+			mav.addObject("filename", productVO.getPhoto2_name());
+		}else if (photo_type == 3) {
+			mav.addObject("imageFile", productVO.getPhoto3());
+			mav.addObject("filename", productVO.getPhoto3_name());
+		}
+
+		return mav;
+	}
+
 	// 상품 리스트
 	@GetMapping("/product/list.do")
-	public String list() {
-		return "productList";
+	public ModelAndView list(@RequestParam(value="pageNum", defaultValue="1") int currentPage,
+						@RequestParam(value="keyfield", defaultValue="") String keyfield,
+						@RequestParam(value="keyword",defaultValue="") String keyword) {
+		
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("keyfield", keyfield);
+		map.put("keyword", keyword);
+		
+		//사용자 페이지에서 status가 2인 상품만 노출
+		map.put("status", 1);
+		
+		int count = productService.selectProductCount(map);
+		logger.debug("<<count>> : " +count);
+		
+		PagingUtil page= new PagingUtil(keyfield, keyword,currentPage,count,rowCount,pageCount,"list.do");
+		
+		List<ProductVO> list  = null;
+		if(count > 0 ) {
+			map.put("start", page.getStartRow());
+			map.put("end", page.getEndRow());
+			list = productService.selectProductList(map);
+		}
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("productList");
+		mav.addObject("count", count);
+		mav.addObject("list", list);
+		mav.addObject("page", page.getPage());
+		
+		return mav;
 	}
 
 	// ==========상품 목록(관리자용)==============

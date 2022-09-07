@@ -91,7 +91,7 @@
 	  		  </if>
 	  		  <if test="photo2_name != ''">
 	  		  	photo2=#{photo2},
-	  		  	photo2_name2=#{photo2_name}, 
+	  		  	photo2_name=#{photo2_name}, 
 	  		  </if>
 	  		  <if test="photo3_name != ''">
 	  		  	photo3=#{photo3},
