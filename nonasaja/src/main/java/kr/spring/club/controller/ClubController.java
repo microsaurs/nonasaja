@@ -220,7 +220,7 @@ public class ClubController {
 		//View에 표히살 메시지
 		model.addAttribute("message", "글수정 완료!!");
 		model.addAttribute("url", 
-				request.getContextPath()+"/board/detail.do?club_num="+clubVO.getClub_num());	
+				request.getContextPath()+"/clubboard/detail.do?club_num="+clubVO.getClub_num());	
 
 		return "common/resultView";
 	}
