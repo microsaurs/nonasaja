@@ -57,7 +57,7 @@
 			<li>
 				<label for="upload">파일업로드</label>
 				<input type="file" name="upload" id="upload">
-				<c:if test="${!empty boardVO.filename}">
+				<c:if test="${!empty communityVO.filename}">
 				<div id="file_detail">
 					(${boardVO.filename})파일 등록
 					<input type="button" value="파일삭제"

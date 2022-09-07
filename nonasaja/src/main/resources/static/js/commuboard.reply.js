@@ -13,7 +13,7 @@ $(function(){
 		$.ajax({
 			url:'listReply.do',
 			type:'post',
-			data:{pageNum:pageNum,board_num:$('#board_num').val()},
+			data:{pageNum:pageNum,commu_num:$('#commu_num').val()},
 			dataType:'json',
 			cache:false,
 			timeout:30000,
@@ -35,25 +35,23 @@ $(function(){
 					output += '<h4>';
 					output += '<img src="../member/viewProfile.do?mem_num='+ item.mem_num +'" width="30" height="30" class="my-photo">';
 					
-					if(item.nick_name){
-						output += item.nick_name + '</h4>';
+					if(item.nickname){
+						output += item.nickname + '</h4>';
 					}else{
 						output += item.id + '</h4>';
 					}
 					
 					output += '<div class="sub-item">';
-					output += '<p>' + item.re_content.replace(/\r\n/g,'<br>') + '</p>';
+					output += '<p>' + item.reply_content.replace(/\r\n/g,'<br>') + '</p>';
 					
-					if(item.re_mdate){
-						output += '<span class="modify-date">최근 수정일 : ' + item.re_mdate + '</span>';
-					}else{
-						output += '<span class="modify-date">등록일 : ' + item.re_date + '</span>';
+					if(item.reply_date){
+						output += '<span class="modify-date">등록일 : ' + item.reply_date + '</span>';
 					}
 					
 					if(param.user_num==item.mem_num){
 						//로그인한 회원번호와 댓글 작성자 회원번호가 일치
-						output += ' <input type="button" data-num="'+ item.re_num +'" value="수정" class="modify-btn">';
-						output += ' <input type="button" data-num="'+ item.re_num +'" value="삭제" class="delete-btn">';
+						output += ' <input type="button" data-num="'+ item.reply_num +'" value="수정" class="modify-btn">';
+						output += ' <input type="button" data-num="'+ item.reply_num +'" value="삭제" class="delete-btn">';
 					}
 					output += '<hr size="1" noshade>';
 					output += '</div>';
@@ -88,9 +86,9 @@ $(function(){
 	
 	//댓글 등록
 	$('#re_form').submit(function(event){
-		if($('#re_content').val().trim()==''){
+		if($('#reply_content').val().trim()==''){
 			alert('내용을 입력하세요');
-			$('#re_content').val('').focus();
+			$('#reply_content').val('').focus();
 			return false;
 		}
 		
@@ -138,7 +136,7 @@ $(function(){
 			//남은 글자수 구하기
 			let remain = 300 - inputLength;
 			remain += '/300';
-			if($(this).attr('id')=='re_content'){
+			if($(this).attr('id')=='reply_content'){
 				//등록 폼 글자수
 				$('#re_first .letter-count').text(remain);
 			}else{
@@ -150,7 +148,7 @@ $(function(){
 	//댓글 수정 버튼 클릭시 수정 폼 노출
 	$(document).on('click','.modify-btn',function(){
 		//댓글 글번호
-		let re_num = $(this).attr('data-num');
+		let reply_num = $(this).attr('data-num');
 		//댓글 내용
 		let content = $(this).parent().find('p').html().replace(/<br>/g,'\r\n');
 		
@@ -253,7 +251,7 @@ $(function(){
 		$.ajax({
 			url:'deleteReply.do',
 			type:'post',
-			data:{re_num:re_num},
+			data:{reply_num:reply_num},
 			dataType:'json',
 			cache:false,
 			timeout:30000,
