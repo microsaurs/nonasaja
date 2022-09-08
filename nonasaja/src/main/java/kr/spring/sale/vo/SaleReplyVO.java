@@ -10,7 +10,7 @@ public class SaleReplyVO {
 	private String reply_date; //등록일
 	private String reply_mdate; //수정일
 	private int parent_num; //부모 댓글 번호
-
+ 
 	
 	private String id; //아이디
 	private String nick_name;//별명
