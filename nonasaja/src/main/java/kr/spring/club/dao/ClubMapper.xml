@@ -86,8 +86,11 @@
   			club_gender=#{club_gender},
   			club_recruit=#{club_recruit},
   			club_date=#{club_date},
-  			
+  			<if test="club_name != ''">
+  			club_img=#{club_img},
   			club_img_name=#{club_name},
+  		    </if>
+  		
   		    club_modify_date=SYSDATE
   		WHERE club_num=#{club_num}
   	</update>

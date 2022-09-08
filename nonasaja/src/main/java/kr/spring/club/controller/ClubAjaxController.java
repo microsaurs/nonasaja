@@ -30,20 +30,20 @@ public class ClubAjaxController {
 	private ClubService clubService;
 	
 	//===========부모글 업로드 파일 삭제===========//
-		@RequestMapping("/board/deleteFile.do")
+		@RequestMapping("/clubboard/deleteFile.do")
 		@ResponseBody
 		public Map<String,String> processFile(
-				         @RequestParam int board_num,
+				         @RequestParam int club_num,
 				                HttpSession session){
 			Map<String,String> mapJson = 
 					new HashMap<String,String>();
 
-			ClubVO user = 
-				   (ClubVO)session.getAttribute("user");
+			MemberVO user = 
+				   (MemberVO)session.getAttribute("user");
 			if(user==null) {
 				mapJson.put("result", "logout");
 			}else {
-				clubService.deleteFile(board_num);
+				clubService.deleteFile(club_num);
 				mapJson.put("result", "success");
 			}
 			

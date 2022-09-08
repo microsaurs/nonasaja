@@ -204,7 +204,7 @@ public class ClubController {
 		Logger.debug("<<글수정>> : " + clubVO);
 		
 		//유효성 체크 결과 오류가 있으면 폼 호출
-		if(result.hasErrors()) {
+		/*if(result.hasErrors()) {
 			//title 또는 content가 입력되지 않아 유효성 체크에
 			//걸리면 파일 정보를 잃어버리기 때문에 품을
 			//호출할 때 다시 셋팅해주어야 함.
@@ -213,7 +213,7 @@ public class ClubController {
 			//ClubVO.setFilename(vo.getFilename()); 
 			return "clubboardModify";
 		}
-		
+		*/
 		//글수정
 		clubService.updateBoard(clubVO);
 		
