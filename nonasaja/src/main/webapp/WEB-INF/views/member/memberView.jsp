@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!-- 내용 시작 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/kakaopay.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/member.js"></script>
 <div class="page-main">
 	<div class="mypage-div">
@@ -39,10 +40,10 @@
 	<div class="mypage-div">
 		<h2>회원상세정보</h2>
 		<ul>
-			<li>이름 : ${member.name}</li>
+			<li>이름 : <span id="name">${member.name}</span></li>
 			<li>별명 : ${member.nickname}</li>
-			<li>전화번호 : ${member.phone}</li>
-			<li>이메일 : ${member.email}</li>
+			<li>전화번호 : <span id="phone">${member.phone}</span></li>
+			<li>이메일 : <span id="email">${member.email}</span></li>
 			<li>우편번호 : ${member.zipcode}</li>
 			<li>주소 : ${member.addr1}</li>
 			<li>상세주소 : ${member.addr2}</li>
@@ -53,9 +54,8 @@
 			</c:if>
 		</ul>
 		<div class="align-center">
-			<input type="button" value="회원정보수정"
-			  onclick="location.href='update.do'">
-			  <a href="${pageContext.request.contextPath}/point/kakaopay">충전하기</a>
+			<input type="button" value="회원정보수정" onclick="location.href='update.do'">
+    		<button id="kpay_btn">카카오페이로 결제하기</button>
 		</div>
 	</div>
 </div>
