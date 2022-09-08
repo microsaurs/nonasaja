@@ -197,4 +197,15 @@ public class ProductController {
 
 		return "common/resultView";
 	}
+	//===============상품상세==================
+		@RequestMapping("/product/detail.do")
+		public String detail(@RequestParam int product_num,
+							Model model) {
+			logger.debug("<<product_num>> : " +product_num);
+			ProductVO productVO = productService.selectProduct(product_num);
+			
+			model.addAttribute("product", productVO);
+			
+			return "productView";
+		}
 }
