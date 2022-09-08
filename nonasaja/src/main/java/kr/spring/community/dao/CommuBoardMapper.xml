@@ -116,7 +116,7 @@
   		            FROM community_reply
   		            JOIN member USING(mem_num)
   		            WHERE commu_num = #{commu_num}
-  		            ORDER BY reply_num DESC)a)
+  		            ORDER BY reply_num DESC)a) 
   		<![CDATA[
   		WHERE rnum >= #{start} AND rnum <= #{end}
   		]]>
