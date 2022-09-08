@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Select;
 import kr.spring.community.vo.CommunityFavVO;
 import kr.spring.community.vo.CommunityReplyVO;
 import kr.spring.community.vo.CommunityVO;
+import kr.spring.community.vo.RecipeVO;
 
 public interface CommuBoardService {
 	//유머글
@@ -20,15 +21,15 @@ public interface CommuBoardService {
 	public void updateHit(Integer commu_num);
 	public void updateBoard(CommunityVO board);
 	public void deleteBoard(Integer commu_num);
-	public void deleteFile(Integer board_num);
+	public void deleteFile(Integer commu_num);
 	
-	//부모글 좋아요
+	//유머 부모글 좋아요
 	public CommunityFavVO selectFav(CommunityFavVO fav);
 	public int selectFavCount(Integer commu_num);
 	public void insertFav(CommunityFavVO boardFav);
 	public void deleteFav(Integer fav_num);
 	
-	//댓글
+	//유머글 댓글
 	public List<CommunityReplyVO> selectListReply(Map<String,Object> map);
 	public int selectRowCountReply(Map<String,Object> map);
 	public CommunityReplyVO selectReply(Integer reply_num);
@@ -36,8 +37,15 @@ public interface CommuBoardService {
 	public void updateReply(CommunityReplyVO boardReply);
 	public void deleteReply(Integer reply_num);
 	
-	
-	
+	//레시피
+	public List<RecipeVO> selectList2(Map<String,Object> map);
+	public int selectRowCount2(Map<String,Object> map);
+	public void insertBoard2(RecipeVO board);
+	public RecipeVO selectBoard2(Integer commu_num);
+	public void updateHit2(Integer commu_num);
+	public void updateBoard2(RecipeVO board);
+	public void deleteBoard2(Integer commu_num);
+	public void deleteFile2(Integer commu_num);
 	
 	
 	

@@ -23,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.community.service.CommuBoardService;
 import kr.spring.community.vo.CommunityVO;
+import kr.spring.community.vo.RecipeVO;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.util.PagingUtil;
 import kr.spring.util.StringUtil;
@@ -42,6 +43,14 @@ private static final Logger logger = LoggerFactory.getLogger(CommuBoardControlle
 	public CommunityVO initCommad() {
 		return new CommunityVO();
 	} 
+
+	//자바빈(VO) 초기화
+	@ModelAttribute 
+	public RecipeVO initCommad2() {
+		return new RecipeVO();
+	} 
+	
+	
 	
 	//========유머 글 등록========//
 	//등록 폼
@@ -218,7 +227,7 @@ private static final Logger logger = LoggerFactory.getLogger(CommuBoardControlle
 		
 		
 		//=====================레시피 게시판 시작=====================//
-		@RequestMapping("/commuRecipe/list.do")
+		@RequestMapping("/recipe/list.do")
 		public ModelAndView process2( 
 				@RequestParam(value="pageNum",defaultValue="1") int currentPage, 
 				@RequestParam(value="keyfield",defaultValue="") String keyfield,

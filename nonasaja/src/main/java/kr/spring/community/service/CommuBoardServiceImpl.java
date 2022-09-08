@@ -11,6 +11,7 @@ import kr.spring.community.dao.CommuBoardMapper;
 import kr.spring.community.vo.CommunityFavVO;
 import kr.spring.community.vo.CommunityReplyVO;
 import kr.spring.community.vo.CommunityVO;
+import kr.spring.community.vo.RecipeVO;
 
 @Service
 @Transactional
@@ -19,6 +20,7 @@ public class CommuBoardServiceImpl implements CommuBoardService{
 	@Autowired
 	private CommuBoardMapper boardMapper;
 	
+	//=====================유머 게시판==========================//
 	@Override
 	public List<CommunityVO> selectList(Map<String, Object> map) {
 		return boardMapper.selectList(map);
@@ -112,6 +114,47 @@ public class CommuBoardServiceImpl implements CommuBoardService{
 	@Override
 	public void deleteReply(Integer reply_num) {
 		boardMapper.deleteReply(reply_num);
+	}
+
+	//=====================레시피 게시판==========================//
+	@Override
+	public List<RecipeVO> selectList2(Map<String, Object> map) {
+		return boardMapper.selectList2(map);
+	}
+
+	@Override
+	public int selectRowCount2(Map<String, Object> map) {
+		return boardMapper.selectRowCount2(map);
+	}
+
+	@Override
+	public void insertBoard2(RecipeVO board) {
+		boardMapper.insertBoard2(board);
+	}
+
+	@Override
+	public RecipeVO selectBoard2(Integer commu_num) {
+		return boardMapper.selectBoard2(commu_num);
+	}
+
+	@Override
+	public void updateHit2(Integer commu_num) {
+		boardMapper.updateHit2(commu_num);
+	}
+
+	@Override
+	public void updateBoard2(RecipeVO board) {
+		boardMapper.updateBoard2(board);
+	}
+
+	@Override
+	public void deleteBoard2(Integer commu_num) {
+		boardMapper.deleteBoard2(commu_num);
+	}
+
+	@Override
+	public void deleteFile2(Integer commu_num) {
+		boardMapper.deleteFile2(commu_num);
 	}
 
 

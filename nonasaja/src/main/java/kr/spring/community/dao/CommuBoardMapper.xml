@@ -4,6 +4,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 <mapper namespace="kr.spring.community.dao.CommuBoardMapper">  
 
+<!-- =======================유머 게시판 시작============================== -->
 	<select id="selectRowCount" parameterType="map" resultType="integer">
 		SELECT
 		  COUNT(*)
@@ -122,6 +123,88 @@
   		WHERE rnum >= #{start} AND rnum <= #{end}
   		]]>
   	</select>	
+	<!-- =======================유머 게시판 끝============================== -->
+	
+	<!-- =======================레시피 게시판 시작============================== -->
+		<select id="selectRowCount2" parameterType="map" resultType="integer">
+		SELECT
+		  COUNT(*)
+		 FROM community_recipe_board b JOIN member m
+		 ON b.mem_num = m.mem_num
+		 <where> 
+		 	<if test="keyword != null and keyword != ''">
+
+		 		<if test="keyfield == 1">
+		 			b.commu_title LIKE '%' || #{keyword} || '%'
+		 		</if>
+		 		<if test="keyfield == 2">
+		 			m.id LIKE '%' || #{keyword} || '%' OR
+		 			m.nickname LIKE '%' || #{keyword} || '%'
+		 		</if>
+		 		<if test="keyfield == 3">
+		 			b.commu_content LIKE '%' || #{keyword} || '%'
+		 		</if>
+		 		<if test="keyfield == 4">
+		 			b.commu_title LIKE '%' || #{keyword} || '%' OR
+		 			b.commu_content LIKE '%' || #{keyword} || '%'
+		 		</if>
+		 	</if>
+		 </where>
+	</select>
+	<select id="selectList2" parameterType="map" resultType="recipeVO">
+		SELECT
+		  *
+		FROM (SELECT
+				a.*,
+				rownum rnum
+			  FROM (SELECT
+			  		   b.commu_num,
+			  		   <![CDATA[
+			  		   REPLACE(REPLACE(b.commu_title,'<','&lt;'),'>','&gt;') commu_title,
+			  		   ]]>
+			  		   b.commu_hit,
+			  		   b.commu_date,
+			  		   b.mem_num,
+			  		   m.id,
+			  		   m.nickname
+			  		FROM community_recipe_board b JOIN member m
+			  		ON b.mem_num = m.mem_num
+			  		 <where>
+					 	<if test="keyword != null and keyword != ''">
+					 		<if test="keyfield == 1">
+					 			b.commu_title LIKE '%' || #{keyword} || '%'
+					 		</if>
+					 		<if test="keyfield == 2">
+					 			m.id LIKE '%' || #{keyword} || '%' OR
+					 			m.nickname LIKE '%' || #{keyword} || '%'
+					 		</if>
+					 		<if test="keyfield == 3">
+					 			b.commu_content LIKE '%' || #{keyword} || '%'
+					 		</if>
+					 		<if test="keyfield == 4">
+					 			b.commu_title LIKE '%' || #{keyword} || '%' OR
+					 			b.commu_content LIKE '%' || #{keyword} || '%'
+					 		</if>
+					 	</if>
+		 			</where>
+			  		ORDER BY b.commu_num DESC)a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+	</select>
+	<!-- =======================레시피 게시판 끝============================== -->
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 </mapper>
 

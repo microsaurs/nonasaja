@@ -12,6 +12,7 @@ import org.apache.ibatis.annotations.Update;
 import kr.spring.community.vo.CommunityFavVO;
 import kr.spring.community.vo.CommunityReplyVO;
 import kr.spring.community.vo.CommunityVO;
+import kr.spring.community.vo.RecipeVO;
 
 @Mapper
 public interface CommuBoardMapper {
@@ -32,7 +33,7 @@ public interface CommuBoardMapper {
 	public void deleteFile(Integer commu_num);
 	
 	
-	//부모글 좋아요
+	//유머글 부모글 좋아요
 	@Select("SELECT * FROM fav "
 			+ "WHERE commu_num=#{commu_num} AND mem_num=#{mem_num}")
 	public CommunityFavVO selectFav(CommunityFavVO fav);
@@ -47,7 +48,7 @@ public interface CommuBoardMapper {
 	@Delete("DELETE FROM fav WHERE commu_num=#{commu_num}")
 	public void deleteFavByBoardNum(Integer commu_num);
 	
-	//댓글
+	//유머글 댓글
 	public List<CommunityReplyVO> selectListReply(
 			                  Map<String,Object> map);
 	@Select("SELECT COUNT(*) FROM community_reply b "
@@ -73,7 +74,21 @@ public interface CommuBoardMapper {
 			                       Integer board_num);
 	
 	
-	
+	//레시피
+	public List<RecipeVO> selectList2(Map<String,Object> map);
+	public int selectRowCount2(Map<String,Object> map);
+	@Insert("INSERT INTO community_recipe_board (commu_num,commu_title,commu_content,uploadfile,filename,uploadfile2,filename2,uploadfile3,filename3,mem_num,commu_food,commu_ingredient,commu_level,commu_time) VALUES (community_seq.nextval,#{commu_title},#{commu_content},#{uploadfile},#{filename},#{uploadfile2},#{filename2},#{uploadfile3},#{filename3},#{mem_num},#{commu_food},#{commu_ingredient},#{commu_level},#{commu_time})")
+	public void insertBoard2(RecipeVO board);
+	@Select("SELECT * FROM community_recipe_board b JOIN member m USING(mem_num) JOIN member_detail d USING(mem_num) WHERE b.commu_num=#{commu_num}")
+	public RecipeVO selectBoard2(Integer commu_num);
+	@Update("UPDATE community_recipe_board SET commu_hit=commu_hit+1 WHERE commu_num=#{commu_num}")
+	public void updateHit2(Integer commu_num);
+	public void updateBoard2(RecipeVO board);
+	@Delete("DELETE FROM community_recipe_board WHERE commu_num=#{commu_num}")
+	public void deleteBoard2(Integer commu_num);
+	@Update("UPDATE community_recipe_board SET uploadfile='',"
+			+ "filename='' WHERE commu_num=#{commu_num}")
+	public void deleteFile2(Integer commu_num);
 	
 	
 	

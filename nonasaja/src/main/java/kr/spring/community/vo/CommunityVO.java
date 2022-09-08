@@ -16,7 +16,6 @@ public class CommunityVO {
 	private String commu_content; //게시글 내용
 	private Date commu_date; //게시글 작성일
 	private Date commu_modify_date; //최근 수정일
-	private int commu_code; //게시판코드 1-레시피 2-유머 3-자취정보
 	private int commu_recommend; //추천수
 	private int commu_hit; //조회수
 	private int region_num; //지역번호
@@ -26,6 +25,7 @@ public class CommunityVO {
 	private String filename2;//파일명
 	private byte[] uploadfile3;//파일
 	private String filename3;//파일명
+	private int commu_code;
 	
 	private String ingredient;	//필수 재료
 	private String food;		//음식 이름
