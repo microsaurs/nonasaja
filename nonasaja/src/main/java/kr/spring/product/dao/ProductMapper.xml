@@ -7,7 +7,7 @@
 	<insert id="insertProduct" parameterType="productVO">
 		insert into product
 			(product_num, name, kind, sub_category, title,detail, 
-			 price1, price2, quantity, req_quantity, photo1,photo1_name,
+			 price1, price2, quantity, req_quantity, div_quantity, photo1,photo1_name,
 			 <if test="photo2 != null">
 			 photo2,photo2_name,
 			 </if>
@@ -19,7 +19,7 @@
 			 )
 		 values
 		 (product_seq.nextval,#{name},#{kind},#{sub_category},#{title},#{detail},
-		 	#{price1},#{price2},#{quantity},#{req_quantity},#{photo1},#{photo1_name},
+		 	#{price1},#{price2},#{quantity},#{req_quantity},#{div_quantity},#{photo1},#{photo1_name},
 		 	<if test="photo2 != null">
 			 #{photo2},#{photo2_name},
 			 </if>
@@ -105,6 +105,7 @@
 	  		  price2=#{price2},
 	  		  quantity=#{quantity},
 	  		  req_quantity=#{req_quantity},
+	  		  div_quantity=#{div_quantity},
 	  		  company=#{company},
 	  		  origin=#{origin},
 	  		  status=#{status},

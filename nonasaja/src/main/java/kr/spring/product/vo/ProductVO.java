@@ -35,6 +35,9 @@ public class ProductVO {
 	//구매요구수량
 	@Min(0)
 	private int req_quantity;
+	//소분수량
+	@NotEmpty
+	private String div_quantity;
 	//유효성 체크를 위해서 만듦
 	private MultipartFile upload1;
 	//대표이미지 (나머지 둘은 슬라이드)
@@ -246,15 +249,25 @@ public class ProductVO {
 	public void setDetail(String detail) {
 		this.detail = detail;
 	}
+
+	public String getDiv_quantity() {
+		return div_quantity;
+	}
+
+	public void setDiv_quantity(String div_quantity) {
+		this.div_quantity = div_quantity;
+	}
+
 	@Override
 	public String toString() {
 		return "ProductVO [product_num=" + product_num + ", name=" + name + ", kind=" + kind + ", sub_category="
 				+ sub_category + ", title=" + title + ", price1=" + price1 + ", price2=" + price2 + ", quantity="
-				+ quantity + ", detail=" + detail + ", req_quantity=" + req_quantity + ", photo1_name=" + photo1_name
-				+ ", photo2_name=" + photo2_name + ", photo3_name=" + photo3_name + ", company=" + company + ", origin="
-				+ origin + ", status=" + status + ", deadline=" + deadline + ", reg_date=" + reg_date + ", modify_date="
-				+ modify_date + ", quantity_detail=" + quantity_detail + ", exp_date=" + exp_date + ", storage="
-				+ storage + ", cus_phone=" + cus_phone + "]";
-	}
+				+ quantity + ", detail=" + detail + ", req_quantity=" + req_quantity + ", div_quantity=" + div_quantity
+				+ ", upload1=" + upload1 + ", photo1_name=" + photo1_name + ", photo2_name=" + photo2_name
+				+ ", photo3_name=" + photo3_name + ", company=" + company + ", origin=" + origin + ", status=" + status
+				+ ", deadline=" + deadline + ", reg_date=" + reg_date + ", modify_date=" + modify_date
+				+ ", quantity_detail=" + quantity_detail + ", exp_date=" + exp_date + ", storage=" + storage
+				+ ", cus_phone=" + cus_phone + "]";
+	}	
 	
 }

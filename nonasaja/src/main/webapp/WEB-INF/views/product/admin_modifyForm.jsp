@@ -41,9 +41,19 @@
 				<form:errors path="upload1" cssClass="error-color"/>
 			</li>
 			<li>
-				<img src="${pageContext.request.contextPath}/images/empty.jpg" class="product-img" id="img1" name="img1">
+				<img class="product-img" id="img1" name="img1" src="${context.request.contextPath}/product/imageView.do?product_num=${productVO.product_num}&photo_type=1">
+			<c:if test="${!empty productVO.photo2_name }">	
+				<img class="product-img" id="img2" name="img2" src="${context.request.contextPath}/product/imageView.do?product_num=${productVO.product_num}&photo_type=2">
+			</c:if>
+			<c:if test="${empty productVO.photo2_name }">	
 				<img src="${pageContext.request.contextPath}/images/empty.jpg" class="product-img" id="img2" name="img2">
+			</c:if>
+			<c:if test="${!empty productVO.photo3_name }">	
+				<img class="product-img" id="img3" name="img3" src="${context.request.contextPath}/product/imageView.do?product_num=${productVO.product_num}&photo_type=3">
+			</c:if>
+			<c:if test="${empty productVO.photo3_name }">	
 				<img src="${pageContext.request.contextPath}/images/empty.jpg" class="product-img" id="img3" name="img3">
+			</c:if>
 			</li>
 			<li>				
 				<input type="file" name="upload1" id="upload1" accept="image/gif,image/png,image/jpeg">
@@ -74,6 +84,11 @@
 				<label for="req_quantity" class="clear">구매요구수량</label>
 				<form:input path="req_quantity" class="input-box"/><br>
 				<form:errors path="req_quantity" cssClass="error-color"/>
+			</li>
+			<li>
+				<label for="div_quantity" class="clear">소분수량</label>
+				<form:input path="div_quantity" class="input-box" placeholder="예)포도 1송이"/><br>
+				<form:errors path="div_quantity" cssClass="error-color"/>
 			</li>
 			<li>
 				<label for="status" class="clear" id="status_label">판매상태</label>

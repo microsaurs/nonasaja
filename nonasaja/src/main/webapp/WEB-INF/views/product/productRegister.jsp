@@ -77,6 +77,11 @@
 				<form:errors path="req_quantity" cssClass="error-color"/>
 			</li>
 			<li>
+				<label for="div_quantity" class="clear">소분수량</label>
+				<form:input path="div_quantity" class="input-box" placeholder="예)포도 1송이"/><br>
+				<form:errors path="div_quantity" cssClass="error-color"/>
+			</li>
+			<li>
 				<label for="status" class="clear" id="status_label">판매상태</label>
 				<form:radiobutton path="status" value="1"/>판매중지&nbsp&nbsp
 				<form:radiobutton path="status" value="2"/>판매중<br>

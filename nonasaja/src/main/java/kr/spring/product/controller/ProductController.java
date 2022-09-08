@@ -187,6 +187,7 @@ public class ProductController {
 
 		// 유효성 체크
 		if (result.hasErrors()) {
+			logger.debug("<<수정 유효성 오류>>");
 			return "productAdminModify";
 		}
 
