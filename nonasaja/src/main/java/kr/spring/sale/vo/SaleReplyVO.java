@@ -14,7 +14,7 @@ public class SaleReplyVO {
 	
 	private String id; //아이디
 	private String nick_name;//별명
-	
+	 
 	
 	
 	public int getReply_num() {
