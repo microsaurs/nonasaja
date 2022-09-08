@@ -22,7 +22,7 @@ create table club_board (
     club_reg_date date default sysdate not null,
     club_modify_date date default sysdate not null,
     club_code number(1) not null, --1:운동,2:오락,3:맛집,4:노래,5:여행,6:스터디,7:기타
-    club_limit number(3) not null,
+    club_limit number(3) default 1 not null,
     club_pre number(3) default 1 not null,
     club_hit number(6) default 0 not null,
     club_date varchar(10) not null,

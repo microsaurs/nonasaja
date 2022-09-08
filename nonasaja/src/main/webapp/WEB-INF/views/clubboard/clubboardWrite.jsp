@@ -23,7 +23,7 @@
 		<ul>
 			<li>
 				<label for="club_code">카테고리</label>
-				<form:radiobutton path="club_code" value="1"/>운동
+				<form:radiobutton path="club_code" value="1" checked="checked"/>운동
 				<form:radiobutton path="club_code" value="2"/>오락
 				<form:radiobutton path="club_code" value="3"/>맛집
 				<form:radiobutton path="club_code" value="4"/>노래
@@ -77,7 +77,7 @@
 			</li>
 			<li>
 				<label>나이</label>
-				<form:checkbox path="f_club_age" value="10대"/>10대
+				<form:checkbox path="f_club_age" value="10대" checked="checked"/>10대
 				<form:checkbox path="f_club_age" value="20대"/>20대
 				<form:checkbox path="f_club_age" value="30대"/>30대
 				<form:checkbox path="f_club_age" value="40대"/>40대

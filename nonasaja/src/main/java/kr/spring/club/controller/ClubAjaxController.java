@@ -52,7 +52,7 @@ public class ClubAjaxController {
 		
 		//==========부모글 좋아요============//
 		//부모글 좋아요 등록
-		@RequestMapping("/board/writeFav.do")
+		@RequestMapping("/clubboard/writeFav.do")
 		@ResponseBody
 		public Map<String,Object> writeFav(
 				             ClubFavVO fav,
@@ -95,7 +95,7 @@ public class ClubAjaxController {
 		}
 		
 		//부모글 좋아요 읽기
-		@RequestMapping("/board/getFav.do")
+		@RequestMapping("/clubboard/getFav.do")
 		@ResponseBody
 		public Map<String,Object> getFav(
 				         ClubFavVO fav,

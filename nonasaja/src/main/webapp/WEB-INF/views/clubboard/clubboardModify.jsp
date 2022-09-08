@@ -105,7 +105,7 @@
 			</li>
 	 	    <li style="clear:both;">
 				<label for="club_date">모집일정</label>
-				<input type="date" name="club_date" id="club_date">
+				<form:input type="date" path="club_date"/>
 				<form:errors path="club_date" cssClass="error-color"/>
 			</li>
 			
@@ -117,8 +117,8 @@
 			</li>	
 		 
 				<li>
-				<label for="club_img">대표사진</label>
-				<input type="file" name="club_img" id="club_img">
+				<label for="upload">대표사진</label>
+				<input type="file" name="upload" id="upload">
 				<c:if test="${!empty clubVO.club_img_name}">
 				<div id="file_detail">
 					(${clubVO.club_img_name})파일 등록

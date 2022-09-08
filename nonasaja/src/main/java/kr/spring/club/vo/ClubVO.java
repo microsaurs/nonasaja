@@ -17,6 +17,7 @@ public class ClubVO {
 	private int club_leader;
 	@NotEmpty
 	private String club_content;
+	@NotEmpty
 	private String club_date;
 	private Date club_modify_date;
 	private int club_code;
