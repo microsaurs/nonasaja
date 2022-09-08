@@ -24,7 +24,7 @@
 	    <form:hidden path="commu_num"/>    
 	    <form:errors element="div" cssClass="error-color"/>    
 		<ul>
-			<li>
+		<li>
 				<label for="commu_title">제목</label>
 				<form:input path="commu_title"/>
 				<form:errors path="commu_title" 
@@ -54,7 +54,126 @@
 		            } );
 			    </script>             
 			</li>
-			
+			<li>
+				<label for="upload">파일업로드</label>
+				<input type="file" name="upload" id="upload">
+				<c:if test="${!empty boardVO.filename}">
+				<div id="file_detail">
+					(${boardVO.filename})파일 등록
+					<input type="button" value="파일삭제"
+					                      id="file_del">
+				</div>
+				<script type="text/javascript">
+					$(function(){
+						$('#file_del').click(function(){
+							let choice = confirm('삭제하시겠습니까?');
+							if(choice){
+								$.ajax({
+									url:'deleteFile.do',
+									data:{commu_num:${communityVO.commu_num}},
+									type:'post',
+									dataType:'json',
+									cache:false,
+									timeout:30000,
+									success:function(param){
+										if(param.result == 'logout'){
+											alert('로그인 후 사용하세요!');
+										}else if(param.result == 'success'){
+											$('#file_detail').hide();
+										}else{
+											alert('파일 삭제 오류 발생');
+										}
+									},
+									error:function(){
+										alert('네트워크 오류 발생1');
+									}
+								});
+							}
+						});
+					});
+				</script>
+				</c:if>
+			</li>
+			<li>
+				<label for="upload2">파일업로드</label>
+				<input type="file" name="upload2" id="upload">
+				<c:if test="${!empty boardVO.filename2}">
+				<div id="file_detail">
+					(${boardVO.filename2})파일 등록
+					<input type="button" value="파일삭제"
+					                      id="file_del">
+				</div>
+				<script type="text/javascript">
+					$(function(){
+						$('#file_del').click(function(){
+							let choice = confirm('삭제하시겠습니까?');
+							if(choice){
+								$.ajax({
+									url:'deleteFile.do',
+									data:{commu_num:${communityVO.commu_num}},
+									type:'post',
+									dataType:'json',
+									cache:false,
+									timeout:30000,
+									success:function(param){
+										if(param.result == 'logout'){
+											alert('로그인 후 사용하세요!');
+										}else if(param.result == 'success'){
+											$('#file_detail').hide();
+										}else{
+											alert('파일 삭제 오류 발생');
+										}
+									},
+									error:function(){
+										alert('네트워크 오류 발생');
+									}
+								});
+							}
+						});
+					});
+				</script>
+				</c:if>
+			</li>
+			<li>
+				<label for="upload3">파일업로드</label>
+				<input type="file" name="upload3" id="upload">
+				<c:if test="${!empty boardVO.filename3}">
+				<div id="file_detail">
+					(${boardVO.filename3})파일 등록
+					<input type="button" value="파일삭제"
+					                      id="file_del">
+				</div>
+				<script type="text/javascript">
+					$(function(){
+						$('#file_del').click(function(){
+							let choice = confirm('삭제하시겠습니까?');
+							if(choice){
+								$.ajax({
+									url:'deleteFile.do',
+									data:{commu_num:${communityVO.commu_num}},
+									type:'post',
+									dataType:'json',
+									cache:false,
+									timeout:30000,
+									success:function(param){
+										if(param.result == 'logout'){
+											alert('로그인 후 사용하세요!');
+										}else if(param.result == 'success'){
+											$('#file_detail').hide();
+										}else{
+											alert('파일 삭제 오류 발생');
+										}
+									},
+									error:function(){
+										alert('네트워크 오류 발생');
+									}
+								});
+							}
+						});
+					});
+				</script>
+				</c:if>
+			</li>
 		</ul>    
 		<div class="align-center">
 			<form:button>전송</form:button>

@@ -6,7 +6,7 @@
 <mapper namespace="kr.spring.product.dao.ProductMapper">  
 	<insert id="insertProduct" parameterType="productVO">
 		insert into product
-			(product_num, name, kind, sub_category, title, 
+			(product_num, name, kind, sub_category, title,detail, 
 			 price1, price2, quantity, req_quantity, photo1,photo1_name,
 			 <if test="photo2 != null">
 			 photo2,photo2_name,
@@ -14,10 +14,11 @@
 			 <if test="photo3 != null">
 			 photo3,photo3_name,
 			 </if>
-			 company, origin, status, deadline,reg_date
+			 company, origin, status, deadline,reg_date,quantity_detail,
+			 exp_date,storage,cus_phone
 			 )
 		 values
-		 (product_seq.nextval,#{name},#{kind},#{sub_category},#{title},
+		 (product_seq.nextval,#{name},#{kind},#{sub_category},#{title},#{detail},
 		 	#{price1},#{price2},#{quantity},#{req_quantity},#{photo1},#{photo1_name},
 		 	<if test="photo2 != null">
 			 #{photo2},#{photo2_name},
@@ -25,11 +26,97 @@
 			 <if test="photo3 != null">
 			 #{photo3},#{photo3_name},
 			 </if>
-			 #{company},#{origin},#{status},#{deadline},sysdate
+			 #{company},#{origin},#{status},#{deadline},sysdate,
+			 #{quantity_detail},#{exp_date},#{storage},#{cus_phone}
 			 )
 	</insert>
 
-	
+	<select id="selectProductCount" parameterType="map" resultType="integer">
+  		select 
+  			count(*) 
+  		from product
+  		where status > #{status} 
+  		<if test="keyword !=null and keyword != ''">
+  			<if test="keyfield ==1">
+  				and name like '%' || #{keyword} || '%'
+  			</if>
+  			<if test="keyfield ==2">
+  				and detail like '%' || #{keyword} || '%'
+  			</if>
+  			<if test="keyfield ==3">
+  				AND 
+  				(name like '%' || #{keyword} || '%'
+  					OR
+  				detail like '%' || #{keyword} || '%')
+  			</if>
+  		</if>
+  	</select>
+  	
+  	<select id="selectProductList" parameterType="map" resultType="productVO">
+  	 	SELECT
+  	 		* 
+  	 	FROM (SELECT 
+  	 			a.*, 
+  	 			rownum rnum 
+  	 		FROM (SELECT 
+  	 				* 
+  	 			  FROM product 
+  	 			  WHERE status > #{status}
+		  	 	<if test="keyword !=null and keyword != ''">
+		  			<if test="keyfield ==1">
+		  				and name like '%' || #{keyword} || '%'
+		  			</if>
+		  			<if test="keyfield ==2">
+		  				and detail like '%' || #{keyword} || '%'
+		  			</if>
+		  			<if test="keyfield ==3">
+		  				AND 
+		  				(name like '%' || #{keyword} || '%'
+		  					OR
+		  				detail like '%' || #{keyword} || '%')
+		  			</if>
+		  		</if>
+		  		ORDER BY reg_date DESC)a)
+	<![CDATA[
+	WHERE rnum >= #{start} AND rnum <= #{end}
+	]]>
+  	</select>
+  	
+  	<!-- 상품 수정 -->
+  	<update id="updateProduct" parameterType="productVO">
+  		UPDATE product SET 
+	  		  <if test="photo1_name != ''">
+	  		  	photo1=#{photo1},
+	  		  	photo1_name=#{photo1_name}, 
+	  		  </if>
+	  		  <if test="photo2_name != ''">
+	  		  	photo2=#{photo2},
+	  		  	photo2_name=#{photo2_name}, 
+	  		  </if>
+	  		  <if test="photo3_name != ''">
+	  		  	photo3=#{photo3},
+	  		  	photo3_name=#{photo3_name}, 
+	  		  </if>
+	  		  name=#{name},
+	  		  kind=#{kind},
+	  		  sub_category=#{sub_category},
+	  		  title=#{title},
+	  		  price1=#{price1},
+	  		  price2=#{price2},
+	  		  quantity=#{quantity},
+	  		  req_quantity=#{req_quantity},
+	  		  company=#{company},
+	  		  origin=#{origin},
+	  		  status=#{status},
+	  		  deadline=#{deadline},
+	  		  modify_date=sysdate,
+	  		  quantity_detail=#{quantity_detail},
+	  		  exp_date=#{exp_date},
+	  		  storage=#{storage},
+	  		  cus_phone=#{cus_phone},
+	  		  detail=#{detail}
+  		where product_num = #{product_num}
+  	</update>
 </mapper>
 
 

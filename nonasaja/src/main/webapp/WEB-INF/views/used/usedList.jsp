@@ -31,5 +31,34 @@
 		<input type="button" value="글쓰기" onclick="location.href='write.do'">
 	</div>
 	</c:if>
+	
+	<c:if test="${count == 0}">
+	<div class="result-display">표시할 게시물이 없습니다.</div>
+	</c:if>
+	
+	<c:if test="${count > 0}">
+	<table>
+		<tr>
+			<th>No</th>
+			<th width="400">제목</th>
+			<th>작성자</th>
+			<th>작성일</th>
+			<th>조회수</th>
+		</tr>
+		<c:forEach var="board" items="${list}">
+		<tr>
+			<td>${board.used_num}</td>
+			<td><a href="detail.do?used_num=${board.used_num}">${board.title}</a></td>
+			<td>
+				<c:if test="${empty board.nickname}">${board.id}</c:if>
+				<c:if test="${!empty board.nickname}">${board.nickname}</c:if>
+			</td>
+			<td>${board.reg_date}</td>
+			<td>${board.hit}</td>
+		</tr>
+		</c:forEach>
+	</table>
+	<div class="align-center">${page}</div>
+	</c:if>
 </div>
 <!-- 내용 끝 -->

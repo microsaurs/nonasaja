@@ -41,7 +41,7 @@ private static final Logger logger = LoggerFactory.getLogger(CommuBoardControlle
 	@ModelAttribute 
 	public CommunityVO initCommad() {
 		return new CommunityVO();
-	}
+	} 
 	
 	//========유머 글 등록========//
 	//등록 폼
@@ -127,6 +127,38 @@ private static final Logger logger = LoggerFactory.getLogger(CommuBoardControlle
 		return new ModelAndView("commuBoardView","board",board);
 		
 	}
+	
+	//=========이미지 출력=========//
+	@RequestMapping("/commuboard/imageView.do")
+	public ModelAndView viewImage(
+			   @RequestParam int commu_num,
+			   @RequestParam int board_type) {
+		
+		CommunityVO board = 
+				boardService.selectBoard(commu_num);
+		
+		ModelAndView mav = new ModelAndView();
+		//뷰 이름
+		mav.setViewName("imageView");
+		
+		if(board_type==1) {//프로필 사진
+			mav.addObject("imageFile", board.getPhoto());
+			mav.addObject("filename", board.getPhoto_name());
+		}else if(board_type==2) {//업로드된 이미지
+			mav.addObject("imageFile", board.getUploadfile());
+			mav.addObject("filename", board.getFilename());
+		}else if(board_type==3) {//업로드된 이미지
+			mav.addObject("imageFile", board.getUploadfile2());
+			mav.addObject("filename", board.getFilename2());
+		}else if(board_type==4) {//업로드된 이미지
+			mav.addObject("imageFile", board.getUploadfile3());
+			mav.addObject("filename", board.getFilename3());
+		}
+		
+		return mav;
+	}
+	
+	
 	
 	//============게시판 글수정============//
 	//수정품

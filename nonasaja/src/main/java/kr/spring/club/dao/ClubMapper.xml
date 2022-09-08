@@ -78,8 +78,16 @@
   	<update id="updateBoard" parameterType="clubVO">
   		UPDATE club_board SET
   			club_title=#{club_title},
+  			club_code=#{club_code},
   			club_content=#{club_content},
   			club_limit=#{club_limit},
+  			club_name=#{club_name},
+  			club_age=#{club_age},
+  			club_gender=#{club_gender},
+  			club_recruit=#{club_recruit},
+  			club_date=#{club_date},
+  			
+  			club_img_name=#{club_name},
   		    club_modify_date=SYSDATE
   		WHERE club_num=#{club_num}
   	</update>

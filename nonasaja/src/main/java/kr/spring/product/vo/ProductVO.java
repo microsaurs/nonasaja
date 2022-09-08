@@ -29,9 +29,14 @@ public class ProductVO {
 	private int price2;
 	@Min(0)
 	private int quantity;
+	//상품상세설명
+	@NotEmpty
+	private String detail;
 	//구매요구수량
 	@Min(0)
 	private int req_quantity;
+	//유효성 체크를 위해서 만듦
+	private MultipartFile upload1;
 	//대표이미지 (나머지 둘은 슬라이드)
 	private byte[] photo1;
 	private byte[] photo2;
@@ -50,23 +55,38 @@ public class ProductVO {
 	private String deadline;
 	private Date reg_date;
 	private Date modify_date;
+	@NotEmpty
+	private String quantity_detail;
+	@NotEmpty
+	private String exp_date;
+	@NotEmpty
+	private String storage;
+	@NotEmpty
+	private String cus_phone;
+	
+	//유효성 체크를 위한 getUpload1
+	public MultipartFile getUpload1() {
+		return upload1;
+	}
 	
 	//이미지 blob 처리
 	//주의! 사진 업로드 폼에서 파일 업로드 파라미터네임은 반드시 upload1,2,3이라고 지정해야 함
-	public void setUpload1(MultipartFile upload) throws IOException{
+	public void setUpload1(MultipartFile upload1) throws IOException{
+		this.upload1 = upload1;
 		//MultipartFile -> byte[]로 형변환
-		setPhoto1(upload.getBytes());
+		setPhoto1(upload1.getBytes());
 		//파일 이름 처리
-		setPhoto1_name(upload.getOriginalFilename());
-	}
-	public void setUpload2(MultipartFile upload) throws IOException{
-		setPhoto2(upload.getBytes());
-		setPhoto2_name(upload.getOriginalFilename());
+		setPhoto1_name(upload1.getOriginalFilename());
 	}
 	
-	public void setUpload3(MultipartFile upload) throws IOException{
-		setPhoto3(upload.getBytes());
-		setPhoto3_name(upload.getOriginalFilename());
+	public void setUpload2(MultipartFile upload2) throws IOException{
+		setPhoto2(upload2.getBytes());
+		setPhoto2_name(upload2.getOriginalFilename());
+	}
+	
+	public void setUpload3(MultipartFile upload3) throws IOException{
+		setPhoto3(upload3.getBytes());
+		setPhoto3_name(upload3.getOriginalFilename());
 	}
 	public int getProduct_num() {
 		return product_num;
@@ -194,16 +214,47 @@ public class ProductVO {
 	public void setModify_date(Date modify_date) {
 		this.modify_date = modify_date;
 	}
+	public String getQuantity_detail() {
+		return quantity_detail;
+	}
+	public void setQuantity_detail(String quantity_detail) {
+		this.quantity_detail = quantity_detail;
+	}
+	
+	public String getExp_date() {
+		return exp_date;
+	}
+	public void setExp_date(String exp_date) {
+		this.exp_date = exp_date;
+	}
+	public String getStorage() {
+		return storage;
+	}
+	public void setStorage(String storage) {
+		this.storage = storage;
+	}
+	public String getCus_phone() {
+		return cus_phone;
+	}
+	public void setCus_phone(String cus_phone) {
+		this.cus_phone = cus_phone;
+	}
+	
+	public String getDetail() {
+		return detail;
+	}
+	public void setDetail(String detail) {
+		this.detail = detail;
+	}
 	@Override
 	public String toString() {
 		return "ProductVO [product_num=" + product_num + ", name=" + name + ", kind=" + kind + ", sub_category="
 				+ sub_category + ", title=" + title + ", price1=" + price1 + ", price2=" + price2 + ", quantity="
-				+ quantity + ", req_quantity=" + req_quantity + ", photo1_name=" + photo1_name + ", photo2_name="
-				+ photo2_name + ", photo3_name=" + photo3_name + ", company=" + company + ", origin=" + origin
-				+ ", status=" + status + ", deadline=" + deadline + ", reg_date=" + reg_date + ", modify_date="
-				+ modify_date + "]";
+				+ quantity + ", detail=" + detail + ", req_quantity=" + req_quantity + ", photo1_name=" + photo1_name
+				+ ", photo2_name=" + photo2_name + ", photo3_name=" + photo3_name + ", company=" + company + ", origin="
+				+ origin + ", status=" + status + ", deadline=" + deadline + ", reg_date=" + reg_date + ", modify_date="
+				+ modify_date + ", quantity_detail=" + quantity_detail + ", exp_date=" + exp_date + ", storage="
+				+ storage + ", cus_phone=" + cus_phone + "]";
 	}
-	
-	
 	
 }

@@ -13,18 +13,13 @@ $(function(){
 				displayFav(param);
 			},
 			error:function(){
-				alert('네트워크 오류 발생');
+				alert('네트워크 오류 발생1');
 			}
 		});
 	}
 	
 	
-	
-	
-	//좋아요 등록
-	//js에서는 el이 동작을 안한다. jsp에서만 동작한다.
-	//그래서 jquery로 태그에 접근해 정보를 읽어오는 방식을 쓴다.
-	//앞으로 el로부터 데이터를 읽어다가 쓰고싶으면 jsp에 스크립트를 명시해야한다.
+
 	$('#output_fav').click(function(){
 		$.ajax({
 			url:'writeFav.do',
@@ -43,7 +38,7 @@ $(function(){
 				}
 			},
 			error:function(){
-				alert('네트워크 오류 발생');
+				alert('네트워크 오류 발생2');
 			}
 		});
 	}); //등록 끝

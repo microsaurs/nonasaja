@@ -55,6 +55,7 @@
 		<div class="align-center">
 			<input type="button" value="회원정보수정"
 			  onclick="location.href='update.do'">
+			  <a href="${pageContext.request.contextPath}/point/kakaopay">충전하기</a>
 		</div>
 	</div>
 </div>

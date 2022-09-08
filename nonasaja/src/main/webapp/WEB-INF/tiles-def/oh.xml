@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE tiles-definitions PUBLIC
        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
@@ -15,6 +15,18 @@
     	<put-attribute name="title" value="상품등록"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/product/productRegister.jsp"/>                   
+    </definition>
+
+	<definition name="adminList" extends="main">
+    	<put-attribute name="title" value="상품목록(관리자)"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/product/admin_list.jsp"/>                   
+    </definition>
+    
+    <definition name="productAdminModify" extends="main">
+    	<put-attribute name="title" value="상품수정(관리자용)"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/product/admin_modifyForm.jsp"/>                   
     </definition>
 
 </tiles-definitions>

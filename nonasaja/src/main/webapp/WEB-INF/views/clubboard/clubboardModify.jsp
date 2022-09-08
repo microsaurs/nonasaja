@@ -17,22 +17,40 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/uploadAdapter.js"></script>
 <div class="page-main">
 	<h2>글수정</h2>
-	<form:form action="update.do" modelAttribute="boardVO"
+	<form:form action="update.do" modelAttribute="clubVO"
 	        id="update_form"
 	        enctype="multipart/form-data">
-	    <form:hidden path="board_num"/>    
+	    <form:hidden path="club_num"/>    
 	    <form:errors element="div" cssClass="error-color"/>    
-		<ul>
+			<ul>
 			<li>
-				<label for="title">제목</label>
-				<form:input path="title"/>
-				<form:errors path="title" 
+				<label for="club_code">카테고리</label>
+				<form:radiobutton path="club_code" value="1"/>운동
+				<form:radiobutton path="club_code" value="2"/>오락
+				<form:radiobutton path="club_code" value="3"/>맛집
+				<form:radiobutton path="club_code" value="4"/>노래
+				<form:radiobutton path="club_code" value="5"/>여행
+				<form:radiobutton path="club_code" value="6"/>스터디
+				<form:radiobutton path="club_code" value="7"/>기타
+				<form:errors path="club_code" 
 				             cssClass="error-color"/>
 			</li>
-			<li><b>내용</b></li>
+			<li style="clear:both;">
+				<label for="club_title">제목</label>
+				<form:input path="club_title"/>
+				<form:errors path="club_title" 
+				             cssClass="error-color"/>
+			</li>
 			<li>
-				<form:textarea path="content"/>
-				<form:errors path="content" 
+				<label for="club_name">동호회명</label>
+				<form:input path="club_name"/>
+				<form:errors path="club_name" 
+				             cssClass="error-color"/>
+			</li>
+			<li><b>상세 내용</b></li>
+			<li>
+				<form:textarea path="club_content"/>
+				<form:errors path="club_content" 
 				             cssClass="error-color"/>
 				<script>
 				 function MyCustomUploadAdapterPlugin(editor) {
@@ -42,7 +60,7 @@
 					}
 				 
 				 ClassicEditor
-		            .create( document.querySelector( '#content' ),{
+		            .create( document.querySelector( '#club_content' ),{
 		            	extraPlugins: [MyCustomUploadAdapterPlugin]
 		            })
 		            .then( editor => {
@@ -51,14 +69,59 @@
 		            .catch( error => {
 		                console.error( error );
 		            } );
-			    </script>              
+			    </script>               
 			</li>
 			<li>
-				<label for="upload">파일업로드</label>
-				<input type="file" name="upload" id="upload">
-				<c:if test="${!empty boardVO.filename}">
+				<label for="club_limit">총 인원수</label>
+				<form:input path="club_limit"/>
+				<form:errors path="club_limit" 
+				             cssClass="error-color"/>
+			</li>
+			<li>
+				<label>나이</label>
+				<form:checkbox path="f_club_age" value="10대"/>10대
+				<form:checkbox path="f_club_age" value="20대"/>20대
+				<form:checkbox path="f_club_age" value="30대"/>30대
+				<form:checkbox path="f_club_age" value="40대"/>40대
+				<form:checkbox path="f_club_age" value="50대"/>50대
+				<form:checkbox path="f_club_age" value="60대"/>60대
+				<form:errors path="f_club_age" 
+				             cssClass="error-color"/>
+			</li>
+			<li style="clear:both;">
+				<label for="club_gender">성별</label>
+				<form:radiobutton path="club_gender" value="0" checked="checked"/>누구나
+				<form:radiobutton path="club_gender" value="1"/>남자만
+				<form:radiobutton path="club_gender" value="2"/>여자만
+				<form:errors path="club_gender" 
+				             cssClass="error-color"/>
+			</li>
+			<li style="clear:both;">
+				<label for="club_recruit">모집여부</label>
+				<form:radiobutton path="club_recruit" value="0" checked="checked"/>모집중
+				<form:radiobutton path="club_recruit" value="1"/>모집완료
+				<form:errors path="club_recruit" 
+				             cssClass="error-color"/>
+			</li>
+	 	    <li style="clear:both;">
+				<label for="club_date">모집일정</label>
+				<input type="date" name="club_date" id="club_date">
+				<form:errors path="club_date" cssClass="error-color"/>
+			</li>
+			
+			<li  style="clear:both;">
+			<label for="region_num">판매지역</label>
+				<form:input path="region_num"/>
+				<form:errors path="region_num" 
+				             cssClass="error-color"/>
+			</li>	
+		 
+				<li>
+				<label for="club_img">대표사진</label>
+				<input type="file" name="club_img" id="club_img">
+				<c:if test="${!empty clubVO.club_img_name}">
 				<div id="file_detail">
-					(${boardVO.filename})파일 등록
+					(${clubVO.club_img_name})파일 등록
 					<input type="button" value="파일삭제"
 					                      id="file_del">
 				</div>
@@ -69,7 +132,7 @@
 							if(choice){
 								$.ajax({
 									url:'deleteFile.do',
-									data:{board_num:${boardVO.board_num}},
+									data:{club_num:${clubVO.club_num}},
 									type:'post',
 									dataType:'json',
 									cache:false,
@@ -92,7 +155,7 @@
 					});
 				</script>
 				</c:if>
-			</li>
+			</li> 
 		</ul>    
 		<div class="align-center">
 			<form:button>전송</form:button>

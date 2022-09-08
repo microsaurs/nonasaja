@@ -10,6 +10,23 @@ public class CommunityReplyVO {
 	private Date reply_date; //댓글 작성일
 	private int parent_num; //대댓글 부모댓글번호
 	
+	private String id; //아이디
+	private String nickname; //별명
+	
+	
+	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
 	public int getReply_num() {
 		return reply_num;
 	}
@@ -51,8 +68,10 @@ public class CommunityReplyVO {
 	public String toString() {
 		return "CommunityReplyVO [reply_num=" + reply_num + ", commu_num=" + commu_num + ", mem_num=" + mem_num
 				+ ", reply_content=" + reply_content + ", reply_date=" + reply_date + ", parent_num=" + parent_num
-				+ "]";
+				+ ", id=" + id + ", nickname=" + nickname + "]";
 	}
+	
+	
 	
 	
 }

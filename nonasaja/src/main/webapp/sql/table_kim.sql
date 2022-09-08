@@ -21,6 +21,10 @@ create table product(
  photo1_name varchar2(100) not null, --상품 사진
  photo2_name varchar2(100),	--상품 사진
  photo3_name varchar2(100),	--상품 사진
+ quantity_detail varchar2(100) not null, -- 수량 상세
+ exp_date varchar2(100) not null, --유통기한
+ storage varchar2(100) not null, --보관방법
+ cus_phone varchar2(20) not null -- 고객지원 번호
  constraint product_pk primary key (product_num)
 );
 create table product_review(

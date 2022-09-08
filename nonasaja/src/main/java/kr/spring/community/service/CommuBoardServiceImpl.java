@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import kr.spring.community.dao.CommuBoardMapper;
 import kr.spring.community.vo.CommunityFavVO;
+import kr.spring.community.vo.CommunityReplyVO;
 import kr.spring.community.vo.CommunityVO;
 
 @Service
@@ -52,8 +53,17 @@ public class CommuBoardServiceImpl implements CommuBoardService{
 	public void deleteBoard(Integer commu_num) {
 		//부모글 삭제
 		boardMapper.deleteBoard(commu_num);
+		//댓글이 존재하면 댓글을 우선 삭제하고 부모글을 삭제
+		boardMapper.deleteReplyByBoardNum(commu_num);
+		//부모글 삭제
+		boardMapper.deleteBoard(commu_num);
 	}
 
+	@Override
+	public void deleteFile(Integer commu_num) {
+		boardMapper.deleteFile(commu_num);
+	}
+	
 	@Override
 	public CommunityFavVO selectFav(CommunityFavVO fav) {
 		return boardMapper.selectFav(fav);
@@ -73,6 +83,37 @@ public class CommuBoardServiceImpl implements CommuBoardService{
 	public void deleteFav(Integer fav_num) {
 		boardMapper.deleteFav(fav_num);
 	}
+
+	@Override
+	public List<CommunityReplyVO> selectListReply(Map<String, Object> map) {
+		return boardMapper.selectListReply(map);
+	}
+
+	@Override
+	public int selectRowCountReply(Map<String, Object> map) {
+		return boardMapper.selectRowCountReply(map);
+	}
+
+	@Override
+	public CommunityReplyVO selectReply(Integer reply_num) {
+		return boardMapper.selectReply(reply_num);
+	}
+
+	@Override
+	public void insertReply(CommunityReplyVO boardReply) {
+		boardMapper.insertReply(boardReply);
+	}
+
+	@Override
+	public void updateReply(CommunityReplyVO boardReply) {
+		boardMapper.updateReply(boardReply);
+	}
+
+	@Override
+	public void deleteReply(Integer reply_num) {
+		boardMapper.deleteReply(reply_num);
+	}
+
 
 	
 	

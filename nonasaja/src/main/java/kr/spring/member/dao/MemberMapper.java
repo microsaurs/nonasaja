@@ -13,13 +13,12 @@ public interface MemberMapper {
 	public int selectMem_num();//회원번호 추출
 	@Insert("INSERT INTO member (mem_num,id,nickname) VALUES (#{mem_num},#{id},#{nickname})")
 	public void insertMember(MemberVO member);//회원가입
-	@Insert("INSERT INTO member_detail (mem_num,name,passwd,phone,email,zipcode,addr1,addr2,interest) VALUES (#{mem_num},#{name},#{passwd},#{phone},#{email},#{zipcode},#{addr1},#{addr2},#{interest})")
-	public void insertMember_detail(MemberVO member);//회원가입
+	public void insertMember_detail(MemberVO member);//상세회원가입 xml
 	
-	//네이버 회원 상세 정보 저장 시작
-	@Insert("INSERT INTO member_detail (mem_num,name,phone,email,zipcode,addr1,addr2) VALUES (#{mem_num},#{name},REPLACE(#{phone},'-',''),#{email},#{zipcode},#{addr1},#{addr2})")
-	public void insertNaverMember_detail(MemberVO member);
-	//네이버 회원 상세 정보 저장 끝
+	//네이버 회원 가입 xml
+	public void insertNaverMember(MemberVO member);
+	//카카오 회원 가입 xml
+	public void insertKakaoMember(MemberVO member);
 	
 	@Select("SELECT m.mem_num,m.id,m.auth,m.nickname,d.passwd,d.name,d.photo FROM member m LEFT OUTER JOIN member_detail d ON m.mem_num=d.mem_num WHERE m.id=#{id}")
 	public MemberVO selectCheckMember(String id);//아이디 중복 체크

@@ -25,6 +25,7 @@ import kr.spring.member.vo.MemberVO;
 import kr.spring.used.service.UsedService;
 import kr.spring.used.vo.UsedVO;
 import kr.spring.util.PagingUtil;
+import kr.spring.util.StringUtil;
 
 @Controller
 public class UsedController {
@@ -43,7 +44,7 @@ public class UsedController {
 	
 	//========중고거래 글 등록=========//
 	//등록 폼
-	@GetMapping("/usedboard/write.do")
+	@GetMapping("/used/write.do")
 	public String form() {
 		return "usedWrite";
 	}
@@ -74,7 +75,7 @@ public class UsedController {
 	}
 	
 	//========중고거래 글 목록=========//
-	@RequestMapping("/usedboard/list.do")
+	@RequestMapping("/used/list.do")
 	public ModelAndView process(
 			@RequestParam(value="pageNum",defaultValue = "1")
 			int currentPage,
@@ -111,4 +112,57 @@ public class UsedController {
 		
 		return mav;
 	}
+	
+	//========중고거래 글 상세=========//
+	@RequestMapping("/used/detail.do")
+	public ModelAndView detail(@RequestParam int used_num) {
+		
+		logger.debug("<<board_num>> : " + used_num);
+		
+		//해당 글의 조회수 증가
+		usedService.updateHit(used_num);
+		
+		UsedVO used = usedService.selectUsed(used_num);
+		
+		//제목에 태그를 허용하지 않음
+		used.setTitle(StringUtil.useNoHtml(used.getTitle()));
+		
+								//뷰 이름		속성명   속성값
+		return new ModelAndView("usedView","used",used);
+	}
+	
+	//========이미지 출력=========//
+	@RequestMapping("used/imageView.do")
+	public ModelAndView viewImage(@RequestParam int used_num,
+								  @RequestParam int board_type) {
+		
+		UsedVO used= usedService.selectUsed(used_num);
+		
+		ModelAndView mav = new ModelAndView();
+		//뷰 이름
+		mav.setViewName("imageView");
+		
+		if(board_type==1) {//프로필 사진
+			mav.addObject("imageFile", used.getPhoto());
+			mav.addObject("filename", used.getPhoto_name());
+		}else if(board_type==2) {//업로드된 이미지
+			mav.addObject("imageFile", used.getUploadfile());
+			mav.addObject("filename", used.getFilename());
+		}else if(board_type==3) {//업로드된 이미지
+			mav.addObject("imageFile", used.getUploadfile2());
+			mav.addObject("filename", used.getFilename2());
+		}else if(board_type==4) {//업로드된 이미지
+			mav.addObject("imageFile", used.getUploadfile3());
+			mav.addObject("filename", used.getFilename3());
+		}
+		
+		return mav;
+	}
+	
+	//========중고거래 글 수정=========//
+	//수정폼
+	
+	
+	
+	
 }

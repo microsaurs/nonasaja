@@ -58,11 +58,10 @@ public class ClubController {
 		
 		Logger.debug("<<게시판 글 저장>> : " + clubVO);
 		
-		//유효성 검사 결과 오류가 있으면 폼 호출
-		if(result.hasErrors()) {
-			return form();
-		}
 		
+		 //유효성 검사 결과 오류가 있으면 폼 호출 
+		if(result.hasErrors()) { return form(); }
+		 
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		//회원번호 셋팅
 		clubVO.setClub_leader(user.getMem_num());
@@ -148,21 +147,40 @@ public class ClubController {
 	}
 	
 	//===========파일다운로드===========//
-	/*
-	 * @RequestMapping("/board/file.do") public ModelAndView download(
-	 * 
-	 * @RequestParam int board_num) {
-	 * 
-	 * ClubVO club = clubService.selectBoard(club_num);
-	 * 
-	 * ModelAndView mav = new ModelAndView(); mav.setViewName("downloadView");
-	 * mav.addObject("downloadFile", club.getUploadfile());
-	 * mav.addObject("filename", club.getFilename());
-	 * 
-	 * return mav; }
-	 */
+	@RequestMapping("/clubboard/file.do")
+	public ModelAndView download(
+			   @RequestParam int club_num) {
+		
+		ClubVO board = 
+				clubService.selectBoard(club_num);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("downloadView");
+		mav.addObject("club_img", 
+				       board.getClub_img());
+		mav.addObject("club_img_name)", 
+				          board.getClub_img_name());
+		
+		return mav;
+	}
 	//=========이미지 출력=========//
-	
+	@RequestMapping("/clubboard/imageView.do")
+	public ModelAndView viewImage(
+			   @RequestParam int club_num,
+			   HttpSession session) {
+		
+		ClubVO club = 
+				clubService.selectBoard(club_num);
+		
+		ModelAndView mav = new ModelAndView();
+		//뷰 이름
+		mav.setViewName("imageView");
+		
+		mav.addObject("imageFile", club.getClub_img());
+		mav.addObject("filename", club.getClub_img_name()); 
+		 
+		return mav;
+	}
 	//===========게시판 글수정===========//
 	//수정 폼
 	@GetMapping("/clubboard/update.do")
@@ -172,7 +190,7 @@ public class ClubController {
 		ClubVO clubVO = 
 				clubService.selectBoard(club_num);
 		
-		model.addAttribute("ClubVO", clubVO);
+		model.addAttribute("clubVO", clubVO);
 		
 		return "clubboardModify";
 	}
@@ -202,7 +220,7 @@ public class ClubController {
 		//View에 표히살 메시지
 		model.addAttribute("message", "글수정 완료!!");
 		model.addAttribute("url", 
-				request.getContextPath()+"/board/detail.do?club_num="+clubVO.getClub_num());	
+				request.getContextPath()+"/clubboard/detail.do?club_num="+clubVO.getClub_num());	
 
 		return "common/resultView";
 	}
@@ -222,7 +240,7 @@ public class ClubController {
 			//View에 표시할 메시지
 			model.addAttribute("message", "글삭제 완료!!");
 			model.addAttribute("url", 
-					request.getContextPath()+"/board/list.do");
+					request.getContextPath()+"/clubboard/list.do");
 			
 			return "common/resultView";
 		}

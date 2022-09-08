@@ -40,7 +40,7 @@
 	<c:if test="${count > 0}">
 	<table>
 		<tr>
-			<th>번호</th>
+			<th>모집여부</th>
 			<th width="400">제목</th>
 			<th>작성자</th>
 			<th>작성일</th>
@@ -48,7 +48,10 @@
 		</tr>
 		<c:forEach var="board" items="${list}">
 		<tr>
-			<td>${board.club_num}</td>
+			<td>
+				<c:if test="${board.club_recruit==0}">모집중</c:if>
+				<c:if test="${board.club_recruit==1}">모집완료</c:if>
+			</td>
 			<td><a href="detail.do?club_num=${board.club_num}">${board.club_title}</a></td>
 			<td>
 				<c:if test="${empty board.nickname}">${board.id}</c:if>

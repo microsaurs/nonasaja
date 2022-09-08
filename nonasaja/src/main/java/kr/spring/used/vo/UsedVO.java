@@ -1,9 +1,12 @@
 package kr.spring.used.vo;
 
+import java.io.IOException;
 import java.sql.Date;
 
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
+import org.springframework.web.multipart.MultipartFile;
+
 
 public class UsedVO {
 	private int used_num; //게시글 번호
@@ -11,14 +14,20 @@ public class UsedVO {
 	private String title; //제목
 	@NotEmpty
 	private String content; //내용
-	@NotEmpty
 	private int kind; //거래 종류 1중고,2무나,3교환
-	@Min(0)
+	@Range(min=1,max=99999999)
 	private int price; //가격
 	private int status; //거래 상태 1판매중,2판매완료
-	@NotEmpty
 	private String category; //상품 카테고리 
 	private String trade; //물물교환 상품
+	private byte[] uploadfile;
+	private String filename;
+	private byte[] uploadfile2;
+	private String filename2;
+	private byte[] uploadfile3;
+	private String filename3;
+
+
 	private Date reg_date; //작성일
 	private Date modify_date; //수정일
 	private int hit; //조회수
@@ -31,6 +40,31 @@ public class UsedVO {
 	
 	private int mem_num; //작성자 번호
 	private int region_num; //지역 식별번호
+	
+	
+	//파일 업로드 처리
+	public void setUpload(MultipartFile upload)throws IOException{
+		//MultipartFile -> byte[] 변환
+		setUploadfile(upload.getBytes());
+		//파일명 구하기
+		setFilename(upload.getOriginalFilename());
+	}
+	
+	//파일 업로드 처리
+	public void setUpload2(MultipartFile upload)throws IOException{
+		//MultipartFile -> byte[] 변환
+		setUploadfile2(upload.getBytes());
+		//파일명 구하기
+		setFilename2(upload.getOriginalFilename());
+	}
+	
+	//파일 업로드 처리
+	public void setUpload3(MultipartFile upload)throws IOException{
+		//MultipartFile -> byte[] 변환
+		setUploadfile3(upload.getBytes());
+		//파일명 구하기
+		setFilename3(upload.getOriginalFilename());
+	}
 	
 	
 	public String getId() {
@@ -135,14 +169,53 @@ public class UsedVO {
 	public void setRegion_num(int region_num) {
 		this.region_num = region_num;
 	}
+	public byte[] getUploadfile() {
+		return uploadfile;
+	}
+	public void setUploadfile(byte[] uploadfile) {
+		this.uploadfile = uploadfile;
+	}
+	public String getFilename() {
+		return filename;
+	}
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
+	public byte[] getUploadfile2() {
+		return uploadfile2;
+	}
+	public void setUploadfile2(byte[] uploadfile2) {
+		this.uploadfile2 = uploadfile2;
+	}
+	public String getFilename2() {
+		return filename2;
+	}
+	public void setFilename2(String filename2) {
+		this.filename2 = filename2;
+	}
+	public byte[] getUploadfile3() {
+		return uploadfile3;
+	}
+	public void setUploadfile3(byte[] uploadfile3) {
+		this.uploadfile3 = uploadfile3;
+	}
+	public String getFilename3() {
+		return filename3;
+	}
+	public void setFilename3(String filename3) {
+		this.filename3 = filename3;
+	}
 	
 	@Override
 	public String toString() {
 		return "UsedVO [used_num=" + used_num + ", title=" + title + ", content=" + content + ", kind=" + kind
 				+ ", price=" + price + ", status=" + status + ", category=" + category + ", trade=" + trade
-				+ ", reg_date=" + reg_date + ", modify_date=" + modify_date + ", hit=" + hit + ", mem_num=" + mem_num
-				+ ", region_num=" + region_num + "]";
+				+ ", filename=" + filename + ", filename2=" + filename2 + ", filename3=" + filename3 + ", reg_date="
+				+ reg_date + ", modify_date=" + modify_date + ", hit=" + hit + ", id=" + id + ", nickname=" + nickname
+				+ ", photo_name=" + photo_name + ", mem_num=" + mem_num + ", region_num=" + region_num + "]";
 	}
+	
+	
 	
 	
 }

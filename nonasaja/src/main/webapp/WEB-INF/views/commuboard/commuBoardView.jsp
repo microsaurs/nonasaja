@@ -4,8 +4,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!-- 내용 시작 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/board.fav.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/board.reply.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/commuboard.fav.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/commuboard.reply.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/videoAdapter.js"></script>
 <div class="page-main">
 	<h2>${board.commu_title}</h2>
@@ -31,24 +31,50 @@
 			조회 : ${board.commu_hit}
 		</li>
 	</ul>
-<%-- 	<ul>
+ 	<ul>
 		<c:if test="${!empty board.filename}">
 		<li>
-			첨부파일 : <a href="file.do?board_num=${board.board_num}">${board.filename}</a>
+			첨부파일 : <a href="file.do?commu_num=${board.commu_num}">${board.filename}</a>
 		</li>
 		</c:if>
-	</ul> --%>
-<%-- 	<hr size="1" width="100%">
+		<c:if test="${!empty board.filename2}">
+		<li>
+			첨부파일 : <a href="file.do?commu_num=${board.commu_num}">${board.filename2}</a>
+		</li>
+		</c:if>
+		<c:if test="${!empty board.filename3}">
+		<li>
+			첨부파일 : <a href="file.do?commu_num=${board.commu_num}">${board.filename3}</a>
+		</li>
+		</c:if>
+	</ul> 
+ 	<hr size="1" width="100%">
 	<c:if test="${fn:endsWith(board.filename,'.jpg') ||
-				  fn:endsWith(board.filename,'.JPG') ||
-				  fn:endsWith(board.filename,'.gif') ||
-				  fn:endsWith(board.filename,'.GIF') ||
-				  fn:endsWith(board.filename,'.png') || 
-				  fn:endsWith(board.filename,'.PNG')}">
+	              fn:endsWith(board.filename,'.JPG') ||
+	              fn:endsWith(board.filename,'.jpeg') ||
+	              fn:endsWith(board.filename,'.JPEG') ||
+	              fn:endsWith(board.filename,'.gif') ||
+	              fn:endsWith(board.filename,'.GIF') ||
+	              fn:endsWith(board.filename,'.png') ||
+	              fn:endsWith(board.filename,'.PNG')}">
+	
+	<c:if test="${!empty board.filename}">
 	<div class="align-center">
-		
+		<img src="imageView.do?commu_num=${board.commu_num}&board_type=2" style="max-width:500px;">
 	</div>
-	</c:if> --%>
+	</c:if>
+	<c:if test="${!empty board.filename2}">
+	<div class="align-center">
+		<img src="imageView.do?commu_num=${board.commu_num}&board_type=3" style="max-width:500px;">
+	</div>
+	</c:if>
+	<c:if test="${!empty board.filename3}">
+	<div class="align-center">
+		<img src="imageView.do?commu_num=${board.commu_num}&board_type=4" style="max-width:500px;">
+	</div>
+	</c:if>
+
+	</c:if> 
 	<p>
 		${board.commu_content}
 	</p>
@@ -75,6 +101,37 @@
 		<input type="button" value="목록" onclick="location.href='list.do'">
 		</c:if>
 	</div>
+	<hr size="1" width="100%">
+	<!-- 댓글 UI 시작 -->
+	<div id="reply_div">
+		<span class="re-title">댓글 달기</span>
+		<form id="re_form">
+			<input type="hidden" name="commu_num"
+			   value="${board.commu_num}" id="commu_num">
+			<textarea rows="3" cols="50" 
+			  name="reply_content" id="reply_content"
+			  class="rep-content"
+			  <c:if test="${empty user}">disabled="disabled"</c:if>
+			  ><c:if test="${empty user}">로그인해야 작성할 수 있습니다.</c:if></textarea>
+			<c:if test="${!empty user}">
+			<div id="re_first">
+				<span class="letter-count">300/300</span>
+			</div>
+			<div id="re_second" class="align-right">
+				<input type="submit" value="전송">
+			</div>
+			</c:if>
+		</form>
+	</div>
+	<!-- 댓글 목록 출력 -->
+	<div id="output"></div>
+	<div class="paging-button" style="display:none;">
+		<input type="button" value="다음글 보기">
+	</div>
+	<div id="loading" style="display:none;">
+		<img src="${pageContext.request.contextPath}/images/loading.gif" width="100" height="100">
+	</div>
+	<!-- 댓글 UI 끝 -->
 </div>
 
 

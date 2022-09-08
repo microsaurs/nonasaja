@@ -74,13 +74,45 @@
 	<!-- 글수정 -->
   	<update id="updateBoard" parameterType="communityVO">
   		UPDATE community_board SET
+<!--   			<if test="filename != ''"> 업로드가 되었을경우 파일명을 체크해서 존재할시 (파일명이 비어있지 않을경우)
+  		    uploadfile=#{uploadfile},
+  		    filename=#{filename},
+  		    </if>	 -->
+
   			commu_title=#{commu_title},
   			commu_content=#{commu_content},
   		    commu_modify_date=SYSDATE
   		WHERE commu_num=#{commu_num}
   	</update>
 	
-	
+  	<!-- 댓글 목록 -->
+  	<!-- <를 &lt로 변환시켜서 변환된 문자열을 반환해주면 그중에서 
+		  >를 &gt로 바꿔서 태그를 무력화 시켜준다. -->
+  	<select id="selectListReply" parameterType="map"
+  	                    resultType="communityReplyVO"> <!-- 여기부터 -->
+  		SELECT
+  		   *
+  		FROM (SELECT
+  		        a.*,
+  		        rownum rnum
+  		      FROM (SELECT
+  		              reply_num,
+  		              <![CDATA[
+  		              REPLACE(REPLACE(reply_content,'<','&lt;'),'>','&gt;') reply_content,
+  		              ]]>
+  		              reply_date,
+  		              commu_num,
+  		              mem_num,
+  		              id,
+  		              nickname
+  		            FROM community_reply
+  		            JOIN member USING(mem_num)
+  		            WHERE commu_num = #{commu_num}
+  		            ORDER BY reply_num DESC)a)
+  		<![CDATA[
+  		WHERE rnum >= #{start} AND rnum <= #{end}
+  		]]>
+  	</select>	
 	
 </mapper>
 

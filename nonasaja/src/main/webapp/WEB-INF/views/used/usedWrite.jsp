@@ -5,6 +5,7 @@
 <!-- 내용 시작 -->
 <!-- include libraries(jquery,bootstrap) -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/product.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style>
@@ -25,6 +26,16 @@
 				<label for="title">제목</label>
 				<form:input path="title"/>
 				<form:errors path="title" cssClass="error-color"/>
+			</li>
+			<li>
+				<img src="${pageContext.request.contextPath}/images/empty.jpg" class="product-img" id="img1" name="img1">
+				<img src="${pageContext.request.contextPath}/images/empty.jpg" class="product-img" id="img2" name="img2">
+				<img src="${pageContext.request.contextPath}/images/empty.jpg" class="product-img" id="img3" name="img3">
+			</li>
+			<li>				
+				<input type="file" name="upload" id="upload" accept="image/gif,image/png,image/jpeg">
+				<input type="file" name="upload2" id="upload" accept="image/gif,image/png,image/jpeg">
+				<input type="file" name="upload3" id="upload" accept="image/gif,image/png,image/jpeg">
 			</li>
 			<li>
 				<label for="kind">거래종류</label>
@@ -54,6 +65,11 @@
 				<form:input path="trade"/>
 				<form:errors path="trade" cssClass="error-color"/>
 			</li>
+			<li>
+				<label for="region_num">판매지역</label>
+					<form:input path="region_num"/>
+					<form:errors path="region_num" cssClass="error-color"/>
+			</li>
 			<li><b>내용</b></li>
 			<li>
 				<form:textarea path="content"/>
@@ -77,14 +93,11 @@
 		            } );
 				</script>
 			</li>
-			<li>
-				<label for="upload">파일업로드</label>
-				<input type="file" name="upload" id="upload">
-			</li>
+
 			
 		</ul>
 		<div class="align-center">
-			<form:button>전송</form:button>
+			<form:button>등록</form:button>
 			<input type="button" value="목록" onclick="location.href='list.do'">
 		</div>
 	</form:form>

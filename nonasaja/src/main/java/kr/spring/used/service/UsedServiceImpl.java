@@ -35,8 +35,7 @@ public class UsedServiceImpl implements UsedService {
 
 	@Override
 	public UsedVO selectUsed(Integer used_num) {
-		// TODO Auto-generated method stub
-		return null;
+		return usedMapper.selectUsed(used_num);
 	}
 
 	@Override

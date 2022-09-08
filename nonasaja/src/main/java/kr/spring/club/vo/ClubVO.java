@@ -1,32 +1,67 @@
 package kr.spring.club.vo;
 
+import java.io.IOException;
 import java.sql.Date;
 
 import javax.validation.constraints.NotEmpty;
+
+import org.springframework.web.multipart.MultipartFile;
 
 
 public class ClubVO {
 	private int club_num;
 	@NotEmpty
 	private String club_title;
+	@NotEmpty
+	private String club_name;
 	private int club_leader;
 	@NotEmpty
 	private String club_content;
-	private Date club_date;
+	private String club_date;
 	private Date club_modify_date;
 	private int club_code;
 	private int club_limit;
 	private int club_pre;
 	private int club_hit;
-	
+	private Date club_reg_date;
+	private byte[] club_img;
+	private String club_img_name;
+	private String club_age;
+	private int club_gender;
+	private int club_recruit;
+	private int region_num;
+
+	//파일 업로드 처리
+	public void setUpload(MultipartFile upload)
+			throws IOException{
+		//MultipartFile -> byte[] 변환
+		setClub_img(upload.getBytes());
+		//파일명 구하기
+		setClub_img_name(upload.getOriginalFilename());
+	}
+
+	//===================checkbox===========================//
+			//form:checkbox에서 사용할 수 있도록 String -> String[]로 변환 
+	public String[] getF_club_age() {
+		String[] f_club_age = null;
+		if(club_age!=null) f_club_age = club_age.split(",");
+		return f_club_age;
+	}
+	//String[] -> String
+	public void setF_club_age(String[] f_club_age) {
+		if(f_club_age!=null) {
+			this.club_age = "";
+			for(int i=0;i<f_club_age.length;i++) {
+				if(i>0) this.club_age += ",";
+				this.club_age += f_club_age[i];
+			}
+		}
+	}
+	//===================checkbox===========================//
+
 	private String id; //회원 아이디
 	private String nickname; // 회원별명
-	private byte[] photo; //프로필 사진
-	private String photo_name; // 프로필 사진명
-	
-	private int mem_num;
-	
-	
+
 	public int getClub_num() {
 		return club_num;
 	}
@@ -38,6 +73,13 @@ public class ClubVO {
 	}
 	public void setClub_title(String club_title) {
 		this.club_title = club_title;
+	}
+
+	public String getClub_name() {
+		return club_name;
+	}
+	public void setClub_name(String club_name) {
+		this.club_name = club_name;
 	}
 	public int getClub_leader() {
 		return club_leader;
@@ -51,10 +93,11 @@ public class ClubVO {
 	public void setClub_content(String club_content) {
 		this.club_content = club_content;
 	}
-	public Date getClub_date() {
+
+	public String getClub_date() {
 		return club_date;
 	}
-	public void setClub_date(Date club_date) {
+	public void setClub_date(String club_date) {
 		this.club_date = club_date;
 	}
 	public Date getClub_modify_date() {
@@ -99,18 +142,50 @@ public class ClubVO {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
-	public byte[] getPhoto() {
-		return photo;
+
+	public Date getClub_reg_date() {
+		return club_reg_date;
 	}
-	public void setPhoto(byte[] photo) {
-		this.photo = photo;
+	public void setClub_reg_date(Date club_reg_date) {
+		this.club_reg_date = club_reg_date;
 	}
-	public String getPhoto_name() {
-		return photo_name;
+	public byte[] getClub_img() {
+		return club_img;
 	}
-	public void setPhoto_name(String photo_name) {
-		this.photo_name = photo_name;
+	public void setClub_img(byte[] club_img) {
+		this.club_img = club_img;
 	}
-	
-	
+	public String getClub_img_name() {
+		return club_img_name;
+	}
+	public void setClub_img_name(String club_img_name) {
+		this.club_img_name = club_img_name;
+	}
+
+	public String getClub_age() {
+		return club_age;
+	}
+	public void setClub_age(String club_age) {
+		this.club_age = club_age;
+	}
+	public int getClub_gender() {
+		return club_gender;
+	}
+	public void setClub_gender(int club_gender) {
+		this.club_gender = club_gender;
+	}
+	public int getClub_recruit() {
+		return club_recruit;
+	}
+	public void setClub_recruit(int club_recruit) {
+		this.club_recruit = club_recruit;
+	}
+	public int getRegion_num() {
+		return region_num;
+	}
+	public void setRegion_num(int region_num) {
+		this.region_num = region_num;
+	}
+
+
 }

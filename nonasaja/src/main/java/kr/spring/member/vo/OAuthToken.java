@@ -7,6 +7,11 @@ public class OAuthToken {
 	private int expires_in;
 	private String scope;
 	private int refresh_token_expires_in;
+	
+	//네이버에만 존재
+	private String error;
+	private String error_description;
+	
 	public String getAccess_token() {
 		return access_token;
 	}
@@ -42,5 +47,18 @@ public class OAuthToken {
 	}
 	public void setRefresh_token_expires_in(int refresh_token_expires_in) {
 		this.refresh_token_expires_in = refresh_token_expires_in;
+	}
+	//네이버
+	public String getError() {
+		return error;
+	}
+	public void setError(String error) {
+		this.error = error;
+	}
+	public String getError_description() {
+		return error_description;
+	}
+	public void setError_description(String error_description) {
+		this.error_description = error_description;
 	}
 }

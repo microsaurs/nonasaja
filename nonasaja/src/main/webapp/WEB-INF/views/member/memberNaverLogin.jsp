@@ -1,110 +1,51 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<!-- 내용 시작 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-<script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/member.naver.login.js"></script>
-<script type="text/javascript">
-	var naverLogin = new naver.LoginWithNaverId({
-		clientId: "p5qDyh8lEAltU8wkoV_r",
-  		callbackUrl: "http://localhost:8080/member/naverLogin.do",
-  		isPopup: false, //회원정보 제공 화면 true:팝업, false:같은 윈도우
-  		callbackHandle: true
-  		/* callback 페이지가 분리되었을 경우에 callback 페이지에서는 callback처리를 해줄수 있도록 설정 */
-	});
-	
-	//로그아웃 처리 : 세션에 저장한 정보 비우기
-	function Logout(){
-		sessionStorage.clear();
-	}
-	
-	/* 네아로 로그인 정보를 초기화하기 위하여 init을 호출 */
-	naverLogin.init();
-	
-	/* callback의 처리, 정상적으로 callback 처리가 완료될 경우 main page로 redirect 또는 popup close */
-	window.addEventListener('load', function(){
-		naverLogin.getLoginStatus(function(status){
-			if(status){
-				/* 필수적으로 받아야하는 프로필 정보가 있다면 callback처리 시점에 체크 */
-				//var accessToken = naverLogin.accessToken;
-				var email = naverLogin.user.getEmail();
-				var name = naverLogin.user.getName();
-				var nickname = naverLogin.user.getNickName();
-				var mobile = naverLogin.user.getMobile();
-				var id = naverLogin.user.getId();
-				if(email == undefined || email == null){
-					alert('이메일은 필수정보입니다. 정보제공을 동의해주세요.');
-					/* 사용자 정보 재동의를 위하여 다시 네이로 동의페이지로 이동 */
-					naverLogin.reprompt();
-					return;
-				}
-				
-				
-				//alert('이메일 :'+email+'\n이름 :'+name+'\n별명 :'+nickname+'\n전화번호 :'+mobile);
-				
-				//세션에 로그인 정보 저장
-				//console.log(naverLogin.accessToken);
-				//console.log(naverLogin.user);
-				
-				//sessionStorage.setItem("accessToken", naverLogin.accessToken);
-				//sessionStorage.setItem("user", naverLogin.user);
-				//sessionStorage.setItem("id",id);
-				//sessionStorage.setItem("email",email);
-				//sessionStorage.setItem("name",name);
-				//sessionStorage.setItem("nickname",nickname);
-				//sessionStorage.setItem("mobile",mobile);
-				//sessionStorage.setItem("profileImage", naverLogin.profileImage);
-				
-				$('#nickname').val(nickname);
-				$('#name').val(name);
-				$('#phone').val(mobile);
-				$('#email').val(email);
-				$('#id').val(id);
-			}else{
-				console.log("callback 처리에 실패하였습니다.");
-			}
-		});
-	});
-</script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/otherLogin.js"></script>
 <div class="page-main">
 	<h2>회원가입</h2>
-	<form:form modelAttribute="memberVO" id="register_form" action="/member/naverLogin.do" method="post">
-		<form:hidden path="id"/>
+	<form:form id="register_form" action="registerNaverUser.do" modelAttribute="memberVO">
 		<ul>
 			<li>
-				<label for="name">이름</label>
-				<form:input path="name" readonly="true"/>
+				<form:hidden path="id" value="${naverid}"/>
 			</li>
 			<li>
 				<label for="nickname">별명</label>
-				<form:input path="nickname" readonly="true"/>
-				<form:errors path="nickname" cssClass="error-color"/>
+				<form:input path="nickname" value="${navernick}"/>
+				<span id="nick_message"></span>
+			</li>
+			<li>
+				<label for="name">이름</label>
+				<form:input path="name" value="${navername}"/>
+				<span id="name_message"></span>
 			</li>
 			<li>
 				<label for="phone">전화번호</label>
-				<form:input path="phone" readonly="true"/>
-				<form:errors path="phone" cssClass="error-color"/>
+				<form:input path="phone" value="${naverphone}"/>
+				<span id="phone_message"></span>
 			</li>
 			<li>
 				<label for="email">이메일</label>
-				<form:input path="email" readonly="true"/>
-				<form:errors path="email" cssClass="error-color"/>
+				<form:input path="email" value="${naveremail}"/>
+				<span id="email_message"></span>
 			</li>
 			<li>
 				<label for="zipcode">우편번호</label>
 				<form:input path="zipcode"/>
 				<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기">
-				<form:errors path="zipcode" cssClass="error-color"/>
+				<span id="zipcode_message"></span>
 			</li>
 			<li>
 				<label for="addr1">주소</label>
 				<form:input path="addr1"/>
-				<form:errors path="addr1" cssClass="error-color"/>
+				<span id="addr1_message"></span>
 			</li>
 			<li>
-				<label for="add2">상세 주소</label>
+				<label for="addr2">상세 주소</label>
 				<form:input path="addr2"/>
-				<form:errors path="addr2" cssClass="error-color"/>
+				<span id="addr2_message"></span>
 			</li>
 			<li>
 				<label for="interest">관심사</label>
@@ -117,7 +58,7 @@
 			</li>
 		</ul>
 		<div class="align-center">
-			<input type="submit" value="전송">
+			<form:button>전송</form:button>
 			<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 		</div>
 	</form:form>
@@ -199,3 +140,4 @@
     }
 </script>
 <!-- 우편번호 검색 끝 -->
+<!-- 내용 끝 -->
