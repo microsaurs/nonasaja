@@ -157,7 +157,7 @@ private static final Logger logger = LoggerFactory.getLogger(CommuBoardControlle
 		
 		return mav;
 	}
-	
+	 
 	
 	
 	//============게시판 글수정============//

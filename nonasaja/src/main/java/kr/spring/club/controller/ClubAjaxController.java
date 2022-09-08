@@ -37,7 +37,7 @@ public class ClubAjaxController {
 				                HttpSession session){
 			Map<String,String> mapJson = 
 					new HashMap<String,String>();
-
+ 
 			MemberVO user = 
 				   (MemberVO)session.getAttribute("user");
 			if(user==null) {
