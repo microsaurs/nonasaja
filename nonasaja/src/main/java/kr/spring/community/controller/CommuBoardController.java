@@ -157,8 +157,6 @@ private static final Logger logger = LoggerFactory.getLogger(CommuBoardControlle
 		
 		return mav;
 	}
-	 
-	
 	
 	//============게시판 글수정============//
 	//수정품
@@ -217,6 +215,44 @@ private static final Logger logger = LoggerFactory.getLogger(CommuBoardControlle
 			
 			return "common/resultView";
 		}
+		
+		
+		//=====================레시피 게시판 시작=====================//
+		@RequestMapping("/commuRecipe/list.do")
+		public ModelAndView process2( 
+				@RequestParam(value="pageNum",defaultValue="1") int currentPage, 
+				@RequestParam(value="keyfield",defaultValue="") String keyfield,
+				@RequestParam(value="keyword",defaultValue="") String keyword) {
+			
+			Map<String,Object> map = new HashMap<String,Object>(); 
+			map.put("keyword", keyword);
+		
+			//글의 총 개수(검색된 글의 개수)
+			int count = boardService.selectRowCount(map);
+			
+			logger.debug("<<count>> : " + count);
+		
+			//페이지 처리
+			PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,rowCount,pageCount,"list.do");
+					
+			List<CommunityVO> list = null;
+			if(count > 0) {
+				map.put("start", page.getStartRow());
+				map.put("end", page.getEndRow());
+				
+				list = boardService.selectList(map);
+			}
+			
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("commuRecipeList"); 
+			mav.addObject("count", count); 
+			mav.addObject("list", list);
+			mav.addObject("page", page.getPage());
+			
+			return mav;
+		}
+		
+		
 		
 		
 		

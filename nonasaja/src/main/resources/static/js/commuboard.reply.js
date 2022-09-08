@@ -154,8 +154,8 @@ $(function(){
 		
 		//댓글 수정폼 UI
 		let modifyUI = '<form id="mre_form">';
-		modifyUI += '<input type="hidden" name="re_num" id="mre_num" value="'+ re_num +'">';
-		modifyUI += '<textarea rows="3" cols="50" name="re_content" id="mre_content" class="rep-content">'+ content +'</textarea>';
+		modifyUI += '<input type="hidden" name="reply_num" id="mre_num" value="'+ reply_num +'">';
+		modifyUI += '<textarea rows="3" cols="50" name="reply_content" id="mre_content" class="rep-content">'+ content +'</textarea>';
 		modifyUI += '<div id="mre_first"><span class="letter-count">300/300</span></div>';
 		modifyUI += '<div id="mre_second" class="align-right">';
 		modifyUI += '<input type="submit" value="수정">';
@@ -246,7 +246,7 @@ $(function(){
 	//댓글 삭제
 	$(document).on('click','.delete-btn',function(){
 		//댓글 번호
-		let re_num = $(this).attr('data-num');
+		let reply_num = $(this).attr('data-num');
 		
 		$.ajax({
 			url:'deleteReply.do',

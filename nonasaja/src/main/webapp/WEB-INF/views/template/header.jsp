@@ -10,6 +10,9 @@
 	<a href="${pageContext.request.contextPath}/used/list.do">중고거래</a>
 	<a href="${pageContext.request.contextPath}/clubboard/list.do">동호회</a>
 	<a href="${pageContext.request.contextPath}/commuboard/list.do">커뮤니티</a>  
+	<a href="${pageContext.request.contextPath}/commuRecipe/list.do">레시피</a>  
+	<a href="${pageContext.request.contextPath}/commuboard/list.do">유머</a>  
+	<a href="${pageContext.request.contextPath}/commuInfo/list.do">자취정보</a>  
 	<c:if test="${!empty user && !empty user.photo}">
 		<img src="${pageContext.request.contextPath}/member/photoView.do" width="25" height="25" class="my-photo">
 	</c:if>
