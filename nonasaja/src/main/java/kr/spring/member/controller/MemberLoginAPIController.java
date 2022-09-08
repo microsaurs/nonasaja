@@ -49,7 +49,7 @@ public class MemberLoginAPIController {
 		return new MemberVO();
 	}
 	//=================네이버=====================//
-	// 네이버 로그인 or 최초 가입시 추가 정보 기입
+	//네이버 인가코드,액세스 토큰 받아서 회원정보 불러오기
 	@GetMapping("/auth/naver/callback") // /member/naverLogin.do /auth/kakao/callback
 	public @ResponseBody ResponseEntity<?> naverConfirm(String code, HttpSession session) {
 		// code값을 받으면 인증 완료! code값을 이용해 accessToken을 받는다.
@@ -90,11 +90,11 @@ public class MemberLoginAPIController {
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
-		System.out.println("header : "+headers);
-		System.out.println("response"+response);
-		System.out.println("params : "+params);
-		System.out.println("tokenRequest : "+naverTokenRequest);
-		System.out.println("네이버 액세스 토큰 : " + oauthToken.getAccess_token());
+//		System.out.println("header : "+headers);
+//		System.out.println("response"+response);
+//		System.out.println("params : "+params);
+//		System.out.println("tokenRequest : "+naverTokenRequest);
+//		System.out.println("네이버 액세스 토큰 : " + oauthToken.getAccess_token());
 
 		// 사용자 정보 조회
 		RestTemplate rt2 = new RestTemplate();
@@ -147,6 +147,7 @@ public class MemberLoginAPIController {
 		}
 	}
 	
+	//네이버가 보내온 정보가 세팅된 폼 호출
 	@GetMapping("/member/memberNaverLogin.do")
 	public String naverForm(HttpServletRequest request, Model model) {
 		model.addAttribute("naverid", request.getParameter("id"));
@@ -157,7 +158,7 @@ public class MemberLoginAPIController {
 		logger.debug("<네이버가 보낸 정보.....> : "+ model);
 		return "memberNaverLogin";
 	}
-	
+	//네이버 연동 회원가입 완료
 	@PostMapping("/member/registerNaverUser.do")
 	public String naverSubmit(MemberVO memberVO, Model model) {
 		logger.debug("<회원가입> : " + memberVO);
@@ -171,7 +172,8 @@ public class MemberLoginAPIController {
 	@Value("${secret.key}")
 	private String key;
 
-	// =======카카오=======//
+	//=======카카오=======//
+	//카카오 인가코드,액세스 토큰 받아서 회원정보 불러오기
 	@GetMapping("/auth/kakao/callback")
 	// @ResponseBody = Data를 리턴해주는 컨트롤러 함수 ResponseEntity<?>
 	public @ResponseBody ResponseEntity<?> kakaoCallback(String code, HttpServletRequest request, HttpSession session) {
@@ -212,7 +214,7 @@ public class MemberLoginAPIController {
 			e.printStackTrace();
 		}
 
-		System.out.println("카카오 액세스 토큰 : " + oauthToken.getAccess_token());
+		//System.out.println("카카오 액세스 토큰 : " + oauthToken.getAccess_token());
 
 		// 사용자 정보 조회
 		RestTemplate rt2 = new RestTemplate();

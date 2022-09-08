@@ -1,32 +1,56 @@
 $(function(){
-	const grant_type = 'authorization_code';
-	const client_id = 'a8abdc39c132bcec49dcef03bb7a10d1';
-	const redirect_uri = 'http://localhost:8080/auth/kakao/callback';
-	const code = 'code';
-	let unique = "";
-	const input = 'https://kauth.kakao.com/oauth/authorize?client_id=a8abdc39c132bcec49dcef03bb7a10d1&redirect_uri=http://localhost:8080/auth/kakao/callback&response_type=code';
-	$('#kakao').attr('href', input);
-	$('#kakao').click(function(){
-		$.ajax({
-			url: input,
-			data:{code:code},
-			type:'get',
-			dataType:'json',
-			cache:false,
-			timeout:30000,
-			success:function(param){
-				if(param.result == 'success'){
-					console.log('ajax 호출' + param.code);
-					console.log('ajax 호출' + param.code2);
-					unique = param.code;
-				}else{
-					alert('ajax 실패');
-				}
-			},
-			error:function(){
-				alert('네트워크 오류!')
-			}
-			
-		});
+	$('#register_form').submit(function(){
+		if($('#nickname').val().trim()==''){
+			$('#nick_message').text('별명은 필수').css('color','red');
+			$('#nickname').val('').focus();
+			return false;
+		}else{
+			$('#nick_message').text('')
+		}
+		if($('#name').val().trim()==''){
+			$('#name_message').text('이름은 필수').css('color','red');
+			$('#name').val('').focus();
+			return false;
+		}else{
+			$('#name_message').text('')
+		}
+		
+		if($('#phone').val().trim()==''){
+			$('#phone_message').text('전화번호는 필수').css('color','red');
+			$('#phone').val('').focus();
+			return false;
+		}else{
+			$('#phone_message').text('')
+		}
+		
+		if($('#email').val().trim()==''){
+			$('#email_message').text('이메일은 필수').css('color','red');
+			$('#email').val('').focus();
+			return false;
+		}else{
+			$('#email_message').text('')
+		}
+		if($('#zipcode').val().trim()==''){
+			$('#zipcode_message').text('우편번호는 필수').css('color','red');
+			$('#zipcode').val('').focus();
+			return false;
+		}else{
+			$('#zipcode_message').text('')
+		}
+		
+		if($('#addr1').val().trim()==''){
+			$('#addr1_message').text('주소는 필수').css('color','red');
+			$('#addr1').val('').focus();
+			return false;
+		}else{
+			$('#addr1_message').text('')
+		}
+		if($('#addr2').val().trim()==''){
+			$('#addr2_message').text('상세주소는 필수').css('color','red');
+			$('#addr2').val('').focus();
+			return false;
+		}else{
+			$('#addr2_message').text('')
+		}
 	});
 });
