@@ -6,17 +6,18 @@
 <!-- 내용시작 -->
 <img src="${pageContext.request.contextPath}/images/listMain2.png" width="100%">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/product.css">
 
 <input type="button" id="register_btn" onclick="location.href='register.do'" value="상품 등록">
 <input type="button" id="register_btn" onclick="location.href='admin_list.do'" value="관리자용 목록">
 <!--  카테고리 박스 -->
 <div>
-<span>카테고리</span>
-
+	<span id="category">카테고리</span>
+		<img class ="category_img" src="${pageContext.request.contextPath}/images/category_food.png" width="100%">
+		<img class ="category_img" src="${pageContext.request.contextPath}/images/category_living.png" width="100%">
 </div>
 
 <div class="page-main">
-	<h2>상품 목록</h2>
 	<form action="list.do" method="get" id="search_form">
 		<ul class="search">
 			<li>

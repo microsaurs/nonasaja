@@ -3,50 +3,49 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!-- 내용 시작 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/otherLogin.js"></script>
 <div class="page-main">
 	<h2>회원가입</h2>
 	<form:form id="register_form" action="registerNaverUser.do" modelAttribute="memberVO">
-		<form:errors element="div" cssClass="error-color"/><%-- 필드에 의존하지 않는 예외 문구 출력 --%>
 		<ul>
 			<li>
-				<%-- <input type="hidden" name="id" id="id" value="${kakaoid}"/> --%>
 				<form:hidden path="id" value="${naverid}"/>
 			</li>
 			<li>
 				<label for="nickname">별명</label>
 				<form:input path="nickname" value="${navernick}"/>
-				<form:errors path="nickname" cssClass="error-color"/>
+				<span id="nick_message"></span>
 			</li>
 			<li>
 				<label for="name">이름</label>
 				<form:input path="name" value="${navername}"/>
-				<form:errors path="name" cssClass="error-color"/>
+				<span id="name_message"></span>
 			</li>
 			<li>
 				<label for="phone">전화번호</label>
 				<form:input path="phone" value="${naverphone}"/>
-				<form:errors path="phone" cssClass="error-color"/>
+				<span id="phone_message"></span>
 			</li>
 			<li>
 				<label for="email">이메일</label>
 				<form:input path="email" value="${naveremail}"/>
-				<form:errors path="email" cssClass="error-color"/>
+				<span id="email_message"></span>
 			</li>
 			<li>
 				<label for="zipcode">우편번호</label>
 				<form:input path="zipcode"/>
 				<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기">
-				<form:errors path="zipcode" cssClass="error-color"/>
+				<span id="zipcode_message"></span>
 			</li>
 			<li>
 				<label for="addr1">주소</label>
 				<form:input path="addr1"/>
-				<form:errors path="addr1" cssClass="error-color"/>
+				<span id="addr1_message"></span>
 			</li>
 			<li>
 				<label for="addr2">상세 주소</label>
 				<form:input path="addr2"/>
-				<form:errors path="addr2" cssClass="error-color"/>
+				<span id="addr2_message"></span>
 			</li>
 			<li>
 				<label for="interest">관심사</label>

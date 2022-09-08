@@ -28,6 +28,12 @@
     	<put-attribute name="body"
     	  value="/WEB-INF/views/product/admin_modifyForm.jsp"/>                   
     </definition>
+    
+     <definition name="productView" extends="main">
+    	<put-attribute name="title" value="상품상세"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/product/user_productView.jsp"/>                   
+    </definition>
 
 </tiles-definitions>
 

@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import kr.spring.sale.dao.SaleBoardMapper;
 import kr.spring.sale.vo.SaleVO;
+import kr.spring.sale.vo.SaleReplyVO;
 
 @Service
 @Transactional
@@ -60,29 +61,9 @@ public class SaleBoardServiceImpl implements SaleBoardService{
 		boardMapper.deleteFile(board_num);
 	}
 
-	/*
+	
 	@Override
-	public BoardFavVO selectFav(BoardFavVO fav) {
-		return boardMapper.selectFav(fav);
-	}
-
-	@Override
-	public int selectFavCount(Integer board_num) {
-		return boardMapper.selectFavCount(board_num);
-	}
-
-	@Override
-	public void insertFav(BoardFavVO boardFav) {
-		boardMapper.insertFav(boardFav);
-	}
-
-	@Override
-	public void deleteFav(Integer fav_num) {
-		boardMapper.deleteFav(fav_num);
-	}
-
-	@Override
-	public List<BoardReplyVO> selectListReply(Map<String, Object> map) {
+	public List<SaleReplyVO> selectListReply(Map<String, Object> map) {
 		return boardMapper.selectListReply(map);
 	}
 
@@ -92,27 +73,26 @@ public class SaleBoardServiceImpl implements SaleBoardService{
 	}
 
 	@Override
-	public BoardReplyVO selectReply(Integer re_num) {
+	public SaleReplyVO selectReply(Integer reply_num) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void insertReply(BoardReplyVO boardReply) {
+	public void insertReply(SaleReplyVO boardReply) {
 		boardMapper.insertReply(boardReply);
 	}
 
 	@Override
-	public void updateReply(BoardReplyVO boardReply) {
+	public void updateReply(SaleReplyVO boardReply) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void deleteReply(Integer re_num) {
+	public void deleteReply(Integer reply_num) {
 		// TODO Auto-generated method stub
 		
 	}
-	*/
 
 }

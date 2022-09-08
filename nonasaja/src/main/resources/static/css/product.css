@@ -1,4 +1,5 @@
 /*========상품=========*/
+/*========상품 등록=========*/
 #product_register p{
 	font-size: 14pt;
     font-weight: bold;
@@ -57,3 +58,27 @@
 li#detail_li{
 	margin: 30px 0 0 0;
 }
+/*========상품 목록=========*/
+#category{
+	font-size: 30pt;
+}
+.category_img{
+	float: right;
+	width:30%
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
