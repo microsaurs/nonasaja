@@ -4,7 +4,22 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 <!-- 어노테이션과 병행할경우 namespace를 dao(mapper.java)인터페이스 명칭과 맞춰야 함 -->
 <mapper namespace="kr.spring.cart.dao.CartMapper">  
-	
+	<select id="selectRowCount" parameterType="map" resultType="integer">
+		select 
+			count(*)
+		from cart c join member m
+		on c.mem_num = m.mem_num
+		<where>
+			<if test="keyword != null and keyword !=''">
+				c.title like '%' || #{keyword} || '%'
+			</if>
+		</where>
+		<if test="keyfield != null and keyfield !=''">
+			<if test="keyfield == 1">
+			order by 
+			</if> 
+		</if>
+	</select>
 </mapper>
 
 

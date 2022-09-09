@@ -1,5 +1,9 @@
 package kr.spring.cart.controller;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -8,9 +12,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.cart.service.CartService;
 import kr.spring.cart.vo.CartVO;
@@ -18,6 +24,7 @@ import kr.spring.member.vo.MemberVO;
 import kr.spring.product.controller.ProductController;
 import kr.spring.product.service.ProductService;
 import kr.spring.product.vo.ProductVO;
+import kr.spring.util.PagingUtil;
 
 @Controller
 public class CartController {
@@ -33,6 +40,9 @@ public class CartController {
 	
 	@Autowired
 	private ProductService productService;
+	
+	private int rowCount = 10;
+	private int pageCount = 10;
 	
 	@RequestMapping("/cart/cart_insert.do")
 	public String submit(@RequestParam int product_num, @RequestParam int product_price2,
@@ -83,4 +93,61 @@ public class CartController {
 		return "common/resultView";
 	}
 	
+	@RequestMapping("/cart/cart_list.do")
+	public ModelAndView cartList( @RequestParam int mem_num,
+			@RequestParam(value="pageNum", defaultValue="1") int currentPage, 
+			@RequestParam(value="keyfield", defaultValue="") String keyfield, 
+			@RequestParam(value="keyword", defaultValue="") String keyword) {
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("keyfield", keyfield);
+		map.put("keyword", keyword);
+		
+		//주문의 총 개수(장바구니에 담긴 주문 개수)
+		int count = cartService.selectRowCount(mem_num);
+		logger.debug("<<count>> : " +count);
+		
+		//rowCount, pageCount는 맨 위에 설정함
+		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,rowCount,pageCount,"list.do");
+		
+		List<CartVO> list = null;
+		if(count > 0) {
+			map.put("start", page.getStartRow());
+			map.put("end", page.getEndRow());
+			
+			list = cartService.selectListCart(mem_num);
+		}
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("cartList");
+		mav.addObject("count", count);
+		mav.addObject("list", list);
+		mav.addObject("page", page.getPage());
+		
+		return mav;
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

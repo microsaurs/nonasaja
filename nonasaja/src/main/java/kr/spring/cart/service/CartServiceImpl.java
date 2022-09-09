@@ -55,4 +55,9 @@ public class CartServiceImpl implements CartService{
 		
 	}
 
+	@Override
+	public int selectRowCount(int mem_num) {
+		return cartMapper.selectRowCount(mem_num);
+	}
+
 }

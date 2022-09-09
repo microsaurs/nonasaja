@@ -11,6 +11,9 @@ public interface CartService {
 	// 회원별(mem_num) 총구매액
 	public int selectTotalByMem_num(int mem_num);
 
+	//장바구니 주문 수
+	public int selectRowCount(int mem_num);
+	
 	// 장바구니 목록
 	public List<CartVO> selectListCart(int mem_num);
 
