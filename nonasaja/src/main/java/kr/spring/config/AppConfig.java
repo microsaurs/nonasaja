@@ -31,7 +31,8 @@ public class AppConfig implements WebMvcConfigurer{
 			       InterceptorRegistry registry) {
 		registry.addInterceptor(
 				    new LoginCheckInterceptor())
-		        .addPathPatterns("/member/myPage.do");
+		        .addPathPatterns("/member/myPage.do")
+		        .addPathPatterns("/cart/cart_insert.do");
 		registry.addInterceptor(new AdminCheckInterceptor())
 				.addPathPatterns("/product/admin_list.do")
 				.addPathPatterns("/product/register.do")

@@ -23,10 +23,11 @@
 			<!-- 사진이 2,3개 있으면 슬라이드로 만들기 -->
 		</div>
 		<div class="product-detail">
-			<form id="product_cart" method="post">
+			<form id="product_cart" method="post" action="${pageContext.request.contextPath}/cart/cart_insert.do">
 				<input type="hidden" name="product_num" value="${product.product_num}" id="product_num">
 				<input type="hidden" name="product_price2" value="${product.price2}" id="product_price2">
 				<input type="hidden" name="product_quantity" value="${product.quantity}" id="product_quantity">
+				<input type="hidden" name="product_req_quantity" value="${product.req_quantity}" id="product_req_quantity">
 				<ul>
 					<li><img src="${pageContext.request.contextPath}/images/tag.jpg" width="60px"></li>
 					<br>
@@ -48,7 +49,8 @@
 						<span id="product_total_txt">총 주문 금액 : 0원</span>
 					</li>
 					<li>
-						<input type="submit" value="공동구매">
+						<input type="submit" value="장바구니">
+						<input type="button" value="구매신청" onclick="">
 					</li>
 					
 					<!-- 품절 시 -->
