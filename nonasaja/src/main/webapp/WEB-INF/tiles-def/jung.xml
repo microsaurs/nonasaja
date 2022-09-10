@@ -17,6 +17,10 @@
     	<put-attribute name="title" value="상세정보"/>
     	<put-attribute name="body" value="/WEB-INF/views/used/usedView.jsp"/>                   
     </definition>
+    <definition name="usedModify" extends="main">
+    	<put-attribute name="title" value="글수정"/>
+    	<put-attribute name="body" value="/WEB-INF/views/used/usedModify.jsp"/>                   
+    </definition>
 </tiles-definitions>
 
 
