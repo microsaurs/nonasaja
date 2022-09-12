@@ -10,6 +10,7 @@
 		<ul class="search">
 			<li>
 				<select name="keyfield">
+					<option value="3" <c:if test="${param.keyfield==1}">selected</c:if> >전체</option>
 					<option value="1" <c:if test="${param.keyfield==1}">selected</c:if> >장바구니</option>
 					<option value="2" <c:if test="${param.keyfield==2}">selected</c:if> >구매대기</option>
 				</select>
@@ -26,15 +27,23 @@
 		<div class="result-display">표시할 상품이 없습니다.</div>
 	</c:if>
 	<c:if test="${count > 0 }">
+	<form action="cart_order.do" id="cartOrder">
 		<table>
+		
 			<tr>
+				<th>주문하기</th>			
 				<th>번호</th>
 				<th>상품명</th>
 				<th>주문수량</th>
 				<th>상품금액</th>
+				<th>소분 수량</th>
 			</tr>
 			<c:forEach var="item" items="${list}">
+				<input type="hidden" name="product_num" value="${item.product_num}">
 			<tr>
+				<td>
+					<input type="checkbox" name="cart_num" value="${item.cart_num}">
+				</td>
 				<td>${item.product_num }</td>
 				<td>
 				<c:if test="${item.productVO.status == 1 }">
@@ -46,9 +55,13 @@
 				</td>
 				<td><fmt:formatNumber value="${item.quantity }"/></td>
 				<td><fmt:formatNumber value="${item.productVO.price2 }"/></td>
+				<td>${item.productVO.req_quantity }</td>
 			</tr>
 			</c:forEach>
-		</table>
+			</table>
+			<input type="submit" value="주문하기">
+		</form>
+		
 		<div class="align-center">
 			${page}
 		</div>

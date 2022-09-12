@@ -3,6 +3,8 @@ package kr.spring.cart.service;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Select;
+
 import kr.spring.cart.vo.CartVO;
 
 public interface CartService {
@@ -20,12 +22,18 @@ public interface CartService {
 
 	// 장바구니 상세
 	public CartVO selectCart(CartVO cart);
+	
+	//장바구니 상세(카트번호로)
+	public CartVO selectCartByCartNum(int cart_num);
 
 	// 장바구니 수정 (개별 상품 수량 수정)
 	public void updateCart(CartVO cart);
-
-	// 장바구니 수정(상품번호와 회원번호별 상품 수량 수정)
-	public void updateCartByItem_num(CartVO cart);
+	
+	//상품의 주문 대기 수 확인 
+	public int selectWait(int product_num);
+		
+	//구매대기(status)수정 
+	public void updateCartWait(int cart_num, int status);
 
 	// 장바구니 삭제
 	public void deleteCart(int cart_num);

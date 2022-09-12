@@ -14,8 +14,8 @@ public class CartVO {
 	private int sub_total;
 		
 	//상품 정보
-	private ProductVO productVO;
-
+	private ProductVO productVO;	
+	
 	public int getCart_num() {
 		return cart_num;
 	}

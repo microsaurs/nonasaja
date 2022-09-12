@@ -25,15 +25,24 @@ public interface CartMapper {
 	public int selectRowCount(Map<String, Object> map);
 	//장바구니 목록
 	public List<CartVO> selectListCart(Map<String, Object> map);
-	//장바구니 상세
+	//장바구니 상세(회원번호와 상품번호로)
 	@Select("select * from cart where mem_num=#{mem_num} and product_num=#{product_num}")
 	public CartVO selectCart(CartVO cart);
+	//장바구니 상세(카트번호로)
+	@Select("select * from cart where cart_num=#{cart_num}")
+	public CartVO selectCartByCartNum(int cart_num);
 	//장바구니 수정 (개별 상품 수량 수정)
 	@Update("update cart set quantity=#{quantity} "
 			+ "where mem_num=#{mem_num} and product_num=#{product_num}")
 	public void updateCart(CartVO cart);
-	//장바구니 수정(상품번호와 회원번호별 상품 수량 수정)
-	public void updateCartByItem_num(CartVO cart);
+	//장바구니 수정(상품번호와 회원번호별 상품 수량 || status 수정)
+	@Update("update cart set status=#{status} where cart_num=#{cart_num}")
+	public void updateCartWait(int cart_num, int status);
+	//상품의 주문 대기 수 확인 
+	@Select("select count(*) from cart "
+			+ "where product_num=#{product_num} "
+			+ "and status = 2")
+	public int selectWait(int product_num);
 	//장바구니 삭제
 	public void deleteCart(int cart_num);	
 }

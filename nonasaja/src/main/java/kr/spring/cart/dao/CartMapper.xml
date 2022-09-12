@@ -17,16 +17,25 @@
 			</if>
 			<if test="keyfield != null and keyfield !=''">
 				<if test="keyfield == 1">
-					and status = 1
+					and c.status = 1
 				</if>
 				<if test="keyfield == 2">
-					and status = 2
-				</if> 
+					and c.status = 2
+				</if>  
 			</if>
 		</where>
 	</select>
-	
-	
+	<!-- 
+	<resultMap type="cartVO" id="cartMap">
+        <result property="productVO.name" column="name" />
+        <result property="productVO.status" column="p.status" />
+        <result property="productVO.price2" column="price2" />
+        <result property="productVO.quantity" column="p.quantity" />
+        <result property="productVO.photo1" column="photo1" />
+        <result property="productVO.title" column="title" />
+        <result property="productVO.req_quantity" column="req_quantity" />
+     </resultMap>
+	 -->
 	<select id="selectListCart" parameterType="map" resultType="cartVO">
   		SELECT
   		   *
@@ -35,24 +44,24 @@
   		        rownum rnum
   		      FROM (SELECT 
   		               *
-  		            FROM cart LEFT OUTER 
-  		            JOIN product
+  		            FROM cart c LEFT OUTER 
+  		            JOIN product p 
   		            USING(product_num)
   		            <where>
-						cart.mem_num = #{mem_num} 
+						c.mem_num = #{mem_num} 
 					<if test="keyword != null and keyword !=''">
-						and product.title like '%' || #{keyword} || '%'
+						and p.title like '%' || #{keyword} || '%'
 					</if>
 					<if test="keyfield != null and keyfield !=''">
 						<if test="keyfield == 1">
-							and cart.status = 1
+							and c.status = 1
 						</if>
 						<if test="keyfield == 2">
-							and cart.status = 2
+							and c.status = 2
 						</if> 
 					</if>
 					</where>
-  		            ORDER BY cart.reg_date DESC)a) 
+  		            ORDER BY c.reg_date DESC)a) 
   	<![CDATA[
   	WHERE rnum >= #{start} AND rnum <= #{end}
   	]]>	            

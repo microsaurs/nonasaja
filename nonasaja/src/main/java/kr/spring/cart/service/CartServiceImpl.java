@@ -44,12 +44,6 @@ public class CartServiceImpl implements CartService{
 	}
 
 	@Override
-	public void updateCartByItem_num(CartVO cart) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void deleteCart(int cart_num) {
 		// TODO Auto-generated method stub
 		
@@ -57,6 +51,21 @@ public class CartServiceImpl implements CartService{
 	@Override
 	public int selectRowCount(Map <String, Object> map) {
 		return cartMapper.selectRowCount(map);
+	}
+
+	@Override
+	public int selectWait(int product_num) {
+		return cartMapper.selectWait(product_num);
+	}
+
+	@Override
+	public void updateCartWait(int cart_num, int status) {
+		cartMapper.updateCartWait(cart_num, status);
+	}
+
+	@Override
+	public CartVO selectCartByCartNum(int cart_num) {
+		return cartMapper.selectCartByCartNum(cart_num);
 	}
 
 }
