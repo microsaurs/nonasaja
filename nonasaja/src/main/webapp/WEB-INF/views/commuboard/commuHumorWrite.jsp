@@ -15,7 +15,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/ckeditor.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/uploadAdapter.js"></script>
 <div class="page-main">
-	<h2>글쓰기</h2>
+	<h2>유머 글쓰기</h2>
 	<form:form action="humorwrite.do" modelAttribute="communityVO"
 	        id="register_form"
 	        enctype="multipart/form-data">

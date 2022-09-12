@@ -28,7 +28,7 @@
 	</form>
 	<c:if test="${!empty user}">
 	<div class="align-right">
-		<input type="button" value="글쓰기" onclick="location.href='humorwrite.do'">
+		<input type="button" value="글쓰기" onclick="location.href='write.do'">
 	</div>
 	</c:if>
 	<c:if test="${count == 0}">

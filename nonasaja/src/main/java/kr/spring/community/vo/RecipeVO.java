@@ -2,6 +2,7 @@ package kr.spring.community.vo;
 
 import java.sql.Date;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 
 public class RecipeVO {
@@ -19,7 +20,7 @@ public class RecipeVO {
 	private String commu_food; //음식 이름
 	@NotEmpty
 	private String commu_ingredient; //필수 재료
-	@NotEmpty
+	@Min(0)
 	private int commu_level; //요리 난이도
 	@NotEmpty
 	private String commu_time; //요리 시간

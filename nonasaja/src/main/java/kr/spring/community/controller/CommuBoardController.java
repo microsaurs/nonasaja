@@ -227,7 +227,41 @@ private static final Logger logger = LoggerFactory.getLogger(CommuBoardControlle
 		
 		
 		//=====================레시피 게시판 시작=====================//
-		@RequestMapping("/recipe/list.do")
+		//========레시피 글 등록========//
+		//등록 폼
+		@GetMapping("/commuRecipe/write.do")
+		public String form2() {
+			return "commuRecipeWrite"; 			
+		}
+		
+		//등록 폼에서 전송된 데이터 처리
+		@PostMapping("/commuRecipe/write.do")
+		public String submit2(@Valid RecipeVO boardVO, BindingResult result, HttpServletRequest request, HttpSession session, Model model) {
+			
+			logger.debug("<<유머 게시판 글 저장>> : " + boardVO);
+			
+			//유효성 검사 결과 오류가 있으면 폼 호출
+			if(result.hasErrors()) {
+				return form2();
+			}
+			MemberVO user = (MemberVO)session.getAttribute("user");
+			//회원번호 세팅
+			boardVO.setMem_num(user.getMem_num());
+			
+			//글쓰기
+			boardService.insertBoard2(boardVO);
+			
+			//View에 표시할 메시지 
+			model.addAttribute("message", "글 등록이 완료되었습니다.");
+			model.addAttribute("url", request.getContextPath()+"/commuRecipe/list.do"); 
+					
+			
+			return "common/resultView"; 
+		}
+		
+		
+		//===========레시피 게시판 글 목록==========//
+		@RequestMapping("/commuRecipe/list.do")
 		public ModelAndView process2( 
 				@RequestParam(value="pageNum",defaultValue="1") int currentPage, 
 				@RequestParam(value="keyfield",defaultValue="") String keyfield,
@@ -237,19 +271,19 @@ private static final Logger logger = LoggerFactory.getLogger(CommuBoardControlle
 			map.put("keyword", keyword);
 		
 			//글의 총 개수(검색된 글의 개수)
-			int count = boardService.selectRowCount(map);
+			int count = boardService.selectRowCount2(map);
 			
 			logger.debug("<<count>> : " + count);
 		
 			//페이지 처리
 			PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,rowCount,pageCount,"list.do");
 					
-			List<CommunityVO> list = null;
+			List<RecipeVO> list = null;
 			if(count > 0) {
 				map.put("start", page.getStartRow());
 				map.put("end", page.getEndRow());
 				
-				list = boardService.selectList(map);
+				list = boardService.selectList2(map);
 			}
 			
 			ModelAndView mav = new ModelAndView();
