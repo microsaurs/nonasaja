@@ -1,6 +1,7 @@
 package kr.spring.cart.service;
 
 import java.util.List;
+import java.util.Map;
 
 import kr.spring.cart.vo.CartVO;
 
@@ -12,10 +13,10 @@ public interface CartService {
 	public int selectTotalByMem_num(int mem_num);
 
 	//장바구니 주문 수
-	public int selectRowCount(int mem_num);
+	public int selectRowCount(Map<String, Object> map);
 	
 	// 장바구니 목록
-	public List<CartVO> selectListCart(int mem_num);
+	public List<CartVO> selectListCart(Map<String, Object> map);
 
 	// 장바구니 상세
 	public CartVO selectCart(CartVO cart);

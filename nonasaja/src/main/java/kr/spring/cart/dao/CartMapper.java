@@ -1,6 +1,7 @@
 package kr.spring.cart.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -21,9 +22,9 @@ public interface CartMapper {
 	//회원별(mem_num) 총구매액
 	public int selectTotalByMem_num(int mem_num);
 	//장바구니 주문 수 
-	public int selectRowCount(int mem_num);
+	public int selectRowCount(Map<String, Object> map);
 	//장바구니 목록
-	public List<CartVO> selectListCart(int mem_num);
+	public List<CartVO> selectListCart(Map<String, Object> map);
 	//장바구니 상세
 	@Select("select * from cart where mem_num=#{mem_num} and product_num=#{product_num}")
 	public CartVO selectCart(CartVO cart);

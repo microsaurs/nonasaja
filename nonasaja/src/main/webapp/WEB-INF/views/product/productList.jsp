@@ -9,7 +9,7 @@
 <div class="page-main">
 	<input type="button" id="register_btn" onclick="location.href='register.do'" value="상품 등록">
 	<input type="button" id="register_btn" onclick="location.href='admin_list.do'" value="관리자용 목록">
-	<input type="button" id="register_btn" onclick="location.href='cart_list.do'" value="고객용 장바구니">
+	<input type="button" id="register_btn" onclick="location.href='${pageContext.request.contextPath}/cart/cart_list.do'" value="고객용 장바구니">
 	<!-- 헤드 이미지 -->
 	<img src="${pageContext.request.contextPath}/images/listMain2.png" width="100%">
 	<!--  카테고리 박스 -->

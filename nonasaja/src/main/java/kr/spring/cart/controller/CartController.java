@@ -12,7 +12,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -94,7 +93,7 @@ public class CartController {
 	}
 	
 	@RequestMapping("/cart/cart_list.do")
-	public ModelAndView cartList( @RequestParam int mem_num,
+	public ModelAndView cartList(HttpSession session,
 			@RequestParam(value="pageNum", defaultValue="1") int currentPage, 
 			@RequestParam(value="keyfield", defaultValue="") String keyfield, 
 			@RequestParam(value="keyword", defaultValue="") String keyword) {
@@ -102,9 +101,11 @@ public class CartController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("keyfield", keyfield);
 		map.put("keyword", keyword);
+		MemberVO user = (MemberVO) session.getAttribute("user");
+		map.put("mem_num", user.getMem_num());
 		
 		//주문의 총 개수(장바구니에 담긴 주문 개수)
-		int count = cartService.selectRowCount(mem_num);
+		int count = cartService.selectRowCount(map);
 		logger.debug("<<count>> : " +count);
 		
 		//rowCount, pageCount는 맨 위에 설정함
@@ -115,7 +116,7 @@ public class CartController {
 			map.put("start", page.getStartRow());
 			map.put("end", page.getEndRow());
 			
-			list = cartService.selectListCart(mem_num);
+			list = cartService.selectListCart(map);
 		}
 		
 		ModelAndView mav = new ModelAndView();
