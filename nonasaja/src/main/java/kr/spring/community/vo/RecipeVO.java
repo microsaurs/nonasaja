@@ -1,9 +1,12 @@
 package kr.spring.community.vo;
 
+import java.io.IOException;
 import java.sql.Date;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+
+import org.springframework.web.multipart.MultipartFile;
 
 public class RecipeVO {
 	private int commu_num; //게시글 번호
@@ -36,6 +39,30 @@ public class RecipeVO {
 	private String nickname; // 회원별명
 	private byte[] photo; //프로필 사진
 	private String photo_name; // 프로필 사진명
+	
+	//파일 업로드 처리
+		public void setUpload(MultipartFile upload) throws IOException{
+			//MultipartFile -> byte[] 변환
+			setUploadfile(upload.getBytes());
+			//파일명 구하기
+			setFilename(upload.getOriginalFilename());
+		}
+
+		//파일 업로드 처리
+		public void setUpload2(MultipartFile upload) throws IOException{
+			//MultipartFile -> byte[] 변환
+			setUploadfile2(upload.getBytes());
+			//파일명 구하기
+			setFilename2(upload.getOriginalFilename());
+		}
+
+		//파일 업로드 처리
+		public void setUpload3(MultipartFile upload) throws IOException{
+			//MultipartFile -> byte[] 변환
+			setUploadfile3(upload.getBytes());
+			//파일명 구하기
+			setFilename3(upload.getOriginalFilename());
+		}
 	
 	public int getCommu_num() {
 		return commu_num;

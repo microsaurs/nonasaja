@@ -26,7 +26,7 @@
 	   	             value="/WEB-INF/views/commuboard/commuBoardList.jsp"/>    
     </definition>
     
-        <definition name="commuBoardView" extends="main"> 
+    <definition name="commuBoardView" extends="main"> 
     	<put-attribute name="title" 
     	               value="유머상세정보"/>
     	<put-attribute name="body"
@@ -52,13 +52,24 @@
 
   	<definition name="commuRecipeWrite" extends="main"> 
 	   	<put-attribute name="title" 
-	   	               value="레시피게시판목록"/>
+	   	               value="레시피게시판등록"/>
 	   	<put-attribute name="body"
 	   	             value="/WEB-INF/views/commuboard/commuRecipeWrite.jsp"/>    
     </definition>
     
+    <definition name="commuRecipeView" extends="main"> 
+    	<put-attribute name="title" 
+    	               value="레시피상세정보"/>
+    	<put-attribute name="body"
+    	             value="/WEB-INF/views/commuboard/commuRecipeView.jsp"/>    
+    </definition>
     
-    
+    <definition name="commuRecipeModify" extends="main"> 
+    	<put-attribute name="title" 
+    	               value="레시피글수정"/>
+    	<put-attribute name="body"
+    	             value="/WEB-INF/views/commuboard/commuRecipeModify.jsp"/>    
+    </definition>
     
     
  	<!-- ========================레시피 게시판 끝=========================== -->

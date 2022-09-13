@@ -10,6 +10,8 @@ import org.apache.ibatis.annotations.Select;
 import kr.spring.community.vo.CommunityFavVO;
 import kr.spring.community.vo.CommunityReplyVO;
 import kr.spring.community.vo.CommunityVO;
+import kr.spring.community.vo.RecipeFavVO;
+import kr.spring.community.vo.RecipeReplyVO;
 import kr.spring.community.vo.RecipeVO;
 
 public interface CommuBoardService {
@@ -47,9 +49,19 @@ public interface CommuBoardService {
 	public void deleteBoard2(Integer commu_num);
 	public void deleteFile2(Integer commu_num);
 	
+	//레시피 부모글 좋아요
+	public RecipeFavVO selectFav2(RecipeFavVO fav);
+	public int selectFavCount2(Integer commu_num);
+	public void insertFav2(RecipeFavVO boardFav);
+	public void deleteFav2(Integer fav_num);
 	
-	
-	
+	//레시피글 댓글
+	public List<RecipeReplyVO> selectListReply2(Map<String,Object> map);
+	public int selectRowCountReply2(Map<String,Object> map);
+	public RecipeReplyVO selectReply2(Integer reply_num);
+	public void insertReply2(RecipeReplyVO boardReply);
+	public void updateReply2(RecipeReplyVO boardReply);
+	public void deleteReply2(Integer reply_num);	
 	
 	
 	

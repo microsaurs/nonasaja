@@ -294,10 +294,111 @@ private static final Logger logger = LoggerFactory.getLogger(CommuBoardControlle
 			
 			return mav;
 		}
+		//========레시피게시판 글 상세=========//
+		@RequestMapping("/commuRecipe/detail.do")
+		public ModelAndView detail2(@RequestParam int commu_num) {
+			
+			logger.debug("<<commu_num>> : " + commu_num);
+			
+			//해당 글의 조회수 증가
+			boardService.updateHit2(commu_num);
+			
+			RecipeVO board = boardService.selectBoard2(commu_num); 
+			
+			//제목에 태그를 허용하지 않음
+			board.setCommu_title(StringUtil.useNoHtml(board.getCommu_title()));
+			
+			return new ModelAndView("commuRecipeView","board",board);
+			
+		}
 		
+		//=========이미지 출력=========//
+		@RequestMapping("/commuRecipe/imageView.do")
+		public ModelAndView viewImage2(
+				   @RequestParam int commu_num,
+				   @RequestParam int board_type) {
+			
+			RecipeVO board = 
+					boardService.selectBoard2(commu_num);
+			
+			ModelAndView mav = new ModelAndView();
+			//뷰 이름
+			mav.setViewName("imageView");
+			
+			if(board_type==1) {//프로필 사진
+				mav.addObject("imageFile", board.getPhoto());
+				mav.addObject("filename", board.getPhoto_name());
+			}else if(board_type==2) {//업로드된 이미지
+				mav.addObject("imageFile", board.getUploadfile());
+				mav.addObject("filename", board.getFilename());
+			}else if(board_type==3) {//업로드된 이미지
+				mav.addObject("imageFile", board.getUploadfile2());
+				mav.addObject("filename", board.getFilename2());
+			}else if(board_type==4) {//업로드된 이미지
+				mav.addObject("imageFile", board.getUploadfile3());
+				mav.addObject("filename", board.getFilename3());
+			}
+			
+			return mav;
+		}
 		
+		//============레시피게시판 글수정============//
+		//수정품
+		@GetMapping("/commuRecipe/update.do")
+		public String formUpdate2(@RequestParam int commu_num, Model model) { 
+			
+			RecipeVO boardVO = boardService.selectBoard2(commu_num);
+			
+			model.addAttribute("boardVO", boardVO); 
+			
+			return "commuRecipeModify";
+		}
 		
-		
+		//수정 폼에서 전송된 데이터 처리
+			@PostMapping("/commuRecipe/update.do")
+			public String submitUpdate2(@Valid RecipeVO boardVO,
+					            BindingResult result,
+					            HttpServletRequest request,
+					            Model model) {
+				logger.debug("<<글수정>> : " + boardVO);
+				
+				//유효성 체크 결과 오류가 있으면 폼 호출
+				if(result.hasErrors()) {
+
+					RecipeVO vo = boardService.selectBoard2(
+							            boardVO.getCommu_num());
+					return "commuRecipeModify";
+				}
+				//글수정
+				boardService.updateBoard2(boardVO); //유효성체크 안걸리면
+				
+				//View에 표시할 메시지
+				model.addAttribute("message", "글수정 완료!!");
+				model.addAttribute("url", 
+						request.getContextPath()+"/commuRecipe/detail.do?commu_num="+boardVO.getCommu_num());	
+
+				return "common/resultView";
+			}
+			
+			//==========게시판 글삭제==========//
+			@RequestMapping("/commuRecipe/delete.do")
+			public String submitDelete2(
+					       @RequestParam int commu_num,
+					       Model model,
+					       HttpServletRequest request) {
+				
+				logger.debug("<<글삭제>> : " + commu_num);
+				
+				//글삭제
+				boardService.deleteBoard2(commu_num);
+				
+				//View에 표시할 메시지
+				model.addAttribute("message", "글삭제 완료!!");
+				model.addAttribute("url", 
+						request.getContextPath()+"/commuRecipe/list.do");
+				
+				return "common/resultView";
+			}
 		
 		
 }		

@@ -12,6 +12,8 @@ import org.apache.ibatis.annotations.Update;
 import kr.spring.community.vo.CommunityFavVO;
 import kr.spring.community.vo.CommunityReplyVO;
 import kr.spring.community.vo.CommunityVO;
+import kr.spring.community.vo.RecipeFavVO;
+import kr.spring.community.vo.RecipeReplyVO;
 import kr.spring.community.vo.RecipeVO;
 
 @Mapper
@@ -90,9 +92,45 @@ public interface CommuBoardMapper {
 			+ "filename='' WHERE commu_num=#{commu_num}")
 	public void deleteFile2(Integer commu_num);
 	
+	//레시피 부모글 좋아요
+	@Select("SELECT * FROM fav "
+			+ "WHERE commu_num=#{commu_num} AND mem_num=#{mem_num}")
+	public RecipeFavVO selectFav2(RecipeFavVO fav);
+	@Select("SELECT COUNT(*) FROM fav "
+			+ "WHERE commu_num=#{commu_num}")
+	public int selectFavCount2(Integer commu_num);
+	@Insert("INSERT INTO fav (fav_num,commu_num,mem_num) "
+			+ "VALUES (fav_seq.nextval,#{commu_num},#{mem_num})")
+	public void insertFav2(RecipeFavVO boardFav);
+	@Delete("DELETE FROM fav WHERE fav_num=#{fav_num}")
+	public void deleteFav2(Integer fav_num);
+	@Delete("DELETE FROM fav WHERE commu_num=#{commu_num}")
+	public void deleteFavByBoardNum2(Integer commu_num);
 	
-	
-	
+	//레시피글 댓글
+	public List<RecipeReplyVO> selectListReply2(
+			                  Map<String,Object> map);
+	@Select("SELECT COUNT(*) FROM community_recipe_reply b "
+			+ "JOIN member m ON b.mem_num=m.mem_num "
+			+ "WHERE commu_num=#{commu_num}")
+	public int selectRowCountReply2(Map<String,Object> map);
+	@Select("SELECT * FROM community_recipe_reply WHERE reply_num=#{reply_num}")
+	public RecipeReplyVO selectReply2(Integer reply_num);
+	@Insert("INSERT INTO community_recipe_reply (reply_num,"
+			+ "reply_content,commu_num,mem_num) "
+			+ "VALUES (commureply_recipe_seq.nextval,#{reply_content},"
+			+ "#{commu_num},#{mem_num})")
+	public void insertReply2(RecipeReplyVO boardReply);
+	@Update("UPDATE community_recipe_reply SET "
+			+ "reply_content=#{reply_content} WHERE reply_num=#{reply_num}")
+	public void updateReply2(RecipeReplyVO boardReply);
+	@Delete("DELETE FROM community_recipe_reply WHERE reply_num=#{reply_num}")
+	public void deleteReply2(Integer re_num);
+	//부모글 삭제시 댓글이 존재하면 부모글 삭제전 댓글 삭제
+	@Delete("DELETE FROM community_recipe_reply "
+			+ "WHERE commu_num=#{commu_num}")
+	public void deleteReplyByBoardNum2(
+			                       Integer board_num);	
 	
 	
 	

@@ -11,6 +11,8 @@ import kr.spring.community.dao.CommuBoardMapper;
 import kr.spring.community.vo.CommunityFavVO;
 import kr.spring.community.vo.CommunityReplyVO;
 import kr.spring.community.vo.CommunityVO;
+import kr.spring.community.vo.RecipeFavVO;
+import kr.spring.community.vo.RecipeReplyVO;
 import kr.spring.community.vo.RecipeVO;
 
 @Service
@@ -155,6 +157,56 @@ public class CommuBoardServiceImpl implements CommuBoardService{
 	@Override
 	public void deleteFile2(Integer commu_num) {
 		boardMapper.deleteFile2(commu_num);
+	}
+
+	@Override
+	public RecipeFavVO selectFav2(RecipeFavVO fav) {
+		return boardMapper.selectFav2(fav);
+	}
+
+	@Override
+	public int selectFavCount2(Integer commu_num) {
+		return boardMapper.selectFavCount2(commu_num);
+	}
+
+	@Override
+	public void insertFav2(RecipeFavVO boardFav) {
+		boardMapper.insertFav2(boardFav);
+	}
+
+	@Override
+	public void deleteFav2(Integer fav_num) {
+		boardMapper.deleteFav2(fav_num);
+	}
+
+	@Override
+	public List<RecipeReplyVO> selectListReply2(Map<String, Object> map) {
+		return boardMapper.selectListReply2(map);
+	}
+
+	@Override
+	public int selectRowCountReply2(Map<String, Object> map) {
+		return boardMapper.selectRowCountReply2(map);
+	}
+
+	@Override
+	public RecipeReplyVO selectReply2(Integer reply_num) {
+		return boardMapper.selectReply2(reply_num);
+	}
+
+	@Override
+	public void insertReply2(RecipeReplyVO boardReply) {
+		boardMapper.insertReply2(boardReply);
+	}
+
+	@Override
+	public void updateReply2(RecipeReplyVO boardReply) {
+		boardMapper.updateReply2(boardReply);
+	}
+
+	@Override
+	public void deleteReply2(Integer reply_num) {
+		boardMapper.deleteReply2(reply_num);
 	}
 
 

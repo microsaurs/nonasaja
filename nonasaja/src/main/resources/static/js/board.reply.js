@@ -35,8 +35,8 @@ $(function(){
 					output += '<h4>';
 					output += '<img src="../member/viewProfile.do?mem_num='+ item.mem_num +'" width="30" height="30" class="my-photo">';
 					
-					if(item.nick_name){
-						output += item.nick_name + '</h4>';
+					if(item.nickname){
+						output += item.nickname + '</h4>';
 					}else{
 						output += item.id + '</h4>';
 					}
@@ -44,9 +44,7 @@ $(function(){
 					output += '<div class="sub-item">';
 					output += '<p>' + item.reply_content.replace(/\r\n/g,'<br>') + '</p>';
 					
-					if(item.reply_mdate){
-						output += '<span class="modify-date">최근 수정일 : ' + item.reply_mdate + '</span>';
-					}else{
+					if(item.reply_date){
 						output += '<span class="modify-date">등록일 : ' + item.reply_date + '</span>';
 					}
 					

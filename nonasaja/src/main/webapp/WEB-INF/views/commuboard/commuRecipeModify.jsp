@@ -16,25 +16,41 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/ckeditor.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/uploadAdapter.js"></script>
 
-<div class="page-main">
-	<h2>유머 글수정</h2>
-	<form:form action="update.do" modelAttribute="boardVO" 
-	        id="update_form"
-	        enctype="multipart/form-data">
-	    <form:hidden path="commu_num"/>    
+	<h2>레시피 글수정</h2>
+	<form:form action="update.do" modelAttribute="recipeVO" id="update_form" enctype="multipart/form-data">
+	    <form:hidden path="commu_num"/> 
 	    <form:errors element="div" cssClass="error-color"/>    
 		<ul>
 			<li>
 				<label for="commu_title">제목</label>
 				<form:input path="commu_title"/>
-				<form:errors path="commu_title" 
-				             cssClass="error-color"/>
+				<form:errors path="commu_title" cssClass="error-color"/>
 			</li>
-			<li><b>내용</b></li>
+			<li>
+				<label for="commu_food">요리명</label>
+				<form:input path="commu_food"/>
+				<form:errors path="commu_food" cssClass="error-color"/>
+			</li>
+			<li>
+				<label for="commu_time">소요 시간</label>
+				<form:input path="commu_time"/>
+				<form:errors path="commu_time" cssClass="error-color"/>
+			</li>
+			<li>
+				<label for="commu_ingredient">필수 재료</label>
+				<form:input path="commu_ingredient"/>
+				<form:errors path="commu_ingredient" cssClass="error-color"/>
+			</li>
+			<li>
+				<label for="commu_level">난이도</label>
+				<form:radiobutton path="commu_level" value="1"/>상&nbsp&nbsp
+				<form:radiobutton path="commu_level" value="2"/>중&nbsp&nbsp
+				<form:radiobutton path="commu_level" value="3"/>하
+				<form:errors path="commu_level" cssClass="error-color"/>
+			</li>
 			<li>
 				<form:textarea path="commu_content"/>
-				<form:errors path="commu_content" 
-				             cssClass="error-color"/>
+				<form:errors path="commu_content" cssClass="error-color"/>
 				<script>
 				 function MyCustomUploadAdapterPlugin(editor) {
 					    editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
@@ -52,7 +68,7 @@
 		            .catch( error => {
 		                console.error( error );
 		            } );
-			    </script>             
+			    </script>               
 			</li>
 			<li>
 				<label for="upload">파일업로드</label>
@@ -70,7 +86,7 @@
 							if(choice){
 								$.ajax({
 									url:'deleteFile.do',
-									data:{commu_num:${communityVO.commu_num}},
+									data:{commu_num:${recipeVO.commu_num}},
 									type:'post',
 									dataType:'json',
 									cache:false,
@@ -110,7 +126,7 @@
 							if(choice){
 								$.ajax({
 									url:'deleteFile.do',
-									data:{commu_num:${communityVO.commu_num}},
+									data:{commu_num:${recipeVO.commu_num}},
 									type:'post',
 									dataType:'json',
 									cache:false,
@@ -150,7 +166,7 @@
 							if(choice){
 								$.ajax({
 									url:'deleteFile.do',
-									data:{commu_num:${communityVO.commu_num}},
+									data:{commu_num:${recipeVO.commu_num}},
 									type:'post',
 									dataType:'json',
 									cache:false,
@@ -181,5 +197,4 @@
 			            onclick="location.href='list.do'">
 		</div>    
 	</form:form>
-</div>
 <!-- 내용 끝 -->
