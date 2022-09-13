@@ -40,6 +40,12 @@
     	<put-attribute name="body"
     	  value="/WEB-INF/views/cart/cart_list.jsp"/>                   
     </definition>
+    
+     <definition name="order_form" extends="main">
+    	<put-attribute name="title" value="주문서작성"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/order/order_form.jsp"/>                   
+    </definition>
 
 </tiles-definitions>
 
