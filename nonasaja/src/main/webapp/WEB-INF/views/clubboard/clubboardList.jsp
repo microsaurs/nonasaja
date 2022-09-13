@@ -66,6 +66,19 @@
 		</tr>
 		<tr>
 			<td>
+			<img src="${pageContext.request.contextPath}/images/icon-age.png" width="50px">
+			</td>
+			<td class="th-2">
+			<c:if test="${board.club_age == '10대,20대,30대,40대,50대,60대'}">
+			누구나 참여가능
+			</c:if>
+			<c:if test="${board.club_age != '10대,20대,30대,40대,50대,60대'}">
+			${board.club_age} 참여가능
+			</c:if>
+			</td>
+		</tr>
+		<tr>
+			<td>
 			<img src="${pageContext.request.contextPath}/images/icon-calendar-date.png" width="50px">
 			</td>
 			<td class="th-2">
@@ -88,7 +101,7 @@
 			${board.club_pre}/${board.club_limit}명 참여
 			</td>
 		</tr>
-		</table>
+		</table><br><br>
 		</c:forEach>
 	
 	<div class="align-center">${page}</div>

@@ -10,8 +10,25 @@ td {
 	text-align: center;
 }
 .th-1 {
+	text-align: center;
     width: 70px;
+    padding: 30px;
+    color: #f5d505;
   }
 .th-2 {
     text-align: left;
+    padding: 30px;
   }
+.td-1 {
+	text-align: center;
+    width: 70px;
+    padding: 30px;
+
+  } 
+  
+ul.detail-info{
+	font-size:large;
+}  
+ul.detail-info li{
+	display: inline-block;
+}

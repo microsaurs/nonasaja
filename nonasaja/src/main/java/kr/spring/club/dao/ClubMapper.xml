@@ -46,6 +46,10 @@
   		              b.club_limit,
   		              b.club_pre,
   		              b.club_hit,
+  		              b.club_gender,
+  		              b.club_recruit,
+  		              b.region_num,
+  		              b.club_age,
   		              m.id,
   		              m.nickname
   		            FROM club_board b JOIN member m
