@@ -8,66 +8,68 @@
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/videoAdapter.js"></script>
 <div class="page-main">
+<!-- 헤드 이미지 -->
+
 	<ul class="detail-info">
 		<li> 
 			<c:if test="${!empty user.photo_name}">
-			<img src="viewProfile.do?mem_num=${club.mem_num}" width="40" height="40" class="my-photo">
+			<img src="viewProfile.do?mem_num=${board.mem_num}" width="40" height="40" class="my-photo">
 			</c:if>
 			<c:if test="${empty user.photo_name}">
 			<img src="${pageContext.request.contextPath}/images/face.png" width="40" height="40" class="my-photo">
 			</c:if> 
 		</li>
 		<li>
-			<c:if test="${empty club.nickname}">${club.id}</c:if>
-			<c:if test="${!empty club.nickname}">${club.nickname}</c:if>
+			<c:if test="${empty board.nickname}">${board.id}</c:if>
+			<c:if test="${!empty board.nickname}">${board.nickname}</c:if>
 			<br>>
-			<c:if test="${!empty club.club_modify_date}">
-			최근 수정일 : ${club.club_modify_date}
+			<c:if test="${!empty board.club_modify_date}">
+			최근 수정일 : ${board.club_modify_date}
 			</c:if>
-			<c:if test="${empty club.club_modify_date}">
-			작성일 : ${club.club_date}
+			<c:if test="${empty board.club_modify_date}">
+			작성일 : ${board.club_date}
 			</c:if>
-			조회 : ${club.club_hit}
+			조회 : ${board.club_hit}
 		</li>
 	</ul>
 	
 		
 		<!-- 모집여부 -->
-			<c:if test="${club.club_recruit==0}">모집중</c:if>
-			<c:if test="${club.club_recruit==1}">모집완료</c:if>
+			<c:if test="${board.club_recruit==0}">모집중</c:if>
+			<c:if test="${board.club_recruit==1}">모집완료</c:if>
 		<!-- 제목 -->
-			<h2>${club.club_title}</h2>
+			<h2>${board.club_title}</h2>
 		<ul>
 		<li>
-		동호회명 : ${club.club_name}
+		동호회명 : ${board.club_name}
 		</li>	
 		<li>
 		성별 : 
-			<c:if test="${club.club_gender==0}">누구나 참여가능</c:if>
-			<c:if test="${club.club_gender==1}">남자만 참여가능</c:if>
-			<c:if test="${club.club_gender==2}">여자만 참여가능</c:if>
+			<c:if test="${board.club_gender==0}">누구나 참여가능</c:if>
+			<c:if test="${board.club_gender==1}">남자만 참여가능</c:if>
+			<c:if test="${board.club_gender==2}">여자만 참여가능</c:if>
 		</li>	
 		<li>
-			모집일정 : ${club.club_date}
+			모집일정 : ${board.club_date}
 		</li>
 		<li>
 		나이 : 
-		<c:if test="${club.club_age == '10대,20대,30대,40대,50대,60대'}">
+		<c:if test="${board.club_age == '10대,20대,30대,40대,50대,60대'}">
 			누구나
 		</c:if>
-		<c:if test="${club.club_age != '10대,20대,30대,40대,50대,60대'}">
-			${club.club_age}
+		<c:if test="${board.club_age != '10대,20대,30대,40대,50대,60대'}">
+			${board.club_age}
 		</c:if>
 		</li>
 	</ul>	
 			
 	<p>
-		${club.club_content}
+		${board.club_content}
 	</p>	
 	<ul>
 		<li> 
-			<c:if test="${!empty club.club_img_name}">
-			<img src="imageView.do?club_num=${club.club_num}" width="400" height="400">
+			<c:if test="${!empty board.club_img_name}">
+			<img src="imageView.do?club_num=${board.club_num}" width="400" height="400">
 			</c:if>
 		</li>
 	</ul>
@@ -80,9 +82,9 @@
 	</div>
 	<hr size="1" width="100%">
 	<div class="align-right">
-		<c:if test="${!empty user && user.mem_num == club.club_leader}">
+		<c:if test="${!empty user && user.mem_num == board.club_leader}">
 		<input type="button" value="수정" 
-		  onclick="location.href='update.do?club_num=${club.club_num}'">
+		  onclick="location.href='update.do?club_num=${board.club_num}'">
 		<input type="button" value="삭제" id="delete_btn">
 		<script type="text/javascript">
 			let delete_btn = document.getElementById('delete_btn');
@@ -90,7 +92,7 @@
 			delete_btn.onclick=function(){
 				let choice = confirm('삭제하시겠습니까?');
 				if(choice){
-					location.replace('delete.do?club_num=${club.club_num}');
+					location.replace('delete.do?club_num=${board.club_num}');
 				}
 			};
 		</script>  

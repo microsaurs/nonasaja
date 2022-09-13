@@ -130,20 +130,20 @@ public class ClubController {
 		//해당 글의 조회수 증가
 		clubService.updateHit(club_num);
 		
-		ClubVO club = 
+		ClubVO board = 
 				clubService.selectBoard(club_num);
 		
 		//제목에 태그를 허용하지 않음
-		club.setClub_title(
-			 StringUtil.useNoHtml(club.getClub_title()));
+		board.setClub_title(
+			 StringUtil.useNoHtml(board.getClub_title()));
 		//내용에 줄바꿈 처리하면서 태그를 허용하지 않음
 		//ckeditor 사용시 아래 코드 주석 처리
 		
-		club.setClub_content(
-		 StringUtil.useBrNoHtml(club.getClub_content()));
+		board.setClub_content(
+		 StringUtil.useBrNoHtml(board.getClub_content()));
 		
 		                          //뷰 이름    속성명   속성값
-		return new ModelAndView("clubboardView","club", club);
+		return new ModelAndView("clubboardView","board", board);
 	}
 	
 	//===========파일다운로드===========//
