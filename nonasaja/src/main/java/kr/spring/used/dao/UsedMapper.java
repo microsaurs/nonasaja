@@ -46,14 +46,18 @@ public interface UsedMapper {
 			+ "WHERE used_num=#{used_num}")
 	public int selectRowCountReply(Map<String, Object> map);
 	@Select("SELECT * FROM used_reply WHERE reply_num=#{reply_num}")
-	public UsedReplyVO selectReply(Integer re_num);
+	public UsedReplyVO selectReply(Integer reply_num);
 	@Insert("INSERT INTO used_reply (reply_num,"
 			+ "reply_content,used_num,mem_num) "
-			+ "VALUES (reply_seq.nextval,#{reply_content},"
+			+ "VALUES (used_reply_seq.nextval,#{reply_content},"
 			+ "#{used_num},#{mem_num})")
 	public void insertReply(UsedReplyVO usedReply);
+	@Update("UPDATE used_reply SET "
+			+ "reply_content=#{reply_content} WHERE reply_num=#{reply_num}")
 	public void updateReply(UsedReplyVO usedReply);
-	public void deleteReply(Integer re_num);
+	public void deleteReply(Integer reply_num);
+	//부모글 삭제시 댓글이 존재하면 부모글 삭제전 댓글 삭제
+	public void deleteReplyByBoardNum(Integer used_num);
 	
 	
 	//부모글 좋아요

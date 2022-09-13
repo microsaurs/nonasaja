@@ -189,6 +189,70 @@ public class UsedAjaxController {
 		return mapAjax;
 	}
 	
+	//===========댓글 수정===========//
+	@RequestMapping("/used/updateReply.do")
+	@ResponseBody
+	public Map<String,String> modifyReply(
+				UsedReplyVO usedReplyVO,
+				HttpSession session,
+				HttpServletRequest request){
+		
+		logger.debug("<<댓글 수정>> : " + usedReplyVO);
+		
+		Map<String,String> mapAjax = new HashMap<String,String>();
+		
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		UsedReplyVO db_reply = usedService.selectReply(usedReplyVO.getReply_num());
+		
+		if(user==null) {//로그인이 되지 않은 경우
+			mapAjax.put("result", "logout");
+		}else if(user!=null && user.getMem_num()==db_reply.getMem_num()) {
+			//로그인 회원번호와 작성자 회원번호 일치
+			
+			//댓글 수정
+			usedService.updateReply(usedReplyVO);
+			mapAjax.put("result", "success");
+		}else {
+			//로그인 회원번호와 작성자 회원번호 불일치
+			mapAjax.put("result", "worngAccess");
+		}
+		return mapAjax;
+	}
+	//==========댓글 삭제==========//
+		@RequestMapping("/used/deleteReply.do")
+		@ResponseBody
+		public Map<String,String> deleteReply(
+				            @RequestParam int reply_num,
+				            HttpSession session){
+			
+			logger.debug("<<reply_num>> : " + reply_num);
+			
+			Map<String,String> mapAjax =
+					new HashMap<String,String>();
+			
+			MemberVO user = 
+				(MemberVO)session.getAttribute("user");
+			UsedReplyVO db_reply = 
+					usedService.selectReply(reply_num);
+			if(user==null) {
+				//로그인이 되지 않은 경우
+				mapAjax.put("result", "logout");
+			}else if(user!=null && 
+			  user.getMem_num()==db_reply.getMem_num()) {
+				//로그인이 되어 있고 
+				//로그인한 회원번호와 작성자 회원번호 일치
+				
+				//댓글 삭제
+				usedService.deleteReply(reply_num);
+				
+				mapAjax.put("result", "success"); //정상적으로 삭제시 문구 보냄
+			}else {
+				//로그인한 회원번호와 작성자 회원번호 불일치
+				mapAjax.put("result", "wrongAccess");
+			}
+			return mapAjax;
+		}
+
 	
 	
 	

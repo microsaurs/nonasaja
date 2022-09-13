@@ -10,7 +10,7 @@ create table used_board(
  status number(1) not null,--거래상태(1판매중/2판매완료)
  category varchar2(15) not null,--상품 카테고리(주방,생활,식품용품)
  trade varchar2(30),
- reg_date date not null,
+ reg_date date default SYSDATE not null,
  modify_date date,
  hit number(6) default 0 not null,
  constraint used_board_pk primary key (used_num),
@@ -27,7 +27,6 @@ create table used_reply(
  mem_num number not null,
  reply_content varchar2(900) not null,
  reply_date date not null,
- parent_num number not null,
  constraint used_reply_pk primary key (reply_num),
  constraint used_reply_fk1 foreign key (used_num) references used_board(used_num),
  constraint used_reply_fk2 foreign key (mem_num) references member(mem_num)

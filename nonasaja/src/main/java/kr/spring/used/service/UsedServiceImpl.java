@@ -54,7 +54,9 @@ public class UsedServiceImpl implements UsedService {
 		//부모글 삭제
 		usedMapper.deleteUsed(used_num);
 		//댓글이 존재하면 댓글을 우선 삭제하고 부모글을 삭제
-		
+		usedMapper.deleteReplyByBoardNum(used_num);
+		//부모글 삭제
+		usedMapper.deleteUsed(used_num);
 	}
 
 	@Override
@@ -94,8 +96,8 @@ public class UsedServiceImpl implements UsedService {
 	}
 
 	@Override
-	public UsedReplyVO selectReply(Integer re_num) {
-		return usedMapper.selectReply(re_num);
+	public UsedReplyVO selectReply(Integer reply_num) {
+		return usedMapper.selectReply(reply_num);
 	}
 
 	@Override
@@ -105,14 +107,12 @@ public class UsedServiceImpl implements UsedService {
 
 	@Override
 	public void updateReply(UsedReplyVO usedReply) {
-		// TODO Auto-generated method stub
-		
+		usedMapper.updateReply(usedReply);
 	}
 
 	@Override
-	public void deleteReply(Integer re_num) {
-		// TODO Auto-generated method stub
-		
+	public void deleteReply(Integer reply_num) {
+		usedMapper.deleteReply(reply_num);
 	}
 
 }

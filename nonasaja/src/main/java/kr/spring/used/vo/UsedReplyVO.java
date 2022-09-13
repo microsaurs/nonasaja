@@ -1,40 +1,39 @@
 package kr.spring.used.vo;
 
 public class UsedReplyVO {
-	private int re_num;
-	private String re_content;
-	private String re_date;
-	private String re_mdate;
+	private int reply_num;
+	private String reply_content;
+	private String reply_date;
+	private String reply_mdate;
 	private int used_num;
 	private int mem_num;
 	
 	private String id;
 	private String nickname;
 	
-	
-	public int getRe_num() {
-		return re_num;
+	public int getReply_num() {
+		return reply_num;
 	}
-	public void setRe_num(int re_num) {
-		this.re_num = re_num;
+	public void setReply_num(int reply_num) {
+		this.reply_num = reply_num;
 	}
-	public String getRe_content() {
-		return re_content;
+	public String getReply_content() {
+		return reply_content;
 	}
-	public void setRe_content(String re_content) {
-		this.re_content = re_content;
+	public void setReply_content(String reply_content) {
+		this.reply_content = reply_content;
 	}
-	public String getRe_date() {
-		return re_date;
+	public String getReply_date() {
+		return reply_date;
 	}
-	public void setRe_date(String re_date) {
-		this.re_date = re_date;
+	public void setReply_date(String reply_date) {
+		this.reply_date = reply_date;
 	}
-	public String getRe_mdate() {
-		return re_mdate;
+	public String getReply_mdate() {
+		return reply_mdate;
 	}
-	public void setRe_mdate(String re_mdate) {
-		this.re_mdate = re_mdate;
+	public void setReply_mdate(String reply_mdate) {
+		this.reply_mdate = reply_mdate;
 	}
 	public int getUsed_num() {
 		return used_num;
@@ -63,9 +62,9 @@ public class UsedReplyVO {
 	
 	@Override
 	public String toString() {
-		return "UsedReplyVO [re_num=" + re_num + ", re_content=" + re_content + ", re_date=" + re_date + ", re_mdate="
-				+ re_mdate + ", used_num=" + used_num + ", mem_num=" + mem_num + ", id=" + id + ", nickname=" + nickname
-				+ "]";
+		return "UsedReplyVO [reply_num=" + reply_num + ", reply_content=" + reply_content + ", reply_date=" + reply_date
+				+ ", reply_mdate=" + reply_mdate + ", used_num=" + used_num + ", mem_num=" + mem_num + ", id=" + id
+				+ ", nickname=" + nickname + "]";
 	}
 	
 	

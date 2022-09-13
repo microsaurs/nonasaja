@@ -21,10 +21,10 @@ public interface UsedService {
 		//댓글
 		public List<UsedReplyVO> selectListReply(Map<String, Object> map);
 		public int selectRowCountReply(Map<String, Object> map);
-		public UsedReplyVO selectReply(Integer re_num);
+		public UsedReplyVO selectReply(Integer reply_num);
 		public void insertReply(UsedReplyVO usedReply);
 		public void updateReply(UsedReplyVO usedReply);
-		public void deleteReply(Integer re_num);
+		public void deleteReply(Integer reply_num);
 		
 		//부모글 좋아요
 		public UsedFavVO selectFav(UsedFavVO fav);

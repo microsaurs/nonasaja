@@ -50,8 +50,8 @@ $(function(){
 					
 					if(param.user_num==item.mem_num){
 						//로그인한 회원번호와 댓글 작성자 회원번호가 일치
-						output += ' <input type="button" data-num="' + item_reply_num + '" value="수정" class="modify-btn">'; 
-						output += ' <input type="button" data-num="' + item_reply_num + '" value="삭제" class="modify-btn">'; 
+						output += ' <input type="button" data-num="' + item.reply_num + '" value="수정" class="modify-btn">'; 
+						output += ' <input type="button" data-num="' + item.reply_num + '" value="삭제" class="modify-btn">'; 
 					}
 					output += '<hr size="1" noshade>';
 					output += '</div>';
@@ -142,11 +142,135 @@ $(function(){
 			}
 		}
 	});
+	//댓글 수정 버튼 클릭시 수정 폼 노출
+	$(document).on('click','.modify-btn',function(){
+		//댓글 글번호
+		let reply_num = $(this).attr('data-num');
+		//댓글 내용
+		let content = $(this).parent().find('p').html().replace(/<br>/g,'\r\n');
+		
+		//댓글 수정폼 UI
+		let modifyUI = '<form id="mre_form">';
+		modifyUI = '<input type="hidden" name="reply_num" id="mre_num" value="'+ reply_num +'">';
+		modifyUI += '<textarea rows="3" cols="50" name="reply_content" id="mre_content" class="rep-content">'+ content +'</textarea>';
+		modifyUI += '<div id="mre_first"><span class="letter-count">300/300</span></div>';
+		modifyUI += '<div id="mre_second" class="align-right">';
+		modifyUI += '<input type="submit" value="수정">';
+		modifyUI += ' <input type="button" value="취소" class="re-reset">';
+		modifyUI += '</div>';
+		modifyUI += '<hr size="1" noshade width="96%">';
+		modifyUI += '</form>';
+		
+		//이전에 이미 수정하는 댓글이 있을 경우 수정 버튼을 클릭하면 
+		//숨김 sub-item을 환원시키고 수정폼을 초기화함
+		initModifyForm();
+		
+		//지금 클릭해서 수정하고자 하는 데이터는 감추기
+		$(this).parent().hide();
+		
+		//수정 폼을 수정하고자 하는 데이터가 있는 div에 노출
+		$(this).parents('.item').append(modifyUI);
+		
+		//입력한 글자수 셋팅
+		let inputLength = $('#mre_content').val().length;
+		let remain = 300 - inputLength;
+		remain += '/300';
+		
+		//문서 객체에 반영
+		$('#mre_first .letter-count').text(remain);
+	});
+	//수정 폼에서 취소 버튼 클릭시 수정 폼 초기화
+	$(document).on('click','re-reset',function(){
+		initModityFrom();
+	});
+	//수정 폼 초기화
+	function initModifyForm(){
+		$('.sub-item').show();
+		$('#mre_form').remove();
+	}
+	//댓글 수정
+	$(document).on('submit','#mre_form',function(event){
+		if($('#mre_content').val().trim()==''){
+			alert('내용을 입력하세요!');
+			$('#mre_content').val('').focus();
+			return false;
+		}
+		
+		//폼에 입력한 데이터 반환
+		let form_data = $(this).serialize();
+		
+		//수정
+		$.ajax({
+			url:'updateReply.do',
+			type:'post',
+			data:form_data,
+			dataType:'json',
+			cache:false,
+			timeout:30000,
+			success:function(param){
+				if(param.result=='logout'){
+					alert('로그인해야 수정할 수 있습니다.');
+				}else if(param.result=='success'){
+					$('#mre_form').parent()
+					              .find('p')
+                                  .html($('#mre_content').val()
+                                         .replace(/</g,'&lt;')
+                                         .replace(/>/g,'&gt;')
+                                         .replace(/\r\n/g,'<br>')
+                                         .replace(/\r/g,'<br>')
+                                         .replace(/\n/g,'<br>'));
+                    //최근 수정일 처리
+                    $('#mre_form').parent()
+                    			  .find('.modify-date')
+                    			  .text('최근 수정일 : 5초 미만');
+                    //수정폼 초기화
+                    initModifyForm();
+				}else if(param.result=='worngAccess'){
+					alert('타인의 글은 수정할 수 없습니디ㅏ.');
+				}else{
+					alert('수정시 오류 발생');
+				}
+			},
+			error:function(){
+				alert('네트워크 오류 발생');
+			}
+		});
+		//기본 이벤트 제거
+		event.preventDefault();
+	});
+	//댓글 삭제
+	$(document).on('click','.delete-btn',function(){
+		//댓글 번호
+		let reply_num = $(this).attr('data-num');
+		
+		$.ajax({
+			url:'deleteReply.do',
+			type:'post',
+			data:{reply_num:reply_num},
+			dataType:'json',
+			cache:false,
+			timeout:30000,
+			success:function(param){
+				if(param.result == 'logout'){
+					alert('로그인해야 삭제할 수 있습니다.');
+				}else if(param.result == 'success'){
+					alert('삭제 완료!');
+					selectList(1);
+				}else if(param.result == 'wrongAccess'){
+					alert('타인의 글을 삭제할 수 없습니다.');
+				}else{
+					alert('댓글 삭제시 오류 발생');
+				}
+			},
+			error:function(){
+				alert('네트워크 오류 발생');
+			}
+		});
+		
+	});
+
 	
-	
-	
-	
-	
-	
+	//초기 데이터 호출
+	selectList(1);
 	
 });
