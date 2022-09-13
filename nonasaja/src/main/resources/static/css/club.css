@@ -1,0 +1,17 @@
+table {
+	border-top: 1px solid #444444;	
+	font-size:x-large;
+	padding: 30px;
+	margin : 20px;
+}
+td {
+	border-bottom: 1px solid #444444;
+	padding: 10px;
+	text-align: center;
+}
+.th-1 {
+    width: 70px;
+  }
+.th-2 {
+    text-align: left;
+  }
