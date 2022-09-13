@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!-- 내용 시작 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/kakaopay.js"></script>
@@ -55,7 +56,14 @@
 		</ul>
 		<div class="align-center">
 			<input type="button" value="회원정보수정" onclick="location.href='update.do'">
-    		<button id="kpay_btn">카카오페이로 결제하기</button>
+			<form>
+				<input type="radio" name="money" value="5000">5천원
+				<input type="radio" name="money" value="10000">1만원
+				<input type="radio" name="money" value="30000">3만원
+				<input type="radio" name="money" value="50000">5만원
+    			<button id="kpay_btn">카카오페이로 결제하기</button>
+    		</form>
+    		<span>보유 포인트 : <b><fmt:formatNumber value="${member.cash}"/> 원</b></span>
 		</div>
 	</div>
 </div>

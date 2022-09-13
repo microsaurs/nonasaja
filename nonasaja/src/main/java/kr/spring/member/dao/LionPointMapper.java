@@ -3,8 +3,10 @@ package kr.spring.member.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import kr.spring.member.vo.LionPointVO;
 import kr.spring.member.vo.MemberVO;
@@ -13,9 +15,12 @@ import kr.spring.member.vo.MemberVO;
 public interface LionPointMapper {
 	@Select("SELECT point_seq.nextval FROM dual")
 	public int selectPointNum();//포인트 번호
-	public void insertPoint(LionPointVO point);//포인트 내역 저장
+	@Insert("INSERT INTO lionpoint (point_num,mem_num,lionpoint,cash,remain,order_num,reg_date) VALUES (#{point_num},#{mem_num},#{lionpoint},#{cash},#{remain},#{order_num},SYSDATE)")
+	public void insertPoint(LionPointVO point);//포인트 충전
 	public int selectPointCnt(Map<String, Object> map);//포인트 내역 건수
 	public List<LionPointVO> selectPointList(Map<String, Object> map);//포인트 내역 목록
-	public LionPointVO selectPointbyMem(MemberVO member);//회원번호로 포인트내역 상세
-	
+	@Select("select * from (select a.*, rownum rnum from(select * from lionpoint order by point_num desc) a) where rnum=1 and mem_num=#{mem_num}")
+	public LionPointVO selectPointbyMem(Integer mem_num);//회원번호로 포인트 직전 내역 조회
+	@Update("UPDATE member_detail SET cash=#{cash} WHERE mem_num=#{mem_num}")
+	public void updateMemberCash(Integer cash, Integer mem_num);//멤버디테일에 있는 캐시 컬럼 업데이트
 }

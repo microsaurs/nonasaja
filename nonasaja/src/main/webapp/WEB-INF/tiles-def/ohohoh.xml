@@ -41,6 +41,12 @@
     	<put-attribute name="body"
     	  value="/WEB-INF/views/member/memberModify.jsp"/>                   
     </definition>
+    <!-- 결제 인증 -->
+    <definition name="payApproval" extends="main">
+    	<put-attribute name="title" value="결제인증"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/member/payApproval.jsp"/>                   
+    </definition>
 </tiles-definitions>
 
 
