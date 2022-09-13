@@ -6,6 +6,9 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/clubboard.fav.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/club.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Noto+Sans+KR&family=Poor+Story&display=swap" rel="stylesheet">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/videoAdapter.js"></script>
 <div class="page-main">
 <!-- 헤드 이미지 -->
@@ -36,7 +39,7 @@
 	
 	<div class="align-right">
 		<%-- 좋아요 --%>
-		<img id="output_fav" src="${pageContext.request.contextPath}/images/fav01.gif" width="40">
+		<img id="output_fav" src="${pageContext.request.contextPath}/images/free-icon-love01.png" width="40">
 	</div>
 	<br>
 	<!-- 표 시작 -->
@@ -119,18 +122,16 @@
 		<tr>
 			<td class="td-1">
 			${board.club_content}
+			<br>
+			<c:if test="${!empty board.club_img_name}">
+			<img src="imageView.do?club_num=${board.club_num}" width="400" height="400">
+			</c:if>
 			</td>
 		</tr>
 	</table>
 	
 	<!-- 표 끝 -->		
-	<ul>
-		<li> 
-			<c:if test="${!empty board.club_img_name}">
-			<img src="imageView.do?club_num=${board.club_num}" width="400" height="400">
-			</c:if>
-		</li>
-	</ul>
+
 
 	<hr size="1" width="100%">
 	<div class="align-right">
