@@ -45,11 +45,11 @@ public interface UsedMapper {
 			+ "JOIN member m ON b.mem_num=m.mem_num "
 			+ "WHERE used_num=#{used_num}")
 	public int selectRowCountReply(Map<String, Object> map);
-	@Select("SELECT * FROM used_reply WHERE re_num=#{re_num}")
+	@Select("SELECT * FROM used_reply WHERE reply_num=#{reply_num}")
 	public UsedReplyVO selectReply(Integer re_num);
-	@Insert("INSERT INTO used_reply (re_num,"
-			+ "re_content,used_num,mem_num) "
-			+ "VALUES (reply_seq.nextval,#{re_content},"
+	@Insert("INSERT INTO used_reply (reply_num,"
+			+ "reply_content,used_num,mem_num) "
+			+ "VALUES (reply_seq.nextval,#{reply_content},"
 			+ "#{used_num},#{mem_num})")
 	public void insertReply(UsedReplyVO usedReply);
 	public void updateReply(UsedReplyVO usedReply);

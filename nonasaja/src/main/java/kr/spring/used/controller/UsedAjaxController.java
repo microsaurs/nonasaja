@@ -136,12 +136,12 @@ public class UsedAjaxController {
 		}else {//로그인 됨
 			//회원번호 등록
 			usedReplyVO.setMem_num(user.getMem_num());
+			
+			//댓글 등록
+			usedService.insertReply(usedReplyVO);
+			mapAjax.put("result","success");
 		}
-		
-		//댓글 등록
-		usedService.insertReply(usedReplyVO);
-		mapAjax.put("result","success");
-		
+
 		return mapAjax;
 	}
 	
