@@ -4,8 +4,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!-- 내용 시작 --> 
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/board.fav.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/board.reply.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/used.reply.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/used.fav.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/videoAdapter.js"></script>
 <div class="page-main">
 	<h2>${used.title}</h2>
@@ -75,5 +75,55 @@
 	</p>
 	<div>
 		<%-- 좋아요 --%>
+		<img id="output_fav" src="${pageContext.request.contextPath}/images/fav01.gif" width="40">
+		<span id="output_fcount"></span>
 	</div>
+	<hr size="1" width="100%">
+	<div class="align-right">
+		<c:if test="${!empty user && user.mem_num == used.mem_num}">
+		<input type="button" value="수정" 
+		  onclick="location.href='update.do?used_num=${used.used_num}'">
+		<input type="button" value="삭제" id="delete_btn">
+		<script type="text/javascript">
+			let delete_btn = document.getElementById('delete_btn');
+			//이벤트 연결
+			delete_btn.onclick=function(){
+				let choice = confirm('삭제하시겠습니까?');
+				if(choice){
+					location.replace('delete.do?used_num=${used.used_num}');
+				}
+			};
+		</script>  
+		</c:if>
+		<input type="button" value="목록"
+		       onclick="location.href='list.do'">
+	</div>
+	<hr size="1" width="100%">
+	<!-- 댓글 UI 시작 -->
+	<div id="reply_div">
+		<span class="re-title">댓글 달기</span>
+		<form id="re_form">
+			<input type="hidden" name="used_num" value="${used.used_num}" id="used_num">
+			<textarea rows="3" cols="50" name="re_content" id="re_content" class="rep-content"
+			<c:if test="${empty user}">disabled="disabled"</c:if>
+			><c:if test="${empty user}">로그인해야 작성할 수 있습니다.</c:if></textarea>
+			<c:if test="${!empty user}">
+			<div id="re_first">
+				<span class="letter-count">300/300</span>
+			</div>
+			<div id="re_second" class="align-right">
+				<input type="submit" value="전송">
+			</div>
+			</c:if>
+		</form>
+	</div>
+	<!-- 댓글 목록 출력 -->
+	<div id="output"></div>
+	<div class="paging-button" style="display:none;">
+		<input type="button" value="다음글 보기">
+	</div>
+	<div id="loading" style="disply:none;">
+		<img src="${pageContext.request.contextPath}/images/loading.gif" width="100" height="100">
+	</div>
+	<!-- 댓글 UI 끝 -->
 </div>

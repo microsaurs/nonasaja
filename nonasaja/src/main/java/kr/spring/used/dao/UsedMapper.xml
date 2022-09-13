@@ -70,4 +70,66 @@
 		WHERE rnum >= #{start} AND rnum <= #{end}
 		]]>
 	</select>
+	
+	<!-- 글 수정 -->
+	<update id="updateBoard" parameterType="usedVO">
+		UPDATE used_board SET
+			  <if test="filename != ''">
+			  	uploadfile=${uploadfile},
+			  	filename=#{filename},
+			  </if>
+			  <if test="filename2 != ''">
+			  	uploadfile2=${uploadfile2},
+			  	filename2=#{filename2},
+			  </if>
+			  <if test="filename3 != ''">
+			  	uploadfile3=${uploadfile3},
+			  	filename3=#{filename3},
+			  </if>
+			  title=#{title}
+			  content=#{content}
+			  kind=#{kind}
+			  category=#{category}
+			  price=#{price}
+			  status={status}
+			  trade={trade}
+			  region_num={region_num}
+			  modify_date=SYSDATE
+		WHERE used_num=#{used_num} 
+	</update>
+	
+	<!-- 댓글 목록 -->
+	<!-- <를 &lt로 변환시켜서 변환된 문자열을 반환해주면 그 중에서 >를 &qt로 바꿔서 태그를 무력화 시켜준다. -->
+	<select id="selectListReply" parameterType="map" resultType="usedReplyVO">
+	<!-- 여기부터 -->
+		SELECT
+		  *
+		FROM (SELECT
+				a.*,
+				rownum rnum
+			  FROM (SELECT
+			  		  reply_num,
+			  		  <![CDATA[
+			  		  REPLACE(REPLACE(reply_content,'<','&lt;'),'>','&gt;') reply_content,
+			  		  ]]>
+			  		  reply_date,
+			  		  used_num,
+			  		  mem_num,
+			  		  id,
+			  		  nickname
+			  		FROM used_reply
+			  		JOIN member USING(mem_num)
+			  		WHERE used_num = #{used_num}
+			  		ORDER BY reply_num DESC)a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+	</select>
+	
+	
+	
+	
+	
+	
+	
 </mapper>

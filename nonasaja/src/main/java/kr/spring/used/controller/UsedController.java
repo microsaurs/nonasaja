@@ -161,7 +161,59 @@ public class UsedController {
 	
 	//========중고거래 글 수정=========//
 	//수정폼
+	@GetMapping("/used/update.do")
+	public String formUpdate(@RequestParam int used_num, Model model) {
+		
+		UsedVO usedVO = usedService.selectUsed(used_num);
+		
+		model.addAttribute("usedVO",usedVO);
+		
+		return "usedModify";
+	}
+	//수정 폼에서 전송된 데이터 처리
+	@PostMapping("/used/update.do")
+	public String submitUpdate(@Valid UsedVO usedVO,
+							BindingResult result,
+							HttpServletRequest request,
+							Model model) {
+		logger.debug("<<글수정>> : " + usedVO);
+		
+		//유효성 체크 결과 오류가 있으면 폼 호출
+		if(result.hasErrors()) {
+			//title 또는 content가 입력되지 않아 유효성 체크에 걸리면 파일 정보를 잃어버리기 때문에
+			//폼을 호출할 때 다시 셋팅해주어야 함.
+			UsedVO vo = usedService.selectUsed(usedVO.getUsed_num());
+			usedVO.setFilename(vo.getFilename());
+			return "usedModify";
+		}
+		
+		//글 수정
+		usedService.updateUsed(usedVO);
+		
+		//View에 표시할 메시지
+		model.addAttribute("message", "글수정 완료!");
+		model.addAttribute("url",request.getContextPath()+"/used/detail.do?used_num"+usedVO.getUsed_num());
+		
+		return "common/resultView";
+	}
 	
+	//========중고거래 글 삭제=========//
+	@RequestMapping("/used/delete.do")
+	public String submitDelete(@RequestParam int used_num,
+							   Model model,
+							   HttpServletRequest request) {
+		logger.debug("<<글삭제>> : " + used_num);
+		
+		//글삭제
+		usedService.deleteUsed(used_num);
+		
+		//View에 표시할 메시지
+		model.addAttribute("message","글삭제 완료!!");
+		model.addAttribute("url", request.getContextPath()+"/used/list.do");
+		
+		return "common/resultView";
+	}
+		
 	
 	
 	

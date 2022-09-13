@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import kr.spring.used.dao.UsedMapper;
 import kr.spring.used.vo.UsedFavVO;
+import kr.spring.used.vo.UsedReplyVO;
 import kr.spring.used.vo.UsedVO;
 
 @Service
@@ -40,48 +41,76 @@ public class UsedServiceImpl implements UsedService {
 
 	@Override
 	public void updateHit(Integer used_num) {
-		// TODO Auto-generated method stub
-		
+		usedMapper.updateHit(used_num);	
 	}
 
 	@Override
 	public void updateUsed(UsedVO used) {
-		// TODO Auto-generated method stub
-		
+		usedMapper.updateUsed(used);
 	}
 
 	@Override
 	public void deleteUsed(Integer used_num) {
-		// TODO Auto-generated method stub
+		//부모글 삭제
+		usedMapper.deleteUsed(used_num);
+		//댓글이 존재하면 댓글을 우선 삭제하고 부모글을 삭제
 		
 	}
 
 	@Override
 	public void deleteFile(Integer used_num) {
-		// TODO Auto-generated method stub
-		
+		usedMapper.deleteFile(used_num);
 	}
 
 	@Override
 	public UsedFavVO selectFav(UsedFavVO fav) {
-		// TODO Auto-generated method stub
-		return null;
+		return usedMapper.selectFav(fav);
 	}
 
 	@Override
 	public int selectFavCount(Integer used_num) {
-		// TODO Auto-generated method stub
-		return 0;
+		return usedMapper.selectFavCount(used_num);
 	}
 
 	@Override
 	public void insertFav(UsedFavVO usedFav) {
-		// TODO Auto-generated method stub
+		usedMapper.insertFav(usedFav);
 		
 	}
 
 	@Override
 	public void deleteFav(Integer fav_num) {
+		usedMapper.deleteFav(fav_num);
+	}
+
+	@Override
+	public List<UsedReplyVO> selectListReply(Map<String, Object> map) {
+		return usedMapper.selectListReply(map);
+	}
+
+	@Override
+	public int selectRowCountReply(Map<String, Object> map) {
+		return usedMapper.selectRowCountReply(map);
+	}
+
+	@Override
+	public UsedReplyVO selectReply(Integer re_num) {
+		return usedMapper.selectReply(re_num);
+	}
+
+	@Override
+	public void insertReply(UsedReplyVO usedReply) {
+		usedMapper.insertReply(usedReply);
+	}
+
+	@Override
+	public void updateReply(UsedReplyVO usedReply) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteReply(Integer re_num) {
 		// TODO Auto-generated method stub
 		
 	}
