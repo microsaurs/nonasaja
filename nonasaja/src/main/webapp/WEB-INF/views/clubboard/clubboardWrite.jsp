@@ -71,7 +71,7 @@
 			</li>
 			<li>
 				<label for="club_limit">총 인원수</label>
-				<form:input path="club_limit"/>
+				<form:input path="club_limit" value="1"/>
 				<form:errors path="club_limit" 
 				             cssClass="error-color"/>
 			</li>
@@ -112,7 +112,7 @@
 			</li>	
 			<li  style="clear:both;">
 			<label for="region_num">판매지역</label>
-				<form:input path="region_num"/>
+				<form:input path="region_num" value="1"/>
 				<form:errors path="region_num" 
 				             cssClass="error-color"/>
 			</li>	

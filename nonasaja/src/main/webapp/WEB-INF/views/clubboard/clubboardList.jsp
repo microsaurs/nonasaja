@@ -4,8 +4,9 @@
 <!-- 내용 시작 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/board.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/club.css">
 <div class="page-main">
-	<h2>게시판 목록</h2>
+
 	<form action="list.do" id="search_form" 
 	                                   method="get">
 		<ul class="search">
@@ -28,9 +29,13 @@
 			</li>
 		</ul>
 	</form>
-	<c:if test="${!empty user}">
-	<div class="align-right">
-		<input type="button" value="글쓰기"
+	<div class="align-center">
+	<img src="${pageContext.request.contextPath}/images/자취생끼리같이해요.JPG" width="900px">
+	</div>
+	<!-- 로그인 되어있으면 글쓰기로 -->
+	<c:if test="${!empty user}">	          
+	<div class="align-center">
+	<img src="${pageContext.request.contextPath}/images/동호인 모집하기.JPG" width="300px" 
 		          onclick="location.href='write.do'">
 	</div>
 	</c:if>
@@ -38,30 +43,67 @@
 	<div class="result-display">표시할 게시물이 없습니다.</div>	
 	</c:if>
 	<c:if test="${count > 0}">
-	<table>
+
+
+	<c:forEach var="board" items="${list}">
+		<table>
 		<tr>
-			<th>모집여부</th>
-			<th width="400">제목</th>
-			<th>작성자</th>
-			<th>작성일</th>
-			<th>조회수</th>
+			<th class="th-1">
+			<c:if test="${board.club_recruit==0}">모집중</c:if>
+			<c:if test="${board.club_recruit==1}">모집완료</c:if>
+			</th>
+			<th width="400" class="th-2"><a href="detail.do?club_num=${board.club_num}">${board.club_title}</a></th>
 		</tr>
-		<c:forEach var="board" items="${list}">
 		<tr>
 			<td>
-				<c:if test="${board.club_recruit==0}">모집중</c:if>
-				<c:if test="${board.club_recruit==1}">모집완료</c:if>
+			<img src="${pageContext.request.contextPath}/images/icon-gender.png" width="50px">
 			</td>
-			<td><a href="detail.do?club_num=${board.club_num}">${board.club_title}</a></td>
-			<td>
-				<c:if test="${empty board.nickname}">${board.id}</c:if>
-				<c:if test="${!empty board.nickname}">${board.nickname}</c:if>
+			<td class="th-2">
+			<c:if test="${board.club_gender==0}">누구나 참여가능</c:if>
+			<c:if test="${board.club_gender==1}">남자만 참여가능</c:if>
+			<c:if test="${board.club_gender==2}">여자만 참여가능</c:if>
 			</td>
-			<td>${board.club_date}</td>
-			<td>${board.club_hit}</td>
 		</tr>
+		<tr>
+			<td>
+			<img src="${pageContext.request.contextPath}/images/icon-age.png" width="50px">
+			</td>
+			<td class="th-2">
+			<c:if test="${board.club_age == '10대,20대,30대,40대,50대,60대'}">
+			누구나 참여가능
+			</c:if>
+			<c:if test="${board.club_age != '10대,20대,30대,40대,50대,60대'}">
+			${board.club_age} 참여가능
+			</c:if>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<img src="${pageContext.request.contextPath}/images/icon-calendar-date.png" width="50px">
+			</td>
+			<td class="th-2">
+			${board.club_date}
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<img src="${pageContext.request.contextPath}/images/icon-location.png" width="50px">
+			</td>
+			<td class="th-2">
+			${board.region_num}
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<img src="${pageContext.request.contextPath}/images/icon-multiple-users-silhouette.png" width="50px">
+			</td>
+			<td class="th-2">
+			${board.club_pre}/${board.club_limit}명 참여
+			</td>
+		</tr>
+		</table><br><br>
 		</c:forEach>
-	</table>
+	
 	<div class="align-center">${page}</div>
 	</c:if>
 </div>
