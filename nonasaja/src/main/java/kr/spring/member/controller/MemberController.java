@@ -247,4 +247,97 @@ public class MemberController {
 		// 뷰 이름 지정
 		mav.setViewName("imageView");
 	}
+	
+	//=========비밀번호 변경===========//
+	//비밀번호 변경 폼
+	@GetMapping("/member/changePassword.do")
+	public String formChangePassword() {
+		return "memberChangePassword";
+	}
+	//비밀번호 변경 전송된 데이터 처리
+	@PostMapping("/member/changePassword.do")
+	public String submitChangePassword(@Valid MemberVO memberVO, BindingResult result, HttpSession session, 
+										Model model, HttpServletRequest request) {
+		logger.debug("<<비밀번호 변경 처리>> : " + memberVO);
+		
+		//유효성 체크 결과 오류가 있으면 폼 호출
+		//now_passwd, passwd만 체크
+		if(result.hasFieldErrors("now_passwd") || result.hasFieldErrors("passwd")) {
+			return formChangePassword();
+		}
+		
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		memberVO.setMem_num(user.getMem_num());
+		
+		//비밀번호 일치 여부 체크를 위해서 회원정보 호출
+		MemberVO db_member = memberService.selectMember(memberVO.getMem_num());
+		//폼에서 전송한 현재 비밀번호와 디비에서 받아온 현재 비밀번호 일치 여부 체크
+		if(!db_member.getPasswd().equals(memberVO.getNow_passwd())) {
+			result.rejectValue("now_passwd", "invalidPassword");
+			return formChangePassword();
+		}
+		
+		//비밀번호 변경
+		memberService.updatePassword(memberVO);
+		
+		//비밀번호 변경 성공 메시지를 scrpit로 보여지게 하기
+		//model, request 매개변수로 선언
+		//View에 표시할 메세지
+		model.addAttribute("message", "비밀번호 변경 완료!");
+		model.addAttribute("url", request.getContextPath()+"/member/myPage.do");
+		
+		return "common/resultView";
+	}
+	
+	//==========회원 탈퇴===========//
+	//탈퇴 폼
+	@GetMapping("/member/delete.do")
+	public String formDelete() {
+		return "memberDelete";
+	}
+	
+	//탈퇴 폼에서 전달된 데이터 처리
+	@PostMapping("/member/delete.do")
+	public String submitDelete(@Valid MemberVO memberVO, BindingResult result, HttpSession session, Model model) {
+		logger.debug("<<회원탈퇴>> : " + memberVO);
+		
+		//유효성 체크 결과 오류가 있으면 폼 호출
+		//id, passwd 필드의 에러만 체크
+		if(result.hasFieldErrors("id") || result.hasFieldErrors("passwd")) {
+			return formDelete();
+		}
+		
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		memberVO.setMem_num(user.getMem_num());
+		
+		try{
+			//로그인 한 회원의 아이디 구하기
+			MemberVO db_member = memberService.selectMember(user.getMem_num());
+			boolean check = false;
+			//검증
+			//로그인 한 회원 아이디와 입력한 아이디 대조
+			if(db_member!=null && db_member.getId().equals(memberVO.getId())) {
+				//비밀번호 일치 여부 체크
+				check = db_member.isCheckedPasswd(memberVO.getPasswd());
+			}
+			
+			if(check) {
+				//인증성공, 회원정보 삭제
+				memberService.deleteMember(memberVO.getMem_num());
+				
+				//로그아웃
+				session.invalidate();
+				
+				model.addAttribute("accessMsg","회원탈퇴를 완료했습니다.");
+				//notice.jsp의 기본 이동이 /main/main.do로 설정 되어 있어서 그대로 사용
+				return "common/notice";
+			}
+			//인증 실패
+			throw new AuthCheckException();
+		}catch(AuthCheckException e) {
+			result.reject("invalidIdOrPassword");
+			return formDelete();
+		}
+		
+	}
 }

@@ -32,8 +32,10 @@
 			</li>
 		</ul>
 		<p class="align-center">
+			<c:if test="${member.root == 0}">
 			<input type="button" value="비밀번호변경"
 			 onclick="location.href='changePassword.do'">
+			</c:if>
 			<input type="button" value="회원탈퇴"
 			 onclick="location.href='delete.do'"> 
 		</p>
@@ -48,7 +50,9 @@
 			<li>우편번호 : ${member.zipcode}</li>
 			<li>주소 : ${member.addr1}</li>
 			<li>상세주소 : ${member.addr2}</li>
+			<c:if test="${!empty member.interest}">
 			<li>관심사 : ${member.interest}</li>
+			</c:if>
 			<li>가입날짜 : ${member.reg_date}</li>
 			<c:if test="${!empty member.modify_date}">
 			<li>정보 수정일 : ${member.modify_date}</li>

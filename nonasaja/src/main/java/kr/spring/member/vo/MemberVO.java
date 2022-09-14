@@ -41,7 +41,7 @@ public class MemberVO {
 	private String photo_name;
 	private String interest;
 	private int cash;
-	
+	private int root;//0:자체회원, 1:네이버회원, 2:카카오회원
 	//비밀번호 변경시 현재 비밀번호를 저장하는 용도
 	@Pattern(regexp="^[A-Za-z0-9]{4,15}$")
 	private String now_passwd;
@@ -215,6 +215,14 @@ public class MemberVO {
 
 	public void setCash(int cash) {
 		this.cash = cash;
+	}
+
+	public int getRoot() {
+		return root;
+	}
+
+	public void setRoot(int root) {
+		this.root = root;
 	}
 
 	public String getNow_passwd() {

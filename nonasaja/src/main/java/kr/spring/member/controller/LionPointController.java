@@ -56,8 +56,8 @@ public class LionPointController {
 					+ "&vat_amount=200" // 부가세
 					+ "&tax_free_amount=0" // 상품 비과세 금액
 					+ "&approval_url=http://localhost:8080/member/payApproval.do" // 결제 성공 시
-					+ "&fail_url=http://localhost:8080/myPage.do" // 결제 실패 시
-					+ "&cancel_url=http://localhost:8080/myPage.do"; // 결제 취소 시
+					+ "&fail_url=http://localhost:8080/member/myPage.do" // 결제 실패 시
+					+ "&cancel_url=http://localhost:8080/member/myPage.do"; // 결제 취소 시
 			OutputStream send = conn.getOutputStream(); // 이제 뭔가를 를 줄 수 있다.
 			DataOutputStream dataSend = new DataOutputStream(send); // 이제 데이터를 줄 수 있다.
 			dataSend.writeBytes(parameter); // OutputStream은 데이터를 바이트 형식으로 주고 받기로 약속되어 있다. (형변환)

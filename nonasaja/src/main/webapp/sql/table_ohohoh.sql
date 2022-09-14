@@ -23,6 +23,7 @@ create table member_detail(
 	photo_name varchar2(100),
 	interest varchar2(100),
 	cash number(8) default 0 not null,
+	root number(1) default 0 not null, --가입수단- 0:자체회원, 1:네이버, 2:카카오
 	constraint member_detail_pk primary key (mem_num),
 	constraint member_detail_fk foreign key (mem_num) references member (mem_num)
 );

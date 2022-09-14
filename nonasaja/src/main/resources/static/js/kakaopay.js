@@ -26,7 +26,7 @@ $(function(){
 			
 			}).fail(function(error){
 				//alert(JSON.stringify(error));
-				alert('네트워크 오류!!');
+				alert('네트워크 오류 발생! MY페이지 재접속 후 다시 시도해주세요.');
 			}); 
 			
 		},
