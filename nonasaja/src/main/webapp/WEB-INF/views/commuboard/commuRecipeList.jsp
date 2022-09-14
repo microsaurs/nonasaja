@@ -1,28 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
 <!-- 내용 시작 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/board.js"></script>
-
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/item.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/recipeList.css">
 <div class="page-main">
-	<h2>레시피 게시판 목록</h2>
-	<form action="list.do" id="search_form" method="get">
+	<h2>레시피</h2>
+	<form action="list.do" method="get" id="search_form">
 		<ul class="search">
 			<li>
-				<select name="keyfield" id="keyfield">
-					<option value="1" <c:if test="${param.keyfield==1}">selected</c:if>>제목</option> 
-					<option value="2" <c:if test="${param.keyfield==2}">selected</c:if>>ID+별명</option>
-					<option value="3" <c:if test="${param.keyfield==3}">selected</c:if>>내용</option>
-					<option value="4" <c:if test="${param.keyfield==4}">selected</c:if>>제목+내용</option>
+				<select name="keyfield">
+					<option value="1" <c:if test="${param.keyfield == 1}">selected</c:if>>상품명</option>
+					<option value="2" <c:if test="${param.keyfield == 2}">selected</c:if>>내용</option>
+					<option value="3" <c:if test="${param.keyfield == 3}">selected</c:if>>상품명+내용</option>
 				</select>
 			</li>
 			<li>
-				<input type="search" name="keyword" id="keyword" value="${param.keyword}">
+				<input type="search" size="16" name="keyword" id="keyword" value="${param.keyword}">
 			</li>
 			<li>
 				<input type="submit" value="찾기">
-				<input type="button" value="목록" onclick="location.href='list.do'">
 			</li>
 		</ul>
 	</form>
@@ -32,34 +31,35 @@
 	</div>
 	</c:if>
 	<c:if test="${count == 0}">
-	<div class="result-display">표시할 게시물이 없습니다.</div>
+	<div class="result-display">
+		표시할 상품이 없습니다.
+	</div>
 	</c:if>
 	<c:if test="${count > 0}">
-	<table>
-		<tr>
-			<th>번호</th>
-			<th width="400">제목</th>
-			<th>작성자</th>
-			<th>작성일</th>
-			<th>조회수</th>
-		</tr>
+	<div class="item-space">
 		<c:forEach var="board" items="${list}">
-		<tr>
-			<td>${board.commu_num}</td>
-			<td><a href="detail.do?commu_num=${board.commu_num}">${board.commu_title}</a></td>
-			<td>
-				<!-- 별명이 등록안되어있으면 아이디를 보여줌 -->
-				<c:if test="${empty board.nickname}">${board.id}</c:if>
-				<c:if test="${!empty board.nickname}">${board.nickname}</c:if>
-			</td>
-			<td>${board.commu_date}</td>
-			<td>${board.commu_hit}</td>
-		</tr>
+			<div class="horizontal-area">
+				<a href="detail.do?commu_num=${board.commu_num}">
+					<img id ="recipeList_food" src="${pageContext.request.contextPath}/commuRecipe/imageView.do?commu_num=${board.commu_num}&board_type=2">
+					<span>${board.commu_title}</span>
+					<br>
+					<span><b>${board.commu_food}</b></span>
+					<br>
+				<div id = "level">
+					<img id ="recipeList_level" src="${pageContext.request.contextPath}/images/recipeList_level2.png">
+					<span>${board.commu_level}</span>
+					<img id ="recipeList_time" src="${pageContext.request.contextPath}/images/recipeList_time.png">
+					<span>${board.commu_time}</span>
+				</div>
+				</a>
+			</div>
 		</c:forEach>
-	</table>
-	<div class="align-center">${page}</div>
+		<div class="float-clear align-center">
+			${page}
+		</div>
+	</div>
 	</c:if>
 </div>
-
-
 <!-- 내용 끝 -->
+
+

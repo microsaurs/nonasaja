@@ -151,6 +151,11 @@ public class CommuBoardServiceImpl implements CommuBoardService{
 
 	@Override
 	public void deleteBoard2(Integer commu_num) {
+		//부모글 삭제
+		boardMapper.deleteBoard2(commu_num);
+		//댓글이 존재하면 댓글을 우선 삭제하고 부모글을 삭제
+		boardMapper.deleteReplyByBoardNum2(commu_num);
+		//부모글 삭제
 		boardMapper.deleteBoard2(commu_num);
 	}
 

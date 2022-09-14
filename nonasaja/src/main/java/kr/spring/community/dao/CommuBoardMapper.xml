@@ -165,6 +165,9 @@
 			  		   b.commu_hit,
 			  		   b.commu_date,
 			  		   b.mem_num,
+			  		   b.commu_food,
+			  		   b.commu_level,
+			  		   b.commu_time,
 			  		   m.id,
 			  		   m.nickname
 			  		FROM community_recipe_board b JOIN member m

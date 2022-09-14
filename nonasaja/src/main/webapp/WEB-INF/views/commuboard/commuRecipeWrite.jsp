@@ -41,9 +41,9 @@
 			</li>
 			<li>
 				<label for="commu_level">난이도</label>
-				<form:radiobutton path="commu_level" value="1"/>상&nbsp&nbsp
-				<form:radiobutton path="commu_level" value="2"/>중&nbsp&nbsp
-				<form:radiobutton path="commu_level" value="3"/>하
+				<form:radiobutton path="commu_level" value="상"/>상&nbsp&nbsp
+				<form:radiobutton path="commu_level" value="중"/>중&nbsp&nbsp
+				<form:radiobutton path="commu_level" value="하"/>하
 				<form:errors path="commu_level" cssClass="error-color"/>
 			</li>
 			<li>

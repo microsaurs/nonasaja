@@ -23,8 +23,8 @@ public class RecipeVO {
 	private String commu_food; //음식 이름
 	@NotEmpty
 	private String commu_ingredient; //필수 재료
-	@Min(0)
-	private int commu_level; //요리 난이도
+	@NotEmpty
+	private String commu_level; //요리 난이도
 	@NotEmpty
 	private String commu_time; //요리 시간
 	
@@ -124,10 +124,11 @@ public class RecipeVO {
 	public void setCommu_ingredient(String commu_ingredient) {
 		this.commu_ingredient = commu_ingredient;
 	}
-	public int getCommu_level() {
+	public String getCommu_level() {
 		return commu_level;
 	}
-	public void setCommu_level(int commu_level) {
+
+	public void setCommu_level(String commu_level) {
 		this.commu_level = commu_level;
 	}
 	public String getCommu_time() {

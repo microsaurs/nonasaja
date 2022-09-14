@@ -26,8 +26,7 @@ import kr.spring.util.PagingUtil;
 
 @Controller
 public class CommuBoardAjaxController {
-	private static final Logger logger =
-			LoggerFactory.getLogger(CommuBoardAjaxController.class);
+	private static final Logger logger = LoggerFactory.getLogger(CommuBoardAjaxController.class);
 	
 	private int rowCount = 10;
 	private int pageCount = 10;

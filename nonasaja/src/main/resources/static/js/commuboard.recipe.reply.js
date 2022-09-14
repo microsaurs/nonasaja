@@ -4,7 +4,7 @@ $(function(){
 	let rowCount;
 	
 	//댓글 목록
-	function selectList2(pageNum){
+	function selectList(pageNum){
 		currentPage = pageNum;
 		
 		//로딩 이미지 노출
