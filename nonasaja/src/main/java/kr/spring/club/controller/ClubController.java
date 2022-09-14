@@ -82,13 +82,10 @@ public class ClubController {
 			@RequestParam(value="pageNum",defaultValue="1") 
 			int currentPage,
 			@RequestParam(value="keyfield",defaultValue="")
-			String keyfield,
-			@RequestParam(value="keyword",defaultValue="")
-			String keyword) {
+			String keyfield){
 		
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("keyfield", keyfield);
-		map.put("keyword", keyword);
 		
 		//글의 총개수(검색된 글의 개수)
 		int count = clubService.selectRowCount(map);
@@ -97,9 +94,8 @@ public class ClubController {
 		
 		//페이지 처리
 		PagingUtil page = 
-				new PagingUtil(keyfield,keyword,
-						currentPage,count,
-						rowCount,pageCount,"list.do");
+				new PagingUtil(currentPage,count,
+						rowCount,pageCount,"list.do","&keyfield="+keyfield);
 		
 		List<ClubVO> list = null;
 		if(count > 0) {
@@ -138,9 +134,7 @@ public class ClubController {
 			 StringUtil.useNoHtml(board.getClub_title()));
 		//내용에 줄바꿈 처리하면서 태그를 허용하지 않음
 		//ckeditor 사용시 아래 코드 주석 처리
-		
-		board.setClub_content(
-		 StringUtil.useBrNoHtml(board.getClub_content()));
+		//board.setClub_content(StringUtil.useBrNoHtml(board.getClub_content()));
 		
 		                          //뷰 이름    속성명   속성값
 		return new ModelAndView("clubboardView","board", board);
@@ -204,7 +198,7 @@ public class ClubController {
 		Logger.debug("<<글수정>> : " + clubVO);
 		
 		//유효성 체크 결과 오류가 있으면 폼 호출
-		/*if(result.hasErrors()) {
+		if(result.hasErrors()) {
 			//title 또는 content가 입력되지 않아 유효성 체크에
 			//걸리면 파일 정보를 잃어버리기 때문에 품을
 			//호출할 때 다시 셋팅해주어야 함.
@@ -213,7 +207,7 @@ public class ClubController {
 			//ClubVO.setFilename(vo.getFilename()); 
 			return "clubboardModify";
 		}
-		*/
+		
 		//글수정
 		clubService.updateBoard(clubVO);
 		

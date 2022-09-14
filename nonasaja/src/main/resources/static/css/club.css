@@ -48,8 +48,9 @@ ul.detail-info li{
 	width:1000px;
 }
 .page-main label{
-	width:130px;
+	width:1000px;
 	float:left;
+	margin:10px
 }
 .page-main input[type="text"],.page-main input[type="password"],.page-main input[type="email"]{
 	width:500px;

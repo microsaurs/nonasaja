@@ -7,24 +7,11 @@
   	                    resultType="integer">
 		SELECT
 		  COUNT(*)
-		FROM club_board b JOIN member m
-		ON b.club_leader = m.mem_num
+		FROM club_board b JOIN region r
+		ON b.region_num = r.region_num
 		<where>
-			<if test="keyword != null and keyword != ''">
-				<if test="keyfield == 1">
-					b.club_title LIKE '%' || #{keyword} || '%'
-				</if>
-				<if test="keyfield == 2">
-					m.id LIKE '%' || #{keyword} || '%' OR
-					m.nickname LIKE '%' || #{keyword} || '%'
-				</if>
-				<if test="keyfield == 3">
-					b.club_content LIKE '%' || #{keyword} || '%'
-				</if>
-				<if test="keyfield == 4">
-					b.club_title LIKE '%' || #{keyword} || '%' OR
-					b.club_content LIKE '%' || #{keyword} || '%'
-				</if>
+			<if test="keyfield != null and keyfield != ''">
+				b.club_code = #{keyfield}
 			</if>
 		</where>  	
   	</select>
@@ -55,23 +42,10 @@
   		            FROM club_board b JOIN member m
   		            ON b.club_leader = m.mem_num
   		            <where>
-						<if test="keyword != null and keyword != ''">
-							<if test="keyfield == 1">
-								b.club_title LIKE '%' || #{keyword} || '%'
-							</if>
-							<if test="keyfield == 2">
-								m.id LIKE '%' || #{keyword} || '%' OR
-								m.nickname LIKE '%' || #{keyword} || '%'
-							</if>
-							<if test="keyfield == 3">
-								b.club_content LIKE '%' || #{keyword} || '%'
-							</if>
-							<if test="keyfield == 4">
-								b.club_title LIKE '%' || #{keyword} || '%' OR
-								b.club_content LIKE '%' || #{keyword} || '%'
-							</if>
+						<if test="keyfield != null and keyfield != ''">
+							b.club_code = #{keyfield}
 						</if>
-					</where> 
+					</where>
   		            ORDER BY b.club_num DESC)a)
   		<![CDATA[
   		WHERE rnum >= #{start} AND rnum <= #{end}

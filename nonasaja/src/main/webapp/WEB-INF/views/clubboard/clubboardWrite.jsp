@@ -12,14 +12,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Noto+Sans+KR&family=Poor+Story&display=swap" rel="stylesheet">
 <style>
 .ck-editor__editable_inline{
-	min-height:500px;
+	min-height:400px;
 }
 </style>
 <!-- include ckeditor js -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/ckeditor.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/uploadAdapter.js"></script>
 <div class="page-main">
-	<h2>글쓰기</h2>
+	<div class="align-center">
+	<img src="${pageContext.request.contextPath}/images/동호인모집글쓰기.JPG" width="300px" >
+	</div>
 	<form:form action="write.do" modelAttribute="clubVO"
 	        id="register_form"
 	        enctype="multipart/form-data">
@@ -44,12 +46,12 @@
 				             cssClass="error-color"/>
 			</li>
 			<li>
-				<label for="club_name">동호회명</label>
+				<label for="club_name">동호회 이름</label>
 				<form:input path="club_name"/>
 				<form:errors path="club_name" 
 				             cssClass="error-color"/>
 			</li>
-			<li><b>상세 내용</b></li>
+			<li><label for="club_content">상세 내용</label>
 			<li>
 				<form:textarea path="club_content"/>
 				<form:errors path="club_content" 

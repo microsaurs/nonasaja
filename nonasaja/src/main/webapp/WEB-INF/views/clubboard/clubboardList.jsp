@@ -14,16 +14,15 @@
 	                                   method="get">
 		<ul class="search">
 			<li>
-				<select name="keyfield" id="keyfield">
-					<option value="1" <c:if test="${param.keyfield == 1}">selected</c:if>>제목</option>
-					<option value="2" <c:if test="${param.keyfield == 2}">selected</c:if>>ID+별명</option>
-					<option value="3" <c:if test="${param.keyfield == 3}">selected</c:if>>내용</option>
-					<option value="4" <c:if test="${param.keyfield == 4}">selected</c:if>>제목+내용</option>
-				</select>
-			</li>
-			<li>
-				<input type="search" name="keyword" id="keyword"
-				               value="${param.keyword}">
+					<select name="keyfield" id="keyfield">
+					<option value="1" <c:if test="${param.keyfield == 1}">selected</c:if>>운동</option>
+					<option value="2" <c:if test="${param.keyfield == 2}">selected</c:if>>오락</option>
+					<option value="3" <c:if test="${param.keyfield == 3}">selected</c:if>>맛집</option>
+					<option value="4" <c:if test="${param.keyfield == 4}">selected</c:if>>노래</option>
+					<option value="5" <c:if test="${param.keyfield == 5}">selected</c:if>>여행</option>
+					<option value="6" <c:if test="${param.keyfield == 6}">selected</c:if>>스터디</option>
+					<option value="7" <c:if test="${param.keyfield == 7}">selected</c:if>>기타</option>
+					</select>
 			</li>
 			<li>
 				<input type="submit" value="찾기">
