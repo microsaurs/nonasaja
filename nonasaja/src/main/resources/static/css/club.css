@@ -36,3 +36,21 @@ ul.detail-info{
 ul.detail-info li{
 	display: inline-block;
 }
+.page-main form{
+	width:700px;
+	margin:0 auto;
+	border:1px solid #000;
+	padding:10px 10px 10px 30px;
+	font-size:x-large;
+}
+/*CKEditor 사용시 등록,수정폼*/
+.page-main form#register_form, .page-main form#update_form{
+	width:1000px;
+}
+.page-main label{
+	width:130px;
+	float:left;
+}
+.page-main input[type="text"],.page-main input[type="password"],.page-main input[type="email"]{
+	width:500px;
+}
