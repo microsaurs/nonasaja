@@ -9,7 +9,7 @@ public class LionPointVO {
 	private int cash;//거래 전 잔액
 	private int remain;//거래 후 잔액
 	private int order_num;//주문 번호
-	private Date reg_date;
+	private String reg_date;
 	
 	public int getPoint_num() {
 		return point_num;
@@ -47,10 +47,10 @@ public class LionPointVO {
 	public void setOrder_num(int order_num) {
 		this.order_num = order_num;
 	}
-	public Date getReg_date() {
+	public String getReg_date() {
 		return reg_date;
 	}
-	public void setReg_date(Date reg_date) {
+	public void setReg_date(String reg_date) {
 		this.reg_date = reg_date;
 	}
 	

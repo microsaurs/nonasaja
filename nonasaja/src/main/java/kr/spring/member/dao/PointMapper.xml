@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.spring.member.dao.LionPointMapper">
+	<!-- 포인트 내역 목록 -->
+	<select id="selectPointList" parameterType="map" resultType="lionPointVO">
+  		SELECT
+  			*
+  		FROM (SELECT 
+  				a.*,
+  				rownum rnum
+  			  FROM (SELECT
+  			  			point_num,
+  			  			mem_num,
+  			  			lionpoint,
+  			  			cash,
+  			  			remain,
+  			  			reg_date
+  			  		FROM lionpoint
+  			  		WHERE mem_num=1
+  			  		ORDER BY point_num DESC)a)
+  		<![CDATA[
+  		WHERE rnum >= #{start} AND rnum <= #{end}
+  		]]>
+  	</select>
+
+</mapper>

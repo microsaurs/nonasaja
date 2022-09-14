@@ -30,7 +30,7 @@ public class LionPointServiceImpl implements LionPointService {
 	}
 
 	@Override
-	public int selectPointCnt(Map<String, Object> map) {
+	public int selectPointCnt(Integer mem_num) {
 		return 0;
 	}
 

@@ -32,12 +32,14 @@
 			</li>
 		</ul>
 		<p class="align-center">
+			<%-- 네이버,카카오 회원은 비밀번호변경 불가
+				 탈퇴는 네이버,카카오 측에서 연동 해제해야 함 --%>
 			<c:if test="${member.root == 0}">
 			<input type="button" value="비밀번호변경"
 			 onclick="location.href='changePassword.do'">
-			</c:if>
 			<input type="button" value="회원탈퇴"
 			 onclick="location.href='delete.do'"> 
+			</c:if>
 		</p>
 	</div>
 	<div class="mypage-div">
@@ -68,6 +70,7 @@
     			<button id="kpay_btn">카카오페이로 결제하기</button>
     		</form>
     		<span>보유 포인트 : <b><fmt:formatNumber value="${member.cash}"/> 원</b></span>
+    		<a href="paymentList.do">충전/결제 내역</a>
 		</div>
 	</div>
 </div>

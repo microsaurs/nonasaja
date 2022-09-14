@@ -9,6 +9,9 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -17,7 +20,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -28,13 +33,19 @@ import kr.spring.kakaopay.vo.ApproveResponse;
 import kr.spring.kakaopay.vo.ReadyResponse;
 import kr.spring.member.vo.LionPointVO;
 import kr.spring.member.vo.MemberVO;
+import kr.spring.util.PagingUtil;
 
 @Controller
 public class LionPointController {
 	private static final Logger logger = LoggerFactory.getLogger(LionPointController.class);
+	
 	@Autowired
 	private KakaopayService kakaoService;
 	
+	private int rowCount = 15;
+	private int pageCount = 10;
+	
+	//결제 요청
 	@RequestMapping("/member/payReady.do")
 	@ResponseBody
 	public String kakaopayReady(String money, HttpSession session) {
@@ -104,6 +115,7 @@ public class LionPointController {
 		return "";
 	}
 	
+	//결제 승인
 	@RequestMapping("/member/payApproval.do")
 	public String kakaopayApprove(String pg_token, HttpSession session) {
 		try {
@@ -197,5 +209,41 @@ public class LionPointController {
 		//결제가 완료되면 메인페이지로 이동 = "main"
 		//마이페이지로 이동 = "redirect:myPage.do"
 		return "redirect:myPage.do";
+	}
+	
+	//==========포인트 내역 목록=============//
+	@RequestMapping("/member/paymentList.do")
+	public ModelAndView paymentList(@RequestParam(value="pageNum",defaultValue="1")int currentPage, 
+									HttpSession session) {
+		logger.debug("<결제 내역 조회>...");
+		
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		
+		int count = kakaoService.selectPointCnt(user.getMem_num());
+		logger.debug("<count>..." + count);
+		
+		PagingUtil page = new PagingUtil(currentPage,count,rowCount,pageCount,"");
+		
+		Map<String, Object> map = new HashMap<String,Object>();
+		
+		List<LionPointVO> list = null;
+		if(count>0) {
+			map.put("start", page.getStartRow());
+			map.put("end", page.getEndRow());
+			map.put("mem_num", user.getMem_num());
+			list = kakaoService.selectPointList(map);
+			
+//			for(LionPointVO point : list) {
+//				point
+//			}
+		}
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("paymentList");
+		mav.addObject("count", count);
+		mav.addObject("list", list);
+		mav.addObject("page", page.getPage());
+		
+		return mav;
 	}
 }

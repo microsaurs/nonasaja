@@ -295,7 +295,6 @@ public class MemberController {
 	public String formDelete() {
 		return "memberDelete";
 	}
-	
 	//탈퇴 폼에서 전달된 데이터 처리
 	@PostMapping("/member/delete.do")
 	public String submitDelete(@Valid MemberVO memberVO, BindingResult result, HttpSession session, Model model) {
@@ -340,4 +339,5 @@ public class MemberController {
 		}
 		
 	}
+	
 }

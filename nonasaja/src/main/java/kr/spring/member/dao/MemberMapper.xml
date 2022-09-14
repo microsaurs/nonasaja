@@ -30,4 +30,63 @@
 		(#{mem_num},#{name},REPLACE(#{phone},'-',''),#{email},#{zipcode},#{addr1},#{addr2},1
 		<if test="interest!=null and interest!=''">,#{interest}</if>)
 	</insert>
+	
+	<select id="selectRowCount" parameterType="map" resultType="integer">
+  		SELECT
+  			COUNT(*)
+  		FROM member m LEFT OUTER JOIN member_detail d
+  		ON m.mem_num=d.mem_num
+  		<where>
+  			<if test="keyword != null and keyword != ''">
+  				<if test="keyfield == 1">
+  					m.id LIKE '%' || #{keyword} || '%'
+  				</if>
+  				<if test="keyfield == 2">
+  					m.nickname LIKE '%' || #{keyword} || '%'
+  				</if>
+  				<if test="keyfield == 3">
+  					d.email LIKE '%' || #{keyword} || '%'
+  				</if>
+  				<if test="keyfield == 4">
+  					m.id LIKE '%' || #{keyword} || '%' OR
+  					m.nickname LIKE '%' || #{keyword} || '%' OR
+  					d.email LIKE '%' || #{keyword} || '%'
+  				</if>
+  			</if>
+  		</where>
+  	</select>
+  	
+  	<select id="selectList" parameterType="map" resultType="memberVO">
+  		SELECT
+  			*
+  		FROM (SELECT
+  				a.*,
+  				rownum rnum
+  			  FROM (SELECT
+  			  			*
+  			  		FROM member m LEFT OUTER JOIN member_detail d
+  			  		ON m.mem_num=d.mem_num
+  			  		<where>
+			  			<if test="keyword != null and keyword != ''">
+			  				<if test="keyfield == 1">
+			  					m.id LIKE '%' || #{keyword} || '%'
+			  				</if>
+			  				<if test="keyfield == 2">
+			  					m.nickname LIKE '%' || #{keyword} || '%'
+			  				</if>
+			  				<if test="keyfield == 3">
+			  					d.email LIKE '%' || #{keyword} || '%'
+			  				</if>
+			  				<if test="keyfield == 4">
+			  					m.id LIKE '%' || #{keyword} || '%' OR
+			  					m.nickname LIKE '%' || #{keyword} || '%' OR
+			  					d.email LIKE '%' || #{keyword} || '%'
+			  				</if>
+			  			</if>
+  					</where>
+  			  		ORDER BY d.reg_date DESC)a)
+  		<![CDATA[
+  		WHERE rnum >= #{start} AND rnum <= #{end}
+  		]]>
+  	</select>
 </mapper>

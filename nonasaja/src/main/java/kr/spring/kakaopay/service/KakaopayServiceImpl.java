@@ -17,15 +17,13 @@ public class KakaopayServiceImpl implements KakaopayService {
 	
 
 	@Override
-	public int selectPointCnt(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int selectPointCnt(Integer mem_num) {
+		return lionpointMapper.selectPointCnt(mem_num);
 	}
 
 	@Override
 	public List<LionPointVO> selectPointList(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
+		return lionpointMapper.selectPointList(map);
 	}
 
 	@Override
