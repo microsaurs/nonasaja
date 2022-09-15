@@ -20,7 +20,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/uploadAdapter.js"></script>
 <div class="page-main1">
 	<div class="align-center">
-	<h2 class="button"><b>동호인 글쓰기</b></h2> 
+	<h2 class="button"><b>동호인 글쓰기</b></h2>
 	</div>
 	<form:form action="write.do" modelAttribute="clubVO"
 	        id="register_form"
@@ -41,13 +41,13 @@
 			</li>
 			<li style="clear:both;">
 				<label for="club_title">제목</label>
-				<form:input path="club_title"/>
+				<form:input class="textarea" path="club_title"/>
 				<form:errors path="club_title" 
 				             cssClass="error-color"/>
 			</li>
 			<li>
 				<label for="club_name">동호회 이름</label>
-				<form:input path="club_name"/>
+				<form:input class="textarea" path="club_name"/>
 				<form:errors path="club_name" 
 				             cssClass="error-color"/>
 			</li>
@@ -77,7 +77,7 @@
 			</li>
 			<li>
 				<label for="club_limit">총 인원수</label>
-				<form:input path="club_limit" value="1"/>
+				<form:input class="textarea" path="club_limit" value="1"/>
 				<form:errors path="club_limit" 
 				             cssClass="error-color"/>
 			</li>
@@ -118,7 +118,7 @@
 			</li>	
 			<li  style="clear:both;">
 			<label for="region_num">판매지역</label>
-				<form:input path="region_num" value="1"/>
+				<form:input class="textarea"  path="region_num" value="1"/>
 				<form:errors path="region_num" 
 				             cssClass="error-color"/>
 			</li>	

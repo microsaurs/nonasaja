@@ -12,15 +12,14 @@
 
 
 	<div class="align-center">
-	<img src="${pageContext.request.contextPath}/images/자취생끼리같이해요.JPG" width="900px">
+	<img src="${pageContext.request.contextPath}/images/자취생끼리같이해요.JPG" width="700px">
 	
 	</div>
 	<!-- 로그인 되어있으면 글쓰기로 -->
 	<c:if test="${!empty user}">	          
 	<div class="align-center">
-	<%-- <img src="${pageContext.request.contextPath}/images/동호인 모집하기.JPG" width="300px" 
-		          onclick="location.href='write.do'"> --%>
-	<input class="button" type="button" value="동호인 모집하기" onclick="location.href='write.do'">
+
+	<input class="button2" type="button" value="동호인 모집하기" onclick="location.href='write.do'">
 	</div>
 	</c:if>
 	<div class="align-center">

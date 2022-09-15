@@ -43,13 +43,13 @@
 			</li>
 			<li style="clear:both;">
 				<label for="club_title">제목</label>
-				<form:input path="club_title"/>
+				<form:input class="textarea" path="club_title"/>
 				<form:errors path="club_title" 
 				             cssClass="error-color"/>
 			</li>
 			<li>
 				<label for="club_name">동호회명</label>
-				<form:input path="club_name"/>
+				<form:input  class="textarea" path="club_name"/>
 				<form:errors path="club_name" 
 				             cssClass="error-color"/>
 			</li>
@@ -78,8 +78,8 @@
 			    </script>               
 			</li>
 			<li>
-				<label for="club_limit">총 인원수</label>
-				<form:input path="club_limit"/>
+				<label for="club_limit" >총 인원수</label>
+				<form:input class="textarea" path="club_limit"/>
 				<form:errors path="club_limit" 
 				             cssClass="error-color"/>
 			</li>
@@ -116,8 +116,8 @@
 			</li>
 			
 			<li  style="clear:both;">
-			<label for="region_num">판매지역</label>
-				<form:input path="region_num"/>
+			<label for="region_num" >판매지역</label>
+				<form:input  class="textarea" path="region_num"/>
 				<form:errors path="region_num" 
 				             cssClass="error-color"/>
 			</li>	
