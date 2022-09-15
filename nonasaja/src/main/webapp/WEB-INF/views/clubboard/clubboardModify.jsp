@@ -19,8 +19,10 @@
 <!-- include ckeditor js -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/ckeditor.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/uploadAdapter.js"></script>
-<div class="page-main">
-	<img src="${pageContext.request.contextPath}/images/동호인모집글수정.JPG" width="300px" >
+<div class="page-main1">
+<div class="align-center">
+	<h2><b>동호인 글수정</b></h2> 
+	</div>
 	<form:form action="update.do" modelAttribute="clubVO"
 	        id="update_form"
 	        enctype="multipart/form-data">

@@ -18,9 +18,9 @@
 <!-- include ckeditor js -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/ckeditor.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/uploadAdapter.js"></script>
-<div class="page-main">
+<div class="page-main1">
 	<div class="align-center">
-	<img src="${pageContext.request.contextPath}/images/동호인모집글쓰기.JPG" width="300px" >
+	<h2><b>동호인 글쓰기</b></h2> 
 	</div>
 	<form:form action="write.do" modelAttribute="clubVO"
 	        id="register_form"
@@ -124,8 +124,8 @@
 			</li>	
 		</ul>    
 		<div class="align-right">
-			<form:button>전송</form:button>
-			<input type="button" value="목록"
+			<form:button class="button">전송</form:button>
+			<input class="button" type="button" value="목록"
 			            onclick="location.href='list.do'">
 		</div>    
 	</form:form>

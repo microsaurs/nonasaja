@@ -16,10 +16,10 @@
 	<ul class="detail-info">
 		<li> 
 			<c:if test="${!empty user.photo_name}">
-			<img src="viewProfile.do?mem_num=${board.mem_num}" width="70px" class="my-photo">
+			<img id="img" src="viewProfile.do?mem_num=${board.mem_num}" width="70px" class="my-photo">
 			</c:if>
 			<c:if test="${empty user.photo_name}">
-			<img src="${pageContext.request.contextPath}/images/icon-profile-user-64572.png" width="70px" class="my-photo">
+			<img id="img" src="${pageContext.request.contextPath}/images/icon-profile-user-64572.png" width="70px" class="my-photo">
 			</c:if> 
 		</li>
 		<li>
@@ -36,12 +36,11 @@
 			조회 : ${board.club_hit}
 		</li>
 	</ul>
-	
 	<div class="align-right">
 		<%-- 좋아요 --%>
+		LIKE
 		<img id="output_fav" src="${pageContext.request.contextPath}/images/free-icon-love01.png" width="40">
 	</div>
-	<br>
 	<!-- 표 시작 -->
 		<table>
 		<tr>
@@ -134,9 +133,9 @@
 	<hr size="1" width="100%">
 	<div class="align-right">
 		<c:if test="${!empty user && user.mem_num == board.club_leader}">
-		<input type="button" value="수정" 
+		<input class="button" type="button" value="수정" 
 		  onclick="location.href='update.do?club_num=${board.club_num}'">
-		<input type="button" value="삭제" id="delete_btn">
+		<input class="button" type="button" value="삭제" id="delete_btn">
 		<script type="text/javascript">
 			let delete_btn = document.getElementById('delete_btn');
 			//이벤트 연결
@@ -148,7 +147,7 @@
 			};
 		</script>  
 		</c:if>
-		<input type="button" value="목록"
+		<input class="button" type="button" value="목록"
 		       onclick="location.href='list.do'">
 	</div>
 	<hr size="1" width="100%">
