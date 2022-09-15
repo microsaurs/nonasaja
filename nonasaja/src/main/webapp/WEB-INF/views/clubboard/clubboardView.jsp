@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Noto+Sans+KR&family=Poor+Story&display=swap" rel="stylesheet">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/videoAdapter.js"></script>
-<div class="page-main">
+<div class="page-main1">
 <!-- 헤드 이미지 -->
 
 	<ul class="detail-info">
@@ -45,27 +45,27 @@
 	<!-- 표 시작 -->
 		<table>
 		<tr>
-			<th class="th-1">
+			<th class="th-3">
 			<c:if test="${board.club_recruit==0}">모집중</c:if>
 			<c:if test="${board.club_recruit==1}">모집완료</c:if>
 			</th>
-			<th width="400" class="th-2">${board.club_title}</th>
+			<th width="400" class="th-4">${board.club_title}</th>
 		</tr>
 		<tr>
-			<td>
+			<td class="td-1">
 			<img src="${pageContext.request.contextPath}/images/icon-gender.png" width="50px">
 			</td>
-			<td class="th-2">
+			<td class="td-2">
 			<c:if test="${board.club_gender==0}">누구나 참여가능</c:if>
 			<c:if test="${board.club_gender==1}">남자만 참여가능</c:if>
 			<c:if test="${board.club_gender==2}">여자만 참여가능</c:if>
 			</td>
 		</tr>
 		<tr>
-			<td>
+			<td class="td-1">
 			<img src="${pageContext.request.contextPath}/images/icon-age.png" width="50px">
 			</td>
-			<td class="th-2">
+			<td class="td-2">
 			<c:if test="${board.club_age == '10대,20대,30대,40대,50대,60대'}">
 			누구나 참여가능
 			</c:if>
@@ -75,26 +75,26 @@
 			</td>
 		</tr>
 		<tr>
-			<td>
+			<td class="td-1">
 			<img src="${pageContext.request.contextPath}/images/icon-calendar-date.png" width="50px">
 			</td>
-			<td class="th-2">
+			<td class="td-2">
 			${board.club_date}
 			</td>
 		</tr>
 		<tr>
-			<td>
+			<td class="td-1">
 			<img src="${pageContext.request.contextPath}/images/icon-location.png" width="50px">
 			</td>
-			<td class="th-2">
+			<td class="td-2">
 			${board.region_num}
 			</td>
 		</tr>
 		<tr>
-			<td>
+			<td class="td-3">
 			<img src="${pageContext.request.contextPath}/images/icon-multiple-users-silhouette.png" width="50px">
 			</td>
-			<td class="th-2">
+			<td class="td-4">
 			${board.club_pre}/${board.club_limit}명 참여
 			</td>
 		</tr>
@@ -102,20 +102,18 @@
 	
 	<table>
 		<tr>
-			<th class="th-1">
+			<th class="th-3">
 			동호회 이름
 			</th>
-		</tr>
-		<tr>
-			<td class="td-1">
+			<th class="th-4">
 			${board.club_name}
-			</td>
+			</th>
 		</tr>
 	</table>
 	
 	<table>
 		<tr>
-			<th class="th-1">
+			<th class="th-5" colspan="2">
 			상세내용
 			</th>
 		</tr>

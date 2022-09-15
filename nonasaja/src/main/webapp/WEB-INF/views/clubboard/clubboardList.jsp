@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Noto+Sans+KR&family=Poor+Story&display=swap" rel="stylesheet">
-<div class="page-main">
+<div class="page-main1">
 
 
 	<div class="align-center">
@@ -37,13 +37,13 @@
 
 
 	<c:forEach var="board" items="${list}">
-		<table id="clublist">
+		<table>
 		<tr>
 			<th id="th-1">
 			<c:if test="${board.club_recruit==0}">모집중</c:if>
 			<c:if test="${board.club_recruit==1}">모집완료</c:if>
 			</th>
-			<th width="400" id="td-2"><a href="detail.do?club_num=${board.club_num}">${board.club_title}</a></th>
+			<th width="400" id="th-2"><a href="detail.do?club_num=${board.club_num}">${board.club_title}</a></th>
 		</tr>
 		<tr>
 			<td id="td-1">
@@ -85,10 +85,10 @@
 			</td>
 		</tr>
 		<tr>
-			<td id="td-1">
+			<td id="td-3">
 			<img src="${pageContext.request.contextPath}/images/icon-multiple-users-silhouette.png" width="50px">
 			</td>
-			<td id="td-2">
+			<td id="td-4">
 			${board.club_pre}/${board.club_limit}명 참여
 			</td>
 		</tr>

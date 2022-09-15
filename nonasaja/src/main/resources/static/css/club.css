@@ -1,45 +1,99 @@
-
-div.page-main{
+.page-main1{
+	width:98%;
+	margin:0 auto;
+}
+div.page-main1{
 font-family: 'Poor Story', cursive;
 }
-div.page-main #clublist {
+div.page-main1 table{
 	
 	border:none;
 	font-size:x-large;
 	padding: 30px;
 	margin : 20px;
 }
-#clublist{
+table{
 	border:none;
 	padding: 10px;
 }
-#clublist td {
+/* table td {
 	border-bottom: 1px solid #444444;
 	padding: 10px;
 
+} */
+.page-main1 table td, .page-main1 table th{
+	padding:7px;
 }
+/* clubboardList는 id로 스타일 지정 */
 #th-1 {
 	text-align: center;
-    width: 70px;
-    padding: 30px;
+    width: 100px;
+    padding: 10px;
     color: #f5d505;
+    border-bottom: 1px solid #444444;
+  }
+#th-2 {
+	text-align: left;
+    width: 700px;
+    border-bottom: 1px solid #444444;
   }
 #td-1 {
 	text-align: center;
-    width: 70px;
   } 
 #td-2 {
     text-align: left;
-
   }
-
+#td-3 {
+    text-align: center;	
+	border-bottom: 1px solid #444444;
+  }
+#td-4 {
+    text-align: left;	
+	border-bottom: 1px solid #444444;
+  }      
+/* clubboardView는 class로 스타일 지정 */
+.th-3{
+	border-bottom: 1px solid #444444;
+	text-align: center;
+	color: #f5d505;
+	font-size:x-large;
+	width: 120px;
+}
+.th-4{
+	border-bottom: 1px solid #444444;
+	text-align: left;
+	width: 700px;
+}
+.th-5{
+	border-bottom: 1px solid #444444;
+	text-align: left;
+	color: #f5d505;
+	font-size:x-large;
+	width: 820px;
+}
+.td-1{
+	text-align: center;
+	 width: 120px;
+}
+.td-2{
+	text-align: left;
+	width:900px;	
+}
+.td-3 {
+    text-align: center;	
+	border-bottom: 1px solid #444444;
+  }
+.td-4 {
+    text-align: left;	
+	border-bottom: 1px solid #444444;
+  } 
 ul.detail-info{
 	font-size:large;
 }  
 ul.detail-info li{
 	display: inline-block;
 }
-.page-main form{
+.page-main1 form{
 	width:700px;
 	margin:0 auto;
 	border:none;
@@ -50,12 +104,12 @@ ul.detail-info li{
 .page-main form#register_form, .page-main form#update_form{
 	width:1000px;
 }
-.page-main label{
+.page-main1 label{
 	width:1000px;
 	float:left;
 	margin:10px
 }
-.page-main input[type="text"],.page-main input[type="password"],.page-main input[type="email"]{
+.page-main1 input[type="text"],.page-main input[type="password"],.page-main input[type="email"]{
 	width:500px;
 }
 #img{
