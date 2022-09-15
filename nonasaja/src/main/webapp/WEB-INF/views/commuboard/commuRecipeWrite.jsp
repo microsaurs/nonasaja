@@ -8,7 +8,7 @@
 <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style>
 .ck-editor__editable_inline{
-	min-height:250px;
+	min-height:400px;
 }
 </style>
 <!-- include ckeditor js -->
@@ -18,7 +18,7 @@
 	<h2>레시피 글쓰기</h2>
 	<form:form action="write.do" modelAttribute="recipeVO" id="register_form" enctype="multipart/form-data">
 	    <form:errors element="div" cssClass="error-color"/>    
-		<ul>
+		<ul>	
 			<li>
 				<label for="commu_title">제목</label>
 				<form:input path="commu_title"/>

@@ -31,7 +31,7 @@
 			조회 : ${board.commu_hit}
 		</li>
 	</ul>
- 	<ul>
+<%--  	<ul>
 		<c:if test="${!empty board.filename}">
 		<li>
 			첨부파일 : <a href="file.do?commu_num=${board.commu_num}">${board.filename}</a>
@@ -47,7 +47,7 @@
 			첨부파일 : <a href="file.do?commu_num=${board.commu_num}">${board.filename3}</a>
 		</li>
 		</c:if>
-	</ul> 
+	</ul>  --%>
  	<hr size="1" width="100%">
 	<c:if test="${fn:endsWith(board.filename,'.jpg') ||
 	              fn:endsWith(board.filename,'.JPG') ||
@@ -60,7 +60,7 @@
 	
 	<c:if test="${!empty board.filename}">
 	<div class="align-center">
-		<img src="imageView.do?commu_num=${board.commu_num}&board_type=2" style="max-width:500px;">
+		<img src="imageView.do?commu_num=${board.commu_num}&board_type=2" style="max-width:800px;">
 	</div>
 	</c:if>
 	<c:if test="${!empty board.filename2}">

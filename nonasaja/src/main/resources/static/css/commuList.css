@@ -1,0 +1,14 @@
+div#page-main table {
+  width: 100%;
+  border-top: 1px solid #444444;
+  border-collapse: collapse;
+}
+div#page-main tr, th {
+  border-bottom: 1px solid #444444;
+  padding: 10px;
+} 
+
+
+
+
+

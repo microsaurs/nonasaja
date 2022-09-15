@@ -14,13 +14,20 @@
 <!-- include ckeditor js -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/ckeditor.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/uploadAdapter.js"></script>
-<div class="page-main">
-	<h2>유머 글쓰기</h2>
+	<h2>커뮤니티 글쓰기</h2>
 	<form:form action="humorwrite.do" modelAttribute="communityVO"
 	        id="register_form"
 	        enctype="multipart/form-data">
 	    <form:errors element="div" cssClass="error-color"/>    
 		<ul>
+			<li>
+				<label for="commu_code">카테고리</label>
+				<form:radiobutton path="commu_code" value="1" checked="checked"/>유머
+				<form:radiobutton path="commu_code" value="2"/>자취정보
+				<form:radiobutton path="commu_code" value="3"/>내집자랑
+				<form:errors path="commu_code" 
+				             cssClass="error-color"/>
+			</li>			
 			<li>
 				<label for="commu_title">제목</label>
 				<form:input path="commu_title"/>
@@ -33,6 +40,8 @@
 				<form:errors path="commu_content" 
 				             cssClass="error-color"/>
 				<script>
+				
+			/* region 넣어 */
 				 function MyCustomUploadAdapterPlugin(editor) {
 					    editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
 					        return new UploadAdapter(loader);
@@ -70,5 +79,4 @@
 			            onclick="location.href='list.do'">
 		</div>    
 	</form:form>
-</div>
 <!-- 내용 끝 -->

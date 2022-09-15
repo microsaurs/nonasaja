@@ -4,6 +4,7 @@
 <!-- 내용 시작 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/board.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/commuList.css">
 
 <div class="page-main">
 	<h2>유머 게시판 목록</h2>
@@ -37,7 +38,7 @@
 	<c:if test="${count > 0}">
 	<table>
 		<tr>
-			<th>번호</th>
+			<th>카테고리</th>
 			<th width="400">제목</th>
 			<th>작성자</th>
 			<th>작성일</th>
@@ -45,7 +46,11 @@
 		</tr>
 		<c:forEach var="board" items="${list}">
 		<tr>
-			<td>${board.commu_num}</td>
+			<td>
+			<c:if test="${board.commu_code==1}">유머</c:if>
+			<c:if test="${board.commu_code==2}">자취정보</c:if>
+			<c:if test="${board.commu_code==3}">내집자랑</c:if>
+			</td>
 			<td><a href="detail.do?commu_num=${board.commu_num}">${board.commu_title}</a></td>
 			<td>
 				<!-- 별명이 등록안되어있으면 아이디를 보여줌 -->

@@ -41,6 +41,7 @@
 			  		   <![CDATA[
 			  		   REPLACE(REPLACE(b.commu_title,'<','&lt;'),'>','&gt;') commu_title,
 			  		   ]]>
+			  		   b.commu_code,
 			  		   b.commu_hit,
 			  		   b.commu_date,
 			  		   b.mem_num,
