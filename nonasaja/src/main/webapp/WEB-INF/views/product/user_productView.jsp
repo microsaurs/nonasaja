@@ -106,6 +106,14 @@
 	
 	<div id="review_space">
 	<h2>고객리뷰</h2>
+	<div id="total_star">
+		<span id="star_text">구매고객 총별점</span>
+		<span id="big_star">4.7</span><span id="small_star">/5</span>
+	</div>
+	<span id="notice">리뷰등록,수정,삭제 및 상세 내용은 마이페이지>마이리뷰에서 확인하실 수 있습니다.</span>
+	</div>
+	<div id="review_box">
+	
 	</div>
 </div>
 

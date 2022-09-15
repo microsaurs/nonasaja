@@ -1,5 +1,9 @@
 package kr.spring.order.controller;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -9,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.cart.service.CartService;
 import kr.spring.cart.vo.CartVO;
@@ -17,6 +23,7 @@ import kr.spring.order.service.OrderService;
 import kr.spring.order.vo.OrderVO;
 import kr.spring.product.service.ProductService;
 import kr.spring.product.vo.ProductVO;
+import kr.spring.util.PagingUtil;
 
 @Controller
 public class OrderController {
@@ -28,6 +35,9 @@ public class OrderController {
 		return new OrderVO();
 	}
 	
+	private int rowCount = 10;
+	private int pageCount = 10;
+	
 	@Autowired
 	private ProductService productService;
 	
@@ -36,7 +46,8 @@ public class OrderController {
 	
 	@Autowired
 	private OrderService orderService;
-
+	
+	//주문하기 수정 예정(cart가 아니라 order에서 처리하도록, 주문서 작성하게 할 것)
 	@RequestMapping("/cart/cart_order.do")
 	public String insertOrder(HttpServletRequest request ,HttpSession session) {
 
@@ -72,5 +83,59 @@ public class OrderController {
 
 		return "";
 	}
-
+	
+	@RequestMapping("/order/order_list.do")
+	public ModelAndView orderList(HttpSession session,
+			@RequestParam(value="pageNum", defaultValue="1") int currentPage, 
+			@RequestParam(value="keyfield", defaultValue="") String keyfield, 
+			@RequestParam(value="keyword", defaultValue="") String keyword){
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("keyfield", keyfield);
+		map.put("keyword", keyword);
+		MemberVO user = (MemberVO) session.getAttribute("user");
+		map.put("mem_num", user.getMem_num());
+		
+		//주문의 총 개수(장바구니에 담긴 주문 개수)
+		int count = orderService.selectOrderCount(map);
+		logger.debug("<<count>> : " +count);
+		
+		//rowCount, pageCount는 맨 위에 설정함
+		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,rowCount,pageCount,"list.do");
+		List<OrderVO> list = null;
+		
+		if(count > 0) {
+			map.put("start", page.getStartRow());
+			map.put("end", page.getEndRow());
+			
+			list = orderService.selectOrderList(map);
+		}
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("orderList");
+		mav.addObject("count", count);
+		mav.addObject("list", list);
+		mav.addObject("page", page.getPage());
+		
+		return mav;
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

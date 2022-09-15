@@ -3,8 +3,48 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 <!-- 어노테이션과 병행할경우 namespace를 dao(mapper.java)인터페이스 명칭과 맞춰야 함 -->
-<mapper namespace="kr.spring.order.dao.OrderMapper">  
 
+<!-- 회원별 주문 목록 카운트 -->
+<mapper namespace="kr.spring.order.dao.OrderMapper">  
+	<select id="selectOrderCount" parameterType="map" resultType="integer">
+		select count(*) 
+		  from 
+		norder n join norder_detail d
+		using(order_num) 
+		where n.mem_num=#{mem_num} 
+		<if test="keyword !=null and keyword != ''">
+			<if test="keyfield ==1">
+  				and n.order_num = #{keyword} 
+  			</if>
+  			<if test="keyfield ==2">
+  				and d.product_name like '%' || #{keyword} || '%'
+  			</if>
+		</if>
+	</select>
+	
+	<!-- 회원별 주문 목록 -->
+	<select id="selectOrderList" parameterType="map" resultType="OrderVO">
+		select * from 
+		(select 
+			a.*, 
+			rownum rnum
+		 from (select 
+		 		* 
+		 	  from norder 
+		 	  where mem_num=#{mem_num} 
+		 	  <if test="keyword !=null and keyword != ''">
+				<if test="keyfield ==1">
+  					and n.order_num = #{keyword} 
+  				</if>
+  				<if test="keyfield ==2">
+  					and d.product_name like '%' || #{keyword} || '%'
+  				</if>
+			  </if>
+		 	  order by order_num desc)a) 
+		<![CDATA[
+  		WHERE rnum >= #{start} AND rnum <= #{end}
+  		]]>	 
+	</select>
 </mapper>
 
 

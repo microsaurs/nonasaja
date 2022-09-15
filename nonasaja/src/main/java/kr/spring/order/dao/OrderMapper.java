@@ -1,5 +1,8 @@
 package kr.spring.order.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -33,11 +36,25 @@ public interface OrderMapper {
 	
 	//주문 수정 
 	
-	
 	//회원별 주문 목록의 수
+	public int selectOrderCount(Map<String,Object> map);
 	
 	//회원별 주문 목록 
+	public List<OrderVO> selectOrderList(Map<String,Object> map);
 	
 	//주문 상세
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,5 +1,8 @@
 package kr.spring.order.service;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,10 +17,26 @@ public class OrderServiceImpl implements OrderService{
 	@Autowired
 	private OrderMapper orderMapper;
 	
+	//주문하기
 	@Override
 	public void insertOrder(OrderVO order) {
 		orderMapper.insertOrder(order);
 		orderMapper.insertOrder_datail(order);
+	}
+
+	@Override
+	public void insertOrder_datail(OrderVO order) {
+		orderMapper.insertOrder_datail(order);
+	}
+
+	@Override
+	public int selectOrderCount(Map<String, Object> map) {
+		return orderMapper.selectOrderCount(map);
+	}
+
+	@Override
+	public List<OrderVO> selectOrderList(Map<String, Object> map) {
+		return orderMapper.selectOrderList(map);
 	}
 	
 }

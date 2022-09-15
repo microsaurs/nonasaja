@@ -3,6 +3,7 @@ package kr.spring.cart.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -20,6 +21,10 @@ public interface CartMapper {
 	public void insertCart(CartVO cart);
 	
 	//회원별(mem_num) 총구매액
+	@Select("select NVL(SUM(sub_total), 0) FROM "
+			+ "(SELECT c.mem_num,c.quantity*p.price2 sub_total "
+			+ "FROM cart c JOIN product p ON c.product_num=p.product_num "
+			+ "WHERE mem_num = #{mem_num})")
 	public int selectTotalByMem_num(int mem_num);
 	//장바구니 주문 수 
 	public int selectRowCount(Map<String, Object> map);
@@ -44,5 +49,6 @@ public interface CartMapper {
 			+ "and status = 2")
 	public int selectWait(int product_num);
 	//장바구니 삭제
+	@Delete("delete from cart where cart_num=#{cart_num}")
 	public void deleteCart(int cart_num);	
 }

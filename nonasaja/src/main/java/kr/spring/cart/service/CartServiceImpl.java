@@ -24,8 +24,7 @@ public class CartServiceImpl implements CartService{
 
 	@Override
 	public int selectTotalByMem_num(int mem_num) {
-		// TODO Auto-generated method stub
-		return 0;
+		return cartMapper.selectTotalByMem_num(mem_num);
 	}
 
 	@Override
@@ -45,8 +44,7 @@ public class CartServiceImpl implements CartService{
 
 	@Override
 	public void deleteCart(int cart_num) {
-		// TODO Auto-generated method stub
-		
+		cartMapper.deleteCart(cart_num);
 	}
 	@Override
 	public int selectRowCount(Map <String, Object> map) {

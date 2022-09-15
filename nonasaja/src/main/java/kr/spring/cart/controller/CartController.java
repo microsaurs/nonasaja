@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.cart.service.CartService;
@@ -130,6 +131,46 @@ public class CartController {
 		return mav;
 	}
 	
+	// 장바구니 삭제
+	@RequestMapping("/cart/deleteCart.do")
+	@ResponseBody
+	public Map<String, String> delete(@RequestParam int cart_num, HttpSession session) {
+
+		Map<String, String> mapAjax = new HashMap<String, String>();
+		MemberVO user = (MemberVO) session.getAttribute("user");
+		if (user == null) {
+			mapAjax.put("result", "logout");
+		} else {
+			cartService.deleteCart(cart_num);
+			mapAjax.put("result", "success");
+		}
+		return mapAjax;
+	}
+
+	// 상품 수량 변경 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@103일차 수업 자료보고 수정할 것@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+	@RequestMapping("/cart/modifyCart.do")
+	@ResponseBody
+	public Map<String, String> submitModify(@RequestParam CartVO cart, HttpSession session) {
+		Map<String, String> mapAjax = new HashMap<String, String>();
+		MemberVO user = (MemberVO) session.getAttribute("user");
+		if (user == null) {
+			mapAjax.put("result", "logout");
+		} else {
+			ProductVO product = productService.selectProduct(cart.getProduct_num());
+			if (product.getStatus() == 1) { // 상품 미표시 상태일 때
+				mapAjax.put("result", "noSale");
+			} else if (product.getQuantity() < cart.getQuantity()) {
+				// 재고 부족
+				mapAjax.put("result", "noQuantity");
+			} else {
+				// 상품 수량 변경 가능
+				cartService.updateCart(cart);
+				mapAjax.put("result", "success");
+			}
+		}
+
+		return mapAjax;
+	}
 	
 }
 

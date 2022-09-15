@@ -3,7 +3,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!--내용 시작-->
-<!--<script type="text/javascript" src="${pageContext.request.contextPath}/js/cart.js"></script>  -->
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/cart.js"></script>
 <div class="page-main">
 	<h2>장바구니</h2>
 	<form id="search_form" action="cart_list.do" method="get">
@@ -37,25 +38,31 @@
 				<th>주문수량</th>
 				<th>상품금액</th>
 				<th>소분 수량</th>
+				<th>장바구니 삭제</th>
 			</tr>
-			<c:forEach var="item" items="${list}">
-				<input type="hidden" name="product_num" value="${item.product_num}">
+			<c:forEach var="cart" items="${list}">
+				<input type="hidden" name="product_num" value="${cart.product_num}">
 			<tr>
 				<td>
-					<input type="checkbox" name="cart_num" value="${item.cart_num}">
+					<input type="checkbox" name="cart_num" value="${cart.cart_num}">
 				</td>
-				<td>${item.product_num }</td>
+				<td>${cart.product_num }</td>
 				<td>
-				<c:if test="${item.productVO.status == 1 }">
-					<del>${item.productVO.name}</del>
+				<c:if test="${cart.productVO.status == 1 }">
+					<del>${cart.productVO.name}</del>
 				</c:if>
-				<c:if test="${item.productVO.status == 2 }">
-					<a href="${pageContext.request.contextPath}/product/detail.do?product_num=${item.product_num }">${item.productVO.name}</a>
+				<c:if test="${cart.productVO.status == 2 }">
+					<a href="${pageContext.request.contextPath}/product/detail.do?product_num=${cart.product_num }">${cart.productVO.name}</a>
 				</c:if>
 				</td>
-				<td><fmt:formatNumber value="${item.quantity }"/></td>
-				<td><fmt:formatNumber value="${item.productVO.price2 }"/></td>
-				<td>${item.productVO.req_quantity }</td>
+				<td>
+				<input type="number" name="quantity" min="1" max="99999" value="${cart.quantity}" class="quantity-width">
+				<br>
+				<input type="button" value="변경" class="cart-modify" data-cartnum="${cart.cart_num}" data-productnum="${cart.product_num}">
+				</td>
+				<td><fmt:formatNumber value="${cart.productVO.price2 }"/></td>
+				<td>${cart.productVO.req_quantity }</td>
+				<td><input type="button" class="cart-del" value="삭제" data-cartnum=${cart.cart_num }></td>
 			</tr>
 			</c:forEach>
 			</table>
