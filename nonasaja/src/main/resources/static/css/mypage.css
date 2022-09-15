@@ -1,0 +1,75 @@
+.mypage-wrap ul{
+	list-style:none;
+}
+.mypage-wrap{
+	margin:100px 50px 30px 50px;
+	padding:0;
+	width:100%;
+	height:auto;
+	overflow:hidden;
+}
+.mypage-left{
+	margin-left:20px;
+	padding-right:10px;
+	width:18%;
+	height:auto;
+	float:left;
+	font-family:sans-serif, fantasy;
+	font-weight:bold;
+}
+li#nick{
+	font-size:2em;
+}
+li#money{
+	margin-top:30px;
+	margin-bottom:5px;
+}
+.mypage-left ul:first-child li:not(:first-child){
+	padding-left:40px;
+	line-height:2em;
+}
+.mypage-left ul:not(:first-child){
+	padding-left:82px;
+	line-height:2em;
+}
+.mypage-wrap img.my-photo{
+	border:1px solid black;
+	border-radius:70%;
+}
+.mypage-right{
+	padding-left:10px;
+	width:70%;
+	height:auto;
+	float:right;
+}
+.mypage-right table{
+	width:70%;
+}
+.mypage-right table tr:not(:first-child){
+	height:50px;
+}
+.mypage-right table tr:last-child td div{
+	width:100px;
+	height:25px;
+	background-color:gray;
+	border:none;
+	border-radius:5px;
+	color:white;
+	text-align:center;
+	float:right;
+} 
+.mypage-left a{
+	text-decoration:none;
+	color:gray;
+}
+.mypage-right table tr:last-child td div a{
+	text-decoration:none;
+	color:white;
+}
+.mypage-right table tr th{
+	border-bottom:5px solid black;
+	text-align:left;
+}
+.float-clear{
+	clear:both;
+}
