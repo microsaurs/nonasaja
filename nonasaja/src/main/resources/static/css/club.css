@@ -62,14 +62,14 @@ table{
 .th-4{
 	border-bottom: 1px solid #444444;
 	text-align: left;
-	width: 700px;
+	width: 900px;
 }
 .th-5{
 	border-bottom: 1px solid #444444;
 	text-align: left;
 	color: #f5d505;
 	font-size:x-large;
-	width: 820px;
+	width: 1000px;
 }
 .td-1{
 	text-align: center;
@@ -87,6 +87,9 @@ table{
     text-align: left;	
 	border-bottom: 1px solid #444444;
   } 
+ul{
+	list-style:none;
+}
 ul.detail-info{
 	font-size:large;
 }  
@@ -102,6 +105,7 @@ ul.detail-info #img{
 	border:none;
 	padding:10px 10px 10px 30px;
 	font-size:x-large;
+	
 }
 /*CKEditor 사용시 등록,수정폼*/
 .page-main form#register_form, .page-main form#update_form{
@@ -132,4 +136,5 @@ ul.detail-info #img{
 	border: none;
 	overflow:hidden;
 	transition: all 0.2s 0s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+	border-radius:80px;
 }

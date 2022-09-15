@@ -21,7 +21,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/uploadAdapter.js"></script>
 <div class="page-main1">
 <div class="align-center">
-	<h2><b>동호인 글수정</b></h2> 
+	<h2 class="button"><b>동호인 글수정</b></h2> 
 	</div>
 	<form:form action="update.do" modelAttribute="clubVO"
 	        id="update_form"
@@ -163,9 +163,9 @@
 				</c:if>
 			</li> 
 		</ul>    
-		<div class="align-center">
-			<form:button>전송</form:button>
-			<input type="button" value="목록"
+		<div class="align-right">
+			<form:button class="button" >전송</form:button>
+			<input class="button" type="button" value="목록"
 			            onclick="location.href='list.do'">
 		</div>    
 	</form:form>

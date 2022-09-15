@@ -94,7 +94,7 @@
 			${board.club_pre}/${board.club_limit}명 참여
 			</td>
 		</tr>
-		</table><br><br>
+		</table>
 		</c:forEach>
 	
 	<div class="align-center">${page}</div>

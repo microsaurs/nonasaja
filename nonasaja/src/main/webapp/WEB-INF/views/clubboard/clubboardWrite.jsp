@@ -20,7 +20,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/uploadAdapter.js"></script>
 <div class="page-main1">
 	<div class="align-center">
-	<h2><b>동호인 글쓰기</b></h2> 
+	<h2 class="button"><b>동호인 글쓰기</b></h2> 
 	</div>
 	<form:form action="write.do" modelAttribute="clubVO"
 	        id="register_form"

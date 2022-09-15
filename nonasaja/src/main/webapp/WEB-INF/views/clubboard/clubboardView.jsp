@@ -23,8 +23,8 @@
 			</c:if> 
 		</li>
 		<li>
-			<c:if test="${empty board.nickname}">${board.id}</c:if>
-			<c:if test="${!empty board.nickname}">${board.nickname}</c:if>
+			<c:if test="${empty board.nickname}"><b>${board.id}</b></c:if>
+			<c:if test="${!empty board.nickname}"><b>${board.nickname}</b></c:if>
 			<br>
 			<c:if test="${!empty board.club_modify_date}">
 			최근 수정일 : ${board.club_modify_date}
@@ -39,7 +39,7 @@
 	<div class="align-right">
 		<%-- 좋아요 --%>
 		LIKE
-		<img id="output_fav" src="${pageContext.request.contextPath}/images/free-icon-love01.png" width="40">
+		<img id="output_fav" src="${pageContext.request.contextPath}/images/free-icon-love02.png" width="40">
 	</div>
 	<!-- 표 시작 -->
 		<table>
