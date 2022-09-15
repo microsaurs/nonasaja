@@ -1,35 +1,38 @@
+
 div.page-main{
 font-family: 'Poor Story', cursive;
 }
-table {
+div.page-main #clublist {
 	
-	border-top: 1px solid #444444;	
+	border:none;
 	font-size:x-large;
 	padding: 30px;
 	margin : 20px;
 }
-td {
+#clublist{
+	border:none;
+	padding: 10px;
+}
+#clublist td {
 	border-bottom: 1px solid #444444;
 	padding: 10px;
-	text-align: center;
+
 }
-.th-1 {
+#th-1 {
 	text-align: center;
     width: 70px;
     padding: 30px;
     color: #f5d505;
   }
-.th-2 {
-    text-align: left;
-    padding: 30px;
-  }
-.td-1 {
+#td-1 {
 	text-align: center;
     width: 70px;
-    padding: 30px;
-
   } 
-  
+#td-2 {
+    text-align: left;
+
+  }
+
 ul.detail-info{
 	font-size:large;
 }  
@@ -39,7 +42,7 @@ ul.detail-info li{
 .page-main form{
 	width:700px;
 	margin:0 auto;
-	border:1px solid #000;
+	border:none;
 	padding:10px 10px 10px 30px;
 	font-size:x-large;
 }
@@ -54,4 +57,7 @@ ul.detail-info li{
 }
 .page-main input[type="text"],.page-main input[type="password"],.page-main input[type="email"]{
 	width:500px;
+}
+#img{
+	margin:15px;
 }

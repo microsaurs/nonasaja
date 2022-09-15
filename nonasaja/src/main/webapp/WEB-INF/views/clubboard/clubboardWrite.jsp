@@ -123,7 +123,7 @@
 				             cssClass="error-color"/>
 			</li>	
 		</ul>    
-		<div class="align-center">
+		<div class="align-right">
 			<form:button>전송</form:button>
 			<input type="button" value="목록"
 			            onclick="location.href='list.do'">

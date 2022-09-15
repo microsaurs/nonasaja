@@ -10,27 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Noto+Sans+KR&family=Poor+Story&display=swap" rel="stylesheet">
 <div class="page-main">
 
-	<form action="list.do" id="search_form" 
-	                                   method="get">
-		<ul class="search">
-			<li>
-					<select name="keyfield" id="keyfield">
-					<option value="1" <c:if test="${param.keyfield == 1}">selected</c:if>>운동</option>
-					<option value="2" <c:if test="${param.keyfield == 2}">selected</c:if>>오락</option>
-					<option value="3" <c:if test="${param.keyfield == 3}">selected</c:if>>맛집</option>
-					<option value="4" <c:if test="${param.keyfield == 4}">selected</c:if>>노래</option>
-					<option value="5" <c:if test="${param.keyfield == 5}">selected</c:if>>여행</option>
-					<option value="6" <c:if test="${param.keyfield == 6}">selected</c:if>>스터디</option>
-					<option value="7" <c:if test="${param.keyfield == 7}">selected</c:if>>기타</option>
-					</select>
-			</li>
-			<li>
-				<input type="submit" value="찾기">
-				<input type="button" value="목록"
-				    onclick="location.href='list.do'">
-			</li>
-		</ul>
-	</form>
+
 	<div class="align-center">
 	<img src="${pageContext.request.contextPath}/images/자취생끼리같이해요.JPG" width="900px">
 	</div>
@@ -41,6 +21,15 @@
 		          onclick="location.href='write.do'">
 	</div>
 	</c:if>
+	<div class="align-center">
+	<a href="list.do?keyfield=1"><img id="img" src="${pageContext.request.contextPath}/images/free-icon-dumbbell-8009699.png" width="80px"></a>
+	<a href="list.do?keyfield=2"><img id="img" src="${pageContext.request.contextPath}/images/free-icon-game-controller-7358397.png" width="70px"></a>
+	<a href="list.do?keyfield=3"><img id="img" src="${pageContext.request.contextPath}/images/free-icon-rice-bowl-681276.png" width="70px"></a>
+	<a href="list.do?keyfield=4"><img id="img" src="${pageContext.request.contextPath}/images/free-icon-mic-665909.png" width="70px"></a>
+	<a href="list.do?keyfield=5"><img id="img" src="${pageContext.request.contextPath}/images/free-icon-airplane-3230483.png" width="70px"></a>   
+	<a href="list.do?keyfield=6"><img id="img" src="${pageContext.request.contextPath}/images/free-icon-open-book-2280294.png" width="70px"></a>
+	<a href="list.do?keyfield=7"><img id="img" src="${pageContext.request.contextPath}/images/free-icon-more-5859335.png" width="70px"></a>
+	</div>
 	<c:if test="${count == 0}">
 	<div class="result-display">표시할 게시물이 없습니다.</div>	
 	</c:if>
@@ -48,29 +37,29 @@
 
 
 	<c:forEach var="board" items="${list}">
-		<table>
+		<table id="clublist">
 		<tr>
-			<th class="th-1">
+			<th id="th-1">
 			<c:if test="${board.club_recruit==0}">모집중</c:if>
 			<c:if test="${board.club_recruit==1}">모집완료</c:if>
 			</th>
-			<th width="400" class="th-2"><a href="detail.do?club_num=${board.club_num}">${board.club_title}</a></th>
+			<th width="400" id="td-2"><a href="detail.do?club_num=${board.club_num}">${board.club_title}</a></th>
 		</tr>
 		<tr>
-			<td>
+			<td id="td-1">
 			<img src="${pageContext.request.contextPath}/images/icon-gender.png" width="50px">
 			</td>
-			<td class="th-2">
+			<td id="td-2">
 			<c:if test="${board.club_gender==0}">누구나 참여가능</c:if>
 			<c:if test="${board.club_gender==1}">남자만 참여가능</c:if>
 			<c:if test="${board.club_gender==2}">여자만 참여가능</c:if>
 			</td>
 		</tr>
 		<tr>
-			<td>
+			<td id="td-1">
 			<img src="${pageContext.request.contextPath}/images/icon-age.png" width="50px">
 			</td>
-			<td class="th-2">
+			<td id="td-2">
 			<c:if test="${board.club_age == '10대,20대,30대,40대,50대,60대'}">
 			누구나 참여가능
 			</c:if>
@@ -80,26 +69,26 @@
 			</td>
 		</tr>
 		<tr>
-			<td>
+			<td id="td-1">
 			<img src="${pageContext.request.contextPath}/images/icon-calendar-date.png" width="50px">
 			</td>
-			<td class="th-2">
+			<td id="td-2">
 			${board.club_date}
 			</td>
 		</tr>
 		<tr>
-			<td>
+			<td id="td-1">
 			<img src="${pageContext.request.contextPath}/images/icon-location.png" width="50px">
 			</td>
-			<td class="th-2">
+			<td id="td-2">
 			${board.region_num}
 			</td>
 		</tr>
 		<tr>
-			<td>
+			<td id="td-1">
 			<img src="${pageContext.request.contextPath}/images/icon-multiple-users-silhouette.png" width="50px">
 			</td>
-			<td class="th-2">
+			<td id="td-2">
 			${board.club_pre}/${board.club_limit}명 참여
 			</td>
 		</tr>
