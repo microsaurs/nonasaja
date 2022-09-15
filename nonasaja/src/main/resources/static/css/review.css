@@ -1,0 +1,32 @@
+@charset "UTF-8";
+/*=====별점 스타일=======*/
+.rating{
+   /*현재 디자인에서만 필요하고 다른 디자인일 경우는 필요하지 않음*/
+   display:inline-block;
+   width:500px;   
+}
+.rating .rate-check {
+   display:none;
+   
+}
+.rating .rate-check + label {
+    width: 20px;
+    height: 20px;
+    background-image: url('../images/star.png');
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+}
+.rating .rate-check:checked + label {
+    background-color: #eb7a34;
+}
+.rec-star {
+   width: 15px;
+    height: 15px;
+    background-color: #eb7a34;
+}
+#star_btn{
+	border: none;
+	font-size: 8.5pt;
+}

@@ -2,20 +2,20 @@ package kr.spring.review.vo;
 
 import java.sql.Date;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 
 public class ReviewVO {
 
-	@NotEmpty
 	private int review_num;
-	@NotEmpty
 	private int product_num;
-	@NotEmpty
 	private int mem_num;
-	@NotEmpty
+	@Min(0)
+	@Max(5)
 	private int score;
-	private String content;
 	@NotEmpty
+	private String content;
 	private Date reg_date;
 	
 	public int getReview_num() {

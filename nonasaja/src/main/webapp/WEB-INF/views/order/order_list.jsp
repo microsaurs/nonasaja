@@ -35,6 +35,8 @@
 		<div id="order_box">
 			<h4>${order.order_num }</h4>
 			<p>${order.product_name}</p>
+			<input type="button" value="리뷰작성" 
+			onclick="location.href='${pageContext.request.contextPath}/review/write_review.do?product_num=${order.product_num}'">
 		</div>
 		</c:forEach>
 	</c:if>

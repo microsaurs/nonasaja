@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 
+import kr.spring.order.vo.OrderDetailVO;
 import kr.spring.order.vo.OrderVO;
 
 @Mapper
