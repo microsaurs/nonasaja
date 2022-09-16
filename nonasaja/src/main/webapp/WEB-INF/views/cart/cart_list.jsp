@@ -28,7 +28,7 @@
 		<div class="result-display">표시할 상품이 없습니다.</div>
 	</c:if>
 	<c:if test="${count > 0 }">
-	<form action="cart_order.do" id="cartOrder">
+	<form action="/order/cart_order.do" id="cartOrder">
 		<table>
 		
 			<tr>
@@ -44,7 +44,7 @@
 				<input type="hidden" name="product_num" value="${cart.product_num}">
 			<tr>
 				<td>
-					<input type="checkbox" name="cart_num" value="${cart.cart_num}">
+					<input type="checkbox" name="cart_num" value="${cart.cart_num}" <c:if test="${cart.productVO.status == 1 }">disabled</c:if>>
 				</td>
 				<td>${cart.product_num }</td>
 				<td>

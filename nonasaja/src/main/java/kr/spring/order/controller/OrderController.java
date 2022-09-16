@@ -48,7 +48,7 @@ public class OrderController {
 	private OrderService orderService;
 	
 	//주문하기 수정 예정(cart가 아니라 order에서 처리하도록, 주문서 작성하게 할 것)
-	@RequestMapping("/cart/cart_order.do")
+	@RequestMapping("/order/cart_order.do")
 	public String insertOrder(HttpServletRequest request ,HttpSession session) {
 
 		MemberVO user = (MemberVO)session.getAttribute("user");

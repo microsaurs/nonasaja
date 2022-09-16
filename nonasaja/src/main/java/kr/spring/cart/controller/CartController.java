@@ -138,6 +138,7 @@ public class CartController {
 
 		Map<String, String> mapAjax = new HashMap<String, String>();
 		MemberVO user = (MemberVO) session.getAttribute("user");
+		logger.debug("<<장바구니 삭제>> : " +cart_num);
 		if (user == null) {
 			mapAjax.put("result", "logout");
 		} else {
@@ -146,25 +147,26 @@ public class CartController {
 		}
 		return mapAjax;
 	}
-
-	// 상품 수량 변경 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@103일차 수업 자료보고 수정할 것@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+	// 상품 수량 변경 
 	@RequestMapping("/cart/modifyCart.do")
 	@ResponseBody
-	public Map<String, String> submitModify(@RequestParam CartVO cart, HttpSession session) {
+	public Map<String, String> submitModify(CartVO cartVO, HttpSession session) {
 		Map<String, String> mapAjax = new HashMap<String, String>();
 		MemberVO user = (MemberVO) session.getAttribute("user");
+		logger.debug("<<장바구니 수정>> : " +cartVO);
 		if (user == null) {
 			mapAjax.put("result", "logout");
 		} else {
-			ProductVO product = productService.selectProduct(cart.getProduct_num());
+			ProductVO product = productService.selectProduct(cartVO.getProduct_num());
+			cartVO.setMem_num(user.getMem_num());
 			if (product.getStatus() == 1) { // 상품 미표시 상태일 때
 				mapAjax.put("result", "noSale");
-			} else if (product.getQuantity() < cart.getQuantity()) {
+			} else if (product.getQuantity() < cartVO.getQuantity()) {
 				// 재고 부족
 				mapAjax.put("result", "noQuantity");
 			} else {
 				// 상품 수량 변경 가능
-				cartService.updateCart(cart);
+				cartService.updateCart(cartVO);
 				mapAjax.put("result", "success");
 			}
 		}
