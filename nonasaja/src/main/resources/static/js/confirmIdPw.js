@@ -19,10 +19,10 @@ $(function(){
 			timeout:30000,
 			success:function(param){
 				if(param.result=='idNotFound'){
-					$('#message_id').css('color','green').text('등록가능ID');
+					$('#message_id').css('color','green').text('사용 가능한 아이디');
 					checkId = 1;
 				}else if(param.result=='idDuplicated'){
-					$('#message_id').css('color','red').text('중복된 ID');
+					$('#message_id').css('color','red').text('중복된 아이디');
 					$('#id').val('').focus();
 					checkId = 0;
 				}else if(param.result=='notMatchPattern'){

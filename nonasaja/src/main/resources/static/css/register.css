@@ -1,0 +1,95 @@
+.register-wrap{
+	margin:0 auto;
+	padding:0;
+	width:95%;
+}
+ul{
+	list-style:none;
+	padding:50px 100px;
+}
+.register-main{
+	background-color:#f0f0e8;
+	width:100%;
+	margin:0 auto;
+}
+input[type="text"],input[type="password"]{
+	background-color:#f0f0e8;
+	border:2px solid #9f9f9f;
+	border-radius:3px;
+	width:450px;
+}
+input[id="id"]{
+	width:330px;
+}
+input[id="zipcode"]{
+	width:346px;
+}
+input[id="confirmId"]{
+	width:115px;
+}
+input[id="confirmId"],input[id="zipcode-btn"]{
+	border:1px solid #cfcfb6;
+	border-radius:4px;
+	background-color:#cfcfb6;
+	color:#737479;
+	font-weight:800;
+	cursor:pointer;
+}
+ul li{
+	margin:10px 5px;
+}
+ul li label{
+	width:150px;
+	float:left;
+	font-weight:bold;
+}
+.box{
+	overflow:hidden;
+}
+input[type="checkbox"]{
+	width: 1.2em;
+    height: 1.2em;
+}
+input[type="checkbox"]:checked{
+    width: 1.2em;
+    height: 1.2em;
+    background: white no-repeat center center;
+    border: 1px solid #737479;
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+    background-image: url("../images/check-mark.png");
+}
+.contract-li{
+	margin-top:30px;
+}
+.border{
+	margin:10px 0;
+	border:1px solid #737479;
+	border-radius:2px;
+	padding:10px 10px;
+	overflow:auto;
+	height:100px;
+}
+.contract-div span{
+	font-weight:600;
+	font-size:16px;
+	line-height:20px;
+}
+.btns{
+	padding-bottom:100px;
+}
+.btns .submit{
+	background-color:#9a800e;
+	color:white;
+	border:none;
+	width:100px;
+	height:30px;
+}
+.btns .cancel{
+	background-color:#cbb585;
+	color:white;
+	border:none;
+	width:100px;
+	height:30px;
+}
