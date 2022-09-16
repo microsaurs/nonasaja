@@ -23,13 +23,13 @@
 	</div>
 	</c:if>
 	<div class="align-center">
-	<a href="list.do?keyfield=1"><img id="img" src="${pageContext.request.contextPath}/images/free-icon-dumbbell-8009699.png" width="80px"></a>
-	<a href="list.do?keyfield=2"><img id="img" src="${pageContext.request.contextPath}/images/free-icon-game-controller-7358397.png" width="70px"></a>
-	<a href="list.do?keyfield=3"><img id="img" src="${pageContext.request.contextPath}/images/free-icon-rice-bowl-681276.png" width="70px"></a>
-	<a href="list.do?keyfield=4"><img id="img" src="${pageContext.request.contextPath}/images/free-icon-mic-665909.png" width="70px"></a>
-	<a href="list.do?keyfield=5"><img id="img" src="${pageContext.request.contextPath}/images/free-icon-airplane-3230483.png" width="70px"></a>   
-	<a href="list.do?keyfield=6"><img id="img" src="${pageContext.request.contextPath}/images/free-icon-open-book-2280294.png" width="70px"></a>
-	<a href="list.do?keyfield=7"><img id="img" src="${pageContext.request.contextPath}/images/free-icon-more-5859335.png" width="70px"></a>
+	<a href="list.do?keyfield=1"><img id="img" src="${pageContext.request.contextPath}/images/free-icon-dumbell-1324803.png" width="75px"></a>
+	<a href="list.do?keyfield=2"><img id="img" src="${pageContext.request.contextPath}/images/free-icon-game-console-3040112.png" width="70px"></a>
+	<a href="list.do?keyfield=3"><img id="img" src="${pageContext.request.contextPath}/images/free-icon-rice-bowl-1699816.png" width="70px"></a>
+	<a href="list.do?keyfield=4"><img id="img" src="${pageContext.request.contextPath}/images/free-icon-mic-648759.png" width="70px"></a>
+	<a href="list.do?keyfield=5"><img id="img" src="${pageContext.request.contextPath}/images/free-icon-honeymoon-5970130.png" width="70px"></a>   
+	<a href="list.do?keyfield=6"><img id="img" src="${pageContext.request.contextPath}/images/free-icon-studying-4345037.png" width="80px"></a>
+	<a href="list.do?keyfield=7"><img id="img" src="${pageContext.request.contextPath}/images/free-icon-more-7131125.png" width="70px"></a>
 	</div>
 	<c:if test="${count == 0}">
 	<div class="result-display">표시할 게시물이 없습니다.</div>	
