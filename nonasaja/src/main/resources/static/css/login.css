@@ -1,0 +1,81 @@
+.login-wrap ul{
+	list-style:none;
+}
+.login-wrap{
+	margin:0 auto;
+	width:460px;
+}
+.logo{
+	width:100%;
+	height:200px;
+	overflow:hidden;
+	margin-top:50px;
+	padding-top:50px;
+}
+.logo-img{
+	float:left;
+	width:200px;
+}
+.logo-font{
+	float:left;
+	width:auto;
+	display:flex;
+}
+.logo-font span{
+	line-height:200px;
+	font-size:4em;
+	font-weight:bolder;
+}
+.logo-font .nona{
+	color:#6b5f38;
+}
+.logo-font .saja{
+	color:#9a800e;
+}
+.login-wrap ul{
+	padding:0;
+}
+.inputs #id,#passwd{
+	width:98%;
+	height:50px;
+}
+.inputs #id{
+	margin-bottom:5px;
+}
+.inputs #passwd{
+	margin:5px 0 5px 0;
+}
+.float-right{
+	float:right;
+}
+.clear{
+	clear:both;
+}
+.login-btn{
+	background-color:#bc8b0e;
+	width:100%;
+	height:50px;
+	display:flex;
+	margin-top:20px;
+	cursor:pointer;
+}
+input[type="submit"]{
+	border:none;
+	color:white;
+	background-color:#bc8b0e;
+	font-size:1.5em;
+	line-height:20px;
+	width:100%;
+	height:100%;
+	cursor:pointer;
+}
+.snsLogin{
+	width:100%;
+	margin-top:20px;
+}
+.snsLogin a#naver{
+	margin-left:55px;
+}
+.snsLogin a#kakao{
+	margin-left:55px;
+}
