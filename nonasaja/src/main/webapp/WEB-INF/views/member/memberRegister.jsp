@@ -2,81 +2,139 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!-- 내용 시작 -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/register.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/confirmIdPw.js"></script>
-<div class="page-main">
+<div class="register-wrap">
 	<h2>회원가입</h2>
-	<form:form id="register_form" action="registerUser.do" modelAttribute="memberVO">
-		<form:errors element="div" cssClass="error-color"/><%-- 필드에 의존하지 않는 예외 문구 출력 --%>
-		<ul>
-			<li>
-				<label for="id">아이디</label>
-				<form:input path="id" placeholder="영문,숫자만 4~20자" autocomplete="off"/>
-				<input type="button" id="confirmId" value="ID중복체크">
-				<span id="message_id"></span>
-				<form:errors path="id" cssClass="error-color"/>
-			</li>
-			<li>
-				<label for="passwd">비밀번호</label>
-				<form:password path="passwd" placeholder="영문,숫자만 4~15자"/>
-				<form:errors path="passwd" cssClass="error-color"/>
-			</li>
-			<li>
-				<label for="passwd_check">비밀번호 확인</label>
-				<input type="password" id="passwd_check" name="passwd_check">
-				<span id="message_pw"></span>
-			</li>
-			<li>
-				<label for="nickname">별명</label>
-				<form:input path="nickname"/>
-				<form:errors path="nickname" cssClass="error-color"/>
-			</li>
-			<li>
-				<label for="name">이름</label>
-				<form:input path="name"/>
-				<form:errors path="name" cssClass="error-color"/>
-			</li>
-			<li>
-				<label for="phone">전화번호</label>
-				<form:input path="phone"/>
-				<form:errors path="phone" cssClass="error-color"/>
-			</li>
-			<li>
-				<label for="email">이메일</label>
-				<form:input path="email"/>
-				<form:errors path="email" cssClass="error-color"/>
-			</li>
-			<li>
-				<label for="zipcode">우편번호</label>
-				<form:input path="zipcode"/>
-				<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기">
-				<form:errors path="zipcode" cssClass="error-color"/>
-			</li>
-			<li>
-				<label for="addr1">주소</label>
-				<form:input path="addr1"/>
-				<form:errors path="addr1" cssClass="error-color"/>
-			</li>
-			<li>
-				<label for="add2">상세 주소</label>
-				<form:input path="addr2"/>
-				<form:errors path="addr2" cssClass="error-color"/>
-			</li>
-			<li>
-				<label for="interest">관심사</label>
-				<form:checkbox path="interest" value="운동"/>운동
-				<form:checkbox path="interest" value="오락"/>오락
-				<form:checkbox path="interest" value="맛집"/>맛집
-				<form:checkbox path="interest" value="노래"/>노래
-				<form:checkbox path="interest" value="여행"/>여행
-				<form:checkbox path="interest" value="스터디"/>스터디
-			</li>
-		</ul>
-		<div class="align-center">
-			<form:button>전송</form:button>
-			<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
-		</div>
-	</form:form>
+	<div class="register-main">
+		<form:form id="register_form" action="registerUser.do" modelAttribute="memberVO">
+			<ul>
+				<li>
+					<label for="id">아이디</label>
+					<form:input path="id" placeholder="아이디를 입력하세요" autocomplete="off"/>
+					<input type="button" id="confirmId" value="아이디 중복체크">
+					<span id="message_id"></span>
+					<form:errors path="id" cssClass="error-color"/>
+				</li>
+				<li>
+					<label for="passwd">비밀번호</label>
+					<form:password path="passwd" placeholder="비밀번호를 입력하세요"/>
+					<form:errors path="passwd" cssClass="error-color"/>
+				</li>
+				<li>
+					<label for="passwd_check">비밀번호 확인</label>
+					<input type="password" id="passwd_check" name="passwd_check" placeholder="비밀번호를 다시 입력하세요">
+					<span id="message_pw"></span>
+				</li>
+				<li>
+					<label for="nickname">닉네임</label>
+					<form:input path="nickname" placeholder="닉네임을 입력하세요"/>
+					<form:errors path="nickname" cssClass="error-color"/>
+				</li>
+				<li>
+					<label for="name">이름</label>
+					<form:input path="name" placeholder="이름을 입력하세요"/>
+					<form:errors path="name" cssClass="error-color"/>
+				</li>
+				<li>
+					<label for="phone">전화번호</label>
+					<form:input path="phone" placeholder="전화번호를 입력하세요"/>
+					<form:errors path="phone" cssClass="error-color"/>
+				</li>
+				<li>
+					<label for="email">이메일</label>
+					<form:input path="email" placeholder="이메일을 입력하세요"/>
+					<form:errors path="email" cssClass="error-color"/>
+				</li>
+				<li>
+					<label for="zipcode">우편번호</label>
+					<form:input path="zipcode" placeholder="우편번호를 입력하세요"/>
+					<input type="button" id="zipcode-btn" onclick="execDaumPostcode()" value="우편번호 찾기">
+					<form:errors path="zipcode" cssClass="error-color"/>
+				</li>
+				<li>
+					<label for="addr1">주소</label>
+					<form:input path="addr1" placeholder="주소를 입력하세요"/>
+					<form:errors path="addr1" cssClass="error-color"/>
+				</li>
+				<li>
+					<label for="add2">상세 주소</label>
+					<form:input path="addr2" placeholder="나머지 주소를 입력하세요"/>
+					<form:errors path="addr2" cssClass="error-color"/>
+				</li>
+				<li>
+					<label for="interest">관심사</label>
+					<div class="box">
+						<form:checkbox path="interest" value="운동"/><label for="interest1"></label> 운동
+						<form:checkbox path="interest" value="오락"/><label for="interest2"></label> 오락
+						<form:checkbox path="interest" value="맛집"/><label for="interest3"></label> 맛집<br>
+						<form:checkbox path="interest" value="노래"/><label for="interest4"></label> 노래
+						<form:checkbox path="interest" value="여행"/><label for="interest5"></label> 여행
+						<form:checkbox path="interest" value="스터디"/><label for="interest6"></label> 스터디
+					</div>
+				</li>
+				<li class="contract-li">
+					<div class="contract-div">
+						<input type="checkbox"> <span>약관에 동의함 (필수)</span>
+						<div class="border">
+							제 1장 총칙<br><br>제1 조(목적)<br>
+							본 약관은 국가공간정보 포털 웹사이트(이하 "국가공간정보포털")가 제공하는 모든 서비스(이하 "서비스")의
+							이용조건 및 절차, 회원과 국가공간정보포털의 권리, 의무, 책임사항과 기타 필요한 사항을 규정함을 목적으로 합니다.
+							본 약관은 국가공간정보 포털 웹사이트(이하 "국가공간정보포털")가 제공하는 모든 서비스(이하 "서비스")의
+							이용조건 및 절차, 회원과 국가공간정보포털의 권리, 의무, 책임사항과 기타 필요한 사항을 규정함을 목적으로 합니다.
+							본 약관은 국가공간정보 포털 웹사이트(이하 "국가공간정보포털")가 제공하는 모든 서비스(이하 "서비스")의
+							이용조건 및 절차, 회원과 국가공간정보포털의 권리, 의무, 책임사항과 기타 필요한 사항을 규정함을 목적으로 합니다.
+							본 약관은 국가공간정보 포털 웹사이트(이하 "국가공간정보포털")가 제공하는 모든 서비스(이하 "서비스")의
+							이용조건 및 절차, 회원과 국가공간정보포털의 권리, 의무, 책임사항과 기타 필요한 사항을 규정함을 목적으로 합니다.
+							본 약관은 국가공간정보 포털 웹사이트(이하 "국가공간정보포털")가 제공하는 모든 서비스(이하 "서비스")의
+							이용조건 및 절차, 회원과 국가공간정보포털의 권리, 의무, 책임사항과 기타 필요한 사항을 규정함을 목적으로 합니다.
+							본 약관은 국가공간정보 포털 웹사이트(이하 "국가공간정보포털")가 제공하는 모든 서비스(이하 "서비스")의
+							이용조건 및 절차, 회원과 국가공간정보포털의 권리, 의무, 책임사항과 기타 필요한 사항을 규정함을 목적으로 합니다.
+							본 약관은 국가공간정보 포털 웹사이트(이하 "국가공간정보포털")가 제공하는 모든 서비스(이하 "서비스")의
+							이용조건 및 절차, 회원과 국가공간정보포털의 권리, 의무, 책임사항과 기타 필요한 사항을 규정함을 목적으로 합니다.
+							본 약관은 국가공간정보 포털 웹사이트(이하 "국가공간정보포털")가 제공하는 모든 서비스(이하 "서비스")의
+							이용조건 및 절차, 회원과 국가공간정보포털의 권리, 의무, 책임사항과 기타 필요한 사항을 규정함을 목적으로 합니다.
+							본 약관은 국가공간정보 포털 웹사이트(이하 "국가공간정보포털")가 제공하는 모든 서비스(이하 "서비스")의
+							이용조건 및 절차, 회원과 국가공간정보포털의 권리, 의무, 책임사항과 기타 필요한 사항을 규정함을 목적으로 합니다.
+						</div>
+						<input type="checkbox"> <span>개인정보 수집 및 이용에 대한 안내 (선택)</span>
+						<div class="border">
+							가. 개인정보의 수집 및 이용 목적<br>
+							[1] 국가공간정보포털은 다음의 목적을 위하여 개인정보를 처리합니다. 처리하고 있는 개인정보는 다음의 목적 이외의 용도로는 이용되지 않으며,
+							이용 목적이 변경되는 경우에는 개인정보 보호업 제18조에 따라 별도의 동의를 받는 등 필요한 조치를 이행할 예정입니다.
+							
+							I. 국가공간정보포털 서비스 제공을 위한 회원관리
+							1) 공간정보 다운로드, 오픈 API 신청 및 활용 등 포털 서비스 제공과 서비스 부저이용 방지를 목적으로 개인정보를 처리합니다.
+							가. 개인정보의 수집 및 이용 목적<br>
+							[1] 국가공간정보포털은 다음의 목적을 위하여 개인정보를 처리합니다. 처리하고 있는 개인정보는 다음의 목적 이외의 용도로는 이용되지 않으며,
+							이용 목적이 변경되는 경우에는 개인정보 보호업 제18조에 따라 별도의 동의를 받는 등 필요한 조치를 이행할 예정입니다.
+							
+							I. 국가공간정보포털 서비스 제공을 위한 회원관리
+							1) 공간정보 다운로드, 오픈 API 신청 및 활용 등 포털 서비스 제공과 서비스 부저이용 방지를 목적으로 개인정보를 처리합니다.
+							가. 개인정보의 수집 및 이용 목적<br>
+							[1] 국가공간정보포털은 다음의 목적을 위하여 개인정보를 처리합니다. 처리하고 있는 개인정보는 다음의 목적 이외의 용도로는 이용되지 않으며,
+							이용 목적이 변경되는 경우에는 개인정보 보호업 제18조에 따라 별도의 동의를 받는 등 필요한 조치를 이행할 예정입니다.
+							
+							I. 국가공간정보포털 서비스 제공을 위한 회원관리
+							1) 공간정보 다운로드, 오픈 API 신청 및 활용 등 포털 서비스 제공과 서비스 부저이용 방지를 목적으로 개인정보를 처리합니다.
+							가. 개인정보의 수집 및 이용 목적<br>
+							[1] 국가공간정보포털은 다음의 목적을 위하여 개인정보를 처리합니다. 처리하고 있는 개인정보는 다음의 목적 이외의 용도로는 이용되지 않으며,
+							이용 목적이 변경되는 경우에는 개인정보 보호업 제18조에 따라 별도의 동의를 받는 등 필요한 조치를 이행할 예정입니다.
+							
+							I. 국가공간정보포털 서비스 제공을 위한 회원관리
+							1) 공간정보 다운로드, 오픈 API 신청 및 활용 등 포털 서비스 제공과 서비스 부저이용 방지를 목적으로 개인정보를 처리합니다.
+							
+						</div>
+					</div>
+				</li>
+			</ul>
+			<div class="align-center btns">
+				<form:button class="submit">확인</form:button>
+				<input class="cancel" type="button" value="취소" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
+			</div>
+		</form:form>
+	</div>
 </div>
 <!-- 우편번호 검색 시작 -->
 <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">

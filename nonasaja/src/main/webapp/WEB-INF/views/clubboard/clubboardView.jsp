@@ -36,11 +36,13 @@
 			조회 : ${board.club_hit}
 		</li>
 	</ul>
+	<hr size="1" width="100%">
 	<div class="align-right">
 		<%-- 좋아요 --%>
 		LIKE
 		<img id="output_fav" src="${pageContext.request.contextPath}/images/free-icon-love02.png" width="40">
 	</div>
+	
 	<!-- 표 시작 -->
 		<table>
 		<tr>
@@ -147,9 +149,13 @@
 			};
 		</script>  
 		</c:if>
-		<input class="button" type="button" value="목록"
+		<c:if test="${!empty user && user.mem_num != board.club_leader}">
+		<input class="button" type="button" value="참여하기">
+		</c:if>
+		<input class="button" type="button" value="목록가기"
 		       onclick="location.href='list.do'">
 	</div>
+
 	<hr size="1" width="100%">
 	
 </div>
