@@ -61,7 +61,6 @@ public class CartController {
 		cartVO.setMem_num(user.getMem_num());
 		cartVO.setProduct_num(product_num);
 		cartVO.setQuantity(order_quantity); //주문 수량
-		cartVO.setStatus(1); // 장바구니에 담는 status
 		int total = order_quantity * product_price2; //이번 주문의 총 금액
 		cartVO.setSub_total(total);
 		cartVO.setProductVO(productVO);
@@ -127,7 +126,7 @@ public class CartController {
 		mav.addObject("count", count);
 		mav.addObject("list", list);
 		mav.addObject("page", page.getPage());
-		
+		logger.debug("<<장바구니 목록>> list: " +list);
 		return mav;
 	}
 	

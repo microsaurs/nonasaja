@@ -162,7 +162,6 @@ public class ProductController {
 		model.addAttribute("message", "상품 등록이 완료되었습니다.");
 		model.addAttribute("url", request.getContextPath() + "/product/list.do");
 
-		// 알림 페이지 만들기
 		return "common/resultView";
 	}
 

@@ -1,5 +1,6 @@
 package kr.spring.order.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,16 +48,22 @@ public class OrderController {
 	@Autowired
 	private OrderService orderService;
 	
-	//주문하기 수정 예정(cart가 아니라 order에서 처리하도록, 주문서 작성하게 할 것)
+	//주문하기 폼으로
 	@RequestMapping("/order/cart_order.do")
-	public String insertOrder(HttpServletRequest request ,HttpSession session) {
-
+	public ModelAndView form(HttpServletRequest request ,HttpSession session) {
+		ModelAndView mav = new ModelAndView();
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		
 		//체크박스 값(cart_num) 받아서 int 배열로 바꾸기
 		String[] cartNum_arr=request.getParameterValues("cart_num");
 		int[] cart_num= new int[cartNum_arr.length];
-
+		
+		//주문의 전체 가격
+		int all_total = 0; 
+		
+		//한번 주문하는 cart 의 list
+		List<CartVO> cartList = new ArrayList<CartVO>();
+		
 		//주문 신청한 카트 번호로 반복문 시작
 		for(int i=0;i<cartNum_arr.length;i++) {
 			cart_num[i]=Integer.parseInt(cartNum_arr[i]);
@@ -65,23 +72,36 @@ public class OrderController {
 			
 			//상품의 주문 대기량 구하기
 			ProductVO product = productService.selectProduct(cart_order.getProduct_num());
-			int count = cartService.selectWait(product.getProduct_num());
+			int waitCount = orderService.selectWaitCount(product.getProduct_num());
 			
-			logger.debug("<<주문 대기로 이동>> count: " +count);
-			logger.debug("<<주문 대기로 이동>> product.req_quantity: " +product.getReq_quantity());
+			logger.debug("<<주문 요청>> waitCount: " +waitCount);
+			logger.debug("<<주문 요청>> product.req_quantity: " +product.getReq_quantity());
 			
-			// 해당 주문 상품의 주문 대기량이 req_quantity 충족인지/넘기는지 확인
-			if(count < product.getReq_quantity()) {
-				// 모자라는 경우 : cart에서 status 2 로 변경
-				cartService.updateCartWait(cart_num[i],2);
-			} else if(count > product.getReq_quantity()){		
-				// 넘기는 경우 : 경고문 보내고 주문 수량 수정하게 하기
-			} else if(count == product.getReq_quantity()) {
-				// 딱 충족하는 경우 : 바로 결제 진행 > 결제 완료로 보내기
+			// 남은 req_quantity보다 많은 주문인 경우 || 판매 중지된 상품인 경우 안내문과 함께 돌려보내기
+			if(product.getReq_quantity() < product.getReq_quantity() +waitCount){		
+				mav.addObject("message","현재 구매대기 수량보다 주문량이 많습니다. [" +product.getName() +"] 상품을 " +(product.getReq_quantity()-waitCount) +"개 이하로 주문해주세요.");
+				mav.addObject("url", request.getContextPath() +"/cart/cart_list.do");
+				mav.setViewName(request.getContextPath() +"/common/resultView");
+				return mav;
+			} else if(product.getStatus() == 1) {
+				// 판매 중지된 상품인 경우
+				mav.addObject("message","[" +product.getName() +"] 상품이 판매중지되었습니다.");
+				mav.addObject("url", request.getContextPath() +"/cart/cart_list.do");
+				mav.setViewName(request.getContextPath() +"/common/resultView");
+				return mav;
 			}
+			cart_order.setProductVO(product);
+			cartList.add(cart_order);
+			all_total += cart_order.getSub_total();
+			logger.debug("<<주문 폼으로 이동>> all_total: " +all_total);
 		}
-
-		return "";
+		
+		logger.debug("<<주문 폼으로 이동>> cartList: " +cartList);
+		
+		mav.addObject("all_total", all_total);
+		mav.addObject("cartList", cartList);
+		mav.setViewName("/order/order_form.do");
+		return mav;
 	}
 	
 	@RequestMapping("/order/order_list.do")

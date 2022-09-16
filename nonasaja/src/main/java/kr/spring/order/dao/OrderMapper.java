@@ -5,8 +5,8 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 
-import kr.spring.order.vo.OrderDetailVO;
 import kr.spring.order.vo.OrderVO;
 
 @Mapper
@@ -34,6 +34,12 @@ public interface OrderMapper {
 			+ "#{product_price},#{product_total},"
 			+ "#{order_quantity},#{order_num})")
 	public void insertOrder_datail(OrderVO order);
+	
+	//상품별 주문 대기 수 구하기
+	@Select("select count(*) from norder_detail where product_num=#{prododuct_num} and wait_status=1")
+	public int selectWaitCount(int product_num);
+	
+	//주문의 status 수정하기
 	
 	//주문 수정 
 	

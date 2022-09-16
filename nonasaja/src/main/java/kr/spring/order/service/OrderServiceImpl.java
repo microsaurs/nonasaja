@@ -38,5 +38,10 @@ public class OrderServiceImpl implements OrderService{
 	public List<OrderVO> selectOrderList(Map<String, Object> map) {
 		return orderMapper.selectOrderList(map);
 	}
+
+	@Override
+	public int selectWaitCount(int product_num) {
+		return orderMapper.selectWaitCount(product_num);
+	}
 	
 }

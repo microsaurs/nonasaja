@@ -28,9 +28,8 @@
 		<div class="result-display">표시할 상품이 없습니다.</div>
 	</c:if>
 	<c:if test="${count > 0 }">
-	<form action="/order/cart_order.do" id="cartOrder">
+	<form action="/order/cart_order.do" id="cartOrder" method="post">
 		<table>
-		
 			<tr>
 				<th>주문하기</th>			
 				<th>번호</th>

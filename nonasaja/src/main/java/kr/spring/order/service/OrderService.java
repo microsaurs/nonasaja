@@ -13,6 +13,9 @@ public interface OrderService {
 	// 주문 상세 등록
 	public void insertOrder_datail(OrderVO order);
 
+	//상품별 결제 대기 수
+	public int selectWaitCount(int product_num);
+	
 	// 주문 수정
 
 	// 회원별 주문 목록의 수

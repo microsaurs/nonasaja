@@ -8,8 +8,6 @@ public class CartVO {
 	private int product_num;
 	private int quantity;
 	private String reg_date;
-	//1은 장바구니 2는 결제대기
-	private int status;
 	//한건의 상품의 총 구매금액
 	private int sub_total;
 		
@@ -56,14 +54,6 @@ public class CartVO {
 		this.reg_date = reg_date;
 	}
 
-	public int getStatus() {
-		return status;
-	}
-
-	public void setStatus(int status) {
-		this.status = status;
-	}
-
 	public int getSub_total() {
 		return sub_total;
 	}
@@ -78,12 +68,13 @@ public class CartVO {
 
 	public void setProductVO(ProductVO productVO) {
 		this.productVO = productVO;
+		this.sub_total = productVO.getPrice2()*this.quantity;
 	}
 
 	@Override
 	public String toString() {
 		return "CartVO [cart_num=" + cart_num + ", mem_num=" + mem_num + ", product_num=" + product_num + ", quantity="
-				+ quantity + ", reg_date=" + reg_date + ", status=" + status + ", sub_total=" + sub_total
+				+ quantity + ", reg_date=" + reg_date + ", sub_total=" + sub_total
 				+ ", productVO=" + productVO + "]";
 	}
 	

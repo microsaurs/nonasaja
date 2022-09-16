@@ -52,7 +52,7 @@ public class ProductVO {
 	private String company;
 	@NotEmpty
 	private String origin;
-	//0:판매중 1:마감
+	//1:판매중 2:마감
 	private int status;
 	@NotEmpty
 	private String deadline;

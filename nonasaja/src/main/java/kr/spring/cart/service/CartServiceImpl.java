@@ -52,16 +52,6 @@ public class CartServiceImpl implements CartService{
 	}
 
 	@Override
-	public int selectWait(int product_num) {
-		return cartMapper.selectWait(product_num);
-	}
-
-	@Override
-	public void updateCartWait(int cart_num, int status) {
-		cartMapper.updateCartWait(cart_num, status);
-	}
-
-	@Override
 	public CartVO selectCartByCartNum(int cart_num) {
 		return cartMapper.selectCartByCartNum(cart_num);
 	}

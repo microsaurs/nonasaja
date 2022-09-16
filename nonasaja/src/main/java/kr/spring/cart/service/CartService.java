@@ -28,12 +28,6 @@ public interface CartService {
 
 	// 장바구니 수정 (개별 상품 수량 수정)
 	public void updateCart(CartVO cart);
-	
-	//상품의 주문 대기 수 확인 
-	public int selectWait(int product_num);
-		
-	//구매대기(status)수정 
-	public void updateCartWait(int cart_num, int status);
 
 	// 장바구니 삭제
 	public void deleteCart(int cart_num);

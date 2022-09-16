@@ -25,17 +25,7 @@
 			</if>
 		</where>
 	</select>
-	<!-- 
-	<resultMap type="cartVO" id="cartMap">
-        <result property="productVO.name" column="name" />
-        <result property="productVO.status" column="p.status" />
-        <result property="productVO.price2" column="price2" />
-        <result property="productVO.quantity" column="p.quantity" />
-        <result property="productVO.photo1" column="photo1" />
-        <result property="productVO.title" column="title" />
-        <result property="productVO.req_quantity" column="req_quantity" />
-     </resultMap>
-	 -->
+	
 	<select id="selectListCart" parameterType="map" resultType="cartVO">
   		SELECT
   		   *
@@ -66,6 +56,20 @@
   	WHERE rnum >= #{start} AND rnum <= #{end}
   	]]>	            
   	</select>
+	 
+  	<select id="selectCart" parameterType="cartVO" resultType="cartVO">
+  	select 
+		cart_num,
+		product_num,
+		c.quantity,
+		c.mem_num,
+		c.reg_date,
+		c.quantity*p.price2 sub_total
+	from cart c join product p
+	using(product_num) 
+	where mem_num = #{mem_num} and product_num=#{product_num}
+	order by c.reg_date 
+	</select>
 </mapper>
 
 
