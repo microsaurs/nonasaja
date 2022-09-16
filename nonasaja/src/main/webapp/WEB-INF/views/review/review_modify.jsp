@@ -38,9 +38,9 @@ $(document).ready(function(){
 		id="product_reg_date">${product.reg_date}</span>
 </div>
 <div id="review_box">
-	<form:form id="review_form" action="write_review.do" method="post"
-		modelAttribute="reviewVO">
+	<form:form id="review_form" action="modify_review.do" method="post" modelAttribute="reviewVO">
 		<form:hidden path="product_num" value="${product.product_num}" />
+		<form:hidden path="review_num" value="${reviewVO.review_num}" />
 		<ul>
 			<li>
 				<div class="rating">
@@ -49,16 +49,16 @@ $(document).ready(function(){
 					<c:forEach var="star" begin="1" end="5" varStatus="status">
 						<input type="checkbox" id="rating${status.index}"
 							value="${status.index}" class="rate-check"
-							<c:if test="${status.index<=review.score}">checked</c:if>>
+							<c:if test="${status.index<=reviewVO.score}">checked</c:if>>
 						<label for="rating${status.index}"></label>
 					</c:forEach>
 				</div>
 			</li>
-			<li><form:textarea path="content"
-					placeholder="상품의 구매 후기를 작성해주세요" /><br> <form:errors
-					path="content" cssClass="error-color" /></li>
+			<li>
+				<form:textarea path="content" placeholder="상품의 구매 후기를 작성해주세요" /><br> 
+				<form:errors path="content" cssClass="error-color" /></li>
 		</ul>
-		<form:button>등록</form:button>
+		<form:button>수정</form:button>
 		<input type="button" value="목록"
 			onclick="location.href='${pageContext.request.contextPath}/order/order_list.do'">
 	</form:form>

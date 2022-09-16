@@ -58,6 +58,12 @@
     	<put-attribute name="body"
     	  value="/WEB-INF/views/review/review_form.jsp"/>                   
     </definition>
+    
+    <definition name="review_modify" extends="main">
+    	<put-attribute name="title" value="리뷰 수정"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/review/review_modify.jsp"/>                   
+    </definition>
 </tiles-definitions>
 
 

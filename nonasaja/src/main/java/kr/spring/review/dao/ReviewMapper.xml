@@ -23,6 +23,16 @@
 			sysdate)
 	</insert>
 	
+	<update id="updateReview" parameterType="reviewVO">
+		update product_review set 
+			score=#{score},
+			<if test="content != null and content != ''">
+				content=#{content},
+			</if>
+			reg_date=sysdate
+		where 
+			review_num=#{review_num}
+	</update>
 </mapper>
 
 

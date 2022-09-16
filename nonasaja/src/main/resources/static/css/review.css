@@ -10,6 +10,7 @@
    
 }
 .rating .rate-check + label {
+	display:inline-block;
     width: 20px;
     height: 20px;
     background-image: url('../images/star.png');
@@ -19,12 +20,12 @@
     background-color: #f0f0f0;
 }
 .rating .rate-check:checked + label {
-    background-color: #eb7a34;
+    background-color: #fce803;
 }
 .rec-star {
    width: 15px;
     height: 15px;
-    background-color: #eb7a34;
+    background-color: #fce803;
 }
 #star_btn{
 	border: none;

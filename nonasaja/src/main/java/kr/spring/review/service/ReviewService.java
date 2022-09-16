@@ -21,7 +21,9 @@ public interface ReviewService {
 	// 회원 번호로 리뷰 목록 구해오기
 	public List<ReviewVO> selectReviewListByMem(int mem_num);
 
+	//회원번호와 상품번호로 리뷰 상세
+	public ReviewVO selectReview(int mem_num, int product_num);
 	// 리뷰 수정
-
+	public void updateReview(ReviewVO review);
 	// 리뷰 삭제
 }

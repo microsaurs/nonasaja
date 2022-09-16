@@ -41,13 +41,22 @@ public class ReviewController {
 	// ================리뷰 등록======================
 	// 등록 폼
 	@GetMapping("/review/write_review.do")
-	public ModelAndView form(@RequestParam int product_num) {
+	public ModelAndView form(@RequestParam int product_num, HttpSession session) {
 		//로그인 인터셉터 넣기
 		ModelAndView mav = new ModelAndView();
+		MemberVO user = (MemberVO)session.getAttribute("user");
 		ProductVO product = productService.selectProduct(product_num);
-		logger.debug("<<리뷰 폼 호출>> : " +product);
-		mav.addObject("product", product);
-		mav.setViewName("review_form");
+		ReviewVO reviewVO = reviewService.selectReview(user.getMem_num(), product_num);
+		if(reviewVO != null) {
+			logger.debug("<<리뷰 수정 폼 호출>> : " +reviewVO);
+			mav.addObject("reviewVO", reviewVO);
+			mav.addObject("product", product);
+			mav.setViewName("review_modify");
+		} else {	
+			logger.debug("<<리뷰 폼 호출>> : " +product);
+			mav.addObject("product", product);
+			mav.setViewName("review_form");
+		}
 		return mav;
 	}
 
@@ -56,6 +65,7 @@ public class ReviewController {
 	public String submit(@Valid ReviewVO reviewVO, 
 			BindingResult result, HttpServletRequest request,
 			HttpSession session, Model model) {
+
 		logger.debug("<<리뷰등록>> : " + reviewVO);
 		
 		if (result.hasErrors()) {
@@ -72,4 +82,41 @@ public class ReviewController {
 		// 알림 페이지 만들기
 		return "common/resultView";
 	}
+	
+	//리뷰 수정 
+	@PostMapping("/review/modify_review.do")
+	public String modify(@Valid ReviewVO reviewVO, 
+			BindingResult result, HttpServletRequest request,
+			HttpSession session, Model model) {
+
+		logger.debug("<<리뷰수정>> : " + reviewVO);
+		
+		if (result.hasErrors()) {
+			return "/review/write_review.do?product_num=" + reviewVO.getProduct_num();
+		}
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		reviewVO.setMem_num(user.getMem_num());
+		
+		reviewService.updateReview(reviewVO);
+
+		model.addAttribute("message", "리뷰 수정이 완료되었습니다.");
+		model.addAttribute("url", request.getContextPath() + "/order/order_list.do");
+
+		// 알림 페이지 만들기
+		return "common/resultView";
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

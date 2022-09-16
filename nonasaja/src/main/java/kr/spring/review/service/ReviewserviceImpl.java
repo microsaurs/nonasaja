@@ -26,4 +26,14 @@ public class ReviewserviceImpl implements ReviewService{
 		return reviewMapper.selectReviewListByMem(mem_num);
 	}
 
+	@Override
+	public ReviewVO selectReview(int mem_num, int product_num) {
+		return reviewMapper.selectReview(mem_num, product_num);
+	}
+
+	@Override
+	public void updateReview(ReviewVO review) {
+		reviewMapper.updateReview(review);
+	}
+
 }
