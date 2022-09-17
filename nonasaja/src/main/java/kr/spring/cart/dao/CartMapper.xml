@@ -4,35 +4,9 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 <!-- 어노테이션과 병행할경우 namespace를 dao(mapper.java)인터페이스 명칭과 맞춰야 함 -->
 <mapper namespace="kr.spring.cart.dao.CartMapper">  
-	<select id="selectRowCount" parameterType="map" resultType="integer">
-		select 
-			count(*)
-		FROM cart c LEFT OUTER 
-  		            JOIN product p
-  		            ON c.product_num = p.product_num 
-		<where>
-			mem_num = #{mem_num} 
-			<if test="keyword != null and keyword !=''">
-				and title like '%' || #{keyword} || '%'
-			</if>
-			<if test="keyfield != null and keyfield !=''">
-				<if test="keyfield == 1">
-					and c.status = 1
-				</if>
-				<if test="keyfield == 2">
-					and c.status = 2
-				</if>  
-			</if>
-		</where>
-	</select>
 	
 	<select id="selectListCart" parameterType="map" resultType="cartVO">
-  		SELECT
-  		   *
-  		FROM (SELECT
-  		        a.*,
-  		        rownum rnum
-  		      FROM (SELECT 
+				SELECT 
   		               *
   		            FROM cart c LEFT OUTER 
   		            JOIN product p 
@@ -51,10 +25,7 @@
 						</if> 
 					</if>
 					</where>
-  		            ORDER BY c.reg_date DESC)a) 
-  	<![CDATA[
-  	WHERE rnum >= #{start} AND rnum <= #{end}
-  	]]>	            
+  		            ORDER BY c.reg_date DESC	            
   	</select>
 	 
   	<select id="selectCart" parameterType="cartVO" resultType="cartVO">

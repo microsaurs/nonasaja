@@ -40,9 +40,7 @@ public class CartController {
 	
 	@Autowired
 	private ProductService productService;
-	
-	private int rowCount = 10;
-	private int pageCount = 10;
+
 	
 	@RequestMapping("/cart/cart_insert.do")
 	public String submit(@RequestParam int product_num, @RequestParam int product_price2,
@@ -104,18 +102,11 @@ public class CartController {
 		MemberVO user = (MemberVO) session.getAttribute("user");
 		map.put("mem_num", user.getMem_num());
 		
-		//주문의 총 개수(장바구니에 담긴 주문 개수)
-		int count = cartService.selectRowCount(map);
-		logger.debug("<<count>> : " +count);
-		
-		//rowCount, pageCount는 맨 위에 설정함
-		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,rowCount,pageCount,"list.do");
-		
+		//회원번호별 총구매액
+		int all_total = cartService.selectTotalByMem_num(
+								           user.getMem_num());
 		List<CartVO> list = null;
-		if(count > 0) {
-			map.put("start", page.getStartRow());
-			map.put("end", page.getEndRow());
-			
+		if(all_total > 0) {
 			list = cartService.selectListCart(map);
 			for(CartVO cart : list) {
 				cart.setProductVO(productService.selectProduct(cart.getProduct_num()));
@@ -123,9 +114,8 @@ public class CartController {
 		}
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("cartList");
-		mav.addObject("count", count);
 		mav.addObject("list", list);
-		mav.addObject("page", page.getPage());
+		mav.addObject("all_total", all_total);
 		logger.debug("<<장바구니 목록>> list: " +list);
 		return mav;
 	}

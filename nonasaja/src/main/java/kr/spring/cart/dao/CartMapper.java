@@ -24,10 +24,8 @@ public interface CartMapper {
 	@Select("select NVL(SUM(sub_total), 0) FROM "
 			+ "(SELECT c.mem_num,c.quantity*p.price2 sub_total "
 			+ "FROM cart c JOIN product p ON c.product_num=p.product_num "
-			+ "WHERE mem_num = #{mem_num})")
+			+ "WHERE mem_num = #{mem_num} and p.status=2)")
 	public int selectTotalByMem_num(int mem_num);
-	//장바구니 주문 수 
-	public int selectRowCount(Map<String, Object> map);
 	//장바구니 목록
 	public List<CartVO> selectListCart(Map<String, Object> map);
 	//장바구니 상세(회원번호와 상품번호로)

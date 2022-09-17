@@ -46,10 +46,6 @@ public class CartServiceImpl implements CartService{
 	public void deleteCart(int cart_num) {
 		cartMapper.deleteCart(cart_num);
 	}
-	@Override
-	public int selectRowCount(Map <String, Object> map) {
-		return cartMapper.selectRowCount(map);
-	}
 
 	@Override
 	public CartVO selectCartByCartNum(int cart_num) {

@@ -60,6 +60,7 @@ public class OrderController {
 		
 		//주문의 전체 가격
 		int all_total = 0; 
+			
 		
 		//한번 주문하는 cart 의 list
 		List<CartVO> cartList = new ArrayList<CartVO>();
@@ -76,9 +77,11 @@ public class OrderController {
 			
 			logger.debug("<<주문 요청>> waitCount: " +waitCount);
 			logger.debug("<<주문 요청>> product.req_quantity: " +product.getReq_quantity());
-			
+			logger.debug("<<sub_total>> : " +cart_order.getSub_total());
+			cart_order.setProductVO(product);
+			all_total += cart_order.getSub_total();
 			// 남은 req_quantity보다 많은 주문인 경우 || 판매 중지된 상품인 경우 안내문과 함께 돌려보내기
-			if(product.getReq_quantity() < product.getReq_quantity() +waitCount){		
+			if(product.getReq_quantity() < cart_order.getQuantity() +waitCount){		
 				mav.addObject("message","현재 구매대기 수량보다 주문량이 많습니다. [" +product.getName() +"] 상품을 " +(product.getReq_quantity()-waitCount) +"개 이하로 주문해주세요.");
 				mav.addObject("url", request.getContextPath() +"/cart/cart_list.do");
 				mav.setViewName(request.getContextPath() +"/common/resultView");
@@ -89,18 +92,22 @@ public class OrderController {
 				mav.addObject("url", request.getContextPath() +"/cart/cart_list.do");
 				mav.setViewName(request.getContextPath() +"/common/resultView");
 				return mav;
+			} else if(user.getCash() < (all_total+orderService.selectSumWait(user.getMem_num()))) {
+				// 주문 대기 상태의 총 가격의 합이 현재 포인트보다 많을때(지불능력이 없는 경우)
+				mav.addObject("message","현재 보유하신 포인트 이상으로 구매신청을 하실 수 없습니다. 현재 포인트 :" 
+						+user.getCash() +" 현재 구매대기 중인 주문 가격 : " 
+						+orderService.selectSumWait(user.getMem_num()));
+				mav.addObject("url", request.getContextPath() +"/cart/cart_list.do");
+				mav.setViewName(request.getContextPath() +"/common/resultView");
+				return mav;
 			}
-			cart_order.setProductVO(product);
 			cartList.add(cart_order);
-			all_total += cart_order.getSub_total();
-			logger.debug("<<주문 폼으로 이동>> all_total: " +all_total);
 		}
-		
 		logger.debug("<<주문 폼으로 이동>> cartList: " +cartList);
 		
 		mav.addObject("all_total", all_total);
 		mav.addObject("cartList", cartList);
-		mav.setViewName("/order/order_form.do");
+		mav.setViewName("order_form");
 		return mav;
 	}
 	

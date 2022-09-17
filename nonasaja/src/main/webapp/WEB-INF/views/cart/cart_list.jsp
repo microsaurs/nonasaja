@@ -24,10 +24,10 @@
 			</li>
 		</ul>
 	</form>
-	<c:if test="${count == 0 }">
+	<c:if test="${all_total == 0 }">
 		<div class="result-display">표시할 상품이 없습니다.</div>
 	</c:if>
-	<c:if test="${count > 0 }">
+	<c:if test="${all_total > 0 }">
 	<form action="/order/cart_order.do" id="cartOrder" method="post">
 		<table>
 			<tr>
@@ -43,7 +43,7 @@
 				<input type="hidden" name="product_num" value="${cart.product_num}">
 			<tr>
 				<td>
-					<input type="checkbox" name="cart_num" value="${cart.cart_num}" <c:if test="${cart.productVO.status == 1 }">disabled</c:if>>
+					<input type="checkbox" name="cart_num" value="${cart.cart_num}" checked="checked" <c:if test="${cart.productVO.status == 1 }">disabled</c:if>>
 				</td>
 				<td>${cart.product_num }</td>
 				<td>
@@ -64,13 +64,13 @@
 				<td><input type="button" class="cart-del" value="삭제" data-cartnum=${cart.cart_num }></td>
 			</tr>
 			</c:forEach>
+			<tr>
+				<td colspan="3" class="align-right"><b>총구매금액</b></td>
+				<td class="align-center">${all_total}</td>
+			</tr>
 			</table>
 			<input type="submit" value="주문하기">
 		</form>
-		
-		<div class="align-center">
-			${page}
-		</div>
 	</c:if>
 </div>
 <!-- 내용 끝 -->

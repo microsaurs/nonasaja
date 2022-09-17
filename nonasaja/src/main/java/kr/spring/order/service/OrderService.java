@@ -21,6 +21,9 @@ public interface OrderService {
 	// 회원별 주문 목록의 수
 	public int selectOrderCount(Map<String, Object> map);
 
+	//회원별 주문 대기 주문 가격 합
+	public int selectSumWait(int mem_num);
+	
 	// 회원별 주문 목록
 	public List<OrderVO> selectOrderList(Map<String, Object> map);
 

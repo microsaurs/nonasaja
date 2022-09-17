@@ -43,5 +43,10 @@ public class OrderServiceImpl implements OrderService{
 	public int selectWaitCount(int product_num) {
 		return orderMapper.selectWaitCount(product_num);
 	}
+
+	@Override
+	public int selectSumWait(int mem_num) {
+		return orderMapper.selectSumWait(mem_num);
+	}
 	
 }
