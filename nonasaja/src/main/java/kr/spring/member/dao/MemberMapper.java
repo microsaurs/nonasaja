@@ -25,13 +25,13 @@ public interface MemberMapper {
 	//카카오 회원 가입 xml
 	public void insertKakaoMember(MemberVO member);
 	
-	@Select("SELECT m.mem_num,m.id,m.auth,m.nickname,d.passwd,d.name,d.photo,d.root FROM member m LEFT OUTER JOIN member_detail d ON m.mem_num=d.mem_num WHERE m.id=#{id}")
+	@Select("SELECT m.mem_num,m.id,m.auth,m.nickname,d.passwd,d.name,d.photo,d.photo_name,d.root,d.cash FROM member m LEFT OUTER JOIN member_detail d ON m.mem_num=d.mem_num WHERE m.id=#{id}")
 	public MemberVO selectCheckMember(String id);//아이디 중복 체크
 	@Select("SELECT * FROM member JOIN member_detail USING(mem_num) WHERE mem_num=#{mem_num}")
 	public MemberVO selectMember(Integer mem_num);//하나의 회원 조회
 	@Update("UPDATE member SET nickname=#{nickname} WHERE mem_num=#{mem_num}")
 	public void updateMember(MemberVO member);//회원정보 수정 !interest 추가하기
-	@Update("UPDATE member_detail SET name=#{name},email=#{email},phone=#{phone},zipcode=#{zipcode},addr1=#{addr1},addr2=#{addr2},interest=#{interest} WHERE mem_num=#{mem_num}")
+	@Update("UPDATE member_detail SET email=#{email},phone=#{phone},zipcode=#{zipcode},addr1=#{addr1},addr2=#{addr2},interest=#{interest},modify_date=sysdate WHERE mem_num=#{mem_num}")
 	public void updateMember_detail(MemberVO member);//회원정보 수정
 	@Update("UPDATE member_detail SET passwd=#{passwd} WHERE mem_num=#{mem_num}")
 	public void updatePassword(MemberVO member);//비밀번호 수정

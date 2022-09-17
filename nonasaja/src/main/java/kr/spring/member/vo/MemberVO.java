@@ -17,6 +17,7 @@ public class MemberVO {
 	private String id;
 	private int auth;
 	@NotEmpty
+	@Size(min=3,max=7)
 	private String nickname;
 	
 	//member_detail 테이블

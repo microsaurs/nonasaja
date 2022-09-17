@@ -167,35 +167,21 @@ public class MemberController {
 
 	// 회원정보 수정 - 데이터 처리
 	@PostMapping("/member/update.do")
-	public String submitUpdate(@Valid MemberVO memberVO, BindingResult result, HttpSession session) {
+	public String submitUpdate(MemberVO memberVO, BindingResult result, HttpSession session) {
 		logger.debug("<회원정보수정 전> : " + memberVO);
 
-		// 유효성 체크
-		if (result.hasErrors()) {
-			return "memberModify";
-		}
+		MemberVO user = (MemberVO) session.getAttribute("user");
+		
+		memberVO.setMem_num(user.getMem_num());
+		memberVO.setAuth(user.getAuth());
+		//memberVO.setId(user.getId());
+		//memberVO.setNickname(user.getNickname());
+		
+		logger.debug("<memberVO>..."+memberVO);
 
-		try {
-			MemberVO user = (MemberVO) session.getAttribute("user");
-			memberVO.setMem_num(user.getMem_num());
-			memberVO.setAuth(user.getAuth());
-
-			boolean check = false;
-			if (memberVO != null) {
-				// 비밀번호 일치 여부 체크
-				check = memberVO.isCheckedPasswd(user.getPasswd());
-			}
-			if (check) {
-				// 회원정보 수정
-				memberService.updateMember(memberVO);
-				return "redirect:/member/myPage.do";
-			}
-			throw new AuthCheckException();
-		} catch (AuthCheckException e) {
-			result.reject("invalidPassword");
-			logger.debug("<인증실패>");
-			return "memberModify";
-		}
+		memberService.updateMember(memberVO);
+		
+		return "redirect:/member/myPage.do";
 	}
 
 	// 프로필 사진 출력(로그인 전용)

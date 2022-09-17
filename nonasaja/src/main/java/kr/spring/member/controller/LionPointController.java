@@ -240,6 +240,7 @@ public class LionPointController {
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("paymentList");
+		mav.addObject("member", user);
 		mav.addObject("count", count);
 		mav.addObject("list", list);
 		mav.addObject("page", page.getPage());

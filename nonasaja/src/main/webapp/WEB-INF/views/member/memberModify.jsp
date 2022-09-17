@@ -2,77 +2,135 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>    
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <!-- 내용 시작 -->
-<div class="page-main">
-	<h2>회원정보수정</h2>
-	<form:form id="modify_form" action="update.do" 
-	                            modelAttribute="memberVO">
-		<form:errors element="div" cssClass="error-color"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage.css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/member.js"></script>
+<div class="mypage-wrap">
+	<div class="mypage-left">
 		<ul>
 			<li>
-				<label for="id">아이디</label>
-				<form:input path="id" readonly="true"/>
-				<form:errors path="id" cssClass="error-color"/>                      
+				<c:if test="${empty memberVO.photo_name}">
+				<img src="${pageContext.request.contextPath}/images/face.png" width="200" height="200" class="my-photo">
+				</c:if>
+				<c:if test="${!empty memberVO.photo_name}">
+				<img src="${pageContext.request.contextPath}/member/photoView.do" width="200" height="200" class="my-photo">
+				</c:if>
 			</li>
-			<li>
-				<label for="passwd">비밀번호</label>
-				<form:password path="passwd"/>
-				<form:errors path="passwd" cssClass="error-color"/>                      
-			</li>
-			<li>
-				<label for="name">이름</label>
-				<form:input path="name"/>
-				<form:errors path="name" cssClass="error-color"/>                      
-			</li>
-			<li>
-				<label for="nickname">별명</label>
-				<form:input path="nickname"/>
-				<form:errors path="nickname" cssClass="error-color"/>                      
-			</li>
-			<li>
-				<label for="email">이메일</label>
-				<form:input path="email"/>
-				<form:errors path="email" cssClass="error-color"/>                      
-			</li>
-			<li>
-				<label for="phone">전화번호</label>
-				<form:input path="phone"/>
-				<form:errors path="phone" cssClass="error-color"/>                      
-			</li>
-			<li>
-				<label for="zipcode">우편번호</label>
-				<form:input path="zipcode"/>
-				<input type="button" onclick="execDaumPostcode()" 
-				                                value="우편번호 찾기">
-				<form:errors path="zipcode" cssClass="error-color"/>                      
-			</li>
-			<li>
-				<label for="addr1">주소</label>
-				<form:input path="addr1"/>
-				<form:errors path="addr1" cssClass="error-color"/>                      
-			</li>
-			<li>
-				<label for="addr2">상세주소</label>
-				<form:input path="addr2"/>
-				<form:errors path="addr2" cssClass="error-color"/>                      
-			</li>
-			<li>
-				<label for="f_interest">관심사</label>
-				<form:checkbox path="f_interest" value="운동"/>운동
-				<form:checkbox path="f_interest" value="오락"/>오락
-				<form:checkbox path="f_interest" value="맛집"/>맛집
-				<form:checkbox path="f_interest" value="노래"/>노래
-				<form:checkbox path="f_interest" value="여행"/>여행
-				<form:checkbox path="f_interest" value="스터디"/>스터디
-			</li>
-		</ul> 
-		<div class="align-center">
-			<form:button>전송</form:button>
-			<input type="button" value="마이페이지"
-			  onclick="location.href='myPage.do'">
-		</div>                           
-	</form:form>
+			<li id="nick"><span>${memberVO.nickname}</span></li>
+			<li id="money">사자머니 &nbsp;&nbsp;&nbsp;<a href="paymentList.do">충전 ></a></li>
+			<li><span><fmt:formatNumber value="${memberVO.cash}"/></span></li>
+		</ul>
+		<br>
+		<ul>
+			<li><a href="#">회원정보</a></li>
+			<li><a href="#">공동구매</a></li>
+			<li><a href="#">중고거래</a></li>
+			<li><a href="#">동호회</a></li>
+			<li><a href="#">커뮤니티</a></li>
+			<c:if test="${memberVO.root == 0}">
+			<li><a href="#">회원탈퇴</a></li>
+			</c:if>
+		</ul>
+	</div>
+	<div class="mypage-right">
+		<form:form id="modify_form" action="update.do" method="post" modelAttribute="memberVO">
+			<table>
+				<tr>
+					<th colspan="2"><h3>회원정보</h3></th>
+				</tr>
+				<tr>
+					<td>사진</td>
+					<td>
+						<c:if test="${empty memberVO.photo_name}">
+						<img src="${pageContext.request.contextPath}/images/face.png" width="100" height="100" class="my-photo">
+						</c:if>
+						<c:if test="${!empty memberVO.photo_name}">
+						<img src="${pageContext.request.contextPath}/member/photoView.do" width="100" height="100" class="my-photo">
+					</c:if>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<div class="align-center">
+							<input type="button" value="수정" id="photo_btn">
+							<div id="photo_choice" style="display:none;">
+								<input type="file" id="upload" accept="image/gif,image/png,image/jpeg"><br>
+								<input type="button" value="전송" id="photo_submit">  
+								<input type="button" value="취소" id="photo_reset"> 
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>아이디</td>
+					<td>
+						<c:if test="${memberVO.root == 0}">${memberVO.id}</c:if>
+						<c:if test="${memberVO.root == 1}">네이버 회원</c:if>
+						<c:if test="${memberVO.root == 2}">카카오 회원</c:if>
+					</td>
+				</tr>
+				<tr>
+					<td>닉네임</td>
+					<td><form:input path="nickname"/></td>
+				</tr>
+				<tr>
+					<td>이메일</td>
+					<td><form:input path="email"/></td>
+				</tr>
+				<tr>
+					<td>연락처</td>
+					<td><form:input path="phone"/></td>
+				</tr>
+				<tr>
+					<td>우편번호</td>
+					<td>
+						<form:input path="zipcode"/>
+						<input type="button" id="zipcode_btn" onclick="execDaumPostcode()" value="우편번호 찾기">
+					</td>
+				</tr>
+				<tr>
+					<td>주소</td>
+					<td>
+						<form:input path="addr1"/>
+					</td>
+				</tr>
+				<tr>
+					<td>상세주소</td>
+					<td>
+						<form:input path="addr2"/>
+					</td>
+				</tr>
+				<tr>
+					<td>관심</td>
+					<td>
+						<form:checkbox path="interest" value="운동"/><label for="interest1"></label> 운동
+						<form:checkbox path="interest" value="오락"/><label for="interest2"></label> 오락
+						<form:checkbox path="interest" value="맛집"/><label for="interest3"></label> 맛집<br>
+						<form:checkbox path="interest" value="노래"/><label for="interest4"></label> 노래
+						<form:checkbox path="interest" value="여행"/><label for="interest5"></label> 여행
+						<form:checkbox path="interest" value="스터디"/><label for="interest6"></label> 스터디
+					</td>
+				</tr>
+				<!-- <tr>
+					<td>사진</td>
+					<td></td>
+				</tr> -->
+				<tr>
+					<td colspan="2">
+						<div class="align-center">
+							<form:button id="submit_btn">전송</form:button>
+							<input id="back_btn"type="button" value="마이페이지" onclick="location.href='myPage.do'">
+						</div>
+					</td>
+				</tr>
+			</table>
+		</form:form>
+	</div>
 </div>
+<div class="float-clear"></div>
 <!-- 우편번호 검색 시작 -->
 <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
 <img src="//t1.daumcdn.net/localimg/localimages/07/postcode/320/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">

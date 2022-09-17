@@ -9,16 +9,20 @@
 	overflow:hidden;
 }
 .mypage-left{
-	margin-left:20px;
+	margin-left:25px;
 	padding-right:10px;
-	width:18%;
+	width:25%;
 	height:auto;
 	float:left;
 	font-family:sans-serif, fantasy;
 	font-weight:bold;
 }
 li#nick{
-	font-size:2em;
+	font-size:1.5em;
+	width:auto;
+}
+li#nick span{
+	width:auto;
 }
 li#money{
 	margin-top:30px;
@@ -37,18 +41,22 @@ li#money{
 	border-radius:70%;
 }
 .mypage-right{
-	padding-left:10px;
-	width:70%;
+	padding-left:100px;
+	width:60%;
 	height:auto;
 	float:right;
 }
 .mypage-right table{
-	width:70%;
+	width:auto;
 }
 .mypage-right table tr:not(:first-child){
 	height:50px;
 }
 .mypage-right table tr:last-child td div{
+	width:100%;
+	margin:0 auto;
+}
+.mypage-right table tr:last-child td div.update-btn{
 	width:100px;
 	height:25px;
 	background-color:gray;
@@ -56,7 +64,6 @@ li#money{
 	border-radius:5px;
 	color:white;
 	text-align:center;
-	float:right;
 } 
 .mypage-left a{
 	text-decoration:none;
@@ -72,4 +79,13 @@ li#money{
 }
 .float-clear{
 	clear:both;
+}
+#zipcode_btn,#submit_btn,#back_btn,#photo_btn,#upload,#photo_submit,#photo_reset{
+	background-color:#5d5d5d;
+	color:white;
+	border:1px solid #5d5d5d;
+	border-radius:3px;
+}
+tr.label td{
+	text-align:center;
 }
