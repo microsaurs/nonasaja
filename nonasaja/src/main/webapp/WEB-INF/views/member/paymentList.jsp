@@ -37,18 +37,16 @@
 	<div class="mypage-right">
 		<table>
 			<tr>
-				<th colspan="5"><b>사자머니</b></th>
+				<th colspan="5"><h3>사자머니</h3></th>
 			</tr>
 			<tr>
-				<td colspan="5">현재 보유중인 사자머니</td>
-			</tr>
-			<tr>
-				<td><fmt:formatNumber value="${member.cash}"/>  원</td>
+				<td colspan="4" id="money-title">현재 보유중인 사자머니</td>
+				<td id="money-current"><fmt:formatNumber value="${member.cash}"/>  원</td>
 			</tr>
 			<tr>
 				<td colspan="4">
 					<form>
-						<input type="radio" name="money" value="5000">5천원
+						<input type="radio" name="money" value="5000" checked>5천원
 						<input type="radio" name="money" value="10000">1만원
 						<input type="radio" name="money" value="30000">3만원
 						<input type="radio" name="money" value="50000">5만원
@@ -63,7 +61,7 @@
 				<td>결제금액</td>
 				<td>결제 전 잔액</td>
 				<td>결제 후 잔액</td>
-				<td style="text-align:center;">결제일</td>
+				<td>결제일</td>
 			</tr>
 			<c:forEach var="point" items="${list}" varStatus="status">
 			<tr>

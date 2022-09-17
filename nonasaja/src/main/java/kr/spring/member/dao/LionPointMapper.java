@@ -23,5 +23,5 @@ public interface LionPointMapper {
 	@Select("select * from (select a.*, rownum rnum from(select * from lionpoint order by point_num desc) a) where rnum=1 and mem_num=#{mem_num}")
 	public LionPointVO selectPointbyMem(Integer mem_num);//회원번호로 포인트 직전 내역 조회
 	@Update("UPDATE member_detail SET cash=#{cash} WHERE mem_num=#{mem_num}")
-	public void updateMemberCash(Integer cash, Integer mem_num);//멤버디테일에 있는 캐시 컬럼 업데이트
+	public void updateMemberCash(MemberVO member);//멤버디테일에 있는 캐시 컬럼 업데이트
 }

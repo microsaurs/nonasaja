@@ -177,9 +177,10 @@ public class LionPointController {
 						pointVO.setLionpoint(approve.getAmount().getTotal());
 						pointVO.setCash(pointVO.getRemain());
 						pointVO.setRemain(pointVO.getCash()+approve.getAmount().getTotal());
+						user.setCash(pointVO.getRemain());
 						
 						kakaoService.insertPoint(pointVO);
-						kakaoService.updateMemberCash(pointVO.getRemain(), pointVO.getMem_num());
+						kakaoService.updateMemberCash(user);
 					}
 					
 				}catch (JsonMappingException e) {
@@ -196,8 +197,10 @@ public class LionPointController {
 					pointVO.setCash(0);
 					pointVO.setRemain(pointVO.getCash()+approve.getAmount().getTotal());
 					
+					user.setCash(pointVO.getRemain());
+					
 					kakaoService.insertPoint(pointVO);
-					kakaoService.updateMemberCash(pointVO.getRemain(), pointVO.getMem_num());
+					kakaoService.updateMemberCash(user);
 				}
 			}
 
@@ -208,7 +211,7 @@ public class LionPointController {
 		}
 		//결제가 완료되면 메인페이지로 이동 = "main"
 		//마이페이지로 이동 = "redirect:myPage.do"
-		return "redirect:myPage.do";
+		return "redirect:paymentList.do";
 	}
 	
 	//==========포인트 내역 목록=============//
@@ -222,7 +225,7 @@ public class LionPointController {
 		int count = kakaoService.selectPointCnt(user.getMem_num());
 		logger.debug("<count>..." + count);
 		
-		PagingUtil page = new PagingUtil(currentPage,count,rowCount,pageCount,"");
+		PagingUtil page = new PagingUtil(currentPage,count,rowCount,pageCount,"paymentList.do");
 		
 		Map<String, Object> map = new HashMap<String,Object>();
 		
@@ -233,9 +236,6 @@ public class LionPointController {
 			map.put("mem_num", user.getMem_num());
 			list = kakaoService.selectPointList(map);
 			
-//			for(LionPointVO point : list) {
-//				point
-//			}
 		}
 		
 		ModelAndView mav = new ModelAndView();

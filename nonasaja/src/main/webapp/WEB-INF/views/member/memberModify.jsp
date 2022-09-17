@@ -53,7 +53,8 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2">
+					<td></td>
+					<td>
 						<div class="align-center">
 							<input type="button" value="수정" id="photo_btn">
 							<div id="photo_choice" style="display:none;">

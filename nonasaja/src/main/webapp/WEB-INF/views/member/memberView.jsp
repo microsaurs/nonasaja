@@ -20,7 +20,7 @@
 			</li>
 			<li id="nick"><span>${member.nickname}</span></li>
 			<li id="money">사자머니 &nbsp;&nbsp;&nbsp;<a href="paymentList.do">충전 ></a></li>
-			<li><span><fmt:formatNumber value="${member.cash}"/></span></li>
+			<li><span><fmt:formatNumber value="${member.cash}"/>원</span></li>
 		</ul>
 		<br>
 		<ul>

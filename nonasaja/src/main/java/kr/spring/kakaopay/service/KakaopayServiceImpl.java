@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import kr.spring.member.dao.LionPointMapper;
 import kr.spring.member.vo.LionPointVO;
+import kr.spring.member.vo.MemberVO;
 
 @Service
 public class KakaopayServiceImpl implements KakaopayService {
@@ -39,8 +40,8 @@ public class KakaopayServiceImpl implements KakaopayService {
 	}
 
 	@Override
-	public void updateMemberCash(Integer cash, Integer mem_num) {
-		lionpointMapper.updateMemberCash(cash, mem_num);
+	public void updateMemberCash(MemberVO member) {
+		lionpointMapper.updateMemberCash(member);
 	}
 
 }

@@ -47,7 +47,11 @@ li#money{
 	float:right;
 }
 .mypage-right table{
-	width:auto;
+	width:100%;
+}
+#money-title,#money-current{
+	font-weight:bold;
+	font-size:1.1em;
 }
 .mypage-right table tr:not(:first-child){
 	height:50px;
@@ -80,12 +84,13 @@ li#money{
 .float-clear{
 	clear:both;
 }
-#zipcode_btn,#submit_btn,#back_btn,#photo_btn,#upload,#photo_submit,#photo_reset{
+#zipcode_btn,#submit_btn,#back_btn,#photo_btn,#upload,#photo_submit,#photo_reset,#kpay_btn{
 	background-color:#5d5d5d;
 	color:white;
 	border:1px solid #5d5d5d;
 	border-radius:3px;
+	cursor:pointer;
 }
-tr.label td{
-	text-align:center;
+#kpay_btn{
+	width:100px;
 }
