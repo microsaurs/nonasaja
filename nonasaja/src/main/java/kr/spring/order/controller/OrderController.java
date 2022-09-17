@@ -7,12 +7,16 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -123,7 +127,7 @@ public class OrderController {
 		MemberVO user = (MemberVO) session.getAttribute("user");
 		map.put("mem_num", user.getMem_num());
 		
-		//주문의 총 개수(장바구니에 담긴 주문 개수)
+		//주문의 총 개수
 		int count = orderService.selectOrderCount(map);
 		logger.debug("<<count>> : " +count);
 		
@@ -142,6 +146,23 @@ public class OrderController {
 		mav.addObject("count", count);
 		mav.addObject("list", list);
 		mav.addObject("page", page.getPage());
+		
+		return mav;
+	}
+	
+	@PostMapping("/order/order.do")
+	public ModelAndView order(@Valid OrderVO orderVO, BindingResult result, 
+					HttpServletRequest request,
+					HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		logger.debug("<<주문등록>> : " + orderVO);
+		if (result.hasErrors()) {
+			mav.setViewName("order_form");
+			return mav;
+		}
+		
+		mav.addObject("message", "상품 등록이 완료되었습니다.");
+		mav.addObject("url", request.getContextPath() + "/product/list.do");
 		
 		return mav;
 	}
