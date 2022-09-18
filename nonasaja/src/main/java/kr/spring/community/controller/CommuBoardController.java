@@ -93,7 +93,8 @@ private static final Logger logger = LoggerFactory.getLogger(CommuBoardControlle
 		
 		Map<String,Object> map = new HashMap<String,Object>(); 
 		map.put("keyword", keyword);
-	
+		map.put("keyfield", keyfield);
+		
 		//글의 총 개수(검색된 글의 개수)
 		int count = boardService.selectRowCount(map);
 		
@@ -269,6 +270,7 @@ private static final Logger logger = LoggerFactory.getLogger(CommuBoardControlle
 			
 			Map<String,Object> map = new HashMap<String,Object>(); 
 			map.put("keyword", keyword);
+			map.put("keyfield", keyfield);
 		
 			//글의 총 개수(검색된 글의 개수)
 			int count = boardService.selectRowCount2(map);
@@ -308,6 +310,8 @@ private static final Logger logger = LoggerFactory.getLogger(CommuBoardControlle
 			//제목에 태그를 허용하지 않음
 			board.setCommu_title(StringUtil.useNoHtml(board.getCommu_title()));
 			
+			//내용에 줄바꿈 처리하면서 태그를 허용하자ㅣ 않음
+			board.setCommu_content(StringUtil.useBrNoHtml(board.getCommu_content()));
 			return new ModelAndView("commuRecipeView","board",board);
 			
 		}
@@ -337,6 +341,15 @@ private static final Logger logger = LoggerFactory.getLogger(CommuBoardControlle
 			}else if(board_type==4) {//업로드된 이미지
 				mav.addObject("imageFile", board.getUploadfile3());
 				mav.addObject("filename", board.getFilename3());
+			}else if(board_type==5) {//업로드된 이미지
+				mav.addObject("imageFile", board.getUploadfile4());
+				mav.addObject("filename", board.getFilename4());
+			}else if(board_type==6) {//업로드된 이미지
+				mav.addObject("imageFile", board.getUploadfile5());
+				mav.addObject("filename", board.getFilename5());
+			}else if(board_type==7) {//업로드된 이미지
+				mav.addObject("imageFile", board.getUploadfile6());
+				mav.addObject("filename", board.getFilename6());
 			}
 			
 			return mav;

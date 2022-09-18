@@ -1,0 +1,53 @@
+.recipe-img{
+	width: 33%;
+	
+}
+.recipe-img2{
+	width: 20%;
+	margin-right: 50px;
+}
+#recipe_write input[type=file]::file-selector-button{
+	background: #ded597;
+	border: none;
+	height: 25px;
+	border-radius: 6px;
+}
+#recipe_write input[type=file]{
+	float: left;
+}
+#recipe_upload{
+	margin-bottom: 50px;
+} 
+#recipe_write ul{
+	list-style: none;
+	padding: 0;
+}
+#recipe_write input[type=file]{
+	margin: 0 8.5% 10px 0;
+}
+.input_box_title{
+	width: 30%;
+	margin-bottom: 10px;
+	margin-top: 20px;
+}
+.input_box_food{
+	width: 20%;
+	margin-bottom: 10px;
+}
+.input_box_time{
+	width: 10%;
+	margin-bottom: 10px;
+}
+.input_box_ingredient{
+	width: 70%;
+	margin-bottom: 10px;
+}
+#recipe_write input{
+	border-radius: 5px;
+    border-color: #adadad;
+}
+.title_upload{
+	font-weight: 700;
+}
+
+

@@ -4,30 +4,32 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
 <!-- 내용 시작 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/item.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/recipeList.css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/board.js"></script>
+
 <div class="page-main">
 	<h2>레시피</h2>
 	<form action="list.do" method="get" id="search_form">
 		<ul class="search">
 			<li>
-				<select name="keyfield">
-					<option value="1" <c:if test="${param.keyfield == 1}">selected</c:if>>상품명</option>
-					<option value="2" <c:if test="${param.keyfield == 2}">selected</c:if>>내용</option>
-					<option value="3" <c:if test="${param.keyfield == 3}">selected</c:if>>상품명+내용</option>
+				<select name="keyfield" id="keyfield">
+					<option value="1" <c:if test="${param.keyfield == 1}">selected</c:if>>음식명</option>
+					<option value="2" <c:if test="${param.keyfield == 2}">selected</c:if>>제목+음식명</option>
+					<option value="3" <c:if test="${param.keyfield == 3}">selected</c:if>>난이도</option>
 				</select>
 			</li>
 			<li>
-				<input type="search" size="16" name="keyword" id="keyword" value="${param.keyword}">
+				<input type="search" name="keyword" id="keyword" value="${param.keyword}">
 			</li>
 			<li>
-				<input type="submit" value="찾기">
+				<input class="button" type="submit" value="찾기">
+				<input class="button" type="button" value="목록"  onclick="location.href='list.do'">
 			</li>
 		</ul>
 	</form>
 	<c:if test="${!empty user}">
 	<div class="align-right">
-		<input type="button" value="글쓰기" onclick="location.href='write.do'">
+		<input class="button" type="button" value="글쓰기" onclick="location.href='write.do'">
 	</div>
 	</c:if>
 	<c:if test="${count == 0}">
@@ -40,10 +42,10 @@
 		<c:forEach var="board" items="${list}">
 			<div class="horizontal-area">
 				<a href="detail.do?commu_num=${board.commu_num}">
-					<img id ="recipeList_food" src="${pageContext.request.contextPath}/commuRecipe/imageView.do?commu_num=${board.commu_num}&board_type=2">
+					<img id ="recipeList_food_photo" src="${pageContext.request.contextPath}/commuRecipe/imageView.do?commu_num=${board.commu_num}&board_type=2">
 					<span>${board.commu_title}</span>
 					<br>
-					<span><b>${board.commu_food}</b></span>
+					<span id="recipeList_food"><b>${board.commu_food}</b></span>
 					<br>
 				<div id = "level">
 					<img id ="recipeList_level" src="${pageContext.request.contextPath}/images/recipeList_level2.png">

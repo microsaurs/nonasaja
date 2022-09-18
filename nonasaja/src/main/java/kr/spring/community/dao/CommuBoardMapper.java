@@ -21,7 +21,7 @@ public interface CommuBoardMapper {
 	//유머글
 	public List<CommunityVO> selectList(Map<String,Object> map);
 	public int selectRowCount(Map<String,Object> map);
-	@Insert("INSERT INTO community_board (commu_num,commu_title,commu_content,uploadfile,filename,uploadfile2,filename2,uploadfile3,filename3,commu_code,mem_num) VALUES (community_seq.nextval,#{commu_title},#{commu_content},#{uploadfile},#{filename},#{uploadfile2},#{filename2},#{uploadfile3},#{filename3},#{commu_code},#{mem_num})")
+	@Insert("INSERT INTO community_board (commu_num,commu_title,commu_content,commu_code,mem_num) VALUES (community_seq.nextval,#{commu_title},#{commu_content},#{commu_code},#{mem_num})")
 	public void insertBoard(CommunityVO board);
 	@Select("SELECT * FROM community_board b JOIN member m USING(mem_num) JOIN member_detail d USING(mem_num) WHERE b.commu_num=#{commu_num}")
 	public CommunityVO selectBoard(Integer commu_num);
@@ -79,7 +79,7 @@ public interface CommuBoardMapper {
 	//레시피
 	public List<RecipeVO> selectList2(Map<String,Object> map);
 	public int selectRowCount2(Map<String,Object> map);
-	@Insert("INSERT INTO community_recipe_board (commu_num,commu_title,commu_content,uploadfile,filename,uploadfile2,filename2,uploadfile3,filename3,mem_num,commu_food,commu_ingredient,commu_level,commu_time) VALUES (community_seq.nextval,#{commu_title},#{commu_content},#{uploadfile},#{filename},#{uploadfile2},#{filename2},#{uploadfile3},#{filename3},#{mem_num},#{commu_food},#{commu_ingredient},#{commu_level},#{commu_time})")
+	//@Insert("INSERT INTO community_recipe_board (commu_num,commu_title,commu_content,uploadfile,filename,uploadfile2,filename2,uploadfile3,filename3,mem_num,commu_food,commu_ingredient,commu_level,commu_time) VALUES (community_seq.nextval,#{commu_title},#{commu_content},#{uploadfile},#{filename},#{uploadfile2},#{filename2},#{uploadfile3},#{filename3},#{mem_num},#{commu_food},#{commu_ingredient},#{commu_level},#{commu_time})")
 	public void insertBoard2(RecipeVO board);
 	@Select("SELECT * FROM community_recipe_board b JOIN member m USING(mem_num) JOIN member_detail d USING(mem_num) WHERE b.commu_num=#{commu_num}")
 	public RecipeVO selectBoard2(Integer commu_num);
@@ -129,8 +129,7 @@ public interface CommuBoardMapper {
 	//부모글 삭제시 댓글이 존재하면 부모글 삭제전 댓글 삭제
 	@Delete("DELETE FROM community_recipe_reply "
 			+ "WHERE commu_num=#{commu_num}")
-	public void deleteReplyByBoardNum2(
-			                       Integer board_num);	
+	public void deleteReplyByBoardNum2(Integer board_num);	
 	
 	
 	

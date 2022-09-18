@@ -7,51 +7,110 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/recipeWrite.css">
 <style>
 .ck-editor__editable_inline{
-	min-height:250px;
+	min-height:400px;
 }
 </style>
 <!-- include ckeditor js -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/ckeditor.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/uploadAdapter.js"></script>
 
+<div id="recipe_write">
 	<h2>레시피 글수정</h2>
 	<form:form action="update.do" modelAttribute="recipeVO" id="update_form" enctype="multipart/form-data">
-	    <form:hidden path="commu_num"/> 
+	    <form:hidden path="commu_num"/>
 	    <form:errors element="div" cssClass="error-color"/>    
-		<ul>
+		<ul>	
 			<li>
 				<label for="commu_title">제목</label>
-				<form:input path="commu_title"/>
+				<form:input path="commu_title" class="input_box_title"/>
 				<form:errors path="commu_title" cssClass="error-color"/>
 			</li>
 			<li>
 				<label for="commu_food">요리명</label>
-				<form:input path="commu_food"/>
+				<form:input path="commu_food" class="input_box_food"/>
 				<form:errors path="commu_food" cssClass="error-color"/>
 			</li>
 			<li>
 				<label for="commu_time">소요 시간</label>
-				<form:input path="commu_time"/>
+				<form:input path="commu_time" class="input_box_time"/>
 				<form:errors path="commu_time" cssClass="error-color"/>
 			</li>
 			<li>
 				<label for="commu_ingredient">필수 재료</label>
-				<form:input path="commu_ingredient"/>
+				<form:input path="commu_ingredient" class="input_box_ingredient"/>
 				<form:errors path="commu_ingredient" cssClass="error-color"/>
 			</li>
 			<li>
 				<label for="commu_level">난이도</label>
-				<form:radiobutton path="commu_level" value="1"/>상&nbsp&nbsp
-				<form:radiobutton path="commu_level" value="2"/>중&nbsp&nbsp
-				<form:radiobutton path="commu_level" value="3"/>하
+				<form:radiobutton path="commu_level" value="상급"/>상&nbsp&nbsp
+				<form:radiobutton path="commu_level" value="중급"/>중&nbsp&nbsp
+				<form:radiobutton path="commu_level" value="하급"/>하
 				<form:errors path="commu_level" cssClass="error-color"/>
-			</li>
+			</li><br>
+			<p class="title_upload">대표사진</p>
 			<li>
-				<form:textarea path="commu_content"/>
+				<img src="${pageContext.request.contextPath}/images/empty.jpg" class="recipe-img" id="img1" name="img1">
+			</li>
+			<li id="recipe_upload">
+				<input type="file" name="upload" id="upload" accept="image/gif,image/png,image/jpeg">
+			</li>
+			<p class="title_upload">레시피 과정</p>
+			<li>
+				<img src="${pageContext.request.contextPath}/images/empty.jpg" class="recipe-img2" id="img2" name="img2">
+				<form:textarea id="recipe_textarea" rows="4" cols="70" path="commu_content" placeholder="레시피 1단계" />
 				<form:errors path="commu_content" cssClass="error-color"/>
-				<script>
+			</li>
+			<li id="recipe_upload">
+				<input type="file" name="upload2" id="upload2" accept="image/gif,image/png,image/jpeg">
+			</li>
+
+			<li>
+				<img src="${pageContext.request.contextPath}/images/empty.jpg" class="recipe-img2" id="img3" name="img3">
+				<form:textarea  rows="4" cols="70" path="commu_content2" placeholder="레피시 2단계" />
+				<form:errors path="commu_content2" cssClass="error-color"/>
+			</li>
+			<li id="recipe_upload">
+				<input type="file" name="upload3" id="upload3" accept="image/gif,image/png,image/jpeg">
+			</li>
+
+			<li>
+				<img src="${pageContext.request.contextPath}/images/empty.jpg" class="recipe-img2" id="img4" name="img4">
+				<form:textarea  rows="4" cols="70" path="commu_content3" placeholder="레피시 3단계" />
+				<form:errors path="commu_content3" cssClass="error-color"/>
+			</li>
+			<li id="recipe_upload">
+				<input type="file" name="upload4" id="upload4" accept="image/gif,image/png,image/jpeg">
+			</li>
+
+			<li>
+				<img src="${pageContext.request.contextPath}/images/empty.jpg" class="recipe-img2" id="img5" name="img5">
+				<form:textarea  rows="4" cols="70" path="commu_content4" placeholder="레피시 4단계" />
+				<form:errors path="commu_content4" cssClass="error-color"/>
+			</li>
+			<li id="recipe_upload">
+				<input type="file" name="upload5" id="upload5" accept="image/gif,image/png,image/jpeg">
+			</li>
+
+			<li>
+				<img src="${pageContext.request.contextPath}/images/empty.jpg" class="recipe-img2" id="img6" name="img6">
+				<form:textarea  rows="4" cols="70" path="commu_content5" placeholder="레피시 5단계" />
+				<form:errors path="commu_content5" cssClass="error-color"/>
+			</li>
+			<li id="recipe_upload">
+				<input type="file" name="upload6" id="upload6" accept="image/gif,image/png,image/jpeg">
+			</li>
+			
+			
+			
+			
+			
+			
+			<!-- <li><b>조리법</b></li> -->
+			<li>
+				<!-- <script>
 				 function MyCustomUploadAdapterPlugin(editor) {
 					    editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
 					        return new UploadAdapter(loader);
@@ -68,128 +127,9 @@
 		            .catch( error => {
 		                console.error( error );
 		            } );
-			    </script>               
+			    </script>  -->              
 			</li>
-			<li>
-				<label for="upload">파일업로드</label>
-				<input type="file" name="upload" id="upload">
-				<c:if test="${!empty boardVO.filename}">
-				<div id="file_detail">
-					(${boardVO.filename})파일 등록
-					<input type="button" value="파일삭제"
-					                      id="file_del">
-				</div>
-				<script type="text/javascript">
-					$(function(){
-						$('#file_del').click(function(){
-							let choice = confirm('삭제하시겠습니까?');
-							if(choice){
-								$.ajax({
-									url:'deleteFile.do',
-									data:{commu_num:${recipeVO.commu_num}},
-									type:'post',
-									dataType:'json',
-									cache:false,
-									timeout:30000,
-									success:function(param){
-										if(param.result == 'logout'){
-											alert('로그인 후 사용하세요!');
-										}else if(param.result == 'success'){
-											$('#file_detail').hide();
-										}else{
-											alert('파일 삭제 오류 발생');
-										}
-									},
-									error:function(){
-										alert('네트워크 오류 발생1');
-									}
-								});
-							}
-						});
-					});
-				</script>
-				</c:if>
-			</li>
-			<li>
-				<label for="upload2">파일업로드</label>
-				<input type="file" name="upload2" id="upload">
-				<c:if test="${!empty boardVO.filename2}">
-				<div id="file_detail">
-					(${boardVO.filename2})파일 등록
-					<input type="button" value="파일삭제"
-					                      id="file_del">
-				</div>
-				<script type="text/javascript">
-					$(function(){
-						$('#file_del').click(function(){
-							let choice = confirm('삭제하시겠습니까?');
-							if(choice){
-								$.ajax({
-									url:'deleteFile.do',
-									data:{commu_num:${recipeVO.commu_num}},
-									type:'post',
-									dataType:'json',
-									cache:false,
-									timeout:30000,
-									success:function(param){
-										if(param.result == 'logout'){
-											alert('로그인 후 사용하세요!');
-										}else if(param.result == 'success'){
-											$('#file_detail').hide();
-										}else{
-											alert('파일 삭제 오류 발생');
-										}
-									},
-									error:function(){
-										alert('네트워크 오류 발생');
-									}
-								});
-							}
-						});
-					});
-				</script>
-				</c:if>
-			</li>
-			<li>
-				<label for="upload3">파일업로드</label>
-				<input type="file" name="upload3" id="upload">
-				<c:if test="${!empty boardVO.filename3}">
-				<div id="file_detail">
-					(${boardVO.filename3})파일 등록
-					<input type="button" value="파일삭제"
-					                      id="file_del">
-				</div>
-				<script type="text/javascript">
-					$(function(){
-						$('#file_del').click(function(){
-							let choice = confirm('삭제하시겠습니까?');
-							if(choice){
-								$.ajax({
-									url:'deleteFile.do',
-									data:{commu_num:${recipeVO.commu_num}},
-									type:'post',
-									dataType:'json',
-									cache:false,
-									timeout:30000,
-									success:function(param){
-										if(param.result == 'logout'){
-											alert('로그인 후 사용하세요!');
-										}else if(param.result == 'success'){
-											$('#file_detail').hide();
-										}else{
-											alert('파일 삭제 오류 발생');
-										}
-									},
-									error:function(){
-										alert('네트워크 오류 발생');
-									}
-								});
-							}
-						});
-					});
-				</script>
-				</c:if>
-			</li>
+			
 		</ul>    
 		<div class="align-center">
 			<form:button>전송</form:button>
@@ -197,4 +137,5 @@
 			            onclick="location.href='list.do'">
 		</div>    
 	</form:form>
+</div>
 <!-- 내용 끝 -->

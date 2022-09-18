@@ -127,6 +127,17 @@
 	<!-- =======================유머 게시판 끝============================== -->
 	
 	<!-- =======================레시피 게시판 시작============================== -->
+		<insert id="insertBoard2" parameterType="RecipeVO">
+		INSERT INTO community_recipe_board 
+				(commu_num,commu_title,commu_content,commu_content2,commu_content3,commu_content4,commu_content5,
+				uploadfile,filename,uploadfile2,filename2,uploadfile3,filename3,uploadfile4,filename4,uploadfile5,filename5,uploadfile6,filename6,
+				mem_num,commu_food,commu_ingredient,commu_level,commu_time) 
+		VALUES (community_seq.nextval,#{commu_title},#{commu_content},#{commu_content2},#{commu_content3},#{commu_content4},#{commu_content5},
+				#{uploadfile},#{filename},#{uploadfile2},#{filename2},#{uploadfile3},#{filename3},#{uploadfile4},#{filename4},#{uploadfile5},#{filename5},#{uploadfile6},#{filename6},
+				#{mem_num},#{commu_food},#{commu_ingredient},#{commu_level},#{commu_time})
+		</insert>
+	
+
 		<select id="selectRowCount2" parameterType="map" resultType="integer">
 		SELECT
 		  COUNT(*)
@@ -136,18 +147,14 @@
 		 	<if test="keyword != null and keyword != ''">
 
 		 		<if test="keyfield == 1">
-		 			b.commu_title LIKE '%' || #{keyword} || '%'
+		 			b.commu_food LIKE '%' || #{keyword} || '%'
 		 		</if>
 		 		<if test="keyfield == 2">
-		 			m.id LIKE '%' || #{keyword} || '%' OR
-		 			m.nickname LIKE '%' || #{keyword} || '%'
+		 			b.commu_title LIKE '%' || #{keyword} || '%' OR
+		 			b.commu_food LIKE '%' || #{keyword} || '%'
 		 		</if>
 		 		<if test="keyfield == 3">
-		 			b.commu_content LIKE '%' || #{keyword} || '%'
-		 		</if>
-		 		<if test="keyfield == 4">
-		 			b.commu_title LIKE '%' || #{keyword} || '%' OR
-		 			b.commu_content LIKE '%' || #{keyword} || '%'
+		 			b.commu_level LIKE '%' || #{keyword} || '%'
 		 		</if>
 		 	</if>
 		 </where>
@@ -175,20 +182,16 @@
 			  		ON b.mem_num = m.mem_num
 			  		 <where>
 					 	<if test="keyword != null and keyword != ''">
-					 		<if test="keyfield == 1">
-					 			b.commu_title LIKE '%' || #{keyword} || '%'
-					 		</if>
-					 		<if test="keyfield == 2">
-					 			m.id LIKE '%' || #{keyword} || '%' OR
-					 			m.nickname LIKE '%' || #{keyword} || '%'
-					 		</if>
-					 		<if test="keyfield == 3">
-					 			b.commu_content LIKE '%' || #{keyword} || '%'
-					 		</if>
-					 		<if test="keyfield == 4">
-					 			b.commu_title LIKE '%' || #{keyword} || '%' OR
-					 			b.commu_content LIKE '%' || #{keyword} || '%'
-					 		</if>
+		 		<if test="keyfield == 1">
+		 			b.commu_food LIKE '%' || #{keyword} || '%'
+		 		</if>
+		 		<if test="keyfield == 2">
+		 			b.commu_title LIKE '%' || #{keyword} || '%' OR
+		 			b.commu_food LIKE '%' || #{keyword} || '%'
+		 		</if>
+		 		<if test="keyfield == 3">
+		 			b.commu_level LIKE '%' || #{keyword} || '%'
+		 		</if>
 					 	</if>
 		 			</where>
 			  		ORDER BY b.commu_num DESC)a)

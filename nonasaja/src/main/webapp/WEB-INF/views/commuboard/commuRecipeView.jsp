@@ -7,27 +7,30 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/commuboard.fav.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/commuboard.recipe.reply.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/videoAdapter.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/recipeView.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dongle&display=swap" rel="stylesheet">
 <div class="page-main">
-	<h2>${board.commu_title}</h2>
+	<p id="recipe_start">레시피 작성자</p>
 	<ul class="detail-info">
 		<li>
 			<c:if test="${!empty board.photo_name}">
-			<img src="imageView.do?commu_num=${board.commu_num}&board_type=1" width="40" height="40" class="my-photo">
+			<img src="imageView.do?commu_num=${board.commu_num}&board_type=1" width="100" height="100" class="my-photo">
 			</c:if>
 			<c:if test="${empty board.photo_name}">
-			<img src="${pageContext.request.contextPath}/images/face.png" width="40" height="40" class="my-photo">
+			<img src="${pageContext.request.contextPath}/images/face.png" width="100" height="100" class="my-photo">
 			</c:if>
 		</li>
 		<li>
 			<c:if test="${empty board.nickname}">${board.id}</c:if>
 			<c:if test="${!empty board.nickname}">${board.nickname}</c:if>
-			<br>
 			<c:if test="${!empty board.commu_modify_date}">
 			최근 수정일 : ${board.commu_modify_date}
-			</c:if>
+			</c:if><br>
 			<c:if test="${empty board.commu_modify_date}">
 			작성일 : ${board.commu_date}
-			</c:if>
+			</c:if><br>
 			조회 : ${board.commu_hit}
 		</li>
 	</ul>
@@ -48,7 +51,7 @@
 		</li>
 		</c:if>
 	</ul>  --%>
- 	<hr size="1" width="100%">
+	<hr id="recipe_hr" size="1" width="92%">
 	<c:if test="${fn:endsWith(board.filename,'.jpg') ||
 	              fn:endsWith(board.filename,'.JPG') ||
 	              fn:endsWith(board.filename,'.jpeg') ||
@@ -63,37 +66,65 @@
 		<img src="imageView.do?commu_num=${board.commu_num}&board_type=2" style="max-width:800px;">
 	</div>
 	</c:if>
+	
+	<div id="recipe_data1">
+		<h3 id="recipe_title">${board.commu_title}</h3>
+		<h2 id="recipe_food">${board.commu_food}</h2>
+	</div>
+	<ul id="recipe_data2">
+		<li>
+		<b>난이도</b>&emsp; ${board.commu_level}
+		</li>
+		<li>
+		<b>소요시간</b>&emsp;  ${board.commu_time}
+		</li>
+	</ul><br><br><br><br>
+	<ul id="recipe_data3">
+		<li>
+		<b>필수재료</b>&emsp;  ${board.commu_ingredient}
+		</li>
+	</ul><br>
+	<p id="recipe_start"><img src="${pageContext.request.contextPath}/images/lionHead.png" width="60" height="60">레시피</p>
+	<hr id="recipe_hr" size="1" width="92%">
+
+
 	<c:if test="${!empty board.filename2}">
 	<div class="align-center">
-		<img src="imageView.do?commu_num=${board.commu_num}&board_type=3" style="max-width:500px;">
+		<p id="recipe1"><img id="recipe_number" src="${pageContext.request.contextPath}/images/1.png">${board.commu_content}</p>
+		<img id="recipe_photo" src="imageView.do?commu_num=${board.commu_num}&board_type=3" style="max-width:500px;">
 	</div>
 	</c:if>
+
 	<c:if test="${!empty board.filename3}">
 	<div class="align-center">
-		<img src="imageView.do?commu_num=${board.commu_num}&board_type=4" style="max-width:500px;">
+		<p id="recipe1"><img id="recipe_number" src="${pageContext.request.contextPath}/images/2.png">${board.commu_content2}</p>
+		<img id="recipe_photo" src="imageView.do?commu_num=${board.commu_num}&board_type=4" style="max-width:500px;">
 	</div>
 	</c:if>
 
+	<c:if test="${!empty board.filename4}">
+	<div class="align-center">
+		<p id="recipe1"><img id="recipe_number" src="${pageContext.request.contextPath}/images/3.png">${board.commu_content3}</p>
+		<img id="recipe_photo" src="imageView.do?commu_num=${board.commu_num}&board_type=5" style="max-width:500px;">
+	</div>
+	</c:if>
+
+	<c:if test="${!empty board.filename5}">
+	<div class="align-center">
+		<p id="recipe1"><img id="recipe_number" src="${pageContext.request.contextPath}/images/4.png">${board.commu_content4}</p>
+		<img id="recipe_photo" src="imageView.do?commu_num=${board.commu_num}&board_type=6" style="max-width:500px;">
+	</div>
+	</c:if>
+	
+	<c:if test="${!empty board.filename6}">
+	<div class="align-center">
+		<p id="recipe1"><img id="recipe_number" src="${pageContext.request.contextPath}/images/5.png">${board.commu_content5}</p>
+		<img id="recipe_photo" src="imageView.do?commu_num=${board.commu_num}&board_type=7" style="max-width:500px;">
+	</div>
+	</c:if>
 	</c:if> 
 
-		<div>
-		<h3>${board.commu_title}</h3>
-		<h2>${board.commu_food}</h2>
-		</div>
-	<ul>
-		<li>
-		난이도 ${board.commu_level}
-		</li>
-		<li>
-		소요시간  ${board.commu_time}
-		</li>
-		<li>
-		필수재료  ${board.commu_ingredient}
-		</li>
-	</ul>
-	<p>
-	조리법 ${board.commu_content}
-	</p>	
+	
 	<div>
 		<%-- 좋아요 --%>
 		<img id="output_fav" src="${pageContext.request.contextPath}/images/fav01.gif" width="40">
@@ -102,8 +133,8 @@
 	<hr size="1" width="100%">
 	<div class="align-right">
 		<c:if test="${!empty user && user.mem_num == board.mem_num}">
-		<input type="button" value="수정" onclick="location.href='update.do?commu_num=${board.commu_num}'">
-		<input type="button" value="삭제" id="delete_btn">
+		<input class="button" type="button" value="수정" onclick="location.href='update.do?commu_num=${board.commu_num}'">
+		<input class="button" type="button" value="삭제" id="delete_btn">
 		<script type="text/javascript">
 			let delete_btn = document.getElementById('delete_btn');
 			//이벤트 연결
@@ -114,8 +145,8 @@
 				}
 			}
 		</script>
-		<input type="button" value="목록" onclick="location.href='list.do'">
 		</c:if>
+		<input class="button" type="button" value="목록" onclick="location.href='list.do'">
 	</div>
 	<hr size="1" width="100%">
 	<!-- 댓글 UI 시작 -->

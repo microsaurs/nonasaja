@@ -1,0 +1,11 @@
+#guide_font{
+	font-size: 20px;	
+}
+#guide_span{
+	margin-left: 10px;
+	font-size: 12px;
+	opacity: 0.4;
+}
+#guide_li{
+	margin-bottom: 12px;
+}

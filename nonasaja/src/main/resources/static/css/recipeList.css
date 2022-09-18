@@ -11,9 +11,12 @@
 	width:295px;
 	height:275px;
 } */
-#recipeList_food {
+#recipeList_food_photo {
 	width:295px;
 	height:275px;
+}
+#recipeList_food{
+	font-size: 16px;
 }
 .item-space .horizontal-area span{
 	padding:5px;
@@ -43,9 +46,24 @@
 #recipeList_level{
 	width:15px;
 }
-#recipeList_time{
-}
+
 #level{
 	margin-top: 12px;
 	opacity: 0.5;
+}
+.button{
+		font-family: 'Dongle', sans-serif;
+	font-size:14px;
+	padding-top:10px;
+	padding-bottom:10px;
+	padding-left:15px;
+	padding-right:15px;
+	margin:5px;
+	background-color:#f5d505;
+	color: white;
+	border: none;
+	overflow:hidden;
+	transition: all 0.2s 0s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+	border-radius:22px;
+	cursor: pointer;
 }
