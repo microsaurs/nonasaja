@@ -18,6 +18,14 @@ public class ReviewVO {
 	private String content;
 	private Date reg_date;
 	
+	//member 
+	private String id;
+	
+	//member_detail
+	private byte[] photo;
+	private String photo_name;
+	
+	
 	public int getReview_num() {
 		return review_num;
 	}
@@ -55,9 +63,29 @@ public class ReviewVO {
 		this.reg_date = reg_date;
 	}
 	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public byte[] getPhoto() {
+		return photo;
+	}
+	public void setPhoto(byte[] photo) {
+		this.photo = photo;
+	}
+	public String getPhoto_name() {
+		return photo_name;
+	}
+	public void setPhoto_name(String photo_name) {
+		this.photo_name = photo_name;
+	}
 	@Override
 	public String toString() {
 		return "ReviewVO [review_num=" + review_num + ", product_num=" + product_num + ", mem_num=" + mem_num
-				+ ", score=" + score + ", content=" + content + ", reg_date=" + reg_date + "]";
+				+ ", score=" + score + ", content=" + content + ", reg_date=" + reg_date + ", id=" + id
+				+ ", photo_name=" + photo_name + "]";
 	}
+	
 }

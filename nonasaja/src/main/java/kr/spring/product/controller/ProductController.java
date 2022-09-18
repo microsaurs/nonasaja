@@ -23,6 +23,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.product.service.ProductService;
 import kr.spring.product.vo.ProductVO;
+import kr.spring.review.service.ReviewService;
+import kr.spring.review.vo.ReviewVO;
 import kr.spring.util.PagingUtil;
 
 @Controller
@@ -39,6 +41,9 @@ public class ProductController {
 
 	@Autowired
 	private ProductService productService;
+	
+	@Autowired
+	private ReviewService reviewService;
 
 	//  =============이미지 뷰==================
 	@RequestMapping("/product/imageView.do")
@@ -117,7 +122,7 @@ public class ProductController {
 		logger.debug("<<count>> : " + count);
 
 		// 페이지 처리
-		PagingUtil page = new PagingUtil(keyfield, keyword, currentPage, count, rowCount, pageCount, "list.do");
+		PagingUtil page = new PagingUtil(keyfield, keyword, currentPage, count, rowCount, pageCount, "admin_list.do");
 
 		List<ProductVO> list = null;
 		if (count > 0) {
@@ -200,12 +205,51 @@ public class ProductController {
 	//===============상품상세==================
 		@RequestMapping("/product/detail.do")
 		public String detail(@RequestParam int product_num,
-							Model model) {
+							Model model,
+							@RequestParam(value = "pageNum", defaultValue = "1") int currentPage) {
 			logger.debug("<<product_num>> : " +product_num);
 			ProductVO productVO = productService.selectProduct(product_num);
+			int count = reviewService.selectReviewCount(product_num);
+			PagingUtil page = new PagingUtil(currentPage, count, rowCount, pageCount, "detail.do", null);
+			List<ReviewVO> reviewList = null;
+			int score = 0;
+			if(count > 0) {
+				Map<String,Object> map = new HashMap<String, Object>();
+				map.put("start", page.getStartRow());
+				map.put("end", page.getEndRow());
+				map.put("product_num", product_num);
+				reviewList = reviewService.selectReviewList(map);
+				score = reviewService.selectScore(product_num);
+			}
 			
+			logger.debug("<<reviewList>> : " +reviewList);
+			model.addAttribute("reviewList", reviewList);
+			model.addAttribute("page", page.getPage());
+			model.addAttribute("count", count);
 			model.addAttribute("product", productVO);
-			
+			model.addAttribute("score", score);
 			return "productView";
 		}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

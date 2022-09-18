@@ -31,13 +31,17 @@
 	</c:if>
 	
 	<c:if test="${count > 0 }">
-		<c:forEach var="order" items="${list }">
-		<div id="order_box">
+		<c:forEach var="order" items="${orderList}">
 			<h4>${order.order_num }</h4>
-			<p>${order.product_name}</p>
-			<input type="button" value="리뷰작성" 
-			onclick="location.href='${pageContext.request.contextPath}/review/write_review.do?product_num=${order.product_num}'">
-		</div>
+			<c:forEach var="orderDetail" items="${orderDetailList}">
+			<c:if test="${order.order_num == orderDetail.order_num}">
+			<div id="order_box">
+				<p>${orderDetail.product_name}</p>
+				<input type="button" value="리뷰작성" 
+				onclick="location.href='${pageContext.request.contextPath}/review/write_review.do?product_num=${orderDetail.product_num}'">
+			</div>
+			</c:if>
+			</c:forEach>
 		</c:forEach>
 	</c:if>
 </div>

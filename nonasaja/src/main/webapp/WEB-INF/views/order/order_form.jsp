@@ -8,6 +8,7 @@
 
 <div id="product_register">
 	<p>주문하기</p>
+
 	<c:forEach var="cartVO" items="${cartList}">
 		<ul>
 			<li>${cartVO.productVO.title}</li>
@@ -17,7 +18,6 @@
 	</c:forEach>
 	<form:form id="order_form" action="order.do" modelAttribute="orderVO" method="post" >
 		<form:errors element="div" cssClass="error-color"/>
-		<form:hidden value="${cartList}" path="cartList"/>
 		<ul>
 			<li>
 				<label for="receive_name" id="name_label">받으실 이름</label>

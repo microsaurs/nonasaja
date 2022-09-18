@@ -105,6 +105,8 @@ public class ReviewController {
 		// 알림 페이지 만들기
 		return "common/resultView";
 	}
+	
+	
 }
 
 

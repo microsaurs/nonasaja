@@ -32,7 +32,6 @@ public class OrderVO {
 	private String notice;
 	private Date reg_date;
 	private Date modify_date;
-	private List cartList;
 	
 	//detail 
 	/*@NotEmpty
@@ -126,19 +125,13 @@ public class OrderVO {
 	public void setModify_date(Date modify_date) {
 		this.modify_date = modify_date;
 	}
-	public List getCartList() {
-		return cartList;
-	}
-	public void setCartList(List cartList) {
-		this.cartList = cartList;
-	}
 	@Override
 	public String toString() {
 		return "OrderVO [order_num=" + order_num + ", mem_num=" + mem_num + ", total_name=" + total_name
 				+ ", order_total=" + order_total + ", status=" + status + ", receive_name=" + receive_name
 				+ ", receive_post=" + receive_post + ", receive_address1=" + receive_address1 + ", receive_address2="
 				+ receive_address2 + ", receive_phone=" + receive_phone + ", notice=" + notice + ", reg_date="
-				+ reg_date + ", modify_date=" + modify_date + ", cartList=" + cartList + "]";
+				+ reg_date + ", modify_date=" + modify_date + "]";
 	}
 	
 }

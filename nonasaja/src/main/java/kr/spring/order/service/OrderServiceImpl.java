@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import kr.spring.order.dao.OrderMapper;
+import kr.spring.order.vo.OrderDetailVO;
 import kr.spring.order.vo.OrderVO;
 
 @Service
@@ -37,6 +38,11 @@ public class OrderServiceImpl implements OrderService{
 	@Override
 	public List<OrderVO> selectOrderList(Map<String, Object> map) {
 		return orderMapper.selectOrderList(map);
+	}
+	
+	@Override
+	public List<OrderDetailVO> selectOrderDetailList(Map<String, Object> map) {
+		return orderMapper.selectOrderDetailList(map);
 	}
 
 	@Override

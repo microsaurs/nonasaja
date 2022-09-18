@@ -29,9 +29,42 @@
 			a.*, 
 			rownum rnum
 		 from (select 
-		 		* 
+		 		 distinct(order_num),mem_num,total_name,order_total,status,receive_name,
+		 		 receive_post,receive_address1,receive_address2,receive_phone,
+		 		 notice,reg_date
 		 	  from norder 
 		 	  join norder_detail  
+              using(order_num) 
+		 	  where mem_num=#{mem_num} 
+		 	  <if test="keyword !=null and keyword != ''">
+				<if test="keyfield ==1">
+  					and n.order_num = #{keyword} 
+  				</if>
+  				<if test="keyfield ==2">
+  					and d.product_name like '%' || #{keyword} || '%'
+  				</if>
+			  </if>
+		 	  order by order_num desc)a) 
+		<![CDATA[
+  		WHERE rnum >= #{start} AND rnum <= #{end}
+  		]]>	 
+	</select>
+	
+	<!-- 회원별 주문 목록 -->
+	<select id="selectOrderDetailList" parameterType="map" resultType="OrderDetailVO">
+		select * from 
+		(select 
+			a.*, 
+			rownum rnum
+		 from (select 
+		 		product_num,
+				product_name,
+				product_price,
+ 				product_total,
+				order_quantity,
+				order_num 
+		 	  from norder_detail  
+		 	  join norder   
               using(order_num) 
 		 	  where mem_num=#{mem_num} 
 		 	  <if test="keyword !=null and keyword != ''">

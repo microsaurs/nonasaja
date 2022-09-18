@@ -5,6 +5,25 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/product.detail.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.number.min.js"></script>
+<script>
+$(document).ready(function(){
+   $(document).on('click','.rating',function(e){
+      let elem = e.target;
+        if(elem.classList.contains('rate-check')){
+           $(this).find('.rate-check').each(function(index, item){
+                if(index < elem.value){
+                    item.checked = true;
+                }else{
+                    item.checked = false;
+                }
+            });
+            $(this).find('.rate-star').val(elem.value);
+        }
+   });
+});
+</script>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/review.css">
 <div class="page-main">
 	<!-- 판매 중지 상품 -->
 	<c:if test="${product.status==1}">
@@ -108,13 +127,37 @@
 	<h2>고객리뷰</h2>
 	<div id="total_star">
 		<span id="star_text">구매고객 총별점</span>
-		<span id="big_star">4.7</span><span id="small_star">/5</span>
+		<span id="big_star">${score}</span><span id="small_star">/5</span>
 	</div>
 	<span id="notice">리뷰등록,수정,삭제 및 상세 내용은 마이페이지>마이리뷰에서 확인하실 수 있습니다.</span>
 	</div>
-	<div id="review_box">
 	
-	</div>
+	<c:forEach var="review" items="${reviewList}">
+		<div id="review_box">
+			<ul>
+				<li>${review.id}</li>
+				<li>
+					프로필 이미지
+				</li>
+				<li>
+					<div class="rating">
+						<input type="hidden" name="score" value="0" class="rate-star">
+						<!-- 해당  별점을 클릭하면 해당 별과 그 왼쪽의 모든 별의 체크박스에 checked 적용 -->
+						<c:forEach var="star" begin="1" end="5" varStatus="status">
+							<input type="checkbox" id="rating${status.index}"
+								value="${status.index}" class="rate-check"
+								<c:if test="${status.index<=review.score}">checked</c:if>>
+							<label for="rating${status.index}"></label>
+						</c:forEach>
+					</div>
+				</li>
+				<li>${review.reg_date}</li>
+				<li>
+				<p>${review.content}</p>
+				</li>
+			</ul>
+		</div>
+	</c:forEach>
 </div>
 
 

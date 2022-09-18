@@ -13,7 +13,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,6 +24,7 @@ import kr.spring.cart.service.CartService;
 import kr.spring.cart.vo.CartVO;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.order.service.OrderService;
+import kr.spring.order.vo.OrderDetailVO;
 import kr.spring.order.vo.OrderVO;
 import kr.spring.product.service.ProductService;
 import kr.spring.product.vo.ProductVO;
@@ -107,8 +107,8 @@ public class OrderController {
 			}
 			cartList.add(cart_order);
 		}
-		logger.debug("<<주문 폼으로 이동>> cartList: " +cartList);
 		
+		logger.debug("<<주문 폼으로 이동>> cartList: " +cartList);
 		mav.addObject("all_total", all_total);
 		mav.addObject("cartList", cartList);
 		mav.setViewName("order_form");
@@ -133,28 +133,35 @@ public class OrderController {
 		
 		//rowCount, pageCount는 맨 위에 설정함
 		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,rowCount,pageCount,"list.do");
-		List<OrderVO> list = null;
+		List<OrderVO> orderList = null;
+		List<OrderDetailVO> orderDetailList = null;
 		
 		if(count > 0) {
 			map.put("start", page.getStartRow());
 			map.put("end", page.getEndRow());
 			
-			list = orderService.selectOrderList(map);
+			orderList = orderService.selectOrderList(map);
+			orderDetailList = orderService.selectOrderDetailList(map);
 		}
 		ModelAndView mav = new ModelAndView();
+		logger.debug("<<orderList>> : " +orderList);
+		logger.debug("<<orderDetailList>> : " +orderDetailList);
 		mav.setViewName("orderList");
 		mav.addObject("count", count);
-		mav.addObject("list", list);
+		mav.addObject("orderList", orderList);
+		mav.addObject("orderDetailList", orderDetailList);
 		mav.addObject("page", page.getPage());
 		
 		return mav;
 	}
 	
 	@PostMapping("/order/order.do")
-	public ModelAndView order(@Valid OrderVO orderVO, BindingResult result, 
+	public ModelAndView order(@Valid OrderVO orderVO,
+					BindingResult result, 
 					HttpServletRequest request,
 					HttpSession session) {
 		ModelAndView mav = new ModelAndView();
+		
 		logger.debug("<<주문등록>> : " + orderVO);
 		if (result.hasErrors()) {
 			mav.setViewName("order_form");

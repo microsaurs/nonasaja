@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
+import kr.spring.order.vo.OrderDetailVO;
 import kr.spring.order.vo.OrderVO;
 
 @Mapper
@@ -48,6 +49,9 @@ public interface OrderMapper {
 	
 	//회원별 주문 목록 
 	public List<OrderVO> selectOrderList(Map<String,Object> map);
+	
+	//회원별 주문 상세 목록 
+	public List<OrderDetailVO> selectOrderDetailList(Map<String,Object> map);
 	
 	//회원별 주문 대기 상품의 총 가격 합 
 	@Select("select sum(d.product_total) "

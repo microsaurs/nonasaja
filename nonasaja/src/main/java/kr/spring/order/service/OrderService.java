@@ -3,8 +3,7 @@ package kr.spring.order.service;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.annotations.Insert;
-
+import kr.spring.order.vo.OrderDetailVO;
 import kr.spring.order.vo.OrderVO;
 
 public interface OrderService {
@@ -26,6 +25,9 @@ public interface OrderService {
 	
 	// 회원별 주문 목록
 	public List<OrderVO> selectOrderList(Map<String, Object> map);
+	
+	// 회원별 주문 목록
+	public List<OrderDetailVO> selectOrderDetailList(Map<String, Object> map);
 
 	// 주문 상세
 }
