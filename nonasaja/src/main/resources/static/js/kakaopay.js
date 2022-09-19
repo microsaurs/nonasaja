@@ -20,7 +20,7 @@ $(function(){
 				} else{
 					// alert(resp.tid); //결제 고유 번호	
 					var box = resp.next_redirect_pc_url;
-					window.open(box); // 새창 열기
+					//window.open(box); // 새창 열기
 					location.href = box;
 				}
 			

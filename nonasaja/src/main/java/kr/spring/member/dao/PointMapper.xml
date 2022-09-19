@@ -18,7 +18,7 @@
   			  			remain,
   			  			reg_date
   			  		FROM lionpoint
-  			  		WHERE mem_num=1
+  			  		WHERE mem_num=${mem_num}
   			  		ORDER BY point_num DESC)a)
   		<![CDATA[
   		WHERE rnum >= #{start} AND rnum <= #{end}

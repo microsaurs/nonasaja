@@ -181,6 +181,21 @@ public class LionPointController {
 						
 						kakaoService.insertPoint(pointVO);
 						kakaoService.updateMemberCash(user);
+					}else if(pointVO == null){
+						logger.debug("<충전 내역 없음>...1");
+						logger.debug("<충전 내역 없음>...2");
+						
+						LionPointVO pointVO2 = new LionPointVO();
+						//정보 세팅
+						pointVO2.setMem_num(user.getMem_num());
+						pointVO2.setLionpoint(approve.getAmount().getTotal());
+						pointVO2.setCash(0);
+						pointVO2.setRemain(pointVO2.getCash()+approve.getAmount().getTotal());
+						
+						user.setCash(pointVO2.getRemain());
+						
+						kakaoService.insertPoint(pointVO2);
+						kakaoService.updateMemberCash(user);
 					}
 					
 				}catch (JsonMappingException e) {
@@ -188,7 +203,7 @@ public class LionPointController {
 				} catch (JsonProcessingException e) {
 					e.printStackTrace();
 				}catch(NullPointerException e) {
-					logger.debug("<충전 내역 없음>...");
+					logger.debug("<충전 내역 없음>...3");
 					
 					LionPointVO pointVO = new LionPointVO();
 					//정보 세팅
