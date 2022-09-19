@@ -19,7 +19,14 @@ public class OrderDetailVO {
 	private int order_quantity;
 	@NotEmpty
 	private int order_num;
+	private int wait_status;
 	
+	public int getWait_status() {
+		return wait_status;
+	}
+	public void setWait_status(int wait_status) {
+		this.wait_status = wait_status;
+	}
 	public int getDetail_num() {
 		return detail_num;
 	}
@@ -66,7 +73,9 @@ public class OrderDetailVO {
 	public String toString() {
 		return "OrderDetailVO [detail_num=" + detail_num + ", product_num=" + product_num + ", product_name="
 				+ product_name + ", product_price=" + product_price + ", product_total=" + product_total
-				+ ", order_quantity=" + order_quantity + ", order_num=" + order_num + "]";
+				+ ", order_quantity=" + order_quantity + ", order_num=" + order_num + ", wait_status=" + wait_status
+				+ "]";
 	}
+	
 	
 }

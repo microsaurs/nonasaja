@@ -20,14 +20,14 @@ public class OrderServiceImpl implements OrderService{
 	
 	//주문하기
 	@Override
-	public void insertOrder(OrderVO order) {
+	public void insertOrder(OrderVO order, List<OrderDetailVO> orderDetailList) {
+		int order_num = orderMapper.selectOrder_num();
+		order.setOrder_num(order_num);
 		orderMapper.insertOrder(order);
-		orderMapper.insertOrder_datail(order);
-	}
-
-	@Override
-	public void insertOrder_datail(OrderVO order) {
-		orderMapper.insertOrder_datail(order);
+		for(OrderDetailVO orderDetail : orderDetailList) {
+			orderDetail.setOrder_num(order_num);
+			orderMapper.insertOrder_datail(orderDetail);
+		}
 	}
 
 	@Override
@@ -54,5 +54,19 @@ public class OrderServiceImpl implements OrderService{
 	public int selectSumWait(int mem_num) {
 		return orderMapper.selectSumWait(mem_num);
 	}
-	
+
+	@Override
+	public List<OrderDetailVO> selectWaitList(int product_num) {
+		return orderMapper.selectWaitList(product_num);
+	}
+
+	@Override
+	public OrderVO selectOrder(int order_num) {
+		return orderMapper.selectOrder(order_num);
+	}
+
+	@Override
+	public void updateWaitStatus(int detail_num, int wait_status) {
+		orderMapper.updateWaitStatus(detail_num, wait_status);
+	}
 }

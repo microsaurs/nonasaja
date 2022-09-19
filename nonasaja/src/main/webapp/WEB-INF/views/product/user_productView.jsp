@@ -137,7 +137,7 @@ $(document).ready(function(){
 			<ul>
 				<li>${review.id}</li>
 				<li>
-					프로필 이미지
+					<img src="${pageContext.request.contextPath}/member/photoView.do" width="25" height="25" class="my-photo">
 				</li>
 				<li>
 					<div class="rating">
@@ -146,7 +146,7 @@ $(document).ready(function(){
 						<c:forEach var="star" begin="1" end="5" varStatus="status">
 							<input type="checkbox" id="rating${status.index}"
 								value="${status.index}" class="rate-check"
-								<c:if test="${status.index<=review.score}">checked</c:if>>
+								<c:if test="${status.index<=review.score}">checked</c:if> disabled>
 							<label for="rating${status.index}"></label>
 						</c:forEach>
 					</div>
