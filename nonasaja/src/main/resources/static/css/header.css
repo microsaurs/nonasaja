@@ -5,18 +5,21 @@
 	margin-left:-5px;
 	padding-top:45px;
 	padding-bottom:20px;
+	width:35%;
 	float:left;
+}
+.size{
+	width:40%;
 }
 .margin-bottom{
 	padding-bottom:20px;
 }
 .total-search{
 	position:relative;
-	width:420px;
+	width:50%;
 	float:left;
 	padding:60px 25px 0px 25px;
 	vertical-align:middle;
-	width:50%;
 }
 #searchbtn{
 	width:100%;

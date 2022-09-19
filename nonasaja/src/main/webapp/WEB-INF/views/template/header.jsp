@@ -13,33 +13,33 @@
 			<button type="submit" id="searchicon"><img src="${pageContext.request.contextPath}/images/돋보기.png" width="20" height="25"></button>
 		</div>
 	</div>	
-	<div>
+	<div class="size">
 		<button id="cart" onclick="href='${pageContext.request.contextPath}/cart/cart_list.do'"><img src="${pageContext.request.contextPath}/images/카트.png" width="25" height="25"></button> 
-	</div>
-	<%-- 로그인 안된 경우 --%>
-	<div>
-		<c:if test="${empty user}">
-			<a href="${pageContext.request.contextPath}/member/login.do" class="text">로그인</a>
+		<%-- 로그인 안된 경우 --%>
+		<div>
+			<c:if test="${empty user}">
+				<a href="${pageContext.request.contextPath}/member/login.do" class="text">로그인</a>
+				<p class="layout">|</p>
+				<a href="${pageContext.request.contextPath}/member/registerUser.do" class="text">회원가입</a>
+				<p class="layout">|</p>
+				<a href="${pageContext.request.contextPath}/member/registerUser.do" class="text">고객센터</a>
+			</c:if>
+		</div>
+		<%-- 로그인 된 경우 --%>
+		<div>
+		<c:if test="${!empty user}">
+			<a href="${pageContext.request.contextPath}/member/logout.do" class="text">로그아웃</a>
 			<p class="layout">|</p>
-			<a href="${pageContext.request.contextPath}/member/registerUser.do" class="text">회원가입</a>
+			<c:if test="${!empty user && user.auth == 2}">
+			<a href="${pageContext.request.contextPath}/member/myPage.do" class="text">MY페이지</a>
+			</c:if>
+			<c:if test="${!empty user && user.auth == 3}">
+				<a href="${pageContext.request.contextPath}/member/admin_list.do" class="text">회원관리</a>
+			</c:if>
 			<p class="layout">|</p>
 			<a href="${pageContext.request.contextPath}/member/registerUser.do" class="text">고객센터</a>
-		</c:if>
-	</div>
-	<%-- 로그인 된 경우 --%>
-	<div>
-	<c:if test="${!empty user}">
-		<a href="${pageContext.request.contextPath}/member/logout.do" class="text">로그아웃</a>
-		<p class="layout">|</p>
-		<c:if test="${!empty user && user.auth == 2}">
-		<a href="${pageContext.request.contextPath}/member/myPage.do" class="text">MY페이지</a>
-		</c:if>
-		<c:if test="${!empty user && user.auth == 3}">
-			<a href="${pageContext.request.contextPath}/member/admin_list.do" class="text">회원관리</a>
-		</c:if>
-		<p class="layout">|</p>
-		<a href="${pageContext.request.contextPath}/member/registerUser.do" class="text">고객센터</a>
-	</c:if>	
+		</c:if>	
+		</div>
 	</div>
 </div>
 	<hr size="1" width="100%">
