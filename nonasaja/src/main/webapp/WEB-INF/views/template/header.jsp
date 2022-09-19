@@ -27,6 +27,7 @@
 		</c:if>
 	</div>
 	<%-- 로그인 된 경우 --%>
+	<div>
 	<c:if test="${!empty user}">
 		<a href="${pageContext.request.contextPath}/member/logout.do" class="text">로그아웃</a>
 		<p class="layout">|</p>
@@ -39,6 +40,7 @@
 		<p class="layout">|</p>
 		<a href="${pageContext.request.contextPath}/member/registerUser.do" class="text">고객센터</a>
 	</c:if>	
+	</div>
 </div>
 	<hr size="1" width="100%">
 	

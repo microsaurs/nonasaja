@@ -40,7 +40,7 @@
 	background:none;
 	border:none;
 	float:left;
-	padding:65px 0px 0px 25px;
+	padding:65px 0px 0px 35px;
 }
 #background{
 	background:none;
@@ -50,6 +50,7 @@
 	clear:both;
 	margin-left:20px;
 	margin-top:10px;
+	margin-bottom:15px;
 	font-size:15px;
 	font-weight:bold;
 	float:left;
@@ -78,7 +79,7 @@
 	float:left;
 }
 .header-line{
-	width:73%;
+	width:70%;
 }
 hr {
     border: 0.5px solid #E3E7EB;
