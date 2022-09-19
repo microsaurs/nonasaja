@@ -28,6 +28,9 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 
+	private int rowCount = 20;
+	private int pageCount = 10;
+	
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 
 	// 자바빈(VO) 초기화, form 커스텀 태그 사용
@@ -174,12 +177,12 @@ public class MemberController {
 		
 		memberVO.setMem_num(user.getMem_num());
 		memberVO.setAuth(user.getAuth());
-		//memberVO.setId(user.getId());
-		//memberVO.setNickname(user.getNickname());
 		
 		logger.debug("<memberVO>..."+memberVO);
 
 		memberService.updateMember(memberVO);
+		
+		session.setAttribute("user", memberVO);
 		
 		return "redirect:/member/myPage.do";
 	}
@@ -233,6 +236,57 @@ public class MemberController {
 		// 뷰 이름 지정
 		mav.setViewName("imageView");
 	}
+	
+	//===========마이페이지 - 중고거래=============//
+	@RequestMapping("/member/myPageProduct.do")
+	public ModelAndView listProductPage(HttpSession session, 
+			@RequestParam(value="pageNum",defaultValue = "1")int currentPage) {
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("myPageProduct");
+		mav.addObject("member", user);
+		
+		return mav;
+	}
+	//===========마이페이지 - 중고거래=============//
+	@RequestMapping("/member/myPageUsed.do")
+	public ModelAndView listUsedPage(HttpSession session, 
+			@RequestParam(value="pageNum",defaultValue = "1")int currentPage) {
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("myPageUsed");
+		mav.addObject("member", user);
+		
+		return mav;
+	}
+	//===========마이페이지 - 동호회=============//
+	@RequestMapping("/member/myPageClub.do")
+	public ModelAndView listClubPage(HttpSession session, 
+			@RequestParam(value="pageNum",defaultValue = "1")int currentPage) {
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("myPageClub");
+		mav.addObject("member", user);
+		
+		return mav;
+	}
+	//===========마이페이지 - 커뮤니티=============//
+	@RequestMapping("/member/myPageCommu.do")
+	public ModelAndView listCommuPage(HttpSession session, 
+			@RequestParam(value="pageNum",defaultValue="1")int currentPage,
+			@RequestParam(value="type",defaultValue="1") int type) {
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("myPageCommu");
+		mav.addObject("member", user);
+		
+		return mav;
+	}
+		
 	
 	//=========비밀번호 변경===========//
 	//비밀번호 변경 폼

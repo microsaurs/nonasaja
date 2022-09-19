@@ -5,8 +5,6 @@
 <!-- 내용 시작 -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/kakaopay.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/member.js"></script>
 <div class="mypage-wrap">
 	<div class="mypage-left">
 		<ul>
@@ -37,59 +35,18 @@
 	<div class="mypage-right">
 		<table>
 			<tr>
-				<th colspan="2"><h3>회원정보</h3></th>
+				<th colspan="2"><h3>동호회</h3></th>
 			</tr>
 			<tr>
-				<td>사진</td>
 				<td>
-					<c:if test="${empty member.photo_name}">
-					<img src="${pageContext.request.contextPath}/images/face.png" width="100" height="100" class="my-photo">
-					</c:if>
-					<c:if test="${!empty member.photo_name}">
-					<img src="${pageContext.request.contextPath}/member/photoView.do" width="100" height="100" class="my-photo">
-				</c:if>
+					<a>참여중인 동호회</a> |
+					<a>동호회 추천</a>
 				</td>
 			</tr>
 			<tr>
-				<td>아이디</td>
-				<td>
-					<c:if test="${member.root == 0}">${member.id}</c:if>
-					<c:if test="${member.root == 1}">네이버 회원</c:if>
-					<c:if test="${member.root == 2}">카카오 회원</c:if>
-				</td>
-			</tr>
-			<tr>
-				<td>닉네임</td>
-				<td>${member.nickname}</td>
-			</tr>
-			<tr>
-				<td>이메일</td>
-				<td>${member.email}</td>
-			</tr>
-			<tr>
-				<td>연락처</td>
-				<td>${member.phone}</td>
-			</tr>
-			<tr>
-				<td>주소</td>
-				<td>${member.addr1}<br>${member.addr2}</td>
-			</tr>
-			<tr>
-				<td>관심</td>
-				<td>${member.interest}</td>
-			</tr>
-			<!-- <tr>
-				<td>사진</td>
-				<td></td>
-			</tr> -->
-			<tr>
-				<td colspan="2"><div><div class="update-btn"><a href="update.do">수정</a></div></div></td>
+				<!-- 목록 -->
 			</tr>
 		</table>
 	</div>
 </div>
-<div class="float-clear"></div>
 <!-- 내용 끝 -->
-
-
-

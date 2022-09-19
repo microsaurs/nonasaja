@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/member.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/member-modify.js"></script>
 <div class="mypage-wrap">
 	<div class="mypage-left">
 		<ul>
@@ -25,7 +26,7 @@
 		</ul>
 		<br>
 		<ul>
-			<li><a href="#">회원정보</a></li>
+			<li><a href="${pageContext.request.contextPath}/member/myPage.do">회원정보</a></li>
 			<li><a href="#">공동구매</a></li>
 			<li><a href="#">중고거래</a></li>
 			<li><a href="#">동호회</a></li>
@@ -56,10 +57,10 @@
 					<td></td>
 					<td>
 						<div class="align-center">
-							<input type="button" value="수정" id="photo_btn">
+							<input type="button" value="프로필 사진 변경" id="photo_btn">
 							<div id="photo_choice" style="display:none;">
-								<input type="file" id="upload" accept="image/gif,image/png,image/jpeg"><br>
-								<input type="button" value="전송" id="photo_submit">  
+								<input type="file" id="upload" accept="image/gif,image/png,image/jpeg" value="${memberVO.photo_name}"><br>
+								<input type="button" value="확인" id="photo_submit">  
 								<input type="button" value="취소" id="photo_reset"> 
 							</div>
 						</div>
@@ -68,9 +69,16 @@
 				<tr>
 					<td>아이디</td>
 					<td>
-						<c:if test="${memberVO.root == 0}">${memberVO.id}</c:if>
-						<c:if test="${memberVO.root == 1}">네이버 회원</c:if>
-						<c:if test="${memberVO.root == 2}">카카오 회원</c:if>
+						<form:hidden path="id"/>
+						<c:if test="${memberVO.root == 0}">
+						${memberVO.id}
+						</c:if>
+						<c:if test="${memberVO.root == 1}">
+						네이버 회원
+						</c:if>
+						<c:if test="${memberVO.root == 2}">
+						카카오 회원
+						</c:if>
 					</td>
 				</tr>
 				<tr>
@@ -107,12 +115,12 @@
 				<tr>
 					<td>관심</td>
 					<td>
-						<form:checkbox path="interest" value="운동"/><label for="interest1"></label> 운동
-						<form:checkbox path="interest" value="오락"/><label for="interest2"></label> 오락
-						<form:checkbox path="interest" value="맛집"/><label for="interest3"></label> 맛집<br>
-						<form:checkbox path="interest" value="노래"/><label for="interest4"></label> 노래
-						<form:checkbox path="interest" value="여행"/><label for="interest5"></label> 여행
-						<form:checkbox path="interest" value="스터디"/><label for="interest6"></label> 스터디
+						<form:checkbox path="f_interest" value="운동"/><label for="interest1"></label> 운동
+						<form:checkbox path="f_interest" value="오락"/><label for="interest2"></label> 오락
+						<form:checkbox path="f_interest" value="맛집"/><label for="interest3"></label> 맛집<br>
+						<form:checkbox path="f_interest" value="노래"/><label for="interest4"></label> 노래
+						<form:checkbox path="f_interest" value="여행"/><label for="interest5"></label> 여행
+						<form:checkbox path="f_interest" value="스터디"/><label for="interest6"></label> 스터디
 					</td>
 				</tr>
 				<!-- <tr>
@@ -122,7 +130,7 @@
 				<tr>
 					<td colspan="2">
 						<div class="align-center">
-							<form:button id="submit_btn">전송</form:button>
+							<form:button id="submit_btn">확인</form:button>
 							<input id="back_btn"type="button" value="마이페이지" onclick="location.href='myPage.do'">
 						</div>
 					</td>

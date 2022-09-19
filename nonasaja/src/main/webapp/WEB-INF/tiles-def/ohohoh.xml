@@ -33,8 +33,33 @@
     <definition name="memberView" extends="main">
     	<put-attribute name="title" value="마이페이지"/>
     	<put-attribute name="body"
-    	  value="/WEB-INF/views/member/memberView.jsp"/>                   
+    	  value="/WEB-INF/views/member/memberView.jsp"/>    
     </definition>
+    <!-- 마이페이지 - 공동구매 -->
+    <definition name="myPageProduct" extends="main">
+    	<put-attribute name="title" value="마이페이지"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/member/memberView-product.jsp"/>                   
+    </definition>
+    <!-- 마이페이지 - 중고거래 --> 
+    <definition name="myPageUsed" extends="main">
+    	<put-attribute name="title" value="마이페이지"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/member/memberView-used.jsp"/>                   
+    </definition>
+    <!-- 마이페이지 - 동호회 -->
+    <definition name="myPageClub" extends="main">
+    	<put-attribute name="title" value="마이페이지"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/member/memberView-club.jsp"/>                   
+    </definition>
+    <!-- 마이페이지 - 커뮤니티 -->
+    <definition name="myPageCommu" extends="main">
+    	<put-attribute name="title" value="마이페이지"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/member/memberView-commu.jsp"/>                   
+    </definition>
+    
     <!-- 회원정보 수정 -->
     <definition name="memberModify" extends="main">
     	<put-attribute name="title" value="회원정보수정"/>
@@ -47,6 +72,7 @@
     	<put-attribute name="body" 
     	value="/WEB-INF/views/member/memberChangePassword.jsp"/>
     </definition>
+    <!-- 회원탈퇴 -->
     <definition name="memberDelete" extends="main">
     	<put-attribute name="title" value="회원탈퇴"/>
     	<put-attribute name="body" value="/WEB-INF/views/member/memberDelete.jsp"/>
