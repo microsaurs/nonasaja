@@ -19,9 +19,9 @@
 		<div class="size">
 			<c:if test="${empty user}">
 				<a href="${pageContext.request.contextPath}/member/login.do" class="text">로그인</a>
-				<p class="layout">|</p>
+				<p class="layout22">|</p>
 				<a href="${pageContext.request.contextPath}/member/registerUser.do" class="text">회원가입</a>
-				<p class="layout">|</p>
+				<p class="layout22">|</p>
 				<a href="${pageContext.request.contextPath}/member/registerUser.do" class="text">고객센터</a>
 			</c:if>
 		</div>
@@ -29,14 +29,14 @@
 		<div class="size">
 		<c:if test="${!empty user}">
 			<a href="${pageContext.request.contextPath}/member/logout.do" class="text">로그아웃</a>
-			<p class="layout">|</p>
+			<p class="layout22">|</p>
 			<c:if test="${!empty user && user.auth == 2}">
 			<a href="${pageContext.request.contextPath}/member/myPage.do" class="text">MY페이지</a>
 			</c:if>
 			<c:if test="${!empty user && user.auth == 3}">
 				<a href="${pageContext.request.contextPath}/member/admin_list.do" class="text">회원관리</a>
 			</c:if>
-			<p class="layout">|</p>
+			<p class="layout22">|</p>
 			<a href="${pageContext.request.contextPath}/member/registerUser.do" class="text">고객센터</a>
 		</c:if>	
 		</div>

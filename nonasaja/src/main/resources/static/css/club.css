@@ -120,7 +120,7 @@ ul.detail-info #img{
 	width:500px;
 }
 #img{
-	margin:15px;
+	margin:40px -8px;
 }
 .button{
 	font-family: 'Poor Story', cursive;
@@ -160,4 +160,10 @@ ul.detail-info #img{
 .textarea{
 	border: 1px solid #444444;
 	border-radius:10px;
+}
+.category-align{
+	float:left;
+}
+.float-clear{
+	clear:both;
 }
