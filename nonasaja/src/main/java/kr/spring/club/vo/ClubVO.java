@@ -31,7 +31,8 @@ public class ClubVO {
 	private int club_gender;
 	private int club_recruit;
 	private int region_num;
-
+	private int mem_num;
+	
 	//파일 업로드 처리
 	public void setUpload(MultipartFile upload)
 			throws IOException{
@@ -186,6 +187,14 @@ public class ClubVO {
 	}
 	public void setRegion_num(int region_num) {
 		this.region_num = region_num;
+	}
+
+	public int getMem_num() {
+		return mem_num;
+	}
+
+	public void setMem_num(int mem_num) {
+		this.mem_num = mem_num;
 	}
 
 

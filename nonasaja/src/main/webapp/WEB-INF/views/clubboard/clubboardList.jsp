@@ -5,9 +5,9 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/board.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/club.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<!-- <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Noto+Sans+KR&family=Poor+Story&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Noto+Sans+KR&family=Poor+Story&display=swap" rel="stylesheet"> -->
 <div class="page-main1">
 
 
@@ -23,13 +23,13 @@
 	</div>
 	</c:if>
 	<div class="align-center">
-	<figure class="category-align"><a href="list.do?keyfield=1"><img id="img" src="${pageContext.request.contextPath}/images/free-icon-dumbell-1324803.png" width="75px"></a><figcaption>운동</figcaption></figure>
-	<figure class="category-align"><a href="list.do?keyfield=2"><img id="img" src="${pageContext.request.contextPath}/images/free-icon-game-console-3040112.png" width="70px"></a><figcaption>게임</figcaption></figure>
-	<figure class="category-align"><a href="list.do?keyfield=3"><img id="img" src="${pageContext.request.contextPath}/images/free-icon-rice-bowl-1699816.png" width="70px"></a><figcaption>맛집</figcaption></figure>
-	<figure class="category-align"><a href="list.do?keyfield=4"><img id="img" src="${pageContext.request.contextPath}/images/free-icon-mic-648759.png" width="70px"></a><figcaption>노래</figcaption></figure>
-	<figure class="category-align"><a href="list.do?keyfield=5"><img id="img" src="${pageContext.request.contextPath}/images/free-icon-honeymoon-5970130.png" width="70px"></a><figcaption>여행</figcaption></figure>   
-	<figure class="category-align"><a href="list.do?keyfield=6"><img id="img" src="${pageContext.request.contextPath}/images/free-icon-studying-4345037.png" width="80px"></a><figcaption>스터디</figcaption></figure>
-	<figure class="category-align"><a href="list.do?keyfield=7"><img id="img" src="${pageContext.request.contextPath}/images/free-icon-more-7131125.png" width="70px"></a><figcaption>기타</figcaption></figure>
+	<figure class="category-align"><a href="list.do?keyfield=1"><img id="img" src="${pageContext.request.contextPath}/images/free-icon-dumbell-1324803.png" width="75px"></a><figcaption><b>운동</b></figcaption></figure>
+	<figure class="category-align"><a href="list.do?keyfield=2"><img id="img" src="${pageContext.request.contextPath}/images/free-icon-game-console-3040112.png" width="70px"></a><figcaption><b>게임</b></figcaption></figure>
+	<figure class="category-align"><a href="list.do?keyfield=3"><img id="img" src="${pageContext.request.contextPath}/images/free-icon-rice-bowl-1699816.png" width="70px"></a><figcaption><b>맛집</b></figcaption></figure>
+	<figure class="category-align"><a href="list.do?keyfield=4"><img id="img" src="${pageContext.request.contextPath}/images/free-icon-mic-648759.png" width="70px"></a><figcaption><b>노래</b></figcaption></figure>
+	<figure class="category-align"><a href="list.do?keyfield=5"><img id="img" src="${pageContext.request.contextPath}/images/free-icon-honeymoon-5970130.png" width="70px"></a><figcaption><b>여행</b></figcaption></figure>   
+	<figure class="category-align"><a href="list.do?keyfield=6"><img id="img" src="${pageContext.request.contextPath}/images/free-icon-studying-4345037.png" width="70px"></a><figcaption><b>스터디</b></figcaption></figure>
+	<figure class="category-align"><a href="list.do?keyfield=7"><img id="img" src="${pageContext.request.contextPath}/images/free-icon-more-7131125.png" width="70px"></a><figcaption><b>기타</b></figcaption></figure>
 
 	</div>
 	<c:if test="${count == 0}">
