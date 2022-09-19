@@ -121,6 +121,16 @@
 				<form:input class="textarea"  path="region_num" value="1"/>
 				<form:errors path="region_num" 
 				             cssClass="error-color"/>
+			</li>
+			<li>
+			<label for="club_code">판매지역</label>
+		    	<select name="si" id="si">
+					<option value="1">서울특별시</option> 
+					<option value="2">부산광역시</option> 
+					<option value="3">인천광역시</option> 
+					<option value="4">대전광역시</option> 
+					<option value="5">울산광역시</option> 
+				</select>
 			</li>	
 		</ul>    
 		<div class="align-right">
