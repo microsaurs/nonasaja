@@ -15,7 +15,7 @@ ul.radio-button li{
 	width:60%;
 	float:left;
 }
-.location{
+.location2{
 	clear:both;
 	padding-top:30px;
 }
@@ -37,7 +37,7 @@ ul.radio-button li{
 	margin-top:10px;
 	width:"350";
 }
-button{
+.button2{
   width: 40px;
   height: 30px;
   border:0;
@@ -69,5 +69,17 @@ input[type=file]::file-selector-button {
   border: 0;
   border-radius: 7px;
   cursor: pointer;
+}
+a:link{
+	text-decoration:none;
+	color:#000000;
+}
+a:visited{
+	text-decoration:none;
+	color:#000000;
+}
+a:hover{
+	text-decoration:underline;
+	color:#999999;
 }
 

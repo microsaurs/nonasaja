@@ -19,7 +19,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/uploadAdapter.js"></script>
 
 <div id="page-main">
-	<h2>중고거래 상품 등록</h2><br>
+	<h3>중고거래 상품 등록</h3><br>
 	<form:form action="write.do" modelAttribute="usedVO" id="register_form" enctype="multipart/form-data"> 
 		<form:errors element="div" cssClass="error-color"/>
 		<div>
@@ -75,8 +75,8 @@
 				</ul>
 			</div>
 		</div><br><br>
-		<div class="location">
-			<form:textarea path="content" placeholder="거래 물품에 대한 내용을 자세하게 작성하세요" class="location"/>
+		<div class="location2">
+			<form:textarea path="content" placeholder="거래 물품에 대한 내용을 자세하게 작성하세요." class="location2"/>
 			<form:errors path="content" cssClass="error-color"/>
 			<script>
 			 function MyCustomUploadAdapterPlugin(editor) {
@@ -99,7 +99,7 @@
 		</div>
 		
 		<div class="align-right">
-			<form:button>등록</form:button>
+			<form:button class="button2">등록</form:button>
 			<input type="button" value="목록" onclick="location.href='list.do'" class="button1">
 		</div>
 	</form:form>
