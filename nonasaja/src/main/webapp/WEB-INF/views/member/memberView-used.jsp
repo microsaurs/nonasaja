@@ -24,7 +24,7 @@
 		<ul>
 			<li><a href="${pageContext.request.contextPath}/member/myPage.do">회원정보</a></li>
 			<li><a href="myPageProduct.do">공동구매</a></li>
-			<li><a href="myPageUsed.do">중고거래</a></li>
+			<li><h3><a href="myPageUsed.do">중고거래</a></h3></li>
 			<li><a href="myPageClub.do">동호회</a></li>
 			<li><a href="myPageCommu.do">커뮤니티</a></li>
 			<c:if test="${member.root == 0}">
@@ -39,10 +39,30 @@
 			</tr>
 			<tr>
 				<td>
-					<a>구매내역</a> |
-					<a>판매내역</a> |
-					<a>찜한물건</a> |
-					<a>1:1대화</a>
+					<c:if test="${type == 1}">
+					<b><a href="myPageUsed.do?type=1">내가 올린 거래</a></b> |
+					<a href="myPageUsed.do?type=2">내가 쓴 댓글</a> |
+					<a href="myPageUsed.do?type=3">찜한물건</a> |
+					<a href="myPageUsed.do?type=4">1:1대화</a>
+					</c:if>
+					<c:if test="${type == 2}">
+					<a href="myPageUsed.do?type=1">내가 올린 거래</a> |
+					<b><a href="myPageUsed.do?type=2">내가 쓴 댓글</a></b> |
+					<a href="myPageUsed.do?type=3">찜한물건</a> |
+					<a href="myPageUsed.do?type=4">1:1대화</a>
+					</c:if>
+					<c:if test="${type == 3}">
+					<a href="myPageUsed.do?type=1">내가 올린 거래</a> |
+					<a href="myPageUsed.do?type=2">내가 쓴 댓글</a> |
+					<b><a href="myPageUsed.do?type=3">찜한물건</a></b> |
+					<a href="myPageUsed.do?type=4">1:1대화</a>
+					</c:if>
+					<c:if test="${type == 4}">
+					<a href="myPageUsed.do?type=1">내가 올린 거래</a> |
+					<a href="myPageUsed.do?type=2">내가 쓴 댓글</a> |
+					<a href="myPageUsed.do?type=3">찜한물건</a> |
+					<b><a href="myPageUsed.do?type=4">1:1대화</a></b>
+					</c:if>
 				</td>
 			</tr>
 			<tr>

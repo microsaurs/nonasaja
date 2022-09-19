@@ -252,12 +252,14 @@ public class MemberController {
 	//===========마이페이지 - 중고거래=============//
 	@RequestMapping("/member/myPageUsed.do")
 	public ModelAndView listUsedPage(HttpSession session, 
-			@RequestParam(value="pageNum",defaultValue = "1")int currentPage) {
+			@RequestParam(value="pageNum",defaultValue = "1")int currentPage,
+			@RequestParam(value="type",defaultValue="1") int type) {
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("myPageUsed");
 		mav.addObject("member", user);
+		mav.addObject("type", type);
 		
 		return mav;
 	}
@@ -273,17 +275,26 @@ public class MemberController {
 		
 		return mav;
 	}
-	//===========마이페이지 - 커뮤니티=============//
+	//===========마이페이지 - 커뮤니티 + 레시피=============//
 	@RequestMapping("/member/myPageCommu.do")
 	public ModelAndView listCommuPage(HttpSession session, 
 			@RequestParam(value="pageNum",defaultValue="1")int currentPage,
-			@RequestParam(value="type",defaultValue="1") int type) {
+			@RequestParam(value="type",defaultValue="1") int type,
+			@RequestParam(value="code",defaultValue="1") int code) {//code: 1-자유,2-레시피
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		
+		
 		ModelAndView mav = new ModelAndView();
+		
+		if(code == 1) {//커뮤니티
+			
+		}else if(code == 2) {//레시피
+			
+		}
+		
 		mav.setViewName("myPageCommu");
 		mav.addObject("member", user);
-		
+		mav.addObject("type", type);
 		return mav;
 	}
 		

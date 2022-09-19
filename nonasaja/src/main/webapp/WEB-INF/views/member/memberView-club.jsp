@@ -25,7 +25,7 @@
 			<li><a href="${pageContext.request.contextPath}/member/myPage.do">회원정보</a></li>
 			<li><a href="myPageProduct.do">공동구매</a></li>
 			<li><a href="myPageUsed.do">중고거래</a></li>
-			<li><a href="myPageClub.do">동호회</a></li>
+			<li><h3><a href="myPageClub.do">동호회</a></h3></li>
 			<li><a href="myPageCommu.do">커뮤니티</a></li>
 			<c:if test="${member.root == 0}">
 			<li><a href="delete.do">회원탈퇴</a></li>

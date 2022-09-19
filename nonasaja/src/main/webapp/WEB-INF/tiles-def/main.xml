@@ -15,7 +15,14 @@
     	<put-attribute name="footer"
     	   value="/WEB-INF/views/template/footer.jsp"/>                   
     </definition>
+    <!-- 로그인 화면용 레이아웃 (헤더 제거) -->
+    <definition name="main2" 
+       template="/WEB-INF/views/template/layout2.jsp">
+    	<put-attribute name="title" value="노나사자"/>
+    	<put-attribute name="body"
+    	             value="/WEB-INF/views/main/main.jsp"/>    
+    	<put-attribute name="footer"
+    	   value="/WEB-INF/views/template/footer.jsp"/>                   
+    </definition>
 </tiles-definitions>
-
-
 

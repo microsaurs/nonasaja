@@ -12,7 +12,7 @@
     	  value="/WEB-INF/views/member/memberRegister.jsp"/>                   
     </definition>
     <!-- 로그인 -->
-    <definition name="memberLogin" extends="main">
+    <definition name="memberLogin" extends="main2">
     	<put-attribute name="title" value="로그인"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/member/memberLogin.jsp"/>                   

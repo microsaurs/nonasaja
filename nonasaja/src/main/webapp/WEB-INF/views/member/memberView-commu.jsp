@@ -26,7 +26,7 @@
 			<li><a href="myPageProduct.do">공동구매</a></li>
 			<li><a href="myPageUsed.do">중고거래</a></li>
 			<li><a href="myPageClub.do">동호회</a></li>
-			<li><a href="myPageCommu.do">커뮤니티</a></li>
+			<li><h3><a href="myPageCommu.do">커뮤니티</a></h3></li>
 			<c:if test="${member.root == 0}">
 			<li><a href="delete.do">회원탈퇴</a></li>
 			</c:if>
@@ -39,9 +39,23 @@
 			</tr>
 			<tr>
 				<td>
-					<a>내가 작성한 글</a> |
-					<a>내가 작성한 댓글</a>
+					<c:if test="${type == 1}">
+					<b><a href="myPageCommu.do?type=1">내가 작성한 글</a></b> |
+					<a href="myPageCommu.do?type=2">내가 작성한 댓글</a>
+					</c:if>
+					<c:if test="${type == 2}">
+					<a href="myPageCommu.do?type=1">내가 작성한 글</a> |
+					<b><a href="myPageCommu.do?type=1">내가 작성한 댓글</a></b>
+					</c:if>
 				</td>
+			</tr>
+			<tr>
+				<td>
+					<select id="code">
+						<option value="1">커뮤니티
+						<option value="2">레시피
+					</select>
+				<td>
 			</tr>
 			<tr>
 				<!-- 목록 -->
