@@ -55,8 +55,11 @@ public interface UsedMapper {
 	@Update("UPDATE used_reply SET "
 			+ "reply_content=#{reply_content} WHERE reply_num=#{reply_num}")
 	public void updateReply(UsedReplyVO usedReply);
+	@Delete("DELETE FROM used_reply WHERE reply_num=#{reply_num}")
 	public void deleteReply(Integer reply_num);
 	//부모글 삭제시 댓글이 존재하면 부모글 삭제전 댓글 삭제
+	@Delete("DELETE FROM used_reply "
+			+ "WHERE used_num=#{used_num}")
 	public void deleteReplyByBoardNum(Integer used_num);
 	
 	

@@ -6,7 +6,7 @@
 <script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
 <div class="page-main">
 	<div>
-		<h3>메인 페이지</h3>
+		
 	</div>
 </div>
 <!-- 메인 끝 -->

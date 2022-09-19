@@ -202,11 +202,13 @@ public class UsedAjaxController {
 		Map<String,String> mapAjax = new HashMap<String,String>();
 		
 		MemberVO user = (MemberVO)session.getAttribute("user");
-		UsedReplyVO db_reply = usedService.selectReply(usedReplyVO.getReply_num());
+		UsedReplyVO db_reply = usedService.selectReply(
+											usedReplyVO.getReply_num());
 		
 		if(user==null) {//로그인이 되지 않은 경우
 			mapAjax.put("result", "logout");
-		}else if(user!=null && user.getMem_num()==db_reply.getMem_num()) {
+		}else if(user!=null && 
+				user.getMem_num()==db_reply.getMem_num()) {
 			//로그인 회원번호와 작성자 회원번호 일치
 			
 			//댓글 수정
@@ -214,7 +216,7 @@ public class UsedAjaxController {
 			mapAjax.put("result", "success");
 		}else {
 			//로그인 회원번호와 작성자 회원번호 불일치
-			mapAjax.put("result", "worngAccess");
+			mapAjax.put("result", "wrongAccess");
 		}
 		return mapAjax;
 	}

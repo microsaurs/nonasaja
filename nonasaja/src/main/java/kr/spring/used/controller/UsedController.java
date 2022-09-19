@@ -192,7 +192,7 @@ public class UsedController {
 		
 		//View에 표시할 메시지
 		model.addAttribute("message", "글수정 완료!");
-		model.addAttribute("url",request.getContextPath()+"/used/detail.do?used_num"+usedVO.getUsed_num());
+		model.addAttribute("url",request.getContextPath()+"/used/detail.do?used_num="+usedVO.getUsed_num());
 		
 		return "common/resultView";
 	}

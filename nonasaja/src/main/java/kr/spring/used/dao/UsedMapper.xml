@@ -72,7 +72,7 @@
 	</select>
 	
 	<!-- 글 수정 -->
-	<update id="updateBoard" parameterType="usedVO">
+	<update id="updateUsed" parameterType="usedVO">
 		UPDATE used_board SET
 			  <if test="filename != ''">
 			  	uploadfile=${uploadfile},
@@ -86,14 +86,14 @@
 			  	uploadfile3=${uploadfile3},
 			  	filename3=#{filename3},
 			  </if>
-			  title=#{title}
-			  content=#{content}
-			  kind=#{kind}
-			  category=#{category}
-			  price=#{price}
-			  status={status}
-			  trade={trade}
-			  region_num={region_num}
+			  title=#{title},
+			  content=#{content},
+			  kind=#{kind},
+			  category=#{category},
+			  price=#{price},
+			  status=#{status},
+			  trade=#{trade},
+			  region_num=#{region_num},
 			  modify_date=SYSDATE
 		WHERE used_num=#{used_num} 
 	</update>
