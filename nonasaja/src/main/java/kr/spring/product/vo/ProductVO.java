@@ -3,15 +3,17 @@ package kr.spring.product.vo;
 import java.io.IOException;
 import java.sql.Date;
 
-import javax.validation.constraints.Future;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.multipart.MultipartFile;
 
+import kr.spring.order.service.OrderService;
+import kr.spring.review.service.ReviewService;
+
 public class ProductVO {
+
 	private int product_num;
 	@NotEmpty
 	private String name;
@@ -67,6 +69,13 @@ public class ProductVO {
 	@NotEmpty
 	private String cus_phone;
 	
+	//별점 평균 
+	private int scoreAvg;
+	//리뷰수
+	private int reviewCount;
+	//waitCount
+	private int waitCount;
+	
 	//유효성 체크를 위한 getUpload1
 	public MultipartFile getUpload1() {
 		return upload1;
@@ -91,9 +100,11 @@ public class ProductVO {
 		setPhoto3(upload3.getBytes());
 		setPhoto3_name(upload3.getOriginalFilename());
 	}
+
 	public int getProduct_num() {
 		return product_num;
 	}
+	//별점 평균,리뷰수,waitCount도 함께 setting
 	public void setProduct_num(int product_num) {
 		this.product_num = product_num;
 	}
@@ -258,16 +269,40 @@ public class ProductVO {
 		this.div_quantity = div_quantity;
 	}
 
+	public int getScoreAvg() {
+		return scoreAvg;
+	}
+
+	public void setScoreAvg(int scoreAvg) {
+		this.scoreAvg = scoreAvg;
+	}
+
+	public int getReviewCount() {
+		return reviewCount;
+	}
+
+	public void setReviewCount(int reviewCount) {
+		this.reviewCount = reviewCount;
+	}
+
+	public int getWaitCount() {
+		return waitCount;
+	}
+
+	public void setWaitCount(int waitCount) {
+		this.waitCount = waitCount;
+	}
+
 	@Override
 	public String toString() {
-		return "ProductVO [product_num=" + product_num + ", name=" + name + ", kind=" + kind + ", sub_category="
-				+ sub_category + ", title=" + title + ", price1=" + price1 + ", price2=" + price2 + ", quantity="
-				+ quantity + ", detail=" + detail + ", req_quantity=" + req_quantity + ", div_quantity=" + div_quantity
-				+ ", upload1=" + upload1 + ", photo1_name=" + photo1_name + ", photo2_name=" + photo2_name
-				+ ", photo3_name=" + photo3_name + ", company=" + company + ", origin=" + origin + ", status=" + status
-				+ ", deadline=" + deadline + ", reg_date=" + reg_date + ", modify_date=" + modify_date
-				+ ", quantity_detail=" + quantity_detail + ", exp_date=" + exp_date + ", storage=" + storage
-				+ ", cus_phone=" + cus_phone + "]";
-	}	
-	
+		return "ProductVO [product_num="
+				+ product_num + ", name=" + name + ", kind=" + kind + ", sub_category=" + sub_category + ", title="
+				+ title + ", price1=" + price1 + ", price2=" + price2 + ", quantity=" + quantity + ", detail=" + detail
+				+ ", req_quantity=" + req_quantity + ", div_quantity=" + div_quantity + ", photo1_name=" + photo1_name
+				+ ", photo2_name=" + photo2_name + ", photo3_name=" + photo3_name + ", company=" + company + ", origin="
+				+ origin + ", status=" + status + ", deadline=" + deadline + ", reg_date=" + reg_date + ", modify_date="
+				+ modify_date + ", quantity_detail=" + quantity_detail + ", exp_date=" + exp_date + ", storage="
+				+ storage + ", cus_phone=" + cus_phone + ", scoreAvg=" + scoreAvg + ", reviewCount=" + reviewCount
+				+ ", waitCount=" + waitCount + "]";
+	}
 }

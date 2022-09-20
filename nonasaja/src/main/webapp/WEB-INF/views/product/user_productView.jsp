@@ -47,6 +47,7 @@ $(document).ready(function(){
 				<input type="hidden" name="product_price2" value="${product.price2}" id="product_price2">
 				<input type="hidden" name="product_quantity" value="${product.quantity}" id="product_quantity">
 				<input type="hidden" name="product_req_quantity" value="${product.req_quantity}" id="product_req_quantity">
+				
 				<ul>
 					<li><img src="${pageContext.request.contextPath}/images/tag.jpg" width="60px"></li>
 					<br>
@@ -69,7 +70,6 @@ $(document).ready(function(){
 					</li>
 					<li>
 						<input type="submit" value="장바구니">
-						<input type="button" value="구매신청" onclick="">
 					</li>
 					
 					<!-- 품절 시 -->
@@ -142,7 +142,6 @@ $(document).ready(function(){
 				<li>
 					<div class="rating">
 						<input type="hidden" name="score" value="0" class="rate-star">
-						<!-- 해당  별점을 클릭하면 해당 별과 그 왼쪽의 모든 별의 체크박스에 checked 적용 -->
 						<c:forEach var="star" begin="1" end="5" varStatus="status">
 							<input type="checkbox" id="rating${status.index}"
 								value="${status.index}" class="rate-check"

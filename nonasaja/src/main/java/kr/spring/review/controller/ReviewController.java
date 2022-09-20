@@ -77,7 +77,7 @@ public class ReviewController {
 		reviewService.insertReview(reviewVO);
 
 		model.addAttribute("message", "리뷰 등록이 완료되었습니다.");
-		model.addAttribute("url", request.getContextPath() + "/order/order_list.do");
+		model.addAttribute("url", request.getContextPath() + "/member/myPageProduct.do?type=4");
 
 		// 알림 페이지 만들기
 		return "common/resultView";
@@ -100,12 +100,11 @@ public class ReviewController {
 		reviewService.updateReview(reviewVO);
 
 		model.addAttribute("message", "리뷰 수정이 완료되었습니다.");
-		model.addAttribute("url", request.getContextPath() + "/order/order_list.do");
-
+		model.addAttribute("url", request.getContextPath() + "/member/myPageProduct.do?type=4");
+		
 		// 알림 페이지 만들기
 		return "common/resultView";
 	}
-	
 	
 }
 

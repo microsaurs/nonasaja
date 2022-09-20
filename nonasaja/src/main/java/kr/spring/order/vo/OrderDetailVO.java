@@ -20,6 +20,8 @@ public class OrderDetailVO {
 	@NotEmpty
 	private int order_num;
 	private int wait_status;
+	private int wait_count;
+	private int req_quantity;
 	
 	public int getWait_status() {
 		return wait_status;
@@ -69,12 +71,25 @@ public class OrderDetailVO {
 	public void setOrder_num(int order_num) {
 		this.order_num = order_num;
 	}
+	
+	public int getWait_count() {
+		return wait_count;
+	}
+	public void setWait_count(int wait_count) {
+		this.wait_count = wait_count;
+	}
+	public int getReq_quantity() {
+		return req_quantity;
+	}
+	public void setReq_quantity(int req_quantity) {
+		this.req_quantity = req_quantity;
+	}
 	@Override
 	public String toString() {
 		return "OrderDetailVO [detail_num=" + detail_num + ", product_num=" + product_num + ", product_name="
 				+ product_name + ", product_price=" + product_price + ", product_total=" + product_total
 				+ ", order_quantity=" + order_quantity + ", order_num=" + order_num + ", wait_status=" + wait_status
-				+ "]";
+				+ ", wait_count=" + wait_count + ", req_quantity=" + req_quantity + "]";
 	}
 	
 	

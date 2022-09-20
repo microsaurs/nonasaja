@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.spring.order.service.OrderService;
 import kr.spring.product.service.ProductService;
 import kr.spring.product.vo.ProductVO;
 import kr.spring.review.service.ReviewService;
@@ -44,6 +45,9 @@ public class ProductController {
 	
 	@Autowired
 	private ReviewService reviewService;
+	
+	@Autowired
+	private OrderService orderService;
 
 	//  =============이미지 뷰==================
 	@RequestMapping("/product/imageView.do")
@@ -94,6 +98,11 @@ public class ProductController {
 			map.put("start", page.getStartRow());
 			map.put("end", page.getEndRow());
 			list = productService.selectProductList(map);
+			for(ProductVO product : list) {
+				product.setScoreAvg(reviewService.selectScore(product.getProduct_num()));
+				product.setReviewCount(reviewService.selectReviewCount(product.getProduct_num()));
+				product.setWaitCount(orderService.selectWaitCount(product.getProduct_num()));
+			}
 		}
 		
 		ModelAndView mav = new ModelAndView();

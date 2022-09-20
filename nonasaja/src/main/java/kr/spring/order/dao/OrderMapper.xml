@@ -11,7 +11,7 @@
 		  from 
 		norder n join norder_detail d
 		using(order_num) 
-		where n.mem_num=#{mem_num} 
+		where n.mem_num=#{mem_num}
 		<if test="keyword !=null and keyword != ''">
 			<if test="keyfield ==1">
   				and n.order_num = #{keyword} 
@@ -35,7 +35,7 @@
 		 	  from norder 
 		 	  join norder_detail  
               using(order_num) 
-		 	  where mem_num=#{mem_num} 
+		 	  where mem_num=#{mem_num}
 		 	  <if test="keyword !=null and keyword != ''">
 				<if test="keyfield ==1">
   					and n.order_num = #{keyword} 
@@ -66,7 +66,7 @@
 		 	  from norder_detail  
 		 	  join norder   
               using(order_num) 
-		 	  where mem_num=#{mem_num} 
+		 	  where mem_num=#{mem_num} and wait_status=#{wait_status}
 		 	  <if test="keyword !=null and keyword != ''">
 				<if test="keyfield ==1">
   					and n.order_num = #{keyword} 

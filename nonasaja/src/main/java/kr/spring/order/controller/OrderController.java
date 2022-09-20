@@ -61,6 +61,8 @@ public class OrderController {
 		ModelAndView mav = new ModelAndView();
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		
+		//한번 주문하는 cart 의 list
+		List<CartVO> cartList = new ArrayList<CartVO>();
 		//체크박스 값(cart_num) 받아서 int 배열로 바꾸기
 		String[] cartNum_arr=request.getParameterValues("cart_num");
 		int[] cart_num= new int[cartNum_arr.length];
@@ -68,10 +70,6 @@ public class OrderController {
 		//주문의 전체 가격
 		int all_total = 0; 
 			
-		
-		//한번 주문하는 cart 의 list
-		List<CartVO> cartList = new ArrayList<CartVO>();
-		
 		//주문 신청한 카트 번호로 반복문 시작
 		for(int i=0;i<cartNum_arr.length;i++) {
 			cart_num[i]=Integer.parseInt(cartNum_arr[i]);
@@ -258,9 +256,7 @@ public class OrderController {
 
 		//order와 orderDetail insert
 		orderService.insertOrder(order, orderDetailList);
-		
-		
-		
+
 		logger.debug("<<주문등록>> : " + order);
 	
 		mav.addObject("url", request.getContextPath() + "/product/list.do");

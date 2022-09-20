@@ -3,7 +3,7 @@ $(function(){
 	//=========장바구니 상품 삭제============
 	$('.cart-del').on('click', function(){
 		$.ajax({
-			url:'deleteCart.do',
+			url:'/cart/deleteCart.do',
 			type:'post',
 			data:{cart_num:$(this).attr('data-cartnum')},
 			dataType:'json',
@@ -14,7 +14,7 @@ $(function(){
 					alert('로그인 후 사용하세요');
 				}else if(param.result == 'success'){
 					alert('선택하신 상품을 삭제했습니다.');
-					location.href='cart_list.do';
+					location.href='myPageProduct.do';
 				}else{
 					alert('삭제 오류!');
 				}
@@ -46,7 +46,7 @@ $(function(){
 		}
 		
 		$.ajax({
-			url:'modifyCart.do',
+			url:'/cart/modifyCart.do',
 			type:'post',
 			data:{cart_num:$(this).attr('data-cartnum'),product_num:$(this).attr('data-productnum'),quantity:input_quantity.val()},
 			dataType:'json',
@@ -57,13 +57,13 @@ $(function(){
 					alert('로그인 후 사용하세요!');
 				}else if(param.result == 'noSale'){
 					alert('판매 중지되었습니다.');
-					location.href='cart_list.do';
+					location.href='myPageProduct.do';
 				}else if(param.result == 'noQuantity'){
 					alert('상품의 수량이 부족합니다.');
-					location.href='cart_list.do';
+					location.href='myPageProduct.do';
 				}else if(param.result == 'success'){
 					alert('상품 개수가 수정되었습니다.');
-					location.href='cart_list.do';
+					location.href='myPageProduct.do';
 				}else{
 					alert('수정시 오류 발생');
 				}

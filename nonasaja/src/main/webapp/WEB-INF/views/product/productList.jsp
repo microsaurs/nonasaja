@@ -46,19 +46,19 @@
 		</c:if>
 		<c:if test="${count>0 }">
 			<div class="product-space">
-			<c:forEach var="item" items="${list }">
+			<c:forEach var="product" items="${list }">
 				<div class="horizontal-area">
-					<a href="detail.do?product_num=${item.product_num }">
-						<img class="view-img" src="${context.request.contextPath}/product/imageView.do?product_num=${item.product_num}&photo_type=1">
+					<a href="detail.do?product_num=${product.product_num }">
+						<img class="view-img" src="${context.request.contextPath}/product/imageView.do?product_num=${product.product_num}&photo_type=1">
 						<br>
 						<span>
-							${item.title}</span>
+							${product.title}</span>
 						<br>
-						<b><fmt:formatNumber value="${item.price2 }"/>원</b>
+						<b><fmt:formatNumber value="${product.price2 }"/>원</b>
 						<br>
-						별점 (리뷰수)
+						★${product.scoreAvg}/5 (리뷰:${product.reviewCount}개)
 						<br>
-						<span>${item.req_quantity} / 명 구매중</span>
+						<span>${product.waitCount}/${product.req_quantity} 명 구매중</span>
 						<br>
 					</a>
 				</div>

@@ -19,6 +19,7 @@ $(function(){
 		let total = $('#product_price2').val() * $('#order_quantity').val();
 		$('#product_total_txt').text('총주문 금액 : ' +$.number(total) +'원');
 	});
+	
 });
 
 

@@ -22,7 +22,7 @@ public interface ReviewMapper {
 	public void insertReview(ReviewVO review);
 	
 	//상품별 별점 평균 구하기
-	@Select("select ROUND(AVG(NVL(score, 0))) from product_review where product_num=#{product_num}")
+	@Select("select NVL(ROUND(AVG(score)),0) from product_review where product_num=#{product_num}")
 	public int selectScore(int product_num);
 	
 	//회원 번호로 리뷰 목록 구해오기
