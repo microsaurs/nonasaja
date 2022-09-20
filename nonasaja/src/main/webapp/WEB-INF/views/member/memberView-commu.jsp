@@ -5,6 +5,7 @@
 <!-- 내용 시작 -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/mypage-commu.js"></script>
 <div class="mypage-wrap">
 	<div class="mypage-left">
 		<ul>
@@ -35,7 +36,7 @@
 	<div class="mypage-right">
 		<table>
 			<tr>
-				<th colspan="2"><h3>커뮤니티</h3></th>
+				<th colspan="5"><h3>커뮤니티</h3></th>
 			</tr>
 			<tr>
 				<td>
@@ -52,14 +53,76 @@
 			<tr>
 				<td>
 					<select id="code">
-						<option value="1">커뮤니티
-						<option value="2">레시피
+						<option value="1" <c:if test="${code==1}">selected</c:if>>커뮤니티
+						<option value="2" <c:if test="${code==2}">selected</c:if>>레시피
 					</select>
 				<td>
 			</tr>
 			<tr>
-				<!-- 목록 -->
+				<td>사진</td>
+				<td>제목</td>
+				<td>음식</td>
+				<td>추천</td>
+				<td>조회수</td>
 			</tr>
+			<!-- 커뮤니티 목록 시작 -->
+			<c:if test="${!empty commuList}">
+			<c:if test="${count<=0}">
+				작성한 글이 없습니다.
+			</c:if>
+			<c:if test="${count>0}">
+			<c:forEach var="commuboard" items="${commuList}">
+			<tr>
+				<td>
+					<a href="${pageContext.request.contextPath}/commuRecipe/detail.do?commu_num=${recipeboard.commu_num}">
+						<img src="${pageContext.request.contextPath}/commuRecipe/imageView.do?commu_num=${recipeboard.commu_num}&board_type=2" width="50" height="50">
+					</a>
+				</td>
+				<td>
+					<a href="${pageContext.request.contextPath}/commuRecipe/detail.do?commu_num=${commuboard.commu_num}">${commuboard.commu_title}</a>
+				</td>
+				<td>
+					${commuboard.commu_code}
+				</td>
+				<td>
+					${commuboard.commu_recommend}
+				</td>
+				<td>
+					${commuboard.commu_hit}
+				</td>
+			</tr>
+			</c:forEach>
+			</c:if>
+			</c:if>
+			<!-- 커뮤니티 목록 끝 -->
+			<!-- 레시피 목록 시작 -->
+			<c:if test="${!empty recipeList}">
+			<c:if test="${count<=0}">
+				작성한 글이 없습니다.
+			</c:if>
+			<c:if test="${count>0}">
+			<c:forEach var="recipeboard" items="${recipeList}">
+			<tr>
+				<td>
+					<a href="${pageContext.request.contextPath}/commuRecipe/detail.do?commu_num=${recipeboard.commu_num}"><img src="${pageContext.request.contextPath}/commuRecipe/imageView.do?commu_num=${recipeboard.commu_num}&board_type=2" width="50" height="50"></a>
+				</td>
+				<td>
+					<a href="${pageContext.request.contextPath}/commuRecipe/detail.do?commu_num=${recipeboard.commu_num}">${recipeboard.commu_title}</a>
+				</td>
+				<td>
+					${recipeboard.commu_food}
+				</td>
+				<td>
+					${recipeboard.commu_recommend}
+				</td>
+				<td>
+					${recipeboard.commu_hit}
+				</td>
+			</tr>
+			</c:forEach>
+			</c:if>
+			</c:if>
+			<!-- 레시피 목록 끝 -->
 		</table>
 	</div>
 </div>
