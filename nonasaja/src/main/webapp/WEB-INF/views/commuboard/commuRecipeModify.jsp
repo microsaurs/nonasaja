@@ -19,7 +19,7 @@
 
 <div id="recipe_write">
 	<h2>레시피 글수정</h2>
-	<form:form action="update.do" modelAttribute="recipeVO" id="update_form" enctype="multipart/form-data">
+	<form:form action="update.do" modelAttribute="boardVO" id="update_form" enctype="multipart/form-data">
 	    <form:hidden path="commu_num"/>
 	    <form:errors element="div" cssClass="error-color"/>    
 		<ul>	

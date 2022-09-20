@@ -120,6 +120,45 @@ private static final Logger logger = LoggerFactory.getLogger(CommuBoardControlle
 		return mav;
 	}
 	
+	//===========유머 게시판 글 목록2==========//
+	@RequestMapping("/commuboard/commuList.do")
+	public ModelAndView commuProcess( 
+			@RequestParam(value="pageNum",defaultValue="1") int currentPage, 
+			@RequestParam(value="keyfield",defaultValue="") String keyfield){
+		
+		Map<String,Object> map = new HashMap<String,Object>(); 
+		map.put("keyfield", keyfield);
+		
+		//글의 총 개수(검색된 글의 개수)
+		int count = boardService.commuSelectRowCount(map);
+		
+		logger.debug("<<count>> : " + count);
+		
+		//페이지 처리
+		PagingUtil page = 
+				new PagingUtil(currentPage,count,
+						rowCount,pageCount,"commuList.do","&keyfield="+keyfield);
+		
+		List<CommunityVO> list = null;
+		if(count > 0) {
+			map.put("start", page.getStartRow());
+			map.put("end", page.getEndRow());
+			
+			list = boardService.commuSelectList(map);
+		}
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("commuBoardList"); 
+		mav.addObject("count", count); 
+		mav.addObject("list", list);
+		mav.addObject("page", page.getPage());
+		
+		return mav;
+	}
+	
+	
+	
+	
 	//========유머게시판 글 상세=========//
 	@RequestMapping("/commuboard/detail.do")
 	public ModelAndView detail(@RequestParam int commu_num) {

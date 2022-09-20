@@ -7,8 +7,29 @@ div#page-main tr, th {
   border-bottom: 1px solid #444444;
   padding: 10px;
 } 
-
-
-
+#commuList_img{
+	margin-right: 40px;
+	margin-bottom: 45px;
+	width:100px;
+}
+.search{
+	margin-bottom: 30px;
+}
+.button{
+	font-family: 'Dongle', sans-serif;
+	font-size:15px;
+	padding-top:10px;
+	padding-bottom:10px;
+	padding-left:15px;
+	padding-right:15px;
+	margin:5px;
+	background-color:#f5d505;
+	color: white;
+	border: none;
+	overflow:hidden;
+	transition: all 0.2s 0s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+	border-radius:22px;
+	cursor: pointer;
+}
 
 

@@ -18,6 +18,8 @@ public interface CommuBoardService {
 	//유머글
 	public List<CommunityVO> selectList(Map<String,Object> map);
 	public int selectRowCount(Map<String,Object> map);
+	public List<CommunityVO> commuSelectList(Map<String,Object> map);
+	public int commuSelectRowCount(Map<String,Object> map);
 	public void insertBoard(CommunityVO board);
 	public CommunityVO selectBoard(Integer commu_num);
 	public void updateHit(Integer commu_num);
