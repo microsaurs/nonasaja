@@ -59,30 +59,58 @@
 				<td>
 			</tr>
 			<tr>
+				<!-- 커뮤니티 - 내가 쓴 글 목록  -->
+				<c:if test="${!empty commuList}">
+				<td>카테고리</td>
+				<td>제목</td>
+				<td>작성일</td>
+				<td>추천</td>
+				<td>조회수</td>
+				</c:if>
+				<!-- 레시피 - 내가 쓴 글 목록 -->
+				<c:if test="${!empty recipeList}">
 				<td>사진</td>
 				<td>제목</td>
 				<td>음식</td>
 				<td>추천</td>
 				<td>조회수</td>
+				</c:if>
+				<!-- 커뮤니티 - 내가 쓴 댓글 목록 -->
+				<c:if test="${!empty commuReplyList}">
+				<td>내용</td>
+				<td>작성일</td>
+				</c:if>
+				<!-- 레시피 - 내가 쓴 댓글 목록 -->
+				<c:if test="${!empty recipeReplyList}">
+				<td>내용</td>
+				<td>작성일</td>
+				</c:if>
+				<c:if test="${count<=0}">
+				<td>
+				작성한 글이 없습니다.
+				</td>
+				</c:if>
 			</tr>
 			<!-- 커뮤니티 목록 시작 -->
-			<c:if test="${!empty commuList}">
-			<c:if test="${count<=0}">
-				작성한 글이 없습니다.
-			</c:if>
 			<c:if test="${count>0}">
+			<c:if test="${!empty commuList}">
 			<c:forEach var="commuboard" items="${commuList}">
 			<tr>
 				<td>
-					<a href="${pageContext.request.contextPath}/commuRecipe/detail.do?commu_num=${recipeboard.commu_num}">
-						<img src="${pageContext.request.contextPath}/commuRecipe/imageView.do?commu_num=${recipeboard.commu_num}&board_type=2" width="50" height="50">
-					</a>
+					<c:if test="${commuboard.commu_code==1}"><strong>자유</strong></c:if>
+					<c:if test="${commuboard.commu_code==2}"><font color="blue"><strong>지역세일</strong></font></c:if>
+					<c:if test="${commuboard.commu_code==3}"><font color="green"><strong>자취백과</strong></font></c:if>
 				</td>
 				<td>
-					<a href="${pageContext.request.contextPath}/commuRecipe/detail.do?commu_num=${commuboard.commu_num}">${commuboard.commu_title}</a>
+					<a href="${pageContext.request.contextPath}/commuboard/detail.do?commu_num=${commuboard.commu_num}">${commuboard.commu_title}</a>
 				</td>
 				<td>
-					${commuboard.commu_code}
+					<c:if test="${!empty commuboard.commu_modify_date}">
+						${commuboard.commu_modify_date}
+					</c:if>
+					<c:if test="${empty commuboard.commu_modify_date}">
+						${commuboard.commu_date}
+					</c:if>
 				</td>
 				<td>
 					${commuboard.commu_recommend}
@@ -97,9 +125,6 @@
 			<!-- 커뮤니티 목록 끝 -->
 			<!-- 레시피 목록 시작 -->
 			<c:if test="${!empty recipeList}">
-			<c:if test="${count<=0}">
-				작성한 글이 없습니다.
-			</c:if>
 			<c:if test="${count>0}">
 			<c:forEach var="recipeboard" items="${recipeList}">
 			<tr>
@@ -123,6 +148,41 @@
 			</c:if>
 			</c:if>
 			<!-- 레시피 목록 끝 -->
+			<!-- 커뮤니티 댓글 목록 시작 -->
+			<c:if test="${!empty commuReplyList}">
+			<c:if test="${count>0}">
+			<c:forEach var="reply" items="${commuReplyList}">
+			<tr>
+				<td>
+					<a href="${pageContext.request.contextPath}/commuboard/detail.do?commu_num=${reply.commu_num}">${reply.reply_content}</a>
+				</td>
+				<td>
+					${reply.reply_date}
+				</td>
+			</tr>
+			</c:forEach>
+			</c:if>
+			</c:if>
+			<!-- 커뮤니티 댓글 목록 끝 -->
+			<!-- 레시피 댓글 목록 시작 -->
+			<c:if test="${!empty recipeReplyList}">
+			<c:if test="${count>0}">
+			<c:forEach var="reply" items="${recipeReplyList}">
+			<tr>
+				<td>
+					<a href="${pageContext.request.contextPath}/commuRecipe/detail.do?commu_num=${reply.commu_num}">${reply.reply_content}</a>
+				</td>
+				<td>
+					${reply.reply_date}
+				</td>
+			</tr>
+			</c:forEach>
+			</c:if>
+			</c:if>
+			<!-- 레시피 댓글 목록 끝 -->
+			<tr>
+				<td colspan="5" class="align-center">${page}</td>
+			</tr>
 		</table>
 	</div>
 </div>

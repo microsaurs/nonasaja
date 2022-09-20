@@ -58,7 +58,7 @@ public interface MypageMapper {
 	//찜한물건 (좋아요)
 	@Select("SELECT COUNT(*) FROM fav WHERE mem_num=#{mem_num} and used_num IS NOT NULL")
 	public int selectUsedFavCount(Integer mem_num);
-	public List<UsedFavVO> selectUsedFavList(Map<String,Object> map);
+	public List<UsedVO> selectUsedFavList(Map<String,Object> map);
 	//1대1 채팅
 	//미구현
 	

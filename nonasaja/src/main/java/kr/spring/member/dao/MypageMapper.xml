@@ -3,7 +3,7 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 <mapper namespace="kr.spring.member.dao.MypageMapper">
-	<!-- 레시피 목록 -->
+	<!-- 레시피 글 목록 -->
 	<select id="selectRecipeList" parameterType="map" resultType="recipeVO">
 		SELECT *
 		FROM (SELECT
@@ -24,7 +24,7 @@
 		WHERE rnum >= #{start} AND rnum <= #{end}
 		]]>
 	</select>
-	<!-- 레시피 목록 -->
+	<!-- 커뮤니티 글 목록 -->
 	<select id="selectCommuList" parameterType="map" resultType="communityVO">
 		SELECT *
 		FROM (SELECT
@@ -37,11 +37,104 @@
 			  			]]>
 						commu_recommend,
 						commu_hit,
-						commu_code
+						commu_code,
+						commu_date,
+						commu_modify_date
             		FROM community_board 
             		WHERE mem_num = #{mem_num}
             		ORDER BY commu_num DESC)a)
 		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+	</select>
+	<!-- 레시피 댓글 목록 -->
+	<select id="selectRecipeReplyList" parameterType="map" resultType="recipeReplyVO">
+		SELECT *
+		FROM (SELECT
+        		a.*,
+    			rownum rnum
+    			FROM (SELECT
+						*
+            		FROM community_recipe_reply
+            		WHERE mem_num = #{mem_num}
+            		ORDER BY reply_num DESC)a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+	</select>
+	<!-- 커뮤니티 댓글 목록 -->
+	<select id="selectCommuReplyList" parameterType="map" resultType="communityReplyVO">
+		SELECT *
+		FROM (SELECT
+        		a.*,
+    			rownum rnum
+    			FROM (SELECT
+						*
+            		FROM community_reply
+            		WHERE mem_num = #{mem_num}
+            		ORDER BY reply_num DESC)a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+	</select>
+	<!-- 중고거래 - 내가 쓴 글 -->
+	<select id="selectUsedList" parameterType="map" resultType="usedVO">
+		SELECT *
+		FROM (SELECT
+        		a.*,
+    			rownum rnum
+    			FROM (SELECT
+						used_num,
+						title,
+						status,
+						category,
+						price,
+						kind,
+						reg_date,
+						modify_date,
+						hit
+            		FROM used_board 
+            		WHERE mem_num = #{mem_num}
+            		ORDER BY used_num DESC)a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+	</select>
+	<!-- 중고거래 - 댓글 목록 -->
+	<select id="selectUsedReplyList" parameterType="map" resultType="usedReplyVO">
+		SELECT *
+		FROM (SELECT
+        		a.*,
+    			rownum rnum
+    			FROM (SELECT
+						*
+            		FROM used_reply
+            		WHERE mem_num = #{mem_num}
+            		ORDER BY reply_num DESC)a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+	</select>
+	<!-- 중고거래 - 찜한 목록 -->
+	<select id="selectUsedFavList" parameterType="map" resultType="usedVO">
+		SELECT *
+		FROM (SELECT
+        		a.*,
+    			rownum rnum
+    			FROM (SELECT
+						<!-- f.fav_num, -->
+						f.used_num,
+						f.mem_num,
+						u.title,
+						u.status,
+						u.kind,
+						u.category,
+						u.price
+            		FROM fav f JOIN used_board u 
+            		ON f.used_num=u.used_num
+            		WHERE f.mem_num = #{mem_num} and f.used_num IS NOT NULL
+            		ORDER BY f.used_num DESC)a)
+        <![CDATA[
 		WHERE rnum >= #{start} AND rnum <= #{end}
 		]]>
 	</select>

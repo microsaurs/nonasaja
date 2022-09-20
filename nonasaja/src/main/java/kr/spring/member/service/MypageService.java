@@ -42,5 +42,5 @@ public interface MypageService {
 		public List<UsedReplyVO> selectUsedReplyList(Map<String,Object> map);
 		//찜한물건 (좋아요)
 		public int selectUsedFavCount(Integer mem_num);
-		public List<UsedFavVO> selectUsedFavList(Map<String,Object> map);
+		public List<UsedVO> selectUsedFavList(Map<String,Object> map);
 }
