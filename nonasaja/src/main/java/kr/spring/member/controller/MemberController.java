@@ -249,19 +249,20 @@ public class MemberController {
 		// 뷰 이름 지정
 		mav.setViewName("imageView");
 	}
-	
-	//===========마이페이지 - 공동구매=============//
-	@RequestMapping("/member/myPageProduct.do")
-	public ModelAndView listProductPage(HttpSession session, 
-			@RequestParam(value="pageNum",defaultValue = "1")int currentPage) {
-		MemberVO user = (MemberVO)session.getAttribute("user");
-		
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("myPageProduct");
-		mav.addObject("member", user);
-		
-		return mav;
-	}
+
+//	//===========마이페이지 - 공동구매=============//
+//	kr.spring.product.controller.MypageProductController로 이동
+//	@RequestMapping("/member/myPageProduct.do")
+//	public ModelAndView listProductPage(HttpSession session, 
+//			@RequestParam(value="pageNum",defaultValue = "1")int currentPage) {
+//		MemberVO user = (MemberVO)session.getAttribute("user");
+//		
+//		ModelAndView mav = new ModelAndView();
+//		mav.setViewName("myPageProduct");
+//		mav.addObject("member", user);
+//		
+//		return mav;
+//	}
 	//===========마이페이지 - 중고거래=============//
 	@RequestMapping("/member/myPageUsed.do")
 	public ModelAndView listUsedPage(HttpSession session, 
@@ -322,7 +323,6 @@ public class MemberController {
 					
 					commuList = mypageService.selectCommuList(map);
 				}
-				mav.addObject("page", page.getPage());
 			}else if(code == 2) {//레시피
 				count = mypageService.selectRecipeCount(user.getMem_num());
 				page = new PagingUtil(currentPage,count,rowCount,pageCount,"myPageCommu.do");
@@ -334,15 +334,32 @@ public class MemberController {
 					
 					recipeList = mypageService.selectRecipeList(map);
 				}
-				mav.addObject("page", page.getPage());
 			}
 			
 		}else if(type == 2) {//내가 쓴 댓글
 			
 			if(code == 1) {//커뮤니티
+				count = mypageService.selectCommuReplyCount(user.getMem_num());
+				page = new PagingUtil(currentPage,count,rowCount,pageCount,"myPageCommu.do");
 				
+				if(count>0) {
+					map.put("start", page.getStartRow());
+					map.put("end", page.getEndRow());
+					map.put("mem_num", user.getMem_num());
+					
+					commuReplyList = mypageService.selectCommuReplyList(map);
+				}
 			}else if(code == 2) {//레시피
+				count = mypageService.selectRecipeReplyCount(user.getMem_num());
+				page = new PagingUtil(currentPage,count,rowCount,pageCount,"myPageCommu.do");
 				
+				if(count>0) {
+					map.put("start", page.getStartRow());
+					map.put("end", page.getEndRow());
+					map.put("mem_num", user.getMem_num());
+					
+					recipeReplyList = mypageService.selectRecipeReplyList(map);
+				}
 			}
 		}
 		
@@ -353,8 +370,9 @@ public class MemberController {
 		mav.addObject("count", count);
 		mav.addObject("recipeList", recipeList);
 		mav.addObject("commuList", commuList);
-		//mav.addObject("recipeReplyList", recipeReplyList);
-		//mav.addObject("page", page.getPage());
+		mav.addObject("recipeReplyList", recipeReplyList);
+		mav.addObject("commuReplyList", commuReplyList);
+		mav.addObject("page", page.getPage());
 		
 		return mav;
 	}
