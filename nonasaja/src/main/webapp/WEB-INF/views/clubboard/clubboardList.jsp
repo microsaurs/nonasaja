@@ -49,7 +49,7 @@
 		</tr>
 		<tr>
 			<td id="td-1">
-			<img src="${pageContext.request.contextPath}/images/icon-gender.png" width="50px">
+			<img src="${pageContext.request.contextPath}/images/icon-gender.png" width="40px">
 			</td>
 			<td id="td-2">
 			<c:if test="${board.club_gender==0}">누구나 참여가능</c:if>
@@ -59,7 +59,7 @@
 		</tr>
 		<tr>
 			<td id="td-1">
-			<img src="${pageContext.request.contextPath}/images/icon-age.png" width="50px">
+			<img src="${pageContext.request.contextPath}/images/icon-age.png" width="40px">
 			</td>
 			<td id="td-2">
 			<c:if test="${board.club_age == '10대,20대,30대,40대,50대,60대'}">
@@ -72,7 +72,7 @@
 		</tr>
 		<tr>
 			<td id="td-1">
-			<img src="${pageContext.request.contextPath}/images/icon-calendar-date.png" width="50px">
+			<img src="${pageContext.request.contextPath}/images/icon-calendar-date.png" width="40px">
 			</td>
 			<td id="td-2">
 			${board.club_date}
@@ -80,7 +80,7 @@
 		</tr>
 		<tr>
 			<td id="td-1">
-			<img src="${pageContext.request.contextPath}/images/icon-location.png" width="50px">
+			<img src="${pageContext.request.contextPath}/images/icon-location.png" width="40px">
 			</td>
 			<td id="td-2">
 			${board.region_num}
@@ -88,7 +88,7 @@
 		</tr>
 		<tr>
 			<td id="td-3">
-			<img src="${pageContext.request.contextPath}/images/icon-multiple-users-silhouette.png" width="50px">
+			<img src="${pageContext.request.contextPath}/images/icon-multiple-users-silhouette.png" width="40px">
 			</td>
 			<td id="td-4">
 			${board.club_pre}/${board.club_limit}명 참여

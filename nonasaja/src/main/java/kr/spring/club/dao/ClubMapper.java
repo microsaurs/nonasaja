@@ -32,7 +32,9 @@ public interface ClubMapper {
 		public void updateBoard(ClubVO club);
 		@Delete("DELETE FROM club_board WHERE club_num=#{club_num}")
 		public void deleteBoard(Integer club_num);
-		//public void deleteFile(Integer club_num);
+		@Update("UPDATE club_board SET club_img='',"
+				+ "club_img_name='' WHERE club_num=#{club_num}")
+		public void deleteFile(Integer club_num);
 		
 		//부모글 좋아요
 		@Select("SELECT * FROM fav "
@@ -48,5 +50,6 @@ public interface ClubMapper {
 		public void deleteFav(Integer fav_num);
 		@Delete("DELETE FROM fav WHERE club_num=#{club_num}")
 		public void deleteFavByBoardNum(Integer board_num);
+
 		
 }

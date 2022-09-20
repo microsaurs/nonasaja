@@ -29,6 +29,7 @@
   		              ]]>
   		              b.club_leader,
   		              b.club_date,
+  		              b.club_reg_date,
   		              b.club_code,
   		              b.club_limit,
   		              b.club_pre,

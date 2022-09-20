@@ -19,7 +19,7 @@
 			<img id="img" src="viewProfile.do?mem_num=${board.mem_num}" width="70px" class="my-photo">
 			</c:if>
 			<c:if test="${empty user.photo_name}">
-			<img id="img" src="${pageContext.request.contextPath}/images/icon-profile-user-64572.png" width="70px" class="my-photo">
+			<img src="${pageContext.request.contextPath}/images/icon-profile-user-64572.png" width="50px">
 			</c:if> 
 		</li>
 		<li>
@@ -31,7 +31,7 @@
 			</c:if>
 			<br>
 			<c:if test="${empty board.club_modify_date}">
-			작성일 : ${board.club_date}
+			작성일 : ${board.club_reg_date}
 			</c:if>
 			조회 : ${board.club_hit}
 		</li>
@@ -130,7 +130,21 @@
 	</table>
 	
 	<!-- 표 끝 -->		
-
+	<c:if test="${!empty user && user.mem_num != board.club_leader}">
+	<div class="align-left">
+		<input class="button3" type="button" value="신고" id="noti_btn">
+		<script type="text/javascript">
+			let delete_btn = document.getElementById('noti_btn');
+			//이벤트 연결
+			delete_btn.onclick=function(){
+				let choice = confirm('신고하시겠습니까?');
+				if(choice){
+				 //코드입력해야함 
+				}
+			};
+		</script> 
+	</div>
+	</c:if>
 
 	<hr size="1" width="100%">
 	<div class="align-right">
@@ -150,8 +164,11 @@
 		</script>  
 		</c:if>
 		<c:if test="${!empty user && user.mem_num != board.club_leader}">
-		<input class="button" type="button" value="참여하기">
+		<input class="button" type="submit"  value="참여하기">
 		</c:if>
+		<%-- <c:if test="${board.club_pre = board.club_limit}">
+					<span class="button">모집완료</span>
+		</c:if> --%>
 		<input class="button" type="button" value="목록가기"
 		       onclick="location.href='list.do'">
 	</div>
