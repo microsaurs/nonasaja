@@ -3,9 +3,9 @@ package kr.spring.product.dao;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import kr.spring.product.vo.ProductVO;
 
@@ -25,6 +25,10 @@ public interface ProductMapper {
 	
 	//상품 수정 
 	public void updateProduct(ProductVO productVO); 
+	
+	//상품 수량 수정 
+	@Update("update product set quantity=quantity-#{quantity} where product_num=#{product_num}")
+	public void updateProductQuantity(int product_num, int quantity);
 	
 	//상품 삭제(리뷰 삭제 먼저 할 것)
 	

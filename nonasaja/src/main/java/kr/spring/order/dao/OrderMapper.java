@@ -42,7 +42,7 @@ public interface OrderMapper {
 	public void insertOrder_datail(OrderDetailVO order);
 	
 	//상품별 주문 대기 수 구하기
-	@Select("select sum(order_quantity) from norder_detail where product_num=#{prododuct_num} and wait_status=1")
+	@Select("select  NVL(sum(order_quantity),0) from norder_detail where product_num=#{prododuct_num} and wait_status=1")
 	public int selectWaitCount(int product_num);
 	
 	//주문의 status 수정하기

@@ -80,6 +80,7 @@ public class OrderController {
 			
 			//상품의 주문 대기량 구하기
 			ProductVO product = productService.selectProduct(cart_order.getProduct_num());
+			logger.debug("<<product>> : " +product);
 			int waitCount = orderService.selectWaitCount(product.getProduct_num());
 			
 			logger.debug("<<주문 요청>> waitCount: " +waitCount);
@@ -249,11 +250,17 @@ public class OrderController {
 			}
 			
 			orderDetailList.add(orderDetail);
+			//cart에서 삭제 
+			cartService.deleteCart(cart.getCart_num());
+			//product 재고 수정
+			productService.updateProductQuantity(cart.getProduct_num(), cart.getQuantity());
 		}
 
 		//order와 orderDetail insert
 		orderService.insertOrder(order, orderDetailList);
-
+		
+		
+		
 		logger.debug("<<주문등록>> : " + order);
 	
 		mav.addObject("url", request.getContextPath() + "/product/list.do");
@@ -278,6 +285,10 @@ public class OrderController {
 			int cash = lionPoint_db.getRemain();
 			lionPoint.setCash(cash);
 			lionPoint.setRemain(cash-price);
+			lionPoint.setMem_num(lionPoint_db.getMem_num());
+			lionPoint.setOrder_num(orderDetail.getOrder_num());
+			
+			logger.debug("<<lionPoint>> : " + lionPoint);
 			
 			//결제 대상인 member의 포인트 삭감
 			kakaopayService.insertPoint(lionPoint);
@@ -298,6 +309,7 @@ public class OrderController {
 		int cash = kakaopayService.selectPointbyMem(current_mem).getRemain();
 		lionPoint.setCash(cash);
 		lionPoint.setRemain(cash-product_total);
+		lionPoint.setMem_num(current_mem);
 		kakaopayService.insertPoint(lionPoint);
 		
 		// member_detail 업데이트

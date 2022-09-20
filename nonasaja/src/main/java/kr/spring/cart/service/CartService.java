@@ -27,5 +27,5 @@ public interface CartService {
 	public void updateCart(CartVO cart);
 
 	// 장바구니 삭제
-	public void deleteCart(int cart_num);
+	public void deleteCart(int cart_num);	
 }

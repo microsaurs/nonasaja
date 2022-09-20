@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import kr.spring.product.vo.ProductVO;
 
@@ -15,6 +16,8 @@ public interface ProductService {
 	public List<ProductVO> selectProductList(Map<String, Object> map);
 	//상품 상세
 	public ProductVO selectProduct(Integer product_num);
+	//상품 수량 수정 
+	public void updateProductQuantity(int product_num, int minus_quantity);
 	//상품 수정 
 	public void updateProduct(ProductVO productVO); 
 }
