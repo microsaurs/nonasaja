@@ -15,12 +15,7 @@
 
 	<ul class="detail-info">
 		<li> 
-			<c:if test="${!empty user.photo_name}">
-			<img id="img" src="viewProfile.do?mem_num=${board.mem_num}" width="70px" class="my-photo">
-			</c:if>
-			<c:if test="${empty user.photo_name}">
-			<img src="${pageContext.request.contextPath}/images/icon-profile-user-64572.png" width="50px">
-			</c:if> 
+			<img id="img" src="${pageContext.request.contextPath}/member/viewProfile.do?mem_num=${board.mem_num}" width="50px" class="my-photo">
 		</li>
 		<li>
 			<c:if test="${empty board.nickname}"><b>${board.id}</b></c:if>
