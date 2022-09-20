@@ -38,7 +38,7 @@
 				<form:input path="commu_time" class="input_box_time"/>
 				<form:errors path="commu_time" cssClass="error-color"/>
 			</li>
-			<li>
+			<li> 
 				<label for="commu_ingredient">필수 재료</label>
 				<form:input path="commu_ingredient" class="input_box_ingredient"/>
 				<form:errors path="commu_ingredient" cssClass="error-color"/>
