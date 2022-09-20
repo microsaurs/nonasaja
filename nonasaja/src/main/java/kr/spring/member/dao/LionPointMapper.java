@@ -20,7 +20,7 @@ public interface LionPointMapper {
 	@Select("SELECT COUNT(*) FROM lionpoint where mem_num=#{mem_num}")
 	public int selectPointCnt(Integer mem_num);//포인트 내역 건수
 	public List<LionPointVO> selectPointList(Map<String, Object> map);//포인트 내역 목록
-	@Select("select * from (select a.*, rownum rnum from(select * from lionpoint where mem_num=${mem_num} order by point_num desc) a) where rnum=1;")
+	@Select("select * from (select a.*, rownum rnum from(select * from lionpoint where mem_num=${mem_num} order by point_num desc) a) where rnum=1")
 	public LionPointVO selectPointbyMem(Integer mem_num);//회원번호로 포인트 직전 내역 조회
 	@Update("UPDATE member_detail SET cash=#{cash} WHERE mem_num=#{mem_num}")
 	public void updateMemberCash(MemberVO member);//멤버디테일에 있는 캐시 컬럼 업데이트
