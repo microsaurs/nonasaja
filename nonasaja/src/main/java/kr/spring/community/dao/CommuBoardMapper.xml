@@ -242,7 +242,7 @@
 	</select>
 	
 	<!-- 레시피글수정 -->
-  	<update id="updateBoard2" parameterType="recipeVO">
+  	<update id="updateBoard2" parameterType="RecipeVO">
   		UPDATE community_recipe_board SET
   			<if test="filename != ''">  <!-- 업로드가 되었을경우 파일명을 체크해서 존재할시 (파일명이 비어있지 않을경우) -->
   		    uploadfile=#{uploadfile},
