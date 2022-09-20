@@ -28,6 +28,9 @@ import kr.spring.community.vo.RecipeVO;
 import kr.spring.member.service.MemberService;
 import kr.spring.member.service.MypageService;
 import kr.spring.member.vo.MemberVO;
+import kr.spring.used.vo.UsedFavVO;
+import kr.spring.used.vo.UsedReplyVO;
+import kr.spring.used.vo.UsedVO;
 import kr.spring.util.AuthCheckException;
 import kr.spring.util.FileUtil;
 import kr.spring.util.PagingUtil;
@@ -268,12 +271,71 @@ public class MemberController {
 	public ModelAndView listUsedPage(HttpSession session, 
 			@RequestParam(value="pageNum",defaultValue = "1")int currentPage,
 			@RequestParam(value="type",defaultValue="1") int type) {
+		logger.debug("<type>... " + type);
+		
 		MemberVO user = (MemberVO)session.getAttribute("user");
+		logger.debug("<중고거래 mem_num>... " + user.getMem_num());
 		
 		ModelAndView mav = new ModelAndView();
+		
+		Map<String,Object> map = new HashMap<>();
+		PagingUtil page = null;
+		int count = 0;
+		List<UsedVO> usedList = null;
+		List<UsedReplyVO> usedReplyList = null;
+		List<UsedVO> usedFavList = null;
+		
+		if(type==1) {//내가 쓴 글
+			count = mypageService.selectUsedCount(user.getMem_num());
+			page = new PagingUtil(currentPage,count,rowCount,pageCount,"myPageUsed.do");
+			if(count>0) {
+				map.put("start", page.getStartRow());
+				map.put("end", page.getEndRow());
+				map.put("mem_num", user.getMem_num());
+				
+				usedList = mypageService.selectUsedList(map);
+			}
+			
+		}else if(type==2) {//내가 쓴 댓글
+			count = mypageService.selectUsedReplyCount(user.getMem_num());
+			page = new PagingUtil(currentPage,count,rowCount,pageCount,"myPageUsed.do");
+			if(count>0) {
+				map.put("start", page.getStartRow());
+				map.put("end", page.getEndRow());
+				map.put("mem_num", user.getMem_num());
+				
+				usedReplyList = mypageService.selectUsedReplyList(map);
+			}
+			
+		}else if(type==3) {//찜한 글
+			count = mypageService.selectUsedFavCount(user.getMem_num());
+			page = new PagingUtil(currentPage,count,rowCount,pageCount,"myPageUsed.do");
+			logger.debug("<count2>... " + count);
+			if(count>0) {
+				map.put("start", page.getStartRow());
+				map.put("end", page.getEndRow());
+				map.put("mem_num", user.getMem_num());
+				
+				usedFavList = mypageService.selectUsedFavList(map);
+				
+				logger.debug("<fav2>... " + usedFavList);
+			}
+		}else if(type==4) {//1대1 대화
+			
+		}
+		
 		mav.setViewName("myPageUsed");
+		
 		mav.addObject("member", user);
+		
 		mav.addObject("type", type);
+		mav.addObject("count", count);
+		
+		mav.addObject("usedList", usedList);
+		mav.addObject("usedReplyList", usedReplyList);
+		mav.addObject("usedFavList", usedFavList);
+		
+		mav.addObject("page", page.getPage());
 		
 		return mav;
 	}
@@ -376,8 +438,7 @@ public class MemberController {
 		
 		return mav;
 	}
-		
-	
+
 	//=========비밀번호 변경===========//
 	//비밀번호 변경 폼
 	@GetMapping("/member/changePassword.do")

@@ -36,14 +36,12 @@ public class MypageServiceImpl implements MypageService {
 
 	@Override
 	public int selectRecipeReplyCount(Integer mem_num) {
-		// TODO Auto-generated method stub
-		return 0;
+		return mypageMapper.selectRecipeCount(mem_num);
 	}
 
 	@Override
 	public List<RecipeReplyVO> selectRecipeReplyList(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
+		return mypageMapper.selectRecipeReplyList(map);
 	}
 
 	@Override
@@ -58,14 +56,12 @@ public class MypageServiceImpl implements MypageService {
 
 	@Override
 	public int selectCommuReplyCount(Integer mem_num) {
-		// TODO Auto-generated method stub
-		return 0;
+		return mypageMapper.selectCommuReplyCount(mem_num);
 	}
 
 	@Override
 	public List<CommunityReplyVO> selectCommuReplyList(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
+		return mypageMapper.selectCommuReplyList(map);
 	}
 
 	@Override
@@ -82,38 +78,32 @@ public class MypageServiceImpl implements MypageService {
 
 	@Override
 	public int selectUsedCount(Integer mem_num) {
-		// TODO Auto-generated method stub
-		return 0;
+		return mypageMapper.selectUsedCount(mem_num);
 	}
 
 	@Override
 	public List<UsedVO> selectUsedList(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
+		return mypageMapper.selectUsedList(map);
 	}
 
 	@Override
 	public int selectUsedReplyCount(Integer mem_num) {
-		// TODO Auto-generated method stub
-		return 0;
+		return mypageMapper.selectUsedReplyCount(mem_num);
 	}
 
 	@Override
 	public List<UsedReplyVO> selectUsedReplyList(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
+		return mypageMapper.selectUsedReplyList(map);
 	}
 
 	@Override
 	public int selectUsedFavCount(Integer mem_num) {
-		// TODO Auto-generated method stub
-		return 0;
+		return mypageMapper.selectUsedFavCount(mem_num);
 	}
 
 	@Override
-	public List<UsedFavVO> selectUsedFavList(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<UsedVO> selectUsedFavList(Map<String, Object> map) {
+		return mypageMapper.selectUsedFavList(map);
 	}
 
 }
