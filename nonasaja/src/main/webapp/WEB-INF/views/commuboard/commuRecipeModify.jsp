@@ -50,16 +50,53 @@
 				<form:radiobutton path="commu_level" value="하급"/>하
 				<form:errors path="commu_level" cssClass="error-color"/>
 			</li><br>
+			
 			<p class="title_upload">대표사진</p>
 			<li>
-				<img src="${pageContext.request.contextPath}/images/empty.jpg" class="recipe-img" id="img1" name="img1">
+				<img src="imageView.do?commu_num=${board.commu_num}&board_type=2" style="max-width:800px;">
 			</li>
 			<li id="recipe_upload">
 				<input type="file" name="upload" id="upload" accept="image/gif,image/png,image/jpeg">
 			</li>
+			<c:if test="${!empty board.filename}">
+				<div id="file_detail">
+					(${board.filename})파일 등록
+					<input type="button" value="파일삭제"
+					                      id="file_del">
+				</div>
+				<script type="text/javascript">
+					$(function(){
+						$('#file_del').click(function(){
+							let choice = confirm('삭제하시겠습니까?');
+							if(choice){
+								$.ajax({
+									url:'deleteFile.do',
+									data:{commu_num:${recipeVO.commu_num}},
+									type:'post',
+									dataType:'json',
+									cache:false,
+									timeout:30000,
+									success:function(param){
+										if(param.result == 'logout'){
+											alert('로그인 후 사용하세요!');
+										}else if(param.result == 'success'){
+											$('#file_detail').hide();
+										}else{
+											alert('파일 삭제 오류 발생');
+										}
+									},
+									error:function(){
+										alert('네트워크 오류 발생');
+									}
+								});
+							}
+						});
+					});
+				</script>
+				</c:if>
 			<p class="title_upload">레시피 과정</p>
 			<li>
-				<img src="${pageContext.request.contextPath}/images/empty.jpg" class="recipe-img2" id="img2" name="img2">
+				<img id="recipe_photo" src="imageView.do?commu_num=${board.commu_num}&board_type=3" style="max-width:500px;">
 				<form:textarea id="recipe_textarea" rows="4" cols="70" path="commu_content" placeholder="레시피 1단계" />
 				<form:errors path="commu_content" cssClass="error-color"/>
 			</li>
@@ -68,7 +105,7 @@
 			</li>
 
 			<li>
-				<img src="${pageContext.request.contextPath}/images/empty.jpg" class="recipe-img2" id="img3" name="img3">
+				<img id="recipe_photo" src="imageView.do?commu_num=${board.commu_num}&board_type=4" style="max-width:500px;">
 				<form:textarea  rows="4" cols="70" path="commu_content2" placeholder="레피시 2단계" />
 				<form:errors path="commu_content2" cssClass="error-color"/>
 			</li>
@@ -77,7 +114,7 @@
 			</li>
 
 			<li>
-				<img src="${pageContext.request.contextPath}/images/empty.jpg" class="recipe-img2" id="img4" name="img4">
+				<img id="recipe_photo" src="imageView.do?commu_num=${board.commu_num}&board_type=5" style="max-width:500px;">
 				<form:textarea  rows="4" cols="70" path="commu_content3" placeholder="레피시 3단계" />
 				<form:errors path="commu_content3" cssClass="error-color"/>
 			</li>
@@ -86,7 +123,7 @@
 			</li>
 
 			<li>
-				<img src="${pageContext.request.contextPath}/images/empty.jpg" class="recipe-img2" id="img5" name="img5">
+				<img id="recipe_photo" src="imageView.do?commu_num=${board.commu_num}&board_type=6" style="max-width:500px;">
 				<form:textarea  rows="4" cols="70" path="commu_content4" placeholder="레피시 4단계" />
 				<form:errors path="commu_content4" cssClass="error-color"/>
 			</li>
@@ -95,7 +132,7 @@
 			</li>
 
 			<li>
-				<img src="${pageContext.request.contextPath}/images/empty.jpg" class="recipe-img2" id="img6" name="img6">
+				<img id="recipe_photo" src="imageView.do?commu_num=${board.commu_num}&board_type=7" style="max-width:500px;">
 				<form:textarea  rows="4" cols="70" path="commu_content5" placeholder="레피시 5단계" />
 				<form:errors path="commu_content5" cssClass="error-color"/>
 			</li>
