@@ -157,6 +157,17 @@ ul.detail-info #img{
 	width:300px;
 	text-align: center;	
 }
+.button3{
+/* 	font-family: 'Poor Story', cursive; */
+	font-weight:bold;
+	font-size:medium;
+	padding:10px;
+	margin:5px;
+	color: black;
+	border: none;
+	overflow:hidden;
+	border-radius:80px;
+}
 .textarea{
 	border: 1px solid #444444;
 	border-radius:10px;

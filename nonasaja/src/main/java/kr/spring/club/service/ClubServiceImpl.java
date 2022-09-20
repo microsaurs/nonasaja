@@ -56,10 +56,11 @@ public class ClubServiceImpl implements ClubService{
 		clubMapper.deleteBoard(club_num);
 	}
 
-	/*
-	 * @Override public void deleteFile(Integer club_num) {
-	 * clubMapper.deleteFile(club_num); }
-	 */
+
+	 @Override 
+	 public void deleteFile(Integer club_num) {
+	 clubMapper.deleteFile(club_num); }
+
 
 	@Override
 	public ClubFavVO selectFav(ClubFavVO fav) {
@@ -81,9 +82,5 @@ public class ClubServiceImpl implements ClubService{
 		clubMapper.deleteFav(fav_num);
 	}
 
-	@Override
-	public void deleteFile(Integer club_num) {
-		// TODO Auto-generated method stub
-		
-	}
+
 }

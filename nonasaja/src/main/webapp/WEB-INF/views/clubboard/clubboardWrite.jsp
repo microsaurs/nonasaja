@@ -77,7 +77,7 @@
 			</li>
 			<li>
 				<label for="club_limit">총 인원수</label>
-				<form:input class="textarea" path="club_limit" value="1"/>
+				<form:input type="number" path="club_limit" value="1"/>
 				<form:errors path="club_limit" 
 				             cssClass="error-color"/>
 			</li>
