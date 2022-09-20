@@ -1,5 +1,9 @@
 package kr.spring.member.controller;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -17,10 +21,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.spring.community.vo.CommunityReplyVO;
+import kr.spring.community.vo.CommunityVO;
+import kr.spring.community.vo.RecipeReplyVO;
+import kr.spring.community.vo.RecipeVO;
 import kr.spring.member.service.MemberService;
+import kr.spring.member.service.MypageService;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.util.AuthCheckException;
 import kr.spring.util.FileUtil;
+import kr.spring.util.PagingUtil;
 
 @Controller
 public class MemberController {
@@ -28,7 +38,10 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 
-	private int rowCount = 20;
+	@Autowired
+	private MypageService mypageService;	
+	
+	private int rowCount = 10;
 	private int pageCount = 10;
 	
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
@@ -237,7 +250,7 @@ public class MemberController {
 		mav.setViewName("imageView");
 	}
 	
-	//===========마이페이지 - 중고거래=============//
+	//===========마이페이지 - 공동구매=============//
 	@RequestMapping("/member/myPageProduct.do")
 	public ModelAndView listProductPage(HttpSession session, 
 			@RequestParam(value="pageNum",defaultValue = "1")int currentPage) {
@@ -279,22 +292,70 @@ public class MemberController {
 	@RequestMapping("/member/myPageCommu.do")
 	public ModelAndView listCommuPage(HttpSession session, 
 			@RequestParam(value="pageNum",defaultValue="1")int currentPage,
-			@RequestParam(value="type",defaultValue="1") int type,
-			@RequestParam(value="code",defaultValue="1") int code) {//code: 1-자유,2-레시피
+			@RequestParam(value="type",defaultValue="1") int type,//type: 1-내가쓴글,2-내가쓴댓글
+			@RequestParam(value="code",defaultValue="1") int code) {//code: 1-커뮤니티,2-레시피
+		logger.debug("<request: type>... " + type);
+		logger.debug("<request: code>... " + code);
+		
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		
 		
 		ModelAndView mav = new ModelAndView();
 		
-		if(code == 1) {//커뮤니티
+		Map<String,Object> map = new HashMap<>();
+		PagingUtil page = null;
+		List<CommunityVO> commuList = null;
+		List<CommunityReplyVO> commuReplyList = null;
+		List<RecipeVO> recipeList = null;
+		List<RecipeReplyVO> recipeReplyList = null;
+		int count = 0;
+		if(type == 1) {//내가 쓴 글
 			
-		}else if(code == 2) {//레시피
+			if(code == 1) {//커뮤니티
+				count = mypageService.selectCommuCount(user.getMem_num());
+				page = new PagingUtil(currentPage,count,rowCount,pageCount,"myPageCommu.do");
+				
+				if(count>0) {
+					map.put("start", page.getStartRow());
+					map.put("end", page.getEndRow());
+					map.put("mem_num", user.getMem_num());
+					
+					commuList = mypageService.selectCommuList(map);
+				}
+				mav.addObject("page", page.getPage());
+			}else if(code == 2) {//레시피
+				count = mypageService.selectRecipeCount(user.getMem_num());
+				page = new PagingUtil(currentPage,count,rowCount,pageCount,"myPageCommu.do");
+				
+				if(count>0) {
+					map.put("start", page.getStartRow());
+					map.put("end", page.getEndRow());
+					map.put("mem_num", user.getMem_num());
+					
+					recipeList = mypageService.selectRecipeList(map);
+				}
+				mav.addObject("page", page.getPage());
+			}
 			
+		}else if(type == 2) {//내가 쓴 댓글
+			
+			if(code == 1) {//커뮤니티
+				
+			}else if(code == 2) {//레시피
+				
+			}
 		}
 		
 		mav.setViewName("myPageCommu");
 		mav.addObject("member", user);
 		mav.addObject("type", type);
+		mav.addObject("code", code);
+		mav.addObject("count", count);
+		mav.addObject("recipeList", recipeList);
+		mav.addObject("commuList", commuList);
+		//mav.addObject("recipeReplyList", recipeReplyList);
+		//mav.addObject("page", page.getPage());
+		
 		return mav;
 	}
 		

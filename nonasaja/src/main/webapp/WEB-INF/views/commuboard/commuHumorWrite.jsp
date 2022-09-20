@@ -18,8 +18,8 @@
 <!-- include ckeditor js -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/ckeditor.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/uploadAdapter.js"></script>
-	<h2>커뮤니티 글쓰기</h2><br>
 <!-- 작성 가이드 시작 -->
+<br>
 		<div class="container">
 		<div class="accordion" id="accordionExample">
 			<div class="accordion-item">
@@ -47,7 +47,7 @@
 			</div>
 		</div>	<!-- end of parent -->
 	</div><!--  end of container -->
-	<br>
+	<br><br>
 <!-- 작성 가이드 끝 -->
 
 <!-- 기본 정보 입력 시작 -->
@@ -65,16 +65,16 @@
 					<div class="accordion-body">
 		<ul>
 			<li>
-				<label for="commu_code">카테고리</label>
+				<label for="commu_code">카테고리&emsp;</label>
 				<form:radiobutton  path="commu_code" value="1" checked="checked"/>자유
 				<form:radiobutton path="commu_code" value="2"/>지역세일
 				<form:radiobutton path="commu_code" value="3"/>자취백과
 				<form:errors path="commu_code" 
 				             cssClass="error-color"/>
-			</li>
+			</li><br>
 			<li>
 				<label for="commu_title">제목</label>
-				<form:input path="commu_title"/>
+				<form:input path="commu_title" id="commu_title"/>
 				<form:errors path="commu_title" 
 				             cssClass="error-color"/>
 			</li>
@@ -84,7 +84,7 @@
 			</div>
 		</div>	<!-- end of parent -->
 	</div><!--  end of container -->
-	<br>
+	<br><br>
 <!-- 지역 세일 정보 입력 시작 -->
 		<div class="container">
 		<div class="accordion" id="accordionExample">
@@ -96,8 +96,8 @@
 					<div class="accordion-body">
 		<ul>
 			<li>
-				<label for="region_num">지역 정보</label>
-				<form:input path="region_num"/>
+				<label for="region_num">지역 정보&emsp;</label>
+				<form:input path="region_num" id="region_num"/>
 				<form:errors path="region_num" 
 				             cssClass="error-color"/>
 			</li>
@@ -107,13 +107,12 @@
 			</div>
 		</div>	<!-- end of parent -->
 	</div><!--  end of container -->
-	<br>
+	<br><br>
 <!-- 지역 세일 정보 입력 끝 -->
 
 <!-- ckeditor 시작 -->
-		<ul>
-			<li>
-				<form:textarea path="commu_content"/>
+
+				<form:textarea path="commu_content" placeholder="내용을 입력해주세요."/>
 				<form:errors path="commu_content" 
 				             cssClass="error-color"/>
 				<script>
@@ -135,16 +134,15 @@
 		            .catch( error => {
 		                console.error( error );
 		            } );
-			    </script>               
-			</li>
-		</ul>
+			    </script> <br>              
+
 		<div class="align-center">
-			<form:button>전송</form:button>
-			<input type="button" value="목록"
+			<form:button class="button">작성</form:button>
+			<input class="button" type="button" value="취소"
 			            onclick="location.href='list.do'">
-		</div> 	
+		</div>
 <!-- ckeditor 끝 -->			
-	</form:form>
+	</form:form><br>
 	<br>	
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>

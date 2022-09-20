@@ -32,7 +32,18 @@ public class CommuBoardServiceImpl implements CommuBoardService{
 	public int selectRowCount(Map<String, Object> map) {
 		return boardMapper.selectRowCount(map);
 	}
+	
+	@Override
+	public List<CommunityVO> commuSelectList(Map<String, Object> map) {
+		return boardMapper.commuSelectList(map);
+	}
 
+	@Override
+	public int commuSelectRowCount(Map<String, Object> map) {
+		return boardMapper.commuSelectRowCount(map);
+	}
+	
+	
 	@Override
 	public void insertBoard(CommunityVO board) {
 		boardMapper.insertBoard(board);
@@ -213,6 +224,8 @@ public class CommuBoardServiceImpl implements CommuBoardService{
 	public void deleteReply2(Integer reply_num) {
 		boardMapper.deleteReply2(reply_num);
 	}
+
+
 
 
 	

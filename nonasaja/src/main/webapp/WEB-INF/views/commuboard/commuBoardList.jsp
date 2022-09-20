@@ -9,7 +9,15 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
 <div class="page-main">
-	<h2>유머 게시판 목록</h2>
+	<h2>커뮤니티</h2>
+	<div class="align-center">
+	<a href="commuList.do?keyfield=1"><img id="commuList_img" src="${pageContext.request.contextPath}/images/schedule.png"></a>
+	<a href="commuList.do?keyfield=2"><img id="commuList_img" src="${pageContext.request.contextPath}/images/sale.png"></a>
+	<a href="commuList.do?keyfield=3"><img id="commuList_img" src="${pageContext.request.contextPath}/images/book.png"></a>
+	</div>
+	
+	
+	
 	<form action="list.do" id="search_form" method="get">
 		<ul class="search">
 			<li>
@@ -24,8 +32,8 @@
 				<input type="search" name="keyword" id="keyword" value="${param.keyword}">
 			</li>
 			<li>
-				<input type="submit" value="찾기">
-				<input type="button" value="목록" onclick="location.href='list.do'">
+				<input type="submit" class="button" value="찾기">
+				<input type="button" class="button" value="목록" onclick="location.href='list.do'">
 			</li>
 		</ul>
 	</form>

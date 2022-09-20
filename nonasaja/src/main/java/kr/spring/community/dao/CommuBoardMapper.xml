@@ -10,9 +10,8 @@
 		  COUNT(*)
 		 FROM community_board b JOIN member m
 		 ON b.mem_num = m.mem_num
-		 <where> 
+		 <where>		 	 
 		 	<if test="keyword != null and keyword != ''">
-
 		 		<if test="keyfield == 1">
 		 			b.commu_title LIKE '%' || #{keyword} || '%'
 		 		</if>
@@ -49,7 +48,7 @@
 			  		   m.nickname
 			  		FROM community_board b JOIN member m
 			  		ON b.mem_num = m.mem_num
-			  		 <where>
+			  		 <where>			  		 
 					 	<if test="keyword != null and keyword != ''">
 					 		<if test="keyfield == 1">
 					 			b.commu_title LIKE '%' || #{keyword} || '%'
@@ -65,6 +64,48 @@
 					 			b.commu_title LIKE '%' || #{keyword} || '%' OR
 					 			b.commu_content LIKE '%' || #{keyword} || '%'
 					 		</if>
+					 	</if>
+		 			</where>
+			  		ORDER BY b.commu_num DESC)a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+	</select>
+
+ 	<select id="commuSelectRowCount" parameterType="map" resultType="integer">
+		SELECT
+		  COUNT(*)
+		 FROM community_board b JOIN member m
+		 ON b.mem_num = m.mem_num
+		 <where> 
+		 	<if test="keyfield != null and keyfield != ''">
+				b.commu_code = #{keyfield}
+		 	</if>
+		 </where>
+	</select>	
+
+	<select id="commuSelectList" parameterType="map" resultType="communityVO">
+		SELECT
+		  *
+		FROM (SELECT
+				a.*,
+				rownum rnum
+			  FROM (SELECT
+			  		   b.commu_num,
+			  		   <![CDATA[
+			  		   REPLACE(REPLACE(b.commu_title,'<','&lt;'),'>','&gt;') commu_title,
+			  		   ]]>
+			  		   b.commu_code,
+			  		   b.commu_hit,
+			  		   b.commu_date,
+			  		   b.mem_num,
+			  		   m.id,
+			  		   m.nickname
+			  		FROM community_board b JOIN member m
+			  		ON b.mem_num = m.mem_num
+			  		 <where>
+					 	<if test="keyfield != null and keyfield != ''">
+							b.commu_code = #{keyfield}
 					 	</if>
 		 			</where>
 			  		ORDER BY b.commu_num DESC)a)

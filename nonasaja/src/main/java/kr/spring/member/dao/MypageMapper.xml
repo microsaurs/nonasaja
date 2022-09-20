@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.spring.member.dao.MypageMapper">
+	<!-- 레시피 목록 -->
+	<select id="selectRecipeList" parameterType="map" resultType="recipeVO">
+		SELECT *
+		FROM (SELECT
+        		a.*,
+    			rownum rnum
+    			FROM (SELECT
+						commu_num,
+						<![CDATA[
+			  		   	REPLACE(REPLACE(commu_title,'<','&lt;'),'>','&gt;') commu_title,
+			  			]]>
+						commu_recommend,
+						commu_hit,
+						commu_food
+            		FROM community_recipe_board 
+            		WHERE mem_num = #{mem_num}
+            		ORDER BY commu_num DESC)a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+	</select>
+	<!-- 레시피 목록 -->
+	<select id="selectCommuList" parameterType="map" resultType="communityVO">
+		SELECT *
+		FROM (SELECT
+        		a.*,
+    			rownum rnum
+    			FROM (SELECT
+						commu_num,
+						<![CDATA[
+			  		   	REPLACE(REPLACE(commu_title,'<','&lt;'),'>','&gt;') commu_title,
+			  			]]>
+						commu_recommend,
+						commu_hit,
+						commu_code
+            		FROM community_board 
+            		WHERE mem_num = #{mem_num}
+            		ORDER BY commu_num DESC)a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+	</select>
+</mapper>
