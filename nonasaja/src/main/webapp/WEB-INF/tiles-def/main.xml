@@ -24,5 +24,16 @@
     	<put-attribute name="footer"
     	   value="/WEB-INF/views/template/footer.jsp"/>                   
     </definition>
+    <!-- 부트스트랩용 헤더 레이아웃 -->
+    <definition name="main3" 
+       template="/WEB-INF/views/template/layout3.jsp">
+    	<put-attribute name="title" value="노나사자"/>
+    	<put-attribute name="header2"
+    	   value="/WEB-INF/views/template/header2.jsp"/>
+    	<put-attribute name="body"
+    	             value="/WEB-INF/views/main/main.jsp"/>    
+    	<put-attribute name="footer"
+    	   value="/WEB-INF/views/template/footer.jsp"/>                   
+    </definition>
 </tiles-definitions>
 

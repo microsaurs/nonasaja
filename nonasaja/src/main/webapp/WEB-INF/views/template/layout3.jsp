@@ -1,0 +1,27 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>    
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title><tiles:getAsString name="title"/></title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
+</head>
+<body>
+<div id="main3">
+	<div id="main_header2">
+		<tiles:insertAttribute name="header2"/>
+	</div>
+	<div id="main_body">
+		<tiles:insertAttribute name="body"/>
+	</div>
+	<div id="main_footer">
+		<tiles:insertAttribute name="footer"/>
+	</div>
+</div>
+</body>
+</html>
+
+
+

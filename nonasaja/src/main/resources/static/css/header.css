@@ -82,6 +82,7 @@
 }
 .header-line{
 	width:70%;
+	padding:20px 0;
 }
 hr {
     border: 0.5px solid #E3E7EB;
@@ -90,4 +91,7 @@ hr {
 	font-size:18px;
 	margin:9px 10px 10px 20px;
 	float:right;
+}
+.marginforcart{
+	margin:0 0 0 10px;
 }
