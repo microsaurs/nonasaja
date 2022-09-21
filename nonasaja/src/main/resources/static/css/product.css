@@ -61,9 +61,9 @@ li#detail_li{
 /*===============상품 상세============*/
 .product-image{
 	float: left;
-    width: 300px;
-    height: 300px;
-    margin: 50px 50px 50px 15%;
+    width: 310px;
+    height: 310px;
+    margin: 50px 50px 50px 13%;
 }
 .product-detail{
 	float: left;
@@ -88,17 +88,74 @@ form#product_cart{
 	font-size: 13pt;
 }
 ul#price_box{
-	width: 75%;
+	width: 60%;
     background-color: #CCCBBC;
     padding: 10px;
-}
-#price_box li{
-	width:80%;
 }
 #div_quantity{
 	font-weight: 700;
     font-size: 11pt;
 }
+li.req-quantity{
+	padding: 0 0 0 35%;
+}
+#price{
+	padding: 0 0 0 54%;
+    font-weight: bold;
+}
+#product_total_txt{
+	font-size: 17pt;
+    color: #CF9B1D;
+    font-weight: bold;
+}
+#product_total_txt2{
+	padding: 0 0 0 36%;
+}
+form#product_cart input[type=submit]{
+	width: 64%;
+    height: 30px;
+    border: none;
+    background-color: #6B5F38;
+    margin: 5px 0 0 0;
+    color: white;
+    font-size: 13pt;
+    font-weight: bolder;
+}
+#detail_txt{
+	padding:0 0 0 4%;
+}
+#must_txt{
+	padding: 0 0 0 4%;
+    margin: 30px 0 30px 0;
+}
+#review_txt{
+	padding: 0 0 0 4%;
+    margin: 30px 0 30px 0;
+}
+table#must{
+	width: 92%;
+	border-color: #CCCCCC;
+	border-width: 0.5px;
+	margin-bottom: 40px;
+}
+table#must tr, table#must td, table#must th{
+	border-color: #CCCCCC;
+	border-width: 0.5px;
+}
+table#must td{
+	padding: 8px 0 8px 15px;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
