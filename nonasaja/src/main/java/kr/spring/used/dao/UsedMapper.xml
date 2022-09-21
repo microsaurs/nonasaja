@@ -40,6 +40,8 @@
 		  		   <![CDATA[
 		  		   REPLACE(REPLACE(b.title,'<','&lt;'),'>','&gt;') title,
 		  		   ]]>
+		  		   b.price,
+		  		   b.status,
 		  		   b.hit,
 		  		   b.reg_date,
 		  		   b.mem_num,
