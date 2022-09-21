@@ -38,7 +38,6 @@ ul.radio-button li{
 	width:"350";
 }
 
-}
 .button2{
   width: 40px;
   height: 30px;
@@ -84,6 +83,7 @@ a:hover{
 	text-decoration:underline;
 	color:#999999;
 }
+
 /*중고거래 목록*/
 select{
 	width:80px;
@@ -91,18 +91,22 @@ select{
 	border: 1.5px solid #878787;
 	border-radius:5px;
 }
+span{
+	font-size:16px;
+	line-height:30px;
+}
 .item-space .horizontal-area{
 	margin:2px;
 	padding:3px;
-	width:300px;
-	height:420px;
+	width:280px;
+	height:320px;
 	float:left;
 	overflow:hidden;
-	text-align:center;
 }
 #usedproduct_photo {
-	width:220px;
-	height:190px;
+	width:270px;
+	height:230px;
+	padding: 7px;
 }
 .item-space .horizontal-area span{
 	padding:5px;
@@ -111,11 +115,15 @@ select{
 .item-space .float-clear{
 	clear:both;
 }
+.item-space{
+	padding:0 30px;
+}
 .text-align-center{
 	text-align:center;
 }
 .status-img-float{
 	float:left;
+	padding:0 10px;
 }
 .float-clear{
 	clear:both;
@@ -129,16 +137,32 @@ select{
 .page-main ul.search-align{
 	list-style:none;
 	padding:0;
+	margin:0 10px 0 0;
+	float:right;
 }
 .page-main ul.search-align li{
-	margin:0 0 9px 0;
+	margin: 0 0 9px 0;
 	padding:0;
 	display:inline;
 }
 .page-main form#search_form1{
 	border: none;
-	margin-left:625px;
+	margin:0 30px 0 0;
+	padding:20px 0 0 0;
+	box-sizing: border-box;
+	float:right;
+	
 }
+.writebutton-float{
+	width:100%;
+	padding:20px 0px 80px 10px;
+}
+.writebutton{
+	width:260px;
+	height:85px;
+	margin-left:30px;
+}
+
 .button5{
   width: 40px;
   height: 25px;
@@ -160,12 +184,22 @@ select{
   color:white;
 }
 .button3{
-  width: 50px;
-  height: 30px;
+  width: 250px;
+  height: 60px;
   border:0;
   background:#EABF5E;
-  position:relative;
+  font-size:30px;
   outline:0;
-  border-radius: 6px;
+  border-radius: 20px;
   color:white;
+}
+.result-display1{
+	font-size:large;
+	width:400px;
+	height:200px;
+	margin:50px auto;/*상하 좌우*/
+	border:none;/*테두리*/
+	display: flex;/*하위 요소를 수직으로 쌓을 수 있는 공간을 만듬*/
+  	align-items: center;/*세로 정렬*/
+  	justify-content: center;/*가로 정렬*/
 }
