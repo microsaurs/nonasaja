@@ -33,3 +33,16 @@ create table used_reply(
 );
 
 create sequence used_reply_seq;
+
+--동호회 가입 테이블
+create table join(
+ join_num number not null,
+ club_num number not null,
+ mem_num number not null,
+ join_reg_date date not null,
+ constraint join_pk primary key (join_num),
+ constraint join_fk1 foreign key (club_num) references club_board(club_num),
+ constraint join_fk2 foreign key (mem_num) references member(mem_num)
+);
+
+create sequence club_seq;
