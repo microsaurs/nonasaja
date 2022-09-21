@@ -40,12 +40,12 @@
 			<tr>
 				<td>
 					<c:if test="${type == 1}">
-					<b><a href="myPageClub.do?type=1'">참여중인 동호회</a></b> |
-					<a href="myPageClub.do?type=2'">찜한 동호회</a>
+					<b><a href="myPageClub.do?type=1">참여중인 동호회</a></b> |
+					<a href="myPageClub.do?type=2">찜한 동호회</a>
 					</c:if>
 					<c:if test="${type == 2}">
-					<a href="myPageClub.do?type=1'">참여중인 동호회</a> |
-					<b><a href="myPageClub.do?type=2'">찜한 동호회</a></b>
+					<a href="myPageClub.do?type=1">참여중인 동호회</a> |
+					<b><a href="myPageClub.do?type=2">찜한 동호회</a></b>
 					</c:if>
 				</td>
 			</tr>
