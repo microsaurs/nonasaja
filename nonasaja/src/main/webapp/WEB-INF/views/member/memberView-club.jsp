@@ -39,12 +39,32 @@
 			</tr>
 			<tr>
 				<td>
-					<a onclick="location.href='/join/list.do'">참여중인 동호회</a> |
-					<a>동호회 추천</a>
+					<c:if test="${type == 1}">
+					<b><a href="myPageClub.do?type=1'">참여중인 동호회</a></b> |
+					<a href="myPageClub.do?type=2'">찜한 동호회</a>
+					</c:if>
+					<c:if test="${type == 2}">
+					<a href="myPageClub.do?type=1'">참여중인 동호회</a> |
+					<b><a href="myPageClub.do?type=2'">찜한 동호회</a></b>
+					</c:if>
 				</td>
 			</tr>
+			
 			<tr>
-				
+				<!-- 참여중인 동호회 -->
+				<c:if test="${!empty clubList}">
+				<td>동호회명</td>
+				</c:if>
+				<!-- 찜한 동호회 -->
+				<c:if test="${!empty clubFavList}">
+				<td>동호회명</td>
+				</c:if>
+				<!-- 결과 없음 -->
+				<c:if test="${count<=0}">
+				<td>
+					가입한 동호회가 없습니다.
+				</td>
+				</c:if>
 			</tr>
 		</table>
 	</div>

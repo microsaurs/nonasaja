@@ -5,6 +5,8 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Select;
 
+import kr.spring.club.vo.ClubFavVO;
+import kr.spring.club.vo.ClubVO;
 import kr.spring.community.vo.CommunityReplyVO;
 import kr.spring.community.vo.CommunityVO;
 import kr.spring.community.vo.RecipeFavVO;
@@ -43,4 +45,10 @@ public interface MypageService {
 		//찜한물건 (좋아요)
 		public int selectUsedFavCount(Integer mem_num);
 		public List<UsedVO> selectUsedFavList(Map<String,Object> map);
+		
+		//=====동호회=====//
+		//내가 가입한 동호회 목록
+		public List<ClubVO> selectClubList(Map<String,Object> map);
+		//내가 찜한 동호회 목록
+		public List<ClubFavVO> selectClubFavList(Map<String,Object> map);
 }

@@ -25,10 +25,10 @@
     	<put-attribute name="body"
     	  value="/WEB-INF/views/clubboard/clubboardModify.jsp"/>                   
     </definition>
-    <definition name="joinlist" extends="main">
+    <definition name="joinList" extends="main">
     	<put-attribute name="title" value="동호회가입목록"/>
     	<put-attribute name="body"
-    	  value="/WEB-INF/views/join/JoinListjsp"/>                   
+    	  value="/WEB-INF/views/member/memberView-club.jsp"/>                   
     </definition>
 </tiles-definitions>
 
