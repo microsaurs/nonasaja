@@ -36,7 +36,11 @@ public interface ReviewMapper {
 	//리뷰 수정
 	public void updateReview(ReviewVO review);
 	
-	//리뷰 삭제
+	//개별 리뷰 삭제
 	@Delete("delete from product_review where review_num=${review_num}")
 	public void deleteReview(int review_num);
+	
+	//한 상품에 달린 리뷰 전부 삭제 
+	@Delete("delete from product_review where product_num=${product_num}")
+	public void deleteReviewByProduct_num(int product_num);
 }

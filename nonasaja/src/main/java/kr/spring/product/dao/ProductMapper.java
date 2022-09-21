@@ -3,6 +3,7 @@ package kr.spring.product.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -31,7 +32,8 @@ public interface ProductMapper {
 	public void updateProductQuantity(int product_num, int quantity);
 	
 	//상품 삭제(리뷰 삭제 먼저 할 것)
-	
+	@Delete("delete from product where product_num=${product_num}")
+	public void deleteProduct(int product_num);
 	
 	
 } 

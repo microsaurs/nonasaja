@@ -92,8 +92,8 @@
 			</li>
 			<li>
 				<label for="status" class="clear" id="status_label">판매상태</label>
-				<form:radiobutton path="status" value="1"/>판매중지&nbsp&nbsp
-				<form:radiobutton path="status" value="2"/>판매중<br>
+				<form:radiobutton path="status" value="2"/>판매중&nbsp&nbsp
+				<form:radiobutton path="status" value="1"/>판매중지<br>
 				<form:errors path="status" cssClass="error-color"/>
 			</li>
 			<li>
@@ -161,6 +161,7 @@
 			</li>	
 		</ul>
 		<form:button>수정</form:button>
+		<input type="button" id="delete_btn" value="삭제" onclick="location.href='delete.do?product_num=${productVO.product_num}'">
 		<input type="button" value="목록" onclick="location.href='list.do'">
 	</form:form>
 </div>

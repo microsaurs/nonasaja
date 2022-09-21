@@ -83,8 +83,21 @@ $(function(){
 		};
 	});
 	
-
+	$('#delete_btn').click(function(){
+		let result = confirm("삭제 하시겠습니까?");
+		if(result==false) {
+			$(this).attr('onclick', '').unbind('click');
+			return;
+		}
+	});
 });
+
+
+
+
+
+
+
 
 
 

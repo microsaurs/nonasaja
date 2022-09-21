@@ -41,13 +41,17 @@ public class AppConfig implements WebMvcConfigurer{
 		        .addPathPatterns("/member/changePassword.do")
 		        .addPathPatterns("/member/delete.do")
 		        .addPathPatterns("/cart/cart_insert.do")
+		        .addPathPatterns("/cart/cart_list.do")
+		        .addPathPatterns("/cart/deleteCart.do")
+		        .addPathPatterns("/cart/modifyCart.do")
 		        .addPathPatterns("/order/order_list.do")
 		        .addPathPatterns("/review/write_review.do")
 		        .addPathPatterns("/review/modify_review.do");
 		registry.addInterceptor(new AdminCheckInterceptor())
 				.addPathPatterns("/product/admin_list.do")
 				.addPathPatterns("/product/register.do")
-				.addPathPatterns("/product/admin_modify.do");
+				.addPathPatterns("/product/admin_modify.do")
+				.addPathPatterns("/product/delete.do");
 		/*
 		 * registry.addInterceptor(interceptor) .addPathPatterns("/clubboard/write.do")
 		 * .addPathPatterns("/clubboard/update.do")

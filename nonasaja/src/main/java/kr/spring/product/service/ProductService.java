@@ -3,6 +3,7 @@ package kr.spring.product.service;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -20,4 +21,6 @@ public interface ProductService {
 	public void updateProductQuantity(int product_num, int minus_quantity);
 	//상품 수정 
 	public void updateProduct(ProductVO productVO); 
+	//상품 삭제
+	public void deleteProduct(int product_num);
 }

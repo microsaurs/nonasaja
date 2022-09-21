@@ -34,4 +34,7 @@ public interface ReviewService {
 		
 		//리뷰 삭제
 		public void deleteReview(int review_num);
+		
+		//한 상품에 달린 리뷰 전부 삭제 
+		public void deleteReviewByProduct_num(int product_num);
 }

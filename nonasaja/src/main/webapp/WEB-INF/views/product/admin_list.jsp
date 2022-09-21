@@ -50,8 +50,8 @@
 				<td><fmt:formatNumber value="${item.quantity }"/></td>
 				<td>${item.reg_date }</td>
 				<td>
-					<c:if test="${item.status ==1 }">판매중</c:if>
-					<c:if test="${item.status ==2 }">판매중지</c:if>
+					<c:if test="${item.status ==1 }">판매중지</c:if>
+					<c:if test="${item.status ==2 }">판매중</c:if>
 				</td>
 			</tr>
 			</c:forEach>
