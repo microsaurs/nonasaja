@@ -14,6 +14,7 @@ import kr.spring.community.vo.CommunityVO;
 import kr.spring.community.vo.RecipeFavVO;
 import kr.spring.community.vo.RecipeReplyVO;
 import kr.spring.community.vo.RecipeVO;
+import kr.spring.join.vo.JoinVO;
 import kr.spring.used.vo.UsedFavVO;
 import kr.spring.used.vo.UsedReplyVO;
 import kr.spring.used.vo.UsedVO;
@@ -69,7 +70,7 @@ public interface MypageMapper {
 	@Select("SELECT COUNT(*) FROM join WHERE mem_num=#{mem_num}")
 	public int selectClubCount(Integer mem_num);
 	//내가 가입한 동호회 목록
-	public List<ClubVO> selectClubList(Map<String,Object> map);
+	public List<JoinVO> selectClubList(Map<String,Object> map);
 	//내가 찜한 동호회 목록
 	public List<ClubFavVO> selectClubFavList(Map<String,Object> map);
 }
