@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.spring.club.vo.ClubFavVO;
+import kr.spring.club.vo.ClubVO;
 import kr.spring.community.vo.CommunityReplyVO;
 import kr.spring.community.vo.CommunityVO;
 import kr.spring.community.vo.RecipeReplyVO;
@@ -342,12 +344,51 @@ public class MemberController {
 	//===========마이페이지 - 동호회=============//
 	@RequestMapping("/member/myPageClub.do")
 	public ModelAndView listClubPage(HttpSession session, 
-			@RequestParam(value="pageNum",defaultValue = "1")int currentPage) {
+			@RequestParam(value="pageNum",defaultValue = "1")int currentPage,
+			@RequestParam(value="type",defaultValue="1") int type) {
+		logger.debug("<request: type>... " + type);
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		
 		ModelAndView mav = new ModelAndView();
+		Map<String,Object> map = new HashMap<>();
+		PagingUtil page = null;
+		List<ClubVO> clubList = null;
+		List<ClubFavVO> clubFavList = null;
+		int count = 0;
+		
+		if(type==1) {//내가 쓴 글
+			count = mypageService.selectUsedCount(user.getMem_num());
+			page = new PagingUtil(currentPage,count,rowCount,pageCount,"myPageClub.do");
+			if(count>0) {
+				map.put("start", page.getStartRow());
+				map.put("end", page.getEndRow());
+				map.put("mem_num", user.getMem_num());
+				
+				clubList = mypageService.selectClubList(map);
+			}
+			
+		}else if(type==2) {//내가 쓴 댓글
+			count = mypageService.selectUsedReplyCount(user.getMem_num());
+			page = new PagingUtil(currentPage,count,rowCount,pageCount,"myPageClub.do");
+			if(count>0) {
+				map.put("start", page.getStartRow());
+				map.put("end", page.getEndRow());
+				map.put("mem_num", user.getMem_num());
+				
+				clubFavList = mypageService.selectClubFavList(map);
+			}
+			
+		}
+		
 		mav.setViewName("myPageClub");
 		mav.addObject("member", user);
+		mav.addObject("type", type);
+		mav.addObject("count", count);
+		
+		mav.addObject("clubList", clubList);
+		mav.addObject("clubFavList", clubFavList);
+		
+		mav.addObject("page", page.getPage());
 		
 		return mav;
 	}

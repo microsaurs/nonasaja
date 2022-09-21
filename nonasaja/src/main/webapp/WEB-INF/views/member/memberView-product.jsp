@@ -162,7 +162,47 @@ $(document).ready(function(){
 				<span id="no_list">내역이 없습니다.</span>
 			</c:if>
 			<c:if test="${count > 0}">
+			<table>
 				<c:forEach var="order" items="${orderList}">
+				<c:forEach var="orderDetail" items="${orderDetailList}">
+				<c:if test="${order.order_num == orderDetail.order_num}">
+				<tr>
+					<%-- <c:forEach var="orderDetail" items="${orderDetailList}">
+					<c:if test="${order.order_num == orderDetail.order_num}"> --%>
+					<td>
+						<h3>주문번호 : ${order.order_num }</h3>
+					</td>
+					<td colspan="3" class="align-right">
+						<c:if test="${orderDetail.wait_count != 0}">
+							주문확정수량 ${orderDetail.req_quantity}개 중 ${orderDetail.wait_count}개 신청
+						</c:if>
+						<c:if test="${orderDetail.wait_count == 0}">
+							판매중지된 상품입니다
+						</c:if>
+					</td>
+					<%-- </c:if>
+					</c:forEach> --%>
+				</tr>
+				<tr>
+					<td>
+						<img src="${pageContext.request.contextPath}/product/imageView.do?product_num=${orderDetail.product_num}&photo_type=1"
+								width="200" height="200">
+					</td>
+					<td>
+						${orderDetail.product_name}
+					</td>
+					<td>
+						<span>${orderDetail.order_quantity}개</span>
+					</td>
+					<td>
+						<span><fmt:formatNumber value="${orderDetail.product_total}"/>원</span>
+					</td>
+				</tr>
+				</c:if>
+				</c:forEach>
+				</c:forEach>
+			</table>
+				<%-- <c:forEach var="order" items="${orderList}">
 				<h3>주문번호 : ${order.order_num }</h3>
 					<c:forEach var="orderDetail" items="${orderDetailList}">
 					<c:if test="${order.order_num == orderDetail.order_num}">
@@ -181,7 +221,7 @@ $(document).ready(function(){
 						</div>
 					</c:if>
 					</c:forEach>
-			</c:forEach>
+			</c:forEach> --%>
 			</c:if>
 			</c:if>
 		<!-- 참여중인 공동구매 끝 -->
@@ -195,6 +235,7 @@ $(document).ready(function(){
 			<table>
 				<c:forEach var="order" items="${orderList}">
 				<tr>
+					<%-- <c:if test="${order.wait_status == 2}"><!--  --> --%>
 					<td class="align-left" colspan="3">
 						<h3>주문번호 : ${order.order_num }</h3>
 					</td>
@@ -208,6 +249,7 @@ $(document).ready(function(){
 					<td class="align-right">
 						<h4>${order.reg_date}</h4>
 					</td>
+					<%-- </c:if><!--  --> --%>
 				</tr>
 				<c:forEach var="orderDetail" items="${orderDetailList}">
 				<c:if test="${order.order_num == orderDetail.order_num}">
@@ -247,28 +289,40 @@ $(document).ready(function(){
 				<span id="no_list">내역이 없습니다.</span>
 			</c:if>
 			<c:if test="${!empty reviewList}">
+			<table>
 				<c:forEach var="review" items="${reviewList}">
-					<div id="review_box">
+				<tr>
+					<td>
 						<img src="${pageContext.request.contextPath}/product/imageView.do?product_num=${review.product_num}&photo_type=1"
-							width="130" height="130">
-						<span>${review.product_name}</span><br>
-						<!-- 별점 -->
+							width="130" height="130"><br>
+						${review.product_name}
+					</td>
+					<td>
+						${review.content }
+					</td>
+				</tr>
+				<tr>
+					<td>
 						<div class="rating">
-						<input type="hidden" name="score" value="0" class="rate-star">
-						<c:forEach var="star" begin="1" end="5" varStatus="status">
-							<input type="checkbox" id="rating${status.index}"
-								value="${status.index}" class="rate-check"
-								<c:if test="${status.index<=review.score}">checked</c:if> disabled>
-							<label for="rating${status.index}"></label>
-						</c:forEach>
+							<input type="hidden" name="score" value="0" class="rate-star">
+							<c:forEach var="star" begin="1" end="5" varStatus="status">
+								<input type="checkbox" id="rating${status.index}"
+									value="${status.index}" class="rate-check"
+									<c:if test="${status.index<=review.score}">checked</c:if> disabled>
+								<label for="rating${status.index}"></label>
+							</c:forEach>
 						</div>
-						<!-- 별점 끝 -->
-						<span>${review.reg_date}</span><br>
-						<p>${review.content }</p>
+					</td>
+					<td class="align-right">
+						${review.reg_date}
+					</td>
+					<td>
 						<input type="button" value="수정" 
 							onclick="location.href='${pageContext.request.contextPath}/review/write_review.do?product_num=${review.product_num}'">
-					</div>
+					</td>
+				</tr>
 				</c:forEach>
+			</table>
 			</c:if>
 			</c:if>
 		<!-- 내 리뷰 끝 -->

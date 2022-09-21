@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import kr.spring.club.vo.ClubFavVO;
+import kr.spring.club.vo.ClubVO;
 import kr.spring.community.vo.CommunityReplyVO;
 import kr.spring.community.vo.CommunityVO;
 import kr.spring.community.vo.RecipeFavVO;
@@ -104,6 +106,18 @@ public class MypageServiceImpl implements MypageService {
 	@Override
 	public List<UsedVO> selectUsedFavList(Map<String, Object> map) {
 		return mypageMapper.selectUsedFavList(map);
+	}
+
+	@Override
+	public List<ClubVO> selectClubList(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<ClubFavVO> selectClubFavList(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
