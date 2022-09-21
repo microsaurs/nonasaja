@@ -27,10 +27,10 @@
 		
 		<div>
 			<div class="float_image">
-				<c:if test="${!empty used.filename}">	
-				<img class="product-img" src="${context.request.contextPath}/used/imageView.do?used_num=${used.used_num}&board_type=2">
+				<c:if test="${!empty usedVO.filename}">	
+				<img class="product-img" src="${context.request.contextPath}/used/imageView.do?used_num=${usedVO.used_num}&board_type=2" style="max-width:400px;">
 				</c:if>
-				<c:if test="${empty used.filename}">	
+				<c:if test="${empty usedVO.filename}">	
 					<img src="${pageContext.request.contextPath}/images/empty.jpg" class="product-img" id="img2" name="img2" width="350" height="300">
 				</c:if>
 				<input type="file" name="upload" id="upload" accept="image/gif,image/png,image/jpeg" class="location1">
