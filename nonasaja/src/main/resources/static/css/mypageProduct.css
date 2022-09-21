@@ -2,7 +2,7 @@
 .rating{
    /*현재 디자인에서만 필요하고 다른 디자인일 경우는 필요하지 않음*/
    display:inline-block;
-   width:500px;   
+   width:auto;   
 }
 .rating .rate-check {
    display:none;

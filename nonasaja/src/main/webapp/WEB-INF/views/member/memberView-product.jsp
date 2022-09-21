@@ -92,9 +92,11 @@ $(document).ready(function(){
 		</table>
 		<!-- 목록 시작-->
 		<!-- 장바구니 목록 -->
-		<form action="/order/cart_order.do" id="cartOrder" method="post">
-		<table>
+		<!-- <form action="/order/cart_order.do" id="cartOrder" method="post">
+		<table> -->
 			<c:if test="${type==1}">
+			<form action="/order/cart_order.do" id="cartOrder" method="post">
+			<table>
 			<c:if test="${all_total <= 0}">
 			<tr>
 				<td>
@@ -134,7 +136,6 @@ $(document).ready(function(){
 						<input type="number" name="quantity" min="1" max="99999" value="${cart.quantity}">
 						<input type="button" value="변경" class="cart-modify" data-cartnum="${cart.cart_num}"
 						data-productnum="${cart.product_num}">
-						${cart.quantity}개
 					</td>
 					<td>
 						<fmt:formatNumber value="${cart.productVO.price2 }"/>원
@@ -152,9 +153,11 @@ $(document).ready(function(){
 				</tr>
 			<!-- </form> -->
 			</c:if>
-			</c:if>
-		</table>
+			</table>
 		</form>
+			</c:if>
+		<!-- </table>
+		</form> -->
 		<!-- 장바구니 목록 끝-->
 		<!-- 참여중인 공동구매 시작 -->
 		<c:if test="${type==2}">
@@ -164,27 +167,25 @@ $(document).ready(function(){
 			<c:if test="${count > 0}">
 			<table>
 				<c:forEach var="order" items="${orderList}">
-				<c:forEach var="orderDetail" items="${orderDetailList}">
-				<c:if test="${order.order_num == orderDetail.order_num}">
-				<tr>
-					<%-- <c:forEach var="orderDetail" items="${orderDetailList}">
-					<c:if test="${order.order_num == orderDetail.order_num}"> --%>
-					<td>
+				<%-- <c:forEach var="orderDetail" items="${orderDetailList}"> --%>
+				<%-- <c:if test="${order.order_num == orderDetail.order_num}"> --%>
+				<!-- <tr> -->
+					<%-- <td>
 						<h3>주문번호 : ${order.order_num }</h3>
-					</td>
-					<td colspan="3" class="align-right">
+					</td> --%>
+					<%-- <td colspan="3" class="align-right">
 						<c:if test="${orderDetail.wait_count != 0}">
 							주문확정수량 ${orderDetail.req_quantity}개 중 ${orderDetail.wait_count}개 신청
 						</c:if>
 						<c:if test="${orderDetail.wait_count == 0}">
 							판매중지된 상품입니다
 						</c:if>
-					</td>
-					<%-- </c:if>
-					</c:forEach> --%>
-				</tr>
+					</td> --%>
+				<!-- </tr> -->
+				<c:forEach var="orderDetail" items="${orderDetailList}">
+				<c:if test="${order.order_num == orderDetail.order_num}">
 				<tr>
-					<td>
+					<td rowspan="2">
 						<img src="${pageContext.request.contextPath}/product/imageView.do?product_num=${orderDetail.product_num}&photo_type=1"
 								width="200" height="200">
 					</td>
@@ -196,6 +197,16 @@ $(document).ready(function(){
 					</td>
 					<td>
 						<span><fmt:formatNumber value="${orderDetail.product_total}"/>원</span>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3" class="align-right">
+						<c:if test="${orderDetail.wait_count != 0}">
+							주문확정수량 ${orderDetail.req_quantity}개 중 ${orderDetail.wait_count}개 신청
+						</c:if>
+						<c:if test="${orderDetail.wait_count == 0}">
+							판매중지된 상품입니다
+						</c:if>
 					</td>
 				</tr>
 				</c:if>
@@ -234,8 +245,10 @@ $(document).ready(function(){
 			<c:if test="${count > 0}">
 			<table>
 				<c:forEach var="order" items="${orderList}">
+				<c:forEach var="orderDetail" items="${orderDetailList}">
+				<c:if test="${order.order_num == orderDetail.order_num}">
 				<tr>
-					<%-- <c:if test="${order.wait_status == 2}"><!--  --> --%>
+					<c:if test="${orderDetail.wait_status == 2}"><!--  -->
 					<td class="align-left" colspan="3">
 						<h3>주문번호 : ${order.order_num }</h3>
 					</td>
@@ -249,10 +262,10 @@ $(document).ready(function(){
 					<td class="align-right">
 						<h4>${order.reg_date}</h4>
 					</td>
-					<%-- </c:if><!--  --> --%>
+					</c:if><!--  -->
 				</tr>
-				<c:forEach var="orderDetail" items="${orderDetailList}">
-				<c:if test="${order.order_num == orderDetail.order_num}">
+				<%-- <c:forEach var="orderDetail" items="${orderDetailList}"> --%>
+				<%-- <c:if test="${order.order_num == orderDetail.order_num}"> --%>
 				<tr>
 					<td>
 						<a href="${pageContext.request.contextPath}/product/detail.do?product_num=${orderDetail.product_num }">
@@ -297,7 +310,7 @@ $(document).ready(function(){
 							width="130" height="130"><br>
 						${review.product_name}
 					</td>
-					<td>
+					<td colspan="2">
 						${review.content }
 					</td>
 				</tr>
@@ -315,8 +328,7 @@ $(document).ready(function(){
 					</td>
 					<td class="align-right">
 						${review.reg_date}
-					</td>
-					<td>
+					
 						<input type="button" value="수정" 
 							onclick="location.href='${pageContext.request.contextPath}/review/write_review.do?product_num=${review.product_num}'">
 					</td>

@@ -57,7 +57,7 @@ li#money{
 	height:50px;
 }
 .mypage-right table tr:last-child td div{
-	width:100%;
+	width:auto;
 	margin:0 auto;
 }
 .mypage-right table tr:last-child td div.update-btn{
