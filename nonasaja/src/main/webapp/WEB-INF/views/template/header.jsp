@@ -56,8 +56,6 @@
 			<a href="${pageContext.request.contextPath}/clubboard/list.do" class="category-margin">동호회</a>
 			<a href="${pageContext.request.contextPath}/commuboard/list.do" class="category-margin">커뮤니티</a>  
 			<a href="${pageContext.request.contextPath}/commuRecipe/list.do">레시피</a>  
-			<a href="${pageContext.request.contextPath}/commuboard/list.do">유머</a>  
-			<a href="${pageContext.request.contextPath}/commuInfo/list.do">자취정보</a>  
 		</div>
 		<div class="float-right">
 			<c:if test="${!empty user && !empty user.photo}">
