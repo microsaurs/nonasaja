@@ -5,7 +5,8 @@
 
 <!-- 내용시작 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/product.css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/product_search.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/product_list.css">
 <div class="page-main">
 	<input type="button" id="register_btn" onclick="location.href='register.do'" value="상품 등록">
 	<input type="button" id="adminList_btn" onclick="location.href='admin_list.do'" value="관리자용 목록">
@@ -16,25 +17,27 @@
 	<!--  카테고리 박스 -->
 	<hr class="hr-color" size="1" width="100%">
 	<div id="category_box">
-		<img class ="category-img" src="${pageContext.request.contextPath}/images/category_living.png">
-		<img class ="category-img" src="${pageContext.request.contextPath}/images/category_food.png">
+		<img class ="category-img" id="living_img" src="${pageContext.request.contextPath}/images/category_living.png">
+		<img class ="category-img" id="food_img" src="${pageContext.request.contextPath}/images/category_food.png">
 		<img class ="category-txt" src="${pageContext.request.contextPath}/images/category_txt.png">
 	</div>
 	<div id="search_form_box">
-		<form action="list.do" method="get" id="search_form">
-			<ul class="search">
+		<form action="list.do" id="search_form1" method="get">
+			<ul class="search-align">
 				<li>
-					<select name="keyfield">
-						<option value="1" <c:if test="${param.keyfield==1}">selected</c:if>>상품명</option>
-						<option value="2" <c:if test="${param.keyfield==2}">selected</c:if>>내용</option>
-						<option value="3" <c:if test="${param.keyfield==3}">selected</c:if>>상품명+내용</option> 
+					<select name="keyfield" id="keyfield">
+						<option value="" <c:if test="${param.keyfield==0}">selected</c:if>>전체</option>
+						<option value="0" <c:if test="${param.keyfield==0}">selected</c:if>>식품</option> 
+						<option value="1" <c:if test="${param.keyfield==1}">selected</c:if>>생활용품</option>
 					</select>
 				</li>
 				<li>
-					<input type="search" size="16" name="keyword" id="keyword" value="${param.keyword }"> 
+					
+					<input type="search" name="keyword" id="searchbar" value="${parma.keyword}">
 				</li>
 				<li>
-					<input type="submit" value="찾기">
+					<input type="submit" value="찾기" class="button5">
+					<input type="button" value="전체목록" onclick="location.href='list.do'" class="button4">
 				</li>
 			</ul>
 		</form>
@@ -45,27 +48,24 @@
 			</div>
 		</c:if>
 		<c:if test="${count>0 }">
-			<div class="product-space">
 			<c:forEach var="product" items="${list }">
 				<div class="horizontal-area">
 					<a href="detail.do?product_num=${product.product_num }">
 						<img class="view-img" src="${context.request.contextPath}/product/imageView.do?product_num=${product.product_num}&photo_type=1">
 						<br>
-						<span>
-							${product.title}</span>
+						<span id="title">${product.title}</span>
 						<br>
-						<b><fmt:formatNumber value="${product.price2 }"/>원</b>
+						<span id="price"><fmt:formatNumber value="${product.price2 }"/></span>원
 						<br>
-						★${product.scoreAvg}/5 (리뷰:${product.reviewCount}개)
+						<span>★${product.scoreAvg}/5 (리뷰:${product.reviewCount}개)</span>
 						<br>
-						<span>${product.waitCount}/${product.req_quantity} 명 구매중</span>
+						<span id="req">${product.waitCount}/${product.req_quantity} 명 구매중</span>
 						<br>
 					</a>
 				</div>
 			</c:forEach>
 			<div class="float-clear align-center">
 				${page}
-			</div>
 			</div>
 		</c:if>
 </div>
