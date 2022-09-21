@@ -4,11 +4,11 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
 <!-- 상단 시작 -->
 <div>
-	<div class="header-line">
-		<div class="logo">
+	<div id="header-line">
+		<div id="logo">
 			<a href="${pageContext.request.contextPath}/main/main.do"><img src="${pageContext.request.contextPath}/images/logo.png" width="250" height="65"></a>
 		</div>
-		<div class="total-search">
+		<div id="total-search">
 			<input type="search" placeholder="통합 검색" id="searchbtn">	
 			<button type="submit" id="searchicon"><img src="${pageContext.request.contextPath}/images/돋보기.png" width="20" height="25"></button>
 		</div>

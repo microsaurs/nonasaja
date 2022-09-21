@@ -78,14 +78,6 @@
 			  	uploadfile=${uploadfile},
 			  	filename=#{filename},
 			  </if>
-			  <if test="filename2 != ''">
-			  	uploadfile2=${uploadfile2},
-			  	filename2=#{filename2},
-			  </if>
-			  <if test="filename3 != ''">
-			  	uploadfile3=${uploadfile3},
-			  	filename3=#{filename3},
-			  </if>
 			  title=#{title},
 			  content=#{content},
 			  kind=#{kind},

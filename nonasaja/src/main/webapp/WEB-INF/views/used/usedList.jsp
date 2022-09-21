@@ -1,14 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!-- 내용 시작 -->
-
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/used.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/board.js"></script>
 
 <div class="page-main">
 	<h2>중고거래 상품 목록</h2>
-	<form action="list.do" id="search_form" method="get">
-		<ul class="search">
+	<form action="list.do" id="search_form1" method="get">
+		<ul class="search-align">
 			<li>
 				<select name="keyfield" id="keyfield">
 					<option value="1" <c:if test="${param.keyfield==1}">selected</c:if>>제목</option> 
@@ -18,17 +20,18 @@
 				</select>
 			</li>
 			<li>
-				<input type="search" name="keyword" id="keyword" value="${param.keyword}">
+				
+				<input type="search" name="keyword" id="searchbar" value="${parma.keyword}">
 			</li>
 			<li>
-				<input type="submit" value="찾기">
-				<input type="button" value="목록" onclick="location.href='list.do'">
+				<input type="submit" value="찾기" class="button5">
+				<input type="button" value="전체목록" onclick="location.href='list.do'" class="button4">
 			</li>
 		</ul>
 	</form>
 	<c:if test="${!empty user}">
 	<div class="align-right">
-		<input type="button" value="글쓰기" onclick="location.href='write.do'">
+		<input type="button" value="글쓰기" onclick="location.href='write.do'" class="button3">
 	</div>
 	</c:if>
 	
@@ -37,28 +40,28 @@
 	</c:if>
 	
 	<c:if test="${count > 0}">
-	<table>
-		<tr>
-			<th>No</th>
-			<th width="400">제목</th>
-			<th>작성자</th>
-			<th>작성일</th>
-			<th>조회수</th>
-		</tr>
-		<c:forEach var="board" items="${list}">
-		<tr>
-			<td>${board.used_num}</td>
-			<td><a href="detail.do?used_num=${board.used_num}">${board.title}</a></td>
-			<td>
-				<c:if test="${empty board.nickname}">${board.id}</c:if>
-				<c:if test="${!empty board.nickname}">${board.nickname}</c:if>
-			</td>
-			<td>${board.reg_date}</td>
-			<td>${board.hit}</td>
-		</tr>
+	<div class="item-space">
+		<c:forEach var="used" items="${list}">
+			<div class="status-img-float" >
+				<c:if test="${used.status==0}"><img src="${pageContext.request.contextPath}/images/노나사자-판매중.png" width="100px" height="40px"></c:if>
+				<c:if test="${used.status==1}"><img src="${pageContext.request.contextPath}/images/노나사자-판매완료.png" width="100px" height="40px"></c:if>
+				<br>
+				<div class="horizontal-area">
+				<a href="detail.do?used_num=${used.used_num}">
+					<img id ="usedproduct_photo" src="${pageContext.request.contextPath}/used/imageView.do?used_num=${used.used_num}&board_type=2">
+					<br>
+					<span>${used.title}</span>
+					<br>
+					<span><b>${used.price}</b></span>
+					<br>
+					<%--<span id="usedproduct_region">${used.region}</span> --%>
+				</a>
+				</div>
+			</div>
 		</c:forEach>
-	</table>
-	<div class="align-center">${page}</div>
+
+	<div class="float-clear align-center">${page}</div>
+	</div>
 	</c:if>
 </div>
 <!-- 내용 끝 -->
