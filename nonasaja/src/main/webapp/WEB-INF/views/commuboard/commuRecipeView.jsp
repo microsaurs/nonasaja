@@ -24,13 +24,13 @@
 		</li>
 		<li>
 			<c:if test="${empty board.nickname}">${board.id}</c:if>
-			<c:if test="${!empty board.nickname}">${board.nickname}</c:if>
+			<c:if test="${!empty board.nickname}">${board.nickname}<br></c:if>
 			<c:if test="${!empty board.commu_modify_date}">
 			최근 수정일 : ${board.commu_modify_date}
-			</c:if><br>
+			<br></c:if>
 			<c:if test="${empty board.commu_modify_date}">
 			작성일 : ${board.commu_date}
-			</c:if><br>
+			<br></c:if>
 			조회 : ${board.commu_hit}
 		</li>
 	</ul>

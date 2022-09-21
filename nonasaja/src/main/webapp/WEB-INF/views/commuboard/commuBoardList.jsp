@@ -10,12 +10,17 @@
 
 <div class="page-main">
 	<h2>커뮤니티</h2>
-	<div class="align-center">
+<%-- 	<div class="align-center">
 	<a href="commuList.do?keyfield=1"><img id="commuList_img" src="${pageContext.request.contextPath}/images/schedule.png"></a>
 	<a href="commuList.do?keyfield=2"><img id="commuList_img" src="${pageContext.request.contextPath}/images/sale.png"></a>
 	<a href="commuList.do?keyfield=3"><img id="commuList_img" src="${pageContext.request.contextPath}/images/book.png"></a>
-	</div>
+	</div> --%>
 	
+	<div class="align-center">
+	<figure class="category-align"><a href="commuList.do?keyfield=1"><img id="commuList_img" src="${pageContext.request.contextPath}/images/schedule.png"></a><figcaption><b>자유게시판</b></figcaption></figure>
+	<figure class="category-align"><a href="commuList.do?keyfield=2"><img id="commuList_img" src="${pageContext.request.contextPath}/images/sale.png"></a><figcaption><b>지역세일</b></figcaption></figure>
+	<figure class="category-align"><a href="commuList.do?keyfield=3"><img id="commuList_img" src="${pageContext.request.contextPath}/images/book.png"></a><figcaption><b>자취백과</b></figcaption></figure><br><br><br><br><br><br><br><br><br>
+	</div>
 	
 	
 	<form action="list.do" id="search_form" method="get">

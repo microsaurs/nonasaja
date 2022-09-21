@@ -244,7 +244,7 @@
 	<!-- 레시피글수정 -->
   	<update id="updateBoard2" parameterType="recipeVO">
   		UPDATE community_recipe_board SET
-  			<if test="filename != ''">  <!-- 업로드가 되었을경우 파일명을 체크해서 존재할시 (파일명이 비어있지 않을경우) -->
+   			<if test="filename != ''">  <!-- 업로드가 되었을경우 파일명을 체크해서 존재할시 (파일명이 비어있지 않을경우) -->
   		    uploadfile=#{uploadfile},
   		    filename=#{filename},
   		    </if>	 
@@ -267,7 +267,7 @@
   			<if test="filename6 != ''">  
   		    uploadfile6=#{uploadfile6},
   		    filename6=#{filename6},
-  		    </if>	 
+  		    </if>		 
 
   			commu_title=#{commu_title},
   			commu_food=#{commu_food},
@@ -275,6 +275,10 @@
   			commu_ingredient=#{commu_ingredient},
   			commu_level=#{commu_level},
   			commu_content=#{commu_content},
+  			commu_content2=#{commu_content2},
+  			commu_content3=#{commu_content3},
+  			commu_content4=#{commu_content4},
+  			commu_content5=#{commu_content5},
   		    commu_modify_date=SYSDATE
   		WHERE commu_num=#{commu_num}
   	</update>
