@@ -139,7 +139,7 @@
 		]]>
 	</select>
 	<!-- 동호회 - 참여중인 동호회 -->
-		<select id="selectClubList" parameterType="map" resultType="clubVO">
+		<select id="selectListJoin" parameterType="map" resultType="joinVO">
 			SELECT *
 					FROM (SELECT
 			        		a.*,

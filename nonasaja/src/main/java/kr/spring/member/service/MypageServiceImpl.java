@@ -14,6 +14,7 @@ import kr.spring.community.vo.CommunityVO;
 import kr.spring.community.vo.RecipeFavVO;
 import kr.spring.community.vo.RecipeReplyVO;
 import kr.spring.community.vo.RecipeVO;
+import kr.spring.join.vo.JoinVO;
 import kr.spring.member.dao.MypageMapper;
 import kr.spring.used.vo.UsedFavVO;
 import kr.spring.used.vo.UsedReplyVO;
@@ -108,11 +109,7 @@ public class MypageServiceImpl implements MypageService {
 		return mypageMapper.selectUsedFavList(map);
 	}
 
-	@Override
-	public List<ClubVO> selectClubList(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 	@Override
 	public List<ClubFavVO> selectClubFavList(Map<String, Object> map) {
@@ -124,6 +121,12 @@ public class MypageServiceImpl implements MypageService {
 	public int selectClubCount(Integer mem_num) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public List<JoinVO> selectListJoin(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

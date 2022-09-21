@@ -27,6 +27,7 @@ import kr.spring.community.vo.CommunityReplyVO;
 import kr.spring.community.vo.CommunityVO;
 import kr.spring.community.vo.RecipeReplyVO;
 import kr.spring.community.vo.RecipeVO;
+import kr.spring.join.vo.JoinVO;
 import kr.spring.member.service.MemberService;
 import kr.spring.member.service.MypageService;
 import kr.spring.member.vo.MemberVO;
@@ -352,7 +353,7 @@ public class MemberController {
 		ModelAndView mav = new ModelAndView();
 		Map<String,Object> map = new HashMap<>();
 		PagingUtil page = null;
-		List<ClubVO> clubList = null;
+		List<JoinVO> clubList = null;
 		List<ClubFavVO> clubFavList = null;
 		int count = 0;
 		
@@ -364,7 +365,7 @@ public class MemberController {
 				map.put("end", page.getEndRow());
 				map.put("mem_num", user.getMem_num());
 				
-				clubList = mypageService.selectClubList(map);
+				clubList = mypageService.selectListJoin(map);
 			}
 			
 		}else if(type==2) {//찜한 동호회
