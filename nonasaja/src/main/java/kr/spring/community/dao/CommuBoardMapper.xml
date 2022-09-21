@@ -242,19 +242,31 @@
 	</select>
 	
 	<!-- 레시피글수정 -->
-  	<update id="updateBoard2" parameterType="RecipeVO">
+  	<update id="updateBoard2" parameterType="recipeVO">
   		UPDATE community_recipe_board SET
   			<if test="filename != ''">  <!-- 업로드가 되었을경우 파일명을 체크해서 존재할시 (파일명이 비어있지 않을경우) -->
   		    uploadfile=#{uploadfile},
   		    filename=#{filename},
   		    </if>	 
-  			<if test="filename2 != ''">  <!-- 업로드가 되었을경우 파일명을 체크해서 존재할시 (파일명이 비어있지 않을경우) -->
+  			<if test="filename2 != ''">  
   		    uploadfile2=#{uploadfile2},
   		    filename2=#{filename2},
   		    </if>	 
-  			<if test="filename3 != ''">  <!-- 업로드가 되었을경우 파일명을 체크해서 존재할시 (파일명이 비어있지 않을경우) -->
+  			<if test="filename3 != ''">  
   		    uploadfile3=#{uploadfile3},
   		    filename3=#{filename3},
+  		    </if>	 
+  			<if test="filename4 != ''">  
+  		    uploadfile4=#{uploadfile4},
+  		    filename4=#{filename4},
+  		    </if>	 
+  			<if test="filename5 != ''">  
+  		    uploadfile5=#{uploadfile5},
+  		    filename5=#{filename5},
+  		    </if>	 
+  			<if test="filename6 != ''">  
+  		    uploadfile6=#{uploadfile6},
+  		    filename6=#{filename6},
   		    </if>	 
 
   			commu_title=#{commu_title},
