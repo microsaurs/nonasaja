@@ -120,4 +120,10 @@ public class MypageServiceImpl implements MypageService {
 		return null;
 	}
 
+	@Override
+	public int selectClubCount(Integer mem_num) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

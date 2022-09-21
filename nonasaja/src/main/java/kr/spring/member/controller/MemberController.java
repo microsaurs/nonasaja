@@ -356,8 +356,8 @@ public class MemberController {
 		List<ClubFavVO> clubFavList = null;
 		int count = 0;
 		
-		if(type==1) {//내가 쓴 글
-			count = mypageService.selectUsedCount(user.getMem_num());
+		if(type==1) {//참여한 동호회
+			count = mypageService.selectClubCount(user.getMem_num());
 			page = new PagingUtil(currentPage,count,rowCount,pageCount,"myPageClub.do");
 			if(count>0) {
 				map.put("start", page.getStartRow());
@@ -367,8 +367,8 @@ public class MemberController {
 				clubList = mypageService.selectClubList(map);
 			}
 			
-		}else if(type==2) {//내가 쓴 댓글
-			count = mypageService.selectUsedReplyCount(user.getMem_num());
+		}else if(type==2) {//찜한 동호회
+			count = mypageService.selectClubCount(user.getMem_num());
 			page = new PagingUtil(currentPage,count,rowCount,pageCount,"myPageClub.do");
 			if(count>0) {
 				map.put("start", page.getStartRow());

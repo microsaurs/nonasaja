@@ -46,7 +46,7 @@
 					</c:if>
 					<c:if test="${type == 2}">
 					<a href="myPageCommu.do?type=1">내가 작성한 글</a> |
-					<b><a href="myPageCommu.do?type=1">내가 작성한 댓글</a></b>
+					<b><a href="myPageCommu.do?type=2">내가 작성한 댓글</a></b>
 					</c:if>
 				</td>
 			</tr>
