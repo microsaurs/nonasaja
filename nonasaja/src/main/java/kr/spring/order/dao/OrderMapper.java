@@ -63,7 +63,7 @@ public interface OrderMapper {
 	//회원별 주문 대기 상품의 총 가격 합 
 	@Select("select NVL(sum(d.product_total),0) "
 			+ "from norder_detail d join norder o using(order_num) "
-			+ "where o.mem_num=285 and d.wait_status=1")
+			+ "where o.mem_num=#{mem_num} and d.wait_status=1")
 	public int selectSumWait(int mem_num);
 	
 	//상품별 orderDetail의 주문 대기 목록 

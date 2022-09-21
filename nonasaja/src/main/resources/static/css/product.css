@@ -58,12 +58,47 @@
 li#detail_li{
 	margin: 30px 0 0 0;
 }
+/*===============상품 상세============*/
+.product-image{
+	float: left;
+    width: 300px;
+    height: 300px;
+    margin: 50px 50px 50px 15%;
+}
+.product-detail{
+	float: left;
+    width: 40%;
+    height: 300px;
+    margin: 50px 0;
+}
+form#product_cart{
+	border :none;
+}
 
-
-
-
-
-
+.product-detail ul{
+	padding: 0;
+}
+.product-detail ul li{
+	margin: 3px 0;
+}
+#title{
+	font-size: 13pt;
+}
+#price{
+	font-size: 13pt;
+}
+ul#price_box{
+	width: 75%;
+    background-color: #CCCBBC;
+    padding: 10px;
+}
+#price_box li{
+	width:80%;
+}
+#div_quantity{
+	font-weight: 700;
+    font-size: 11pt;
+}
 
 
 

@@ -57,7 +57,7 @@
 						<br>
 						<span id="price"><fmt:formatNumber value="${product.price2 }"/></span>원
 						<br>
-						<span>★${product.scoreAvg}/5 (리뷰:${product.reviewCount}개)</span>
+						<span>★ ${product.scoreAvg}/5 (리뷰:${product.reviewCount}개)</span>
 						<br>
 						<span id="req">${product.waitCount}/${product.req_quantity} 명 구매중</span>
 						<br>
