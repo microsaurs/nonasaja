@@ -70,7 +70,7 @@ $(document).ready(function(){
 						<input type="submit" value="장바구니">
 					</li>
 				</ul>	
-					<!-- 품절 시 -->
+					<!-- 품절 시  -->
 					</c:if>
 					<c:if test="${product.quantity <= 0 }">
 					<li class="align-center">
