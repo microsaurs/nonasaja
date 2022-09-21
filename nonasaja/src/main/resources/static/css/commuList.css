@@ -8,8 +8,11 @@ div#page-main tr, th {
   padding: 10px;
 } 
 #commuList_img{
-	margin-right: 40px;
 	width:100px;
+}
+.image-align{
+	text-align:center;
+	margin: 0 250px;
 }
 .search{
 	margin-bottom: 30px;
@@ -32,6 +35,8 @@ div#page-main tr, th {
 }
 .category-align{
 	float:left;
-	
+	padding: 0 30px;
 }
-
+.commu-logo{
+	padding: 0 0 40px 0;
+}

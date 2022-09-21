@@ -9,14 +9,17 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
 <div class="page-main">
-	<h2>커뮤니티</h2>
+	
+	<div class="align-center">
+	<img src="${pageContext.request.contextPath}/images/우리동네커뮤니티.png" width="700px" class="commu-logo">
+	</div>
 <%-- 	<div class="align-center">
 	<a href="commuList.do?keyfield=1"><img id="commuList_img" src="${pageContext.request.contextPath}/images/schedule.png"></a>
 	<a href="commuList.do?keyfield=2"><img id="commuList_img" src="${pageContext.request.contextPath}/images/sale.png"></a>
 	<a href="commuList.do?keyfield=3"><img id="commuList_img" src="${pageContext.request.contextPath}/images/book.png"></a>
 	</div> --%>
 	
-	<div class="align-center">
+	<div class="image-align">
 	<figure class="category-align"><a href="commuList.do?keyfield=1"><img id="commuList_img" src="${pageContext.request.contextPath}/images/schedule.png"></a><figcaption><b>자유게시판</b></figcaption></figure>
 	<figure class="category-align"><a href="commuList.do?keyfield=2"><img id="commuList_img" src="${pageContext.request.contextPath}/images/sale.png"></a><figcaption><b>지역세일</b></figcaption></figure>
 	<figure class="category-align"><a href="commuList.do?keyfield=3"><img id="commuList_img" src="${pageContext.request.contextPath}/images/book.png"></a><figcaption><b>자취백과</b></figcaption></figure><br><br><br><br><br><br><br><br><br>
