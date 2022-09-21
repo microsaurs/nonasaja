@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.spring.join.dao.JoinMapper">  
+  		<resultMap type="joinVO" id="joinMap">
+  		<result property="clubVO.club_name" column="club_name"/>
+  	</resultMap>
+  	<select id="selectListJoin" 
+  	                    parameterType="integer"
+  	                    resultMap="joinMap">
+  	   SELECT
+  	      join_num,
+  	      club_num,
+  	      join_reg_date,
+  	      mem_num,
+  	      club_name
+  	   FROM join JOIN club_board
+  	   USING(club_num)
+  	   WHERE mem_num = #{mem_num}
+  	   ORDER BY club_num ASC
+  	</select>
+</mapper>
+
+
+
+
+
+
+
