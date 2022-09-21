@@ -22,7 +22,7 @@
 	<div class="image-align">
 	<figure class="category-align"><a href="commuList.do?keyfield=1"><img id="commuList_img" src="${pageContext.request.contextPath}/images/schedule.png"></a><figcaption><b>자유게시판</b></figcaption></figure>
 	<figure class="category-align"><a href="commuList.do?keyfield=2"><img id="commuList_img" src="${pageContext.request.contextPath}/images/sale.png"></a><figcaption><b>지역세일</b></figcaption></figure>
-	<figure class="category-align"><a href="commuList.do?keyfield=3"><img id="commuList_img" src="${pageContext.request.contextPath}/images/book.png"></a><figcaption><b>자취백과</b></figcaption></figure><br><br><br><br><br><br><br><br><br>
+	<figure class="category-align"><a href="commuList.do?keyfield=3"><img id="commuList_img" src="${pageContext.request.contextPath}/images/book.png"></a><figcaption><b>자취백과</b></figcaption></figure><br><br><br><br><br>
 	</div>
 	
 	
@@ -37,7 +37,7 @@
 				</select>
 			</li>
 			<li>
-				<input type="search" name="keyword" id="keyword" value="${param.keyword}">
+				<input type="search" name="keyword" id="searchbar" value="${param.keyword}">
 			</li>
 			<li>
 				<input type="submit" class="button" value="찾기">

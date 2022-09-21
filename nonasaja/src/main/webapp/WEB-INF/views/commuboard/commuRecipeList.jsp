@@ -19,7 +19,7 @@
 				</select>
 			</li>
 			<li>
-				<input type="search" name="keyword" id="keyword" value="${param.keyword}">
+				<input type="search" name="keyword" id="searchbar" value="${param.keyword}">
 			</li>
 			<li>
 				<input class="button" type="submit" value="찾기">

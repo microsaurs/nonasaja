@@ -14,6 +14,7 @@
 #recipeList_food_photo {
 	width:295px;
 	height:275px;
+	border-radius: 10px;
 }
 #recipeList_food{
 	font-size: 16px;
@@ -66,4 +67,16 @@
 	transition: all 0.2s 0s cubic-bezier(0.785, 0.135, 0.15, 0.86);
 	border-radius:22px;
 	cursor: pointer;
+}
+#keyfield{
+	width:80px;
+	padding: 3px;
+	border: 1.5px solid #878787;
+	border-radius:5px;
+}
+#searchbar{
+	border:1.5px solid #878787;
+	border-radius: 5px;
+	width:170px;
+	height:27px;
 }
