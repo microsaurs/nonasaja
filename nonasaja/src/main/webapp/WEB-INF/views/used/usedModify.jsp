@@ -20,14 +20,19 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/uploadAdapter.js"></script>
 
 <div id="page-main">
-	<h2>중고거래 상품 수정</h2>
+	<h3>중고거래 상품 수정</h3><br>
 	<form:form action="update.do" modelAttribute="usedVO" id="update_form" enctype="multipart/form-data">
 		<form:hidden path="used_num"/>
 		<form:errors element="div" cssClass="error-color"/>
 		
 		<div>
 			<div class="float_image">
-				<img src="${pageContext.request.contextPath}/images/empty.jpg" class="product-img" id="img1" name="img1" width="350" height="300">
+				<c:if test="${!empty used.filename}">	
+				<img class="product-img" src="${context.request.contextPath}/used/imageView.do?used_num=${used.used_num}&board_type=2">
+				</c:if>
+				<c:if test="${empty used.filename}">	
+					<img src="${pageContext.request.contextPath}/images/empty.jpg" class="product-img" id="img2" name="img2" width="350" height="300">
+				</c:if>
 				<input type="file" name="upload" id="upload" accept="image/gif,image/png,image/jpeg" class="location1">
 			</div>
 			<div class="float_text"> <br>
