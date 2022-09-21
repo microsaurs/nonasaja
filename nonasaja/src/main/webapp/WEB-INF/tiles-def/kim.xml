@@ -12,14 +12,14 @@
     </definition> -->
     
  	<!-- ========================유머게시판 시작=========================== -->
-    <definition name="commuHumorWrite" extends="main"> 
+    <definition name="commuHumorWrite" extends="main3"> 
 		<put-attribute name="title" 
 		               value="유머글쓰기"/>
 		<put-attribute name="body"
 	           value="/WEB-INF/views/commuboard/commuHumorWrite.jsp"/>    
     </definition>
     
-    <definition name="commuBoardList" extends="main"> 
+    <definition name="commuBoardList" extends="main3"> 
 	   	<put-attribute name="title" 
 	   	               value="유머게시판목록"/>
 	   	<put-attribute name="body"
@@ -33,7 +33,7 @@
     	             value="/WEB-INF/views/commuboard/commuBoardView.jsp"/>    
     </definition>
     
-    <definition name="commuBoardModify" extends="main"> 
+    <definition name="commuBoardModify" extends="main3"> 
     	<put-attribute name="title" 
     	               value="유머글수정"/>
     	<put-attribute name="body"
@@ -50,7 +50,7 @@
 	   	             value="/WEB-INF/views/commuboard/commuRecipeList.jsp"/>    
     </definition>
 
-  	<definition name="commuRecipeWrite" extends="main"> 
+  	<definition name="commuRecipeWrite" extends="main3"> 
 	   	<put-attribute name="title" 
 	   	               value="레시피게시판등록"/>
 	   	<put-attribute name="body"
@@ -64,7 +64,7 @@
     	             value="/WEB-INF/views/commuboard/commuRecipeView.jsp"/>    
     </definition>
     
-    <definition name="commuRecipeModify" extends="main"> 
+    <definition name="commuRecipeModify" extends="main3"> 
     	<put-attribute name="title" 
     	               value="레시피글수정"/>
     	<put-attribute name="body"

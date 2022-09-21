@@ -13,7 +13,7 @@
 			<button type="submit" id="searchicon"><img src="${pageContext.request.contextPath}/images/돋보기.png" width="20" height="25"></button>
 		</div>
 	</div>	
-	<div class="marginforcart">
+	<div>
 		<button id="cart" onclick="href='${pageContext.request.contextPath}/cart/cart_list.do'"><img src="${pageContext.request.contextPath}/images/카트.png" width="25" height="25"></button> 
 		<%-- 로그인 안된 경우 --%>
 		<div class="size">

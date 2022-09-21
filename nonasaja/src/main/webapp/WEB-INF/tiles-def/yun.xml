@@ -11,7 +11,7 @@
     	  value="/WEB-INF/views/sale/saleBoardList.jsp"/>
        </definition>
          
-    <definition name="saleBoardWrite" extends="main">
+    <definition name="saleBoardWrite" extends="main3">
     	<put-attribute name="title" value="글쓰기"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/sale/saleBoardWrite.jsp"/>                   
@@ -21,7 +21,7 @@
     	<put-attribute name="body"
     	  value="/WEB-INF/views/sale/saleBoardDetail.jsp"/>                   
     </definition>
-    <definition name="saleBoardModify" extends="main">
+    <definition name="saleBoardModify" extends="main3">
     	<put-attribute name="title" value="글수정"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/sale/saleBoardModify.jsp"/>

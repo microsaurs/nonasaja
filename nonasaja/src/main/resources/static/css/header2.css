@@ -38,7 +38,7 @@
 	border:none;
 	background:none;
 }
-#cart{
+#cart2{
 	background:none;
 	border:none;
 	float:left;
@@ -53,6 +53,8 @@
 	margin-left:20px;
 	margin-top:10px;
 	margin-bottom:15px;
+	
+	padding:40px 0 0 0;
 	font-size:15px;
 	font-weight:bold;
 	float:left;
@@ -66,7 +68,8 @@
 .float-right{
 	float:right;
 	text-align:center;
-	padding-top:-10px;
+	padding-top:30px;
+	padding-bottom:-20px;
 }
 .text{
 	float:left;
@@ -89,6 +92,11 @@ hr {
 }
 .nickname{
 	font-size:18px;
-	margin:9px 30px 10px 20px;
+	margin:9px 10px 10px 20px;
 	float:right;
 }
+.marginforcart{
+	float:right;
+	
+}
+

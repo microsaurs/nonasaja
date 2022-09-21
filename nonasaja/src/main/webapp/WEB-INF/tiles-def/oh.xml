@@ -11,7 +11,7 @@
     	  value="/WEB-INF/views/product/productList.jsp"/>                   
     </definition>
 
-    <definition name="productRegister" extends="main">
+    <definition name="productRegister" extends="main3">
     	<put-attribute name="title" value="상품등록"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/product/productRegister.jsp"/>                   

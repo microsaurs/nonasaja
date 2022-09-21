@@ -10,7 +10,7 @@
     	<put-attribute name="body"
     	  value="/WEB-INF/views/clubboard/clubboardList.jsp"/>                   
     </definition>
-    <definition name="clubboardWrite" extends="main">
+    <definition name="clubboardWrite" extends="main3">
     	<put-attribute name="title" value="글쓰기"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/clubboard/clubboardWrite.jsp"/>                   
@@ -21,7 +21,7 @@
     	  value="/WEB-INF/views/clubboard/clubboardView.jsp"/>                   
     </definition>
     <definition name="clubboardModify" extends="main">
-    	<put-attribute name="title" value="글수정"/>
+    	<put-attribute name="title" value="글수정3"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/clubboard/clubboardModify.jsp"/>                   
     </definition>

@@ -9,8 +9,8 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
 </head>
 <body>
-<div id="main3">
-	<div id="main_header2">
+<div id="main">
+	<div id="main_header">
 		<tiles:insertAttribute name="header2"/>
 	</div>
 	<div id="main_body">
