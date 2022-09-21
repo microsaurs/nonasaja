@@ -59,7 +59,7 @@ $(document).ready(function(){
 	<div class="mypage-right">
 		<table>
 			<tr>
-				<th colspan="2"><h3>공동구매</h3></th>
+				<th colspan="5"><h3>공동구매</h3></th>
 			</tr>
 			<tr>
 				<td>
@@ -92,6 +92,7 @@ $(document).ready(function(){
 		</table>
 		<!-- 목록 시작-->
 		<!-- 장바구니 목록 -->
+		<form action="/order/cart_order.do" id="cartOrder" method="post">
 		<table>
 			<c:if test="${type==1}">
 			<c:if test="${all_total <= 0}">
@@ -102,16 +103,58 @@ $(document).ready(function(){
 			</tr>
 			</c:if>
 			<c:if test="${all_total > 0}">
-			<form action="/order/cart_order.do" id="cartOrder" method="post">
+			<tr>
+				<td>선택</td>
+				<td>사진</td>
+				<td>제품명</td>
+				<td colspan="2">수량</td>
+				<td>금액</td>
+			</tr>
+			<!-- <form action="/order/cart_order.do" id="cartOrder" method="post"> -->
 				<c:forEach var="cart" items="${list}">
 				<tr>
-					
+					<td>
+						<input type="checkbox" name="cart_num" value="${cart.cart_num}" checked="checked"
+								<c:if test="${cart.productVO.status == 1 }">disabled</c:if>>
+					</td>
+					<td>
+						<a href="${pageContext.request.contextPath}/product/detail.do?product_num=${cart.product_num }">
+						<img src="${pageContext.request.contextPath}/product/imageView.do?product_num=${cart.product_num}&photo_type=1" width="100" height="100">
+						</a>
+					</td>
+					<td>
+						<c:if test="${cart.productVO.status == 1 }">
+							<del>${cart.productVO.name}</del>
+						</c:if> 
+						<c:if test="${cart.productVO.status == 2 }">
+							<a href="${pageContext.request.contextPath}/product/detail.do?product_num=${cart.product_num }">${cart.productVO.name}</a>
+						</c:if>
+					</td>
+					<td>
+						<input type="number" name="quantity" min="1" max="99999" value="${cart.quantity}">
+						<input type="button" value="변경" class="cart-modify" data-cartnum="${cart.cart_num}"
+						data-productnum="${cart.product_num}">
+						${cart.quantity}개
+					</td>
+					<td>
+						<fmt:formatNumber value="${cart.productVO.price2 }"/>원
+					</td>
+					<td>
+						<input type="button" class="cart-del" value="삭제" data-cartnum=${cart.cart_num }>
+					</td>
 				</tr>
 				</c:forEach>
-			</form>
+				<tr>
+					<td colspan="6" class="align-right">
+						<b>총구매금액</b> <fmt:formatNumber value="${all_total}"/>원
+						<input type="submit" value="주문하기">
+					</td>
+				</tr>
+			<!-- </form> -->
 			</c:if>
 			</c:if>
 		</table>
+		</form>
 		<!-- 장바구니 목록 끝-->
 		<!-- 참여중인 공동구매 시작 -->
 		<c:if test="${type==2}">
@@ -149,25 +192,54 @@ $(document).ready(function(){
 				<span id="no_list">내역이 없습니다.</span>
 			</c:if>
 			<c:if test="${count > 0}">
+			<table>
 				<c:forEach var="order" items="${orderList}">
-				<h3>주문번호 : ${order.order_num }</h3>
-				<h4>${order.reg_date}</h4>
-					<c:forEach var="orderDetail" items="${orderDetailList}">
-					<c:if test="${order.order_num == orderDetail.order_num}">
-						<div id="order_box">
+				<tr>
+					<td class="align-left" colspan="3">
+						<h3>주문번호 : ${order.order_num }</h3>
+					</td>
+					<td>
+						<c:if test="${order.status == 1}"><font color="blue"><strong>배송대기</strong></font></c:if>
+						<c:if test="${order.status == 2}"><font color="blue"><strong>배송준비</strong></font></c:if>
+						<c:if test="${order.status == 3}"><font color="green"><strong>배송중</strong></font></c:if>
+						<c:if test="${order.status == 4}"><font color="green"><strong>배송완료</strong></font></c:if>
+						<c:if test="${order.status == 5}"><font color="red"><strong>주문취소</strong></font></c:if>
+					</td>
+					<td class="align-right">
+						<h4>${order.reg_date}</h4>
+					</td>
+				</tr>
+				<c:forEach var="orderDetail" items="${orderDetailList}">
+				<c:if test="${order.order_num == orderDetail.order_num}">
+				<tr>
+					<td>
+						<a href="${pageContext.request.contextPath}/product/detail.do?product_num=${orderDetail.product_num }">
 							<img src="${pageContext.request.contextPath}/product/imageView.do?product_num=${orderDetail.product_num}&photo_type=1"
 								width="200" height="200">
-							<span>${orderDetail.product_name}</span><br>
-							<span>${orderDetail.order_quantity}개</span><br>
-							<span><fmt:formatNumber value="${orderDetail.product_total}"/>원</span><br>
-							<input type="button" value="리뷰작성" 
+						</a>
+					</td>
+					<td>
+						<a href="${pageContext.request.contextPath}/product/detail.do?product_num=${orderDetail.product_num }">
+							${orderDetail.product_name}
+						</a>
+					</td>
+					<td>
+						${orderDetail.order_quantity}개
+					</td>
+					<td>
+						<fmt:formatNumber value="${orderDetail.product_total}"/>원
+					</td>
+					<td>
+						<input type="button" value="리뷰작성" 
 								onclick="location.href='${pageContext.request.contextPath}/review/write_review.do?product_num=${orderDetail.product_num}'">
-						</div>
-					</c:if>
-					</c:forEach>
-			</c:forEach>
+					</td>
+				</tr>
+				</c:if>
+				</c:forEach>
+				</c:forEach>
+			</table>
 			</c:if>
-			</c:if>
+		</c:if>
 		<!-- 구매 내역 끝 -->
 		<!-- 내 리뷰 시작 -->
 		<c:if test="${type==4}">
