@@ -95,39 +95,21 @@ $(document).ready(function(){
 		<table>
 			<c:if test="${type==1}">
 			<c:if test="${all_total <= 0}">
-				<span id="no_list">내역이 없습니다.</span>
+			<tr>
+				<td>
+					<span id="no_list">내역이 없습니다.</span>
+				</td>
+			</tr>
 			</c:if>
-				<c:if test="${all_total > 0}">
-					<form action="/order/cart_order.do" id="cartOrder" method="post">
-					<ul><!-- cart UL -->
-					<c:forEach var="cart" items="${list}">
-						<input type="hidden" name="product_num" value="${cart.product_num}">
-							<li><input type="checkbox" name="cart_num" value="${cart.cart_num}" checked="checked"
-								<c:if test="${cart.productVO.status == 1 }">disabled</c:if>>
-							</li>
-							<li><c:if test="${cart.productVO.status == 1 }">
-									<del>${cart.productVO.name}</del>
-								</c:if> 
-								<c:if test="${cart.productVO.status == 2 }">
-									<a href="${pageContext.request.contextPath}/product/detail.do?product_num=${cart.product_num }">${cart.productVO.name}</a>
-								</c:if>
-							</li>
-							<li>
-								<input type="number" name="quantity" min="1" max="99999" value="${cart.quantity}">
-								<br> 
-								<input type="button" value="변경" class="cart-modify" data-cartnum="${cart.cart_num}"
-								data-productnum="${cart.product_num}">
-							</li>
-							<li><fmt:formatNumber value="${cart.productVO.price2 }" /></li>
-							<li>${cart.productVO.req_quantity }</li>
-							<li><input type="button" class="cart-del" value="삭제" data-cartnum=${cart.cart_num }></li>
-					</c:forEach>
-					<li><b>총구매금액</b></li>
-					<li>${all_total}</li>
-					<li><input type="submit" value="주문하기"></li>
-					</ul>
-					</form>
-				</c:if>
+			<c:if test="${all_total > 0}">
+			<form action="/order/cart_order.do" id="cartOrder" method="post">
+				<c:forEach var="cart" items="${list}">
+				<tr>
+					
+				</tr>
+				</c:forEach>
+			</form>
+			</c:if>
 			</c:if>
 		</table>
 		<!-- 장바구니 목록 끝-->

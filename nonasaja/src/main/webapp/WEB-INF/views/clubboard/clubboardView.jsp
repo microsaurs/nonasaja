@@ -6,6 +6,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/clubboard.fav.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/club.css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/clubjoin.js"></script>
 <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Noto+Sans+KR&family=Poor+Story&display=swap" rel="stylesheet"> -->
@@ -159,11 +160,9 @@
 		</script>  
 		</c:if>
 		<c:if test="${!empty user && user.mem_num != board.club_leader}">
-		<input class="button" type="submit"  value="참여하기">
+		<input class="button" type="submit"  value="가입하기">
 		</c:if>
-		<%-- <c:if test="${board.club_pre = board.club_limit}">
-					<span class="button">모집완료</span>
-		</c:if> --%>
+
 		<input class="button" type="button" value="목록가기"
 		       onclick="location.href='list.do'">
 	</div>

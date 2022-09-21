@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
+import kr.spring.club.vo.ClubVO;
 import kr.spring.community.vo.CommunityFavVO;
 import kr.spring.community.vo.CommunityReplyVO;
 import kr.spring.community.vo.CommunityVO;
@@ -62,6 +63,12 @@ public interface MypageMapper {
 	//1대1 채팅
 	//미구현
 	
-	
-	
+	//=====동호회=====//
+	//내가 가입한 동호회 개수
+	@Select("SELECT COUNT(*) FROM join WHERE mem_num=#{mem_num}")
+	public int selectClubCount(Integer mem_num);
+	//내가 가입한 동호회 목록
+	public List<ClubVO> selectClubList(Map<String,Object> map);
+	//내 관심사와 맞는 동호회 추천 목록 : 5~6개만 나오게
+	public List<ClubVO> selectClubRecommendList(Map<String,Object> map);
 }
