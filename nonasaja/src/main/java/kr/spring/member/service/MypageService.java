@@ -17,7 +17,7 @@ import kr.spring.used.vo.UsedFavVO;
 import kr.spring.used.vo.UsedReplyVO;
 import kr.spring.used.vo.UsedVO;
 
-public interface MypageService {
+public interface MypageService {  
 		//=====레시피=====//
 		//레시피 - 내가 쓴 글
 		public int selectRecipeCount(Integer mem_num);
@@ -47,7 +47,7 @@ public interface MypageService {
 		public int selectUsedFavCount(Integer mem_num);
 		public List<UsedVO> selectUsedFavList(Map<String,Object> map);
 		
-		//=====동호회=====//
+		//=====동호회=====// 
 		public int selectClubCount(Integer mem_num);
 		//내가 가입한 동호회 목록
 		public List<JoinVO> selectListJoin(Map<String,Object> map);

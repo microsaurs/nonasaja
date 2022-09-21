@@ -3,7 +3,7 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 <mapper namespace="kr.spring.member.dao.MypageMapper">
-	<!-- 레시피 글 목록 -->
+	<!-- 레시피 글 목록 -->  
 	<select id="selectRecipeList" parameterType="map" resultType="recipeVO">
 		SELECT *
 		FROM (SELECT
