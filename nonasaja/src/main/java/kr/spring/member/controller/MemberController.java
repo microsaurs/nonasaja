@@ -337,7 +337,7 @@ public class MemberController {
 		
 		mav.addObject("page", page.getPage());
 		
-		return mav;
+		return mav;   
 	}
 	//===========마이페이지 - 동호회=============//
 	@RequestMapping("/member/myPageClub.do")
