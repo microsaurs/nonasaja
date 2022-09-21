@@ -148,12 +148,6 @@ public class UsedController {
 		}else if(board_type==2) {//업로드된 이미지
 			mav.addObject("imageFile", used.getUploadfile());
 			mav.addObject("filename", used.getFilename());
-		}else if(board_type==3) {//업로드된 이미지
-			mav.addObject("imageFile", used.getUploadfile2());
-			mav.addObject("filename", used.getFilename2());
-		}else if(board_type==4) {//업로드된 이미지
-			mav.addObject("imageFile", used.getUploadfile3());
-			mav.addObject("filename", used.getFilename3());
 		}
 		
 		return mav;

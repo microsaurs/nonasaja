@@ -58,7 +58,7 @@
 					</li>
 					<li>
 						<label for="price">가격</label>
-						<form:input path="price" placeholder="가격은 1원~99,999,999원 사이로 입력하세요." class="input-box"/>
+						<form:input path="price" placeholder="가격은 1원~99,999,999원 사이로 숫자만 입력하세요." class="input-box"/>
 						<form:errors path="price" cssClass="error-color"/>
 					</li>
 					
