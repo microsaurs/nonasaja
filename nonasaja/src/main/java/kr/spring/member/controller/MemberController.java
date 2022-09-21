@@ -382,6 +382,13 @@ public class MemberController {
 		
 		mav.setViewName("myPageClub");
 		mav.addObject("member", user);
+		mav.addObject("type", type);
+		mav.addObject("count", count);
+		
+		mav.addObject("clubList", clubList);
+		mav.addObject("clubFavList", clubFavList);
+		
+		mav.addObject("page", page.getPage());
 		
 		return mav;
 	}
