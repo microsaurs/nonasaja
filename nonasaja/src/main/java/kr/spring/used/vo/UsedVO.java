@@ -23,7 +23,7 @@ public class UsedVO {
 	private String trade; //물물교환 상품
 	private byte[] uploadfile;
 	private String filename;
-	
+	private String region; //지역 식별번호
 
 
 	private Date reg_date; //작성일
@@ -37,7 +37,7 @@ public class UsedVO {
 	
 	
 	private int mem_num; //작성자 번호
-	private int region_num; //지역 식별번호
+	
 	
 	
 	//파일 업로드 처리
@@ -146,12 +146,20 @@ public class UsedVO {
 	public void setMem_num(int mem_num) {
 		this.mem_num = mem_num;
 	}
-	public int getRegion_num() {
-		return region_num;
+	
+	
+	public String getRegion() {
+		return region;
 	}
-	public void setRegion_num(int region_num) {
-		this.region_num = region_num;
+
+
+
+	public void setRegion(String region) {
+		this.region = region;
 	}
+
+
+
 	public byte[] getUploadfile() {
 		return uploadfile;
 	}
@@ -171,12 +179,15 @@ public class UsedVO {
 	public String toString() {
 		return "UsedVO [used_num=" + used_num + ", title=" + title + ", content=" + content + ", kind=" + kind
 				+ ", price=" + price + ", status=" + status + ", category=" + category + ", trade=" + trade
-				+ ", uploadfile=" + Arrays.toString(uploadfile) + ", filename=" + filename + ", reg_date=" + reg_date
-				+ ", modify_date=" + modify_date + ", hit=" + hit + ", id=" + id + ", nickname=" + nickname + ", photo="
-				+ Arrays.toString(photo) + ", photo_name=" + photo_name + ", mem_num=" + mem_num + ", region_num="
-				+ region_num + "]";
+				+ ", uploadfile=" + Arrays.toString(uploadfile) + ", filename=" + filename + ", region=" + region
+				+ ", reg_date=" + reg_date + ", modify_date=" + modify_date + ", hit=" + hit + ", id=" + id
+				+ ", nickname=" + nickname + ", photo=" + Arrays.toString(photo) + ", photo_name=" + photo_name
+				+ ", mem_num=" + mem_num + "]";
 	}
+
+
 	
+
 
 	
 }

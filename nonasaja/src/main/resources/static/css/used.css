@@ -99,7 +99,7 @@ span{
 	margin:2px;
 	padding:3px;
 	width:280px;
-	height:320px;
+	height:350px;
 	float:left;
 	overflow:hidden;
 }
@@ -124,6 +124,10 @@ span{
 .status-img-float{
 	float:left;
 	padding:0 10px;
+}
+.status-img-float1{
+	float:left;
+	padding: 0 -10px;
 }
 .float-clear{
 	clear:both;
@@ -202,4 +206,21 @@ span{
 	display: flex;/*하위 요소를 수직으로 쌓을 수 있는 공간을 만듬*/
   	align-items: center;/*세로 정렬*/
   	justify-content: center;/*가로 정렬*/
+}
+
+/*중고거래 글상세*/
+h2{
+	margin:-3px 0 0 18px;
+}
+p{
+	font-size:medium;
+}
+.fav-float{
+	float:right;
+}
+.fav-align{
+	padding:2px;
+}
+.userwriteinformation{
+	padding:0 0 0 10px;
 }

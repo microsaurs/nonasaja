@@ -58,7 +58,7 @@
 					</li>
 					<li>
 						<label for="price">가격</label>
-						<form:input path="price" placeholder="가격은 1원~99,999,999원 사이로 숫자만 입력하세요." class="input-box"/>
+						<form:input path="price" placeholder="무료나눔은0, 물물교환은 1이라고 입력해주세요." class="input-box"/>
 						<form:errors path="price" cssClass="error-color"/>
 					</li>
 					
@@ -69,8 +69,8 @@
 					</li>
 					<li>
 						<label for="region_num">판매지역</label>
-							<form:input path="region_num" class="input-box1"/>
-							<form:errors path="region_num" cssClass="error-color"/>
+							<form:input path="region" placeholder="예)ㅇㅇ시ㅇㅇ구ㅇㅇ동" class="input-box1"/>
+						<form:errors path="trade" cssClass="error-color"/>
 					</li>
 				</ul>
 			</div>

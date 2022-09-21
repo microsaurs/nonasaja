@@ -42,9 +42,15 @@
 	<div class="item-space float-clear">
 		<c:forEach var="used" items="${list}">
 			<div class="status-img-float" >
+				<div class="status-img-float1">
 				<c:if test="${used.status==0}"><img src="${pageContext.request.contextPath}/images/노나사자-판매중.png" width="100px" height="45px"></c:if>
 				<c:if test="${used.status==1}"><img src="${pageContext.request.contextPath}/images/노나사자-판매완료.png" width="100px" height="45px"></c:if>
-				
+				</div>
+				<div class="status-img-float1">
+				<c:if test="${used.kind==0}"><img src="${pageContext.request.contextPath}/images/노나사자-중고거래.png" width="100px" height="45px"></c:if>
+				<c:if test="${used.kind==1}"><img src="${pageContext.request.contextPath}/images/노나사자-무료나눔.png" width="100px" height="45px"></c:if>
+				<c:if test="${used.kind==2}"><img src="${pageContext.request.contextPath}/images/노나사자-물물교환.png" width="100px" height="45px"></c:if>
+				</div>
 				<br>
 				<div class="horizontal-area">
 				<a href="detail.do?used_num=${used.used_num}">
@@ -52,9 +58,19 @@
 					<br>
 					<span>${used.title}</span>
 					<br>
-					<span><b><fmt:formatNumber value="${used.price}"/>원</b></span>
+					<span>
+					<c:if test="${used.price!=0 && used.price!=1}">
+						<b><fmt:formatNumber value="${used.price}"/>원</b>
+					</c:if>
+					<c:if test="${used.price==0}">
+						<b>무료나눔&#x1f49b;</b>
+					</c:if>
+					<c:if test="${used.price==1}">
+						<b>물물교환&#x1f499;</b>
+					</c:if>
+					</span>
 					<br>
-					<%--<span id="usedproduct_region">${used.region}</span> --%>
+					<span id="usedproduct_region">${used.region}</span>
 				</a>
 				</div>
 			</div>

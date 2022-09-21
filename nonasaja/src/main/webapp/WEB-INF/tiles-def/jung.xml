@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	<definition name="usedWrite" extends="main3"> 
+		<put-attribute name="title" value="글쓰기"/>
+		<put-attribute name="body" value="/WEB-INF/views/used/usedWrite.jsp"/>    
+    </definition>
+    <definition name="usedList" extends="main">
+    	<put-attribute name="title" value="게시판목록"/>
+    	<put-attribute name="body" value="/WEB-INF/views/used/usedList.jsp"/>                   
+    </definition>
+    <definition name="usedView" extends="main">
+    	<put-attribute name="title" value="상세정보"/>
+    	<put-attribute name="body" value="/WEB-INF/views/used/usedView.jsp"/>                   
+    </definition>
+    <definition name="usedModify" extends="main3">
+    	<put-attribute name="title" value="글수정"/>
+    	<put-attribute name="body" value="/WEB-INF/views/used/usedModify.jsp"/>                   
+    </definition>
+</tiles-definitions>
+
+
+

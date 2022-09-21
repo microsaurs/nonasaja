@@ -3,12 +3,22 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!-- 내용 시작 --> 
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/used.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/used.reply.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/used.fav.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/videoAdapter.js"></script>
 <div class="page-main">
+	<div >
+		<c:if test="${used.status==0}"><img src="${pageContext.request.contextPath}/images/노나사자-판매중.png" width="100px" height="45px"></c:if>
+		<c:if test="${used.status==1}"><img src="${pageContext.request.contextPath}/images/노나사자-판매완료.png" width="100px" height="45px"></c:if>
+	</div>
 	<h2>${used.title}</h2>
+	<div class="fav-float">
+		<%-- 좋아요 --%>
+		<p class="fav-align">찜하기</p>
+		<img id="output_fav"  src="${pageContext.request.contextPath}/images/free-icon-love02.png" width="40">
+	</div>
 	<ul class="detail-info">
 		<li>
 			<c:if test="${!empty used.photo_name}">
@@ -19,15 +29,18 @@
 			</c:if>
 		</li>
 		<li>
-			<c:if test="${empty used.nickname}">${used.id}</c:if>
-			<c:if test="${!empty used.nickname}">${used.nickname}</c:if>
-			<br>
+			<div class="userwriteinformation">
+			<c:if test="${empty used.nickname}"><b>${used.id}</b></c:if>
+			<c:if test="${!empty used.nickname}"><b>${used.nickname}</b></c:if>
+			</div>
+		</li>
+		<li>
 			<c:if test="${!empty used.modify_date}">
 			최근 수정일 : ${used.modify_date}
 			</c:if>
 			<c:if test="${empty used.modify_date}">
 			작성일 : ${used.reg_date}
-			</c:if>
+			</c:if><br>
 			조회 : ${used.hit}
 		</li>
 	</ul>
@@ -49,7 +62,7 @@
 		가격 : ${used.price}
 		</li>
 		<li>
-		판매지역 : ${used.region_num}
+		판매지역 : ${used.region}
 		</li>
 	</ul>
 	<c:if test="${fn:endsWith(used.filename,'.jpg') ||
@@ -73,11 +86,7 @@
 	<p>
 		${used.content}
 	</p>
-	<div>
-		<%-- 좋아요 --%>
-		<img id="output_fav" src="${pageContext.request.contextPath}/images/fav01.gif" width="40">
-		<span id="output_fcount"></span>
-	</div>
+	
 	<hr size="1" width="100%">
 	<div class="align-right">
 		<c:if test="${!empty user && user.mem_num == used.mem_num}">

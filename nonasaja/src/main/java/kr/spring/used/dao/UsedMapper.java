@@ -20,9 +20,9 @@ public interface UsedMapper {
 	public int selectRowCount(Map<String, Object> map);
 	@Insert("INSERT INTO used_board (used_num,title,"
 			+ "content,uploadfile,filename,"
-			+ "kind,price,status,category,trade,reg_date,hit,region_num,mem_num) "
+			+ "kind,price,status,category,trade,reg_date,hit,region,mem_num) "
 			+ "VALUES (used_board_seq.nextval,#{title},#{content},#{uploadfile},#{filename},"
-			+ "#{kind},#{price},#{status},#{category},#{trade},SYSDATE,#{hit},#{region_num},#{mem_num})")
+			+ "#{kind},#{price},#{status},#{category},#{trade},SYSDATE,#{hit},#{region},#{mem_num})")
 	public void insertUsed(UsedVO used);
 	@Select("SELECT * FROM used_board b JOIN member m "
 			+ "USING(mem_num) JOIN member_detail d "

@@ -43,6 +43,8 @@
 		  		   b.price,
 		  		   b.status,
 		  		   b.hit,
+		  		   b.region,
+		  		   b.kind,
 		  		   b.reg_date,
 		  		   b.mem_num,
 		  		   m.id,
@@ -87,7 +89,7 @@
 			  price=#{price},
 			  status=#{status},
 			  trade=#{trade},
-			  region_num=#{region_num},
+			  region=#{region},
 			  modify_date=SYSDATE
 		WHERE used_num=#{used_num} 
 	</update>
