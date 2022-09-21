@@ -56,6 +56,8 @@ public class AppConfig implements WebMvcConfigurer{
 		 * registry.addInterceptor(interceptor) .addPathPatterns("/clubboard/write.do")
 		 * .addPathPatterns("/clubboard/update.do")
 		 * .addPathPatterns("/clubboard/delete.do");
+		 * 
+		 * 추가
 		 */
 			
 	}
