@@ -7,9 +7,6 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/clubboard.fav.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/club.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/clubjoin.js"></script>
-<!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Noto+Sans+KR&family=Poor+Story&display=swap" rel="stylesheet"> -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/videoAdapter.js"></script>
 <div class="page-main1">
 <!-- 헤드 이미지 -->
@@ -159,12 +156,13 @@
 			};
 		</script>  
 		</c:if>
+		<form id="club_join" method="post">
+		<input type="hidden" name="club_num" value="${board.club_num}">
 		<c:if test="${!empty user && user.mem_num != board.club_leader}">
 		<input class="button" type="submit"  value="가입하기">
 		</c:if>
-
-		<input class="button" type="button" value="목록가기"
-		       onclick="location.href='list.do'">
+		</form>
+		<input class="button" type="button" value="목록가기"  onclick="location.href='list.do'">
 	</div>
 
 	<hr size="1" width="100%">

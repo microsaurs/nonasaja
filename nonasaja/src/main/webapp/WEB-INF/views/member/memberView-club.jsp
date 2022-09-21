@@ -39,12 +39,12 @@
 			</tr>
 			<tr>
 				<td>
-					<a>참여중인 동호회</a> |
+					<a onclick="location.href='/join/list.do'">참여중인 동호회</a> |
 					<a>동호회 추천</a>
 				</td>
 			</tr>
 			<tr>
-				<!-- 목록 -->
+				
 			</tr>
 		</table>
 	</div>
