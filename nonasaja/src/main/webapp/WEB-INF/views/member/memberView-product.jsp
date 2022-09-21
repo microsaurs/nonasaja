@@ -92,27 +92,24 @@ $(document).ready(function(){
 		</table>
 		<!-- 목록 시작-->
 		<!-- 장바구니 목록 -->
-		<!-- <form action="/order/cart_order.do" id="cartOrder" method="post">
-		<table> -->
 			<c:if test="${type==1}">
 			<form action="/order/cart_order.do" id="cartOrder" method="post">
 			<table>
-			<c:if test="${all_total <= 0}">
-			<tr>
-				<td>
-					<span id="no_list">내역이 없습니다.</span>
-				</td>
-			</tr>
-			</c:if>
-			<c:if test="${all_total > 0}">
-			<tr>
-				<td>선택</td>
-				<td>사진</td>
-				<td>제품명</td>
-				<td colspan="2">수량</td>
-				<td>금액</td>
-			</tr>
-			<!-- <form action="/order/cart_order.do" id="cartOrder" method="post"> -->
+				<c:if test="${all_total <= 0}">
+				<tr>
+					<td>
+						<span id="no_list">내역이 없습니다.</span>
+					</td>
+				</tr>
+				</c:if>
+				<c:if test="${all_total > 0}">
+				<tr>
+					<td>선택</td>
+					<td>사진</td>
+					<td>제품명</td>
+					<td colspan="2">수량</td>
+					<td>금액</td>
+				</tr>
 				<c:forEach var="cart" items="${list}">
 				<tr>
 					<td>
@@ -151,13 +148,10 @@ $(document).ready(function(){
 						<input type="submit" value="주문하기">
 					</td>
 				</tr>
-			<!-- </form> -->
 			</c:if>
 			</table>
 		</form>
-			</c:if>
-		<!-- </table>
-		</form> -->
+		</c:if>
 		<!-- 장바구니 목록 끝-->
 		<!-- 참여중인 공동구매 시작 -->
 		<c:if test="${type==2}">
@@ -167,21 +161,6 @@ $(document).ready(function(){
 			<c:if test="${count > 0}">
 			<table>
 				<c:forEach var="order" items="${orderList}">
-				<%-- <c:forEach var="orderDetail" items="${orderDetailList}"> --%>
-				<%-- <c:if test="${order.order_num == orderDetail.order_num}"> --%>
-				<!-- <tr> -->
-					<%-- <td>
-						<h3>주문번호 : ${order.order_num }</h3>
-					</td> --%>
-					<%-- <td colspan="3" class="align-right">
-						<c:if test="${orderDetail.wait_count != 0}">
-							주문확정수량 ${orderDetail.req_quantity}개 중 ${orderDetail.wait_count}개 신청
-						</c:if>
-						<c:if test="${orderDetail.wait_count == 0}">
-							판매중지된 상품입니다
-						</c:if>
-					</td> --%>
-				<!-- </tr> -->
 				<c:forEach var="orderDetail" items="${orderDetailList}">
 				<c:if test="${order.order_num == orderDetail.order_num}">
 				<tr>
@@ -213,30 +192,9 @@ $(document).ready(function(){
 				</c:forEach>
 				</c:forEach>
 			</table>
-				<%-- <c:forEach var="order" items="${orderList}">
-				<h3>주문번호 : ${order.order_num }</h3>
-					<c:forEach var="orderDetail" items="${orderDetailList}">
-					<c:if test="${order.order_num == orderDetail.order_num}">
-						<div id="order_box">
-							<img src="${pageContext.request.contextPath}/product/imageView.do?product_num=${orderDetail.product_num}&photo_type=1"
-								width="200" height="200">
-							<span>${orderDetail.product_name}</span><br>
-							<span>${orderDetail.order_quantity}개</span><br>
-							<span><fmt:formatNumber value="${orderDetail.product_total}"/>원</span><br>
-							<c:if test="${orderDetail.wait_count != 0}">
-								<span>주문확정수량 ${orderDetail.req_quantity}개 중 ${orderDetail.wait_count}개 신청</span>
-							</c:if>
-							<c:if test="${orderDetail.wait_count == 0}">
-								<span>판매중지된 상품입니다</span>
-							</c:if>
-						</div>
-					</c:if>
-					</c:forEach>
-			</c:forEach> --%>
 			</c:if>
 			</c:if>
 		<!-- 참여중인 공동구매 끝 -->
-		
 		<!-- 구매 내역 -->
 		<c:if test="${type==3}">
 			<c:if test="${count <= 0}">
@@ -264,8 +222,6 @@ $(document).ready(function(){
 					</td>
 					</c:if><!--  -->
 				</tr>
-				<%-- <c:forEach var="orderDetail" items="${orderDetailList}"> --%>
-				<%-- <c:if test="${order.order_num == orderDetail.order_num}"> --%>
 				<tr>
 					<td>
 						<a href="${pageContext.request.contextPath}/product/detail.do?product_num=${orderDetail.product_num }">
