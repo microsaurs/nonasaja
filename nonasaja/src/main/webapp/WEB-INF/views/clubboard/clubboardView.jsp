@@ -82,7 +82,7 @@
 			<img src="${pageContext.request.contextPath}/images/icon-location.png" width="50px">
 			</td>
 			<td class="td-2">
-			${board.region_num}
+			${board.club_region}
 			</td>
 		</tr>
 		<tr>
