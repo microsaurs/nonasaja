@@ -123,7 +123,7 @@
 	</table>
 	
 	<!-- 표 끝 -->		
-	<c:if test="${!empty user && user.mem_num != board.club_leader}">
+	<%-- <c:if test="${!empty user && user.mem_num != board.club_leader}">
 	<div class="align-left">
 		<input class="button3" type="button" value="신고" id="noti_btn">
 		<script type="text/javascript">
@@ -138,7 +138,7 @@
 		</script> 
 	</div>
 	</c:if>
-
+ --%>
 	<hr size="1" width="100%">
 	<div class="align-right">
 		<c:if test="${!empty user && user.mem_num == board.club_leader}">
