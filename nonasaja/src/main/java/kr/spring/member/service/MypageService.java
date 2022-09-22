@@ -50,6 +50,7 @@ public interface MypageService {
 		public int selectClubCount(Integer mem_num);
 		//내가 가입한 동호회 목록
 		public List<ClubVO> selectListJoin(Map<String,Object> map);
+		public int selectClubFavCount(Integer mem_num);
 		//내가 찜한 동호회 목록
 		public List<ClubFavVO> selectClubFavList(Map<String,Object> map);
 }

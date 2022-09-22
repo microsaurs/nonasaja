@@ -178,3 +178,8 @@ ul.detail-info #img{
 .float-clear{
 	clear:both;
 }
+.writebutton{
+	text-align: center;	
+	width:300px;
+	height:100px;
+}

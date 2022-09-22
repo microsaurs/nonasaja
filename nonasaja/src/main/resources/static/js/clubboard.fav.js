@@ -1,11 +1,11 @@
 $(function(){
 	//좋아요 읽기
 	//좋아요 선택 여부와 선택한 총개수 표시
-	function selectData(board_num){
+	function selectData(club_num){
 		$.ajax({
 			url:'getFav.do',
 			type:'post',
-			data:{board_num:board_num},
+			data:{club_num:club_num},
 			dataType:'json',
 			cache:false,
 			timeout:30000,
@@ -56,6 +56,6 @@ $(function(){
 	}//좋아요 표시 끝
 	
 	//초기 데이터 표시
-	selectData($('#board_num').val());
+	selectData($('#club_num').val());
 	
 });

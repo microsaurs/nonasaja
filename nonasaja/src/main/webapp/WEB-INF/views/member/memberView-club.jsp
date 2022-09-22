@@ -53,17 +53,17 @@
 			<tr>
 				<!-- 참여중인 동호회 -->
 				<c:if test="${!empty clubList}">
-				<td>모집여부</td>
-				<td>카테고리</td>
-				<td>동호회명</td>
-				<td>동호회제목</td>
+				<td><b>모집여부</b></td>
+				<td><b>카테고리</b></td>
+				<td><b>동호회명</b></td>
+				<td><b>동호회제목</b></td>
 				</c:if>
 				<!-- 찜한 동호회 -->
 				<c:if test="${!empty clubFavList}">
-				<td>모집여부</td>
-				<td>카테고리</td>
-				<td>동호회명</td>
-				<td>동호회제목</td>
+				<td><b>모집여부</b></td>
+				<td><b>카테고리</b></td>
+				<td><b>동호회명</b></td>
+				<td><b>동호회제목</b></td>
 				</c:if>
 				<!-- 결과 없음 -->
 				<c:if test="${count<=0}">
@@ -95,7 +95,39 @@
 					${board.club_name}
 				</td>
 				<td>
-					<a href="${pageContext.request.contextPath}/club/detail.do?club_num=${board.club_num}">
+					<a href="${pageContext.request.contextPath}/clubboard/detail.do?club_num=${board.club_num}">
+						${board.club_title}
+					</a>
+				</td>
+			</tr>
+			</c:forEach>
+			</c:if>
+			</c:if>
+			
+			<!-- 찜한 동호회 -->
+			<c:if test="${count>0}">
+			<c:if test="${!empty clubFavList}">
+			<c:forEach var="board" items="${clubFavList}">
+			<tr>
+				
+				<td>
+					<c:if test="${board.club_recruit==0}">모집중</c:if>
+					<c:if test="${board.club_recruit==1}">모집완료</c:if>
+				</td>
+				<td>
+					<c:if test="${board.club_code==1}"><strong>운동</strong></c:if>
+					<c:if test="${board.club_code==2}"><strong>오락</strong></c:if>
+					<c:if test="${board.club_code==3}"><strong>맛집</strong></c:if>
+					<c:if test="${board.club_code==4}"><strong>노래</strong></c:if>
+					<c:if test="${board.club_code==5}"><strong>여행</strong></c:if>
+					<c:if test="${board.club_code==6}"><strong>스터디</strong></c:if>
+					<c:if test="${board.club_code==7}"><strong>기타</strong></c:if>
+				</td>
+				<td>
+					${board.club_name}
+				</td>
+				<td>
+					<a href="${pageContext.request.contextPath}/clubboard/detail.do?club_num=${board.club_num}">
 						${board.club_title}
 					</a>
 				</td>

@@ -370,7 +370,7 @@ public class MemberController {
 			}
 			
 		}else if(type==2) {//찜한 동호회
-			count = mypageService.selectClubCount(user.getMem_num());
+			count = mypageService.selectClubFavCount(user.getMem_num());
 			page = new PagingUtil(currentPage,count,rowCount,pageCount,"myPageClub.do","&type=2");
 			if(count>0) {
 				map.put("start", page.getStartRow());

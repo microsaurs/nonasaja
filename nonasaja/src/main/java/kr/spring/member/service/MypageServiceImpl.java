@@ -113,8 +113,7 @@ public class MypageServiceImpl implements MypageService {
 
 	@Override
 	public List<ClubFavVO> selectClubFavList(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
+		return mypageMapper.selectClubFavList(map);
 	}
 
 	@Override
@@ -125,6 +124,11 @@ public class MypageServiceImpl implements MypageService {
 	@Override
 	public List<ClubVO> selectListJoin(Map<String, Object> map) {
 		return mypageMapper.selectListJoin(map);
+	}
+
+	@Override
+	public int selectClubFavCount(Integer mem_num) {
+		return mypageMapper.selectClubFavCount(mem_num);
 	}
 
 }

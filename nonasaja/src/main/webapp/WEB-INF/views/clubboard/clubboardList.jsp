@@ -19,7 +19,7 @@
 	<c:if test="${!empty user}">	          
 	<div class="align-center">
 
-	<input class="button2" type="button" value="동호인 모집하기" onclick="location.href='write.do'">
+	<a href="${pageContext.request.contextPath}/clubboard/write.do"><img src="${pageContext.request.contextPath}/images/동호인모집하기.png" class="writebutton"></a>
 	</div>
 	</c:if>
 	<div class="align-center">

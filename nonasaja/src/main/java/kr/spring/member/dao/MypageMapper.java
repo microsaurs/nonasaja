@@ -72,5 +72,7 @@ public interface MypageMapper {
 	//내가 가입한 동호회 목록
 	public List<ClubVO> selectListJoin(Map<String,Object> map);
 	//내가 찜한 동호회 목록
+	@Select("SELECT COUNT(*) FROM fav WHERE mem_num=#{mem_num} and club_num IS NOT NULL")
+	public int selectClubFavCount(Integer mem_num);
 	public List<ClubFavVO> selectClubFavList(Map<String,Object> map);
 }
