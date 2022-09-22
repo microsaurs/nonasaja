@@ -63,7 +63,7 @@ public interface ClubMapper {
 		public ClubReplyVO selectReply(Integer reply_num);
 		@Insert("INSERT INTO club_reply (reply_num,"
 				+ "reply_content,club_num,mem_num) "
-				+ "VALUES (reply_seq.nextval,#{reply_content},"
+				+ "VALUES (club_reply_seq.nextval,#{reply_content},"
 				+ "#{club_num},#{mem_num})")
 		public void insertReply(ClubReplyVO boardReply);
 		@Update("UPDATE club_reply SET "

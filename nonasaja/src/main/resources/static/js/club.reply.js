@@ -35,25 +35,22 @@ $(function(){
 					output += '<h4>';
 					output += '<img src="../member/viewProfile.do?mem_num='+ item.mem_num +'" width="30" height="30" class="my-photo">';
 					
-					if(item.nick_name){
-						output += item.nick_name + '</h4>';
+					if(item.nickname){
+						output += item.nickname + '</h4>';
 					}else{
 						output += item.id + '</h4>';
 					}
 					
 					output += '<div class="sub-item">';
-					output += '<p>' + item.re_content.replace(/\r\n/g,'<br>') + '</p>';
+					output += '<p>' + item.reply_content.replace(/\r\n/g,'<br>') + '</p>';
 					
-					if(item.re_mdate){
-						output += '<span class="modify-date">최근 수정일 : ' + item.re_mdate + '</span>';
-					}else{
-						output += '<span class="modify-date">등록일 : ' + item.re_date + '</span>';
-					}
+					output += '<span class="modify-date">등록일 : ' + item.reply_date + '</span>';
+					
 					
 					if(param.user_num==item.mem_num){
 						//로그인한 회원번호와 댓글 작성자 회원번호가 일치
-						output += ' <input type="button" data-num="'+ item.re_num +'" value="수정" class="modify-btn">';
-						output += ' <input type="button" data-num="'+ item.re_num +'" value="삭제" class="delete-btn">';
+						output += ' <input type="button" data-num="'+ item.reply_num +'" value="수정" class="modify-btn">';
+						output += ' <input type="button" data-num="'+ item.reply_num +'" value="삭제" class="delete-btn">';
 					}
 					output += '<hr size="1" noshade>';
 					output += '</div>';
@@ -156,8 +153,8 @@ $(function(){
 		
 		//댓글 수정폼 UI
 		let modifyUI = '<form id="mre_form">';
-		modifyUI += '<input type="hidden" name="re_num" id="mre_num" value="'+ re_num +'">';
-		modifyUI += '<textarea rows="3" cols="50" name="re_content" id="mre_content" class="rep-content">'+ content +'</textarea>';
+		modifyUI += '<input type="hidden" name="reply_num" id="mre_num" value="'+ re_num +'">';
+		modifyUI += '<textarea rows="3" cols="50" name="reply_content" id="mre_content" class="rep-content">'+ content +'</textarea>';
 		modifyUI += '<div id="mre_first"><span class="letter-count">300/300</span></div>';
 		modifyUI += '<div id="mre_second" class="align-right">';
 		modifyUI += '<input type="submit" value="수정">';

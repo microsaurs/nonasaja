@@ -7,6 +7,14 @@ public class ClubReplyVO {
 	private int club_num;
 	private int mem_num;
 	
+	private String nickname;
+	
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
 	public int getReply_num() {
 		return reply_num;
 	}
@@ -36,6 +44,11 @@ public class ClubReplyVO {
 	}
 	public void setMem_num(int mem_num) {
 		this.mem_num = mem_num;
+	}
+	@Override
+	public String toString() {
+		return "ClubReplyVO [reply_num=" + reply_num + ", reply_content=" + reply_content + ", reply_date=" + reply_date
+				+ ", club_num=" + club_num + ", mem_num=" + mem_num + ", nickname=" + nickname + "]";
 	}
 	
 	

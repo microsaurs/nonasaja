@@ -174,7 +174,7 @@
 			<input type="hidden" name="club_num"
 			   value="${board.club_num}" id="club_num">
 			<textarea rows="3" cols="50" 
-			  name="re_content" id="re_content"
+			  name="reply_content" id="re_content"
 			  class="rep-content"
 			  <c:if test="${empty user}">disabled="disabled"</c:if>
 			  ><c:if test="${empty user}">로그인해야 작성할 수 있습니다.</c:if></textarea>

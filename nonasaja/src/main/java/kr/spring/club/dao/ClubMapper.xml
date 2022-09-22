@@ -91,7 +91,7 @@
   		              reply_date,
   		              club_num,
   		              mem_num,
-  		              nick_name
+  		              nickname
   		            FROM club_reply
   		            JOIN member USING(mem_num)
   		            WHERE club_num = #{club_num}
