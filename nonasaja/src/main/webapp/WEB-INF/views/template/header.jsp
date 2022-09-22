@@ -24,7 +24,7 @@
 				<p class="layout22">|</p>
 				<a href="${pageContext.request.contextPath}/member/serviceCenter.do" class="text">고객센터</a>
 			</c:if>
-		</div>
+		</div> 
 		<%-- 로그인 된 경우 --%>
 		<div class="size">
 		<c:if test="${!empty user}">
