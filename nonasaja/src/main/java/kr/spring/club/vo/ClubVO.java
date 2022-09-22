@@ -30,7 +30,7 @@ public class ClubVO {
 	private String club_age;
 	private int club_gender;
 	private int club_recruit;
-	private int region_num;
+
 	private int mem_num;
 	private String club_region;
 	
@@ -182,12 +182,6 @@ public class ClubVO {
 	}
 	public void setClub_recruit(int club_recruit) {
 		this.club_recruit = club_recruit;
-	}
-	public int getRegion_num() {
-		return region_num;
-	}
-	public void setRegion_num(int region_num) {
-		this.region_num = region_num;
 	}
 
 	public int getMem_num() {

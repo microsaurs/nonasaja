@@ -36,8 +36,9 @@
   		              b.club_hit,
   		              b.club_gender,
   		              b.club_recruit,
-  		              b.region_num,
+  		        
   		              b.club_age,
+  		              b.club_region,
   		              m.id,
   		              m.nickname
   		            FROM club_board b JOIN member m
@@ -65,6 +66,7 @@
   			club_gender=#{club_gender},
   			club_recruit=#{club_recruit},
   			club_date=#{club_date},
+  			club_region=#{club_region},
   			<if test="club_img_name != ''">
   			club_img=#{club_img},
   			club_img_name=#{club_img_name}, 

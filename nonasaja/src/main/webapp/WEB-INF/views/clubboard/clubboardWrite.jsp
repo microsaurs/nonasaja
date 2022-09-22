@@ -119,7 +119,7 @@
 			<li  style="clear:both;">
 			<li>
 			<label for="club_region">판매지역</label>
-		    	<form:input path="region" placeholder="예)ㅇㅇ시ㅇㅇ구ㅇㅇ동"/>
+		    	<form:input path="club_region" placeholder="예)ㅇㅇ시ㅇㅇ구ㅇㅇ동"/>
 			</li>	
 		</ul>    
 		<div class="align-right">
