@@ -118,8 +118,8 @@ public class MypageServiceImpl implements MypageService {
 	}
 
 	@Override
-	public int selectClubCount(Integer club_leader) {
-		return mypageMapper.selectClubCount(club_leader);
+	public int selectClubCount(Integer mem_num) {
+		return mypageMapper.selectClubCount(mem_num);
 	}
 
 	@Override

@@ -55,10 +55,10 @@ public class ClubAjaxController {
 		@RequestMapping("/clubboard/writeFav.do")
 		@ResponseBody
 		public Map<String,Object> writeFav(
-				             ClubFavVO fav,
+				             ClubFavVO fav, int club_num,
 				             HttpSession session){
 			logger.debug("<<부모글 좋아요 등록>> : " + fav);
-			
+			logger.debug("<좋아요 정보>..." + fav);
 			Map<String,Object> mapJson= 
 					new HashMap<String,Object>();
 			
@@ -69,7 +69,7 @@ public class ClubAjaxController {
 			}else {
 				//로그인된 회원번호 셋팅
 				fav.setMem_num(user.getMem_num());
-				
+				fav.setClub_num(club_num);
 				//기존에 등록된 좋아요 확인
 				ClubFavVO clubFav = 
 						clubService.selectFav(fav);
@@ -84,7 +84,7 @@ public class ClubAjaxController {
 					
 				}else {//등록된 좋아요 정보가 없는 경우
 					clubService.insertFav(fav);
-					
+					logger.debug("<좋아요 정보2>..." + fav);
 					mapJson.put("result", "success");
 					mapJson.put("status", "yesFav");
 					mapJson.put("count", clubService.selectFavCount(

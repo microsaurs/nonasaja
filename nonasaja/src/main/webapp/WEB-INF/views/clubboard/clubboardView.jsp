@@ -157,7 +157,7 @@
 		</script>  
 		</c:if>
 		<form id="club_join" method="post">
-		<input type="hidden" name="club_num" value="${board.club_num}">
+		<input type="hidden" name="club_num" id="club_num" value="${board.club_num}">
 		<c:if test="${!empty user && user.mem_num != board.club_leader}">
 		<input class="button" type="submit"  value="가입하기">
 		</c:if>

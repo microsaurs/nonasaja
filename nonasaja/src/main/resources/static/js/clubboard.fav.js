@@ -23,7 +23,7 @@ $(function(){
 		$.ajax({
 			url:'writeFav.do',
 			type:'post',
-			data:{board_num:$('#board_num').val()},
+			data:{club_num:$('#club_num').val()},
 			dataType:'json',
 			cache:false,
 			timeout:30000,
