@@ -74,7 +74,7 @@ public class ProductController {
 
 		return mav;
 	}
-
+	
 	// 상품 리스트 //
 	@GetMapping("/product/list.do")
 	public ModelAndView list(@RequestParam(value="pageNum", defaultValue="1") int currentPage,
@@ -179,7 +179,7 @@ public class ProductController {
 		return "common/resultView";
 	}
 
-	// ======================상품 수정==========================
+	// ======================상품 수정========================== 
 	// 수정 폼
 	@GetMapping("/product/admin_modify.do")
 	public String formUpdate(@RequestParam int product_num, Model model) {
