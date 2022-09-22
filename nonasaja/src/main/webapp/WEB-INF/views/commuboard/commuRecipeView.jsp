@@ -84,7 +84,7 @@
 		<b>필수재료</b>&emsp;  ${board.commu_ingredient}
 		</li>
 	</ul><br>
-	<p id="recipe_start"><img src="${pageContext.request.contextPath}/images/lionHead.png" width="60" height="60">레시피</p>
+	<p id="recipe_start"><%-- <img src="${pageContext.request.contextPath}/images/lionHead.png" width="60" height="60"> --%>레시피</p>
 	<hr id="recipe_hr" size="1" width="92%">
 
 
@@ -133,8 +133,8 @@
 	<hr size="1" width="100%">
 	<div class="align-right">
 		<c:if test="${!empty user && user.mem_num == board.mem_num}">
-		<input class="button" type="button" value="수정" onclick="location.href='update.do?commu_num=${board.commu_num}'">
-		<input class="button" type="button" value="삭제" id="delete_btn">
+		<input class="button6" type="button" value="수정" onclick="location.href='update.do?commu_num=${board.commu_num}'">
+		<input class="button7" type="button" value="삭제" id="delete_btn">
 		<script type="text/javascript">
 			let delete_btn = document.getElementById('delete_btn');
 			//이벤트 연결
@@ -146,7 +146,7 @@
 			}
 		</script>
 		</c:if>
-		<input class="button" type="button" value="목록" onclick="location.href='list.do'">
+		<input class="button8" type="button" value="목록" onclick="location.href='list.do'">
 	</div>
 	<hr size="1" width="100%">
 	<!-- 댓글 UI 시작 -->

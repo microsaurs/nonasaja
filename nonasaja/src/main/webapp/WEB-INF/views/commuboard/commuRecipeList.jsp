@@ -22,8 +22,8 @@
 				<input type="search" name="keyword" id="searchbar" value="${param.keyword}">
 			</li>
 			<li>
-				<input class="button" type="submit" value="찾기">
-				<input class="button" type="button" value="목록"  onclick="location.href='list.do'">
+				<input class="button5" type="submit" value="찾기">
+				<input class="button4" type="button" value="목록"  onclick="location.href='list.do'">
 			</li>
 		</ul>
 	</form>

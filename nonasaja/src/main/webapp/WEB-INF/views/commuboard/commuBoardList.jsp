@@ -40,14 +40,14 @@
 				<input type="search" name="keyword" id="searchbar" value="${param.keyword}">
 			</li>
 			<li>
-				<input type="submit" class="button" value="찾기">
-				<input type="button" class="button" value="목록" onclick="location.href='list.do'">
+				<input type="submit" class="button5" value="찾기">
+				<input type="button" class="button4" value="목록" onclick="location.href='list.do'">
 			</li>
 		</ul>
 	</form>
 	<c:if test="${!empty user}">
 	<div class="align-right">
-		<input type="button" value="글쓰기" onclick="location.href='humorwrite.do'">
+		<input class="button2" type="button" value="글쓰기" onclick="location.href='humorwrite.do'">
 	</div>
 	</c:if>
 </div>

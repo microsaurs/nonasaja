@@ -68,6 +68,26 @@
 	border-radius:22px;
 	cursor: pointer;
 }
+.button5{
+  width: 40px;
+  height: 25px;
+  border:0;
+  background:#9B8F72;
+  position:relative;
+  outline:0;
+  border-radius: 6px;
+  color:white;
+}
+.button4{
+  width: 60px;
+  height: 25px;
+  border:0;
+  background:#665E4D;
+  position:relative;
+  outline:0;
+  border-radius: 6px;
+  color:white;
+}
 #keyfield{
 	width:80px;
 	padding: 3px;
