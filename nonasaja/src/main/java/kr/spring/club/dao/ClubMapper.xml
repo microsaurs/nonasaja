@@ -7,8 +7,7 @@
   	                    resultType="integer">
 		SELECT
 		  COUNT(*)
-		FROM club_board b JOIN region r
-		ON b.region_num = r.region_num
+		FROM club_board
 		<where>
 			<if test="keyfield != null and keyfield != ''">
 				b.club_code = #{keyfield}
