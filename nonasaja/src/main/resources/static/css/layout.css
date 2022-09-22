@@ -13,9 +13,7 @@ div#main_body{
 	padding:5px 5px 30px 5px;
 	min-height: 500px;
 }
-div#main_footer{
-	background-color:yellow;
-}
+
 
 /*==========메뉴==========*/
 div#main_menu ul{

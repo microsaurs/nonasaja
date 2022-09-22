@@ -1,0 +1,41 @@
+.footer-hr{
+	width:100%;
+	size:1px;
+	background:#D8952A;
+	height:1px;
+	border:0;
+	opacity:0.4;
+}
+.padding-align{
+	padding: 20px 0 0 0 ;
+}
+.ptext-align{
+	margin:7px 0 10px 10px;
+}
+.ptext-align1{
+	margin:7px 0 7px 10px;
+}
+.footer-hr1{
+	float:left;
+	width:100%;
+	size:1px;
+}
+.footer-floatalign{
+	float:left;
+}
+.ptext-size{
+	font-size:14px;
+	margin:0 auto;
+	padding: 0 0 10px 0 ;
+}
+.directicon-align{
+	padding:30px 0 10px 90px;
+	float:left;
+}
+.directicon-align1{
+	padding:0px 0 10px 90px;
+	float:left;
+}
+.directicon{
+	padding: 0 5px;
+}
