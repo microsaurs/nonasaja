@@ -67,10 +67,10 @@ public interface MypageMapper {
 	
 	//=====동호회=====//
 	//내가 가입한 동호회 개수
-	@Select("SELECT COUNT(*) FROM join WHERE mem_num=#{mem_num}")
-	public int selectClubCount(Integer mem_num);
+	@Select("SELECT COUNT(*) FROM club_board WHERE club_leader=#{club_leader}")
+	public int selectClubCount(Integer club_leader);
 	//내가 가입한 동호회 목록
-	public List<JoinVO> selectClubList(Map<String,Object> map);
+	public List<ClubVO> selectListJoin(Map<String,Object> map);
 	//내가 찜한 동호회 목록
 	public List<ClubFavVO> selectClubFavList(Map<String,Object> map);
 }

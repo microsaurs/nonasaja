@@ -139,16 +139,18 @@
 		]]>
 	</select>
 	<!-- 동호회 - 참여중인 동호회 -->
-		<select id="selectListJoin" parameterType="map" resultType="joinVO">
+		<select id="selectListJoin" parameterType="map" resultType="clubVO">
 			SELECT *
 					FROM (SELECT
 			        		a.*,
 			    			rownum rnum
 			    			FROM (SELECT
 									club_num,
-									club_name
+									club_name,
+									club_title,
+									club_code
 			            		FROM club_board 
-			            		WHERE mem_num = #{mem_num}
+			            		WHERE club_leader = #{club_leader}
 			            		ORDER BY club_num DESC)a)
 					<![CDATA[
 					WHERE rnum >= #{start} AND rnum <= #{end}
@@ -166,7 +168,7 @@
 						c.club_name
             		FROM fav f JOIN club_board c 
             		ON f.club_num=c.club_num
-            		WHERE f.mem_num = #{mem_num} and f.club_num IS NOT NULL
+            		WHERE f.club_leader = #{club_leader} and f.club_num IS NOT NULL
             		ORDER BY f.club_num DESC)a)
         <![CDATA[
 		WHERE rnum >= #{start} AND rnum <= #{end}

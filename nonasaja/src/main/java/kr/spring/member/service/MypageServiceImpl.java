@@ -118,15 +118,13 @@ public class MypageServiceImpl implements MypageService {
 	}
 
 	@Override
-	public int selectClubCount(Integer mem_num) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int selectClubCount(Integer club_leader) {
+		return mypageMapper.selectClubCount(club_leader);
 	}
 
 	@Override
-	public List<JoinVO> selectListJoin(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ClubVO> selectListJoin(Map<String, Object> map) {
+		return mypageMapper.selectListJoin(map);
 	}
 
 }

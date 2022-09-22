@@ -70,20 +70,6 @@ public class JoinController {
 		return mapAjax;
 	}
 	
-	//동호회 목록보기
-	@RequestMapping("/join/list.do")
-	public String list(HttpSession session,
-			           Model model) {
-		MemberVO user = 
-			  (MemberVO)session.getAttribute("user");
-	
-		List<JoinVO> list = null;
-		list = joinService.selectListJoin(user.getMem_num());
-
-		model.addAttribute("list", list);
-		
-		return "joinList";
-	}
 }
 	
 
