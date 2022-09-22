@@ -101,6 +101,12 @@
     	<put-attribute name="title" value="회원수정(관리자)"/>
     	<put-attribute name="body" value="/WEB-INF/views/member/admin_memberModify.jsp"/>
     </definition>
+    
+    <!-- 고객센터 -->
+    <definition name="serviceCenter" extends="main">
+    	<put-attribute name="title" value="고객센터"/>
+    	<put-attribute name="body" value="/WEB-INF/views/member/serviceCenter.jsp"/>
+    </definition>
 </tiles-definitions>
 
 

@@ -1,0 +1,51 @@
+ul{
+	list-style:none;
+}
+.clear{
+	clear:both;
+}
+.serviceCenter-wrap{
+	width:100%;
+	height:auto;
+	margin:0 auto;
+}
+.buttons{
+	margin:0 auto;
+	width:918px;
+}
+.boxes li{
+	float:left;
+}
+.box{
+	margin:0 10px 10px 0;
+	width:150px;
+	height:40px;
+	background-color:pink;
+	color:black;
+	border:2px solid #eee;
+	border-radius:20px;
+}
+.box a{
+	text-decoration:none;
+	text-align:center;
+	display:block;
+	line-height:40px;
+	font-weight:bold;
+	font-size:1.2em;
+}
+.summary{
+	width:800px;
+	height:auto;
+	margin:0 auto;
+}
+.summary details{
+	margin:20px 20px;
+}
+.summary details summary{
+	font-size:1.5em;
+	font-weight:bold;	
+}
+.summary details .hide{
+	margin-left:50px;
+	font-size:1.2em;
+}
