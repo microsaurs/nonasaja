@@ -68,4 +68,4 @@
 	    setTimeout(showSlides, 2000); // Change image every 2 seconds
 	}
 </script>
-<!-- 메인 끝 -->
+<!-- 메인 끝  -->
