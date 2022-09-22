@@ -76,9 +76,9 @@
 						<form:errors path="trade" cssClass="error-color"/>
 					</li>
 					<li>
-						<label for="region_num">판매지역</label>
-							<form:input path="region_num" class="input-box1"/>
-							<form:errors path="region_num" cssClass="error-color"/>
+						<label for="region">판매지역</label>
+							<form:input path="region" class="input-box1"/>
+							<form:errors path="region" cssClass="error-color"/>
 					</li>
 				</ul>
 			</div>

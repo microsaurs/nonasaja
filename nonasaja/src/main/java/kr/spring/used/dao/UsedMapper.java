@@ -34,8 +34,7 @@ public interface UsedMapper {
 	@Delete("DELETE FROM used_board WHERE used_num=#{used_num}")
 	public void deleteUsed(Integer used_num);
 	@Update("UPDATE used_board SET uploadfile='',"
-			+ "filename='', uploadfile2='',filename2='',uploadfile3='',"
-			+ "filename3='' WHERE used_num=#{used_num}")
+			+ "filename='' WHERE used_num=#{used_num}")
 	public void deleteFile(Integer used_num);
 	
 	//댓글
