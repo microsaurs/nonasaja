@@ -62,7 +62,8 @@
 				product_price,
  				product_total,
 				order_quantity,
-				order_num 
+				order_num,
+				wait_status
 		 	  from norder_detail  
 		 	  join norder   
               using(order_num) 

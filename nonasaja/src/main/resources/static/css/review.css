@@ -31,3 +31,17 @@
 	border: none;
 	font-size: 8.5pt;
 }
+.review-wrap{
+	margin:0 auto;
+	width:700px;
+}
+ul{
+	list-style:none;
+}
+#product_box{
+	width:auto;
+	float:left;
+}
+#review_box{
+	height:257px;
+}

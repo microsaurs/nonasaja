@@ -50,24 +50,23 @@ $(document).ready(function(){
 					<li><span id="sub_category">${product.sub_category}</span></li>
 					<li><span id="title">${product.title}</span></li>
 					<li><span id="origin">원산지 : ${product.origin}</span></li>
-					<li><span id="price"><fmt:formatNumber value="${product.price2 }" /></span> 원</li>
 				</ul>
 				<ul id="price_box">
 					<c:if test="${product.quantity>0 }">
 					<li><span id="div_quantity">${product.div_quantity}</span></li>
 					<li class="req-quantity"><span class="req-quantity">주문확정수량 ${product.req_quantity}개 중 00개 판매</span></li>
 					<li>
-						<label for="order_quantity">구매 수량</label>
 						<input type="number" name="order_quantity" min="1" max=${product.quantity} 
-								id="order_quantity" class="quantity-width">	
+								id="order_quantity" class="quantity-width" value=1 >	
+						<span id="price"><fmt:formatNumber value="${product.price2 }" /></span> 원
 					</li>
 				</ul>
 				<ul>
 					<li>
-						<span id="product_total_txt">총 주문 금액 : 0원</span>
+						 <span id="product_total_txt2">합계</span> <span id="product_total_txt"><fmt:formatNumber value="${product.price2 }"/>원</span>
 					</li>
 					<li>
-						<input type="submit" value="장바구니">
+						<input type="submit" value="장바구니 담기">
 					</li>
 				</ul>	
 					<!-- 품절 시  -->
@@ -82,20 +81,15 @@ $(document).ready(function(){
 			</form>
 		</div>
 		<hr size="1" noshade="noshade" width="100%">
-		
-		<div>
-			<h3>함께 보면 좋은 상품</h3> 
-			<br><br>
-		</div>
-		<p>
-			<h3>상품 상세 정보</h3>
-			${product.detail}
-		</p>
-		
-		<h2>상품필수정보</h2>
+			<h3 id="detail_txt">상품 상세 정보</h3>
+			<div id="product_detail_box">
+				${product.detail}
+			</div>
+		<hr size="1" noshade="noshade" width="100%">
+		<h3 id="must_txt">상품 필수 정보</h3>
 		<table id="must">
 			<tr>
-				<td>품목 또는 명칭</td>
+				<td width="35%">품목 또는 명칭</td>
 				<td>${product.name }</td>
 			</tr>
 			<tr>
@@ -121,23 +115,24 @@ $(document).ready(function(){
 		</table>
 	</c:if><!-- 판매중 상품 -->
 	
-	<div id="review_space">
-	<h2>고객리뷰</h2>
+	<hr size="1" noshade="noshade" width="100%">
+	<h3 id="review_txt">고객 리뷰</h3>
+	
 	<div id="total_star">
 		<span id="star_text">구매고객 총별점</span>
 		<span id="big_star">${score}</span><span id="small_star">/5</span>
 	</div>
-	<span id="notice">리뷰등록,수정,삭제 및 상세 내용은 마이페이지>마이리뷰에서 확인하실 수 있습니다.</span>
-	</div>
+	<span id="notice">※ 리뷰등록,수정,삭제 및 상세 내용은 마이페이지>마이리뷰에서 확인하실 수 있습니다.</span>
 	
 	<c:forEach var="review" items="${reviewList}">
 		<div id="review_box">
 			<ul>
-				<li>${review.id}</li>
-				<li>
-					<img src="${pageContext.request.contextPath}/member/viewProfile.do?mem_num=${review.mem_num}" width="25" height="25" class="my-photo">
+				<li id="review_left">
+					<img id="review_photo" src="${pageContext.request.contextPath}/member/viewProfile.do?mem_num=${review.mem_num}" width="25" height="25" class="my-photo">
 				</li>
-				<li>
+				<li id="review_right">
+					<span id="review_id">${review.id}</span> <span id="review_date">${review.reg_date}</span>
+					<br>
 					<div class="rating">
 						<input type="hidden" name="score" value="0" class="rate-star">
 						<c:forEach var="star" begin="1" end="5" varStatus="status">
@@ -148,13 +143,14 @@ $(document).ready(function(){
 						</c:forEach>
 					</div>
 				</li>
-				<li>${review.reg_date}</li>
+				<li id="review_clear">
 				<li>
 				<p>${review.content}</p>
 				</li>
 			</ul>
 		</div>
 	</c:forEach>
+	<hr id="last_hr" size="1" noshade="noshade" width="100%">
 </div>
 
 

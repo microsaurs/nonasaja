@@ -40,3 +40,22 @@ div#page-main tr, th {
 .commu-logo{
 	padding: 0 0 40px 0;
 }
+#keyfield{
+	width:80px;
+	padding: 3px;
+	border: 1.5px solid #878787;
+	border-radius:5px;
+}
+#searchbar{
+	border:1.5px solid #878787;
+	border-radius: 5px;
+	width:170px;
+	height:27px;
+}
+
+
+
+
+
+
+

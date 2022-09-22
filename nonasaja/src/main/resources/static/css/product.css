@@ -61,18 +61,18 @@ li#detail_li{
 /*===============상품 상세============*/
 .product-image{
 	float: left;
-    width: 300px;
-    height: 300px;
-    margin: 50px 50px 50px 15%;
+    width: 310px;
+    height: 310px;
+    margin: 50px 50px 50px 13%;
 }
 .product-detail{
 	float: left;
     width: 40%;
-    height: 300px;
-    margin: 50px 0;
+    margin: 42px 0;
 }
 form#product_cart{
-	border :none;
+	border: none;
+    padding: 0 0 0 20px;
 }
 
 .product-detail ul{
@@ -88,17 +88,157 @@ form#product_cart{
 	font-size: 13pt;
 }
 ul#price_box{
-	width: 75%;
+	width: 60%;
     background-color: #CCCBBC;
     padding: 10px;
-}
-#price_box li{
-	width:80%;
 }
 #div_quantity{
 	font-weight: 700;
     font-size: 11pt;
 }
+li.req-quantity{
+	padding: 0 0 0 35%;
+}
+#price{
+	padding: 0 0 0 54%;
+    font-weight: bold;
+}
+#product_total_txt{
+	font-size: 17pt;
+    color: #CF9B1D;
+    font-weight: bold;
+}
+#product_total_txt2{
+	padding: 0 0 0 36%;
+}
+form#product_cart input[type=submit]{
+	width: 64%;
+    height: 30px;
+    border: none;
+    background-color: #6B5F38;
+    margin: 5px 0 0 0;
+    color: white;
+    font-size: 13pt;
+    font-weight: bolder;
+}
+#detail_txt{
+	padding:0 0 0 4%;
+}
+.page-main{
+	width: 93%;
+    margin: 0 auto;
+}
+#product_detail_box{
+	text-align: center;
+}
+#must_txt{
+	padding: 0 0 0 4%;
+    margin: 30px 0 30px 0;
+}
+#review_txt{
+	padding: 0 0 0 4%;
+    margin: 30px 0 30px 0;
+}
+table#must{
+	width: 92%;
+	border-color: #CCCCCC;
+	border-width: 0.5px;
+	margin-bottom: 40px;
+}
+table#must tr, table#must td, table#must th{
+	border-color: #CCCCCC;
+	border-width: 0.5px;
+}
+table#must td{
+	padding: 8px 0 8px 15px;
+}
+#total_star{
+	border: 1px solid #CCCCCC;
+    width: 92%;
+    margin: 0 auto;
+    height: 60px;
+    text-align: center;
+    padding: 10px 0 10px 0;
+}
+#star_text{
+	font-size: 12pt;
+    font-weight: 600;
+}
+#big_star{
+	font-size: 30pt;
+    font-weight: 600;
+    margin: 0 5px 0 10px;
+}
+
+#small_star{
+	font-size: 20pt;
+    font-weight: 600;
+    color: #CCCCCC;
+}
+#notice{
+	padding: 0 0 0 4%;
+    font-size: 9pt;
+}
+div#review_box{
+ width: 90%;
+ margin: 30px 0 0 40px;
+ border-bottom: 0.5px solid #CCCCCC; 
+}
+#review_box ul{
+	margin: 0;
+	padding: 0; 
+}
+#review_left{
+	float: left;
+}
+#review_right{
+	float: left;
+    padding: 8px 0 0 0;
+}
+#review_clear{
+	clear: both;
+}
+#review_photo{
+	width: 45px;
+    height: 45px;
+    margin: 10px 10px 10px 0;
+}
+#review_id{
+	font-size: 14pt;
+    font-weight: 540;
+    padding: 0 0 0 2px;
+}
+#review_date{
+	font-size: 9pt;
+}
+#notice_img_div{
+	text-align: center;
+}
+#notice_img{
+	width: 90%;
+	margin: 30px 0 0 0;
+}
+#last_hr{
+	margin: 80px 0 40px 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

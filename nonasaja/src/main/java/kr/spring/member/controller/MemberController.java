@@ -360,7 +360,7 @@ public class MemberController {
 		if(type==1) {//참여한 동호회
 			count = mypageService.selectClubCount(user.getMem_num());
 			page = new PagingUtil(currentPage,count,rowCount,pageCount,"myPageClub.do");
-			if(count>0) {
+			if(count>0) { 
 				map.put("start", page.getStartRow());
 				map.put("end", page.getEndRow());
 				map.put("mem_num", user.getMem_num());
