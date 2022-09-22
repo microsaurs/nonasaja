@@ -22,9 +22,9 @@
 				<p class="layout22">|</p>
 				<a href="${pageContext.request.contextPath}/member/registerUser.do" class="text">회원가입</a>
 				<p class="layout22">|</p>
-				<a href="${pageContext.request.contextPath}/member/registerUser.do" class="text">고객센터</a>
+				<a href="${pageContext.request.contextPath}/member/serviceCenter.do" class="text">고객센터</a>
 			</c:if>
-		</div>
+		</div> 
 		<%-- 로그인 된 경우 --%>
 		<div class="size">
 		<c:if test="${!empty user}">
@@ -37,7 +37,7 @@
 				<a href="${pageContext.request.contextPath}/member/admin_list.do" class="text">회원관리</a>
 			</c:if>
 			<p class="layout22">|</p>
-			<a href="${pageContext.request.contextPath}/member/registerUser.do" class="text">고객센터</a>
+			<a href="${pageContext.request.contextPath}/member/serviceCenter.do" class="text">고객센터</a>
 		</c:if>	
 		</div>
 	</div>

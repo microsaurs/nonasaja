@@ -31,7 +31,7 @@
 	<div id="product_main">
 		<c:forEach var="product" items="${list }">
 			<div class="horizontal-area">
-				<a href="detail.do?product_num=${product.product_num }">
+				<a href="${context.request.contextPath}/product/detail.do?product_num=${product.product_num }">
 					<img class="view-img2" src="${context.request.contextPath}/product/imageView.do?product_num=${product.product_num}&photo_type=1">
 					<br>
 					<span id="title2">${product.title}</span>
@@ -68,4 +68,4 @@
 	    setTimeout(showSlides, 2000); // Change image every 2 seconds
 	}
 </script>
-<!-- 메인 끝 -->
+<!-- 메인 끝   -->
