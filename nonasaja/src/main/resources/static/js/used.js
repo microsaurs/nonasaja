@@ -1,4 +1,38 @@
 $(function(){
+	//=======유효성 체크==========//
+	$('#register_form').submit(function(){
+		if($('#upload').val().trim()==''){
+			alert('대표이미지는 필수 입니다!');
+			$('#upload').val('').focus();
+			return false;
+		}
+		if($('#title').val().trim()==''){
+			alert('제목을 입력해주세요!');
+			$('#title').val('').focus();
+			return false;
+		}
+		if($('#category').val().trim()==''){
+			alert('상품 종류를 입력해주세요!');
+			$('#category').val('').focus();
+			return false;
+		}
+		if($('#price').val().trim()==''){
+			alert('가격을 입력해주세요!');
+			$('#price').val('').focus();
+			return false;
+		}
+		if($('#region').val().trim()==''){
+			alert('지역을 입력해주세요!');
+			$('#region').val('').focus();
+			return false;
+		}
+		if($('#content').val().trim()==''){
+			alert('내용을 입력해주세요!');
+			$('#content').val('').focus();
+			return false;
+		}
+	});
+	
 	// ==========상품 등록 이미지 미리보기==============//
 
 	//처음 화면에 보여지는 이미지 읽기
@@ -32,7 +66,5 @@ $(function(){
 			$('#img1').attr('src',reader1.result);
 		};
 	});
-	
-	
 
 });
