@@ -8,6 +8,7 @@
 	src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/board.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
 <div class="page-main">
 	<div class="writebutton-float">
@@ -36,11 +37,12 @@
 			</ul>
 		</form>
 	</div>
+</div>
 	<c:if test="${count == 0}">
 		<div class="result-display1">표시할 게시물이 없습니다.</div>
 	</c:if>
 	<c:if test="${count > 0}">
-
+		<div class="container">
 			<table class="table">
 				<tr>
 					<th>번호</th>
@@ -59,10 +61,10 @@
 					</tr>
 				</c:forEach>
 			</table>
-
+		</div>
 		<div class="align-center">${page}</div>
 	</c:if>
-</div>
+
 <!-- 내용 끝 -->
 
 

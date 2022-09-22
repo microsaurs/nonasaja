@@ -1,6 +1,7 @@
 package kr.spring.sale.vo;
 
 
+import java.io.IOException;
 import java.sql.Date;
 
 import javax.validation.constraints.NotEmpty;
@@ -19,6 +20,8 @@ public class SaleVO {
 	private Date modify_date; //수정일
 	private Date deadline; //수정일
 	private int hit;//조회수
+	private byte[] img;
+	private String imgname;
 	private int mem_num; //회원번호
 	
 	private String id; //회원아이디
@@ -26,6 +29,14 @@ public class SaleVO {
 	private byte[] photo;//프로필 사진
 	private String photo_name;//프로필 사진명
 	
+	
+	public void setUpload(MultipartFile upload)
+			throws IOException{
+		//MultipartFile -> byte[] 변환
+		setImg(upload.getBytes());
+		//파일명 구하기
+		setImgname(upload.getOriginalFilename());
+	}
 	
 	public int getBoard_num() {
 		return board_num;
@@ -68,6 +79,18 @@ public class SaleVO {
 	}
 	public void setDeadline(Date deadline) {
 		this.deadline = deadline;
+	}
+	public byte[] getImg() {
+		return img;
+	}
+	public void setImg(byte[] img) {
+		this.img = img;
+	}
+	public String getImgname() {
+		return imgname;
+	}
+	public void setImgname(String imgname) {
+		this.imgname = imgname;
 	}
 	public int getMem_num() {
 		return mem_num;

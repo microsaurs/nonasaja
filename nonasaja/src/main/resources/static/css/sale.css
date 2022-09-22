@@ -56,12 +56,12 @@
   	align-items: center;/*세로 정렬*/
   	justify-content: center;/*가로 정렬*/
 }
-.table{
+div#page-main table {
   width: 100%;
   border-top: 1px solid #444444;
   border-collapse: collapse;
 }
-.table tr th{
+div#page-main tr, th {
   border-bottom: 1px solid #444444;
   padding: 10px;
-}
+} 

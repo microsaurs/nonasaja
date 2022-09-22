@@ -10,7 +10,7 @@
 	<ul class="detail-info">
 		<li>
 			<c:if test="${!empty board.photo_name}">
-			<img src="imageView.do?board_num=${board.board_num}&board_type=1" width="40" height="40" class="my-photo">
+			<img src="${pageContext.request.contextPath}/member/viewProfile.do?mem_num=${board.mem_num}" width="50px">
 			</c:if>
 			<c:if test="${empty board.photo_name}">
 			<img src="${pageContext.request.contextPath}/images/face.png" width="40" height="40" class="my-photo">
@@ -29,7 +29,9 @@
 		</li>
 	</ul>
 	세일 기한 : ${board.deadline}
-	
+	<c:if test="${!empty board.imgname}">
+		<img src="imageView.do?board_num=${board.board_num}" width="400" height="400">
+	</c:if>
 
 	<p>
 		${board.content}

@@ -75,6 +75,10 @@
   			title=#{title},
   			content=#{content},
   		    deadline=#{deadline},
+  		    <if test="imgname != ''">
+  			img=#{img},
+  			imgname=#{imgname},
+  		    </if>
   		    modify_date=SYSDATE
   		WHERE board_num=#{board_num}
   	</update>

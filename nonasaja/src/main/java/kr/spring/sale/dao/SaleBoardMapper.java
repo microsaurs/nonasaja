@@ -17,8 +17,8 @@ public interface SaleBoardMapper {
 	//부모글
 	public List<SaleVO> selectList(Map<String,Object> map);
 	public int selectRowCount(Map<String,Object> map);
-	@Insert("INSERT INTO sale_board (board_num, title, content, deadline, reg_date, mem_num) "
-			+ "VALUES (sale_board_seq.nextval, #{title}, #{content}, #{deadline}, SYSDATE, #{mem_num})")
+	@Insert("INSERT INTO sale_board (board_num, title, content, deadline, reg_date, img, imgname, mem_num) "
+			+ "VALUES (sale_board_seq.nextval, #{title}, #{content}, #{deadline}, SYSDATE, #{img}, #{imgname}, #{mem_num})")
 	public void insertBoard(SaleVO board);
 	@Select("SELECT * FROM sale_board b JOIN member m "
 			+ "USING(mem_num) JOIN member_detail d "
@@ -29,8 +29,10 @@ public interface SaleBoardMapper {
 	public void updateBoard(SaleVO board);
 	@Delete("DELETE FROM sale_board WHERE board_num=#{board_num}")
 	public void deleteBoard(Integer board_num);
-
+	@Delete("UPDATE sale_board SET img='',"
+			+ "imgname='' WHERE board_num=#{board_num}")
 	public void deleteFile(Integer board_num);
+	
 
 	//댓글
 	public List<SaleReplyVO> selectListReply(Map<String,Object> map);

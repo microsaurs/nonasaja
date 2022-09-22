@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.spring.club.vo.ClubVO;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.sale.service.SaleBoardService;
 import kr.spring.sale.vo.SaleVO;
@@ -152,6 +153,24 @@ public class SaleBoardController {
 			return new ModelAndView("saleBoardDetail","board",board);
 		}
 		
+		//=========이미지 출력=========//
+		@RequestMapping("/sale/imageView.do")
+		public ModelAndView viewImage(
+				   @RequestParam int board_num,
+				   HttpSession session) {
+			
+			SaleVO saleVO = 
+					boardService.selectBoard(board_num);
+			
+			ModelAndView mav = new ModelAndView();
+			//뷰 이름
+			mav.setViewName("imageView");
+			
+			mav.addObject("imageFile", saleVO.getImg());
+			mav.addObject("filename", saleVO.getImgname()); 
+			 
+			return mav;
+		}
 		//===========게시판 글수정===========//
 		//수정 폼
 		@GetMapping("/sale/update.do")

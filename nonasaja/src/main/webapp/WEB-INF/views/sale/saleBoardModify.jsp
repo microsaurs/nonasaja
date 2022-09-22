@@ -55,6 +55,46 @@
 			<li>
 				<input type="date" name="deadline" id="deadline">
 			</li>
+			<li>
+				<label for="upload">대표사진</label>
+				<input type="file" name="upload" id="upload">
+				<c:if test="${!empty saleVO.imgname}">
+				<div id="file_detail">
+					(${saleVO.imgname})파일 등록
+					<input type="button" value="파일삭제"
+					                      id="file_del">
+				</div>
+				<script type="text/javascript">
+					$(function(){
+						$('#file_del').click(function(){
+							let choice = confirm('삭제하시겠습니까?');
+							if(choice){
+								$.ajax({
+									url:'deleteFile.do',
+									data:{board_num:${saleVO.board_num}},
+									type:'post',
+									dataType:'json',
+									cache:false,
+									timeout:30000,
+									success:function(param){
+										if(param.result == 'logout'){
+											alert('로그인 후 사용하세요!');
+										}else if(param.result == 'success'){
+											$('#file_detail').hide();
+										}else{
+											alert('파일 삭제 오류 발생');
+										}
+									},
+									error:function(){
+										alert('네트워크 오류 발생');
+									}
+								});
+							}
+						});
+					});
+				</script>
+				</c:if>
+			</li>
 		
 		</ul>    
 		<div class="align-center">
