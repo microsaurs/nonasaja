@@ -8,6 +8,12 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/board.js"></script>
 
 <div class="page-main">
+	
+	<div class="align-center">
+	<img src="${pageContext.request.contextPath}/images/우리동네중고거래.png" width="700px">
+	
+	</div>
+	
 	<div class="writebutton-float">
 		<c:if test="${!empty user}">
 		<a href="${pageContext.request.contextPath}/used/write.do"><img src="${pageContext.request.contextPath}/images/writebutton.png" class="writebutton"></a>

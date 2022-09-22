@@ -12,28 +12,29 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Dongle&display=swap" rel="stylesheet">
 <div class="page-main">
-	<p id="recipe_start">레시피 작성자</p>
-	<ul class="detail-info">
-		<li>
-			<c:if test="${!empty board.photo_name}">
-			<img src="imageView.do?commu_num=${board.commu_num}&board_type=1" width="100" height="100" class="my-photo">
-			</c:if>
-			<c:if test="${empty board.photo_name}">
-			<img src="${pageContext.request.contextPath}/images/face.png" width="100" height="100" class="my-photo">
-			</c:if>
-		</li>
-		<li>
-			<c:if test="${empty board.nickname}">${board.id}</c:if>
-			<c:if test="${!empty board.nickname}">${board.nickname}<br></c:if>
+	
+	<div class="title-space">
+		<div class="userphoto">
+				<c:if test="${!empty board.photo_name}">
+				<img src="imageView.do?commu_num=${board.commu_num}&board_type=1" width="70" height="70" class="my-photo1">
+				</c:if>
+				<c:if test="${empty board.photo_name}">
+				<img src="${pageContext.request.contextPath}/images/face.png" width="70" height="70" class="my-photo1">
+				</c:if>
+		</div>
+		<div class="span-align">
+		<span id="spantag-font"><b>${board.nickname}</b> 님의 <font color="#D8952A"><b>레시피</b></font></span>
+		</div>
+		<div class="writeinfo-detail">
 			<c:if test="${!empty board.commu_modify_date}">
-			최근 수정일 : ${board.commu_modify_date}
+			최근 수정일  <b> ${board.commu_modify_date} </b>
 			<br></c:if>
 			<c:if test="${empty board.commu_modify_date}">
-			작성일 : ${board.commu_date}
+			작성일  <b>${board.commu_date}</b>
 			<br></c:if>
-			조회 : ${board.commu_hit}
-		</li>
-	</ul>
+			조회  <b>${board.commu_hit}</b>
+		</div>
+	</div>
 <%--  	<ul>
 		<c:if test="${!empty board.filename}">
 		<li>

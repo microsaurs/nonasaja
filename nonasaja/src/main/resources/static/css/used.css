@@ -140,9 +140,8 @@ span{
 }
 .page-main ul.search-align{
 	list-style:none;
-	padding:0;
+	padding:0 0 60px 0;
 	margin:0 10px 0 0;
-	float:right;
 }
 .page-main ul.search-align li{
 	margin: 0 0 9px 0;
@@ -151,20 +150,15 @@ span{
 }
 .page-main form#search_form1{
 	border: none;
-	margin:0 30px 0 0;
-	padding:20px 0 0 0;
 	box-sizing: border-box;
-	float:right;
+	text-align:center;
 	
 }
-.writebutton-float{
-	width:100%;
-	padding:20px 0px 80px 10px;
-}
+
 .writebutton{
-	width:260px;
-	height:85px;
-	margin-left:30px;
+	width:300px;
+	height:100px;
+	padding: 0px 0 10px 350px;
 }
 
 .button5{
@@ -318,3 +312,4 @@ h2{
 .button-align1{
 	padding:45px 0 0 0;
 }
+

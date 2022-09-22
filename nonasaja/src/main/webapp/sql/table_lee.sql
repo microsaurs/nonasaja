@@ -10,15 +10,14 @@ create table used_board(
  status number(1) not null,--거래상태(1판매중/2판매완료)
  category varchar2(15) not null,--상품 카테고리(주방,생활,식품용품)
  trade varchar2(30),
- filename varchar2(100),
+ filename varchar2 not null(100),
  uploadfile BLOB
  
  reg_date date default SYSDATE not null,
  modify_date date,
  hit number(6) default 0 not null,
  constraint used_board_pk primary key (used_num),
- constraint used_board_fk1 foreign key (mem_num) references member(mem_num),
- constraint used_board_fk2 foreign key (region_num) references region(region_num)
+ constraint used_board_fk1 foreign key (mem_num) references member(mem_num)
 );
 
 create sequence used_board_seq;
