@@ -6,9 +6,9 @@
 <!-- 내용 시작 --> 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/used.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/used.reply.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/used.fav.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/videoAdapter.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/used.reply.js"></script>
 <div class="page-main">
 	<div>
 	<div class="statuskind-float">
