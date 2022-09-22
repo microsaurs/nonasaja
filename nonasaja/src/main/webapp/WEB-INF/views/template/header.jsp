@@ -14,7 +14,7 @@
 		</div>
 	</div>	
 	<div>
-		<button id="cart" onclick="href='${pageContext.request.contextPath}/cart/cart_list.do'"><img src="${pageContext.request.contextPath}/images/카트.png" width="25" height="25"></button> 
+		<button id="cart" onclick="location.href='${pageContext.request.contextPath}/member/myPageProduct.do'"><img src="${pageContext.request.contextPath}/images/카트.png" width="25" height="25"></button> 
 		<%-- 로그인 안된 경우 --%>
 		<div class="size">
 			<c:if test="${empty user}">

@@ -1,0 +1,7 @@
+#admin_table, #admin_table td, #admin_table th{
+	border:none;
+	text-align:center;
+}
+#admin_table tr{
+	border:1px dashed #999;
+}

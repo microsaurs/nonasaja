@@ -4,6 +4,7 @@
 <script src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/member.admin.js"></script>
 <!-- 내용 시작 -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin.css">
 <div class="page-main">
 	<h2>회원목록(관리자용)</h2>
 	<form action="admin_list.do" id="search_form" method="get">
@@ -29,7 +30,7 @@
 	<div class="align-center">표시할 회원정보가 없습니다.</div>
 	</c:if>
 	<c:if test="${count > 0}">
-	<table>
+	<table id="admin_table">
 		<tr>
 			<th>아이디</th>
 			<th>이름</th>
@@ -52,10 +53,10 @@
 				${member.reg_date}
 			</td>
 			<td>
-				<c:if test="${member.auth == 0}">탈퇴</c:if>
-				<c:if test="${member.auth == 1}">정지</c:if>
+				<c:if test="${member.auth == 0}"><font color="orange">탈퇴</font></c:if>
+				<c:if test="${member.auth == 1}"><font color="red">정지</font></c:if>
 				<c:if test="${member.auth == 2}">일반</c:if>
-				<c:if test="${member.auth == 3}">관리</c:if>
+				<c:if test="${member.auth == 3}"><font color="blue">관리</font></c:if>
 			</td>
 			<td>
 				<c:if test="${empty member.root}"></c:if>
