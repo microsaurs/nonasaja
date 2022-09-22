@@ -11,11 +11,16 @@ div#page-main tr, th {
 	width:100px;
 }
 .image-align{
+	width:90%;
 	text-align:center;
-	margin: 0 250px;
+	margin: 0 260px;
 }
 .search{
 	margin-bottom: 30px;
+	
+}
+#search_form{
+	margin-left:262px;
 }
 .button{
 	font-family: 'Dongle', sans-serif;
@@ -92,7 +97,7 @@ div#page-main tr, th {
 .writebutton{
 	text-align: center;	
 	width:300px;
-	height:100px;
+	height:115px;
 	margin-bottom: 20px;
 }
 

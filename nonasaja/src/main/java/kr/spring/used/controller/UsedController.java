@@ -30,7 +30,7 @@ import kr.spring.util.StringUtil;
 @Controller
 public class UsedController {
 	private static final Logger logger = LoggerFactory.getLogger(UsedController.class);
-	private int rowCount = 20;
+	private int rowCount = 9;
 	private int pageCount = 10;
 	
 	@Autowired
