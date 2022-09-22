@@ -75,7 +75,7 @@ div#page-main tr, th {
 	padding: 0 30px;
 }
 .commu-logo{
-	padding: 0 0 40px 0;
+	padding: 0 0 10px 0;
 }
 #keyfield{
 	width:80px;
@@ -86,10 +86,15 @@ div#page-main tr, th {
 #searchbar{
 	border:1.5px solid #878787;
 	border-radius: 5px;
-	width:170px;
+	width:230px;
 	height:27px;
 }
-
+.writebutton{
+	text-align: center;	
+	width:300px;
+	height:100px;
+	margin-bottom: 20px;
+}
 
 
 

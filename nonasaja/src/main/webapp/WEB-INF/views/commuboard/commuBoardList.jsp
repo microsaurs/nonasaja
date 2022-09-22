@@ -18,13 +18,18 @@
 	<a href="commuList.do?keyfield=2"><img id="commuList_img" src="${pageContext.request.contextPath}/images/sale.png"></a>
 	<a href="commuList.do?keyfield=3"><img id="commuList_img" src="${pageContext.request.contextPath}/images/book.png"></a>
 	</div> --%>
+	<c:if test="${!empty user}">	          
+		<div class="align-center">
 	
+		<a href="${pageContext.request.contextPath}/commuboard/write.do"><img src="${pageContext.request.contextPath}/images/커뮤니티글쓰기.png" class="writebutton"></a>
+		</div>
+	</c:if>
+		
 	<div class="image-align">
-	<figure class="category-align"><a href="commuList.do?keyfield=1"><img id="commuList_img" src="${pageContext.request.contextPath}/images/schedule.png"></a><figcaption><b>자유게시판</b></figcaption></figure>
-	<figure class="category-align"><a href="commuList.do?keyfield=2"><img id="commuList_img" src="${pageContext.request.contextPath}/images/sale.png"></a><figcaption><b>지역세일</b></figcaption></figure>
-	<figure class="category-align"><a href="commuList.do?keyfield=3"><img id="commuList_img" src="${pageContext.request.contextPath}/images/book.png"></a><figcaption><b>자취백과</b></figcaption></figure><br><br><br><br><br>
-	</div>
-	
+	<figure class="category-align"><a href="commuList.do?keyfield=1"><img id="commuList_img" src="${pageContext.request.contextPath}/images/schedule2.png"></a><figcaption><b>자유게시판</b></figcaption></figure>
+	<figure class="category-align"><a href="commuList.do?keyfield=2"><img id="commuList_img" src="${pageContext.request.contextPath}/images/sale2.png"></a><figcaption><b>지역세일</b></figcaption></figure>
+	<figure class="category-align"><a href="commuList.do?keyfield=3"><img id="commuList_img" src="${pageContext.request.contextPath}/images/book2.png"></a><figcaption><b>자취백과</b></figcaption></figure><br><br><br><br><br>
+	</div><br><br>
 	
 	<form action="list.do" id="search_form" method="get">
 		<ul class="search">
@@ -43,13 +48,10 @@
 				<input type="submit" class="button5" value="찾기">
 				<input type="button" class="button4" value="목록" onclick="location.href='list.do'">
 			</li>
-		</ul>
+		</ul><br>
 	</form>
-	<c:if test="${!empty user}">
-	<div class="align-right">
-		<input class="button2" type="button" value="글쓰기" onclick="location.href='humorwrite.do'">
-	</div>
-	</c:if>
+
+
 </div>
 	<c:if test="${count == 0}">
 	<div class="result-display">표시할 게시물이 없습니다.</div>

@@ -159,9 +159,9 @@
              
 			
 		<div class="align-center">
-			<form:button>전송</form:button>
+			<form:button class="button2">수정</form:button>
 			<input type="button" value="목록"
-			            onclick="location.href='list.do'">
+			            onclick="location.href='list.do'" class="button1">
 		</div>    
 </form:form>
 </div>

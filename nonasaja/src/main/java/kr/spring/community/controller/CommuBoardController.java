@@ -193,15 +193,7 @@ private static final Logger logger = LoggerFactory.getLogger(CommuBoardControlle
 		if(board_type==1) {//프로필 사진
 			mav.addObject("imageFile", board.getPhoto());
 			mav.addObject("filename", board.getPhoto_name());
-		}else if(board_type==2) {//업로드된 이미지
-			mav.addObject("imageFile", board.getUploadfile());
-			mav.addObject("filename", board.getFilename());
-		}else if(board_type==3) {//업로드된 이미지
-			mav.addObject("imageFile", board.getUploadfile2());
-			mav.addObject("filename", board.getFilename2());
-		}else if(board_type==4) {//업로드된 이미지
-			mav.addObject("imageFile", board.getUploadfile3());
-			mav.addObject("filename", board.getFilename3());
+
 		}
 		
 		return mav;
