@@ -11,15 +11,15 @@
 <div class="page-main">
 	<div class="slideshow-container">
 		<div class="mySlides fade">
-		  <img src="${pageContext.request.contextPath}/images/main1.png" style="width:100%">
+		  <img class="slide-img" src="${pageContext.request.contextPath}/images/main1.png" style="width:100%">
 		</div>
 		
 		<div class="mySlides fade">
-		  <img src="${pageContext.request.contextPath}/images/main2.jpg" style="width:100%">
+		  <img class="slide-img" src="${pageContext.request.contextPath}/images/main2.jpg" style="width:100%">
 		</div>
 		
 		<div class="mySlides fade">
-		  <img src="${pageContext.request.contextPath}/images/main3.jpg" style="width:100%">
+		  <img  class="slide-img" src="${pageContext.request.contextPath}/images/main3.jpg" style="width:100%">
 		</div>
 	</div>
 	
