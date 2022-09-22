@@ -32,28 +32,33 @@ $(function(){
 				//댓글 목록 작업
 				$(param.list).each(function(index,item){
 					let output = '<div class="item">';
-					output += '<h4>';
-					output += '<img src="../member/viewProfile.do?mem_num='+ item.mem_num + '" width="30" height="30" class="my-photo">';
-					
+					output += '<img src="../member/viewProfile.do?mem_num='+ item.mem_num + '" width="30" height="30" class="my-photo2">';
+					output += '<h3 class="nicknamemargin">';
 					if(item.nickname){
-						output += item.nickname + '</h4>';
+						output += item.nickname + '</h3>';
 					}else{
-						output += item.id + '</h4>';
+						output += item.id + '</h3>';
 					}
+					
+					
+					
 					
 					output += '<div class="sub-item">';
 					output += '<p>' + item.reply_content.replace(/\r\n/g,'<br>') + '</p>';
 					
-					if(item.reply_date){
-						output += '<span class="modify-date">등록일 : ' + item.reply_date + '</span>';
-					}
-					
 					if(param.user_num==item.mem_num){
 						//로그인한 회원번호와 댓글 작성자 회원번호가 일치
-						output += ' <input type="button" data-num="' + item.reply_num + '" value="수정" class="modify-btn">'; 
-						output += ' <input type="button" data-num="' + item.reply_num + '" value="삭제" class="delete-btn">'; 
+						output += ' <input type="button" data-num="' + item.reply_num + '" value="삭제" class="button11">'; 
+						output += ' <input type="button" data-num="' + item.reply_num + '" value="수정" class="button10">'; 
+						
 					}
-					output += '<hr size="1" noshade>';
+					
+					if(item.reply_date){
+						output += '<span class="modify-date">등록일 ' + item.reply_date + '</span>';
+					}
+					
+					
+					output += '<hr size="1"  width="100%" noshade>';
 					output += '</div>';
 					output += '</div>';
 					
@@ -143,7 +148,7 @@ $(function(){
 		}
 	});
 	//댓글 수정 버튼 클릭시 수정 폼 노출
-	$(document).on('click','.modify-btn',function(){
+	$(document).on('click','.button10',function(){
 		//댓글 글번호
 		let reply_num = $(this).attr('data-num');
 		//댓글 내용
@@ -152,11 +157,11 @@ $(function(){
 		//댓글 수정폼 UI
 		let modifyUI = '<form id="mre_form">';
 		modifyUI += '<input type="hidden" name="reply_num" id="mre_num" value="'+ reply_num +'">';
-		modifyUI += '<textarea rows="3" cols="50" name="reply_content" id="mre_content" class="rep-content">'+ content +'</textarea>';
+		modifyUI += '<textarea rows="3" cols="50" name="reply_content" id="mre_content" class="rep-content1">'+ content +'</textarea>';
 		modifyUI += '<div id="mre_first"><span class="letter-count">300/300</span></div>';
 		modifyUI += '<div id="mre_second" class="align-right">';
-		modifyUI += '<input type="submit" value="수정">';
 		modifyUI += ' <input type="button" value="취소" class="re-reset">';
+		modifyUI += '<input type="submit" value="수정" class="button10">';
 		modifyUI += '</div>';
 		modifyUI += '<hr size="1" noshade width="96%">';
 		modifyUI += '</form>';
@@ -239,7 +244,7 @@ $(function(){
 		event.preventDefault();
 	});
 	//댓글 삭제
-	$(document).on('click','.delete-btn',function(){
+	$(document).on('click','.button11',function(){
 		//댓글 번호
 		let reply_num = $(this).attr('data-num');
 		
