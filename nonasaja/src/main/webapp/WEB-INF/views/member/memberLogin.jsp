@@ -4,33 +4,37 @@
 <!-- 내용 시작 -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/saveId.js"></script>
 <div class="login-wrap">
 	<ul>
 		<li>
 			<div class="logo">
 				<div class="logo-img">
-					<img src="${pageContext.request.contextPath}/images/노나사자대표이미지.png" width="200" height="200">
+					<a href="${pageContext.request.contextPath}/">
+						<img src="${pageContext.request.contextPath}/images/노나사자대표이미지.png" width="200" height="200">
+					</a>
 				</div>
 				<div class="logo-font">
-					<span class="nona">노나</span><span class="saja">사자</span>
+					<a href="${pageContext.request.contextPath}/">
+						<span class="nona">노나</span><span class="saja">사자</span>
+					</a>
 				</div>
 			</div>
 		</li>
 		<li>
 			<div class="inputs">
-				<form:form id="login_form" action="login.do" modelAttribute="memberVO">
+				<form:form id="login_form" action="login.do" modelAttribute="memberVO" onsubmit="return frm_check();">
 				<label for="id"></label>
 				<form:input path="id" placeholder=" 아이디"/>
 				<label for="passwd"></label>
 				<form:password path="passwd" placeholder=" 비밀번호"/><br>
-				<input type="checkbox"> 아이디 저장
+				<input type="checkbox" id="saveId"> 아이디 저장
 				<div class="float-right findIdPw">
 					<a href="#">아이디 찾기</a> |
 					<a href="#">비밀번호 찾기</a> |
 					<a href="${pageContext.request.contextPath}/member/registerUser.do">회원가입</a>
 				</div>
 				<div class="clear"></div>
-				<%-- <form:errors path="id" cssClass="error-color"/><br>--%>
 				<form:errors path="passwd" cssClass="error-color"/>
 				<form:errors element="div" cssClass="error-color"/>
 				<div class="login-btn">
