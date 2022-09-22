@@ -81,10 +81,10 @@ $(document).ready(function(){
 			</form>
 		</div>
 		<hr size="1" noshade="noshade" width="100%">
-		<p>
 			<h3 id="detail_txt">상품 상세 정보</h3>
-			${product.detail}
-		</p>
+			<div id="product_detail_box">
+				${product.detail}
+			</div>
 		<hr size="1" noshade="noshade" width="100%">
 		<h3 id="must_txt">상품 필수 정보</h3>
 		<table id="must">
@@ -118,22 +118,21 @@ $(document).ready(function(){
 	<hr size="1" noshade="noshade" width="100%">
 	<h3 id="review_txt">고객 리뷰</h3>
 	
-	<div id="review_space">
 	<div id="total_star">
 		<span id="star_text">구매고객 총별점</span>
 		<span id="big_star">${score}</span><span id="small_star">/5</span>
 	</div>
-	<span id="notice">리뷰등록,수정,삭제 및 상세 내용은 마이페이지>마이리뷰에서 확인하실 수 있습니다.</span>
-	</div>
+	<span id="notice">※ 리뷰등록,수정,삭제 및 상세 내용은 마이페이지>마이리뷰에서 확인하실 수 있습니다.</span>
 	
 	<c:forEach var="review" items="${reviewList}">
 		<div id="review_box">
 			<ul>
-				<li>${review.id}</li>
-				<li>
-					<img src="${pageContext.request.contextPath}/member/viewProfile.do?mem_num=${review.mem_num}" width="25" height="25" class="my-photo">
+				<li id="review_left">
+					<img id="review_photo" src="${pageContext.request.contextPath}/member/viewProfile.do?mem_num=${review.mem_num}" width="25" height="25" class="my-photo">
 				</li>
-				<li>
+				<li id="review_right">
+					<span id="review_id">${review.id}</span> <span id="review_date">${review.reg_date}</span>
+					<br>
 					<div class="rating">
 						<input type="hidden" name="score" value="0" class="rate-star">
 						<c:forEach var="star" begin="1" end="5" varStatus="status">
@@ -144,13 +143,14 @@ $(document).ready(function(){
 						</c:forEach>
 					</div>
 				</li>
-				<li>${review.reg_date}</li>
+				<li id="review_clear">
 				<li>
 				<p>${review.content}</p>
 				</li>
 			</ul>
 		</div>
 	</c:forEach>
+	<hr id="last_hr" size="1" noshade="noshade" width="100%">
 </div>
 
 
