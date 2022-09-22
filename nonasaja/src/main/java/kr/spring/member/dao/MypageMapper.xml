@@ -145,12 +145,10 @@
 			        		a.*,
 			    			rownum rnum
 			    			FROM (SELECT
-									club_num,
-									club_name,
-									club_title,
-									club_code
-			            		FROM club_board 
-			            		WHERE club_leader = #{club_leader}
+									*
+			            		FROM club_board JOIN join
+			            		USING(club_num) 
+			            		WHERE mem_num = #{mem_num}
 			            		ORDER BY club_num DESC)a)
 					<![CDATA[
 					WHERE rnum >= #{start} AND rnum <= #{end}
@@ -163,12 +161,11 @@
         		a.*,
     			rownum rnum
     			FROM (SELECT
-						f.club_num,
-						f.mem_num,
-						c.club_name
+						*
             		FROM fav f JOIN club_board c 
-            		ON f.club_num=c.club_num
-            		WHERE f.club_leader = #{club_leader} and f.club_num IS NOT NULL
+            		ON f.club_num=c.club_num JOIN join j
+            		on f.club_num=j.club_num
+            		WHERE f.mem_num = #{mem_num} and f.club_num IS NOT NULL
             		ORDER BY f.club_num DESC)a)
         <![CDATA[
 		WHERE rnum >= #{start} AND rnum <= #{end}

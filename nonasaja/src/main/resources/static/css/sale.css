@@ -1,3 +1,9 @@
+#searchbar{
+	border:1.5px solid #878787;
+	border-radius: 5px;
+	width:150px;
+	height:27px;
+}
 .page-main ul.search-align{
 	list-style:none;
 	padding:0;
@@ -64,4 +70,40 @@ div#page-main table {
 div#page-main tr, th {
   border-bottom: 1px solid #444444;
   padding: 10px;
-} 
+}
+.userphoto{
+	float:left;
+	padding:20px 0 10px 20px;
+	margin:0;
+}
+.my-photo1{
+	object-fit: cover;
+    object-position: top; /*정사각형이 아니라 직사각형일 경우 원 안에 보여지게 할 중심 이미지의 위치를 지정*/
+    border-radius: 50%;/*사각형의 모서리 둥근 정도를 지정하는 속성인데 50%를 지정하면 완전한 원이 됨*/
+	margin: 0;
+}
+.userinformation{
+	float:left;
+	padding:20px 0 10px 20px;
+	margin-top:10px;
+	font-size:16px;
+}
+.userwriteinformation{
+	padding:2px 5px 0 10px;
+	float:right;
+	text-align:right;
+}
+.button-align{
+	clear:both;
+	float:right;
+	padding:10px 0;
+}
+.button-align1{
+	padding:45px 0 0 0;
+}
+.mainphoto-align{
+	float:center;
+}
+.sale-simple{
+	padding:0 30px;
+}

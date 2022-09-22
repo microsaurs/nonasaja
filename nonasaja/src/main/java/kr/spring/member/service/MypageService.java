@@ -47,7 +47,7 @@ public interface MypageService {
 		public List<UsedVO> selectUsedFavList(Map<String,Object> map);
 		
 		//=====동호회=====// 
-		public int selectClubCount(Integer club_leader);
+		public int selectClubCount(Integer mem_num);
 		//내가 가입한 동호회 목록
 		public List<ClubVO> selectListJoin(Map<String,Object> map);
 		//내가 찜한 동호회 목록

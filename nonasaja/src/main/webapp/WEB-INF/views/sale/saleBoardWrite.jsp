@@ -49,6 +49,7 @@
 			    </script>               
 			</li>
 			<li>
+				<label for="deadline">세일 기한</label>
 				<input type="date" name="deadline" id="deadline">
 			</li>
 			<li>

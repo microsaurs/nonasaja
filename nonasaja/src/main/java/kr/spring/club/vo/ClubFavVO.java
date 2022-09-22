@@ -30,6 +30,11 @@ public class ClubFavVO {
 	public void setFav_code(int fav_code) {
 		this.fav_code = fav_code;
 	}
+	@Override
+	public String toString() {
+		return "ClubFavVO [fav_num=" + fav_num + ", club_num=" + club_num + ", mem_num=" + mem_num + ", fav_code="
+				+ fav_code + "]";
+	}
 
 	
 	

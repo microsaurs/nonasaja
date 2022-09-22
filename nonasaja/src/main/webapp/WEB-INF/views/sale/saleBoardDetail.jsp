@@ -3,47 +3,59 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!-- 내용 시작 -->
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/sale.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/board.reply.js"></script>
-<div>
+<div class="page-main">
 	<h2>${board.title}</h2>
-	<ul class="detail-info">
-		<li>
+		<div class="userphoto">
 			<c:if test="${!empty board.photo_name}">
 			<img src="${pageContext.request.contextPath}/member/viewProfile.do?mem_num=${board.mem_num}" width="50px">
 			</c:if>
 			<c:if test="${empty board.photo_name}">
 			<img src="${pageContext.request.contextPath}/images/face.png" width="40" height="40" class="my-photo">
 			</c:if>
-		</li>
-		<li>
+		</div>
+		<div class="userinformation">
 			${board.nick_name}
 			<br>
-			<c:if test="${!empty board.modify_date}">
+		</div>	
+		
+			<hr size="1" width="100%">
+			<p>
+			세일 기한 : ${board.deadline}
+			</p>
+
+		<br>
+	
+	<div class="sale-simple">
+	<div class="mainphoto-align">
+
+	<c:if test="${!empty board.imgname}">
+		<img src="imageView.do?board_num=${board.board_num}" width="900">
+	</c:if>
+	
+	</div>
+
+	
+	<p>${board.content}</p>
+	</div>
+	
+	<div class="userwriteinformation">
+	<c:if test="${!empty board.modify_date}">
 			최근 수정일 : ${board.modify_date}	
 			</c:if>
-			<c:if test="${empty board.modify_date}">
+	<c:if test="${empty board.modify_date}">
 			작성일 : ${board.reg_date}	
 			</c:if>
-			조회 : ${board.hit}
-		</li>
-	</ul>
-	세일 기한 : ${board.deadline}
-	<c:if test="${!empty board.imgname}">
-		<img src="imageView.do?board_num=${board.board_num}" width="400" height="400">
-	</c:if>
+	<p>조회수 : ${board.hit}</p>
+	</div>
 
-	<p>
-		${board.content}
-	</p>
-
-
-
-	<hr size="1" width="100%">
-	<div class="align-right">
+	<div class="button-align">
 		<c:if test="${!empty user && user.mem_num == board.mem_num}">
-		<input type="button" value="수정" onclick="location.href='update.do?board_num=${board.board_num}'">
-		<input type="button" value="삭제" id="delete_btn">
+		<input type="button" value="수정" onclick="location.href='update.do?board_num=${board.board_num}'" class="button4">
+		<input type="button" value="삭제" id="delete_btn" class="button5">
 		<script type="text/javascript">
 			let delete_btn = document.getElementById('delete_btn');
 			//이벤트 연결
@@ -55,7 +67,9 @@
 			};
 		</script>
 		</c:if>
-		<input type="button" value="목록" onclick="location.href='saleBoardList.do'">
+	</div>
+	<div>
+		<input type="button" value="목록" onclick="location.href='saleBoardList.do'" class="button4">
 	</div>
 	<hr size="1" width="100%">
 	<!-- 댓글 UI 시작 -->
