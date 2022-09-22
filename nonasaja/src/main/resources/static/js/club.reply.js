@@ -250,7 +250,7 @@ $(function(){
 		$.ajax({
 			url:'deleteReply.do',
 			type:'post',
-			data:{re_num:re_num},
+			data:{reply_num:re_num},
 			dataType:'json',
 			cache:false,
 			timeout:30000,
