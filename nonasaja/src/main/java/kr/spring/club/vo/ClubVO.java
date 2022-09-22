@@ -32,6 +32,7 @@ public class ClubVO {
 	private int club_recruit;
 	private int region_num;
 	private int mem_num;
+	private String club_region;
 	
 	//파일 업로드 처리
 	public void setUpload(MultipartFile upload)
@@ -195,6 +196,14 @@ public class ClubVO {
 
 	public void setMem_num(int mem_num) {
 		this.mem_num = mem_num;
+	}
+
+	public String getClub_region() {
+		return club_region;
+	}
+
+	public void setClub_region(String club_region) {
+		this.club_region = club_region;
 	}
 
 
