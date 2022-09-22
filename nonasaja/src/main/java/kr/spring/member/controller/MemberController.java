@@ -353,30 +353,32 @@ public class MemberController {
 		ModelAndView mav = new ModelAndView();
 		Map<String,Object> map = new HashMap<>();
 		PagingUtil page = null;
-		List<JoinVO> clubList = null;
+		List<ClubVO> clubList = null;
 		List<ClubFavVO> clubFavList = null;
 		int count = 0;
 		
 		if(type==1) {//참여한 동호회
 			count = mypageService.selectClubCount(user.getMem_num());
-			page = new PagingUtil(currentPage,count,rowCount,pageCount,"myPageClub.do");
+			page = new PagingUtil(currentPage,count,rowCount,pageCount,"myPageClub.do","&type=1");
 			if(count>0) { 
 				map.put("start", page.getStartRow());
 				map.put("end", page.getEndRow());
 				map.put("mem_num", user.getMem_num());
 				
 				clubList = mypageService.selectListJoin(map);
+				mav.addObject("clubList", clubList);
 			}
 			
 		}else if(type==2) {//찜한 동호회
 			count = mypageService.selectClubCount(user.getMem_num());
-			page = new PagingUtil(currentPage,count,rowCount,pageCount,"myPageClub.do");
+			page = new PagingUtil(currentPage,count,rowCount,pageCount,"myPageClub.do","&type=2");
 			if(count>0) {
 				map.put("start", page.getStartRow());
 				map.put("end", page.getEndRow());
 				map.put("mem_num", user.getMem_num());
 				
 				clubFavList = mypageService.selectClubFavList(map);
+				mav.addObject("clubFavList", clubFavList);
 			}
 			
 		}
@@ -385,12 +387,8 @@ public class MemberController {
 		mav.addObject("member", user);
 		mav.addObject("type", type);
 		mav.addObject("count", count);
-		
-		mav.addObject("clubList", clubList);
-		mav.addObject("clubFavList", clubFavList);
-		
 		mav.addObject("page", page.getPage());
-		
+	
 		return mav;
 	}
 	//===========마이페이지 - 커뮤니티 + 레시피=============//

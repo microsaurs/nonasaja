@@ -25,7 +25,7 @@
     	<put-attribute name="body"
     	  value="/WEB-INF/views/clubboard/clubboardModify.jsp"/>                   
     </definition>
-    <definition name="joinList" extends="main">
+    <definition name="myPageClub" extends="main">
     	<put-attribute name="title" value="동호회가입목록"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/member/memberView-club.jsp"/>                   

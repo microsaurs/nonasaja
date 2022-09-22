@@ -12,12 +12,11 @@ import kr.spring.community.vo.CommunityVO;
 import kr.spring.community.vo.RecipeFavVO;
 import kr.spring.community.vo.RecipeReplyVO;
 import kr.spring.community.vo.RecipeVO;
-import kr.spring.join.vo.JoinVO;
 import kr.spring.used.vo.UsedFavVO;
 import kr.spring.used.vo.UsedReplyVO;
 import kr.spring.used.vo.UsedVO;
 
-public interface MypageService {  
+public interface MypageService {
 		//=====레시피=====//
 		//레시피 - 내가 쓴 글
 		public int selectRecipeCount(Integer mem_num);
@@ -48,9 +47,9 @@ public interface MypageService {
 		public List<UsedVO> selectUsedFavList(Map<String,Object> map);
 		
 		//=====동호회=====// 
-		public int selectClubCount(Integer mem_num);
+		public int selectClubCount(Integer club_leader);
 		//내가 가입한 동호회 목록
-		public List<JoinVO> selectListJoin(Map<String,Object> map);
+		public List<ClubVO> selectListJoin(Map<String,Object> map);
 		//내가 찜한 동호회 목록
 		public List<ClubFavVO> selectClubFavList(Map<String,Object> map);
 }
