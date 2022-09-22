@@ -48,3 +48,17 @@ create table join(
 );
 
 create sequence join_seq;
+
+--동호회 댓글 테이블
+create table club_reply(
+  reply_num number not null,
+  club_num number not null,
+  mem_num number not null,
+  reply_content varchar2(900) not null,
+  reply_date date default sysdate not null,
+  constraint club_reply_pk primary key (reply_num),
+  constraint club_reply_fk1 foreign key (club_num) references club_board (club_num),
+  constraint club_reply_fk2 foreign key (mem_num) references member (mem_num) 
+);
+
+create sequence club_reply_seq;

@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import kr.spring.club.dao.ClubMapper;
 import kr.spring.club.vo.ClubFavVO;
+import kr.spring.club.vo.ClubReplyVO;
 import kr.spring.club.vo.ClubVO;
 
 @Service
@@ -80,6 +81,39 @@ public class ClubServiceImpl implements ClubService{
 	@Override
 	public void deleteFav(Integer fav_num) {
 		clubMapper.deleteFav(fav_num);
+	}
+
+	@Override
+	public List<ClubReplyVO> selectListReply(Map<String, Object> map) {
+		return clubMapper.selectListReply(map);
+	}
+
+	@Override
+	public int selectRowCountReply(Map<String, Object> map) {
+		return clubMapper.selectRowCountReply(map);
+	}
+
+	@Override
+	public ClubReplyVO selectReply(Integer reply_num) {
+		return clubMapper.selectReply(reply_num);
+	}
+
+	@Override
+	public void insertReply(ClubReplyVO boardReply) {
+		clubMapper.insertReply(boardReply);
+		
+	}
+
+	@Override
+	public void updateReply(ClubReplyVO boardReply) {
+		clubMapper.updateReply(boardReply);
+
+		
+	}
+
+	@Override
+	public void deleteReply(Integer reply_num) {
+		clubMapper.deleteReply(reply_num);
 	}
 
 

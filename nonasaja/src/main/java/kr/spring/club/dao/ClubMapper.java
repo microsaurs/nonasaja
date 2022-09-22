@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import kr.spring.club.vo.ClubFavVO;
+import kr.spring.club.vo.ClubReplyVO;
 import kr.spring.club.vo.ClubVO;
 
 @Mapper
@@ -49,7 +50,32 @@ public interface ClubMapper {
 		@Delete("DELETE FROM fav WHERE fav_num=#{fav_num}")
 		public void deleteFav(Integer fav_num);
 		@Delete("DELETE FROM fav WHERE club_num=#{club_num}")
-		public void deleteFavByBoardNum(Integer board_num);
-
+		public void deleteFavByBoardNum(Integer club_num);
+		
+		//댓글
+		public List<ClubReplyVO> selectListReply(
+				                  Map<String,Object> map);
+		@Select("SELECT COUNT(*) FROM club_reply b "
+				+ "JOIN member m ON b.mem_num=m.mem_num "
+				+ "WHERE club_num=#{club_num}")
+		public int selectRowCountReply(Map<String,Object> map);
+		@Select("SELECT * FROM club_reply WHERE reply_num=#{reply_num}")
+		public ClubReplyVO selectReply(Integer reply_num);
+		@Insert("INSERT INTO club_reply (reply_num,"
+				+ "reply_content,club_num,mem_num) "
+				+ "VALUES (reply_seq.nextval,#{reply_content},"
+				+ "#{club_num},#{mem_num})")
+		public void insertReply(ClubReplyVO boardReply);
+		@Update("UPDATE club_reply SET "
+				+ "reply_content=#{reply_content}"
+				+ " WHERE reply_num=#{reply_num}")
+		public void updateReply(ClubReplyVO boardReply);
+		@Delete("DELETE FROM club_reply WHERE reply_num=#{reply_num}")
+		public void deleteReply(Integer reply_num);
+		//부모글 삭제시 댓글이 존재하면 부모글 삭제전 댓글 삭제
+		@Delete("DELETE FROM club_reply "
+				+ "WHERE club_num=#{club_num}")
+		public void deleteReplyByBoardNum(
+				                       Integer club_num);
 		
 }

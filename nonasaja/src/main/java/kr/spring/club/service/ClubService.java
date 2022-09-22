@@ -4,7 +4,9 @@ import java.util.List;
 import java.util.Map;
 
 import kr.spring.club.vo.ClubFavVO;
+import kr.spring.club.vo.ClubReplyVO;
 import kr.spring.club.vo.ClubVO;
+import kr.spring.sale.vo.SaleReplyVO;
 
 public interface ClubService {
 	//부모글
@@ -23,4 +25,11 @@ public interface ClubService {
 	public void insertFav(ClubFavVO ClubFav);
 	public void deleteFav(Integer club_num);
 
+	//댓글
+	public List<ClubReplyVO> selectListReply(Map<String,Object> map);
+	public int selectRowCountReply(Map<String,Object> map);
+	public ClubReplyVO selectReply(Integer reply_num);
+	public void insertReply(ClubReplyVO boardReply);
+	public void updateReply(ClubReplyVO boardReply);
+	public void deleteReply(Integer reply_num);
 }
