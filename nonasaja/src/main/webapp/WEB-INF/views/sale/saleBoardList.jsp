@@ -13,8 +13,7 @@
 <div class="page-main">
 	<div class="writebutton-float">
 		<c:if test="${!empty user}">
-			<input type="button" value="글쓰기"
-				onclick="location.href='saleBoardWrite.do'">
+			<a href="${pageContext.request.contextPath}/sale/saleBoardWrite.do"><img src="${pageContext.request.contextPath}/images/salewrite.png" class="writebutton"></a>
 		</c:if>
 
 		<form action="saleBoardList.do" id="search_form1" method="get">
