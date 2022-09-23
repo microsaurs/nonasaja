@@ -20,6 +20,8 @@ $(function(){
 					location.href='../member/myPageClub.do';
 				}else if(param.result == 'overmember'){
 					alert('모집이 완료된 동호회입니다.');
+				}else if(param.result == 'already'){
+					alert('이미 가입된 동호회입니다.');
 				}else{
 					alert('동호회 가입 오류');
 				}
@@ -34,7 +36,7 @@ $(function(){
 		//=========동호회 탈퇴==========//
 	$('.join-del').on('click',function(){
 		$.ajax({
-			url:'deleteJoin.do',
+			url:'/join/deleteJoin.do',
 			type:'post',
 			data:{join_num:$(this).attr('data-joinnum')},
 			dataType:'json',
@@ -45,7 +47,7 @@ $(function(){
 					alert('로그인 후 사용하세요!');
 				}else if(param.result == 'success'){
 					alert('동호회 탈퇴되었습니다!');
-					location.href='list.do';
+					location.href='../member/myPageClub.do';
 				}else{
 					alert('탈퇴 오류!');
 				}

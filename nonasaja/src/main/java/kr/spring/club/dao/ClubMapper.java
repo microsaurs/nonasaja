@@ -78,4 +78,10 @@ public interface ClubMapper {
 		public void deleteReplyByBoardNum(
 				                       Integer club_num);
 		
+		/*
+		 * //내가 가입한 동호회 개수
+		 * 
+		 * @Select("SELECT COUNT(*) FROM join j JOIN club_board c USING(club_num) WHERE j.mem_num=#{mem_num}"
+		 * ) public int selectClubCount(Integer mem_num);
+		 */
 }

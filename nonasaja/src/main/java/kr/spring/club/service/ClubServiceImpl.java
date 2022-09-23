@@ -117,6 +117,11 @@ public class ClubServiceImpl implements ClubService{
 	public void deleteReply(Integer reply_num) {
 		clubMapper.deleteReply(reply_num);
 	}
-
+	
+	/*
+		 * 
+		 * @Override public int selectClubCount(Integer mem_num) { return
+		 * clubMapper.selectClubCount(mem_num); }
+		 */
 
 }

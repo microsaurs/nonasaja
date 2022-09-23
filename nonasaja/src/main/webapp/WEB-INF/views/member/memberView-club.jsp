@@ -102,7 +102,7 @@
 				</td>
 				<td>
 						<input type="button" value="탈퇴" 
-						  class="cart-del" data-joinnum="${board.join_num}">
+						  class="join-del" data-joinnum="${board.join_num}">
 				</td>
 			</tr>
 			</c:forEach>
