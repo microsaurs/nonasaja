@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class MemberServiceCenter {
 	
 	@RequestMapping("/member/serviceCenter.do")
-	public String showServiceCenter(@RequestParam(defaultValue="1")int type) {
+	public String showServiceCenter(@RequestParam(value="type",defaultValue="1")int type) {
 		
 		return "serviceCenter";
 	}

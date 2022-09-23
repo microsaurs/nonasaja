@@ -11,12 +11,7 @@
 			<div class="logo">
 				<div class="logo-img">
 					<a href="${pageContext.request.contextPath}/">
-						<img src="${pageContext.request.contextPath}/images/노나사자대표이미지.png" width="200" height="200">
-					</a>
-				</div>
-				<div class="logo-font">
-					<a href="${pageContext.request.contextPath}/">
-						<span class="nona">노나</span><span class="saja">사자</span>
+						<img src="${pageContext.request.contextPath}/images/logo.png" width="460" height="200">
 					</a>
 				</div>
 			</div>
