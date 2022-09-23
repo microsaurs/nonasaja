@@ -10,7 +10,7 @@
 		FROM club_board
 		<where>
 			<if test="keyfield != null and keyfield != ''">
-				b.club_code = #{keyfield}
+				club_code = #{keyfield}
 			</if>
 		</where>  	
   	</select>

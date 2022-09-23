@@ -42,8 +42,8 @@
 		<table class="float-clear">
 		<tr>
 			<th id="th-1">
-			<c:if test="${board.club_recruit==0}"><img src="${pageContext.request.contextPath}/images/모집중.JPG" width="70px"></c:if>
-			<c:if test="${board.club_recruit==1}"><img src="${pageContext.request.contextPath}/images/모집완료.JPG" width="90px"></c:if>
+			<c:if test="${board.club_recruit==0}"><img src="${pageContext.request.contextPath}/images/동호인모집중.JPG" width="80px"></c:if>
+			<c:if test="${board.club_recruit==1}"><img src="${pageContext.request.contextPath}/images/동호인모집완료.JPG" width="100px"></c:if>
 			</th>
 			<th width="400" id="th-2"><a href="detail.do?club_num=${board.club_num}">${board.club_title}</a></th>
 			<th id="th_clubname"><b>${board.club_name}</b></th>
@@ -84,7 +84,7 @@
 			<img src="${pageContext.request.contextPath}/images/icon-calendar-date.png" width="40px">
 			</td>
 			<td id="td-2">
-			${board.club_date}
+			${board.club_date}까지
 			</td>
 		</tr>
 		<tr>

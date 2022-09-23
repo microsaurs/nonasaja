@@ -30,12 +30,12 @@ table{
     width: 100px;
     padding: 10px;
     color: #f5d505;
-    border-bottom: 1px solid #444444;
+    border-bottom: 1px solid #808080;
   }
 #th-2 {
 	text-align: left;
     width: 400px;
-    border-bottom: 1px solid #444444;
+    border-bottom: 1px solid #808080;
   }
 #td-1 {
 	text-align: center;
@@ -45,38 +45,38 @@ table{
   }
 #td-3 {
     text-align: center;	
-	border-bottom: 1px solid #444444;
+	border-bottom: 1px solid #808080;
   }
 #td-4 {
     text-align: left;	
-	border-bottom: 1px solid #444444;
+	border-bottom: 1px solid #808080;
   }      
 #td_img{
 	 text-align: center;	
-	border-bottom: 1px solid #444444;
+	border-bottom: 1px solid #808080;
 }
 #th_clubname{
 	text-align: center;
 	font-size:x-large;
-	border-bottom: 1px solid #444444;
+	border-bottom: 1px solid #808080;
 	width: 400px;
-	color:#D0A021;
+	color:#E3BB3E;
 }
 /* clubboardView는 class로 스타일 지정 */
 .th-3{
-	border-bottom: 1px solid #444444;
+	border-bottom: 1px solid #808080;
 	text-align: center;
 	color: #f5d505;
 	font-size:medium;
 	width: 120px;
 }
 .th-4{
-	border-bottom: 1px solid #444444;
+	border-bottom: 1px solid #808080;
 	text-align: left;
 	width: 900px;
 }
 .th-5{
-	border-bottom: 1px solid #444444;
+	border-bottom: 1px solid #808080;
 	text-align: left;
 	color: #f5d505;
 	font-size:medium;
@@ -92,11 +92,11 @@ table{
 }
 .td-3 {
     text-align: center;	
-	border-bottom: 1px solid #444444;
+	border-bottom: 1px solid #808080;
   }
 .td-4 {
     text-align: left;	
-	border-bottom: 1px solid #444444;
+	border-bottom: 1px solid #808080;
   } 
 ul{
 	list-style:none;
