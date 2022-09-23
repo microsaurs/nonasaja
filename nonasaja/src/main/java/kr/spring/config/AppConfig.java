@@ -48,6 +48,7 @@ public class AppConfig implements WebMvcConfigurer{
 		        .addPathPatterns("/review/write_review.do")
 		        .addPathPatterns("/review/modify_review.do");
 		registry.addInterceptor(new AdminCheckInterceptor())
+				.addPathPatterns("/member/admin_main.do")
 				.addPathPatterns("/product/admin_list.do")
 				.addPathPatterns("/product/register.do")
 				.addPathPatterns("/product/admin_modify.do")

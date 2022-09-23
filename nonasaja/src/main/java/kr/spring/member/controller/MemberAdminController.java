@@ -31,6 +31,14 @@ public class MemberAdminController {
 	@Autowired
 	private MemberService memberService;
 	
+	//관리자 메인 페이지
+	@RequestMapping("/member/admin_main.do")
+	public String main() {
+		//어드민 인터셉터 추가
+		
+		return "admin_main";
+	}
+	
 	//========회원 목록=========//
 	@RequestMapping("/member/admin_list.do")
 	public ModelAndView process(@RequestParam(value="pageNum",defaultValue="1") int currentPage,
