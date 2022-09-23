@@ -34,6 +34,8 @@ public class ClubVO {
 	private int mem_num;
 	private String club_region;
 	
+
+	
 	//파일 업로드 처리
 	public void setUpload(MultipartFile upload)
 			throws IOException{
@@ -200,5 +202,5 @@ public class ClubVO {
 		this.club_region = club_region;
 	}
 
-
+	
 }

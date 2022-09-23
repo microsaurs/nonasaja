@@ -116,11 +116,9 @@
 			</li>
 			
 			<li  style="clear:both;">
-			<label for="region_num" >판매지역</label>
-				<form:input  class="textarea" path="region_num"/>
-				<form:errors path="region_num" 
-				             cssClass="error-color"/>
-			</li>	
+			<label for="club_region">모임지역</label>
+		    	<form:input path="club_region" placeholder="예)ㅇㅇ시ㅇㅇ구ㅇㅇ동"/>
+			</li>		
 		 
 				<li>
 				<label for="upload">대표사진</label>

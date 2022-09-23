@@ -69,7 +69,28 @@ public class JoinController {
 		
 		return mapAjax;
 	}
-	
+	//동호회 삭제
+		@RequestMapping("/join/deleteJoin.do")
+		@ResponseBody
+		public Map<String,String> delete(
+				           @RequestParam int join_num,
+				              HttpSession session){
+			
+			Map<String,String> mapAjax = 
+					new HashMap<String,String>();
+			
+			MemberVO user = 
+				 (MemberVO)session.getAttribute("user");
+			if(user==null) {
+				mapAjax.put("result","logout");
+			}else {
+				joinService.deleteJoin(join_num);
+				mapAjax.put("result", "success");
+			}
+			
+			return mapAjax;
+		}
+		
 }
 	
 

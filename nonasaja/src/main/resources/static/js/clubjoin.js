@@ -31,5 +31,28 @@ $(function(){
 		//기본 이벤트 제거
 		event.preventDefault();
 	});
-	
+		//=========동호회 탈퇴==========//
+	$('.join-del').on('click',function(){
+		$.ajax({
+			url:'deleteJoin.do',
+			type:'post',
+			data:{join_num:$(this).attr('data-joinnum')},
+			dataType:'json',
+			cache:false,
+			timeout:30000,
+			success:function(param){
+				if(param.result == 'logout'){
+					alert('로그인 후 사용하세요!');
+				}else if(param.result == 'success'){
+					alert('동호회 탈퇴되었습니다!');
+					location.href='list.do';
+				}else{
+					alert('탈퇴 오류!');
+				}
+			},
+			error:function(){
+				alert('네트워크 오류 발생');
+			}
+		});
+	});
 });

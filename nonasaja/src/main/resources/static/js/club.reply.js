@@ -32,27 +32,30 @@ $(function(){
 				//댓글 목록 작업
 				$(param.list).each(function(index,item){
 					let output = '<div class="item">';
-					output += '<h4>';
-					output += '<img src="../member/viewProfile.do?mem_num='+ item.mem_num +'" width="30" height="30" class="my-photo">';
-					
+					output += '<img src="../member/viewProfile.do?mem_num='+ item.mem_num + '" width="30" height="30" class="my-photo2">';
+					output += '<h3 class="nicknamemargin">';
 					if(item.nickname){
-						output += item.nickname + '</h4>';
+						output += item.nickname + '</h3>';
 					}else{
-						output += item.id + '</h4>';
+						output += item.id + '</h3>';
 					}
 					
 					output += '<div class="sub-item">';
 					output += '<p>' + item.reply_content.replace(/\r\n/g,'<br>') + '</p>';
 					
-					output += '<span class="modify-date">등록일 : ' + item.reply_date + '</span>';
-					
+				
 					
 					if(param.user_num==item.mem_num){
 						//로그인한 회원번호와 댓글 작성자 회원번호가 일치
-						output += ' <input type="button" data-num="'+ item.reply_num +'" value="수정" class="modify-btn">';
+						
 						output += ' <input type="button" data-num="'+ item.reply_num +'" value="삭제" class="delete-btn">';
+						output += ' <input type="button" data-num="'+ item.reply_num +'" value="수정" class="modify-btn">';
 					}
-					output += '<hr size="1" noshade>';
+					if(item.reply_date){
+						output += '<span class="modify-date">등록일 ' + item.reply_date + '</span>';
+					}
+					
+					output += '<hr size="1"  width="100%" noshade>';
 					output += '</div>';
 					output += '</div>'; 
 					
@@ -157,8 +160,8 @@ $(function(){
 		modifyUI += '<textarea rows="3" cols="50" name="reply_content" id="mre_content" class="rep-content">'+ content +'</textarea>';
 		modifyUI += '<div id="mre_first"><span class="letter-count">300/300</span></div>';
 		modifyUI += '<div id="mre_second" class="align-right">';
-		modifyUI += '<input type="submit" value="수정">';
-		modifyUI += ' <input type="button" value="취소" class="re-reset">';
+		modifyUI += ' <input type="button" value="취소" class="re-reset">';	
+		modifyUI += '<input type="submit" value="수정" class="modify-btn">';
 		modifyUI += '</div>';
 		modifyUI += '<hr size="1" noshade width="96%">';
 		modifyUI += '</form>';

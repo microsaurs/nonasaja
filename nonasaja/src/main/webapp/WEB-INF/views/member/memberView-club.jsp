@@ -5,6 +5,7 @@
 <!-- 내용 시작 -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/clubjoin.js"></script>
 <div class="mypage-wrap">
 	<div class="mypage-left">
 		<ul>
@@ -99,6 +100,10 @@
 						${board.club_title}
 					</a>
 				</td>
+				<td>
+						<input type="button" value="탈퇴" 
+						  class="cart-del" data-joinnum="${board.join_num}">
+				</td>
 			</tr>
 			</c:forEach>
 			</c:if>
@@ -131,6 +136,7 @@
 						${board.club_title}
 					</a>
 				</td>
+				
 			</tr>
 			</c:forEach>
 			</c:if>
