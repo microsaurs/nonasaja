@@ -34,7 +34,7 @@ table{
   }
 #th-2 {
 	text-align: left;
-    width: 700px;
+    width: 400px;
     border-bottom: 1px solid #444444;
   }
 #td-1 {
@@ -51,6 +51,17 @@ table{
     text-align: left;	
 	border-bottom: 1px solid #444444;
   }      
+#td_img{
+	 text-align: center;	
+	border-bottom: 1px solid #444444;
+}
+#th_clubname{
+	text-align: center;
+	font-size:x-large;
+	border-bottom: 1px solid #444444;
+	width: 400px;
+	color:#D0A021;
+}
 /* clubboardView는 class로 스타일 지정 */
 .th-3{
 	border-bottom: 1px solid #444444;

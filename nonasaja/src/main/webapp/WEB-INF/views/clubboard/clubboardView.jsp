@@ -117,7 +117,7 @@
 			${board.club_content}
 			<br>
 			<c:if test="${!empty board.club_img_name}">
-			<img src="imageView.do?club_num=${board.club_num}" width="400" height="400">
+			<img src="imageView.do?club_num=${board.club_num}" height="400">
 			</c:if>
 			</td>
 		</tr>

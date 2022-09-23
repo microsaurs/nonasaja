@@ -35,9 +35,11 @@
   		              b.club_hit,
   		              b.club_gender,
   		              b.club_recruit,
-  		        
+  		              b.club_img,
+  		              b.club_img_name,
   		              b.club_age,
   		              b.club_region,
+  		              b.club_name,
   		              m.id,
   		              m.nickname
   		            FROM club_board b JOIN member m

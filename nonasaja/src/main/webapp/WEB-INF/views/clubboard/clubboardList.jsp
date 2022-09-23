@@ -19,7 +19,7 @@
 	<c:if test="${!empty user}">	          
 	<div class="align-center">
 
-	<a href="${pageContext.request.contextPath}/clubboard/write.do"><img src="${pageContext.request.contextPath}/images/동호인모집하기.png" class="writebutton"></a>
+	<a href="${pageContext.request.contextPath}/clubboard/write.do"><img src="${pageContext.request.contextPath}/images/동호인모집하기.png"  width="300px"></a>
 	</div>
 	</c:if>
 	<div class="align-center">
@@ -42,10 +42,11 @@
 		<table class="float-clear">
 		<tr>
 			<th id="th-1">
-			<c:if test="${board.club_recruit==0}">모집중</c:if>
-			<c:if test="${board.club_recruit==1}">모집완료</c:if>
+			<c:if test="${board.club_recruit==0}"><img src="${pageContext.request.contextPath}/images/모집중.JPG" width="70px"></c:if>
+			<c:if test="${board.club_recruit==1}"><img src="${pageContext.request.contextPath}/images/모집완료.JPG" width="90px"></c:if>
 			</th>
 			<th width="400" id="th-2"><a href="detail.do?club_num=${board.club_num}">${board.club_title}</a></th>
+			<th id="th_clubname"><b>${board.club_name}</b></th>
 		</tr>
 		<tr>
 			<td id="td-1">
@@ -55,6 +56,14 @@
 			<c:if test="${board.club_gender==0}">누구나 참여가능</c:if>
 			<c:if test="${board.club_gender==1}">남자만 참여가능</c:if>
 			<c:if test="${board.club_gender==2}">여자만 참여가능</c:if>
+			</td>
+			<td id="td_img"rowspan="5">
+			<c:if test="${!empty board.club_img_name}">
+			<img  src="imageView.do?club_num=${board.club_num}" width="250" height="250">
+			</c:if>
+			<c:if test="${empty board.club_img_name}">
+			<img  src="${pageContext.request.contextPath}/images/노나사자대표이미지.png" width="250" height="250">
+			</c:if>
 			</td>
 		</tr>
 		<tr>
