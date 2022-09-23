@@ -163,8 +163,7 @@
     			FROM (SELECT
 						*
             		FROM fav f JOIN club_board c 
-            		ON f.club_num=c.club_num JOIN join j
-            		on f.club_num=j.club_num
+            		ON f.club_num=c.club_num
             		WHERE f.mem_num = #{mem_num} and f.club_num IS NOT NULL
             		ORDER BY f.club_num DESC)a)
         <![CDATA[
