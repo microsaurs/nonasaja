@@ -125,13 +125,66 @@ li {
 }
 .userphoto{
 	float:left;
-	padding:20px 20px 10px 20px;
+	padding:20px 0 10px 20px;
 	margin:0;
 }
-.userinformation-div{
-	text-align:right;
-	padding:0 0 0 10px;
+.userinformation{
+	float:left;
+	padding:20px 0 10px 10px;
+	margin-top:10px;
+	font-size:16px;
 }
 .title-space{
 	padding: 0 0 10px 0;
+}
+.userwriteinformation{
+	padding:2px 5px 0 10px;
+	float:right;
+	text-align:right;
+}
+.button-align{
+	clear:both;
+	float:right;
+	padding:10px 0;
+}
+/*댓글*/
+#reply_div1{
+	padding:15px 10px 40px 10px;
+	margin-top:100px;
+	background-color:#E8E8DA;
+}
+.re-title1{
+	color:#513810;
+	font-size:13pt;
+	line-height:200%;
+	margin: 0 auto;
+	padding: 1px 0 10px 5px;
+	float:left;
+}
+.replyicon{
+	padding:5px 5px;
+	float:left;
+}
+#re_form1{
+	width:920px;
+	border:none;
+	margin:0
+}
+.rep-content1{
+	width:98%;
+	height:60px;
+	resize:vertical;
+}
+.button9{
+  width: 40px;
+  height: 25px;
+  border:0;
+  background:#EABF5E;
+  outline:0;
+  border-radius: 6px;
+  color:white;
+  float:right;
+}
+.button9-align{
+	margin-left:75px;
 }

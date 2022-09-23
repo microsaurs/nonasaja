@@ -61,12 +61,11 @@
 		<input type="button" value="목록" onclick="location.href='list.do'">
 		</c:if>
 	</div>
-	<hr size="1" width="100%">
 
 	<!-- 댓글 UI 시작 -->
 	<div id="reply_div1">
 		<img src="${pageContext.request.contextPath}/images/댓글아이콘.png" width="25" height="25" class="replyicon">
-		<span class="re-title1"><b>거래를 원하시면 댓글을 작성하세요.</b></span>
+		<span class="re-title1"><b>댓글을 작성해주세요.</b></span>
 		<form id="re_form1">
 			<input type="hidden" name="commu_num" value="${board.commu_num}" id="commu_num">
 			<textarea rows="3" cols="50" name="reply_content" id="reply_content" class="rep-content1"
