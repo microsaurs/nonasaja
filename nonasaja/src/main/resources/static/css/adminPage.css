@@ -1,0 +1,9 @@
+@charset "UTF-8";
+/*관리자 메인 페이지*/
+#admin_img{
+	text-align: center;
+}
+.admin-img{
+	width: 250px;
+    margin: 80px 40px;
+}

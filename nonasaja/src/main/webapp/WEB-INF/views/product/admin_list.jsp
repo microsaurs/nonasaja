@@ -25,8 +25,8 @@
 		</ul>
 	</form>
 	<div class="align-right">
-		<input type="button" value="상품 등록" onclick="location.href='register.do'">
-		<input type="button" value="목록" onclick="location.href='admin_list.do'">
+		<input type="button" value="상품 등록" onclick="location.href='${pageContext.request.contextPath}/member/register.do'">
+		<input type="button" value="목록" onclick="location.href='${pageContext.request.contextPath}/member/admin_product.do'">
 		<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 	</div>
 	<c:if test="${count == 0 }">
@@ -45,7 +45,7 @@
 			<c:forEach var="item" items="${list}">
 			<tr>
 				<td>${item.product_num }</td>
-				<td><a href="admin_modify.do?product_num=${item.product_num }">${item.name }</a></td>
+				<td><a href="${pageContext.request.contextPath}/member/product_modify.do?product_num=${item.product_num }">${item.name }</a></td>
 				<td><fmt:formatNumber value="${item.price2 }"/></td>
 				<td><fmt:formatNumber value="${item.quantity }"/></td>
 				<td>${item.reg_date }</td>

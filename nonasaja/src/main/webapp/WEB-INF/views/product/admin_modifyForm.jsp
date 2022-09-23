@@ -18,7 +18,7 @@
 
 <div id="product_register">
 	<p>상품 등록</p>
-	<form:form id="modify_form" action="admin_modify.do" modelAttribute="productVO" enctype="multipart/form-data">
+	<form:form id="modify_form" action="${pageContext.request.contextPath}/member/product_modify.do" modelAttribute="productVO" enctype="multipart/form-data">
 		<form:hidden path="product_num"/>
 		<form:errors element="div" cssClass="error-color"/>
 		<ul>
