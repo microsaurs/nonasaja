@@ -33,7 +33,7 @@
 				</li>
 				<li>
 					
-					<input type="search" name="keyword" id="searchbar" value="${parma.keyword}">
+					<input type="search" name="keyword" id="searchbar" value="${param.keyword}">
 				</li>
 				<li>
 					<input type="submit" value="찾기" class="button5">
@@ -64,9 +64,10 @@
 					</a>
 				</div>
 			</c:forEach>
-			 <div class="float-clear align-center">
-				<!-- ${page}-->
-			</div>
+	
+		 <div class="float-clear align-center">
+			<!-- ${page}-->
+		</div>
 		</c:if>
 </div>
 
