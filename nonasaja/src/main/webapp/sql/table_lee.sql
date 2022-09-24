@@ -62,3 +62,19 @@ create table club_reply(
 );
 
 create sequence club_reply_seq;
+
+--동호회 대댓글 테이블 
+create table club_rereply(
+  rereply_num number not null,
+  reply_num number not null,
+  club_num number not null,
+  mem_num number not null,
+  rereply_content varchar2(900) not null,
+  rereply_date date default sysdate not null,
+  constraint club_rereply_pk primary key (rereply_num),
+  constraint club_rereply_fk1 foreign key (club_num) references club_board (club_num),
+  constraint club_rereply_fk2 foreign key (mem_num) references member (mem_num),
+  constraint club_rereply_fk3 foreign key (reply_num) references club_reply (reply_num) 
+);
+
+create sequence club_rereply_seq;

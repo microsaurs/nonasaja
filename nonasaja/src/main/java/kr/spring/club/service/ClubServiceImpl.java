@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import kr.spring.club.dao.ClubMapper;
 import kr.spring.club.vo.ClubFavVO;
 import kr.spring.club.vo.ClubReplyVO;
+import kr.spring.club.vo.ClubRereplyVO;
 import kr.spring.club.vo.ClubVO;
 
 @Service
@@ -53,6 +54,8 @@ public class ClubServiceImpl implements ClubService{
 	public void deleteBoard(Integer club_num) {
 		//부모글 좋아요 삭제
 		clubMapper.deleteFavByBoardNum(club_num);
+		//대댓글이 존재하면 댓글을 먼저 삭제하고 부모글 삭제
+		clubMapper.deleteRereplyByBoardNum(club_num);
 		//댓글이 존재하면 댓글을 우선 삭제하고 부모글을 삭제
 		clubMapper.deleteReplyByBoardNum(club_num);
 		//부모글 삭제
@@ -116,6 +119,40 @@ public class ClubServiceImpl implements ClubService{
 	@Override
 	public void deleteReply(Integer reply_num) {
 		clubMapper.deleteReply(reply_num);
+	}
+
+	@Override
+	public List<ClubRereplyVO> selectListRereply(Map<String, Object> map) {
+		return clubMapper.selectListRereply(map);
+	}
+
+	@Override
+	public int selectRowCountRereply(Map<String, Object> map) {
+		return clubMapper.selectRowCountRereply(map);
+	}
+
+	@Override
+	public ClubRereplyVO selectRereply(Integer rereply_num) {
+		return clubMapper.selectRereply(rereply_num);
+	
+	}
+
+	@Override
+	public void insertRereply(ClubRereplyVO boardRereply) {
+		clubMapper.insertRereply(boardRereply);
+		
+	}
+
+	@Override
+	public void updateRereply(ClubRereplyVO boardRereply) {
+		clubMapper.updateRereply(boardRereply);
+		
+	}
+
+	@Override
+	public void deleteRereply(Integer rereply_num) {
+		clubMapper.deleteRereply(rereply_num);
+		
 	}
 	
 	/*

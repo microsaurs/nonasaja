@@ -7,6 +7,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/clubboard.fav.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/club.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/club.reply.js"></script>
+<%-- <script type="text/javascript" src="${pageContext.request.contextPath}/js/club.rereply.js"></script> --%>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/clubjoin.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/videoAdapter.js"></script>
 <div class="page-main1">
@@ -190,6 +191,9 @@
 			</c:if>
 		</form>
 	</div>
+	
+	
+		
 	<!-- 댓글 목록 출력 -->
 	<div id="output"></div>
 	<div class="paging-button" style="display:none;">
@@ -200,6 +204,25 @@
 	</div>
 
 	<!-- 댓글 UI 끝 -->
+	<!--
+		<form id="re_form2">
+			<input type="hidden" name="club_num"
+			   value="${board.club_num}" id="club_num">
+			<textarea rows="3" cols="50" 
+			  name="reply_content" id="re_content2"
+			  class="rep-content2"
+			  <c:if test="${empty user}">disabled="disabled"</c:if>
+			  ><c:if test="${empty user}">로그인해야 작성할 수 있습니다.</c:if></textarea>
+			<c:if test="${!empty user}">
+			<div id="re_first2">
+				<span class="letter-count">300/300</span>
+			</div>
+			<div id="re_second2" class="button9-align">
+				<input type="submit" value="답글" class="button9">
+			</div>
+			</c:if>
+		</form>
+	-->
 </div>
 <!-- 내용 끝 -->
 

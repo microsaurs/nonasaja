@@ -11,6 +11,7 @@ import org.apache.ibatis.annotations.Update;
 
 import kr.spring.club.vo.ClubFavVO;
 import kr.spring.club.vo.ClubReplyVO;
+import kr.spring.club.vo.ClubRereplyVO;
 import kr.spring.club.vo.ClubVO;
 
 @Mapper
@@ -84,4 +85,31 @@ public interface ClubMapper {
 		 * @Select("SELECT COUNT(*) FROM join j JOIN club_board c USING(club_num) WHERE j.mem_num=#{mem_num}"
 		 * ) public int selectClubCount(Integer mem_num);
 		 */
+		
+		//대댓글
+		public List<ClubRereplyVO> selectListRereply(
+                Map<String,Object> map);
+		@Select("SELECT COUNT(*) FROM club_rereply b "
+		+ "JOIN member m ON b.mem_num=m.mem_num "
+		+ "WHERE club_num=#{club_num}")
+		public int selectRowCountRereply(Map<String,Object> map);
+		@Select("SELECT * FROM club_rereply WHERE rereply_num=#{rereply_num}")
+		public ClubRereplyVO selectRereply(Integer rereply_num);
+		@Insert("INSERT INTO club_rereply (rereply_num,"
+		+ "rereply_content,club_num,mem_num) "
+		+ "VALUES (club_rereply_seq.nextval,#{rereply_content},"
+		+ "#{club_num},#{mem_num})")
+		public void insertRereply(ClubRereplyVO boardRereply);
+		@Update("UPDATE club_rereply SET "
+		+ "rereply_content=#{rereply_content}"
+		+ " WHERE rereply_num=#{rereply_num}")
+		public void updateRereply(ClubRereplyVO boardRereply);
+		@Delete("DELETE FROM club_rereply WHERE rereply_num=#{rereply_num}")
+		public void deleteRereply(Integer rereply_num);
+		//부모글 삭제시 댓글이 존재하면 부모글 삭제전 댓글 삭제
+		@Delete("DELETE FROM club_rereply "
+		+ "WHERE club_num=#{club_num}")
+		public void deleteRereplyByBoardNum(
+		                     Integer club_num);
+		//부모글을 지워야할까 댓글을 지워야할까?
 }

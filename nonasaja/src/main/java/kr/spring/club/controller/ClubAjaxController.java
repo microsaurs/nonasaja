@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.spring.club.vo.ClubReplyVO;
+import kr.spring.club.vo.ClubRereplyVO;
 import kr.spring.club.service.ClubService;
 import kr.spring.club.vo.ClubFavVO;
 import kr.spring.club.vo.ClubVO;
@@ -284,4 +285,155 @@ public class ClubAjaxController {
 			}
 			return mapAjax;
 		}
+		
+		//======================================대댓글================================================//
+
+		//========대댓글 등록=========//
+		@RequestMapping("/clubboard/writeRereply.do")
+		@ResponseBody
+		public Map<String,String> writeRereply(
+				  ClubRereplyVO clubRereplyVO,
+				  HttpSession session,
+				  HttpServletRequest request){
+			
+			logger.debug("<<대댓글 등록>> : " + clubRereplyVO);
+			
+			Map<String,String> mapAjax = 
+					new HashMap<String,String>();
+			
+			MemberVO user = 
+				(MemberVO)session.getAttribute("user");
+			if(user==null) {//로그인 안 됨
+				mapAjax.put("result", "logout");
+			}else {//로그인 됨
+				//회원번호 등록
+				clubRereplyVO.setMem_num(
+						             user.getMem_num());
+			
+				//댓글 등록
+				clubService.insertRereply(clubRereplyVO);
+				mapAjax.put("result","success");
+			}
+			return mapAjax;
+		}
+		//==========대댓글 목록==========//
+				@RequestMapping("/clubboard/listRereply.do")
+				@ResponseBody
+				public Map<String,Object> getList2(
+						 @RequestParam(value="pageNum",defaultValue="1") 
+						  int currentPage,
+						  @RequestParam int club_num,
+						  HttpSession session){
+					
+					logger.debug("<<currentPage>> : " + currentPage);
+					logger.debug("<<club_num>> : " + club_num);
+					
+					Map<String,Object> map = 
+							new HashMap<String,Object>();
+					map.put("club_num", club_num);
+					
+					//총 글의 개수
+					int count = 
+						clubService.selectRowCountRereply(map);
+					
+					PagingUtil page = 
+							new PagingUtil(currentPage,count,
+									rowCount,pageCount,null);
+					
+					map.put("start", page.getStartRow());
+					map.put("end", page.getEndRow());
+					
+					List<ClubRereplyVO> list = null;
+					if(count > 0) {
+						list = clubService.selectListRereply(map);
+					}else {
+						list = Collections.emptyList();
+					}
+					
+					Map<String,Object> mapAjax = 
+							new HashMap<String,Object>();
+					mapAjax.put("count", count);
+					mapAjax.put("rowCount", rowCount);
+					mapAjax.put("list", list);
+					
+					//로그인 한 회원정보 셋팅
+					MemberVO user = 
+						 (MemberVO)session.getAttribute("user");
+					if(user!=null) {
+						mapAjax.put(
+								"user_num", user.getMem_num());
+					}
+					
+					return mapAjax;
+				}
+				
+				//==========대댓글 수정==========//
+				@RequestMapping("/clubboard/updateRereply.do")
+				@ResponseBody
+				public Map<String,String> modifyRereply(
+						      ClubRereplyVO clubRereplyVO,
+						      HttpSession session,
+						      HttpServletRequest request){
+					
+					logger.debug("<<댓글 수정>> : " + clubRereplyVO);
+					
+					Map<String,String> mapAjax = 
+							new HashMap<String,String>();
+					
+					MemberVO user = 
+							(MemberVO)session.getAttribute("user");
+					ClubRereplyVO db_rereply = 
+							clubService.selectRereply(
+									     clubRereplyVO.getRereply_num());
+					if(user==null) {//로그인이 되지 않는 경우
+						mapAjax.put("result", "logout");
+					}else if(user!=null && 
+						  user.getMem_num()==db_rereply.getMem_num()) {
+						//로그인 회원번호와 작성자 회원번호 일치
+						
+						
+						//댓글 수정
+						clubService.updateRereply(clubRereplyVO);
+						mapAjax.put("result", "success");
+					}else {
+						//로그인 회원번호와 작성자 회원번호 불일치
+						mapAjax.put("result", "wrongAccess");
+					}
+					return mapAjax;
+				}
+				//==========대댓글 삭제==========//
+				@RequestMapping("/clubboard/deleteRereply.do")
+				@ResponseBody
+				public Map<String,String> deleteRereply(
+						            @RequestParam int rereply_num,
+						            HttpSession session){
+					
+					logger.debug("<<reply_num>> : " + rereply_num);
+					
+					Map<String,String> mapAjax =
+							new HashMap<String,String>();
+					
+					MemberVO user = 
+						(MemberVO)session.getAttribute("user");
+					ClubRereplyVO db_rereply = 
+							clubService.selectRereply(rereply_num);
+					if(user==null) {
+						//로그인이 되지 않은 경우
+						mapAjax.put("result", "logout");
+					}else if(user!=null && 
+					  user.getMem_num()==db_rereply.getMem_num()) {
+						//로그인이 되어 있고 
+						//로그인한 회원번호와 작성자 회원번호 일치
+						
+						//댓글 샂게
+						clubService.deleteRereply(rereply_num);
+						
+						mapAjax.put("result", "success");
+					}else {
+						//로그인한 회원번호와 작성자 회원번호 불일치
+						mapAjax.put("result", "wrongAccess");
+					}
+					return mapAjax;
+				}
+				
 }

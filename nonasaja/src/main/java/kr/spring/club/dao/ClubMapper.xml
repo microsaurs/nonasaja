@@ -102,6 +102,32 @@
   		WHERE rnum >= #{start} AND rnum <= #{end}
   		]]>
   	</select>
+  	  	<!-- 대댓글 목록 -->
+  	<select id="selectListRereply" parameterType="map"
+  	                    resultType="clubRereplyVO">
+  		SELECT
+  		   *
+  		FROM (SELECT
+  		        a.*,
+  		        rownum rnum
+  		      FROM (SELECT
+  		              rereply_num,
+  		              <![CDATA[
+  		              REPLACE(REPLACE(rereply_content,'<','&lt;'),'>','&gt;') rereply_content,
+  		              ]]>
+  		              rereply_date,
+  		              club_num,
+  		              mem_num,
+  		              reply_num,
+  		              nickname
+  		            FROM club_rereply
+  		            JOIN member USING(mem_num)
+  		            WHERE club_num = #{club_num}
+  		            ORDER BY rereply_num DESC)a)
+  		<![CDATA[
+  		WHERE rnum >= #{start} AND rnum <= #{end}
+  		]]>
+  	</select>
 </mapper>
 
 
