@@ -8,62 +8,61 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/review.js"></script>
 <script>
-$(document).ready(function(){
-   $(document).on('click','.rating',function(e){
-      let elem = e.target;
-        if(elem.classList.contains('rate-check')){
-           $(this).find('.rate-check').each(function(index, item){
-                if(index < elem.value){
-                    item.checked = true;
-                }else{
-                    item.checked = false;
-                }
-            });
-            $(this).find('.rate-star').val(elem.value);
-        }
-   });
-});
+	$(document).ready(function() {
+		$(document).on('click', '.rating', function(e) {
+			let elem = e.target;
+			if (elem.classList.contains('rate-check')) {
+				$(this).find('.rate-check').each(function(index, item) {
+					if (index < elem.value) {
+						item.checked = true;
+					} else {
+						item.checked = false;
+					}
+				});
+				$(this).find('.rate-star').val(elem.value);
+			}
+		});
+	});
 </script>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/review.css">
 <div class="review-wrap">
-<h2>구매후기</h2>
-<br>
-<div id="product_box">
-	<img
-		src="${pageContext.request.contextPath}/product/imageView.do?product_num=${product.product_num}&photo_type=1"
-		width="200" height="200"><br>
-	<span id="product_name">${product.name}</span><br>
-	<span id="product_title">${product.title}</span><br>
-	<span id="product_reg_date">${product.reg_date}</span><br>
-</div>
-<div id="review_box">
-	<form:form id="review_form" action="write_review.do" method="post"
-		modelAttribute="reviewVO">
-		<form:hidden path="product_num" value="${product.product_num}" />
-		<ul>
-			<li>
-				<div class="rating">
-					<input type="hidden" name="score" value="0" class="rate-star">
-					<!-- 해당  별점을 클릭하면 해당 별과 그 왼쪽의 모든 별의 체크박스에 checked 적용 -->
-					<c:forEach var="star" begin="1" end="5" varStatus="status">
-						<input type="checkbox" id="rating${status.index}"
-							value="${status.index}" class="rate-check"
-							<c:if test="${status.index<=review.score}">checked</c:if>>
-						<label for="rating${status.index}"></label>
-					</c:forEach>
-				</div>
-			</li>
-			<li>
-				<form:textarea path="content" placeholder="상품의 구매 후기를 작성해주세요" rows="10" cols="50"/><br> 
-				<form:errors path="content" cssClass="error-color" />
-			</li>
-		</ul>
-		<form:button>등록</form:button>
-		<input type="button" value="목록"
-			onclick="location.href='${pageContext.request.contextPath}/order/order_list.do'">
-	</form:form>
-</div>
+	<h2>구매후기</h2>
+	<br>
+	<div id="product_box">
+		<img class="left" id="product_img"
+			src="${pageContext.request.contextPath}/product/imageView.do?product_num=${product.product_num}&photo_type=1"
+			width="200" height="200">
+		<div id="product_data" class="left">
+			<p id="product_name">${product.name}</p>
+			<p id="product_title">${product.title}</p>
+			<p id="product_reg_date">${product.reg_date}</p>
+			<div id="score" class="rating left">
+				<input type="hidden" name="score" value="0" class="rate-star">
+				<!-- 해당  별점을 클릭하면 해당 별과 그 왼쪽의 모든 별의 체크박스에 checked 적용 -->
+				<c:forEach var="star" begin="1" end="5" varStatus="status">
+					<input type="checkbox" id="rating${status.index}"
+						value="${status.index}" class="rate-check"
+						<c:if test="${status.index<=review.score}">checked</c:if>>
+					<label for="rating${status.index}"></label>
+				</c:forEach>
+			</div>
+		</div>
+		
+	</div>
+	<div id="review_box" class="clear">
+		<form:form id="review_form" action="write_review.do" method="post"
+			modelAttribute="reviewVO">
+			<form:hidden path="product_num" value="${product.product_num}" />
+			<form:textarea id="content" path="content"
+				placeholder="상품의 구매 후기를 작성해주세요" rows="10" />
+			<br>
+			<form:errors path="content" cssClass="error-color" />
+			<input id="btn1" class="right" type="button" value="목록"
+				onclick="location.href='${pageContext.request.contextPath}/order/order_list.do'">
+			<form:button id="btn2" class="right">등록</form:button>
+		</form:form>
+	</div>
 </div>
 <!-- 내용 끝 -->
 
