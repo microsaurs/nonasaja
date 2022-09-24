@@ -5,58 +5,50 @@
 <!-- 내용 시작 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/order.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/order.css">
 <div id="product_register">
-	<p id="title_txt">주문하기</p>
-	<form action="order.do" method="post" id="order_form">
-		<c:forEach var="cartVO" items="${cartList}">
-		<input type="hidden" name="cart_num" value="${cartVO.cart_num}" >	
-			<div class="cart_box">
-			<ul >
-				<li class="li_left"><img src="${pageContext.request.contextPath}/product/imageView.do?product_num=${cartVO.product_num}&photo_type=1" width="130" height="130"></li>
-				<li class="li_left" id="cart_list">
-					<p id="title">${cartVO.productVO.title}</p>
-					<p id="sub_total"><fmt:formatNumber value="${cartVO.sub_total}"/>원</p>
-					<p id="quantity">${cartVO.quantity}개</p>
-				</li>
+	<p>주문서 수정하기</p>
+	<form action=order_update.do method="post" id="order_form">
+	<input type="hidden" name="order_num" value="${order.order_num}">
+		<c:forEach var="orderDetail" items="${detailList}">
+			<ul>
+				<li>${orderDetail.product_name}</li>
+				<li>${orderDetail.order_quantity}개</li>
+				<li><fmt:formatNumber value="${orderDetail.product_total}"/>원</li>
 			</ul>
-			</div>
 		</c:forEach>
-			<div class="clearHERE"></div>
-			<span id="total_txt"><b>총구매금액 </b></span>
-			<span><b><fmt:formatNumber value="${all_total}"/>원</b></span>
-			<input type="hidden" value="${all_total}" name="all_total">
+			<span><b>총구매금액 - </b></span>
+			<span><b><fmt:formatNumber value="${order.order_total}"/>원</b></span>
 	<hr size="1" noshade="noshade">	
 
 		<ul>
 			<li>
 				<label for="receive_name">수령인</label>
-				<input type="text" name="receive_name" id="receive_name" maxlength="10">
+				<input type="text" name="receive_name" id="receive_name" maxlength="10" value="${order.receive_name}">
 			</li>
 			<li>
 				<label for="zipcode">우편번호</label>
-				<input type="text" name="receive_post" id="zipcode" maxlength="5">
+				<input type="text" name="receive_post" id="zipcode" maxlength="5" value="${order.receive_post}">
 				<input type="button" onclick="execDaumPostcode()" value="우편번호찾기">
 			</li>
 			<li>
 				<label for="receive_address1">주소</label>
-				<input type="text" name="receive_address1" id="address1" maxlength="30">
+				<input type="text" name="receive_address1" id="address1" maxlength="30" value="${order.receive_address1}">
 			</li>
 			<li>
 				<label for="receive_address2">상세주소</label>
-				<input type="text" name="receive_address2" id="address2" maxlength="30">
+				<input type="text" name="receive_address2" id="address2" maxlength="30" value="${order.receive_address2}">
 			</li>
 			<li>
 				<label for="receive_phone">전화번호</label>
-				<input type="text" name="receive_phone" id="receive_phone" maxlength="15">
+				<input type="text" name="receive_phone" id="receive_phone" maxlength="15" value="${order.receive_phone}">
 			</li>
 			<li>
 				<label for="notice">남기실 말씀</label>
-				<input type="text" name="notice" id="notice" maxlength="300">
+				<input type="text" name="notice" id="notice" maxlength="300" value="${order.notice}">
 			</li>
 		</ul>
 		<div class="align-center">
-			<input type="submit" value="주문">
+			<input type="submit" value="수정">
 			<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 		</div>
 	</form>

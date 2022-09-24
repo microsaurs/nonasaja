@@ -3,6 +3,7 @@ package kr.spring.order.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -42,7 +43,7 @@ public interface OrderMapper {
 	public void insertOrder_datail(OrderDetailVO order);
 	
 	//상품별 주문 대기 수 구하기
-	@Select("select  NVL(sum(order_quantity),0) from norder_detail where product_num=#{prododuct_num} and wait_status=1")
+	@Select("select NVL(sum(order_quantity),0) from norder_detail where product_num=#{prododuct_num} and wait_status=1")
 	public int selectWaitCount(int product_num);
 	
 	//주문의 status 수정하기
@@ -50,6 +51,7 @@ public interface OrderMapper {
 	public void updateWaitStatus(int detail_num, int wait_status);
 	
 	//주문 수정 
+	public void updateOrder(OrderVO order);
 	
 	//회원별 주문 목록의 수
 	public int selectOrderCount(Map<String,Object> map);
@@ -73,7 +75,27 @@ public interface OrderMapper {
 	//주문 상세
 	@Select("select * from norder where order_num=#{order_num}")
 	public OrderVO selectOrder(int order_num);
+	
+	//주문대기상태 orderDetail 삭제
+	@Delete("delete from norder_detail where detail_num=#{detail_num} and wait_status = 1")
+	public void deleteWait(int detail_num);
+	
+	//Order 삭제
+	@Delete("delete from norder where order_num = #{order_num}")
+	public void deleteOrder(int order_num);
+	
+	//order_num 별 order_detail List
+	@Select("select * from norder_detail where order_num=#{order_num}")
+	public List<OrderDetailVO> selectOrderDetailByOrderNum(int order_num);
+	
+	//detail_num으로 order_num 구하기
+	@Select("select DISTINCT order_num from norder_detail where detail_num=#{detail_num}")
+	public int selectOrderNumByDetailNum(int detail_num);
+
+	
 }
+
+
 
 
 

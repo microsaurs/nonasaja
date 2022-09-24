@@ -69,4 +69,30 @@ public class OrderServiceImpl implements OrderService{
 	public void updateWaitStatus(int detail_num, int wait_status) {
 		orderMapper.updateWaitStatus(detail_num, wait_status);
 	}
+
+	@Override
+	public void updateOrder(OrderVO order) {
+		orderMapper.updateOrder(order);
+	}
+
+	@Override
+	public void deleteWait(int detail_num) {
+		orderMapper.deleteWait(detail_num);
+	}
+
+	@Override
+	public void deleteOrder(int order_num) {
+		orderMapper.deleteOrder(order_num);
+	}
+
+	@Override
+	public int selectOrderNumByDetailNum(int detail_num) {
+		return orderMapper.selectOrderNumByDetailNum(detail_num);
+	}
+
+	@Override
+	public List<OrderDetailVO> selectOrderDetailByOrderNum(int order_num) {
+		return orderMapper.selectOrderDetailByOrderNum(order_num);
+	}
+
 }

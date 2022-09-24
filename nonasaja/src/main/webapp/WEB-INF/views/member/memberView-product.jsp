@@ -188,7 +188,8 @@ $(document).ready(function(){
 						</c:if>
 					</td>
 					<td>
-						<input type="button" value="구매취소">
+						<input type="button" value="주문정보 수정" onclick="location.href='/order/order_update.do?order_num=${orderDetail.order_num}'">
+						<input type="button" value="구매취소" onclick="location.href='/order/wait_delete.do?detail_num=${orderDetail.detail_num}'">
 					</td>
 				</tr>
 				</c:if>
@@ -223,7 +224,7 @@ $(document).ready(function(){
 					<td class="align-right">
 						<h4>${order.reg_date}</h4>
 					</td>
-					</c:if><!--  -->
+					</c:if>
 				</tr>
 				<tr>
 					<td>
@@ -290,6 +291,8 @@ $(document).ready(function(){
 					
 						<input type="button" value="수정" 
 							onclick="location.href='${pageContext.request.contextPath}/review/write_review.do?product_num=${review.product_num}'">
+							<input type="button" value="삭제" 
+							onclick="location.href='${pageContext.request.contextPath}/review/delete_review.do?review_num=${review.review_num}'">
 					</td>
 				</tr>
 				</c:forEach>

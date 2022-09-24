@@ -13,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -79,7 +80,6 @@ public class ReviewController {
 		model.addAttribute("message", "리뷰 등록이 완료되었습니다.");
 		model.addAttribute("url", request.getContextPath() + "/member/myPageProduct.do?type=4");
 
-		// 알림 페이지 만들기
 		return "common/resultView";
 	}
 	
@@ -102,10 +102,20 @@ public class ReviewController {
 		model.addAttribute("message", "리뷰 수정이 완료되었습니다.");
 		model.addAttribute("url", request.getContextPath() + "/member/myPageProduct.do?type=4");
 		
-		// 알림 페이지 만들기
 		return "common/resultView";
 	}
 	
+	//리뷰 삭제
+	@RequestMapping("/review/delete_review.do")
+	public String deleteReview(@RequestParam int review_num, Model model, HttpServletRequest request) {
+		
+		reviewService.deleteReview(review_num);
+		
+		model.addAttribute("message", "리뷰 삭제가 완료되었습니다.");
+		model.addAttribute("url", request.getContextPath() + "/member/myPageProduct.do?type=4");
+		
+		return "common/resultView";
+	}
 }
 
 

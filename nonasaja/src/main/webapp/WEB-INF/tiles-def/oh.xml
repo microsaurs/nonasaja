@@ -71,6 +71,12 @@
     	  value="/WEB-INF/views/member/admin_main.jsp"/>                   
     </definition>
     
+    <definition name="order_modify" extends="main">
+    	<put-attribute name="title" value="주문서 수정"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/order/order_modify.jsp"/>                   
+    </definition>
+    
 </tiles-definitions>
 
 

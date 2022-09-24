@@ -1,0 +1,36 @@
+p#title_txt {
+	font-size: 14pt;
+}
+ul {
+	list-style: none;
+}
+.li_left{
+	float: left;
+}
+.cart_box{
+	background-color: pink;
+	margin: 50px;
+}
+#cart_list{
+	margin: 30px 0 0 15px;
+}
+#cart_list p{ 
+	margin: 0 0 8px 0px;
+}
+.clearHERE{
+	clear:both;
+}
+#title{
+	font-size: 13pt;
+    font-weight: bold;
+}
+#sub_total{
+	font-size: 11pt;
+}
+#quantity{
+	font-size: 11pt;
+    font-weight: bold;	
+}
+#total_txt{
+	
+}

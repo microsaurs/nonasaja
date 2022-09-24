@@ -12,6 +12,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -314,6 +316,89 @@ public class OrderController {
 		member.setMem_num(current_mem);
 		kakaopayService.updateMemberCash(member);
 	}
+	
+	//==============주문 대기 취소=================
+	@GetMapping("/order/wait_delete.do")
+	public String waitDelete(@RequestParam int detail_num, 
+					Model model, HttpServletRequest request ) {
+		
+		int order_num = orderService.selectOrderNumByDetailNum(detail_num);
+		logger.debug("<<주문대기 취소 detail_num>> : " + detail_num);
+		
+		//order detail 삭제하기 (waitStatus가 결제 완료(2)되면 삭제 못함. message 넣어서 return)
+		orderService.deleteWait(detail_num);
+		
+		//order_num별 orderDetailList 구하기
+		List<OrderDetailVO> list = orderService.selectOrderDetailByOrderNum(order_num);
+		
+		if(list.size() == 0) { //남은 orderDetail이 없으면 order 삭제하기 
+			orderService.deleteOrder(order_num);
+		} else { //남은 orderDetail이 있으면 주문이름과 총 주문금액 변경하기 
+			OrderVO order = orderService.selectOrder(order_num);
+			int all_total = 0;
+			for(OrderDetailVO detail : list) {
+				all_total += detail.getProduct_total();
+			}
+			order.setOrder_total(all_total);
+			
+			//orderVO에 넣을 orderName 만들기
+			String order_name = null;
+
+			if(list.size() == 1) {
+				order_name = list.get(0).getProduct_name();
+			} else { //--외 2건
+				order_name= list.get(0).getProduct_name()+"외 "+(list.size()-1)+"건";
+			}
+			order.setTotal_name(order_name);
+			orderService.updateOrder(order);
+		}
+
+		model.addAttribute("message", "공동구매 대기가 취소되었습니다.");
+		model.addAttribute("url", request.getContextPath() + "/member/myPageProduct.do");
+
+		return "common/resultView";
+	}
+	
+	//===========주문서 수정=============
+	@GetMapping("/order/order_update.do")
+	public ModelAndView updateForm(@RequestParam int order_num) {
+		ModelAndView mav = new ModelAndView();
+		
+		logger.debug("<<주문수정 폼 호출>> : " + order_num);
+		OrderVO order = orderService.selectOrder(order_num);
+		List<OrderDetailVO> detailList = orderService.selectOrderDetailByOrderNum(order_num);
+		
+		mav.setViewName("order_modify");
+		mav.addObject("order", order);
+		mav.addObject("detailList", detailList);
+		return mav;
+	}
+	
+	@PostMapping("/order/order_update.do")
+	public String updateOrder( Model model, HttpServletRequest request,
+				@RequestParam int order_num, 
+				@RequestParam String receive_name, 
+				@RequestParam String receive_post,@RequestParam String receive_address1,
+				@RequestParam String receive_address2,@RequestParam String receive_phone,
+				@RequestParam(value="notice", defaultValue = "") String notice) {
+		
+		logger.debug("<<주문수정>> : " + order_num);
+		OrderVO order = orderService.selectOrder(order_num);
+		order.setReceive_name(receive_name);
+		order.setReceive_post(receive_post);
+		order.setReceive_address1(receive_address1);
+		order.setReceive_address2(receive_address2);
+		order.setReceive_phone(receive_phone);
+		order.setNotice(notice);
+		
+		orderService.updateOrder(order);
+		
+		model.addAttribute("message", "주문서가 수정되었습니다.");
+		model.addAttribute("url", request.getContextPath() + "/member/myPageProduct.do?type=2");
+
+		return "common/resultView";
+	}
+	
 }
 
 
