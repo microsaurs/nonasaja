@@ -296,7 +296,7 @@ $(function(){
 			$('#re_content2').val('').focus();
 			return false;
 		}
-			$('#rereply_form').append(rereply_form);	
+			//$('#rereply_form').append(rereply_form);	
 		let form_data = $(this).serialize();
 		//데이터 전송
 		$.ajax({
