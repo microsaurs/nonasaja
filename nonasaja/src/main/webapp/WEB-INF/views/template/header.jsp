@@ -34,7 +34,7 @@
 			<a href="${pageContext.request.contextPath}/member/myPage.do" class="text">MY페이지</a>
 			</c:if>
 			<c:if test="${!empty user && user.auth == 3}">
-				<a href="${pageContext.request.contextPath}/member/admin_list.do" class="text">회원관리</a>
+				<a href="${pageContext.request.contextPath}/member/admin_main.do" class="text">관리페이지</a>
 			</c:if>
 			<p class="layout22">|</p>
 			<a href="${pageContext.request.contextPath}/member/serviceCenter.do" class="text">고객센터</a>

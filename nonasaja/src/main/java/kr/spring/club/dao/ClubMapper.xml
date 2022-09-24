@@ -10,7 +10,7 @@
 		FROM club_board
 		<where>
 			<if test="keyfield != null and keyfield != ''">
-				b.club_code = #{keyfield}
+				club_code = #{keyfield}
 			</if>
 		</where>  	
   	</select>
@@ -35,9 +35,11 @@
   		              b.club_hit,
   		              b.club_gender,
   		              b.club_recruit,
-  		        
+  		              b.club_img,
+  		              b.club_img_name,
   		              b.club_age,
   		              b.club_region,
+  		              b.club_name,
   		              m.id,
   		              m.nickname
   		            FROM club_board b JOIN member m

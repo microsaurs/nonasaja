@@ -53,6 +53,8 @@ public class ClubServiceImpl implements ClubService{
 	public void deleteBoard(Integer club_num) {
 		//부모글 좋아요 삭제
 		clubMapper.deleteFavByBoardNum(club_num);
+		//댓글이 존재하면 댓글을 우선 삭제하고 부모글을 삭제
+		clubMapper.deleteReplyByBoardNum(club_num);
 		//부모글 삭제
 		clubMapper.deleteBoard(club_num);
 	}
@@ -115,6 +117,11 @@ public class ClubServiceImpl implements ClubService{
 	public void deleteReply(Integer reply_num) {
 		clubMapper.deleteReply(reply_num);
 	}
-
+	
+	/*
+		 * 
+		 * @Override public int selectClubCount(Integer mem_num) { return
+		 * clubMapper.selectClubCount(mem_num); }
+		 */
 
 }

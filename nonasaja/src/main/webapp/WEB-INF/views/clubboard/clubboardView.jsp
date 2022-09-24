@@ -117,7 +117,7 @@
 			${board.club_content}
 			<br>
 			<c:if test="${!empty board.club_img_name}">
-			<img src="imageView.do?club_num=${board.club_num}" width="400" height="400">
+			<img src="imageView.do?club_num=${board.club_num}" height="400">
 			</c:if>
 			</td>
 		</tr>
@@ -155,21 +155,23 @@
 					location.replace('delete.do?club_num=${board.club_num}');
 				}
 			};
-		</script>  
+		</script> 
+		<input class="button" type="button" value="목록가기"  onclick="location.href='list.do'"> 
 		</c:if>
 		<form id="club_join" method="post">
 		<input type="hidden" name="club_num" id="club_num" value="${board.club_num}">
 		<c:if test="${!empty user && user.mem_num != board.club_leader}">
 		<input class="button" type="submit"  value="가입하기">
+		<input class="button" type="button" value="목록가기"  onclick="location.href='list.do'">
 		</c:if>
 		</form>
-		<input class="button" type="button" value="목록가기"  onclick="location.href='list.do'">
 	</div>
 
 	<hr size="1" width="100%">
 	<!-- 댓글 UI 시작 -->
 	<div id="reply_div">
-		<span class="re-title">댓글 달기</span>
+	<img src="${pageContext.request.contextPath}/images/댓글아이콘.png" width="25" height="25" class="replyicon">
+		<span class="re-title"><b>동호회 가입을 원하시면 댓글을 작성하세요.</b></span>
 		<form id="re_form">
 			<input type="hidden" name="club_num"
 			   value="${board.club_num}" id="club_num">
@@ -182,8 +184,8 @@
 			<div id="re_first">
 				<span class="letter-count">300/300</span>
 			</div>
-			<div id="re_second" class="align-right">
-				<input type="submit" value="전송">
+			<div id="re_second" class="button9-align">
+				<input type="submit" value="전송" class="button9">
 			</div>
 			</c:if>
 		</form>
@@ -191,7 +193,7 @@
 	<!-- 댓글 목록 출력 -->
 	<div id="output"></div>
 	<div class="paging-button" style="display:none;">
-		<input type="button" value="다음글 보기">
+		<input type="button" value="다음글 보기" class="button10">
 	</div>
 	<div id="loading" style="display:none;">
 		<img src="${pageContext.request.contextPath}/images/loading.gif" width="100" height="100">

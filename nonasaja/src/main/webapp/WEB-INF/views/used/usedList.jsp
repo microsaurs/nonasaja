@@ -17,6 +17,13 @@
 		<c:if test="${!empty user}">
 		<a href="${pageContext.request.contextPath}/used/write.do"><img src="${pageContext.request.contextPath}/images/writebutton.png" class="writebutton"></a>
 		</c:if>
+		
+		<div class="image-align">
+		<figure class="category-align"><a href="usedList.do?keyfield=0"><img id="commuList_img" src="${pageContext.request.contextPath}/images/schedule2.png"></a><figcaption><b>중고거래</b></figcaption></figure>
+		<figure class="category-align"><a href="usedList.do?keyfield=1"><img id="commuList_img" src="${pageContext.request.contextPath}/images/sale2.png"></a><figcaption><b>무료나눔</b></figcaption></figure>
+		<figure class="category-align"><a href="usedList.do?keyfield=2"><img id="commuList_img" src="${pageContext.request.contextPath}/images/book2.png"></a><figcaption><b>물물교환</b></figcaption></figure><br><br><br><br><br>
+		</div><br><br>
+		
 		<form action="list.do" id="search_form1" method="get">
 			<ul class="search-align">
 				<li>

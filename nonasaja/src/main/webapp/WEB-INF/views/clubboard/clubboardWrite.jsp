@@ -117,8 +117,7 @@
 				<input type="file" name="upload" id="upload">
 			</li>	
 			<li  style="clear:both;">
-			<li>
-			<label for="club_region">판매지역</label>
+			<label for="club_region">모임지역</label>
 		    	<form:input path="club_region" placeholder="예)ㅇㅇ시ㅇㅇ구ㅇㅇ동"/>
 			</li>	
 		</ul>    

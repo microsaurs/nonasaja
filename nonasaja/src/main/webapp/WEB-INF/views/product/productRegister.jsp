@@ -20,7 +20,7 @@
 
 <!-- !!!config 패키지의 AppConfig에서 인터셉터 설정하기!!! -->
 	<p>상품 등록</p>
-	<form:form id="register_form" action="register.do" modelAttribute="productVO" enctype="multipart/form-data">
+	<form:form id="register_form" action="${pageContext.request.contextPath}/member/register.do" modelAttribute="productVO" enctype="multipart/form-data">
 		<form:errors element="div" cssClass="error-color"/>
 		<ul>
 			<li>
@@ -152,7 +152,7 @@
 			</li>	
 		</ul>
 		<form:button>등록</form:button>
-		<input type="button" value="목록" onclick="location.href='list.do'">
+		<input type="button" value="목록" onclick="location.href='${pageContext.request.contextPath}/member/list.do'">
 	</form:form>
 </div>
 

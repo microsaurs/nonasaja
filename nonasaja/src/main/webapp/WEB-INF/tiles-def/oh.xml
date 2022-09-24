@@ -65,6 +65,12 @@
     	  value="/WEB-INF/views/review/review_modify.jsp"/>                   
     </definition>
     
+     <definition name="admin_main" extends="main">
+    	<put-attribute name="title" value="관리자 페이지"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/member/admin_main.jsp"/>                   
+    </definition>
+    
 </tiles-definitions>
 
 

@@ -154,7 +154,13 @@ span{
 	text-align:center;
 	
 }
-
+.category-align{
+	float:left;
+	padding: 0 30px;
+}
+#commuList_img{
+	width:100px;
+}
 .writebutton{
 	width:300px;
 	height:100px;

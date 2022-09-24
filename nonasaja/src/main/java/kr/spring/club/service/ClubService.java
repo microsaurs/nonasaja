@@ -32,4 +32,6 @@ public interface ClubService {
 	public void insertReply(ClubReplyVO boardReply);
 	public void updateReply(ClubReplyVO boardReply);
 	public void deleteReply(Integer reply_num);
+	
+	/* public int selectClubCount(Integer mem_num); */
 }
