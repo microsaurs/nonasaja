@@ -96,9 +96,9 @@ public interface ClubMapper {
 		@Select("SELECT * FROM club_rereply WHERE rereply_num=#{rereply_num}")
 		public ClubRereplyVO selectRereply(Integer rereply_num);
 		@Insert("INSERT INTO club_rereply (rereply_num,"
-		+ "rereply_content,club_num,mem_num) "
+		+ "rereply_content,club_num,mem_num,reply_num) "
 		+ "VALUES (club_rereply_seq.nextval,#{rereply_content},"
-		+ "#{club_num},#{mem_num})")
+		+ "#{club_num},#{mem_num},#{reply_num})")
 		public void insertRereply(ClubRereplyVO boardRereply);
 		@Update("UPDATE club_rereply SET "
 		+ "rereply_content=#{rereply_content}"

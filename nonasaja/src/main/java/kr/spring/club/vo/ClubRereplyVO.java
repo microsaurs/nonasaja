@@ -7,6 +7,7 @@ public class ClubRereplyVO {
 	private int club_num;
 	private int mem_num;
 	private int reply_num;
+	
 	public int getRereply_num() {
 		return rereply_num;
 	}

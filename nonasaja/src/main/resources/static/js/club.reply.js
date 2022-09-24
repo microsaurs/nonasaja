@@ -281,15 +281,14 @@ $(function(){
 	selectList(1);
 	//----------------------------대댓글--------------------------------------------------
 	$(document).on('click','.rereply-btn',function(){
-		//$(this).parents('.item').append(modifyUI);
+		
 		
 		//댓글 번호
 		let re_num = $(this).attr('data-num');
 		
 		let rereply_form = '<form id="rereply_form">';
 			rereply_form += '<input type="hidden" name="rereply_num"  value=' +re_num +'>';
-			rereply_form += '<textarea rows="10" cols="80" id="re_content2" name="content" placeholder="답글을 입력해주세요"></textarea>';
-			//rereply_form += 'placeholder="답글을 입력해주세요"></textarea>';
+			rereply_form += '<textarea rows="10" cols="80" id="rereply_content" name="rereply_content" placeholder="답글을 입력해주세요"></textarea>';
 			rereply_form += '<input type="submit" value="등록">';
 			rereply_form += '</form>';
 			
@@ -297,13 +296,13 @@ $(function(){
 	
 		//댓글 등록
 		$('#rereply_form').submit(function(event){
-		if($('#re_content2').val().trim()==''){
+		if($('#rereply_content').val().trim()==''){
 			alert('내용을 입력하세요');
-			$('#re_content2').val('').focus();
+			$('#rereply_content').val('').focus();
 			return false;
 		}
-			//$('#rereply_form').append(rereply_form);	
-		let form_data = $(this).serialize();
+		
+		let form_data = $(rereply_form).serialize();
 		//데이터 전송
 		$.ajax({
 			url:'writeRereply.do',

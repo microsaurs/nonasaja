@@ -118,7 +118,7 @@
   		              rereply_date,
   		              club_num,
   		              mem_num,
-  		              reply_num,
+  		            reply_num,
   		              nickname
   		            FROM club_rereply
   		            JOIN member USING(mem_num)
