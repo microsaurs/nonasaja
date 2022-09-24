@@ -187,6 +187,9 @@ $(document).ready(function(){
 							판매중지된 상품입니다
 						</c:if>
 					</td>
+					<td>
+						<input type="button" value="구매취소">
+					</td>
 				</tr>
 				</c:if>
 				</c:forEach>
