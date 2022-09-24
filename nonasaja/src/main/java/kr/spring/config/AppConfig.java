@@ -49,10 +49,10 @@ public class AppConfig implements WebMvcConfigurer{
 		        .addPathPatterns("/review/modify_review.do");
 		registry.addInterceptor(new AdminCheckInterceptor())
 				.addPathPatterns("/member/admin_main.do")
-				.addPathPatterns("/product/admin_list.do")
-				.addPathPatterns("/product/register.do")
-				.addPathPatterns("/product/admin_modify.do")
-				.addPathPatterns("/product/delete.do");
+				.addPathPatterns("/member/admin_product.do")
+				.addPathPatterns("/member/register.do")
+				.addPathPatterns("/member/product_modify.do")
+				.addPathPatterns("/member/product_delete.do");
 		/*
 		 * registry.addInterceptor(interceptor) .addPathPatterns("/clubboard/write.do")
 		 * .addPathPatterns("/clubboard/update.do")

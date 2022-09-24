@@ -217,4 +217,18 @@ public class MemberAdminController {
 
 			return "common/resultView";
 		}
+		//===============상품 삭제====================
+		@RequestMapping("/member/product_delete.do")
+		public String deleteProduct(int product_num, Model model) {
+			logger.debug("<<상품삭제>> : " +product_num);
+			//리뷰 삭제하기
+			reviewService.deleteReviewByProduct_num(product_num);
+			//상품 삭제하기 
+			productService.deleteProduct(product_num);
+
+			model.addAttribute("message", "상품 삭제 완료");
+			model.addAttribute("url", "/member/admin_product.do");
+
+			return "common/resultView";
+		}
 }
