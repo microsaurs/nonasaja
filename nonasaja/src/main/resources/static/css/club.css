@@ -10,7 +10,7 @@ div.page-main1 table{
 	border:none;
 	font-size:medium;
 	padding: 30px;
-	margin : 0px;
+	margin-bottom : 0px;
 }
 table{
 	border:none;
@@ -36,12 +36,15 @@ table{
 	text-align: left;
     width: 400px;
     border-bottom: 1px solid #808080;
+    color:#6C6039;
+	font-size:large;
   }
 #td-1 {
 	text-align: center;
   } 
 #td-2 {
     text-align: left;
+    
   }
 #td-3 {
     text-align: center;	
@@ -74,6 +77,8 @@ table{
 	border-bottom: 1px solid #808080;
 	text-align: left;
 	width: 900px;
+	color:#6C6039;
+	font-size:x-large;
 }
 .th-5{
 	border-bottom: 1px solid #808080;
@@ -340,4 +345,8 @@ ul.detail-info #img{
 	color: white;
 	float: right;
 	margin-bottom: 3px;
+}
+.nickname{
+	text-align: right;
+	font-size:small;	
 }

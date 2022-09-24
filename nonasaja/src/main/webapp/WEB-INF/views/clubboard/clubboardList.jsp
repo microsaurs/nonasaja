@@ -12,7 +12,7 @@
 
 
 	<div class="align-center">
-	<img src="${pageContext.request.contextPath}/images/자취생끼리같이해요.JPG" width="700px">
+	<img src="${pageContext.request.contextPath}/images/자취생끼리같이해요1.JPG" width="700px">
 	
 	</div>
 	<!-- 로그인 되어있으면 글쓰기로 -->

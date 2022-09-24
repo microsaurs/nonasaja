@@ -23,10 +23,10 @@
 			<c:if test="${!empty board.club_modify_date}">
 			최근 수정일 : ${board.club_modify_date}
 			</c:if>
-			<br>
 			<c:if test="${empty board.club_modify_date}">
 			작성일 : ${board.club_reg_date}
 			</c:if>
+			<br>
 			조회 : ${board.club_hit}
 		</li>
 	</ul>
@@ -41,8 +41,8 @@
 		<table>
 		<tr>
 			<th class="th-3">
-			<c:if test="${board.club_recruit==0}">모집중</c:if>
-			<c:if test="${board.club_recruit==1}">모집완료</c:if>
+<c:if test="${board.club_recruit==0}"><img src="${pageContext.request.contextPath}/images/동호인모집중.JPG" width="80px"></c:if>
+			<c:if test="${board.club_recruit==1}"><img src="${pageContext.request.contextPath}/images/동호인모집완료.JPG" width="100px"></c:if>
 			</th>
 			<th width="400" class="th-4">${board.club_title}</th>
 		</tr>
@@ -198,6 +198,7 @@
 	<div id="loading" style="display:none;">
 		<img src="${pageContext.request.contextPath}/images/loading.gif" width="100" height="100">
 	</div>
+
 	<!-- 댓글 UI 끝 -->
 </div>
 <!-- 내용 끝 -->
