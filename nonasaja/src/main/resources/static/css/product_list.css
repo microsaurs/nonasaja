@@ -54,13 +54,11 @@
 	font-size: 30pt;
 }
 .category-txt{
-	float: left;
-    width: 15%;
-    margin: 0 0 0 5%;
+	margin-left:440px;
+    width: 130px;
 }
 .category-img{
-	float: right;
-    width: 38%;
+    width: 40%;
     margin: 0 5px 40px 5px;
 }
 .hr-color{
@@ -70,6 +68,10 @@
 }
 div#category_box{
 	margin: 40px 0 40px 0;
+}
+.category-float{
+	float:left;
+	text-align:center;
 }
 #search_form_box{
 	clear:both;
@@ -147,7 +149,7 @@ select{
 	float:right;
 }
 .page-main ul.search-align li{
-	margin: 0 0 9px 0;
+	margin: 0 0 5px 0;
 	padding:0;
 	display:inline;
 }
@@ -170,7 +172,7 @@ select{
   color:white;
 }
 .button4{
-  width: 60px;
+  width: 65px;
   height: 25px;
   border:0;
   background:#665E4D;

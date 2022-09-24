@@ -8,18 +8,16 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/product_search.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/product_list.css">
 <div class="page-main">
-	<input type="button" id="register_btn" onclick="location.href='register.do'" value="상품 등록">
-	<input type="button" id="adminList_btn" onclick="location.href='admin_list.do'" value="관리자용 목록">
-	<input type="button" id="cart_btn" onclick="location.href='${pageContext.request.contextPath}/cart/cart_list.do'" value="고객용 장바구니">
-	<input type="button" id="orderList_btn" onclick="location.href='${pageContext.request.contextPath}/order/order_list.do'" value="고객용 구매목록">
 	<!-- 헤드 이미지 -->
 	<img src="${pageContext.request.contextPath}/images/listMain2.png" width="100%">
 	<!--  카테고리 박스 -->
 	<hr class="hr-color" size="1" width="100%">
 	<div id="category_box">
-		<img class ="category-img" id="living_img" src="${pageContext.request.contextPath}/images/category_living.png">
-		<img class ="category-img" id="food_img" src="${pageContext.request.contextPath}/images/category_food.png">
 		<img class ="category-txt" src="${pageContext.request.contextPath}/images/category_txt.png">
+		<div class ="category-float">
+		<img class ="category-img" id="food_img" src="${pageContext.request.contextPath}/images/category_food.png">
+		<img class ="category-img" id="living_img" src="${pageContext.request.contextPath}/images/category_living.png">
+		</div>
 	</div>
 	<div id="search_form_box">
 		<form action="list.do" id="search_form1" method="get">
