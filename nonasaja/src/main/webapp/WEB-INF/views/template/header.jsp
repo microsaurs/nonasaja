@@ -42,7 +42,7 @@
 		</div>
 	</div>
 </div>
-	<hr size="1" width="100%">
+	<hr class="header-hr">
 	
 	
 
@@ -73,7 +73,7 @@
 		</div>
 	</div>
 	
-	<hr size="1" width="100%">
+	<hr class="header-hr">
 <!-- 상단 끝 -->
 
 
