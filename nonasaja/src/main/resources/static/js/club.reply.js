@@ -50,11 +50,12 @@ $(function(){
 						
 						output += ' <input type="button" data-num="'+ item.reply_num +'" value="삭제" class="delete-btn">';
 						output += ' <input type="button" data-num="'+ item.reply_num +'" value="수정" class="modify-btn">';
-					}output += ' <input type="button" data-num="'+ item.rereply_num +'" value="답글" class="rereply-btn">';
+					}
+					output += ' <input type="button" data-num="'+ item.reply_num +'" value="답글" class="rereply-btn">';
 					if(item.reply_date){
 						output += '<span class="modify-date">등록일 ' + item.reply_date + '</span>';
 					}
-					
+					output += '<div class="rereply-text"></div>';
 					output += '<hr size="1"  width="100%" noshade>';
 					output += '</div>';
 					output += '</div>'; 
@@ -280,14 +281,19 @@ $(function(){
 	selectList(1);
 	//----------------------------대댓글--------------------------------------------------
 	$(document).on('click','.rereply-btn',function(){
-
+		//$(this).parents('.item').append(modifyUI);
+		
+		//댓글 번호
+		let re_num = $(this).attr('data-num');
+		
 		let rereply_form = '<form id="rereply_form">';
 			rereply_form += '<input type="hidden" name="rereply_num"  value=' +re_num +'>';
-			rereply_form += '<textarea rows="10" cols="80" id="re_content2" name="content"';
-			rereply_form += 'placeholder="답글을 입력해주세요"></textarea>';
+			rereply_form += '<textarea rows="10" cols="80" id="re_content2" name="content" placeholder="답글을 입력해주세요"></textarea>';
+			//rereply_form += 'placeholder="답글을 입력해주세요"></textarea>';
 			rereply_form += '<input type="submit" value="등록">';
 			rereply_form += '</form>';
 			
+			$(this).parents('.item').find('.rereply-text').append(rereply_form);
 	
 		//댓글 등록
 		$('#rereply_form').submit(function(event){
