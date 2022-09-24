@@ -10,6 +10,10 @@
 		FROM used_board b JOIN member m
 		ON b.mem_num = m.mem_num
 		<where>
+			<if test="keyfield !=null and keyfield != ''">
+  			and kind = #{keyfield} 
+  			</if>
+  			
 			<if test="keyword != null and keyword != ''">
 				<if test="keyfield == 1">
 					b.title LIKE '%' || #{keyword} || '%'
@@ -28,6 +32,8 @@
 			</if>
 		</where>  	
   	</select>
+  	
+  	
   	
 	<select id="selectList" parameterType="map" resultType="usedVO">
 	SELECT
