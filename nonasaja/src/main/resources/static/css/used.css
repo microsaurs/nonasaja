@@ -135,13 +135,13 @@ span{
 #searchbar{
 	border:1.5px solid #878787;
 	border-radius: 5px;
-	width:230px;
+	width:240px;
 	height:27px;
 }
 .page-main ul.search-align{
 	list-style:none;
 	padding:0 0 60px 0;
-	margin:0 10px 0 0;
+	margin:0 0px 0 20px;
 }
 .page-main ul.search-align li{
 	margin: 0 0 9px 0;
@@ -154,17 +154,26 @@ span{
 	text-align:center;
 	
 }
+.image-align{
+	width:90%;
+	text-align:center;
+	margin: 0 250px;
+	padding: 0 0 30px 0;
+}
 .category-align{
 	float:left;
-	padding: 0 30px;
 }
-#commuList_img{
+#usedList_img{
+	padding: 0 40px 10px 40px;
 	width:100px;
+}
+figure{
+	margin:0 auto;
 }
 .writebutton{
 	width:300px;
 	height:100px;
-	padding: 0px 0 10px 350px;
+	padding: 0px 0 10px 370px;
 }
 
 .button5{
@@ -178,7 +187,7 @@ span{
   color:white;
 }
 .button4{
-  width: 60px;
+  width: 65px;
   height: 25px;
   border:0;
   background:#665E4D;

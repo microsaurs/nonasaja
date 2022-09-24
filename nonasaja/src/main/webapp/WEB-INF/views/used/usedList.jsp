@@ -13,15 +13,15 @@
 	
 	</div>
 	
-	<div class="writebutton-float">
+	<div>
 		<c:if test="${!empty user}">
 		<a href="${pageContext.request.contextPath}/used/write.do"><img src="${pageCon3text.request.contextPath}/images/writebutton.png" class="writebutton"></a>
 		</c:if>
 		<!-- kind 이미지 클릭 시 keyfield 검색 -->
 		<div class="image-align">
-		<figure class="category-align"><a href="list.do?keyfield=0"><img id="commuList_img" src="${pageContext.request.contextPath}/images/schedule2.png"></a><figcaption><b>중고거래</b></figcaption></figure>
-		<figure class="category-align"><a href="list.do?keyfield=1"><img id="commuList_img" src="${pageContext.request.contextPath}/images/sale2.png"></a><figcaption><b>무료나눔</b></figcaption></figure>
-		<figure class="category-align"><a href="list.do?keyfield=2"><img id="commuList_img" src="${pageContext.request.contextPath}/images/book2.png"></a><figcaption><b>물물교환</b></figcaption></figure><br><br><br><br><br>
+		<figure class="category-align"><a href="list.do?keyfield=0"><img id="usedList_img" src="${pageContext.request.contextPath}/images/중고거래.png"></a><figcaption><b>중고거래</b></figcaption></figure>
+		<figure class="category-align"><a href="list.do?keyfield=1"><img id="usedList_img" src="${pageContext.request.contextPath}/images/무료나눔.png"></a><figcaption><b>무료나눔</b></figcaption></figure>
+		<figure class="category-align"><a href="list.do?keyfield=2"><img id="usedList_img" src="${pageContext.request.contextPath}/images/물물교환.png"></a><figcaption><b>물물교환</b></figcaption></figure><br><br><br><br><br>
 		</div><br><br>
 		
 		<!-- 검색창 keyfield+keyword 검색 -->

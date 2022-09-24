@@ -55,7 +55,7 @@
 			<a href="${pageContext.request.contextPath}/used/list.do" class="category-margin">중고거래</a>
 			<a href="${pageContext.request.contextPath}/clubboard/list.do" class="category-margin">동호회</a>
 			<a href="${pageContext.request.contextPath}/commuboard/list.do" class="category-margin">커뮤니티</a>  
-			<a href="${pageContext.request.contextPath}/commuRecipe/list.do">레시피</a>  
+			<a href="${pageContext.request.contextPath}/commuRecipe/list.do" class="category-margin">레시피</a>  
 		</div>
 		<div class="float-right">
 			<c:if test="${!empty user && !empty user.photo}">
