@@ -106,7 +106,7 @@
   	<select id="selectListRereply" parameterType="map"
   	                    resultType="clubRereplyVO">
   		SELECT
-  		   *
+  		   * 
   		FROM (SELECT
   		        a.*,
   		        rownum rnum

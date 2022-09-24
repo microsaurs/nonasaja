@@ -84,7 +84,7 @@ public interface ClubMapper {
 		 * 
 		 * @Select("SELECT COUNT(*) FROM join j JOIN club_board c USING(club_num) WHERE j.mem_num=#{mem_num}"
 		 * ) public int selectClubCount(Integer mem_num);
-		 */
+		 */ 
 		
 		//대댓글
 		public List<ClubRereplyVO> selectListRereply(

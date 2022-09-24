@@ -283,7 +283,7 @@ $(function(){
 	$(document).on('click','.rereply-btn',function(){
 		
 		
-		//댓글 번호
+		//댓글 번호 
 		let re_num = $(this).attr('data-num');
 		
 		let rereply_form = '<form id="rereply_form">';
