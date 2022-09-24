@@ -9,29 +9,21 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/videoAdapter.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/commuView.css">
 <div class="page-main">
+      <div class="userphoto">
+      <c:if test="${!empty board.photo_name}">
+      <img src="imageView.do?commu_num=${board.commu_num}&board_type=1" width="40" height="40" class="my-photo1">
+      </c:if>
+      <c:if test="${empty board.photo_name}">
+      <img src="${pageContext.request.contextPath}/images/face.png" width="40" height="40" class="my-photo1">
+      </c:if>
+   </div>
+   <div class="userinformation">
+      <c:if test="${empty board.nickname}"><b>${board.id}</b></c:if>
+      <c:if test="${!empty board.nickname}"><b>${board.nickname}</b> 님의 
+         <font color="#D8952A"><b>게시글</b></font>
+      </c:if>
 	<h2>${board.commu_title}</h2>
-	<ul class="detail-info">
-		<li>
-			<c:if test="${!empty board.photo_name}">
-			<img src="imageView.do?commu_num=${board.commu_num}&board_type=1" width="40" height="40" class="my-photo">
-			</c:if>
-			<c:if test="${empty board.photo_name}">
-			<img src="${pageContext.request.contextPath}/images/face.png" width="40" height="40" class="my-photo">
-			</c:if>
-		</li>
-		<li>
-			<c:if test="${empty board.nickname}">${board.id}</c:if>
-			<c:if test="${!empty board.nickname}">${board.nickname}</c:if>
-			<br>
-			<c:if test="${!empty board.commu_modify_date}">
-			최근 수정일 : ${board.commu_modify_date}
-			</c:if>
-			<c:if test="${empty board.commu_modify_date}">
-			작성일 : ${board.commu_date}
-			</c:if>
-			조회 : ${board.commu_hit}
-		</li>
-	</ul>
+   </div>	
 
  	<hr size="1" width="100%">
 
@@ -44,10 +36,21 @@
 		<span id="output_fcount"></span>
 	</div>
 	<hr size="1" width="100%">
-	<div class="align-right">
+	
+   	<div class="userwriteinformation">
+		<c:if test="${!empty board.commu_modify_date}">
+			최근 수정일 | ${board.commu_modify_date}
+		</c:if>
+		<c:if test="${empty board.commu_modify_date}">
+			작성일  ${board.commu_date}
+		</c:if><br>
+			조회  ${board.commu_hit}
+	</div>	
+	
+	<div class="button-align">
 		<c:if test="${!empty user && user.mem_num == board.mem_num}">
-		<input type="button" value="수정" onclick="location.href='update.do?commu_num=${board.commu_num}'">
-		<input type="button" value="삭제" id="delete_btn">
+		<input class="button6" type="button" value="수정" onclick="location.href='update.do?commu_num=${board.commu_num}'">
+		<input class="button7" type="button" value="삭제" id="delete_btn">
 		<script type="text/javascript">
 			let delete_btn = document.getElementById('delete_btn');
 			//이벤트 연결
@@ -58,7 +61,7 @@
 				}
 			}
 		</script>
-		<input type="button" value="목록" onclick="location.href='list.do'">
+		<input class="button8" type="button" value="목록" onclick="location.href='list.do'">
 		</c:if>
 	</div>
 

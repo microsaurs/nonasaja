@@ -148,12 +148,12 @@ li {
 	padding:10px 0;
 }
 /*댓글*/
-#reply_div1{
+.page-main div#reply_div1{
 	padding:15px 10px 40px 10px;
 	margin-top:100px;
 	background-color:#E8E8DA;
 }
-.re-title1{
+.page-main span.re-title1{
 	color:#513810;
 	font-size:13pt;
 	line-height:200%;
@@ -165,12 +165,12 @@ li {
 	padding:5px 5px;
 	float:left;
 }
-#re_form1{
+.page-main form#re_form1{
 	width:920px;
 	border:none;
 	margin:0
 }
-.rep-content1{
+.page-main textarea.rep-content1{
 	width:98%;
 	height:60px;
 	resize:vertical;
@@ -187,4 +187,71 @@ li {
 }
 .button9-align{
 	margin-left:75px;
+}
+.item{
+	margin:15px;
+}
+.nicknamemargin{
+	margin:0 auto;
+	padding: 8px 0 10px 10px;
+	float:left;
+}
+.my-photo2{
+	object-fit: cover;
+    object-position: top; /*정사각형이 아니라 직사각형일 경우 원 안에 보여지게 할 중심 이미지의 위치를 지정*/
+    border-radius: 50%;/*사각형의 모서리 둥근 정도를 지정하는 속성인데 50%를 지정하면 완전한 원이 됨*/
+	margin: 0;
+	float:left;
+}
+.sub-item{
+	clear:both;
+	padding: 5px 0 0 5px;
+	font-size:15px;
+}
+.modify-date{
+	margin-top:10px;
+	clear:both;
+	font-size:12px;
+	float:right;
+}
+.button10{
+  width: 40px;
+  height: 25px;
+  border:0;
+  background:#9B8F72;
+  margin-right:3px;
+  outline:0;
+  border-radius: 6px;
+  color:white;
+  float:right;
+}
+.button11{
+  width: 40px;
+  height: 25px;
+  border:0;
+  background:#665E4D;
+  position:relative;
+  outline:0;
+  border-radius: 6px;
+  color:white;
+  float:right;
+}
+.re-reset{
+  width: 40px;
+  height: 25px;
+  border:0;
+  background:#665E4D;
+  outline:0;
+  border-radius: 6px;
+  color:white;
+  float:right;
+  margin-right:3px;
+}
+#mre_second{
+	padding-left:65px;
+}
+#mre_form{
+	width:920px;
+	border:none;
+	margin:0;
 }

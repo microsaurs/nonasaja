@@ -39,7 +39,7 @@ private static final Logger logger = LoggerFactory.getLogger(CommuBoardControlle
 	private CommuBoardService boardService;
 	
 	//자바빈(VO) 초기화
-	@ModelAttribute 
+	@ModelAttribute
 	public CommunityVO initCommad() {
 		return new CommunityVO();
 	} 
@@ -51,19 +51,19 @@ private static final Logger logger = LoggerFactory.getLogger(CommuBoardControlle
 	} 
 	
 	
-	
-	//========유머 글 등록========//
+	//=====================커뮤 게시판 시작=====================//
+	//========커뮤 글 등록========//
 	//등록 폼
-	@GetMapping("/commuboard/humorwrite.do")
+	@GetMapping("/commuboard/write.do")
 	public String form() {
-		return "commuHumorWrite"; 			
+		return "commuBoardWrite"; 			
 	}
 	
 	//등록 폼에서 전송된 데이터 처리
-	@PostMapping("/commuboard/humorwrite.do")
+	@PostMapping("/commuboard/write.do")
 	public String submit(@Valid CommunityVO boardVO, BindingResult result, HttpServletRequest request, HttpSession session, Model model) {
 		
-		logger.debug("<<유머 게시판 글 저장>> : " + boardVO);
+		logger.debug("<<커뮤 게시판 글 저장>> : " + boardVO);
 		
 		//유효성 검사 결과 오류가 있으면 폼 호출
 		if(result.hasErrors()) {
@@ -84,7 +84,7 @@ private static final Logger logger = LoggerFactory.getLogger(CommuBoardControlle
 		return "common/resultView"; 
 	}
 	
-	//===========유머 게시판 글 목록==========//
+	//===========커뮤 게시판 글 목록==========//
 	@RequestMapping("/commuboard/list.do")
 	public ModelAndView process( 
 			@RequestParam(value="pageNum",defaultValue="1") int currentPage, 
@@ -120,7 +120,7 @@ private static final Logger logger = LoggerFactory.getLogger(CommuBoardControlle
 		return mav;
 	}
 	
-	//===========유머 게시판 글 목록2==========//
+	//===========커뮤 게시판 글 목록2==========//
 	@RequestMapping("/commuboard/commuList.do")
 	public ModelAndView commuProcess( 
 			@RequestParam(value="pageNum",defaultValue="1") int currentPage, 
@@ -137,7 +137,7 @@ private static final Logger logger = LoggerFactory.getLogger(CommuBoardControlle
 		//페이지 처리
 		PagingUtil page = 
 				new PagingUtil(currentPage,count,
-						rowCount,pageCount,"commuList.do","&keyfield="+keyfield);
+						rowCount,pageCount,"commuList.do");
 		
 		List<CommunityVO> list = null;
 		if(count > 0) {
@@ -159,7 +159,7 @@ private static final Logger logger = LoggerFactory.getLogger(CommuBoardControlle
 	
 	
 	
-	//========유머게시판 글 상세=========//
+	//========커뮤 게시판 글 상세=========//
 	@RequestMapping("/commuboard/detail.do")
 	public ModelAndView detail(@RequestParam int commu_num) {
 		
@@ -256,7 +256,7 @@ private static final Logger logger = LoggerFactory.getLogger(CommuBoardControlle
 			
 			return "common/resultView";
 		}
-		
+		//=====================커뮤 게시판 끝=====================//
 		
 		//=====================레시피 게시판 시작=====================//
 		//========레시피 글 등록========//

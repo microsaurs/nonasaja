@@ -51,7 +51,7 @@
 <!-- 작성 가이드 끝 -->
 
 <!-- 기본 정보 입력 시작 -->
-	<form:form action="humorwrite.do" modelAttribute="communityVO"
+	<form:form action="write.do" modelAttribute="communityVO"
 	        id="register_form"
 	        enctype="multipart/form-data">
 	    <form:errors element="div" cssClass="error-color"/>    

@@ -84,8 +84,8 @@
       <b>필수재료</b>&emsp;  ${board.commu_ingredient}
       </li>
    </ul><br>
-   <p id="recipe_start"><%-- <img src="${pageContext.request.contextPath}/images/lionHead.png" width="60" height="60"> --%>레시피</p>
-   <hr id="recipe_hr" size="1" width="95%">
+   <img src="${pageContext.request.contextPath}/images/레시피.png" width="100px" height="45px">
+   <hr id="recipe_hr" size="1" width="98%">
 
 
    <c:if test="${!empty board.filename2}">

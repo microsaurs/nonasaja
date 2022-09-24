@@ -11,35 +11,35 @@
     	  value="/WEB-INF/views/member/memberRegister.jsp"/>                   
     </definition> -->
     
- 	<!-- ========================유머게시판 시작=========================== -->
-    <definition name="commuHumorWrite" extends="main3"> 
+ 	<!-- ========================커뮤게시판 시작=========================== -->
+    <definition name="commuBoardWrite" extends="main3"> 
 		<put-attribute name="title" 
-		               value="유머글쓰기"/>
+		               value="커뮤글쓰기"/>
 		<put-attribute name="body"
-	           value="/WEB-INF/views/commuboard/commuHumorWrite.jsp"/>    
+	           value="/WEB-INF/views/commuboard/commuBoardWrite.jsp"/>    
     </definition>
     
     <definition name="commuBoardList" extends="main3"> 
 	   	<put-attribute name="title" 
-	   	               value="유머게시판목록"/>
+	   	               value="커뮤게시판목록"/>
 	   	<put-attribute name="body"
 	   	             value="/WEB-INF/views/commuboard/commuBoardList.jsp"/>    
     </definition>
     
     <definition name="commuBoardView" extends="main"> 
     	<put-attribute name="title" 
-    	               value="유머상세정보"/>
+    	               value="커뮤글상세정보"/>
     	<put-attribute name="body"
     	             value="/WEB-INF/views/commuboard/commuBoardView.jsp"/>    
     </definition>
     
     <definition name="commuBoardModify" extends="main3"> 
     	<put-attribute name="title" 
-    	               value="유머글수정"/>
+    	               value="커뮤글수정"/>
     	<put-attribute name="body"
     	             value="/WEB-INF/views/commuboard/commuBoardModify.jsp"/>    
     </definition>
- 	<!-- ========================유머게시판 끝=========================== -->
+ 	<!-- ========================커뮤게시판 끝=========================== -->
     
     
  	<!-- ========================레시피 게시판 시작=========================== -->

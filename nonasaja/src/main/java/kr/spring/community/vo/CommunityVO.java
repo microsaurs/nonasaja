@@ -31,7 +31,6 @@ public class CommunityVO {
 	public int getCommu_num() {
 		return commu_num;
 	}
-	
 	public void setCommu_num(int commu_num) {
 		this.commu_num = commu_num;
 	}

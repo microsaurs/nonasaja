@@ -18,7 +18,6 @@
 <!-- include ckeditor js -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/ckeditor.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/uploadAdapter.js"></script>
-	<h2>커뮤니티 글수정</h2><br>
 <!-- 작성 가이드 시작 -->
 		<div class="container">
 		<div class="accordion" id="accordionExample">
@@ -65,7 +64,7 @@
 					<div class="accordion-body">
 		<ul>
 			<li>
-				<label for="commu_code">카테고리</label>
+				<label for="commu_code">카테고리&emsp;</label>
 				<form:radiobutton  path="commu_code" value="1" checked="checked"/>자유
 				<form:radiobutton path="commu_code" value="2"/>지역세일
 				<form:radiobutton path="commu_code" value="3"/>자취백과
@@ -74,7 +73,7 @@
 			</li>
 			<li>
 				<label for="commu_title">제목</label>
-				<form:input path="commu_title"/>
+				<form:input path="commu_title" id="commu_title"/>
 				<form:errors path="commu_title" 
 				             cssClass="error-color"/>
 			</li>
@@ -97,7 +96,7 @@
 		<ul>
 			<li>
 				<label for="region_num">지역 정보</label>
-				<form:input path="region_num"/>
+				<form:input path="region_num" id="region_num"/>
 				<form:errors path="region_num" 
 				             cssClass="error-color"/>
 			</li>
