@@ -161,7 +161,7 @@
 			</li>	
 		</ul>
 		<form:button>수정</form:button>
-		<input type="button" id="delete_btn" value="삭제" onclick="location.href='delete.do?product_num=${productVO.product_num}'">
+		<input type="button" id="delete_btn" value="삭제" onclick="location.href='product_delete.do?product_num=${productVO.product_num}'">
 		<input type="button" value="목록" onclick="location.href='list.do'">
 	</form:form>
 </div>

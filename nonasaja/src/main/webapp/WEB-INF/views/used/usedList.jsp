@@ -15,7 +15,7 @@
 	
 	<div class="writebutton-float">
 		<c:if test="${!empty user}">
-		<a href="${pageContext.request.contextPath}/used/write.do"><img src="${pageContext.request.contextPath}/images/writebutton.png" class="writebutton"></a>
+		<a href="${pageContext.request.contextPath}/used/write.do"><img src="${pageCon3text.request.contextPath}/images/writebutton.png" class="writebutton"></a>
 		</c:if>
 		<!-- kind 이미지 클릭 시 keyfield 검색 -->
 		<div class="image-align">
