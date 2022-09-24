@@ -93,10 +93,19 @@
 	padding: 3px;
 	border: 1.5px solid #878787;
 	border-radius:5px;
+	margin-left: 40px;
+	margin-bottom: 40px;
 }
 #searchbar{
 	border:1.5px solid #878787;
 	border-radius: 5px;
-	width:170px;
+	width:210px;
 	height:27px;
+}
+
+.writebutton{
+	text-align: center;	
+	width:300px;
+	height:115px;
+	margin-bottom: 20px;
 }

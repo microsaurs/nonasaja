@@ -8,7 +8,17 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/board.js"></script>
 
 <div class="page-main">
-	<h2>레시피</h2>
+
+	<div class="align-center">
+	<img src="${pageContext.request.contextPath}/images/자취생의레시피.png" width="700px" class="commu-logo">
+	</div>
+
+	<c:if test="${!empty user}">
+		<div class="align-center">
+		<a href="${pageContext.request.contextPath}/commuRecipe/write.do"><img src="${pageContext.request.contextPath}/images/커뮤니티글쓰기.png" class="writebutton"></a>
+		</div>
+	</c:if>
+	
 	<form action="list.do" method="get" id="search_form">
 		<ul class="search">
 			<li>
@@ -27,11 +37,11 @@
 			</li>
 		</ul>
 	</form>
-	<c:if test="${!empty user}">
+<%-- 	<c:if test="${!empty user}">
 	<div class="align-right">
 		<input class="button" type="button" value="글쓰기" onclick="location.href='write.do'">
 	</div>
-	</c:if>
+	</c:if> --%>
 	<c:if test="${count == 0}">
 	<div class="result-display">
 		표시할 상품이 없습니다.

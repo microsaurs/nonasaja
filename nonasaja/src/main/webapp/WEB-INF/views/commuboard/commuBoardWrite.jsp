@@ -85,6 +85,8 @@
 		</div>	<!-- end of parent -->
 	</div><!--  end of container -->
 	<br><br>
+<!-- 기본 정보 입력 끝 -->
+
 <!-- 지역 정보 입력 시작 -->
 		<div class="container">
 		<div class="accordion" id="accordionExample">

@@ -18,6 +18,39 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/ckeditor.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/uploadAdapter.js"></script>
 
+<!-- 작성 가이드 시작 -->
+<br>
+		<div class="container">
+		<div class="accordion" id="accordionExample">
+			<div class="accordion-item">
+				<h2 class="accordion-header" id="headingOne">
+					<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"><Strong id="guide_font">레시피 게시판 작성 가이드</Strong><span id="guide_span">원활한 커뮤니티 게시판 운영을 위해 꼭 읽어주세요!</span></button>
+				</h2>
+				<div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+					<div class="accordion-body">
+						<ul>
+							<li id="guide_li">
+							에디터의 섭외 없이 작성해주시는 경우엔 확인 후 게시글 오픈이 반려될 수도 있습니다. 오픈 및 반려 여부는 댓글로 안내 드립니다.
+							</li>
+							<li id="guide_li">
+							오픈 및 반려 여부 확인은 작성해주신 시점을 기준으로 일주일-10일 가량 소요되며, 댓글로 결과를 안내 드립니다.
+							</li>
+							<li id="guide_li">
+							간단한 자기 소개 후 집에 관한 이야기를 들려주세요. (집 공간 사진 최소 15장 이상)
+							</li>
+							<li id="guide_li">
+							집 사진/소개글 관련해서 고민이 될 땐 이 링크를 참고해주세요.
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>	<!-- end of parent -->
+	</div><!--  end of container -->
+	<br><br>
+<!-- 작성 가이드 끝 -->
+
+
 <!-- 기본 정보 입력 시작 --><br><br>
 <div id="recipe_write">
 	<form:form action="write.do" modelAttribute="recipeVO"

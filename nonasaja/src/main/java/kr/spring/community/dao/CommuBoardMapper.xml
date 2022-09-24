@@ -120,8 +120,8 @@
   			commu_title=#{commu_title},
   			commu_content=#{commu_content},
   			commu_code=#{commu_code},
-  		    region=#{region}
-  		    commu_modify_date=SYSDATE,
+  		    region=#{region},
+  		    commu_modify_date=SYSDATE
   		WHERE commu_num=#{commu_num}
   	</update>
 	
