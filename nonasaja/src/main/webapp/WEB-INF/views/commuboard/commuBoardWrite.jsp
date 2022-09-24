@@ -67,7 +67,7 @@
 			<li>
 				<label for="commu_code">카테고리&emsp;</label>
 				<form:radiobutton  path="commu_code" value="1" checked="checked"/>자유
-				<form:radiobutton path="commu_code" value="2"/>지역세일
+				<form:radiobutton path="commu_code" value="2"/>지역소식
 				<form:radiobutton path="commu_code" value="3"/>자취백과
 				<form:errors path="commu_code" 
 				             cssClass="error-color"/>
@@ -85,20 +85,20 @@
 		</div>	<!-- end of parent -->
 	</div><!--  end of container -->
 	<br><br>
-<!-- 지역 세일 정보 입력 시작 -->
+<!-- 지역 정보 입력 시작 -->
 		<div class="container">
 		<div class="accordion" id="accordionExample">
 			<div class="accordion-item">
 				<h2 class="accordion-header" id="headingThree">
-					<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree"><Strong id="guide_font">지역 세일 정보 입력</Strong><span id="guide_span">지역세일 선택시 지역정보를 입력해주세요!</span></button>
+					<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree"><Strong id="guide_font">지역 정보 입력</Strong><span id="guide_span">지역소식 선택시 지역정보를 입력해주세요!</span></button>
 				</h2>
 				<div id="collapseThree" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
 					<div class="accordion-body">
 		<ul>
 			<li>
-				<label for="region_num">지역 정보&emsp;</label>
-				<form:input path="region_num" id="region_num"/>
-				<form:errors path="region_num" 
+				<label for="region">지역 정보&emsp;</label>
+				<form:input path="region" placeholder=" 예)ㅇㅇ시ㅇㅇ구ㅇㅇ동" id="region"/>
+				<form:errors path="region" 
 				             cssClass="error-color"/>
 			</li>
 		</ul>

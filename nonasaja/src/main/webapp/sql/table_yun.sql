@@ -32,19 +32,12 @@ CREATE TABLE community_board
     commu_date DATE DEFAULT sysdate NOT NULL,
     commu_modify_date DATE,
     commu_code NUMBER(1) NOT NULL, -- 1 : 레시피공유 / 2 : 유머 / 3 : 자취정보
-    commu_video VARCHAR2(150),
-    commu_url VARCHAR2(150),
     commu_recommend NUMBER(6) DEFAULT 0 NOT NULL,
     commu_hit NUMBER(6) DEFAULT 0 NOT NULL,
-	uploadfile BLOB,
- 	filename VARCHAR2(100),
-	uploadfile2 BLOB,
- 	filename2 VARCHAR2(100),
     
-    region_num NUMBER NOT NULL, --null?
+    region VARCHAR2(100), --null?
     CONSTRAINT community_pk PRIMARY KEY(commu_num),
-    CONSTRAINT community_fk1 FOREIGN KEY (mem_num) REFERENCES member (mem_num),
-    CONSTRAINT community_fk2 FOREIGN KEY (region_num) REFERENCES region (region_num)
+    CONSTRAINT community_fk1 FOREIGN KEY (mem_num) REFERENCES member (mem_num)
 );
 
 -- 커뮤니티 댓글

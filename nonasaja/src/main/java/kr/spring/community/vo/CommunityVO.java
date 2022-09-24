@@ -18,7 +18,7 @@ public class CommunityVO {
 	private Date commu_modify_date; //최근 수정일
 	private int commu_recommend; //추천수
 	private int commu_hit; //조회수
-	private int region_num; //지역번호
+	private String region; //지역
 	private int commu_code;
 	
 	
@@ -82,11 +82,11 @@ public class CommunityVO {
 	public void setCommu_hit(int commu_hit) {
 		this.commu_hit = commu_hit;
 	}
-	public int getRegion_num() {
-		return region_num;
+	public String getRegion() {
+		return region;
 	}
-	public void setRegion_num(int region_num) {
-		this.region_num = region_num;
+	public void setRegion(String region) {
+		this.region = region;
 	}
 	public String getId() {
 		return id;
@@ -118,7 +118,7 @@ public class CommunityVO {
 		return "CommunityVO [commu_num=" + commu_num + ", commu_title=" + commu_title + ", mem_num=" + mem_num
 				+ ", commu_content=" + commu_content + ", commu_date=" + commu_date + ", commu_modify_date="
 				+ commu_modify_date + ", commu_recommend=" + commu_recommend + ", commu_hit=" + commu_hit
-				+ ", region_num=" + region_num + ", commu_code=" + commu_code + ", id=" + id + ", nickname=" + nickname
+				+ ", region_num=" + region + ", commu_code=" + commu_code + ", id=" + id + ", nickname=" + nickname
 				+ ", photo_name=" + photo_name + "]";
 	}
 

@@ -26,17 +26,16 @@
   position:relative;
   outline:0;
   border-radius: 6px;
-  color:white;
+  color:white; 
 }
 .userphoto{
 	float:left;
-	padding:20px 0 10px 20px;
 	margin:0;
 }
 .userinformation{
 	float:left;
-	padding:20px 0 10px 10px;
-	margin-top:10px;
+	padding:10px 0 0px 10px;
+	margin-bottom:20px;
 	font-size:16px;
 }
 .userwriteinformation{
@@ -48,6 +47,20 @@
 	clear:both;
 	float:right;
 	padding:10px 0;
+}
+.statuskind-float{
+	float:left;
+	margin-bottom:8px;
+}
+.fav-float{
+	float:right;
+}
+#fav-text-align{
+	padding: -10px 20px 0 0;
+	font-size:15px;
+	font-size:medium;
+	text-align:center;
+	margin:0;
 }
 /*댓글*/
 .page-main div#reply_div1{

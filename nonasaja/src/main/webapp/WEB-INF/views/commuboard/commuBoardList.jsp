@@ -27,7 +27,7 @@
 		
 	<div class="image-align">
 	<figure class="category-align"><a href="commuList.do?keyfield=1"><img id="commuList_img" src="${pageContext.request.contextPath}/images/schedule2.png"></a><figcaption><b>자유게시판</b></figcaption></figure>
-	<figure class="category-align"><a href="commuList.do?keyfield=2"><img id="commuList_img" src="${pageContext.request.contextPath}/images/sale2.png"></a><figcaption><b>지역세일</b></figcaption></figure>
+	<figure class="category-align"><a href="commuList.do?keyfield=2"><img id="commuList_img" src="${pageContext.request.contextPath}/images/sale2.png"></a><figcaption><b>지역소식</b></figcaption></figure>
 	<figure class="category-align"><a href="commuList.do?keyfield=3"><img id="commuList_img" src="${pageContext.request.contextPath}/images/book2.png"></a><figcaption><b>자취백과</b></figcaption></figure><br><br><br><br><br>
 	</div><br><br>
 	
@@ -36,9 +36,9 @@
 			<li>
 				<select name="keyfield" id="keyfield">
 					<option value="1" <c:if test="${param.keyfield==1}">selected</c:if>>제목</option> 
-					<option value="2" <c:if test="${param.keyfield==2}">selected</c:if>>ID+별명</option>
+					<option value="2" <c:if test="${param.keyfield==2}">selected</c:if>>지역</option>
 					<option value="3" <c:if test="${param.keyfield==3}">selected</c:if>>내용</option>
-					<option value="4" <c:if test="${param.keyfield==4}">selected</c:if>>제목+내용</option>
+					<option value="4" <c:if test="${param.keyfield==4}">selected</c:if>>ID+별명</option>
 				</select>
 			</li>
 			<li>
@@ -74,7 +74,7 @@
 				<tr>
 					<td>
 					<c:if test="${board.commu_code==1}"><strong>자유</strong></c:if>
-					<c:if test="${board.commu_code==2}"><font color="blue"><strong>지역세일</strong></c:if>
+					<c:if test="${board.commu_code==2}"><font color="blue"><strong>지역소식</strong></c:if>
 					<c:if test="${board.commu_code==3}"><font color="green"><strong>자취백과</strong></c:if>
 					</td>
 					<td><a href="detail.do?commu_num=${board.commu_num}">${board.commu_title}</a></td>

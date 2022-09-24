@@ -18,12 +18,12 @@ import kr.spring.community.vo.RecipeVO;
 
 @Mapper
 public interface CommuBoardMapper {
-	//유머글
+	//커뮤글
 	public List<CommunityVO> selectList(Map<String,Object> map);
 	public int selectRowCount(Map<String,Object> map);
 	public List<CommunityVO> commuSelectList(Map<String,Object> map);
 	public int commuSelectRowCount(Map<String,Object> map);
-	@Insert("INSERT INTO community_board (commu_num,commu_title,commu_content,commu_code,mem_num) VALUES (community_seq.nextval,#{commu_title},#{commu_content},#{commu_code},#{mem_num})")
+	@Insert("INSERT INTO community_board (commu_num,commu_title,commu_content,commu_code,mem_num,region) VALUES (community_seq.nextval,#{commu_title},#{commu_content},#{commu_code},#{mem_num},#{region})")
 	public void insertBoard(CommunityVO board);
 	@Select("SELECT * FROM community_board b JOIN member m USING(mem_num) JOIN member_detail d USING(mem_num) WHERE b.commu_num=#{commu_num}")
 	public CommunityVO selectBoard(Integer commu_num);
@@ -37,7 +37,7 @@ public interface CommuBoardMapper {
 	public void deleteFile(Integer commu_num);
 	
 	
-	//유머글 부모글 좋아요
+	//커뮤글 부모글 좋아요
 	@Select("SELECT * FROM fav "
 			+ "WHERE commu_num=#{commu_num} AND mem_num=#{mem_num}")
 	public CommunityFavVO selectFav(CommunityFavVO fav);
@@ -52,7 +52,7 @@ public interface CommuBoardMapper {
 	@Delete("DELETE FROM fav WHERE commu_num=#{commu_num}")
 	public void deleteFavByBoardNum(Integer commu_num);
 	
-	//유머글 댓글
+	//커뮤글 댓글
 	public List<CommunityReplyVO> selectListReply(
 			                  Map<String,Object> map);
 	@Select("SELECT COUNT(*) FROM community_reply b "

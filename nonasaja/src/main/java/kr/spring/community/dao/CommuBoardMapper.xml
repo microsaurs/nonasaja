@@ -22,10 +22,10 @@
 		 		<if test="keyfield == 3">
 		 			b.commu_content LIKE '%' || #{keyword} || '%'
 		 		</if>
-		 		<if test="keyfield == 4">
+<!-- 		 		<if test="keyfield == 4">
 		 			b.commu_title LIKE '%' || #{keyword} || '%' OR
 		 			b.commu_content LIKE '%' || #{keyword} || '%'
-		 		</if>
+		 		</if> -->
 		 	</if>
 		 </where>
 	</select>
@@ -54,15 +54,14 @@
 					 			b.commu_title LIKE '%' || #{keyword} || '%'
 					 		</if>
 					 		<if test="keyfield == 2">
-					 			m.id LIKE '%' || #{keyword} || '%' OR
-					 			m.nickname LIKE '%' || #{keyword} || '%'
+								b.region LIKE '%' || #{keyword} || '%'
 					 		</if>
 					 		<if test="keyfield == 3">
 					 			b.commu_content LIKE '%' || #{keyword} || '%'
 					 		</if>
-					 		<if test="keyfield == 4">
-					 			b.commu_title LIKE '%' || #{keyword} || '%' OR
-					 			b.commu_content LIKE '%' || #{keyword} || '%'
+ 					 		<if test="keyfield == 4">
+					 			m.id LIKE '%' || #{keyword} || '%' OR
+					 			m.nickname LIKE '%' || #{keyword} || '%'
 					 		</if>
 					 	</if>
 		 			</where>
@@ -121,7 +120,8 @@
   			commu_title=#{commu_title},
   			commu_content=#{commu_content},
   			commu_code=#{commu_code},
-  		    commu_modify_date=SYSDATE
+  		    region=#{region}
+  		    commu_modify_date=SYSDATE,
   		WHERE commu_num=#{commu_num}
   	</update>
 	

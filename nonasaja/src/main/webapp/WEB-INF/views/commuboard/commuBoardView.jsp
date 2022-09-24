@@ -9,7 +9,22 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/videoAdapter.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/commuView.css">
 <div class="page-main">
-      <div class="userphoto">
+	<div>
+		<div class="statuskind-float">
+		<c:if test="${board.commu_code==1}"><img src="${pageContext.request.contextPath}/images/자유게시판.png" width="100px" height="45px"></c:if>
+		<c:if test="${board.commu_code==2}"><img src="${pageContext.request.contextPath}/images/지역소식.png" width="100px" height="45px"></c:if>
+		<c:if test="${board.commu_code==3}"><img src="${pageContext.request.contextPath}/images/자취백과.png" width="100px" height="45px"></c:if>
+		</div>
+	</div>
+
+	<h2 style="clear:both">${board.commu_title}</h2>
+	<div class="fav-float">
+		<%-- 좋아요 --%>
+		<img id="output_fav" src="${pageContext.request.contextPath}/images/free-icon-love02.png" width="30">
+		<span id="output_fcount"></span>
+	</div>	
+	
+   <div class="userphoto">
       <c:if test="${!empty board.photo_name}">
       <img src="imageView.do?commu_num=${board.commu_num}&board_type=1" width="40" height="40" class="my-photo1">
       </c:if>
@@ -22,19 +37,23 @@
       <c:if test="${!empty board.nickname}"><b>${board.nickname}</b> 님의 
          <font color="#D8952A"><b>게시글</b></font>
       </c:if>
-	<h2>${board.commu_title}</h2>
    </div>	
 
  	<hr size="1" width="100%">
 
+    <c:if test="${!empty board.region}"><b>${board.region}</b> 
+       <font color="#D8952A"><b></b></font><br><br>
+    </c:if>
 	<p>
 		${board.commu_content}
-	</p>
-	<div>
-		<%-- 좋아요 --%>
+	</p><br><br>
+	
+<%-- 	<div>
+		좋아요
 		<img id="output_fav" src="${pageContext.request.contextPath}/images/fav01.gif" width="40">
 		<span id="output_fcount"></span>
-	</div>
+	</div> --%>
+	
 	<hr size="1" width="100%">
 	
    	<div class="userwriteinformation">
