@@ -44,6 +44,11 @@ public class ClubRereplyVO {
 	public void setReply_num(int reply_num) {
 		this.reply_num = reply_num;
 	}
+	@Override
+	public String toString() {
+		return "ClubRereplyVO [rereply_num=" + rereply_num + ", rereply_content=" + rereply_content + ", rereply_date="
+				+ rereply_date + ", club_num=" + club_num + ", mem_num=" + mem_num + ", reply_num=" + reply_num + "]";
+	}
 	
 	
 }

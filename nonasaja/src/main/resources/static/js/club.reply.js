@@ -285,9 +285,12 @@ $(function(){
 		
 		//댓글 번호 
 		let re_num = $(this).attr('data-num');
+		//글 번호
+		let club_num = $('#club_num').val();
 		
 		let rereply_form = '<form id="rereply_form">';
-			rereply_form += '<input type="hidden" name="rereply_num"  value=' +re_num +'>';
+			rereply_form += '<input type="hidden" name="reply_num"  value=' +re_num +'>';
+			rereply_form += '<input type="hidden" name="club_num"  value=' +club_num +'>';
 			rereply_form += '<textarea rows="10" cols="80" id="rereply_content" name="rereply_content" placeholder="답글을 입력해주세요"></textarea>';
 			rereply_form += '<input type="submit" value="등록">';
 			rereply_form += '</form>';
@@ -302,7 +305,7 @@ $(function(){
 			return false;
 		}
 		
-		let form_data = $(rereply_form).serialize();
+		let form_data = $(this).serialize();
 		//데이터 전송
 		$.ajax({
 			url:'writeRereply.do',

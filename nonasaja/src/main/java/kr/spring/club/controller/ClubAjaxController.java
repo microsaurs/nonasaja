@@ -296,7 +296,7 @@ public class ClubAjaxController {
 				  HttpSession session,
 				  HttpServletRequest request){
 			
-			logger.debug("<<대댓글 등록>> : " + clubRereplyVO);
+			logger.debug("<<대댓글 등록1>> : " + clubRereplyVO);
 			
 			Map<String,String> mapAjax = 
 					new HashMap<String,String>();
@@ -309,7 +309,9 @@ public class ClubAjaxController {
 				//회원번호 등록
 				clubRereplyVO.setMem_num(
 						             user.getMem_num());
-			
+				
+				logger.debug("<<대댓글 등록2>> : " + clubRereplyVO);
+				
 				//댓글 등록
 				clubService.insertRereply(clubRereplyVO);
 				mapAjax.put("result","success");
