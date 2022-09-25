@@ -4,15 +4,23 @@ p#title_txt {
 ul {
 	list-style: none;
 }
+.ul-align-padding{
+	padding: 30px 30px 30px 50px;
+}
+p.productbuyinfo{
+	margin:0;
+	float:left;
+}
 .li_left{
 	float: left;
 }
 .cart_box{
-	background-color: pink;
-	margin: 50px;
+	width:90%;
+	height:120px;
+	padding: 30px 0;
 }
 #cart_list{
-	margin: 30px 0 0 15px;
+	padding: 20px 0 0 60px;
 }
 #cart_list p{ 
 	margin: 0 0 8px 0px;
@@ -20,17 +28,85 @@ ul {
 .clearHERE{
 	clear:both;
 }
+.orderformalign{
+	padding:40px 30px;
+}
 #title{
 	font-size: 13pt;
     font-weight: bold;
+    margin: 45px 0 3px 50px;
 }
 #sub_total{
 	font-size: 11pt;
+	margin: 45px 0 0 0px;
+	float:right;
 }
 #quantity{
 	font-size: 11pt;
     font-weight: bold;	
+    margin: 45px 90px 0 0px;
+    float:right;
 }
 #total_txt{
-	
+	font-size:20px;
+}
+#total_txt1{
+	font-size:20px;
+	float:right;
+}
+.header-hr{
+	width:100%;
+	size:1px;
+	background:#BDBDBD;
+	height:1px;
+	border:0;
+	opacity:0.4;
+}
+.text-size-li{
+	font-size:15px;
+	padding:8px 20px;
+}
+.box-align{
+	margin-left: 50px;
+}
+.box-align1{
+	margin-left: 65px;
+}
+.box-align2{
+	margin-left: 80px;
+}
+.box-align3{
+	margin-left: 30px;
+	width:700px;
+	height:50px;
+}
+.button3{
+  width: 100px;
+  height: 22px;
+  border:0;
+  background:#EABF5E;
+  font-size:14px;
+  outline:0;
+  color:white;
+  border-radius:6px;
+}
+.button6{
+  width: 65px;
+  height: 25px;
+  border:0;
+  background:#9B8F72;
+  position:relative;
+  outline:0;
+  border-radius: 6px;
+  color:white;
+}
+.button7{
+  width: 40px;
+  height: 25px;
+  border:0;
+  background:#665E4D;
+  position:relative;
+  outline:0;
+  border-radius: 6px;
+  color:white;
 }

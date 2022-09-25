@@ -7,57 +7,62 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/order.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/order.css">
 <div id="product_register">
-	<p id="title_txt">주문하기</p>
+	<p id="title_txt"><b>주문하기</b></p>
 	<form action="order.do" method="post" id="order_form">
 		<c:forEach var="cartVO" items="${cartList}">
 		<input type="hidden" name="cart_num" value="${cartVO.cart_num}" >	
 			<div class="cart_box">
-			<ul >
-				<li class="li_left"><img src="${pageContext.request.contextPath}/product/imageView.do?product_num=${cartVO.product_num}&photo_type=1" width="130" height="130"></li>
-				<li class="li_left" id="cart_list">
-					<p id="title">${cartVO.productVO.title}</p>
-					<p id="sub_total"><fmt:formatNumber value="${cartVO.sub_total}"/>원</p>
-					<p id="quantity">${cartVO.quantity}개</p>
+			<img src="${pageContext.request.contextPath}/product/imageView.do?product_num=${cartVO.product_num}&photo_type=1" width="130" height="130" class="li_left">
+				
+			<p id="title" class="productbuyinfo">${cartVO.productVO.title}</p>
+			<p id="sub_total" class="productbuyinfo"><fmt:formatNumber value="${cartVO.sub_total}"/>원</p>
+			<p id="quantity" class="productbuyinfo">${cartVO.quantity}개</p>
+			
+			</div>
+			
+			<hr class="header-hr">
+		</c:forEach>
+		
+		
+	<div class="orderformalign">
+		<div class="clearHERE"></div>
+		<span id="total_txt"><b>총구매금액 </b>&emsp;</span>
+		<span id="total_txt1"><b><fmt:formatNumber value="${all_total}"/>원</b></span>
+		<input type="hidden" value="${all_total}" name="all_total">
+		
+		<hr size="1" noshade="noshade">	
+	
+			<ul class="ul-align-padding">
+				<li class="text-size-li">
+					<label for="receive_name">수령인</label>
+					<input type="text" name="receive_name" id="receive_name" class="box-align1" maxlength="10">
+				</li>
+				<li class="text-size-li">
+					<label for="zipcode">우편번호</label>
+					<input type="text" name="receive_post" id="zipcode" class="box-align" maxlength="5">
+					<input type="button" onclick="execDaumPostcode()" value="우편번호찾기" class="button3">
+				</li>
+				<li class="text-size-li">
+					<label for="receive_address1">주소</label>
+					<input type="text" name="receive_address1" id="address1" class="box-align2" maxlength="30">
+				</li>
+				<li class="text-size-li">
+					<label for="receive_address2">상세주소</label>
+					<input type="text" name="receive_address2" id="address2" class="box-align" maxlength="30">
+				</li>
+				<li class="text-size-li">
+					<label for="receive_phone">전화번호</label>
+					<input type="text" name="receive_phone" id="receive_phone" class="box-align" maxlength="15">
+				</li>
+				<li class="text-size-li">
+					<label for="notice">남기실 말씀</label>
+					<input type="text" name="notice" id="notice" class="box-align3" maxlength="300">
 				</li>
 			</ul>
+			<div class="align-right">
+				<input type="button" value="메인으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'" class="button6">
+				<input type="submit" value="주문" class="button7">
 			</div>
-		</c:forEach>
-			<div class="clearHERE"></div>
-			<span id="total_txt"><b>총구매금액 </b></span>
-			<span><b><fmt:formatNumber value="${all_total}"/>원</b></span>
-			<input type="hidden" value="${all_total}" name="all_total">
-	<hr size="1" noshade="noshade">	
-
-		<ul>
-			<li>
-				<label for="receive_name">수령인</label>
-				<input type="text" name="receive_name" id="receive_name" maxlength="10">
-			</li>
-			<li>
-				<label for="zipcode">우편번호</label>
-				<input type="text" name="receive_post" id="zipcode" maxlength="5">
-				<input type="button" onclick="execDaumPostcode()" value="우편번호찾기">
-			</li>
-			<li>
-				<label for="receive_address1">주소</label>
-				<input type="text" name="receive_address1" id="address1" maxlength="30">
-			</li>
-			<li>
-				<label for="receive_address2">상세주소</label>
-				<input type="text" name="receive_address2" id="address2" maxlength="30">
-			</li>
-			<li>
-				<label for="receive_phone">전화번호</label>
-				<input type="text" name="receive_phone" id="receive_phone" maxlength="15">
-			</li>
-			<li>
-				<label for="notice">남기실 말씀</label>
-				<input type="text" name="notice" id="notice" maxlength="300">
-			</li>
-		</ul>
-		<div class="align-center">
-			<input type="submit" value="주문">
-			<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 		</div>
 	</form>
 </div>
