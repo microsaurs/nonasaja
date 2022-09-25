@@ -3,6 +3,17 @@ $(function(){
 	let count;
 	let rowCount;
 	
+	if(param.user_num==item.mem_num){
+						//로그인한 회원번호와 댓글 작성자 회원번호가 일치
+						
+						output += ' <input type="button" data-num="'+ item.rereply_num +'" value="삭제" class="delete-btn">';
+						output += ' <input type="button" data-num="'+ item.rereply_num +'" value="수정" class="modify-btn">';
+						
+					}output += ' <input type="button" data-num="'+ item.rereply_num +'" value="답글" class="rereply-btn">';
+					if(item.reply_date){
+						output += '<span class="modify-date">등록일 ' + item.reply_date + '</span>';
+					}
+	
 	//댓글 등록
 	//=========================================대댓글 등록버튼==========================
 	$(document).on('click','.rereply-btn',function(){
