@@ -52,6 +52,36 @@
   border-radius: 6px;
   color:white;
 }
+.button6{
+  width: 40px;
+  height: 25px;
+  border:0;
+  background:#9B8F72;
+  position:relative;
+  outline:0;
+  border-radius: 6px;
+  color:white;
+}
+.button7{
+  width: 40px;
+  height: 25px;
+  border:0;
+  background:#665E4D;
+  position:relative;
+  outline:0;
+  border-radius: 6px;
+  color:white;
+}
+.button8{
+  width: 40px;
+  height: 25px;
+  border:0;
+  background:#EABF5E;
+  position:relative;
+  outline:0;
+  border-radius: 6px;
+  color:white;
+}
 .result-display1{
 	font-size:large;
 	width:400px;

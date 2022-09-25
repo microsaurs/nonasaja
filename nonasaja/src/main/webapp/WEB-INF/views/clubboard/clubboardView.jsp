@@ -162,7 +162,9 @@
 		<form id="club_join" method="post">
 		<input type="hidden" name="club_num" id="club_num" value="${board.club_num}">
 		<c:if test="${!empty user && user.mem_num != board.club_leader}">
+		<c:if test="${board.club_recruit == 0}">
 		<input class="button" type="submit"  value="가입하기">
+		</c:if>
 		<input class="button" type="button" value="목록가기"  onclick="location.href='list.do'">
 		</c:if>
 		</form>
@@ -185,7 +187,7 @@
 			<div id="re_first">
 				<span class="letter-count">300/300</span>
 			</div>
-			<div id="re_second" class="button9-align">
+			<div id="re_second" class="button9-align">	
 				<input type="submit" value="전송" class="button9">
 			</div>
 			</c:if>

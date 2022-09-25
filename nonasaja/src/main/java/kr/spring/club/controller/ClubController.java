@@ -23,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.club.service.ClubService;
 import kr.spring.club.vo.ClubVO;
+import kr.spring.join.service.JoinService;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.util.PagingUtil;
 import kr.spring.util.StringUtil;
@@ -35,6 +36,9 @@ public class ClubController {
 	
 	@Autowired
 	private ClubService clubService;
+	
+	@Autowired
+	private JoinService joinService;
 	
 	//자바빈(VO) 초기화
 	@ModelAttribute
@@ -104,6 +108,10 @@ public class ClubController {
 			map.put("end", page.getEndRow());
 			
 			list = clubService.selectList(map);
+			
+			for(ClubVO club : list) {
+				club.setClub_pre(joinService.selectJoinCount(club.getClub_num()));
+			}
 		}
 		
 		ModelAndView mav = new ModelAndView();
@@ -128,7 +136,7 @@ public class ClubController {
 		
 		ClubVO board = 
 				clubService.selectBoard(club_num);
-		
+		board.setClub_pre(joinService.selectJoinCount(club_num));
 		//제목에 태그를 허용하지 않음
 		board.setClub_title(
 			 StringUtil.useNoHtml(board.getClub_title()));
