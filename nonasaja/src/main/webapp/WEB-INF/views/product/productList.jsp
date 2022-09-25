@@ -15,8 +15,8 @@
 	<div id="category_box">
 		<img class ="category-txt" src="${pageContext.request.contextPath}/images/category_txt.png">
 		<div class ="category-float">
-		<img class ="category-img" id="food_img" src="${pageContext.request.contextPath}/images/category_food.png">
-		<img class ="category-img" id="living_img" src="${pageContext.request.contextPath}/images/category_living.png">
+		<img class ="category-img" id="food_img" src="${pageContext.request.contextPath}/images/공동구매카테고리-식품.png">
+		<img class ="category-img" id="living_img" src="${pageContext.request.contextPath}/images/공동구매카테고리-생활용품png.png">
 		</div>
 	</div>
 	<div id="search_form_box">
