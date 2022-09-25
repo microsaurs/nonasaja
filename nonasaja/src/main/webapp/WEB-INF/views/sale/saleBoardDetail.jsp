@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!-- 내용 시작 -->
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/sale.css">
@@ -54,8 +55,8 @@
 
 	<div class="button-align">
 		<c:if test="${!empty user && user.mem_num == board.mem_num}">
-		<input type="button" value="수정" onclick="location.href='update.do?board_num=${board.board_num}'" class="button4">
-		<input type="button" value="삭제" id="delete_btn" class="button5">
+		<input type="button" value="수정" onclick="location.href='update.do?board_num=${board.board_num}'" class="button7">
+		<input type="button" value="삭제" id="delete_btn" class="button6">
 		<script type="text/javascript">
 			let delete_btn = document.getElementById('delete_btn');
 			//이벤트 연결
