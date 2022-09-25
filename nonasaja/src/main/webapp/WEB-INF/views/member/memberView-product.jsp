@@ -168,7 +168,7 @@ $(document).ready(function(){
 						<img src="${pageContext.request.contextPath}/product/imageView.do?product_num=${orderDetail.product_num}&photo_type=1"
 								width="200" height="200">
 					</td>
-					<td>
+					<td colspan="2">
 						${orderDetail.product_name}
 					</td>
 					<td>
@@ -178,11 +178,14 @@ $(document).ready(function(){
 						<span><fmt:formatNumber value="${orderDetail.product_total}"/>원</span>
 					</td>
 				</tr>
+				<tr></tr>
 				<tr>
-					<td colspan="3" class="align-right">
+					<td colspan="2" class="align-right">
 						<c:if test="${orderDetail.wait_count != 0}">
 							주문확정수량 ${orderDetail.req_quantity}개 중 ${orderDetail.wait_count}개 신청
 						</c:if>
+					</td>
+					<td>
 						<c:if test="${orderDetail.wait_count == 0}">
 							판매중지된 상품입니다
 						</c:if>

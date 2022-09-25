@@ -47,8 +47,6 @@ public class CartController {
 			@RequestParam int product_quantity, @RequestParam int product_req_quantity,
 			@RequestParam int order_quantity,
 			HttpServletRequest request, HttpSession session, Model model) {
-		//로그인 인터셉터에 넣기
-		
 		
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		CartVO cartVO = new CartVO();
@@ -90,36 +88,6 @@ public class CartController {
 		return "common/resultView";
 	}
 	
-	@RequestMapping("/cart/cart_list.do")
-	public ModelAndView cartList(HttpSession session,
-			@RequestParam(value="pageNum", defaultValue="1") int currentPage, 
-			@RequestParam(value="keyfield", defaultValue="") String keyfield, 
-			@RequestParam(value="keyword", defaultValue="") String keyword) {
-		
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("keyfield", keyfield);
-		map.put("keyword", keyword);
-		MemberVO user = (MemberVO) session.getAttribute("user");
-		map.put("mem_num", user.getMem_num());
-		
-		//회원번호별 총구매액
-		int all_total = cartService.selectTotalByMem_num(
-								           user.getMem_num());
-		List<CartVO> list = null;
-		if(all_total > 0) {
-			list = cartService.selectListCart(map);
-			for(CartVO cart : list) {
-				cart.setProductVO(productService.selectProduct(cart.getProduct_num()));
-			}
-		}
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("cartList");
-		mav.addObject("list", list);
-		mav.addObject("all_total", all_total);
-		logger.debug("<<장바구니 목록>> list: " +list);
-		return mav;
-	}
-	
 	// 장바구니 삭제
 	@RequestMapping("/cart/deleteCart.do")
 	@ResponseBody
@@ -136,6 +104,7 @@ public class CartController {
 		}
 		return mapAjax;
 	}
+	
 	// 상품 수량 변경 
 	@RequestMapping("/cart/modifyCart.do")
 	@ResponseBody

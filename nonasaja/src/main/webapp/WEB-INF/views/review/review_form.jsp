@@ -27,6 +27,8 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/review.css">
 <div class="review-wrap">
+<form:form id="review_form" action="write_review.do" method="post"
+			modelAttribute="reviewVO">
 	<h2>구매후기</h2>
 	<br>
 	<div id="product_box">
@@ -51,8 +53,6 @@
 		
 	</div>
 	<div id="review_box" class="clear">
-		<form:form id="review_form" action="write_review.do" method="post"
-			modelAttribute="reviewVO">
 			<form:hidden path="product_num" value="${product.product_num}" />
 			<form:textarea id="content" path="content"
 				placeholder="상품의 구매 후기를 작성해주세요" rows="10" />
@@ -60,9 +60,9 @@
 			<form:errors path="content" cssClass="error-color" />
 			<input id="btn1" class="right" type="button" value="목록"
 				onclick="location.href='${pageContext.request.contextPath}/order/order_list.do'">
-			<form:button id="btn2" class="right">등록</form:button>
-		</form:form>
+			<form:button id="btn2" class="right">등록</form:button>	
 	</div>
+	</form:form>
 </div>
 <!-- 내용 끝 -->
 

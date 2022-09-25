@@ -36,7 +36,7 @@
 	<div class="mypage-right">
 		<table>
 			<tr>
-				<th colspan="2"><h3>동호회</h3></th>
+				<th colspan="5"><h3>동호회</h3></th> 
 			</tr>
 			<tr>
 				<td>
