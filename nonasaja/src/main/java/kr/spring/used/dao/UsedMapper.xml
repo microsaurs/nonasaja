@@ -67,7 +67,7 @@
 	<update id="updateUsed" parameterType="usedVO">
 		UPDATE used_board SET
 			  <if test="filename != ''">
-			  	uploadfile=${uploadfile},
+			  	uploadfile=#{uploadfile},
 			  	filename=#{filename},
 			  </if>
 			  title=#{title},
@@ -79,7 +79,7 @@
 			  trade=#{trade},
 			  region=#{region},
 			  modify_date=SYSDATE
-		WHERE used_num=#{used_num} 
+		WHERE used_num=#{used_num}
 	</update>
 	
 	<!-- 댓글 목록 -->
