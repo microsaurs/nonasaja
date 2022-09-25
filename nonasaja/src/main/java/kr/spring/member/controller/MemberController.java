@@ -27,11 +27,9 @@ import kr.spring.community.vo.CommunityReplyVO;
 import kr.spring.community.vo.CommunityVO;
 import kr.spring.community.vo.RecipeReplyVO;
 import kr.spring.community.vo.RecipeVO;
-import kr.spring.join.vo.JoinVO;
 import kr.spring.member.service.MemberService;
 import kr.spring.member.service.MypageService;
 import kr.spring.member.vo.MemberVO;
-import kr.spring.used.vo.UsedFavVO;
 import kr.spring.used.vo.UsedReplyVO;
 import kr.spring.used.vo.UsedVO;
 import kr.spring.util.AuthCheckException;
@@ -79,28 +77,6 @@ public class MemberController {
 		memberService.insertMember(memberVO);
 		model.addAttribute("accessMsg", "회원가입이 완료되었습니다.");
 		return "common/notice";
-	}
-
-	// =============네이버===============//
-	// 네이버 최초 회원가입 - 추가 정보 저장
-	@PostMapping("/member/naverLogin.do")
-	public String submitNaver(@Valid MemberVO memberVO, BindingResult result, HttpSession session) {
-
-		logger.debug("<네이버 회원 최초 가입>");
-		logger.debug("<회원 값 세팅> : " + memberVO);
-		// 유효성 체크
-		// 네이버 연동으로 id,name,nickname,email,phone 정보는 세팅되어있어서
-		// 우편번호,주소,상세주소만 유효성 체크
-		if (result.hasFieldErrors("zipcode") || result.hasFieldErrors("addr1") || result.hasFieldErrors("addr2")) {
-			return "memberNaverLogin";
-		}
-
-		// DB에 값 저장 (회원가입 처리)
-		memberService.insertNaverMember(memberVO);
-
-		// 로그인
-		session.setAttribute("user", memberVO);
-		return "redirect:/main/main.do";
 	}
 
 	// 로그인 - 폼
@@ -256,19 +232,6 @@ public class MemberController {
 		mav.setViewName("imageView");
 	}
 
-//	//===========마이페이지 - 공동구매=============//
-//	kr.spring.product.controller.MypageProductController로 이동
-//	@RequestMapping("/member/myPageProduct.do")
-//	public ModelAndView listProductPage(HttpSession session, 
-//			@RequestParam(value="pageNum",defaultValue = "1")int currentPage) {
-//		MemberVO user = (MemberVO)session.getAttribute("user");
-//		
-//		ModelAndView mav = new ModelAndView();
-//		mav.setViewName("myPageProduct");
-//		mav.addObject("member", user);
-//		
-//		return mav;
-//	}
 	//===========마이페이지 - 중고거래=============//
 	@RequestMapping("/member/myPageUsed.do")
 	public ModelAndView listUsedPage(HttpSession session, 
