@@ -185,6 +185,9 @@ li {
 .buttonareaalign{
 	padding:0 0 20px 0;
 }
+.alignfavcount{
+	margin-left:18px;
+}
 /*댓글*/
 .page-main div#reply_div1{
 	padding:15px 10px 40px 10px;
