@@ -11,7 +11,7 @@
 			<div class="logo">
 				<div class="logo-img">
 					<a href="${pageContext.request.contextPath}/">
-						<img src="${pageContext.request.contextPath}/images/logo.png" width="460" height="200">
+						<img src="${pageContext.request.contextPath}/images/logo.png" width="460">
 					</a>
 				</div>
 			</div>
@@ -37,9 +37,9 @@
 				</div>
 				<div class="snsLogin">
 					<!-- 네이버 로그인 버튼 노출 영역 -->
-					<a id="naver" href="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=p5qDyh8lEAltU8wkoV_r&state=nona&redirect_uri=http://localhost:8080/auth/naver/callback"><img alt="네이버 로그인 버튼" src="${pageContext.request.contextPath}/images/btnG_축약형.png" width="150" height="50"></a>
+					<a id="naver" href="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=p5qDyh8lEAltU8wkoV_r&state=nona&redirect_uri=http://localhost:8080/auth/naver/callback"><img alt="네이버 로그인 버튼" src="${pageContext.request.contextPath}/images/네이버로그인버튼.png" width="220" height="55"></a>
 					<!-- 카카오 로그인 버튼 노출 영역 -->
-					<a id="kakao" href="https://kauth.kakao.com/oauth/authorize?client_id=a8abdc39c132bcec49dcef03bb7a10d1&redirect_uri=http://localhost:8080/auth/kakao/callback&response_type=code"><img alt="카카오 로그인 버튼" src="${pageContext.request.contextPath}/images/kakao_login_large.png" width="150" height="50"></a>
+					<a id="kakao" href="https://kauth.kakao.com/oauth/authorize?client_id=a8abdc39c132bcec49dcef03bb7a10d1&redirect_uri=http://localhost:8080/auth/kakao/callback&response_type=code"><img alt="카카오 로그인 버튼" src="${pageContext.request.contextPath}/images/카카오로그인버튼.png" width="220" height="55"></a>
 				</div>
 				</form:form>
 			</div>

@@ -7,11 +7,9 @@
 }
 .logo{
 	width:100%;
-	height:200px;
 	overflow:hidden;
-	margin-top:50px;
-	margin-bottom:50px;
-	padding-top:50px;
+	margin-top:100px;
+	padding:50px 0 30px 0px;
 }
 .logo-font{
 	float:left;
@@ -37,10 +35,10 @@
 	height:50px;
 }
 .inputs #id{
-	margin-bottom:5px;
+	margin:0 0 5px 5px;
 }
 .inputs #passwd{
-	margin:5px 0 5px 0;
+	margin:5px 0 5px 5px;
 }
 .float-right{
 	float:right;
@@ -69,10 +67,9 @@ input[type="submit"]{
 .snsLogin{
 	width:100%;
 	margin-top:20px;
+	padding: 0 0 80px 0;
 }
 .snsLogin a#naver{
-	margin-left:55px;
-}
-.snsLogin a#kakao{
-	margin-left:55px;
+	margin-right:10px;
+	margin-left:5px;
 }

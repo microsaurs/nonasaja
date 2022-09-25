@@ -15,7 +15,7 @@
 
 	<c:if test="${!empty user}">
 		<div class="align-center">
-		<a href="${pageContext.request.contextPath}/commuRecipe/write.do"><img src="${pageContext.request.contextPath}/images/커뮤니티글쓰기.png" class="writebutton"></a>
+		<a href="${pageContext.request.contextPath}/commuRecipe/write.do"><img src="${pageContext.request.contextPath}/images/레시피작성하기.png" class="writebutton"></a>
 		</div>
 	</c:if>
 	
