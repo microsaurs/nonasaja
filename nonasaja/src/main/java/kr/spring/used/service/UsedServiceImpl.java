@@ -53,7 +53,7 @@ public class UsedServiceImpl implements UsedService {
 	@Override
 	public void deleteUsed(Integer used_num) {
 		//부모글 삭제
-		usedMapper.deleteUsed(used_num);
+		usedMapper.deleteFavByUsedNum(used_num);
 		//댓글이 존재하면 댓글을 우선 삭제하고 부모글을 삭제
 		usedMapper.deleteReplyByBoardNum(used_num);
 		//부모글 삭제
