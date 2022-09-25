@@ -3,32 +3,36 @@
   margin-left: 40px;
 }
 #recipe_data2 {
-  float: left;
+  margin:30px 0 30px 0;
 }
 #recipe_data3{
 	margin-bottom: 150px;	
 }
 li { 
-	float: left; 
 	margin-right: 25px;
-	font-size: 20px;
+	margin-bottom: 5px;
+	font-size: 16px;
 }
 #recipe_title{
     font-weight: normal;
-    font-size: 26px;
+    font-size: 18px;
     letter-spacing: 0px;
-	margin-top:50px;
+	margin:30px 0 10px 0;
 	opacity: 0.8;
 }
 #recipe_food{
-	font-size: 30px;
+	font-size: 25px;
+	margin:0 auto;
 }
 .page-main1{
 	width:98%;
 	margin:0 auto;
 }
 #recipe1{
-	font-size: 28px;
+	font-size: 17px;
+	margin:10px 0 10px 0;
+	width:450px;
+	float:left;
 }
 
 .title-align{
@@ -43,21 +47,42 @@ li {
 	font-size:28px;
 }
 #recipe_number{
-	margin-right: 17px;
+	padding:10px 30px 10px 0;
+	width:25px;
+	height:25px;
+	float:left;
+}
+.recipe-margin{
+	padding:20px;
 }
 #recipe_photo{
 	margin-bottom: 50px;
-	border-radius: 20px;
+	margin-right: 20px;
+	border-radius: 10px;
+	float:left;
 }
 #recipe_hr{
-	opacity: 0.5;
-	margin-bottom: 50px;
+	width:95%;
+	size:1px;
+	background:#BDBDBD;
+	height:1px;
+	border:0;
+	opacity:0.4;
 }
 #recipe_id{
 	font-family: 'Noto Sans KR', sans-serif;
 }
 #lionHead{
 	max-width: 30%;
+}
+.favicon{
+	margin:0 auto;
+	padding:5px 0 0 0 ;
+}
+.favdivsize{
+	clear:both;
+	width:50px;
+	float:left;
 }
 .button{
 	font-family: 'Dongle', sans-serif;
@@ -113,7 +138,7 @@ li {
 }
 .userinformation{
 	float:left;
-	padding:15px 0 0px 20px;
+	padding:15px 0 10px 20px;
 	margin-top:30px;
 	font-size:18px;
 }
@@ -134,6 +159,16 @@ li {
 	margin-top:10px;
 	font-size:16px;
 }
+.recipetitleimg{
+	width:400px;
+	height:300px;
+	float:left;
+	padding: 20px 35px 15px 15px;
+	
+}
+.clear-both{
+	clear:both;
+}
 .title-space{
 	padding: 0 0 10px 0;
 }
@@ -146,6 +181,9 @@ li {
 	clear:both;
 	float:right;
 	padding:10px 0;
+}
+.buttonareaalign{
+	padding:0 0 20px 0;
 }
 /*댓글*/
 .page-main div#reply_div1{
