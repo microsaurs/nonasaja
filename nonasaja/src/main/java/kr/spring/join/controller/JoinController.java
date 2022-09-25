@@ -47,6 +47,17 @@ public class JoinController {
 		if(user==null) {//로그인이 되지 않은 경우
 			mapAjax.put("result", "logout");
 		}else { //로그인 된 경우
+			//가입신청한 동호회의 정보 호출
+			ClubVO club = clubService.selectBoard(joinVO.getClub_num());
+			logger.debug("<<club>> : " + club);
+			
+			//동호회가 모집 마감인지 확인
+			if(club.getClub_recruit() == 1) {
+				//모집 마감인경우 overmember로 반환
+				mapAjax.put("result","overmember");
+				return mapAjax;
+			}
+			
 			joinVO.setMem_num(user.getMem_num());
 			
 			//기존에 가입한 동호회 확인
@@ -61,9 +72,6 @@ public class JoinController {
 					}
 				}
 			}
-		
-			//해당 동호회의 인원수를 구하기 위해서 정보 호출
-			ClubVO club = clubService.selectBoard(joinVO.getClub_num());
 			
 			//해당 동호회에 신청중인 사람 수 구하기
 			int joinCount = joinService.selectJoinCount(joinVO.getClub_num());
@@ -74,6 +82,12 @@ public class JoinController {
 			}else { //인원수가 다 차지 않은 경우 가입 처리 후 success 반환
 				joinService.insertJoin(joinVO);
 				mapAjax.put("result", "success");
+				
+				//모집인원을 다 채운경우 recruit를 모집마감(1)로 변경
+				if((joinCount + 1) == club.getClub_limit()) {
+					club.setClub_recruit(1);
+					clubService.updateBoard(club);
+				}
 			}
 		}
 		return mapAjax;
