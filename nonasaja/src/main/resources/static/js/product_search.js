@@ -1,3 +1,4 @@
+
 $(function(){
 	$('#search_form1').submit(function(){
 		if($('#searchbar').val().trim() == ''){
