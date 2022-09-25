@@ -35,22 +35,10 @@
     	  value="/WEB-INF/views/product/user_productView.jsp"/>                   
     </definition>
     
-    <definition name="cartList" extends="main">
-    	<put-attribute name="title" value="장바구니"/>
-    	<put-attribute name="body"
-    	  value="/WEB-INF/views/cart/cart_list.jsp"/>                   
-    </definition>
-    
      <definition name="order_form" extends="main">
     	<put-attribute name="title" value="주문서작성"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/order/order_form.jsp"/>                   
-    </definition>
-    
-    <definition name="orderList" extends="main">
-    	<put-attribute name="title" value="장바구니"/>
-    	<put-attribute name="body"
-    	  value="/WEB-INF/views/order/order_list.jsp"/>                   
     </definition>
 
 	<definition name="review_form" extends="main">

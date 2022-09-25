@@ -43,7 +43,6 @@ public class ReviewController {
 	// 등록 폼
 	@GetMapping("/review/write_review.do")
 	public ModelAndView form(@RequestParam int product_num, HttpSession session) {
-		//로그인 인터셉터 넣기
 		ModelAndView mav = new ModelAndView();
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		ProductVO product = productService.selectProduct(product_num);
