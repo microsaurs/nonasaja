@@ -39,7 +39,7 @@ public class MypageServiceImpl implements MypageService {
 
 	@Override
 	public int selectRecipeReplyCount(Integer mem_num) {
-		return mypageMapper.selectRecipeCount(mem_num);
+		return mypageMapper.selectRecipeReplyCount(mem_num);
 	}
 
 	@Override
