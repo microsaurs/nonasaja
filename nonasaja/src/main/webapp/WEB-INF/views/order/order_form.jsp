@@ -30,7 +30,7 @@
 		<span id="total_txt1"><b><fmt:formatNumber value="${all_total}"/>원</b></span>
 		<input type="hidden" value="${all_total}" name="all_total">
 		
-		<hr size="1" noshade="noshade">	
+		<hr class="header-hr">	
 	
 			<ul class="ul-align-padding">
 				<li class="text-size-li">
