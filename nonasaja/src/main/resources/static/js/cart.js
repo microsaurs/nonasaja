@@ -3,7 +3,7 @@ $(function(){
 	//=========장바구니 상품 삭제============
 	$('.cart-del').on('click', function(){
 		$.ajax({
-			url:'/cart/deleteCart.do',
+			url:'../cart/deleteCart.do',
 			type:'post',
 			data:{cart_num:$(this).attr('data-cartnum')},
 			dataType:'json',
@@ -46,7 +46,7 @@ $(function(){
 		}
 		
 		$.ajax({
-			url:'/cart/modifyCart.do',
+			url:'../cart/modifyCart.do',
 			type:'post',
 			data:{cart_num:$(this).attr('data-cartnum'),product_num:$(this).attr('data-productnum'),quantity:input_quantity.val()},
 			dataType:'json',
