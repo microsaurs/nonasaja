@@ -5,6 +5,7 @@ import java.util.Map;
 
 import kr.spring.used.vo.UsedFavVO;
 import kr.spring.used.vo.UsedReplyVO;
+import kr.spring.used.vo.UsedRereplyVO;
 import kr.spring.used.vo.UsedVO;
 
 public interface UsedService {
@@ -31,4 +32,14 @@ public interface UsedService {
 		public int selectFavCount(Integer used_num);
 		public void insertFav(UsedFavVO usedFav);
 		public void deleteFav(Integer fav_num);
+		
+		//대댓글
+		public List<UsedRereplyVO> selectListRereply(
+				Map<String, Object> map);
+		public int selectRowCountRereply(Map<String, Object> map);
+		public UsedRereplyVO selectRereply(Integer rereply_num);
+		public void insertRereply(UsedRereplyVO usedRereply);
+		public void updateRereply(UsedRereplyVO usedRereply);
+		public void deleteRereply(Integer rereply_num);
+		public void deleteRereplyByBoardNum(Integer used_num);
 }

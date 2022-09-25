@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import kr.spring.used.dao.UsedMapper;
 import kr.spring.used.vo.UsedFavVO;
 import kr.spring.used.vo.UsedReplyVO;
+import kr.spring.used.vo.UsedRereplyVO;
 import kr.spring.used.vo.UsedVO;
 
 @Service
@@ -114,5 +115,43 @@ public class UsedServiceImpl implements UsedService {
 	public void deleteReply(Integer reply_num) {
 		usedMapper.deleteReply(reply_num);
 	}
+
+	@Override
+	public List<UsedRereplyVO> selectListRereply(Map<String, Object> map) {
+		return usedMapper.selectListRereply(map);
+	}
+
+	@Override
+	public int selectRowCountRereply(Map<String, Object> map) {
+		return usedMapper.selectRowCountRereply(map);
+	}
+
+	@Override
+	public UsedRereplyVO selectRereply(Integer rereply_num) {
+		return usedMapper.selectRereply(rereply_num);
+	}
+
+	@Override
+	public void insertRereply(UsedRereplyVO usedRereply) {
+		usedMapper.insertRereply(usedRereply);
+	}
+
+	@Override
+	public void updateRereply(UsedRereplyVO usedRereply) {
+		usedMapper.updateRereply(usedRereply);
+	}
+
+	@Override
+	public void deleteRereply(Integer rereply_num) {
+		usedMapper.deleteRereply(rereply_num);
+		
+	}
+
+	
+	@Override
+	public void deleteRereplyByBoardNum(Integer used_num) {
+		usedMapper.deleteRereplyByBoardNum(used_num);
+	}
+	
 
 }

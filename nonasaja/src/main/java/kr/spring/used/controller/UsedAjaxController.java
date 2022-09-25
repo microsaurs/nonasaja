@@ -20,6 +20,7 @@ import kr.spring.member.vo.MemberVO;
 import kr.spring.used.service.UsedService;
 import kr.spring.used.vo.UsedFavVO;
 import kr.spring.used.vo.UsedReplyVO;
+import kr.spring.used.vo.UsedRereplyVO;
 import kr.spring.util.PagingUtil;
 
 @Controller
@@ -255,11 +256,134 @@ public class UsedAjaxController {
 			return mapAjax;
 		}
 
+	//=========================대댓글============================//
+		
+		//====대댓글 등록======//
+		@RequestMapping("/used/writeRereply.do")
+		@ResponseBody
+		public Map<String, String> writeRereply(
+				  UsedRereplyVO usedRereplyVO,
+				  HttpSession session,
+				  HttpServletRequest request){
+			
+			logger.debug("<<대댓글 등록1>> : " + usedRereplyVO);
+			
+			Map<String, String> mapAjax = new HashMap<String,String>();
+			
+			MemberVO user = (MemberVO)session.getAttribute("user");
+			if(user==null) {
+				mapAjax.put("result", "logout");
+			}else {
+				//회원번호 등록
+				usedRereplyVO.setMem_num(user.getMem_num());
+			
+			
+				logger.debug("<<대댓글 등록2>> : " + usedRereplyVO);
+			
+				//댓글 등록
+				usedService.insertRereply(usedRereplyVO);
+				mapAjax.put("result", "success");
+		}
+		return mapAjax;
+	}
 	
+		//====대댓글 목록======//
+		@RequestMapping("/used/listRereply.do")
+		@ResponseBody
+		public Map<String, Object> getList2(
+				@RequestParam(value="pageNum",defaultValue="1") int currentPage,
+				@RequestParam int used_num, HttpSession session){
+			
+			logger.debug("<<currentPage>> : " + currentPage);
+			logger.debug("<<used_num>> : " + used_num);
+			
+			Map<String, Object> map = new HashMap<String,Object>();
+			map.put("used_num", used_num);
+			
+			//총 글의 개수
+			int count = usedService.selectRowCountRereply(map);
+			
+			PagingUtil page = new PagingUtil(currentPage, count, rowCount, pageCount, null);
+			
+			map.put("start", page.getStartRow());
+			map.put("end", page.getEndRow());
+			
+			List<UsedRereplyVO> list = null;
+			if(count > 0) {
+				list = usedService.selectListRereply(map);
+			}else {
+				list = Collections.emptyList();
+			}
+			
+			Map<String, Object> mapAjax = new HashMap<String,Object>();
+			mapAjax.put("count", count);
+			mapAjax.put("rowCount", rowCount);
+			mapAjax.put("list", list);
+			
+			//로그인 한 회원정보 셋팅
+			MemberVO user = (MemberVO)session.getAttribute("user");
+			if(user!=null) {
+				mapAjax.put("user_num", user.getMem_num());
+			}
+			
+			return mapAjax;
+		}
 	
-	
-	
-	
-	
+		//====대댓글 수정======//
+		@RequestMapping("used/updateRereply.do")
+		@ResponseBody
+		public Map<String, String> modifyRereply(
+					UsedRereplyVO usedRereplyVO,
+					HttpSession session,
+					HttpServletRequest request){
+			
+			logger.debug("<<댓글 수정>> : " + usedRereplyVO);
+			
+			Map<String, String> mapAjax = new HashMap<String,String>();
+			
+			MemberVO user = (MemberVO)session.getAttribute("user");
+			UsedRereplyVO db_rereply = usedService.selectRereply(usedRereplyVO.getRereply_num());
+			
+			if(user==null) {
+				mapAjax.put("result", "logout");
+			}else if(user!=null && user.getMem_num()==db_rereply.getMem_num()) {
+				//댓글 수정
+				usedService.updateRereply(usedRereplyVO);
+				mapAjax.put("result", "success");
+			}else {
+				//로그인 회원번호와 작성자 회원번호 불일치
+				mapAjax.put("result", "wrongAccess");
+			}
+			return mapAjax;
+		}
+		
+		//====대댓글 삭제======//
+		@RequestMapping("/used/deleteRereply.do")
+		@ResponseBody
+		public Map<String, String> deleteRereply(
+						@RequestParam int rereply_num,
+						HttpSession session){
+			
+			logger.debug("<<reply_num>> : " +rereply_num);
+			
+			Map<String,String> mapAjax = new HashMap<String, String>();
+			
+			MemberVO user = (MemberVO)session.getAttribute("user");
+			UsedRereplyVO db_rereply = usedService.selectRereply(rereply_num);
+			
+			if(user==null) {
+				mapAjax.put("result", "logout");
+			}else if(user!=null && user.getMem_num()==db_rereply.getMem_num()) {
+				//댓글 삭제
+				usedService.deleteRereply(rereply_num);
+				
+				mapAjax.put("result", "success");
+			}else {
+				mapAjax.put("result", "wrongAccess");
+			}
+			
+			return mapAjax;
+		}
+		
 	
 }

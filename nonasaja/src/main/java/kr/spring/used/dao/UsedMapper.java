@@ -11,6 +11,7 @@ import org.apache.ibatis.annotations.Update;
 
 import kr.spring.used.vo.UsedFavVO;
 import kr.spring.used.vo.UsedReplyVO;
+import kr.spring.used.vo.UsedRereplyVO;
 import kr.spring.used.vo.UsedVO;
 
 @Mapper
@@ -75,4 +76,34 @@ public interface UsedMapper {
 	public void deleteFav(Integer fav_num);
 	@Delete("DELETE FROM fav WHERE used_num=#{used_num}")
 	public void deleteFavByUsedNum(Integer used_num);
+	
+	//대댓글
+	public List<UsedRereplyVO> selectListRereply(
+			Map<String, Object> map);
+	@Select("SELECT COUNT (*) FROM used_rereply b "
+			+ "JOIN member m ON b.mem_num=m.mem_num "
+			+ "WHERE used_num=#{used_num}")
+	public int selectRowCountRereply(Map<String, Object> map);
+	@Select("SELECT * FROM used_rereply WHERE rereply_num=#{rereply_num}")
+	public UsedRereplyVO selectRereply(Integer rereply_num);
+	@Insert("INSERT INTO used_rereply (rereply_num,"
+			+ "rereply_content,used_num,mem_num,reply_num) "
+			+ "VALUES (used_rereply_seq.nextval,#{rereply_content},"
+			+ "#{used_num},#{mem_num},#{reply_num})")
+	public void insertRereply(UsedRereplyVO usedRereply);
+	@Update("UPDATE used_rereply SET "
+			+ "rereply_content=#{rereply_content}"
+			+ "WHERE rereply_num=#{rereply_num}")
+	public void updateRereply(UsedRereplyVO usedRereply);
+	@Delete("DELETE FROM used_rereply WHERE rereply_num=#{rereply_num}")
+	public void deleteRereply(Integer rereply_num);
+	//부모글 삭제시 댓글이 존재하면 부모글 삭제전 댓글 삭제
+	@Delete("DELETE FROM used_rereply WHERE used_num=#{used_num}")
+	public void deleteRereplyByBoardNum(Integer used_num);
+	
+	
+	
+	
+	
+	
 }

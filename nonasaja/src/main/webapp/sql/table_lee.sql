@@ -6,7 +6,7 @@ create table used_board(
  title varchar2(150) not null, 
  content clob not null,
  kind number(1) not null, --거래 종류(1중고,2무나,3교환)
- price number(6) default 0 not null,
+ price number(6) not null,
  status number(1) not null,--거래상태(1판매중/2판매완료)
  category varchar2(15) not null,--상품 카테고리(주방,생활,식품용품)
  trade varchar2(30),

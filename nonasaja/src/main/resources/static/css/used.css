@@ -20,11 +20,11 @@ ul.radio-button li{
 	padding-top:30px;
 }
 .input-box{
-	margin-left:12.5%;
+	margin-left:80px;
 	width:70%;
 }
 .input-box1{
-	margin-left:7%;
+	margin-left:44px;
 	width:70%;
 }
 .input-box2{
@@ -95,11 +95,16 @@ span{
 	font-size:16px;
 	line-height:30px;
 }
+span.usedtitle{
+	display:block;
+}
+.usedtitle{
+	height:30px;
+}
 .item-space .horizontal-area{
-	margin:2px;
 	padding:3px;
 	width:280px;
-	height:350px;
+	height:420px;
 	float:left;
 	overflow:hidden;
 }
@@ -108,6 +113,9 @@ span{
 	height:230px;
 	padding: 7px;
 	border-radius:10%;
+}
+#usedproduct_region{
+	font-size:15px;
 }
 .item-space .horizontal-area span{
 	padding:5px;
