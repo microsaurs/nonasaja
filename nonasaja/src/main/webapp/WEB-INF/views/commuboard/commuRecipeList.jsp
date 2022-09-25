@@ -8,9 +8,9 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/board.js"></script>
 
 <div class="page-main">
-
-	<div class="align-center">
-	<img src="${pageContext.request.contextPath}/images/자취생의레시피.png" width="700px" class="commu-logo">
+	
+	<div class="align-center"><br>
+	<img src="${pageContext.request.contextPath}/images/자취생의레시피.png" width="700px">
 	</div>
 
 	<c:if test="${!empty user}">
