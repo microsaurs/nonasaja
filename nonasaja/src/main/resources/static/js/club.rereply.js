@@ -30,38 +30,38 @@ $(function(){
 				}
 				
 				//댓글 목록 작업
-				$(param.list).each(function(index,item){
-					let output = '<div class="item">';
-					output += '<img src="../member/viewProfile.do?mem_num='+ item.mem_num + '" width="30" height="30" class="my-photo2">';
-					output += '<h3 class="nicknamemargin">';
+				$(param.list2).each(function(index,item){
+					let output2 = '<div class="item">';
+					output2 += '<img src="../member/viewProfile.do?mem_num='+ item.mem_num + '" width="30" height="30" class="my-photo2">';
+					output2 += '<h3 class="nicknamemargin">';
 					if(item.nickname){
-						output += item.nickname + '</h3>';
+						output2 += item.nickname + '</h3>';
 					}else{
-						output += item.id + '</h3>';
+						output2 += item.id + '</h3>';
 					}
 					
-					output += '<div class="sub-item">';
-					output += '<p>' + item.rereply_content.replace(/\r\n/g,'<br>') + '</p>';
+					output2 += '<div class="sub-item">';
+					output2 += '<p>' + item.rereply_content.replace(/\r\n/g,'<br>') + '</p>';
 					
 				
 					
 					if(param.user_num==item.mem_num){
 						//로그인한 회원번호와 댓글 작성자 회원번호가 일치
 						
-						output += ' <input type="button" data-num="'+ item.rereply_num +'" value="삭제" class="delete-btn">';
-						output += ' <input type="button" data-num="'+ item.rereply_num +'" value="수정" class="modify-btn">';
+						output2 += ' <input type="button" data-num="'+ item.rereply_num +'" value="삭제" class="delete-btn">';
+						output2 += ' <input type="button" data-num="'+ item.rereply_num +'" value="수정" class="modify-btn">';
 						
-					}output += ' <input type="button" data-num="'+ item.rereply_num +'" value="답글" class="rereply-btn">';
+					}output2 += ' <input type="button" data-num="'+ item.rereply_num +'" value="답글" class="rereply-btn">';
 					if(item.reply_date){
-						output += '<span class="modify-date">등록일 ' + item.reply_date + '</span>';
+						output2 += '<span class="modify-date">등록일 ' + item.reply_date + '</span>';
 					}
 					
-					output += '<hr size="1"  width="100%" noshade>';
-					output += '</div>';
-					output += '</div>'; 
+					output2 += '<hr size="1"  width="100%" noshade>';
+					output2 += '</div>';
+					output2 += '</div>'; 
 					
 					//문서 객체에 추가
-					$('#output').append(output);
+					$('#output2').append(output2);
 				});
 				
 				//paging button 처리
@@ -86,7 +86,7 @@ $(function(){
 	$('.paging-button input').click(function(){
 		selectList(currentPage + 1);
 	});
-	
+	/*
 	//=========================================대댓글 등록버튼==========================
 	$(document).on('click','.rereply-btn',function(){
 		//댓글 수정폼 UI
@@ -294,7 +294,7 @@ $(function(){
 	});
 
 	//초기 데이터(목록) 호출
-	selectList(1);
+	selectList(1);*/
 });
 
 

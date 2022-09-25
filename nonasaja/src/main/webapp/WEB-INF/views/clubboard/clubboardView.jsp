@@ -7,10 +7,10 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/clubboard.fav.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/club.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/club.reply.js"></script>
-<%-- <script type="text/javascript" src="${pageContext.request.contextPath}/js/club.rereply.js"></script> --%>
+
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/clubjoin.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/videoAdapter.js"></script>
-<div class="page-main1">
+ <div class="page-main1">
 <!-- 헤드 이미지 -->
 
 	<ul class="detail-info">
@@ -198,6 +198,8 @@
 		
 	<!-- 댓글 목록 출력 -->
 	<div id="output"></div>
+
+	<div id="output2"></div>
 	<div class="paging-button" style="display:none;">
 		<input type="button" value="다음글 보기" class="button10">
 	</div>
