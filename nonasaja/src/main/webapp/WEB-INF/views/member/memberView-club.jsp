@@ -101,8 +101,8 @@
 					</a>
 				</td>
 				<td>
-						<input type="button" value="탈퇴" 
-						  class="join-del" data-joinnum="${board.join_num}">
+						<input type="button" class="button4" value="탈퇴" 
+						   data-joinnum="${board.join_num}">
 				</td>
 			</tr>
 			</c:forEach>

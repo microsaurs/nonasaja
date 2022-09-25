@@ -131,21 +131,21 @@ $(document).ready(function(){
 					</td>
 					<td>
 						<input type="number" name="quantity" min="1" max="99999" value="${cart.quantity}">
-						<input type="button" value="변경" class="cart-modify" data-cartnum="${cart.cart_num}"
+						<input type="button" value="변경" class="button5" data-cartnum="${cart.cart_num}"
 						data-productnum="${cart.product_num}">
 					</td>
 					<td>
 						<fmt:formatNumber value="${cart.productVO.price2 }"/>원
 					</td>
 					<td>
-						<input type="button" class="cart-del" value="삭제" data-cartnum=${cart.cart_num }>
+						<input type="button" class="button4" value="삭제" data-cartnum=${cart.cart_num }>
 					</td>
 				</tr>
 				</c:forEach>
 				<tr>
 					<td colspan="6" class="align-right">
 						<b>총구매금액</b> <fmt:formatNumber value="${all_total}"/>원
-						<input type="submit" value="주문하기">
+						<input type="submit" value="주문하기" class="button8">
 					</td>
 				</tr>
 			</c:if>
@@ -166,10 +166,10 @@ $(document).ready(function(){
 				<tr>
 					<td rowspan="2">
 						<img src="${pageContext.request.contextPath}/product/imageView.do?product_num=${orderDetail.product_num}&photo_type=1"
-								width="200" height="200">
+								width="150" height="150">
 					</td>
 					<td colspan="2">
-						${orderDetail.product_name}
+						<b>${orderDetail.product_name}</b>
 					</td>
 					<td>
 						<span>${orderDetail.order_quantity}개</span>
@@ -182,7 +182,7 @@ $(document).ready(function(){
 				<tr>
 					<td colspan="2" class="align-right">
 						<c:if test="${orderDetail.wait_count != 0}">
-							주문확정수량 ${orderDetail.req_quantity}개 중 ${orderDetail.wait_count}개 신청
+							<b>주문확정수량</b> <b>${orderDetail.req_quantity}</b>개 중 <b>${orderDetail.wait_count}</b>개 신청
 						</c:if>
 					</td>
 					<td>
@@ -191,8 +191,10 @@ $(document).ready(function(){
 						</c:if>
 					</td>
 					<td>
-						<input type="button" value="주문정보 수정" onclick="location.href='/order/order_update.do?order_num=${orderDetail.order_num}'">
-						<input type="button" value="구매취소" onclick="location.href='/order/wait_delete.do?detail_num=${orderDetail.detail_num}'">
+						<input type="button" value="주문정보 수정" class="button50" onclick="location.href='/order/order_update.do?order_num=${orderDetail.order_num}'">
+					</td>
+					<td>
+						<input type="button" value="구매취소" class="button40" onclick="location.href='/order/wait_delete.do?detail_num=${orderDetail.detail_num}'">
 					</td>
 				</tr>
 				</c:if>
@@ -238,7 +240,7 @@ $(document).ready(function(){
 					</td>
 					<td>
 						<a href="${pageContext.request.contextPath}/product/detail.do?product_num=${orderDetail.product_num }">
-							${orderDetail.product_name}
+							<b>${orderDetail.product_name}</b>
 						</a>
 					</td>
 					<td>
@@ -248,7 +250,7 @@ $(document).ready(function(){
 						<fmt:formatNumber value="${orderDetail.product_total}"/>원
 					</td>
 					<td>
-						<input type="button" value="리뷰작성" 
+						<input type="button" class="button41" value="리뷰작성" 
 								onclick="location.href='${pageContext.request.contextPath}/review/write_review.do?product_num=${orderDetail.product_num}'">
 					</td>
 				</tr>
@@ -268,12 +270,12 @@ $(document).ready(function(){
 			<table>
 				<c:forEach var="review" items="${reviewList}">
 				<tr>
-					<td>
+					<td class="align-center">
 						<img src="${pageContext.request.contextPath}/product/imageView.do?product_num=${review.product_num}&photo_type=1"
-							width="130" height="130"><br>
-						${review.product_name}
+							width="120" height="130"><br>
+						 <b>${review.product_name}</b>
 					</td>
-					<td colspan="2">
+					<td colspan="2" class="margintext">
 						${review.content }
 					</td>
 				</tr>
@@ -292,9 +294,9 @@ $(document).ready(function(){
 					<td class="align-right">
 						${review.reg_date}
 					
-						<input type="button" value="수정" 
+						<input type="button" class="button5" value="수정" 
 							onclick="location.href='${pageContext.request.contextPath}/review/write_review.do?product_num=${review.product_num}'">
-							<input type="button" value="삭제" 
+							<input type="button" class="button4" value="삭제" 
 							onclick="location.href='${pageContext.request.contextPath}/review/delete_review.do?review_num=${review.review_num}'">
 					</td>
 				</tr>

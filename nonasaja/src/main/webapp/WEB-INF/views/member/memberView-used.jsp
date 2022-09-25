@@ -42,26 +42,17 @@
 					<c:if test="${type == 1}">
 					<b><a href="myPageUsed.do?type=1">내가 올린 거래</a></b> |
 					<a href="myPageUsed.do?type=2">내가 쓴 댓글</a> |
-					<a href="myPageUsed.do?type=3">찜한물건</a> |
-					<a href="myPageUsed.do?type=4">1:1대화</a>
+					<a href="myPageUsed.do?type=3">찜한물건</a> 
 					</c:if>
 					<c:if test="${type == 2}">
 					<a href="myPageUsed.do?type=1">내가 올린 거래</a> |
 					<b><a href="myPageUsed.do?type=2">내가 쓴 댓글</a></b> |
-					<a href="myPageUsed.do?type=3">찜한물건</a> |
-					<a href="myPageUsed.do?type=4">1:1대화</a>
+					<a href="myPageUsed.do?type=3">찜한물건</a>
 					</c:if>
 					<c:if test="${type == 3}">
 					<a href="myPageUsed.do?type=1">내가 올린 거래</a> |
 					<a href="myPageUsed.do?type=2">내가 쓴 댓글</a> |
-					<b><a href="myPageUsed.do?type=3">찜한물건</a></b> |
-					<a href="myPageUsed.do?type=4">1:1대화</a>
-					</c:if>
-					<c:if test="${type == 4}">
-					<a href="myPageUsed.do?type=1">내가 올린 거래</a> |
-					<a href="myPageUsed.do?type=2">내가 쓴 댓글</a> |
-					<a href="myPageUsed.do?type=3">찜한물건</a> |
-					<b><a href="myPageUsed.do?type=4">1:1대화</a></b>
+					<b><a href="myPageUsed.do?type=3">찜한물건</a></b> 
 					</c:if>
 				</td>
 			</tr>

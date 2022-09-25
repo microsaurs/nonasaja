@@ -42,7 +42,7 @@
 			<tr>
 				<form:errors element="div" cssClass="error-color"/>
 			</tr>
-			<tr>
+			<tr class="align-center">
 				<td>
 					<label for="id">아이디</label>
 				</td>
@@ -53,7 +53,7 @@
 					<form:errors path="id" cssClass="error-color"/>
 				</td>
 			</tr>
-			<tr>
+			<tr class="align-center">
 				<td>
 					<label for="passwd">비밀번호</label>
 				</td>
@@ -65,9 +65,9 @@
 				</td>
 			</tr>
 			<tr>
-				<td class='align-center' colspan="3">
-					<form:button>전송</form:button>
-					<input type="button" value="마이페이지" onclick="location.href='myPage.do'">
+				<td class='align-right' colspan="3">
+					<form:button class="button20">탈퇴하기</form:button>
+					<input type="button" class="button1" value="마이페이지" onclick="location.href='myPage.do'">
 				</td>
 			</tr>
 			</form:form>

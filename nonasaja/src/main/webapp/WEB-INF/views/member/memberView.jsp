@@ -39,17 +39,7 @@
 			<tr>
 				<th colspan="2"><h3>회원정보</h3></th>
 			</tr>
-			<tr>
-				<td>사진</td>
-				<td>
-					<c:if test="${empty member.photo_name}">
-					<img src="${pageContext.request.contextPath}/images/face.png" width="100" height="100" class="my-photo">
-					</c:if>
-					<c:if test="${!empty member.photo_name}">
-					<img src="${pageContext.request.contextPath}/member/photoView.do" width="100" height="100" class="my-photo">
-				</c:if>
-				</td>
-			</tr>
+			
 			<tr>
 				<td>아이디</td>
 				<td>
@@ -82,10 +72,13 @@
 				<td>사진</td>
 				<td></td>
 			</tr> -->
-			<tr>
-				<td colspan="2"><div><div class="update-btn"><a href="update.do">수정</a></div></div></td>
-			</tr>
+			
 		</table>
+		
+	
+		<div>
+			<input type="button" value="수정" onclick="location.href='update.do'" class="button9">
+		</div>
 	</div>
 </div>
 <div class="float-clear"></div>

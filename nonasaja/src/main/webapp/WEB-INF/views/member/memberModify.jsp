@@ -44,24 +44,19 @@
 				</tr>
 				<tr>
 					<td>사진</td>
-					<td>
+					<td class="float-profile">
 						<c:if test="${empty memberVO.photo_name}">
-						<img src="${pageContext.request.contextPath}/images/face.png" width="100" height="100" class="my-photo">
+						<img src="${pageContext.request.contextPath}/images/face.png" width="100" height="100" class="my-photo1">
 						</c:if>
 						<c:if test="${!empty memberVO.photo_name}">
-						<img src="${pageContext.request.contextPath}/member/photoView.do" width="100" height="100" class="my-photo">
-					</c:if>
-					</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td>
-						<div class="align-center">
-							<input type="button" value="프로필 사진 변경" id="photo_btn">
+						<img src="${pageContext.request.contextPath}/member/photoView.do" width="100" height="100" class="my-photo1">
+						</c:if>
+						
+						<div class="align-left1">
+							<input type="button" value="프로필 사진 변경" id="photo_btn" class="button90">
 							<div id="photo_choice" style="display:none;">
-								<input type="file" id="upload" accept="image/gif,image/png,image/jpeg" value="${memberVO.photo_name}"><br>
-								<input type="button" value="확인" id="photo_submit">  
-								<input type="button" value="취소" id="photo_reset"> 
+								<input type="file" id="upload" accept="image/gif,image/png,image/jpeg" class="location1" value="${memberVO.photo_name}"><br>
+								
 							</div>
 						</div>
 					</td>
@@ -97,7 +92,7 @@
 					<td>우편번호</td>
 					<td>
 						<form:input path="zipcode"/>
-						<input type="button" id="zipcode_btn" onclick="execDaumPostcode()" value="우편번호 찾기">
+						<input type="button" id="zipcode_btn" onclick="execDaumPostcode()" value="우편번호 찾기" class="button3">
 					</td>
 				</tr>
 				<tr>
@@ -129,9 +124,9 @@
 				</tr> -->
 				<tr>
 					<td colspan="2">
-						<div class="align-center">
-							<form:button id="submit_btn">확인</form:button>
-							<input id="back_btn"type="button" value="마이페이지" onclick="location.href='myPage.do'">
+						<div class="align-right">
+							<form:button id="submit_btn" class="button2">확인</form:button>
+							<input id="back_btn" class="button1" type="button" value="마이페이지" onclick="location.href='myPage.do'">
 						</div>
 					</td>
 				</tr>
