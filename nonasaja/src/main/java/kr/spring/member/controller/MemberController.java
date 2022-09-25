@@ -486,9 +486,15 @@ public class MemberController {
 	//==========회원 탈퇴===========//
 	//탈퇴 폼
 	@GetMapping("/member/delete.do")
-	public String formDelete() {
+	public String formDelete(HttpSession session, Model model) {
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		MemberVO member = memberService.selectMember(user.getMem_num());
+		
+		model.addAttribute("member", member);
+		
 		return "memberDelete";
 	}
+	
 	//탈퇴 폼에서 전달된 데이터 처리
 	@PostMapping("/member/delete.do")
 	public String submitDelete(@Valid MemberVO memberVO, BindingResult result, HttpSession session, Model model) {
@@ -497,7 +503,7 @@ public class MemberController {
 		//유효성 체크 결과 오류가 있으면 폼 호출
 		//id, passwd 필드의 에러만 체크
 		if(result.hasFieldErrors("id") || result.hasFieldErrors("passwd")) {
-			return formDelete();
+			return formDelete(session,model);
 		}
 		
 		MemberVO user = (MemberVO)session.getAttribute("user");
@@ -529,7 +535,7 @@ public class MemberController {
 			throw new AuthCheckException();
 		}catch(AuthCheckException e) {
 			result.reject("invalidIdOrPassword");
-			return formDelete();
+			return formDelete(session,model);
 		}
 		
 	}
