@@ -6,12 +6,12 @@ $(function(){
 	//댓글 등록
 	//=========================================대댓글 등록버튼==========================
 	$(document).on('click','.rereply-btn',function(){
-		//댓글 수정폼 UI
+		//댓글 등록폼 UI
 		let rereplyUI = '<form id="re_form2">';
-		rereplyUI += '<input type="hidden" name="rereply_num" id="mre_num" value="'+ re_num +'">';
-		rereplyUI += '<textarea rows="3" cols="50" name="rereply_content" id="mre_content2" class="rep-content2">'+ content +'</textarea>';
+		rereplyUI += '<input type="hidden" name="rereply_num" id="re_num" value="'+ re_num +'">';
+		rereplyUI += '<textarea rows="3" cols="50" name="rereply_content" id="re_content2" class="rep-content2">'+ content +'</textarea>';
 		rereplyUI += '<div id="mre_first2"><span class="letter-count">300/300</span></div>';
-		rereplyUI += '<div id="mre_second2" class="align-right">';
+		rereplyUI += '<div id="re_second2" class="align-right">';
 		rereplyUI += ' <input type="button" value="취소" class="re-reset">';	
 		rereplyUI += '<input type="submit" value="수정" class="modify-btn">';
 		rereplyUI += '</div>';
@@ -53,6 +53,34 @@ $(function(){
 			//기본 이벤트 제거
 			event.preventDefault();
 		});
+		
+		//댓글 작성 폼 초기화
+	function initForm(){
+		$('textarea').val('');
+		$('#re_first2 .letter-count').text('300/300');
+	}
+	//textarea에 내용 입력시 글자수 체크
+	$(document).on('keyup','textarea',function(){
+		//입력한 글자수 구하기
+		let inputLength = $(this).val().length;
+		
+		if(inputLength>300){//300자를 넘어선 경우
+			$(this).val($(this).val().substring(0,300));
+		}else{//300자 이하인 경우
+			//남은 글자수 구하기
+			let remain = 300 - inputLength;
+			remain += '/300';
+			if($(this).attr('id')=='re_content2'){
+				//등록 폼 글자수
+				$('#re_first2 .letter-count').text(remain);
+			}else{
+				//수정 폼 글자수
+				$('#mre_first2 .letter-count').text(remain);
+			}
+		}
+	});
+	
+	});
 		
 		//초기 데이터(목록) 호출
 		selectList(1);
