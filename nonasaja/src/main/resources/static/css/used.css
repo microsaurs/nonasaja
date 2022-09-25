@@ -107,6 +107,7 @@ span{
 	width:270px;
 	height:230px;
 	padding: 7px;
+	border-radius:10%;
 }
 .item-space .horizontal-area span{
 	padding:5px;
