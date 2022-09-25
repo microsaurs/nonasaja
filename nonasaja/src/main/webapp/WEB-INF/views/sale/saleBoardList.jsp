@@ -12,8 +12,7 @@
 <div class="align-center">
 	<img src="${pageContext.request.contextPath}/images/saleinfomain.png" width="700px">
 </div>
-<br>
-	<div class="writebutton-float">
+	<div>
 		<c:if test="${!empty user}">
 			<a href="${pageContext.request.contextPath}/sale/saleBoardWrite.do"><img src="${pageContext.request.contextPath}/images/salewrite.png" class="writebutton"></a>
 		</c:if>

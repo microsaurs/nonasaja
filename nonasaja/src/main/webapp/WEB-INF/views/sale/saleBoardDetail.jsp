@@ -7,7 +7,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/sale.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/board.reply.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/sale.reply.js"></script>
 <div class="page-main">
 	<h2>${board.title}</h2>
 		<div class="userphoto">
@@ -74,22 +74,23 @@
 	</div>
 	<hr size="1" width="100%">
 	<!-- 댓글 UI 시작 -->
-	<div id="reply_div">
-		<span class="reply-title">댓글 달기</span>
-		<form id="reply_form">
+	<div id="reply_div1">
+		<img src="${pageContext.request.contextPath}/images/댓글아이콘.png" width="25" height="25" class="replyicon">
+		<span class="re-title1"><b>댓글 달기</b></span>
+		<form id="re_form1">
 			<input type="hidden" name="board_num"
 			   value="${board.board_num}" id="board_num">
 			<textarea rows="3" cols="50" 
 			  name="reply_content" id="reply_content"
-			  class="reply_content"
+			  class="rep-content1"
 			  <c:if test="${empty user}">disabled="disabled"</c:if>
 			  ><c:if test="${empty user}">로그인해야 작성할 수 있습니다.</c:if></textarea>
 			<c:if test="${!empty user}">
-			<div id="reply_first">
+			<div id="re_first">
 				<span class="letter-count">300/300</span>
 			</div>
-			<div id="reply_second" class="align-right">
-				<input type="submit" value="전송">
+			<div id="re_second" class="button9-align">
+				<input type="submit" value="전송" class="button9">
 			</div>
 			</c:if>
 		</form>
@@ -97,7 +98,7 @@
 	<!-- 댓글 목록 출력 -->
 	<div id="output"></div>
 	<div class="paging-button" style="display:none;">
-		<input type="button" value="다음글 보기">
+		<input type="button" value="다음글 보기" class="button10">
 	</div>
 	<div id="loading" style="display:none;">
 		<img src="${pageContext.request.contextPath}/images/loading.gif" width="100" height="100">

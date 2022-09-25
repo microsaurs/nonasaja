@@ -40,12 +40,17 @@ public interface SaleBoardMapper {
 			+ "JOIN member m ON b.mem_num=m.mem_num "
 			+ "WHERE board_num=#{board_num}")
 	public int selectRowCountReply(Map<String,Object> map);
+	@Select("SELECT * FROM sale_reply WHERE reply_num=#{reply_num}")
 	public SaleReplyVO selectReply(Integer reply_num);
 	@Insert("INSERT INTO sale_reply (reply_num,reply_content,board_num,mem_num) "
 			+ "VALUES (sale_reply_seq.nextval,#{reply_content},#{board_num},#{mem_num})")
 	public void insertReply(SaleReplyVO boardReply);
+	@Update("UPDATE sale_reply SET reply_content=#{reply_content}"
+			+ " WHERE reply_num=#{reply_num}")
 	public void updateReply(SaleReplyVO boardReply);
+	@Delete("DELETE FROM sale_reply WHERE reply_num=#{reply_num}")
 	public void deleteReply(Integer reply_num);
+	@Delete("DELETE FROM sale_reply WHERE board_num=#{board_num}")
 	public void deleteReplyByBoardNum(Integer board_num);
 
 }
