@@ -49,26 +49,36 @@ public class JoinController {
 		}else { //로그인 된 경우
 			joinVO.setMem_num(user.getMem_num());
 			
-			//기존에 등록된 동일 상품이 있는지 체크
-			JoinVO db_join = joinService.selectJoin(joinVO);
-			if(db_join==null) {//이미 가입한 동호회 없음
-				joinService.insertJoin(joinVO);
-				mapAjax.put("result", "success");
-			}else {//이미 가입한 동호회 있음 
-				//인원수를 구하기 위해서 정보 호출
-				ClubVO club = clubService.selectBoard( db_join.getClub_num());
-				
-				//총인원수가 이미 다 찼을 경우
-				if(club.getClub_pre() == club.getClub_limit()) {
-					mapAjax.put("result","overmember");
-				}else {
-					mapAjax.put("result", "success");
+			//기존에 가입한 동호회 확인
+			List<JoinVO> joinList = joinService.selectListJoin(user.getMem_num());
+			if(joinList.size() > 0) {//이미 가입한 동호회 있음
+				//해당 동호회 회원인지 확인 
+				for(JoinVO join:joinList) {
+					if(join.getClub_num() == joinVO.getClub_num()) {
+						//이미 회원이면 already 반환
+						mapAjax.put("result","already");
+						return mapAjax;
+					}
 				}
 			}
-		}
 		
+			//해당 동호회의 인원수를 구하기 위해서 정보 호출
+			ClubVO club = clubService.selectBoard(joinVO.getClub_num());
+			
+			//해당 동호회에 신청중인 사람 수 구하기
+			int joinCount = joinService.selectJoinCount(joinVO.getClub_num());
+			
+			//총인원수가 이미 다 찼을 경우 overmember 반환
+			if(joinCount == club.getClub_limit()) {
+				mapAjax.put("result","overmember");
+			}else { //인원수가 다 차지 않은 경우 가입 처리 후 success 반환
+				joinService.insertJoin(joinVO);
+				mapAjax.put("result", "success");
+			}
+		}
 		return mapAjax;
 	}
+	
 	//동호회 삭제
 		@RequestMapping("/join/deleteJoin.do")
 		@ResponseBody

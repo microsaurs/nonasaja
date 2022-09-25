@@ -27,6 +27,9 @@ public interface JoinMapper {
 	//동호회 삭제
 	@Delete("DELETE FROM join WHERE join_num=#{join_num}")
 	public void deleteJoin(int join_num);
+	//한 동호회에 가입중인 사람 수 구하기
+	@Select("SELECT COUNT(*) FROM join WHERE club_num=#{clud_num}")
+	public int selectJoinCount(int club_num);
 }
 
 

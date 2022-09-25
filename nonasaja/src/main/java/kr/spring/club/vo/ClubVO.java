@@ -210,5 +210,17 @@ public class ClubVO {
 		this.join_num = join_num;
 	}
 
+	@Override
+	public String toString() {
+		return "ClubVO [club_num=" + club_num + ", club_title=" + club_title + ", club_name=" + club_name
+				+ ", club_leader=" + club_leader + ", club_content=" + club_content + ", club_date=" + club_date
+				+ ", club_modify_date=" + club_modify_date + ", club_code=" + club_code + ", club_limit=" + club_limit
+				+ ", club_pre=" + club_pre + ", club_hit=" + club_hit + ", club_reg_date=" + club_reg_date
+				+ ", club_img_name=" + club_img_name + ", club_age=" + club_age + ", club_gender=" + club_gender
+				+ ", club_recruit=" + club_recruit + ", mem_num=" + mem_num + ", club_region=" + club_region
+				+ ", join_num=" + join_num + ", id=" + id + ", nickname=" + nickname + "]";
+	}
+	
+	
 	
 }
