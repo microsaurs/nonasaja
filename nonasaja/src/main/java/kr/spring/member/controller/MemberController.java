@@ -391,7 +391,7 @@ public class MemberController {
 			}else if(code == 2) {//레시피
 				count = mypageService.selectRecipeCount(user.getMem_num());
 				page = new PagingUtil(currentPage,count,rowCount,pageCount,"myPageCommu.do");
-				
+				logger.debug("<레시피 글 개수>..."+ count);
 				if(count>0) {
 					map.put("start", page.getStartRow());
 					map.put("end", page.getEndRow());
@@ -417,13 +417,15 @@ public class MemberController {
 			}else if(code == 2) {//레시피
 				count = mypageService.selectRecipeReplyCount(user.getMem_num());
 				page = new PagingUtil(currentPage,count,rowCount,pageCount,"myPageCommu.do");
-				
+				logger.debug("<레시피 댓글 개수>..."+ count);
+				logger.debug("<회원번호>..."+ user.getMem_num());
 				if(count>0) {
 					map.put("start", page.getStartRow());
 					map.put("end", page.getEndRow());
 					map.put("mem_num", user.getMem_num());
 					
 					recipeReplyList = mypageService.selectRecipeReplyList(map);
+					logger.debug("<레시피 댓글 리스트>..."+recipeReplyList);
 				}
 			}
 		}
