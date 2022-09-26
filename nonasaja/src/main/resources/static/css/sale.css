@@ -20,11 +20,12 @@
 	text-align:center;
 	
 }
-
+figure{
+	margin:0 auto;
+}
 .writebutton{
 	width:300px;
 	height:100px;
-	padding: 0px 0 10px 370px;
 }
 .button5{
   width: 40px;
