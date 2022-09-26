@@ -110,6 +110,7 @@ li {
   outline:0;
   border-radius: 6px;
   color:white;
+  cursor: pointer;
 }
 .button7{
   width: 40px;
@@ -120,6 +121,7 @@ li {
   outline:0;
   border-radius: 6px;
   color:white;
+  cursor: pointer;
 }
 .button8{
   width: 40px;
@@ -130,6 +132,7 @@ li {
   outline:0;
   border-radius: 6px;
   color:white;
+  cursor: pointer;
 }
 .my-photo1{
 	object-fit: cover;
