@@ -89,4 +89,90 @@
   		WHERE rnum >= #{start} AND rnum <= #{end}
   		]]>
   	</select>
+  	
+  	<!-- =========통합검색========== -->
+  	<select id="searchClubList" parameterType="string" resultType="clubVO">
+  		SELECT
+  			*
+  		FROM (SELECT
+  				a.*,
+  				rownum rnum
+  			  FROM (SELECT
+  			  			*
+  			  		FROM club_board
+  			  		WHERE
+			  			club_title LIKE '%' || #{keyword} || '%' OR
+			  			club_content LIKE '%' || #{keyword} || '%'
+  			  		ORDER BY club_reg_date DESC)a)
+  	</select>
+  	<select id="searchCommuList" parameterType="string" resultType="communityVO">
+  		SELECT
+  			*
+  		FROM (SELECT
+  				a.*,
+  				rownum rnum
+  			  FROM (SELECT
+  			  			*
+  			  		FROM community_board
+  			  		WHERE
+			  			commu_title LIKE '%' || #{keyword} || '%' OR
+			  			commu_content LIKE '%' || #{keyword} || '%'
+  			  		ORDER BY commu_date DESC)a)
+  	</select>
+  	<select id="searchRecipeList" parameterType="string" resultType="recipeVO">
+  		SELECT
+  			*
+  		FROM (SELECT
+  				a.*,
+  				rownum rnum
+  			  FROM (SELECT
+  			  			*
+  			  		FROM community_recipe_board
+  			  		WHERE
+			  			commu_title LIKE '%' || #{keyword} || '%' OR
+			  			commu_content LIKE '%' || #{keyword} || '%'
+  			  		ORDER BY commu_date DESC)a)
+  	</select>
+  	<select id="searchProductList" parameterType="string" resultType="productVO">
+  		SELECT
+  			*
+  		FROM (SELECT
+  				a.*,
+  				rownum rnum
+  			  FROM (SELECT
+  			  			*
+  			  		FROM product
+  			  		WHERE
+			  			title LIKE '%' || #{keyword} || '%' OR
+			  			name LIKE '%' || #{keyword} || '%'
+  			  		ORDER BY reg_date DESC)a)
+  	</select>
+  	<select id="searchSaleList" parameterType="string" resultType="saleVO">
+  		SELECT
+  			*
+  		FROM (SELECT
+  				a.*,
+  				rownum rnum
+  			  FROM (SELECT
+  			  			*
+  			  		FROM sale_board
+  			  		WHERE
+			  			title LIKE '%' || #{keyword} || '%' OR
+			  			content LIKE '%' || #{keyword} || '%'
+  			  		ORDER BY reg_date DESC)a)
+  	</select>
+  	<select id="searchUsedList" parameterType="string" resultType="usedVO">
+  		SELECT
+  			*
+  		FROM (SELECT
+  				a.*,
+  				rownum rnum
+  			  FROM (SELECT
+  			  			*
+  			  		FROM used_board
+  			  		WHERE
+			  			title LIKE '%' || #{keyword} || '%' OR
+			  			content LIKE '%' || #{keyword} || '%'
+  			  		ORDER BY reg_date DESC)a)
+  	</select>
 </mapper>

@@ -107,6 +107,12 @@
     	<put-attribute name="title" value="고객센터"/>
     	<put-attribute name="body" value="/WEB-INF/views/member/serviceCenter.jsp"/>
     </definition>
+    
+    <!-- 고객센터 -->
+    <definition name="searchTotal" extends="main">
+    	<put-attribute name="title" value="통합검색"/>
+    	<put-attribute name="body" value="/WEB-INF/views/main/searchTotal.jsp"/>
+    </definition>
 </tiles-definitions>
 
 

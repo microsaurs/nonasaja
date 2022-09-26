@@ -30,6 +30,9 @@ import kr.spring.community.vo.RecipeVO;
 import kr.spring.member.service.MemberService;
 import kr.spring.member.service.MypageService;
 import kr.spring.member.vo.MemberVO;
+import kr.spring.product.vo.ProductVO;
+import kr.spring.review.vo.ReviewVO;
+import kr.spring.sale.vo.SaleVO;
 import kr.spring.used.vo.UsedReplyVO;
 import kr.spring.used.vo.UsedVO;
 import kr.spring.util.AuthCheckException;
@@ -542,4 +545,26 @@ public class MemberController {
 		
 	}
 	
+	//=======통합검색========//
+	@RequestMapping("/main/search.do")
+	public ModelAndView searchTotal(String keyword) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("searchTotal");
+		
+		List<ClubVO> clubList = memberService.searchClubList(keyword);
+		List<CommunityVO> commuList = memberService.searchCommuList(keyword);
+		List<RecipeVO> recipeList = memberService.searchRecipeList(keyword);
+		List<ProductVO> productList = memberService.searchProductList(keyword);
+		List<SaleVO> saleList = memberService.searchSaleList(keyword);
+		List<UsedVO> usedList = memberService.searchUsedList(keyword);
+		
+		if(clubList != null) { mav.addObject("clubList", clubList); }
+		if(commuList != null) { mav.addObject("commuList", commuList); }
+		if(recipeList != null) { mav.addObject("recipeList", recipeList); }
+		if(productList != null) { mav.addObject("productList", productList); }
+		if(saleList != null) { mav.addObject("saleList", saleList); }
+		if(usedList != null) { mav.addObject("usedList", usedList); }
+		
+		return mav;
+	}
 }
