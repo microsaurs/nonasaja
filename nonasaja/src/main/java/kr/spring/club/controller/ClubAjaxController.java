@@ -345,18 +345,18 @@ public class ClubAjaxController {
 					map.put("start", page.getStartRow());
 					map.put("end", page.getEndRow());
 					
-					List<ClubRereplyVO> list = null;
+					List<ClubRereplyVO> list2 = null;
 					if(count > 0) {
-						list = clubService.selectListRereply(map);
+						list2 = clubService.selectListRereply(map);
 					}else {
-						list = Collections.emptyList();
+						list2 = Collections.emptyList();
 					}
 					
 					Map<String,Object> mapAjax = 
 							new HashMap<String,Object>();
 					mapAjax.put("count", count);
 					mapAjax.put("rowCount", rowCount);
-					mapAjax.put("list", list);
+					mapAjax.put("list2", list2);
 					
 					//로그인 한 회원정보 셋팅
 					MemberVO user = 
@@ -373,27 +373,27 @@ public class ClubAjaxController {
 				@RequestMapping("/clubboard/updateRereply.do")
 				@ResponseBody
 				public Map<String,String> modifyRereply(
-						      ClubRereplyVO clubRereplyVO,
-						      HttpSession session,
-						      HttpServletRequest request){
-					
+						ClubRereplyVO clubRereplyVO,
+						HttpSession session,
+						HttpServletRequest request){
+
 					logger.debug("<<댓글 수정>> : " + clubRereplyVO);
-					
+
 					Map<String,String> mapAjax = 
 							new HashMap<String,String>();
-					
+
 					MemberVO user = 
 							(MemberVO)session.getAttribute("user");
 					ClubRereplyVO db_rereply = 
 							clubService.selectRereply(
-									     clubRereplyVO.getRereply_num());
+									clubRereplyVO.getRereply_num());
 					if(user==null) {//로그인이 되지 않는 경우
 						mapAjax.put("result", "logout");
 					}else if(user!=null && 
-						  user.getMem_num()==db_rereply.getMem_num()) {
+							user.getMem_num()==db_rereply.getMem_num()) {
 						//로그인 회원번호와 작성자 회원번호 일치
-						
-						
+
+
 						//댓글 수정
 						clubService.updateRereply(clubRereplyVO);
 						mapAjax.put("result", "success");

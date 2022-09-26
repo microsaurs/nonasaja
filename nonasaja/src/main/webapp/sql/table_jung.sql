@@ -51,6 +51,7 @@ create table sale_reply(
   mem_num number not null,
   reply_content varchar2(900) not null,
   reply_date date default sysdate not null,
+  reply_mdate date,
   parent_num number,
   constraint sale_reply_pk primary key (reply_num),
   constraint sale_reply_fk1 foreign key (board_num) references sale_board (board_num),

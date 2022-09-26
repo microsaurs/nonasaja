@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/header.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
 <!-- 상단 시작 -->
 <div >
@@ -49,13 +51,13 @@
 	
 	<div>
 		<div class="location"> 
-			<a href="${pageContext.request.contextPath}/main/main.do" class="category-margin">홈</a>
-			<a href="${pageContext.request.contextPath}/product/list.do" class="category-margin">공동구매</a>
-			<a href="${pageContext.request.contextPath}/sale/saleBoardList.do" class="category-margin">세일정보</a>
-			<a href="${pageContext.request.contextPath}/used/list.do" class="category-margin">중고거래</a>
-			<a href="${pageContext.request.contextPath}/clubboard/list.do" class="category-margin">동호회</a>
-			<a href="${pageContext.request.contextPath}/commuboard/list.do" class="category-margin">커뮤니티</a>  
-			<a href="${pageContext.request.contextPath}/commuRecipe/list.do" class="category-margin">레시피</a>  
+			<a href="${pageContext.request.contextPath}/main/main.do" class="category-margin" id="header_main">홈</a>
+			<a href="${pageContext.request.contextPath}/product/list.do" class="category-margin" id="header_product">공동구매</a>
+			<a href="${pageContext.request.contextPath}/sale/saleBoardList.do" class="category-margin" id="header_sale">세일정보</a>
+			<a href="${pageContext.request.contextPath}/used/list.do" class="category-margin" id="header_used">중고거래</a>
+			<a href="${pageContext.request.contextPath}/clubboard/list.do" class="category-margin" id="header_clubboard">동호회</a>
+			<a href="${pageContext.request.contextPath}/commuboard/list.do" class="category-margin" id="header_commuboard">커뮤니티</a>  
+			<a href="${pageContext.request.contextPath}/commuRecipe/list.do" class="category-margin"  id="header_commuRecipe">레시피</a>  
 		</div>
 		<div class="float-right">
 			<c:if test="${!empty user && !empty user.photo}">

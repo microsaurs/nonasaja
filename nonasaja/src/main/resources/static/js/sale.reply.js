@@ -33,12 +33,12 @@ $(function(){
 				$(param.list).each(function(index,item){
 					let output = '<div class="item">';
 					output += '<h4>';
-					output += '<img src="../member/viewProfile.do?mem_num='+ item.mem_num +'" width="30" height="30" class="my-photo">';
-					
+					output += '<img src="../member/viewProfile.do?mem_num='+ item.mem_num +'" width="30" height="30" class="my-photo2">';
+					output += '<h3 class="nicknamemargin">';
 					if(item.nickname){
-						output += item.nickname + '</h4>';
+						output += item.nickname + '</h3>';
 					}else{
-						output += item.id + '</h4>';
+						output += item.id + '</h3>';
 					}
 					
 					output += '<div class="sub-item">';
@@ -50,9 +50,11 @@ $(function(){
 					
 					if(param.user_num==item.mem_num){
 						//로그인한 회원번호와 댓글 작성자 회원번호가 일치
-						output += ' <input type="button" data-num="'+ item.reply_num +'" value="수정" class="modify-btn">';
-						output += ' <input type="button" data-num="'+ item.reply_num +'" value="삭제" class="delete-btn">';
+						output += ' <input type="button" data-num="'+ item.reply_num +'" value="수정" class="button10">';
+						output += ' <input type="button" data-num="'+ item.reply_num +'" value="삭제" class="button11">';
 					}
+					output += ' <input type="button" data-num="'+ item.reply_num +'" value="답글" class="rereply-btn">';
+					output += '<div class="rereply-text"></div>';
 					output += '<hr size="1" noshade>';
 					output += '</div>';
 					output += '</div>'; 
@@ -85,7 +87,7 @@ $(function(){
 	});
 	
 	//댓글 등록
-	$('#reply_form').submit(function(event){
+	$('#re_form1').submit(function(event){
 		if($('#reply_content').val().trim()==''){
 			alert('내용을 입력하세요');
 			$('#reply_content').val('').focus();
@@ -138,28 +140,28 @@ $(function(){
 			remain += '/300';
 			if($(this).attr('id')=='reply_content'){
 				//등록 폼 글자수
-				$('#reply_first .letter-count').text(remain);
+				$('#re_first .letter-count').text(remain);
 			}else{
 				//수정 폼 글자수
-				$('#mreply_first .letter-count').text(remain);
+				$('#mre_first .letter-count').text(remain);
 			}
 		}
 	});
 	//댓글 수정 버튼 클릭시 수정 폼 노출
-	$(document).on('click','.modify-btn',function(){
+	$(document).on('click','.button10',function(){
 		//댓글 글번호
 		let reply_num = $(this).attr('data-num');
 		//댓글 내용
 		let content = $(this).parent().find('p').html().replace(/<br>/g,'\r\n');
 		
 		//댓글 수정폼 UI
-		let modifyUI = '<form id="mreply_form">';
+		let modifyUI = '<form id="mre_form">';
 		modifyUI += '<input type="hidden" name="reply_num" id="mreply_num" value="'+ reply_num +'">';
-		modifyUI += '<textarea rows="3" cols="50" name="reply_content" id="mreply_content" class="reply-content">'+ content +'</textarea>';
-		modifyUI += '<div id="mreply_first"><span class="letter-count">300/300</span></div>';
-		modifyUI += '<div id="mreply_second" class="align-right">';
-		modifyUI += '<input type="submit" value="수정">';
-		modifyUI += ' <input type="button" value="취소" class="reply-reset">';
+		modifyUI += '<textarea rows="3" cols="50" name="reply_content" id="mreply_content" class="rep-content1">'+ content +'</textarea>';
+		modifyUI += '<div id="mre_first"><span class="letter-count">300/300</span></div>';
+		modifyUI += '<div id="mre_second" class="align-right">';
+		modifyUI += '<input type="submit" value="수정" class="button10">';
+		modifyUI += ' <input type="button" value="취소" class="re-reset">';
 		modifyUI += '</div>';
 		modifyUI += '<hr size="1" noshade width="96%">';
 		modifyUI += '</form>';
@@ -181,7 +183,7 @@ $(function(){
 		remain += '/300';
 		
 		//문서 객체에 반영
-		$('#mreply_first .letter-count').text(remain);
+		$('#mre_first .letter-count').text(remain);
 		
 	});
 	//수정 폼에서 취소 버튼 클릭시 수정 폼 초기화
@@ -191,10 +193,10 @@ $(function(){
 	//수정 폼 초기화
 	function initModifyForm(){
 		$('.sub-item').show();
-		$('#mreply_form').remove();
+		$('#mre_form').remove();
 	}
 	//댓글 수정
-	$(document).on('submit','#mreply_form',function(event){
+	$(document).on('submit','#mre_form',function(event){
 		if($('#mreply_content').val().trim()==''){
 			alert('내용을 입력하세요!');
 			$('#mreply_content').val('').focus();
@@ -216,7 +218,7 @@ $(function(){
 				if(param.result=='logout'){
 					alert('로그인해야 수정할 수 있습니다.');
 				}else if(param.result=='success'){
-					$('#mreply_form').parent()
+					$('#mre_form').parent()
 					              .find('p')
                                   .html($('#mreply_content').val()
                                          .replace(/</g,'&lt;')
@@ -225,7 +227,7 @@ $(function(){
                                          .replace(/\r/g,'<br>')
                                          .replace(/\n/g,'<br>'));
                     //최근 수정일 처리
-                    $('#mreply_form').parent()
+                    $('#mre_form').parent()
                                   .find('.modify-date')
                                   .text('최근 수정일 : 5초미만');
 					//수정폼 초기화
@@ -237,14 +239,14 @@ $(function(){
 				}
 			},
 			error:function(){
-				alert('네트워크 오류 발생');
+				alert('네트워크 오류 발생 수정 ');
 			}
 		});
 		//기본 이벤트 제거
 		event.preventDefault();
 	});
 	//댓글 삭제
-	$(document).on('click','.delete-btn',function(){
+	$(document).on('click','.button11',function(){
 		//댓글 번호
 		let reply_num = $(this).attr('data-num');
 		

@@ -6,13 +6,13 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/product_search.js"></script>
 <div class="page-main">
 	<h2>상품 목록</h2>
-	<form id="search_form" action="admin_list.do" method="get">
+	<form id="search_form" action="admin_product.do" method="get">
 		<ul class="search">
 			<li>
 				<select name="keyfield">
-					<option value="1" <c:if test="${param.keyfield==1}">selected</c:if> >상품명</option>
-					<option value="2" <c:if test="${param.keyfield==2}">selected</c:if> >내용</option>
-					<option value="3" <c:if test="${param.keyfield==3}">selected</c:if> >상품명+내용</option>
+					<option value="" <c:if test="${param.keyfield==''}">selected</c:if> >전체</option>
+					<option value="0" <c:if test="${param.keyfield==0}">selected</c:if> >식품</option>
+					<option value="1" <c:if test="${param.keyfield==1}">selected</c:if> >생활용품</option>
 				
 				</select>
 			</li>

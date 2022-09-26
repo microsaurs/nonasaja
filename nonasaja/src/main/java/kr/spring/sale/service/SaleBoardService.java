@@ -24,6 +24,6 @@ public interface SaleBoardService {
 	public void insertReply(SaleReplyVO boardReply);
 	public void updateReply(SaleReplyVO boardReply);
 	public void deleteReply(Integer reply_num);
-
+	public void deleteReplyByBoardNum(Integer board_num);
 
 }

@@ -13,10 +13,8 @@ public class SaleReplyVO {
  
 	
 	private String id; //아이디
-	private String nick_name;//별명
+	private String nickname;//별명
 	  
-	
-	 
 	public int getReply_num() {
 		return reply_num;
 	}
@@ -81,18 +79,18 @@ public class SaleReplyVO {
 		this.id = id;
 	}
 
-	public String getNick_name() {
-		return nick_name;
+	public String getNickname() {
+		return nickname;
 	}
 
-	public void setNick_name(String nick_name) {
-		this.nick_name = nick_name;
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 
 	@Override
 	public String toString() {
 		return "BoardReplyVO [reply_num=" + reply_num + ", reply_content=" + reply_content + ", reply_date=" + reply_date + ", reply_mdate="
 				+ reply_mdate + ", board_num=" + board_num + ", mem_num=" + mem_num + ", parent_num" + parent_num + ", id=" + id
-				+ ", nick_name=" + nick_name + "]";
+				+ ", nickname=" + nickname + "]";
 	}
 }

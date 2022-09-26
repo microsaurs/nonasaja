@@ -63,7 +63,7 @@ li#detail_li{
 	float: left;
     width: 310px;
     height: 310px;
-    margin: 50px 50px 50px 13%;
+    margin: 50px 10px 50px 13%;
 }
 .product-detail{
 	float: left;
@@ -72,7 +72,7 @@ li#detail_li{
 }
 form#product_cart{
 	border: none;
-    padding: 0 0 0 20px;
+    padding: 0 0 0 40px;
 }
 
 .product-detail ul{
@@ -221,8 +221,15 @@ div#review_box{
 #last_hr{
 	margin: 80px 0 40px 0;
 }
-
-
+/*이미지 슬라이드*/
+.off{
+	display: none;
+}
+.next{
+	width: 30px;
+    margin: 190px 0 0 0;
+    float: left;
+}
 
 
 

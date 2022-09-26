@@ -4,6 +4,7 @@
 <!-- 내용 시작 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/otherLogin.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/requiredCheckbox.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/register.css">
 <div class="register-wrap">
 	<h2>회원가입</h2>
@@ -60,7 +61,7 @@
 			</li>
 			<li class="contract-li">
 				<div class="contract-div">
-					<input type="checkbox"> <span>약관에 동의함 (필수)</span>
+					<input type="checkbox" id="required1"> <span>약관에 동의함 (필수)</span>
 					<div class="border">
 						제 1장 총칙<br><br>제1 조(목적)<br>
 						본 약관은 국가공간정보 포털 웹사이트(이하 "국가공간정보포털")가 제공하는 모든 서비스(이하 "서비스")의
@@ -82,7 +83,7 @@
 						본 약관은 국가공간정보 포털 웹사이트(이하 "국가공간정보포털")가 제공하는 모든 서비스(이하 "서비스")의
 						이용조건 및 절차, 회원과 국가공간정보포털의 권리, 의무, 책임사항과 기타 필요한 사항을 규정함을 목적으로 합니다.
 					</div>
-					<input type="checkbox"> <span>개인정보 수집 및 이용에 대한 안내 (선택)</span>
+					<input type="checkbox" id="required2"> <span>개인정보 수집 및 이용에 대한 안내 (선택)</span>
 					<div class="border">
 						가. 개인정보의 수집 및 이용 목적<br>
 						[1] 국가공간정보포털은 다음의 목적을 위하여 개인정보를 처리합니다. 처리하고 있는 개인정보는 다음의 목적 이외의 용도로는 이용되지 않으며,

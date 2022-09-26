@@ -50,6 +50,7 @@ public class SaleBoardServiceImpl implements SaleBoardService{
 
 	@Override
 	public void deleteBoard(Integer board_num) {
+		boardMapper.deleteReplyByBoardNum(board_num);
 		//부모글 좋아요 삭제
 		//boardMapper.deleteFavByBoardNum(board_num);
 		//부모글 삭제
@@ -75,7 +76,7 @@ public class SaleBoardServiceImpl implements SaleBoardService{
 	@Override
 	public SaleReplyVO selectReply(Integer reply_num) {
 		// TODO Auto-generated method stub
-		return null;
+		return boardMapper.selectReply(reply_num);
 	}
 
 	@Override
@@ -86,13 +87,16 @@ public class SaleBoardServiceImpl implements SaleBoardService{
 	@Override
 	public void updateReply(SaleReplyVO boardReply) {
 		// TODO Auto-generated method stub
-		
+		boardMapper.updateReply(boardReply);
 	}
 
 	@Override
 	public void deleteReply(Integer reply_num) {
 		// TODO Auto-generated method stub
-		
+		boardMapper.deleteReply(reply_num);
+	}
+	public void deleteReplyByBoardNum(Integer board_num) {
+		boardMapper.deleteReplyByBoardNum(board_num);
 	}
 
 }

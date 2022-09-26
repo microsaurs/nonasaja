@@ -122,6 +122,7 @@ public class ProductController {
 							@RequestParam(value = "pageNum", defaultValue = "1") int currentPage) {
 			logger.debug("<<product_num>> : " +product_num);
 			ProductVO productVO = productService.selectProduct(product_num);
+			productVO.setWaitCount(orderService.selectWaitCount(product_num));
 			int count = reviewService.selectReviewCount(product_num);
 			PagingUtil page = new PagingUtil(currentPage, count, rowCount, pageCount, "detail.do", null);
 			List<ReviewVO> reviewList = null;

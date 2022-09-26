@@ -137,7 +137,7 @@ public class MemberAdminController {
 			logger.debug("<<count>> : " + count);
 
 			// 페이지 처리
-			PagingUtil page = new PagingUtil(keyfield, keyword, currentPage, count, rowCount, pageCount, "admin_list.do");
+			PagingUtil page = new PagingUtil(keyfield, keyword, currentPage, count, rowCount, pageCount, "admin_product.do");
 
 			List<ProductVO> list = null;
 			if (count > 0) {
