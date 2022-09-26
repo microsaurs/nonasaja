@@ -49,6 +49,7 @@ $(function(){
 						//로그인한 회원번호와 댓글 작성자 회원번호가 일치
 						output += ' <input type="button" data-num="'+ item.reply_num +'" value="삭제" class="button11">';
 						output += ' <input type="button" data-num="'+ item.reply_num +'" value="수정" class="button10">';
+						output += ' <input type="button" data-num="'+ item.reply_num +'" value="답글" class="button12">';
 					}
 					
 					if(item.reply_date){
@@ -195,6 +196,9 @@ $(function(){
 		$('.sub-item').show();
 		$('#mre_form').remove();
 	}
+	//대댓글 버튼만
+	
+	
 	//댓글 수정
 	$(document).on('submit','#mre_form',function(event){
 		if($('#mre_content').val().trim()==''){

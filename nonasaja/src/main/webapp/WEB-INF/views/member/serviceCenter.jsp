@@ -17,10 +17,10 @@
 					<button type="submit" id="searchicon1"><img src="${pageContext.request.contextPath}/images/돋보기.png" width="20" height="25"></button>
 				</form>
 				<div class="quick-search">
-					<a href="#">#구매</a>
-					<a href="#">#충전</a>
-					<a href="#">#배송지</a>
-					<a href="#">#환불</a>
+					<a href="serviceCenter.do?type=1">#구매</a>
+					<a href="serviceCenter.do?type=2">#충전</a>
+					<a href="serviceCenter.do?type=8">#배송지</a>
+					<a href="serviceCenter.do?type=1">#환불</a>
 				</div>
 			</div>
 		</div>
@@ -74,7 +74,7 @@
 	<div class="clear"></div>
 	<div class="summary">
 		<c:if test="${empty param.type or param.type==1}">
-		<details>
+		<details open>
 			<summary>공동구매에 어떻게 참여하나요?</summary>
 				<div class="hide">
 					<p>
@@ -114,7 +114,7 @@
 		</details>
 		</c:if>
 		<c:if test="${param.type==2}">
-		<details>
+		<details open>
 			<summary>사자머니 충전은 어떻게 하나요?</summary>
 				<div class="hide">
 					<p>사자머니 충전은 MY페이지-충전에서 하실 수 있습니다. 현재 사자머니는 카카오페이로 충전하실 수 있습니다.</p>
@@ -146,7 +146,7 @@
 		</details>
 		</c:if>
 		<c:if test="${param.type==3}">
-		<details>
+		<details open>
 			<summary>세일 정보가 업로드 되었는데 적용이 되지않아요.</summary>
 				<div class="hide">
 					<p>세일정보는 관리자가 직접 등록하기 때문에 실시간으로 세일 정보가 반영되지 않을 수 있습니다. 이에 관한 문의 사항은 고객센터 전화번호로 연락주시기 바랍니다.</p>
@@ -172,7 +172,7 @@
 		</details>
 		</c:if>
 		<c:if test="${param.type==4}">
-		<details>
+		<details open>
 			<summary>중고거래는 어떻게 진행하나요?</summary>
 				<div class="hide">
 					<p>판매자가 중고거래 게시판에 글을 올리면 개인 연락처나 댓글을 통해 거래가 진행됩니다. 민감한 개인정보가 노출되지 않도록 유의하세요.</p>
@@ -204,7 +204,7 @@
 		</details>
 		</c:if>
 		<c:if test="${param.type==5}">
-		<details>
+		<details open>
 			<summary>동호회 가입하는 방법이 뭔가요?</summary>
 				<div class="hide">
 					<p>'동호회' 게시판에서 동호회 모집 글을 확인하신 후 글 하단의 '가입하기'을 누르면 동호회에 가입됩니다. </p>

@@ -126,7 +126,7 @@ $(function(){
 									
 								}
 								if(item.reply_date){
-									output2 += '<span class="modify-date">등록일 ' + item.reply_date + '</span>';
+									output2 += '<span class="modify-date">등록일 ' + item.rereply_date + '</span>';
 								}
 								
 								output2 += '<hr size="1"  width="100%" noshade>';
@@ -357,8 +357,10 @@ $(function(){
 			rereply_form += '<input type="hidden" name="reply_num"  value=' +re_num +'>';
 			rereply_form += '<input type="hidden" name="club_num"  value=' +club_num +'>';
 			rereply_form += '<textarea rows="10" cols="80" id="rereply_content" name="rereply_content" placeholder="답글을 입력해주세요"></textarea>';
-			rereply_form += '<input type="submit" value="등록">';
+			rereply_form += '<div class="align-right">';
+			rereply_form += '<input type="submit" value="등록" class="rereply-btn2">';
 			rereply_form += '<input type="button" value="취소" class="cancle-btn">';
+			rereply_form += '</div>';
 			rereply_form += '</form>';
 			
 			$(this).parents('.item').find('.rereply-text').append(rereply_form);

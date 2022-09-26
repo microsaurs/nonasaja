@@ -71,7 +71,7 @@
 				<td><fmt:formatNumber value="${point.remain}"/>원</td>
 				<td>${point.reg_date}</td>
 			</tr>
-		</c:forEach>
+			</c:forEach>
 	</table>
 	</div>
 </div>
