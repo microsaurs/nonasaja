@@ -134,6 +134,16 @@ li {
   color:white;
   cursor: pointer;
 }
+.button12{
+  margin-right: 110px;
+  width: 40px;
+  height: 25px;
+  border:0;
+  background:#EABF5E;
+  outline:0;
+  border-radius: 6px;
+  color:white;
+}
 .my-photo1{
 	object-fit: cover;
     object-position: top; /*정사각형이 아니라 직사각형일 경우 원 안에 보여지게 할 중심 이미지의 위치를 지정*/

@@ -38,15 +38,15 @@
 			<tr>
 				<th colspan="5"><h3>동호회</h3></th> 
 			</tr>
-			<tr>
-				<td>
+			<tr  class="club-category-width">
+				<td  class="club-category-width">
 					<c:if test="${type == 1}">
-					<b><a href="myPageClub.do?type=1">참여중인 동호회</a></b> |
-					<a href="myPageClub.do?type=2">찜한 동호회</a>
+					<b><a href="myPageClub.do?type=1">참여중</a></b> |
+					<a href="myPageClub.do?type=2">찜</a>
 					</c:if>
 					<c:if test="${type == 2}">
-					<a href="myPageClub.do?type=1">참여중인 동호회</a> |
-					<b><a href="myPageClub.do?type=2">찜한 동호회</a></b>
+					<a href="myPageClub.do?type=1">참여중</a> |
+					<b><a href="myPageClub.do?type=2">찜</a></b>
 					</c:if>
 				</td>
 			</tr>
@@ -54,7 +54,7 @@
 			<tr>
 				<!-- 참여중인 동호회 -->
 				<c:if test="${!empty clubList}">
-				<td><b>모집여부</b></td>
+				<td class="club-status"><b>모집여부</b></td>
 				<td><b>카테고리</b></td>
 				<td><b>동호회명</b></td>
 				<td><b>동호회제목</b></td>
@@ -101,7 +101,7 @@
 					</a>
 				</td>
 				<td>
-						<input type="button" class="button4" value="탈퇴" 
+						<input type="button" class="button444" value="탈퇴" 
 						   data-joinnum="${board.join_num}">
 				</td>
 			</tr>

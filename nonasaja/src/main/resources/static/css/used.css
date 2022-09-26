@@ -20,7 +20,7 @@ ul.radio-button li{
 	padding-top:30px;
 }
 .input-box{
-	margin-left:80px;
+	margin-left:75px;
 	width:70%;
 }
 .input-box1{
@@ -376,6 +376,16 @@ h2{
   border-radius: 6px;
   color:white;
   float:right;
+}
+.button12{
+  width: 40px;
+  height: 25px;
+  border:0;
+  background:#EABF5E;
+  outline:0;
+  border-radius: 6px;
+  color:white;
+  float:left;
 }
 .button9-align{
 	margin-left:75px;

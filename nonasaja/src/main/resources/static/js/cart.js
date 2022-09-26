@@ -24,6 +24,20 @@ $(function(){
 			}
 		});
 	});
+	//=========장바구니 체크에 따라 전체 가격 변경=========
+	let all_total = $('#all_total').val();
+	all_total = Number(all_total);
+	$('.cart_check').change(function(){
+		
+		if($(this).is(':checked')){
+			all_total += Number($(this).attr('data-price'));
+		}else{
+			all_total -= Number($(this).attr('data-price'));
+		}
+		$('#new_price').text('');
+		$('#new_price').text(all_total);
+	});
+	
 	
 	//=========장바구니 상품 수량 변경==========//
 	$('.cart-modify').on('click',function(){
