@@ -318,7 +318,82 @@ ul.detail-info #img{
   margin-right:3px;
   margin-bottom:3px;
 }
+.delete-btn2{
+  width: 40px;
+  height: 25px;
+  border:0;
+  background:#9B8F72;
+  
+  outline:0;
+  border-radius: 6px;
+  color:white;
+  float:right;
+}
+.modify-btn2{
+  width: 40px;
+  height: 25px;
+  border:0;
+  background:#665E4D;
+  position:relative;
+  outline:0;
+  border-radius: 6px;
+  color:white;
+  float:right;
+  margin-right:3px;
+  margin-bottom:3px;
+}
+
+/* 답글쓰기버튼 */
+.rereply-btn{
+  width: 40px;
+  height: 25px;
+  border:0;
+  background:#EABF5E;
+  outline:0;
+  border-radius: 6px;
+  color:white;
+  float:left;
+  margin-bottom:5px;
+}
+/* 답글등록버튼 */
+.rereply-btn2{
+   width: 40px;
+  height: 25px;
+  border:0;
+  background:#9B8F72;
+  margin-bottom:3px;
+  outline:0;
+  border-radius: 6px;
+  color:white;
+  float:right;
+}
+/* 답글취소버튼 */
+.cancle-btn{
+  width: 40px;
+  height: 25px;
+  border:0;
+  background:#665E4D;
+  position:relative;
+  outline:0;
+  border-radius: 6px;
+  color:white;
+  float:right;
+  margin-right:3px;
+  margin-bottom:3px;
+}
 .re-reset{
+  width: 40px;
+  height: 25px;
+  border:0;
+  background:#9B8F72;
+  margin-right:3px;
+  outline:0;
+  border-radius: 6px;
+  color:white;
+  float:right;
+   margin-bottom:3px;
+}
+.re-reset2{
   width: 40px;
   height: 25px;
   border:0;
