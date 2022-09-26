@@ -43,18 +43,18 @@ $(function(){
 					
 					output += '<div class="sub-item">';
 					output += '<p>' + item.reply_content.replace(/\r\n/g,'<br>') + '</p>';
-					
-					if(item.reply_date){
-						output += '<span class="modify-date">등록일 : ' + item.reply_date + '</span>';
-					}
-					
+			
 					if(param.user_num==item.mem_num){
 						//로그인한 회원번호와 댓글 작성자 회원번호가 일치
 						output += ' <input type="button" data-num="'+ item.reply_num +'" value="수정" class="button10">';
 						output += ' <input type="button" data-num="'+ item.reply_num +'" value="삭제" class="button11">';
 					}
-					output += ' <input type="button" data-num="'+ item.reply_num +'" value="답글" class="rereply-btn">';
-					output += '<div class="rereply-text"></div>';
+					
+					if(item.reply_date){
+						output += '<span class="modify-date">등록일 : ' + item.reply_date + '</span>';
+					}
+					
+
 					output += '<hr size="1" noshade>';
 					output += '</div>';
 					output += '</div>'; 
