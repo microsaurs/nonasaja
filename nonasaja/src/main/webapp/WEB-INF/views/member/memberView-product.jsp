@@ -93,6 +93,7 @@ $(document).ready(function(){
 		<!-- 목록 시작-->
 		<!-- 장바구니 목록 -->
 			<c:if test="${type==1}">
+			<input type="hidden" value="${all_total}" id="all_total">
 			<form action="/order/cart_order.do" id="cartOrder" method="post">
 			<table>
 				<c:if test="${all_total <= 0}">
@@ -113,7 +114,7 @@ $(document).ready(function(){
 				<c:forEach var="cart" items="${list}">
 				<tr>
 					<td>
-						<input type="checkbox" name="cart_num" value="${cart.cart_num}" checked="checked"
+						<input class="cart_check" type="checkbox" name="cart_num" value="${cart.cart_num}" data-price="${cart.sub_total}" checked="checked"
 								<c:if test="${cart.productVO.status == 1 }">disabled</c:if>>
 					</td>
 					<td>
@@ -131,7 +132,7 @@ $(document).ready(function(){
 					</td>
 					<td>
 						<input type="number" name="quantity" min="1" max="99999" value="${cart.quantity}">
-						<input type="button" value="변경" class="button5" data-cartnum="${cart.cart_num}"
+						<input type="button" value="변경" class="button5 cart-modify" data-cartnum="${cart.cart_num}"
 						data-productnum="${cart.product_num}">
 					</td>
 					<td>
@@ -144,7 +145,7 @@ $(document).ready(function(){
 				</c:forEach>
 				<tr>
 					<td colspan="6" class="align-right">
-						<b>총구매금액</b> <fmt:formatNumber value="${all_total}"/>원
+						<b>총구매금액</b><span id="new_price"><fmt:formatNumber value="${all_total}"/></span>원
 						<input type="submit" value="주문하기" class="button8">
 					</td>
 				</tr>
