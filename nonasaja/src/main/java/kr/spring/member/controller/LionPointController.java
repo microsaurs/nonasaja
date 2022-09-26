@@ -128,7 +128,7 @@ public class LionPointController {
 			
 			ReadyResponse ready = (ReadyResponse)session.getAttribute("ready");
 			String tid = ready.getTid();
-			
+			logger.debug("<tid>..."+tid);
 			
 			String parameter = "cid=TC0ONETIME" // 가맹점 코드
 					+ "&tid="+ tid // 결제 고유번호, 결제 준비 API 응답에 포함
