@@ -66,7 +66,7 @@
 					</li>
 					<li>
 						<label for="price">가격</label>
-						<input type="text" placeholder="무료나눔은0, 물물교환은 1이라고 입력해주세요." class="input-box"/>
+						<input type="text" name="price" value="${usedVO.price}" placeholder="무료나눔은0, 물물교환은 1이라고 입력해주세요." class="input-box"/>
 						<form:errors path="price" cssClass="error-color"/>
 					</li>
 					
