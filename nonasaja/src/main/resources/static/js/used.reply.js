@@ -45,6 +45,7 @@ $(function(){
 					
 					output += '<div class="sub-item">';
 					output += '<p>' + item.reply_content.replace(/\r\n/g,'<br>') + '</p>';
+					output += '<input type="button" data-num="' + item.reply_num + '" value="답글" class="button12">';
 					
 					if(param.user_num==item.mem_num){
 						//로그인한 회원번호와 댓글 작성자 회원번호가 일치
