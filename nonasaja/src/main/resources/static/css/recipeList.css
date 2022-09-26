@@ -1,60 +1,92 @@
-.item-space .horizontal-area{
-	margin:2px;
-	padding:3px;
-	width:300px;
-	height:420px;
-	float:left;
-	overflow:hidden;
-	text-align:center;
+
+#recipe_data1 {
+  margin-left: 40px;
 }
-/* .item-space .horizontal-area img{
-	width:295px;
-	height:275px;
-} */
-#recipeList_food_photo {
-	width:295px;
-	height:275px;
-	border-radius: 10px;
+#recipe_data2 {
+  margin:30px 0 30px 0;
 }
-#recipeList_food{
+#recipe_data3{
+	margin-bottom: 150px;	
+}
+li { 
+	margin-right: 25px;
+	margin-bottom: 5px;
 	font-size: 16px;
 }
-.item-space .horizontal-area span{
-	padding:5px;
-	margin:5px;
+#recipe_title{
+    font-weight: normal;
+    font-size: 18px;
+    letter-spacing: 0px;
+	margin:30px 0 10px 0;
+	opacity: 0.8;
 }
-.item-space .float-clear{
+#recipe_food{
+	font-size: 25px;
+	margin:0 auto;
+}
+.page-main1{
+	width:98%;
+	margin:0 auto;
+}
+#recipe1{
+	font-size: 17px;
+	margin:10px 0 10px 0;
+	width:450px;
+	float:left;
+}
+
+.title-align{
+	padding:35px 0 10px 30px;
+	margin: 50px 0 0 0 ;
+	font-size: 25px;
+}
+.span-align{
+	padding:35px;
+}
+#spantag-font{
+	font-size:28px;
+}
+#recipe_number{
+	padding:10px 30px 10px 0;
+	width:25px;
+	height:25px;
+	float:left;
+}
+.recipe-margin{
+	padding:20px;
+}
+#recipe_photo{
+	margin-bottom: 50px;
+	margin-right: 20px;
+	border-radius: 10px;
+	float:left;
+}
+#recipe_hr{
+	width:95%;
+	size:1px;
+	background:#BDBDBD;
+	height:1px;
+	border:0;
+	opacity:0.4;
+}
+#recipe_id{
+	font-family: 'Noto Sans KR', sans-serif;
+}
+#lionHead{
+	max-width: 30%;
+}
+.favicon{
+	margin:0 auto;
+	padding:5px 0 0 0 ;
+}
+.favdivsize{
 	clear:both;
-}
-
-.item-detail li{
-	padding:0 0 5px 0;
-}
-.item-detail form{
-	border:none;
-}
-#item_total_txt{
-	color:#000;
-	font-weight:bold;
-}
-.quantity-width{
-	width:40px;
-	margin-bottom:3px;
-}
-.sold-out{
-	color:red;
-}
-#recipeList_level{
-	width:15px;
-}
-
-#level{
-	margin-top: 12px;
-	opacity: 0.5;
+	width:50px;
+	float:left;
 }
 .button{
 	font-family: 'Dongle', sans-serif;
-	font-size:14px;
+	font-size:29px;
 	padding-top:10px;
 	padding-bottom:10px;
 	padding-left:15px;
@@ -68,7 +100,7 @@
 	border-radius:22px;
 	cursor: pointer;
 }
-.button5{
+.button6{
   width: 40px;
   height: 25px;
   border:0;
@@ -78,8 +110,8 @@
   border-radius: 6px;
   color:white;
 }
-.button4{
-  width: 60px;
+.button7{
+  width: 40px;
   height: 25px;
   border:0;
   background:#665E4D;
@@ -88,24 +120,181 @@
   border-radius: 6px;
   color:white;
 }
-#keyfield{
-	width:80px;
-	padding: 3px;
-	border: 1.5px solid #878787;
-	border-radius:5px;
-	margin-left: 40px;
-	margin-bottom: 40px;
+.button8{
+  width: 40px;
+  height: 25px;
+  border:0;
+  background:#EABF5E;
+  position:relative;
+  outline:0;
+  border-radius: 6px;
+  color:white;
+  cursor: pointer;
 }
-#searchbar{
-	border:1.5px solid #878787;
-	border-radius: 5px;
-	width:210px;
-	height:27px;
+.my-photo1{
+	object-fit: cover;
+    object-position: top; /*정사각형이 아니라 직사각형일 경우 원 안에 보여지게 할 중심 이미지의 위치를 지정*/
+    border-radius: 50%;/*사각형의 모서리 둥근 정도를 지정하는 속성인데 50%를 지정하면 완전한 원이 됨*/
+	margin: 0;
 }
-
-.writebutton{
-	text-align: center;	
-	width:300px;
-	height:130px;
-	margin-bottom: 20px;
+.userinformation{
+	float:left;
+	padding:15px 0 10px 20px;
+	margin-top:30px;
+	font-size:18px;
+}
+.writeinfo-dtail{
+	clear:both;
+	float:left;
+	text-align:right;
+	margin-bottom:10px;
+}
+.userphoto{
+	float:left;
+	padding:20px 0 10px 20px;
+	margin:0;
+}
+.userinformation{
+	float:left;
+	padding:20px 0 10px 10px;
+	margin-top:10px;
+	font-size:16px;
+}
+.recipetitleimg{
+	width:400px;
+	height:300px;
+	float:left;
+	padding: 20px 35px 15px 15px;
+	
+}
+.clear-both{
+	clear:both;
+}
+.title-space{
+	padding: 0 0 10px 0;
+}
+.userwriteinformation{
+	padding:2px 5px 0 10px;
+	float:right;
+	text-align:right;
+}
+.button-align{
+	clear:both;
+	float:right;
+	padding:10px 0;
+}
+.buttonareaalign{
+	padding:0 0 20px 0;
+}
+.alignfavcount{
+	margin-left:18px;
+}
+/*댓글*/
+.page-main div#reply_div1{
+	padding:15px 10px 40px 10px;
+	margin-top:100px;
+	background-color:#E8E8DA;
+}
+.page-main span.re-title1{
+	color:#513810;
+	font-size:13pt;
+	line-height:200%;
+	margin: 0 auto;
+	padding: 1px 0 10px 5px;
+	float:left;
+}
+.replyicon{
+	padding:5px 5px;
+	float:left;
+}
+.page-main form#re_form1{
+	width:920px;
+	border:none;
+	margin:0
+}
+.page-main textarea.rep-content1{
+	width:98%;
+	height:60px;
+	resize:vertical;
+}
+.button9{
+  width: 40px;
+  height: 25px;
+  border:0;
+  background:#EABF5E;
+  outline:0;
+  border-radius: 6px;
+  color:white;
+  float:right;
+}
+.button9-align{
+	margin-left:75px;
+}
+.item{
+	margin:15px;
+}
+.nicknamemargin{
+	margin:0 auto;
+	padding: 8px 0 10px 10px;
+	float:left;
+}
+.my-photo2{
+	object-fit: cover;
+    object-position: top; /*정사각형이 아니라 직사각형일 경우 원 안에 보여지게 할 중심 이미지의 위치를 지정*/
+    border-radius: 50%;/*사각형의 모서리 둥근 정도를 지정하는 속성인데 50%를 지정하면 완전한 원이 됨*/
+	margin: 0;
+	float:left;
+}
+.sub-item{
+	clear:both;
+	padding: 5px 0 0 5px;
+	font-size:15px;
+}
+.modify-date{
+	margin-top:10px;
+	clear:both;
+	font-size:12px;
+	float:right;
+}
+.button10{
+  width: 40px;
+  height: 25px;
+  border:0;
+  background:#9B8F72;
+  margin-right:3px;
+  outline:0;
+  border-radius: 6px;
+  color:white;
+  float:right;
+  cursor: pointer;
+}
+.button11{
+  width: 40px;
+  height: 25px;
+  border:0;
+  background:#665E4D;
+  position:relative;
+  outline:0;
+  border-radius: 6px;
+  color:white;
+  float:right;
+}
+.re-reset{
+  width: 40px;
+  height: 25px;
+  border:0;
+  background:#665E4D;
+  outline:0;
+  border-radius: 6px;
+  color:white;
+  float:right;
+  margin-right:3px;
+}
+#mre_second{
+	padding-left:65px;
+}
+#mre_form{
+	width:920px;
+	border:none;
+	margin:0;
 }

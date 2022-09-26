@@ -98,14 +98,14 @@
 		<div class="accordion" id="accordionExample">
 			<div class="accordion-item">
 				<h2 class="accordion-header" id="headingThree">
-					<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree"><Strong id="guide_font">지역 정보 입력</Strong><span id="guide_span">지역소식 선택시 지역정보를 입력해주세요!</span></button>
+					<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree"><Strong id="guide_font">지역 정보 입력</Strong><span id="guide_span">지역소식 선택시 지역정보를 상세히 입력해주세요!</span></button>
 				</h2>
 				<div id="collapseThree" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
 					<div class="accordion-body">
 		<ul>
 			<li>
 				<label for="region">지역 정보&emsp;</label>
-				<form:input path="region" placeholder=" 예)ㅇㅇ시ㅇㅇ구ㅇㅇ동" id="region"/>
+				<form:input path="region" placeholder=" 예)ㅇㅇ시ㅇㅇ구ㅇㅇ동 ..." id="region"/>
 				<form:errors path="region" 
 				             cssClass="error-color"/>
 			</li>
