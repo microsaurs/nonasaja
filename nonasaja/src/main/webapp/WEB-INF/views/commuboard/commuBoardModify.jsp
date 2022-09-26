@@ -65,7 +65,7 @@
 		<div class="accordion" id="accordionExample">
 			<div class="accordion-item">
 				<h2 class="accordion-header" id="headingTwo">
-					<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"><Strong id="guide_font">기본 정보 입력</Strong><span id="guide_span">회원들과의 원활한 소통을 위해 꼼꼼하게 입력해주세요!</span></button>
+					<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"><Strong id="guide_font">기본 정보 입력</Strong><span id="guide_span">지역소식 선택시 지역정보를 상세히 입력해주세요!</span></button>
 				</h2>
 				<div id="collapseTwo" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
 					<div class="accordion-body">
