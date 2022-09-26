@@ -8,6 +8,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/saleUpdate.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/sale.css">
 <style>
 .ck-editor__editable_inline{
 	min-height:250px;
@@ -23,48 +24,21 @@
 	        enctype="multipart/form-data">
 	    <form:hidden path="board_num"/>    
 	    <form:errors element="div" cssClass="error-color"/>    
-		<ul>
-			<li>
-				<label for="title">제목</label>
-				<form:input path="title"/>
-				<form:errors path="title" 
-				             cssClass="error-color"/>
-			</li>
-			<li>
-				<label for="content">내용</label>
-				<form:textarea path="content"/>
-				<form:errors path="content" 
-				             cssClass="error-color"/>
-				<script>
-				 function MyCustomUploadAdapterPlugin(editor) {
-					    editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
-					        return new UploadAdapter(loader);
-					    }
-					}
-				 
-				 ClassicEditor
-		            .create( document.querySelector( '#content' ),{
-		            	extraPlugins: [MyCustomUploadAdapterPlugin]
-		            })
-		            .then( editor => {
-						window.editor = editor;
-					} )
-		            .catch( error => {
-		                console.error( error );
-		            } );
-			    </script>
-			</li>
-			<li>
-				<input type="date" name="deadline" id="deadline">
-			</li>
-			<li>
+	    
+	    <div>
+	    	<div class="float_image">
 				<label for="upload">대표사진</label>
-				<input type="file" name="upload" id="upload">
+				
 				<c:if test="${!empty saleVO.imgname}">
-				<div id="file_detail">
-					(${saleVO.imgname})파일 등록
-					<input type="button" value="파일삭제"
-					                      id="file_del">
+					<img class="product-img" src="${context.request.contextPath}/sale/imageView.do?board_num=${saleVO.board_num}" style="max-width:400px;">
+				</c:if>
+				<c:if test="${empty saleVO.imgname}">	
+					<img src="${pageContext.request.contextPath}/images/empty.jpg" class="product-img" id="img2" name="img2" width="350" height="300">
+				</c:if>
+				
+				<input type="file" name="upload" id="upload"  class="location1">
+				<div id="file_detail"> (${saleVO.imgname})
+					<input type="button" value="파일삭제" id="file_del" class="button15">
 				</div>
 				<script type="text/javascript">
 					$(function(){
@@ -95,14 +69,57 @@
 						});
 					});
 				</script>
-				</c:if>
+				</div>
+			
+	    
+			<div class="float_text"> <br>
+			<ul class="ul-text">
+			<li>
+				<label for="title">제목</label>
+				<form:input path="title" placeholder="제목을 입력하세요." class="input-box"/>
+				<form:errors path="title" 
+				             cssClass="error-color"/>
 			</li>
+			<li>
+				<label for="deadline">세일 기한</label>
+				<input type="date" name="deadline" id="deadline" class="input-box1">
+			</li>
+			</ul>
+			</div>   
+		</div>
+		<br>
+		<div class="location2">
+			<li>
+				<label for="content">내용</label>
+				<form:textarea path="content"/>
+				<form:errors path="content" 
+				             cssClass="error-color"/>
+				<script>
+				 function MyCustomUploadAdapterPlugin(editor) {
+					    editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+					        return new UploadAdapter(loader);
+					    }
+					}
+				 
+				 ClassicEditor
+		            .create( document.querySelector( '#content' ),{
+		            	extraPlugins: [MyCustomUploadAdapterPlugin]
+		            })
+		            .then( editor => {
+						window.editor = editor;
+					} )
+		            .catch( error => {
+		                console.error( error );
+		            } );
+			    </script>
+			</li>
+		</div>
+			
 		
-		</ul>    
+
 		<div class="align-center">
-			<form:button>전송</form:button>
-			<input type="button" value="목록"
-			            onclick="location.href='saleBoardList.do'">
+		<form:button class="button2">등록</form:button>
+		<input type="button" value="목록" onclick="location.href='saleBoardList.do'" class="button1">
 		</div>    
 	</form:form>
 </div>
