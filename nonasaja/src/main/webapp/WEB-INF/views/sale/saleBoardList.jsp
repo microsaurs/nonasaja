@@ -13,7 +13,7 @@
 	<img src="${pageContext.request.contextPath}/images/saleinfomain.png" width="700px">
 </div>
 	<div class="align-center">
-		<c:if test="${!empty user}">
+		<c:if test="${user.mem_num == 3}">
 			<a href="${pageContext.request.contextPath}/sale/saleBoardWrite.do"><img src="${pageContext.request.contextPath}/images/salewrite.png" class="writebutton"></a>
 		</c:if>
 

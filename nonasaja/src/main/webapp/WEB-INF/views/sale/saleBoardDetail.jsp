@@ -11,12 +11,7 @@
 <div class="page-main">
 	<h2>${board.title}</h2>
 		<div class="userphoto">
-			<c:if test="${!empty board.photo_name}">
-			<img src="${pageContext.request.contextPath}/member/viewProfile.do?mem_num=3" width="50px">
-			</c:if>
-			<c:if test="${empty board.photo_name}">
-			<img src="${pageContext.request.contextPath}/images/face.png" width="40" height="40" class="my-photo">
-			</c:if>
+			<img src="${pageContext.request.contextPath}/member/viewProfile.do?mem_num=286" width="50px">
 		</div>
 		<div class="userinformation">
 			${board.nick_name}
