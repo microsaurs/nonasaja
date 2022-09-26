@@ -16,16 +16,15 @@
 		 			b.commu_title LIKE '%' || #{keyword} || '%'
 		 		</if>
 		 		<if test="keyfield == 2">
-		 			m.id LIKE '%' || #{keyword} || '%' OR
-		 			m.nickname LIKE '%' || #{keyword} || '%'
+					b.region LIKE '%' || #{keyword} || '%'
 		 		</if>
 		 		<if test="keyfield == 3">
 		 			b.commu_content LIKE '%' || #{keyword} || '%'
 		 		</if>
-<!-- 		 		<if test="keyfield == 4">
-		 			b.commu_title LIKE '%' || #{keyword} || '%' OR
-		 			b.commu_content LIKE '%' || #{keyword} || '%'
-		 		</if> -->
+		 		<if test="keyfield == 4">
+	 				m.id LIKE '%' || #{keyword} || '%' OR
+	 				m.nickname LIKE '%' || #{keyword} || '%'
+	 			</if>
 		 	</if>
 		 </where>
 	</select>

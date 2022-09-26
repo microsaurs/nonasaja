@@ -80,11 +80,8 @@
 				}
 			}
 		</script>
-		<input class="button8" type="button" value="목록" onclick="location.href='list.do'">
 		</c:if>
-		<c:if test="${empty user && user.mem_num == board.mem_num}">
 		<input class="button8" type="button" value="목록" onclick="location.href='list.do'">
-		</c:if>
 	</div>
 
 	<!-- 댓글 UI 시작 -->
