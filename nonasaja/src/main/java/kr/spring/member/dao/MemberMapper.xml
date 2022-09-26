@@ -130,7 +130,8 @@
   			  		FROM community_recipe_board
   			  		WHERE
 			  			commu_title LIKE '%' || #{keyword} || '%' OR
-			  			commu_content LIKE '%' || #{keyword} || '%'
+			  			commu_content LIKE '%' || #{keyword} || '%' OR
+			  			commu_food LIKE '%' || #{keyword} || '%'
   			  		ORDER BY commu_date DESC)a)
   	</select>
   	<select id="searchProductList" parameterType="string" resultType="productVO">
