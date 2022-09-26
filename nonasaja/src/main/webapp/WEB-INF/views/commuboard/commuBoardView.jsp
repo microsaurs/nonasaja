@@ -21,7 +21,7 @@
 	<div class="fav-float">
 		<%-- 좋아요 --%>
 		<img id="output_fav" src="${pageContext.request.contextPath}/images/free-icon-love02.png" width="30">
-		<span id="output_fcount"></span>
+		<span id="output_fcount" class="span-margin"></span>
 	</div>	
 	
    <div class="userphoto">

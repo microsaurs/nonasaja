@@ -58,6 +58,9 @@
 .fav-float{
 	float:right;
 }
+.span-margin{
+	margin-right: -30px;
+}
 #fav-text-align{
 	padding: -10px 20px 0 0;
 	font-size:15px;
