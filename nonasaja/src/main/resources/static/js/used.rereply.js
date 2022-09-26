@@ -3,7 +3,49 @@ $(function(){
 	let count;
 	let rowCount;
 	
-	if(param.user_num==item.mem_num){
+	
+	//댓글 목록
+	function selectList(pageNum){
+		currentPage = pageNum;
+		
+		//로딩 이미지 노출
+		$('#loading').show();
+		
+		$.ajax({
+			url:'listRereply.do',
+			type:'post',
+			data:{pageNum:pageNum,club_num:$('#club_num').val()},
+			dataType:'json',
+			cache:false,
+			timeout:30000,
+			success:function(param){
+				//로딩 이미지 감추기
+				$('#loading').hide();
+				count = param.count;
+				rowCount = param.rowCount;
+				
+				if(pageNum == 1){
+					//처음 호출시는 해당 ID의 div의 내부
+					//내용물을 제거
+					$('#output').empty();
+				}
+				
+			
+				//댓글 목록 작업
+				$(param.list).each(function(index,item){
+					let output = '<div class="item">';
+					output += '<img src="../member/viewProfile.do?mem_num='+ item.mem_num + '" width="30" height="30" class="my-photo2">';
+					output += '<h3 class="nicknamemargin">';
+					if(item.nickname){
+						output += item.nickname + '</h3>';
+					}else{
+						output += item.id + '</h3>';
+					}
+					
+					output += '<div class="sub-item">';
+					output += '<p>' + item.rereply_content.replace(/\r\n/g,'<br>') + '</p>';
+	
+					if(param.user_num==item.mem_num){
 						//로그인한 회원번호와 댓글 작성자 회원번호가 일치
 						
 						output += ' <input type="button" data-num="'+ item.rereply_num +'" value="삭제" class="delete-btn">';
@@ -13,6 +55,14 @@ $(function(){
 					if(item.reply_date){
 						output += '<span class="modify-date">등록일 ' + item.reply_date + '</span>';
 					}
+					
+					output += '<hr size="1"  width="100%" noshade>';
+					output += '</div>';
+					output += '</div>'; 
+					
+					//문서 객체에 추가
+					$('#output').append(output);
+				});
 	
 	//댓글 등록
 	//=========================================대댓글 등록버튼==========================
