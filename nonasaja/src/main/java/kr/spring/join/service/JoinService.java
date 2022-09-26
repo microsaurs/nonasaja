@@ -17,4 +17,5 @@ public interface JoinService {
 	public void deleteJoin(int join_num);
 	//한 동호회에 가입중인 사람 수 구하기
 	public int selectJoinCount(int club_num);
+	public void deleteByJoinNum(Integer club_num);
 }

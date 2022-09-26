@@ -43,5 +43,6 @@ public interface ClubService {
 	public void insertRereply(ClubRereplyVO boardRereply);
 	public void updateRereply(ClubRereplyVO boardRereply);
 	public void deleteRereply(Integer rereply_num);
+	public void deleteRereplyByBoardNum2(Integer reply_num);
 	
 }

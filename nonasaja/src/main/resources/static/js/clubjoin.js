@@ -34,7 +34,7 @@ $(function(){
 		event.preventDefault();
 	});
 		//=========동호회 탈퇴==========//
-	$('.join-del').on('click',function(){
+	$('.button444').on('click',function(){
 		$.ajax({
 			url:'/join/deleteJoin.do',
 			type:'post',
