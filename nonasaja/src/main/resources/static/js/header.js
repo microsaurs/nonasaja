@@ -26,4 +26,13 @@ $(function(){
 	if(url == 'commuRecipe'){
 		$('#header_commuRecipe').css('color', '#E2B15A');
 	}
+	
+	//====통합검색====//
+	$('#search_form1').submit(function(){
+		if($('#searchbtn').val().trim()==''){
+			alert('검색어를 입력하세요');
+			$('#searchbtn').val('').focus();
+			return false;
+		}
+	});
 });

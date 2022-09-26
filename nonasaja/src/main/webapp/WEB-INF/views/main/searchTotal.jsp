@@ -10,6 +10,9 @@
 <div class="search-wrap">
 	<h2>통합검색</h2>
 	<div class="result">
+	<c:if test="${empty productList and empty usedList and empty clubList and empty recipeList and empty commuList and empty saleList}">
+	검색 결과가 없습니다.
+	</c:if>
 	<!-- 상품 검색 결과 -->
 	<c:if test="${!empty productList}">
 	<h3>상품 검색 결과</h3>
@@ -30,6 +33,7 @@
 	</div>
 	</c:forEach>
 	<br>
+	<div class="float-clear"></div>
 	</c:if>
 	<!-- 중고거래 검색 결과 -->
 	<c:if test="${!empty usedList}">
@@ -71,6 +75,7 @@
 	</div>
 	</c:forEach>
 	<br>
+	<div class="float-clear"></div>
 	</c:if>
 	<!-- 동호회 검색 결과 -->
 	<c:if test="${!empty clubList}">
@@ -145,6 +150,7 @@
 	</div>
 	</c:forEach>
 	<br>
+	<div class="float-clear"></div>
 	</c:if>
 	<!-- 레시피 검색 결과 -->
 	<c:if test="${!empty recipeList}">
@@ -169,6 +175,7 @@
 	</div>
 	</c:forEach>
 	<br>
+	<div class="float-clear"></div>
 	</c:if>
 	<!-- 커뮤니티 검색 결과 -->
 	<c:if test="${!empty commuList}">
@@ -198,6 +205,7 @@
 		</tbody>
 	</table>
 	<br>
+	<div class="float-clear"></div>
 	</c:if>
 	<!-- 세일정보 검색 결과 -->
 	<c:if test="${!empty saleList}">
@@ -222,7 +230,7 @@
 		</c:forEach>
 		</tbody>
 	</table>
+	<div class="float-clear"></div>
 	</c:if>
-
 	</div>
 </div>

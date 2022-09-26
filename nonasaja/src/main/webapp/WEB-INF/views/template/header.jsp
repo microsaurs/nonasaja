@@ -11,7 +11,7 @@
 			<a href="${pageContext.request.contextPath}/main/main.do"><img src="${pageContext.request.contextPath}/images/logo.png" width="250" height="65"></a>
 		</div>
 		<div id="total-search">
-			<form action="${pageContext.request.contextPath}/main/search.do">
+			<form action="${pageContext.request.contextPath}/main/search.do" id="search_form1">
 				<input type="search" placeholder="통합 검색" id="searchbtn" name="keyword">	
 				<button type="submit" id="searchicon"><img src="${pageContext.request.contextPath}/images/돋보기.png" width="20" height="25"></button>
 			</form>
