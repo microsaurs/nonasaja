@@ -194,10 +194,19 @@ public class ClubAjaxController {
 			map.put("end", page.getEndRow());
 			
 			List<ClubReplyVO> list = null;
+			ClubReplyVO replylist = null;
 			if(count > 0) {
 				list = clubService.selectListReply(map);
 			}else {
 				list = Collections.emptyList();
+			}
+			
+			for(ClubReplyVO reply : list) {
+				map.put("reply_num", reply.getReply_num());
+				List<ClubRereplyVO> replyList= clubService.selectListRereply(map);
+				if(replyList.size()>0) {
+					reply.setRereply_check(1);//대댓글이 존재
+				}
 			}
 			
 			Map<String,Object> mapAjax = 
@@ -325,6 +334,7 @@ public class ClubAjaxController {
 						 @RequestParam(value="pageNum",defaultValue="1") 
 						  int currentPage,
 						  @RequestParam int club_num,
+						  @RequestParam int reply_num,
 						  HttpSession session){
 					
 					logger.debug("<<currentPage>> : " + currentPage);
@@ -347,6 +357,7 @@ public class ClubAjaxController {
 					
 					List<ClubRereplyVO> list2 = null;
 					if(count > 0) {
+						map.put("reply_num", reply_num);
 						list2 = clubService.selectListRereply(map);
 					}else {
 						list2 = Collections.emptyList();

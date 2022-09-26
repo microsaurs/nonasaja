@@ -56,16 +56,17 @@ $(function(){
 					if(item.reply_date){
 						output += '<span class="modify-date">등록일 ' + item.reply_date + '</span>';
 					}
-					output += '<div class="rereply-text"></div>';
+					output += '<div class="rereply-text" id="'+item.reply_num+'">';
+					output += '</div>';
 					output += '<hr size="1"  width="100%" noshade>';
 					output += '</div>';
 					output += '</div>';
-					
-					
-						
-				
+
 					//문서 객체에 추가
 					$('#output').append(output);
+					if(item.rereply_check=1){
+						rereply(item.reply_num);
+					}
 				});
 				
 				//paging button 처리
@@ -82,79 +83,67 @@ $(function(){
 				 $('#loading').hide();
 				 alert('네트워크 오류 발생1');
 			}
-		});
-		
-		$.ajax({
-			url:'listRereply.do',
-			type:'post',
-			data:{pageNum:pageNum,club_num:$('#club_num').val()},
-			dataType:'json',
-			cache:false,
-			timeout:30000,
-			success:function(param){
-				//로딩 이미지 감추기
-				$('#loading').hide();
-				count = param.count;
-				rowCount = param.rowCount;
-				
-				if(pageNum == 1){
-					//처음 호출시는 해당 ID의 div의 내부
-					//내용물을 제거
-					$('#output2').empty();
-				}
-				
-				//댓글 목록 작업
-				$(param.list2).each(function(index,item){
-					let output2 = '<div class="item">답글';
-					output2 += '<img src="../member/viewProfile.do?mem_num='+ item.mem_num + '" width="30" height="30" class="my-photo2">';
-					output2 += '<h3 class="nicknamemargin">';
-					if(item.nickname){
-						output2 += item.nickname + '</h3>';
-					}else{
-						output2 += item.id + '</h3>';
-					}
-					
-					output2 += '<div class="sub-item">';
-					output2 += '<p>' + item.rereply_content.replace(/\r\n/g,'<br>') + '</p>';
-					
-				
-					
-					if(param.user_num==item.mem_num){
-						//로그인한 회원번호와 댓글 작성자 회원번호가 일치
-						
-						output2 += ' <input type="button" data-num="'+ item.rereply_num +'" value="삭제" class="delete-btn2">';
-						output2 += ' <input type="button" data-num="'+ item.rereply_num +'" value="수정" class="modify-btn2">';
-						
-					}
-					if(item.reply_date){
-						output2 += '<span class="modify-date">등록일 ' + item.reply_date + '</span>';
-					}
-					
-					output2 += '<hr size="1"  width="100%" noshade>';
-					output2 += '</div>';
-					output2 += '</div>'; 
-					
-					//문서 객체에 추가
-					$('#output2').append(output2);
-				});
-				
-				//paging button 처리
-				if(currentPage>=Math.ceil(count/rowCount)){
-					//다음 페이지가 없음
-					$('.paging-button').hide();
-				}else{
-					//다음 페이지가 존재
-					$('.paging-button').show();
-				}
-			},
-			error:function(){
-				//로딩 이미지 감추기
-				 $('#loading').hide();
-				 alert('네트워크 오류 발생11');
-			}
-		});
+		})
 	}
-		
+		//----------------------------------------------------------------------------------------------------
+		//대댓글 목록을 호출하는 함수 
+		function rereply(reply_num){
+					$.ajax({
+						url:'listRereply.do',
+						type:'post',
+						data:{club_num:$('#club_num').val(),reply_num:reply_num},
+						dataType:'json',
+						cache:false,
+						timeout:30000,
+						success:function(param){
+							let output2;
+							//로딩 이미지 감추기
+							$('#loading').hide();
+							count = param.count;
+							rowCount = param.rowCount;
+							
+							$('#output2').empty();
+							
+							//댓글 목록 작업
+							$(param.list2).each(function(index,item){
+								output2 = '<div class="item" id="'+item.rereply_num +'">';
+								output2 += '<img src="../member/viewProfile.do?mem_num='+ item.mem_num + '" width="30" height="30" class="my-photo2">';
+								output2 += '<h3 class="nicknamemargin">';
+								if(item.nickname){
+									output2 += item.nickname + '</h3>';
+								}else{
+									output2 += item.id + '</h3>';
+								}
+								
+								output2 += '<div class="sub-item">';
+								output2 += '<p>' + item.rereply_content.replace(/\r\n/g,'<br>') + '</p>';
+								
+								if(param.user_num==item.mem_num){
+									//로그인한 회원번호와 댓글 작성자 회원번호가 일치
+									
+									output2 += ' <input type="button" data-num="'+ item.rereply_num +'" value="삭제" class="delete-btn2">';
+									output2 += ' <input type="button" data-num="'+ item.rereply_num +'" value="수정" class="modify-btn2">';
+									
+								}
+								if(item.reply_date){
+									output2 += '<span class="modify-date">등록일 ' + item.reply_date + '</span>';
+								}
+								
+								output2 += '<hr size="1"  width="100%" noshade>';
+								output2 += '</div>';
+								output2 += '</div>';
+								$('#'+item.reply_num).append(output2);
+							});
+							
+							
+						},
+						error:function(){
+							//로딩 이미지 감추기
+							 $('#loading').hide();
+							 alert('네트워크 오류 발생11');
+						}
+					});
+				}
 		
 	
 	
@@ -369,7 +358,7 @@ $(function(){
 			rereply_form += '<input type="hidden" name="club_num"  value=' +club_num +'>';
 			rereply_form += '<textarea rows="10" cols="80" id="rereply_content" name="rereply_content" placeholder="답글을 입력해주세요"></textarea>';
 			rereply_form += '<input type="submit" value="등록">';
-			rereply_form += '<input type="submit" value="취소" class="cancle-btn">';
+			rereply_form += '<input type="button" value="취소" class="cancle-btn">';
 			rereply_form += '</form>';
 			
 			$(this).parents('.item').find('.rereply-text').append(rereply_form);
@@ -414,10 +403,11 @@ $(function(){
 	$(document).on('click','.cancle-btn',function(){
 		initForm();
 	});
+
 	//댓글 작성 폼 초기화
 		function initForm(){
-			$('textarea').val('');
-			$('#re_first2 .letter-count').text('300/300');
+			$('.sub-item').show();
+			$('#rereply_form').remove();
 		}
 		//textarea에 내용 입력시 글자수 체크
 		$(document).on('keyup','textarea',function(){
@@ -444,13 +434,13 @@ $(function(){
 		//댓글 수정 버튼 클릭시 수정 폼 노출
 			$(document).on('click','.modify-btn2',function(){
 				//댓글 글번호
-				let re_num = $(this).attr('data-num');
+				let rere_num = $(this).attr('data-num');
 				//댓글 내용
 				let content = $(this).parent().find('p').html().replace(/<br>/g,'\r\n');
 				
 				//댓글 수정폼 UI
 				let modifyUI = '<form id="mre_form2">';
-				modifyUI += '<input type="hidden" name="rereply_num" id="mre_num" value="'+ re_num +'">';
+				modifyUI += '<input type="hidden" name="rereply_num" id="mre_num" value="'+ rere_num +'">';
 				modifyUI += '<textarea rows="3" cols="50" name="rereply_content" id="mre_content2" class="rep-content2">'+ content +'</textarea>';
 				modifyUI += '<div id="mre_first2"><span class="letter-count">300/300</span></div>';
 				modifyUI += '<div id="mre_second2" class="align-right">';
@@ -469,7 +459,7 @@ $(function(){
 				$(this).parent().hide();
 				
 				//수정 폼을 수정하고자 하는 데이터가 있는 div에 노출
-				$(this).parents('.item').append(modifyUI);
+				$('#'+rere_num).append(modifyUI);
 				
 				//입력한 글자수 셋팅
 				let inputLength = $('#mre_content2').val().length;

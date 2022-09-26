@@ -122,7 +122,7 @@
   		              nickname
   		            FROM club_rereply
   		            JOIN member USING(mem_num)
-  		            WHERE club_num = #{club_num}
+  		            WHERE club_num = #{club_num} and reply_num = #{reply_num}
   		            ORDER BY rereply_num DESC)a)
   		<![CDATA[
   		WHERE rnum >= #{start} AND rnum <= #{end}

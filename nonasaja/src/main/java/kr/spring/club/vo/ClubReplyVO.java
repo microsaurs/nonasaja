@@ -8,6 +8,8 @@ public class ClubReplyVO {
 	private int mem_num;
 	
 	private String nickname;
+	 
+	private int rereply_check;
 	
 	public String getNickname() {
 		return nickname;
@@ -44,6 +46,12 @@ public class ClubReplyVO {
 	}
 	public void setMem_num(int mem_num) {
 		this.mem_num = mem_num;
+	}
+	public int getRereply_check() {
+		return rereply_check;
+	}
+	public void setRereply_check(int rereply_check) {
+		this.rereply_check = rereply_check;
 	}
 	@Override
 	public String toString() {
