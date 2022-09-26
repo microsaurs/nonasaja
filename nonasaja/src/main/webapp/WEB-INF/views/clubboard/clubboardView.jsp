@@ -173,7 +173,7 @@
 	<!-- 댓글 UI 시작 -->
 	<div id="reply_div">
 	<img src="${pageContext.request.contextPath}/images/댓글아이콘.png" width="25" height="25" class="replyicon">
-		<span class="re-title"><b>동호회 가입을 원하시면 댓글을 작성하세요.</b></span>
+		<span class="re-title"><b>동호회 가입을 원하시면 댓글을 작성해주세요</b></span>
 		<form id="re_form">
 			<input type="hidden" name="club_num"
 			   value="${board.club_num}" id="club_num">
