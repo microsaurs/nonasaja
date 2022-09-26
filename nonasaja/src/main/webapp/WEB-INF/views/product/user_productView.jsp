@@ -66,7 +66,7 @@ $(document).ready(function(){
 				<ul id="price_box">
 					<c:if test="${product.quantity>0 }">
 					<li><span id="div_quantity">${product.div_quantity}</span></li>
-					<li class="req-quantity"><span class="req-quantity">주문확정수량 ${product.req_quantity}개 중 00개 판매</span></li>
+					<li class="req-quantity"><span class="req-quantity">주문확정수량 ${product.req_quantity}개 중 ${product.waitCount}개 판매</span></li>
 					<li>
 						<input type="number" name="order_quantity" min="1" max=${product.quantity} 
 								id="order_quantity" class="quantity-width" value=1 >	
