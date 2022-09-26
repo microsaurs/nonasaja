@@ -36,7 +36,19 @@ $(document).ready(function(){
 	</c:if>
 	
 	<c:if test="${product.status==2 }">
-		<img class="product-image" src="imageView.do?product_num=${product.product_num}&photo_type=1" width="400" height="400">
+	<div class="imgBox">
+		<img class="product-image on" id="img1" src="imageView.do?product_num=${product.product_num}&photo_type=1">
+		<c:if test="${!empty product.photo2_name}">
+		<img class="product-image off" id="img2" src="imageView.do?product_num=${product.product_num}&photo_type=2" width="400" height="400">
+		</c:if>
+		<c:if test="${!empty product.photo3_name}">
+		<img class="product-image off" id="img3" src="imageView.do?product_num=${product.product_num}&photo_type=3" width="400" height="400">
+		</c:if>
+		<!-- 다음버튼 -->
+		<c:if test="${!empty product.photo2_name}">
+		<img class="next" src="${pageContext.request.contextPath}/images/next.png">
+		</c:if>
+	</div>	
 		<!-- 사진이 2,3개 있으면 슬라이드로 만들기 -->
 		<div class="product-detail">
 			<form id="product_cart" method="post" action="${pageContext.request.contextPath}/cart/cart_insert.do">
