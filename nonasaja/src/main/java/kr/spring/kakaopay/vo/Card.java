@@ -42,7 +42,7 @@ public class Card {
 		this.card_mid = card_mid;
 	}
 	public String getCard_type() {
-		return card_type;
+		return card_type; 
 	}
 	public void setCard_type(String card_type) {
 		this.card_type = card_type;
