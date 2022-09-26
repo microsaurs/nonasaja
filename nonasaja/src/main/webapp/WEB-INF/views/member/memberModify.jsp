@@ -56,7 +56,11 @@
 							<input type="button" value="프로필 사진 변경" id="photo_btn" class="button90">
 							<div id="photo_choice" style="display:none;">
 								<input type="file" id="upload" accept="image/gif,image/png,image/jpeg" class="location1" value="${memberVO.photo_name}"><br>
-								
+								<div id="photo_choice1">
+									<input type="button" value="확인" id="photo_submit">
+									<input type="button" value="취소" id="photo_reset">
+									<span>확인을 누르면 바로 반영됩니다.</span>
+								</div>
 							</div>
 						</div>
 					</td>

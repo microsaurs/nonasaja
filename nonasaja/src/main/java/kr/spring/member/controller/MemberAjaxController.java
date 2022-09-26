@@ -102,6 +102,7 @@ public class MemberAjaxController {
 			memberService.updateProfile(memberVO);
 			
 			mapAjax.put("result", "success");
+			
 		}
 		
 		return mapAjax;

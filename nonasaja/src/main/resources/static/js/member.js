@@ -7,12 +7,12 @@ $(function(){
 	});
 	
 	//처음 화면에 보여지는 이미지 읽기
-	let photo_path = $('.my-photo').attr('src');
+	let photo_path = $('.my-photo1').attr('src');
 	let my_photo;//업로드하고자 선택한 이미지 저장
 	$('#upload').change(function(){
 		my_photo = this.files[0];
 		if(!my_photo){//파일 정보가 없는 경우
-			$('.my-photo').attr('src',photo_path);
+			$('.my-photo1').attr('src',photo_path);
 			return;
 		}
 		
@@ -20,7 +20,7 @@ $(function(){
 		if(my_photo.size > 1024*1024){
 			alert(Math.round(my_photo.size/1024) + 'kytes(1024kbytes까지만 업로드 가능)');
 			//원래 이미지로 교체
-			$('.my-photo').attr('src',photo_path);
+			$('.my-photo1').attr('src',photo_path);
 			$(this).val('');//파일명 지우기
 			return;
 		}
@@ -32,7 +32,7 @@ $(function(){
 		
 		reader.onload=function(){
 			//읽어들인 이미지 표시
-			$('.my-photo').attr('src',reader.result);
+			$('.my-photo1').attr('src',reader.result);
 		};
 	});//end of change
 	
@@ -59,11 +59,12 @@ $(function(){
 				if(param.result == 'logout'){
 					alert('로그인 후 사용하세요');
 				}else if(param.result == 'success'){
-					alert('프로필 사진이 수정되었습니다');
 					photo_path = $('.my-photo').attr('src');
 					$('#upload').val('');
 					$('#photo_choice').hide();
 					$('#photo_btn').show();
+					location.reload();
+					alert('프로필 사진이 수정되었습니다');
 				}else{
 					alert('파일 전송 오류 발생');
 				}
@@ -76,7 +77,7 @@ $(function(){
 	
 	//취소 버튼 처리
 	$('#photo_reset').click(function(){
-		$('.my-photo').attr('src',photo_path);
+		$('.my-photo1').attr('src',photo_path);
 		$('#upload').val('');
 		$('#photo_choice').hide();
 		$('#photo_btn').show();

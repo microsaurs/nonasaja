@@ -83,13 +83,16 @@ li#money{
 	margin-top:10px;
 	width:"350";
 }
-input[type=file]::file-selector-button {
+input[type=file]::file-selector-button, #photo_submit, #photo_reset {
   width: 65px;
   height: 23px;
   background: #EABF5E;
   border: 0;
   border-radius: 7px;
   cursor: pointer;
+}
+#photo_choice1{
+	margin-top:5px;
 }
 .mypage-left a{
 	text-decoration:none;
