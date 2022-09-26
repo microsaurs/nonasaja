@@ -91,16 +91,18 @@ select{
 	border: 1.5px solid #878787;
 	border-radius:5px;
 }
-span{
-	font-size:16px;
-	line-height:30px;
-}
 span.usedtitle{
 	display:block;
-}
-.usedtitle{
 	height:30px;
 	margin:0;
+	font-size:18px;
+}
+
+span.usedtitle1{
+	height:30px;
+	margin:0;
+	font-size:15px;
+	line-height:30px;
 }
 .item-space .horizontal-area{
 	padding:3px;

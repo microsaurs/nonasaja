@@ -71,18 +71,20 @@
 					<br>
 					<span class="usedtitle">${used.title}</span>
 					<br>
-					<span class="usedtitle">
-					<c:if test="${used.price!=0 && used.price!=1}">
-						<b><fmt:formatNumber value="${used.price}"/>원</b>
-					</c:if>
-					<c:if test="${used.price==0}">
-						<b>무료나눔&#x1f49b;</b>
-					</c:if>
-					<c:if test="${used.price==1}">
-					<b>물물교환&#x1f499;</b>
-					</c:if>
+					<span id="usedproduct_region" class="usedtitle1">${used.region}</span>
+					<br>
+					<span class="usedtitle1">
+						<c:if test="${used.price!=0 && used.price!=1}">
+							<b><fmt:formatNumber value="${used.price}"/>원</b>
+						</c:if>
+						<c:if test="${used.price==0}">
+							<b>무료나눔&#x1f49b;</b>
+						</c:if>
+						<c:if test="${used.price==1}">
+						<b>물물교환&#x1f499;</b>
+						</c:if>
 					</span>
-					<span id="usedproduct_region" class="usedtitle">${used.region}</span>
+					
 				</a>
 				</div>
 			</div>
