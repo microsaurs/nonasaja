@@ -139,7 +139,7 @@ $(document).ready(function(){
 						<fmt:formatNumber value="${cart.productVO.price2 }"/>원
 					</td>
 					<td>
-						<input type="button" class="button4" value="삭제" data-cartnum=${cart.cart_num }>
+						<input type="button" class="button4 cart-del" value="삭제" data-cartnum=${cart.cart_num }>
 					</td>
 				</tr>
 				</c:forEach>
