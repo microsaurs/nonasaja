@@ -1,5 +1,7 @@
 package kr.spring.kakaopay.vo;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -7,6 +9,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ReadyResponse {
 	private String tid; //결제 고유 번호, 20자
 	private boolean tms_result; //?
