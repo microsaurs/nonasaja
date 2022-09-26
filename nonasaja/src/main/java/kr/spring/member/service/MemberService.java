@@ -3,7 +3,14 @@ package kr.spring.member.service;
 import java.util.List;
 import java.util.Map;
 
+import kr.spring.club.vo.ClubVO;
+import kr.spring.community.vo.CommunityVO;
+import kr.spring.community.vo.RecipeVO;
 import kr.spring.member.vo.MemberVO;
+import kr.spring.product.vo.ProductVO;
+import kr.spring.review.vo.ReviewVO;
+import kr.spring.sale.vo.SaleVO;
+import kr.spring.used.vo.UsedVO;
 
 public interface MemberService {
 	public void insertMember(MemberVO member);//회원가입
@@ -20,4 +27,12 @@ public interface MemberService {
 	public List<MemberVO> selectList(Map<String,Object> map);
 	public int selectRowCount(Map<String,Object> map);
 	public void updateByAdmin(MemberVO member);
+	
+	//통합검색
+	public List<ClubVO> searchClubList(String keyword);
+	public List<CommunityVO> searchCommuList(String keyword);
+	public List<RecipeVO> searchRecipeList(String keyword);
+	public List<ProductVO> searchProductList(String keyword);
+	public List<SaleVO> searchSaleList(String keyword);
+	public List<UsedVO> searchUsedList(String keyword);
 }

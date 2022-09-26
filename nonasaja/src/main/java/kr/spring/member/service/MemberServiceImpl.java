@@ -1,5 +1,6 @@
 package kr.spring.member.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -7,8 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import kr.spring.club.vo.ClubVO;
+import kr.spring.community.vo.CommunityVO;
+import kr.spring.community.vo.RecipeVO;
 import kr.spring.member.dao.MemberMapper;
 import kr.spring.member.vo.MemberVO;
+import kr.spring.product.vo.ProductVO;
+import kr.spring.review.vo.ReviewVO;
+import kr.spring.sale.vo.SaleVO;
+import kr.spring.used.vo.UsedVO;
 
 @Service
 @Transactional
@@ -83,6 +91,33 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void updateByAdmin(MemberVO member) {
 		memberMapper.updateByAdmin(member);
+	}
+
+	
+	//통합검색
+	@Override
+	public List<ClubVO> searchClubList(String keyword) {
+		return memberMapper.searchClubList(keyword);
+	}
+	@Override
+	public List<CommunityVO> searchCommuList(String keyword) {
+		return memberMapper.searchCommuList(keyword);
+	}
+	@Override
+	public List<RecipeVO> searchRecipeList(String keyword) {
+		return memberMapper.searchRecipeList(keyword);
+	}
+	@Override
+	public List<ProductVO> searchProductList(String keyword) {
+		return memberMapper.searchProductList(keyword);
+	}
+	@Override
+	public List<SaleVO> searchSaleList(String keyword) {
+		return memberMapper.searchSaleList(keyword);
+	}
+	@Override
+	public List<UsedVO> searchUsedList(String keyword) {
+		return memberMapper.searchUsedList(keyword);
 	}
 
 }
