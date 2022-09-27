@@ -58,10 +58,11 @@
     width: 130px;
 }
 .category-img{
+	cursor : pointer;
     width: 300px;
     height: 160px;
     margin: 0 10px 40px 5px;
-     border-radius: 10%
+    border-radius: 10%
 }
 .hr-color{
 	background-color: #f5f0e1;

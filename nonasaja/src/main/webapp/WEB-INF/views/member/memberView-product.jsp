@@ -166,11 +166,15 @@ $(document).ready(function(){
 				<c:if test="${order.order_num == orderDetail.order_num}">
 				<tr>
 					<td rowspan="2">
-						<img src="${pageContext.request.contextPath}/product/imageView.do?product_num=${orderDetail.product_num}&photo_type=1"
-								width="150" height="150">
+					<a href="${pageContext.request.contextPath}/product/detail.do?product_num=${orderDetail.product_num }">
+						<img src="${pageContext.request.contextPath}/product/imageView.do?product_num=${orderDetail.product_num}&photo_type=1" 
+							width="150" height="150">
+						</a>
 					</td>
 					<td colspan="2">
+					<a href="${pageContext.request.contextPath}/product/detail.do?product_num=${orderDetail.product_num }">
 						<b>${orderDetail.product_name}</b>
+					</a>
 					</td>
 					<td>
 						<span>${orderDetail.order_quantity}개</span>
@@ -272,9 +276,11 @@ $(document).ready(function(){
 				<c:forEach var="review" items="${reviewList}">
 				<tr>
 					<td class="align-center">
+					<a href="${pageContext.request.contextPath}/product/detail.do?product_num=${review.product_num }">
 						<img src="${pageContext.request.contextPath}/product/imageView.do?product_num=${review.product_num}&photo_type=1"
 							width="120" height="130"><br>
 						 <b>${review.product_name}</b>
+					</a>
 					</td>
 					<td colspan="2" class="margintext">
 						${review.content }
