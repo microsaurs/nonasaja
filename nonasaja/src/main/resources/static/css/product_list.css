@@ -184,6 +184,9 @@ select{
   border-radius: 6px;
   color:white;
 }
+#score_span{
+    font-size: 12pt;
+}
 
 
 
