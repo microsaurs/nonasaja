@@ -76,6 +76,11 @@
 				</c:if>
 			</span> <br>
 			<p class="text-1">상품종류 : ${used.category}</p>
+			<p class="text-1">
+			<c:if test="${used.kind==2}">
+				교환물품 : ${used.trade}
+			</c:if>
+			</p>
 			<p class="text-1">판매지역 : ${used.region}</p>
 		</div>	
 	</div>
