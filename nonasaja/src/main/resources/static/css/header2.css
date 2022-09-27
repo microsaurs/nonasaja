@@ -99,4 +99,9 @@ hr {
 	float:right;
 	
 }
+a:hover{
+	text-decoration:underline;
+	color:#999999;
+}
+
 
