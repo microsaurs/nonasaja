@@ -39,5 +39,10 @@ public class JoinServiceImpl implements JoinService{
 	public int selectJoinCount(int club_num) {
 		return joinMapper.selectJoinCount(club_num);
 	}
+	@Override
+	public void deleteByJoinNum(Integer club_num) {
+		joinMapper.deleteByJoinNum(club_num);
+		
+	}
 
 }

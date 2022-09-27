@@ -47,6 +47,7 @@
 	background:none;
 }
 #cart{
+	cursor : pointer;
 	background:none;
 	border:none;
 	float:left;

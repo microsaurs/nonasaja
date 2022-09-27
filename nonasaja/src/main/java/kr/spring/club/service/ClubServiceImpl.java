@@ -12,6 +12,7 @@ import kr.spring.club.vo.ClubFavVO;
 import kr.spring.club.vo.ClubReplyVO;
 import kr.spring.club.vo.ClubRereplyVO;
 import kr.spring.club.vo.ClubVO;
+import kr.spring.join.dao.JoinMapper;
 
 @Service
 @Transactional
@@ -19,6 +20,9 @@ public class ClubServiceImpl implements ClubService{
 
 	@Autowired
 	private ClubMapper clubMapper;
+	
+	@Autowired
+	private JoinMapper joinMapper;
 	
 	@Override
 	public List<ClubVO> selectList(Map<String, Object> map) {
@@ -58,8 +62,11 @@ public class ClubServiceImpl implements ClubService{
 		clubMapper.deleteRereplyByBoardNum(club_num);
 		//댓글이 존재하면 댓글을 우선 삭제하고 부모글을 삭제
 		clubMapper.deleteReplyByBoardNum(club_num);
+		//가입한 동호회 먼저 삭제하고 부모글삭제
+		joinMapper.deleteByJoinNum(club_num);
 		//부모글 삭제
 		clubMapper.deleteBoard(club_num);
+		
 	}
 
 
@@ -118,7 +125,11 @@ public class ClubServiceImpl implements ClubService{
 
 	@Override
 	public void deleteReply(Integer reply_num) {
+		//대댓글 먼저 삭제하고
+		clubMapper.deleteRereplyByBoardNum2(reply_num);
+		//부모글 삭제
 		clubMapper.deleteReply(reply_num);
+		
 	}
 
 	@Override
@@ -152,6 +163,12 @@ public class ClubServiceImpl implements ClubService{
 	@Override
 	public void deleteRereply(Integer rereply_num) {
 		clubMapper.deleteRereply(rereply_num);
+		
+	}
+
+	@Override
+	public void deleteRereplyByBoardNum2(Integer reply_num) {
+		clubMapper.deleteRereplyByBoardNum2(reply_num);
 		
 	}
 	

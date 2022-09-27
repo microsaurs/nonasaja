@@ -157,7 +157,7 @@ $(document).ready(function(){
 				</li>
 				<li id="review_clear">
 				<li>
-				<p>${review.content}</p>
+				<p id="review_content">${review.content}</p>
 				</li>
 			</ul>
 		</div>

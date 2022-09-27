@@ -111,5 +111,10 @@ public interface ClubMapper {
 		+ "WHERE club_num=#{club_num}")
 		public void deleteRereplyByBoardNum(
 		                     Integer club_num);
+		//부모댓글 삭제전 대댓글 삭제
+		@Delete("DELETE FROM club_rereply "
+				+ "WHERE reply_num=#{reply_num}")
+				public void deleteRereplyByBoardNum2(
+				                     Integer reply_num);
 		//부모글을 지워야할까 댓글을 지워야할까?
 }

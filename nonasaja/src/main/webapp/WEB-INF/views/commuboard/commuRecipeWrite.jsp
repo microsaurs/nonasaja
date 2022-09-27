@@ -196,8 +196,8 @@
              
 			
 		<div class="align-center">
-			<form:button class="button">작성</form:button>
-			<input class="button" type="button" value="취소"
+			<form:button class="button2">등록</form:button>
+			<input class="button1" type="button" value="목록"
 			            onclick="location.href='list.do'">
 		</div>    
 </form:form>
