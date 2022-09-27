@@ -30,10 +30,10 @@
 				<label for="upload">대표사진</label>
 				
 				<c:if test="${!empty saleVO.imgname}">
-					<img class="product-img" src="${context.request.contextPath}/sale/imageView.do?board_num=${saleVO.board_num}" style="max-width:400px;">
+					<img class="product-img" src="${context.request.contextPath}/sale/imageView.do?board_num=${saleVO.board_num}" id="img1" style="max-width:400px;">
 				</c:if>
 				<c:if test="${empty saleVO.imgname}">	
-					<img src="${pageContext.request.contextPath}/images/empty.jpg" class="product-img" id="img2" name="img2" width="350" height="300">
+					<img src="${pageContext.request.contextPath}/images/empty.jpg" class="product-img" id="img1" width="350" height="300">
 				</c:if>
 				
 				<input type="file" name="upload" id="upload"  class="location1">
@@ -57,6 +57,7 @@
 											alert('로그인 후 사용하세요!');
 										}else if(param.result == 'success'){
 											$('#file_detail').hide();
+											$('#img1').attr('src','${pageContext.request.contextPath}/images/empty.jpg');
 										}else{
 											alert('파일 삭제 오류 발생');
 										}
