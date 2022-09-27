@@ -15,7 +15,7 @@
     height: 42px;
     background-image: url('../images/star.png');
     background-repeat: no-repeat;
-    background-size: 42px 42px;
+    background-size: 43px 43px;
     cursor: pointer;
     background-color: #f0f0f0;
 }
@@ -40,9 +40,6 @@ ul{
 }
 #product_box{
 	width:auto;
-}
-#review_box{
-	height:257px;
 }
 .left{
 	float: left;
@@ -97,7 +94,9 @@ ul{
   border-radius: 6px;
   color:white;
 }
-
+#review_content{
+	font-size: 11pt;
+}
 
 
 

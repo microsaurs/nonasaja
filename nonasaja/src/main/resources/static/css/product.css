@@ -88,7 +88,7 @@ form#product_cart{
 	font-size: 13pt;
 }
 ul#price_box{
-	width: 60%;
+	width: 65%;
     background-color: #CCCBBC;
     padding: 10px;
 }
@@ -112,7 +112,7 @@ li.req-quantity{
 	padding: 0 0 0 36%;
 }
 form#product_cart input[type=submit]{
-	width: 64%;
+	width: 69%;
     height: 30px;
     border: none;
     background-color: #6B5F38;
@@ -181,7 +181,8 @@ table#must td{
 }
 div#review_box{
  width: 90%;
- margin: 30px 0 0 40px;
+ margin: 30px 0 25px 40px;
+ padding: 0 0 20px 0;
  border-bottom: 0.5px solid #CCCCCC; 
 }
 #review_box ul{
