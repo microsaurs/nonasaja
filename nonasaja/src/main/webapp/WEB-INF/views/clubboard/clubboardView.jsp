@@ -143,9 +143,9 @@
 	<hr size="1" width="100%">
 	<div class="align-right">
 		<c:if test="${!empty user && user.mem_num == board.club_leader}">
-		<input class="button" type="button" value="수정" 
+		<input class="btn1" type="button" value="수정" 
 		  onclick="location.href='update.do?club_num=${board.club_num}'">
-		<input class="button" type="button" value="삭제" id="delete_btn">
+		<input class="btn3" type="button" value="삭제" id="delete_btn">
 		<script type="text/javascript">
 			let delete_btn = document.getElementById('delete_btn');
 			//이벤트 연결
@@ -156,15 +156,15 @@
 				}
 			};
 		</script> 
-		<input class="button" type="button" value="목록가기"  onclick="location.href='list.do'"> 
+		<input class="btn2" type="button" value="목록"  onclick="location.href='list.do'"> 
 		</c:if>
 		<form id="club_join" method="post">
 		<input type="hidden" name="club_num" id="club_num" value="${board.club_num}">
 		<c:if test="${!empty user && user.mem_num != board.club_leader}">
 		<c:if test="${board.club_recruit == 0}">
-		<input class="button" type="submit"  value="가입하기">
+		<input class="btn1" type="submit"  value="가입">
 		</c:if>
-		<input class="button" type="button" value="목록가기"  onclick="location.href='list.do'">
+		<input class="btn2" type="button" value="목록"  onclick="location.href='list.do'">
 		</c:if>
 		</form>
 	</div>

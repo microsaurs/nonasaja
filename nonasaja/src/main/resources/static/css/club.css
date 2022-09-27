@@ -294,6 +294,39 @@ ul.detail-info #img{
   float:right;
   margin-right:3px;
 }
+.btn1{
+ width: 45px;
+  height: 25px;
+  border:0;
+  background:#9B8F72;
+  outline:0;
+  border-radius: 6px;
+  color:white;
+  float:right;
+   margin:3px;
+}
+.btn2{
+ width: 45px;
+  height: 25px;
+  border:0;
+  background:#665E4D;
+  outline:0;
+  border-radius: 6px;
+  color:white;
+  float:right;
+     margin:3px;
+}
+.btn3{
+ width: 45px;
+  height: 25px;
+  border:0;
+  background:#D0A021;
+  outline:0;
+  border-radius: 6px;
+  color:white;
+  float:right;
+  margin:3px;
+}
 #delete-btn{
   width: 40px;
   height: 25px;

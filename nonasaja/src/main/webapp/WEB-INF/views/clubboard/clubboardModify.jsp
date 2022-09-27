@@ -162,8 +162,8 @@
 			</li> 
 		</ul>    
 		<div class="align-right">
-			<form:button class="button" >전송</form:button>
-			<input class="button" type="button" value="목록"
+			<form:button class="btn1" >전송</form:button>
+			<input class="btn2" type="button" value="목록"
 			            onclick="location.href='list.do'">
 		</div>    
 	</form:form>
