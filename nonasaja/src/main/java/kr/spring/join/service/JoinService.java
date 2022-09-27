@@ -13,6 +13,8 @@ public interface JoinService {
 	public List<JoinVO> selectListJoin(int mem_num);
 	//동호회 상세
 	public JoinVO selectJoin(JoinVO join);
+	//조인 번호로 join 정보 반환
+	public JoinVO selectJoinByJoinNum(int join_num);
 	//동호회 삭제
 	public void deleteJoin(int join_num);
 	//한 동호회에 가입중인 사람 수 구하기

@@ -10,15 +10,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import kr.spring.cart.vo.CartVO;
 import kr.spring.club.service.ClubService;
 import kr.spring.club.vo.ClubVO;
-import kr.spring.join.controller.JoinController;
 import kr.spring.join.service.JoinService;
 import kr.spring.join.vo.JoinVO;
 import kr.spring.member.vo.MemberVO;
@@ -99,6 +96,7 @@ public class JoinController {
 		public Map<String,String> delete(
 				           @RequestParam int join_num,
 				              HttpSession session){
+			logger.debug("<<Join_num>> : " + join_num);
 			
 			Map<String,String> mapAjax = 
 					new HashMap<String,String>();
@@ -108,7 +106,15 @@ public class JoinController {
 			if(user==null) {
 				mapAjax.put("result","logout");
 			}else {
+				JoinVO join = joinService.selectJoinByJoinNum(join_num);
+				ClubVO club = clubService.selectBoard(join.getClub_num());
 				joinService.deleteJoin(join_num);
+				int count = joinService.selectJoinCount(club.getClub_num());
+				if(count == (club.getClub_limit() - 1)) {
+					club.setClub_recruit(0);
+					logger.debug("<<동호회 다시 모집>> : " + club);
+					clubService.updateBoard(club);
+				}
 				mapAjax.put("result", "success");
 			}
 			

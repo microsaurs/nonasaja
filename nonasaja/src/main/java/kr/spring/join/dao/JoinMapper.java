@@ -24,6 +24,9 @@ public interface JoinMapper {
 	@Select("SELECT * FROM join WHERE "
 			+ "club_num=#{club_num} AND mem_num = #{mem_num}")
 	public JoinVO selectJoin(JoinVO join);
+	//조인 번호로 join 정보 반환
+	@Select("SELECT * FROM join WHERE join_num=#{join_num}")
+	public JoinVO selectJoinByJoinNum(int join_num);
 	//동호회 삭제
 	@Delete("DELETE FROM join WHERE join_num=#{join_num}")
 	public void deleteJoin(int join_num);

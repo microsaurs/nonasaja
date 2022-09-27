@@ -44,5 +44,9 @@ public class JoinServiceImpl implements JoinService{
 		joinMapper.deleteByJoinNum(club_num);
 		
 	}
+	@Override
+	public JoinVO selectJoinByJoinNum(int join_num) {
+		return joinMapper.selectJoinByJoinNum(join_num);
+	}
 
 }
