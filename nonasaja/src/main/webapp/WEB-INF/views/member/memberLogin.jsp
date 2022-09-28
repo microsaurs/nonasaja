@@ -25,7 +25,7 @@
 				<form:password path="passwd" placeholder=" 비밀번호"/><br>
 				<input type="checkbox" id="saveId"> 아이디 저장
 				<div class="float-right findIdPw">
-					<a href="#">아이디 찾기</a> |
+					<a href="${pageContext.request.contextPath}/member/memberFindID.do">아이디 찾기</a> |
 					<a href="#">비밀번호 찾기</a> |
 					<a href="${pageContext.request.contextPath}/member/registerUser.do">회원가입</a>
 				</div>

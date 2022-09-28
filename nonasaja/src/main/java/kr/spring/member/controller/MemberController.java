@@ -135,6 +135,13 @@ public class MemberController {
 
 	}
 
+	//아이디 찾기
+	@RequestMapping("/member/memberFindID.do")
+	public String findId() {
+		
+		
+		return "memberFindID";
+	}
 	// 로그아웃
 	@RequestMapping("/member/logout.do")
 	public String processLogout(HttpSession session) {
