@@ -15,7 +15,7 @@ $(function(){
 		let phone = $('#phone').val();
 		$.ajax({
 			url:'findID.do',
-			type:'post',
+			type:'get',
 			dataType:'json',
 			data:{name:name,phone:phone},
 			cache:false,
@@ -26,10 +26,8 @@ $(function(){
 					location.href='/member/login.do';
 				}else if(param.result=='NotFound'){
 					alert('등록된 아이디가 없습니다.');
-					location.reload();
 				}else{
 					alert('통신 오류');
-					location.reload();
 				}
 			},
 			error:function(){
