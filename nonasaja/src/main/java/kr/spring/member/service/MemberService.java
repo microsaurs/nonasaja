@@ -3,6 +3,8 @@ package kr.spring.member.service;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Select;
+
 import kr.spring.club.vo.ClubVO;
 import kr.spring.community.vo.CommunityVO;
 import kr.spring.community.vo.RecipeVO;
@@ -22,6 +24,9 @@ public interface MemberService {
 	public void updatePassword(MemberVO member);//비밀번호 수정
 	public void deleteMember(Integer mem_num);//회원 삭제
 	public void updateProfile(MemberVO member);//프로필 이미지 업데이트
+	
+	//아이디 찾기
+	public String findId(String name, String phone);
 	
 	//회원관리 - 관리자
 	public List<MemberVO> selectList(Map<String,Object> map);

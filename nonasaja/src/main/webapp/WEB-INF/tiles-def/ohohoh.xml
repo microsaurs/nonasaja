@@ -30,7 +30,7 @@
     	  value="/WEB-INF/views/member/memberKakaoLogin.jsp"/>                   
     </definition>
     <!-- 아이디 찾기 -->
-    <definition name="memberFindID" extends="main">
+    <definition name="memberFindID" extends="main2">
     	<put-attribute name="title" value="로그인"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/member/member-FindID.jsp"/>                   

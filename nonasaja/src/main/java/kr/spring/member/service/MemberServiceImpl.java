@@ -120,4 +120,9 @@ public class MemberServiceImpl implements MemberService {
 		return memberMapper.searchUsedList(keyword);
 	}
 
+	@Override
+	public String findId(String name, String phone) {
+		return memberMapper.findId(name, phone);
+	}
+
 }

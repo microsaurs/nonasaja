@@ -1,0 +1,29 @@
+li{
+	list-style:none;
+}
+.inputs #name,#phone{
+	width:83%;
+	height:50px;
+}
+.inputs #name{
+	margin:0 0 5px 20px;
+}
+.inputs #phone{
+	margin:5px 0 5px 5px;
+}
+input:invalid {
+  border: 3px solid red;
+}
+#btn{
+	border:none;
+}
+#btn span{
+	text-align:center;
+	color:white;
+	font-size:1.3em;
+	height:50px;
+	display:flex;
+	margin-top:10px;
+	margin-left:200px;
+	cursor:pointer;
+}

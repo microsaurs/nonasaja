@@ -88,6 +88,24 @@ public class MemberAjaxController {
 		return mapAjax;
 	}
 	
+	//아이디 찾기
+	@RequestMapping("/member/findID.do")
+	@ResponseBody
+	public Map<String,String> findId(String name, String phone){
+		Map<String,String> mapAjax = new HashMap<String,String>();
+		
+		String id = memberService.findId(name, phone);
+		
+		if(id!=null) {
+			logger.debug("<id>..." + id);
+			mapAjax.put("id", id);
+			mapAjax.put("result","success");
+		}else {
+			logger.debug("<일치하는 아이디 없음>...");
+			mapAjax.put("result", "NotFound");
+		}
+		return mapAjax;
+	}
 	//프로필 사진 수정
 	@RequestMapping("/member/updateMyPhoto.do")
 	@ResponseBody

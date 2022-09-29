@@ -32,6 +32,10 @@ public interface MemberMapper {
 	//카카오 회원 가입 xml
 	public void insertKakaoMember(MemberVO member);
 	
+	
+	//아이디 찾기
+	@Select("SELECT id FROM member m JOIN member_detail d USING(mem_num) WHERE d.name=#{name} AND d.phone=#{phone}")
+	public String findId(String name, String phone);
 	@Select("SELECT m.mem_num,m.id,m.auth,m.nickname,d.passwd,d.name,d.photo,d.photo_name,d.root,d.cash FROM member m LEFT OUTER JOIN member_detail d ON m.mem_num=d.mem_num WHERE m.id=#{id}")
 	public MemberVO selectCheckMember(String id);//아이디 중복 체크
 	@Select("SELECT * FROM member JOIN member_detail USING(mem_num) WHERE mem_num=#{mem_num}")
